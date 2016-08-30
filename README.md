@@ -5,7 +5,7 @@ Software Engineering Fall-2016
 
 |#|Name|Primary Task|
 |---|---|---|
-|1|		Justin Goulet			|	Not Yet Assigned|
+|1|		[Justin Goulet](https://github.com/jstngoulet "Justin GitHub")			|	Not Yet Assigned|
 |2|		Insert Name Here		|	Not Yet Assigned|
 |3|		Insert Name Here		|	Not Yet Assigned|
 |4|		Insert Name Here		|	Not Yet Assigned|
@@ -21,6 +21,7 @@ Software Engineering Fall-2016
 >All links associated with the project will go here. These include items such as repository instructions, IDE setups, additional downloads and similar. For example, I placed the GitHub repo in the list below:
 - [GitHub Repository](https://github.com/Software-Engineering-CSUSM/Enter-Team-Name_ProjectName-2016)
 - [Slack Team](https://csusm-se-f2016.slack.com/) - Send [email](mailto:jstngoulet@me.com) for invite
+- [GitHub Help] (../blob/master/Git_Help.md "GitHub Help by J. Goulet")
 
 ###Repository Info
 > The repo is currently set to an organization, [Software-Engineering-CSUSM](https://github.com/Software-Engineering-CSUSM) so that it is not tied to a single individual, for credit purposes. As such: 
@@ -32,4 +33,4 @@ Software Engineering Fall-2016
     
 ####Let's start as soon as we can!
 
-    It will be fun :)
+    It will be fun :Smiley:
