@@ -21,7 +21,7 @@ Software Engineering Fall-2016
 >All links associated with the project will go here. These include items such as repository instructions, IDE setups, additional downloads and similar. For example, I placed the GitHub repo in the list below:
 - [GitHub Repository](https://github.com/Software-Engineering-CSUSM/Enter-Team-Name_ProjectName-2016)
 - [Slack Team](https://csusm-se-f2016.slack.com/) - Send [email](mailto:jstngoulet@me.com) for invite
-- [GitHub Help] (../blob/master/Git_Help.md "GitHub Help by J. Goulet")
+- [GitHub Help] (https://github.com/Software-Engineering-CSUSM/Enter-Team-Name_ProjectName-2016/blob/master/Git_Help.md "GitHub Help by J. Goulet")
 
 ###Repository Info
 > The repo is currently set to an organization, [Software-Engineering-CSUSM](https://github.com/Software-Engineering-CSUSM) so that it is not tied to a single individual, for credit purposes. As such: 
