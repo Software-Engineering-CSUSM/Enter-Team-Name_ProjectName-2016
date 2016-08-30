@@ -23,3 +23,13 @@ Software Engineering Fall-2016
 - [Slack Team](https://csusm-se-f2016.slack.com/) - Send [email](mailto:jstngoulet@me.com) for invite
 
 ###Repository Info
+> The repo is currently set to an organization, [Software-Engineering-CSUSM](https://github.com/Software-Engineering-CSUSM) so that it is not tied to a single individual, for credit purposes. As such: 
+- All contributors will be known as **collaborators** instead of owners.
+- All contributors should create their own branches, which will be merged to the master when required.
+
+###Slack Info
+> We may use Slack integrations. Feel free to add any you like :smiley:
+    
+####Let's start as soon as we can!
+
+    It will be fun :)
