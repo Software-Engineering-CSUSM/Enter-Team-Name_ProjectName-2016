@@ -29,31 +29,52 @@ GitHub Help
 
 Learning these will help you speedily move through the directories. Press Enter after each command to execute it:
 
-	dir - This command will list all of the folders and files in the directory you are currently at.
+	dir
+>	
+- This command will list all of the folders and files in the directory you are currently at.
 >
 
-	cd folder - This command will move you to the folder that you specify. The folder must be in the directory you are currently in. For example: If you are currently at C:\Users\username\ and you enter cd desktop you will be taken to C:\Users\username\Desktop\
+	cd folder 
+>	
+- This command will move you to the folder that you specify. The folder must be in the directory you are currently in. For example: If you are currently at C:\Users\username\ and you enter cd desktop you will be taken to C:\Users\username\Desktop\
 >
 
-	cd path - This command will take you to a specific path on your computer. You do not need to be in the same directory as the path. You must enter the entire path for it to work. For example: cd C:\Windows\System32
+	cd path 
+>	
+- This command will take you to a specific path on your computer. You do not need to be in the same directory as the path. You must enter the entire path for it to work. For example: cd C:\Windows\System32
 >	
 
-	cd .. - This command will move you up one directory from your current location. For example: If you are currently at C:\Users\username\ and you enter cd .. you will be taken to C:\Users\
+	cd .. 
+>	
+- This command will move you up one directory from your current location. For example: If you are currently at C:\Users\username\ and you enter cd .. you will be taken to C:\Users\
 >	
 
-	cd\ - This command will take you to the root directory, regardless of your location. For example: If you are currently at C:\Users\username\ and you enter cd\ you will be taken to C:\
+	cd\ 
+>	
+- This command will take you to the root directory, regardless of your location. For example: If you are currently at C:\Users\username\ and you enter cd\ you will be taken to C:\
 >
 
-	driveletter: - This command will take you to the drive letter that you specify. The drive you specify will need to be active, or have a disc in it if it a CD\DVD drive. For example, if you want to switch to your D drive, you would enter the command D:
+	driveletter: 
+>	
+- This command will take you to the drive letter that you specify. The drive you specify will need to be active, or have a disc in it if it a CD\DVD drive. For example, if you want to switch to your D drive, you would enter the command D:
 >
 
-	exit - This command will exit the Command Prompt, no matter your current location.er your current location.
+	exit 
+>	
+- This command will exit the Command Prompt, no matter your current location.er your current location.
 	
 **Mac**
 
 Even simpler than on a windows
 
-	cd *location*
+	cd [location]
+>	
+- This command will take you to the directory input by the user. As a tip, you can drag a folder into the Terminal window and the location will automatically be transferred the the window.
+>
+
+	dir
+>	
+- This command will list all of the folders and files in the directory you are currently at.
 
 --
 
