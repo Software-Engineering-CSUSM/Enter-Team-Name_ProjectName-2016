@@ -33,4 +33,4 @@ Software Engineering Fall-2016
     
 ####Let's start as soon as we can!
 
-    It will be fun :Smiley:
+   It will be fun :Smiley:
