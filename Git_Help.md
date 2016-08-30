@@ -81,7 +81,7 @@ Even simpler than on a windows
 #####Next Step:
 >2) After you set the directory location for the proposed Git repository enter the following command in **Terminal** or **Command Prompt**
 
-	git init
+	git init [project_name]
 	
 >- This will create a new local repository within that directory
 
@@ -89,11 +89,58 @@ Even simpler than on a windows
 #####Third:
 >3) Congrats! The repo is initialized locally. Let's set it up to work with our repo. Follow the steps below (Same per operating system):
 
->- Create a new pull request:
+>- Pull the repo to the repository to create a local copy:
 
+	git clone https://github.com/Software-Engineering-CSUSM/Enter-Team-Name_ProjectName-2016.git
+
+>- Create a branch so your changes will not be reflected on the master branch
+>
+	**NOTE:** Where [] are used, please define custom parameters.
+
+	git branch [branchName]
+
+>- Switch to the newly created branch
+
+	git checkout [branchName]
+	
+#####Fourth:
+>4) Now, we must set up the remote URL so Git knows where to *post* to.
+
+	git remote add [repoName] https://github.com/Software-Engineering-CSUSM/Enter-Team-Name_ProjectName-2016.git
+	
+####Use
+>1)	Create a test file to ensure that your local repository can communicate with the remote properly
+
+	echo "# [username] has created a new file" >> [username]_SignIn.md
+
+>- Add the newly created file to the repository
+>
+	**NOTE:** You can check the repository status at any time by calling 'git status'
+	
+	git add [username]_SignIn.md
+	
+>- Commit the changes to the local repository
+>
+	**NOTE:** You should add a message that applies to what changes you are committing for proper version control
+
+	git commit -m "added sign in document for [username]"
+	
+>- Push the changes to the repository
+
+	git push [repoName] [branchName]
+
+#####That's it!
+>For the most part...
+
+###Additional Tools:
+- [Markdown Syntax] (http://www.markitdown.net/markdown) - With Examples and Live Preview
+- [Full Branch Assistance] (https://github.com/Kunena/Kunena-Forum/wiki/Create-a-new-branch-with-git-and-manage-branches)
+- [GitHub Official **Cheat Sheet**] (https://services.github.com/kit/downloads/github-git-cheat-sheet.pdf) - Download and have with you!!
 	
 
-
+##Remember:
+###Keep the *Master* branch clean! Only merge with full group consensus and assistance!
+All work should be done on your personal branch until further notice. If you need additional help, create a personal repo and mess around with it before 'playing' with ours!
 
 
 
