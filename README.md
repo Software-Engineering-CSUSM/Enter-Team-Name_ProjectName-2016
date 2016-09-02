@@ -22,6 +22,7 @@ Software Engineering Fall-2016
 - [GitHub Repository](https://github.com/Software-Engineering-CSUSM/Enter-Team-Name_ProjectName-2016)
 - [Slack Team](https://csusm-se-f2016.slack.com/) - Send [email](mailto:jstngoulet@me.com) for invite
 - [GitHub Help] (https://github.com/Software-Engineering-CSUSM/Enter-Team-Name_ProjectName-2016/blob/master/Git_Help.md "GitHub Help by J. Goulet")
+- [Markdown Syntax Assistant] (http://www.markitdown.net/markdown)
 
 ###Repository Info
 > The repo is currently set to an organization, [Software-Engineering-CSUSM](https://github.com/Software-Engineering-CSUSM) so that it is not tied to a single individual, for credit purposes. As such: 
