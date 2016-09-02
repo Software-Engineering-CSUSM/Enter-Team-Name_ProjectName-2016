@@ -6,6 +6,7 @@
 - at work
   - sat sun various times and places in the middle of the day
     - consider unavailable until 7pm at least
+
 #preferred times
 ##Steven Clark
 - Most likely to be open
