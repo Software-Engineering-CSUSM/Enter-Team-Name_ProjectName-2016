@@ -6,7 +6,7 @@ Software Engineering Fall-2016
 |#|Name|Primary Task|
 |---|---|---|
 |1|		[Justin Goulet](https://github.com/jstngoulet "Justin GitHub")			|	Not Yet Assigned|
-|2|		Insert Name Here		|	Not Yet Assigned|
+|2|		[John Orcino](https://github.com/OrcinoJohn)		|	Not Yet Assigned|
 |3|		Insert Name Here		|	Not Yet Assigned|
 |4|		Insert Name Here		|	Not Yet Assigned|
 |5|		Insert Name Here		|	Not Yet Assigned|
