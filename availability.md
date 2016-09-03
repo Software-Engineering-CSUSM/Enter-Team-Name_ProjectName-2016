@@ -29,3 +29,20 @@
 |Friday|	10:00 a.m. - 2 p.m.|
 |Saturday|	On appointment|
 |Sunday|	On appointment|
+
+<br><br><br><br><br><br><br><br>
+
+#Main Availability
+
+
+##Jeremy Pietersma
+
+|Day of Week | Availibilty|
+|---|---|
+|Monday|	9:30 a.m. - 11 a.m..; 7 p.m. - 11 p.m.|
+|Tuesday|	7 p.m. - 11 p.m.|
+|Wednesday|	9:30 a.m. - 11 a.m..; 7 p.m. - 11 p.m.|
+|Thursday|7 p.m. - 11 p.m.|
+|Friday|	9:30 a.m. - 11 a.m..; 7 p.m. - 11 p.m.|
+|Saturday|	Open|
+|Sunday|	Varies, but mostly open|
