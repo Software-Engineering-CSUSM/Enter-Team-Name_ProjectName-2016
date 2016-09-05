@@ -22,17 +22,13 @@
 
 |Day of Week | Availibilty|
 |---|---|
-|Monday|	10:00 a.m. - 11 a.m.|
+|Monday|	10 a.m. - 11 a.m.|
 |Tuesday|	7 p.m. - 10 p.m.|
 |Wednesday|	9:30 a.m. - Noon; 6 p.m. - 10 p.m.|
 |Thursday|	N/A|
-|Friday|	10:00 a.m. - 2 p.m.|
-|Saturday|	On appointment|
-|Sunday|	On appointment|
-
-<br><br><br><br><br><br><br><br>
-
-#Main Availability
+|Friday|	10 a.m. - 2 p.m.|
+|Saturday|	By appointment|
+|Sunday|	Bu appointment|
 
 
 ##Jeremy Pietersma
