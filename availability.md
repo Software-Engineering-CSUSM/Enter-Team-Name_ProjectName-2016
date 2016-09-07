@@ -42,3 +42,16 @@
 |Friday|	9:30 a.m. - 11 a.m..; 7 p.m. - 11 p.m.|
 |Saturday|	Open|
 |Sunday|	Varies, but mostly open|
+
+##Christian Mathias
+
+|Day of Week | Availibilty|
+|---|---|
+|Monday|	1pm - 11pm|
+|Tuesday|	Unavailable|
+|Wednesday|	1pm - 11pm|
+|Thursday|	Unavailable|
+|Friday|	1pm - 11pm|
+|Saturday|  Ask|
+|Sunday|	Ask|
+**Always online on Discord - Acct: SynthRadio#5962
