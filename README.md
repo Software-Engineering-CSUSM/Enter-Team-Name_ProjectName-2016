@@ -10,7 +10,7 @@ Software Engineering Fall-2016
 |3|		[Steven Clark](https://github.com/DaVolfman "Steven Clark GitHub")		        |	Not Yet Assigned|
 |4|		[Jeremy Pietersma](https://github.com/jpietersma "Jeremy Pietersma GitHub")		|	Not Yet Assigned|
 |5|		[Christian Mathias](https://github.com/cmmathias95 "Christian Mathias")		    |	Not Yet Assigned|
-|6|		Insert Name Here		|	Not Yet Assigned|
+|6|		[Chris Childers](https://github.com/chili24137 "Chris Childers")		        |	Not Yet Assigned|
 
 ###Role Descriptions
 > The participant roles are subject to change at any time. Each participant will fulfill each role at some point in time during the project. As a precursor, each participant will be assigned a primary function, denoted in the table above. Below is a description of each role.
