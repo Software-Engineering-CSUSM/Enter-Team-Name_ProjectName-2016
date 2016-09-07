@@ -5,11 +5,11 @@ Software Engineering Fall-2016
 
 |#|Name|Primary Task|
 |---|---|---|
-|1|		[Justin Goulet](https://github.com/jstngoulet "Justin GitHub")			|	Not Yet Assigned|
-|2|		[John Orcino](https://github.com/OrcinoJohn)		|	Not Yet Assigned|
-|3|		[Steven Clark](https://github.com/DaVolfman "Steven Clark GitHub")		|	Not Yet Assigned|
+|1|		[Justin Goulet](https://github.com/jstngoulet "Justin GitHub")			        |	Not Yet Assigned|
+|2|		[John Orcino](https://github.com/OrcinoJohn)		                            |	Not Yet Assigned|
+|3|		[Steven Clark](https://github.com/DaVolfman "Steven Clark GitHub")		        |	Not Yet Assigned|
 |4|		[Jeremy Pietersma](https://github.com/jpietersma "Jeremy Pietersma GitHub")		|	Not Yet Assigned|
-|5|		Insert Name Here		|	Not Yet Assigned|
+|5|		[Christian Mathias](https://github.com/cmmathias95 "Christian Mathias")		    |	Not Yet Assigned|
 |6|		Insert Name Here		|	Not Yet Assigned|
 
 ###Role Descriptions
