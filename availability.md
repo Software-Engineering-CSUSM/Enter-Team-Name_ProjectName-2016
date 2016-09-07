@@ -56,14 +56,15 @@
 |Sunday|	Ask|
 **Always online on Discord - Acct: SynthRadio#5962
 
-
 ##Chris Childers
---------
-Availability:
-Monday - after 12pm
-Tuesday - Mostly unavailable but ask
-Wednesday - after 12pm
-Thursday - Most unavabilable but ask
-Friday - ask
-Saturday - ask
-Sunday - available all day
+
+|Day of Week | Availibilty|
+|---|---|
+|Monday|	after 12pm|
+|Tuesday|	ask|
+|Wednesday|	after 12pm|
+|Thursday|	ask|
+|Friday|	ask|
+|Saturday|  Ask|
+|Sunday|	free|
+
