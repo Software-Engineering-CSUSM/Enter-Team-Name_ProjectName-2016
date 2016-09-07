@@ -68,3 +68,15 @@
 |Saturday|  Ask|
 |Sunday|	free|
 
+
+##John Orcino
+
+|Day of Week | Availibilty|
+|---|---|
+|Monday|	3pm - 8pm|
+|Tuesday|	5pm - 8pm|
+|Wednesday|	3pm - 8pm|
+|Thursday|	5pm - 8pm|
+|Friday|	3pm - 8pm|
+|Saturday|  Ask|
+|Sunday|	Ask|
