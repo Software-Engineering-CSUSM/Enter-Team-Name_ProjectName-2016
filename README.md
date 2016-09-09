@@ -15,7 +15,7 @@ Software Engineering Fall-2016
 ###Role Descriptions
 > The participant roles are subject to change at any time. Each participant will fulfill each role at some point in time during the project. As a precursor, each participant will be assigned a primary function, denoted in the table above. Below is a description of each role.
 
->####Project Manager - (1 Person)
+>####Project Manager / SCRUM Master - (1 Person)
 >- Oversees every part of the project. Ensures project members stay on task, meet deadlines, and fulfill requirements as assigned. Product manager is in charge of scheduling meetings, project documentation and oversees the project at every step - keeping a particular close eye on version control, commenting and code quality. Here are some example tasks that the **project manager** will take a large role in:
     - Competing product design wireframes
     - Managing set communication methods
