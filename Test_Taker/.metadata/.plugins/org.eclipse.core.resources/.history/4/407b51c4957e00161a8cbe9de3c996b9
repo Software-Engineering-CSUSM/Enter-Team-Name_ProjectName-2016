@@ -1,0 +1,26 @@
+/**
+ * 
+ */
+package edu.CSUSM.testTaker;
+
+/**
+ * @author Justin
+ *
+ */
+public class DriverManager {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		
+		//Create a saple question to ensure the class works
+		testQuestion();
+		
+	}
+	
+	public void testQuestion(){
+		
+	}
+
+}
