@@ -1,17 +1,19 @@
 package edu.CSUSM.testTaker.Backend;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Question {
 	
 	public String _question;
-	public ArrayList<String> _answers = new ArrayList<String>();
+	public ArrayList<String> _answers;
 	public int _correctIndex;
 
 	/**
 	 * @param mainQuestion
 	 */
 	public Question(String mainQuestion){
+		_answers = new ArrayList<String>();
 		setQuestion(mainQuestion);
 	}
 	
@@ -26,9 +28,7 @@ public class Question {
 		setQuestion(mainQuestion);
 		
 		/* Add all possible answers to the list */
-		for(int i = 0; i < answers.length; i++){
-			addAnswer(answers[i]);
-		}
+		this._answers = new ArrayList<String>(Arrays.asList(answers));
 		
 		/* Set the correct answer index */
 		setCorrectIndex(correctAnsIndex);

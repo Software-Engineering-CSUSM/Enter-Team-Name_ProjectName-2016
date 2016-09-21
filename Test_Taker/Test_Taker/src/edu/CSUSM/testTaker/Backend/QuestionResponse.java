@@ -1,4 +1,4 @@
-package edu.csusm.TestTaker;
+package edu.CSUSM.testTaker.Backend;
 
 public class QuestionResponse {
 
