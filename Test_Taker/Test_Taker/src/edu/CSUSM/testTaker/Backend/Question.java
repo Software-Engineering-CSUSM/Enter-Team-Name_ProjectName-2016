@@ -7,6 +7,10 @@ public class Question implements Serializable{
 	static final long serialVersionUID = 1L;
 	String myID;
 	
+	public String getID(){
+		return myID;
+	}
+	
 	public String _question;
 	public ArrayList<String> _answers = new ArrayList<String>();
 	public int _correctIndex;
