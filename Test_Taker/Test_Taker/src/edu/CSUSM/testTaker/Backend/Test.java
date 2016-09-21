@@ -1,5 +1,12 @@
-package edu.csusm.TestTaker;
+package edu.CSUSM.testTaker.Backend;
 
-public class Test {
+import java.util.ArrayList;
+import java.io.Serializable;
 
+public class Test implements Serializable{
+	static final long serialVersionUID = 1L;
+	String myID;
+
+	ArrayList<Question> questionList;
+	ArrayList<Integer> questionPoints;
 }

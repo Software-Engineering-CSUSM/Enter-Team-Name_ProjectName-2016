@@ -1,5 +1,9 @@
-package edu.csusm.TestTaker;
+package edu.CSUSM.testTaker.Backend;
 
-public class QuestionResponse {
+import java.io.Serializable;
+
+public class QuestionResponse implements Serializable{
+	static final long serialVersionUID = 1L;
+	String myID;
 
 }
