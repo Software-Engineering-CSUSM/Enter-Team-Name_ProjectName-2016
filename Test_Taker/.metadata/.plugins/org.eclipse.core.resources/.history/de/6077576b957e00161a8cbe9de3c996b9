@@ -1,0 +1,85 @@
+package edu.CSUSM.testTaker.Backend;
+
+import java.util.ArrayList;
+
+public class Question {
+	
+	public String _question;
+	public ArrayList<String> _answers = new ArrayList<String>();
+	public int _correctIndex;
+
+	/**
+	 * @param mainQuestion
+	 */
+	public Question(String mainQuestion){
+		
+	}
+	
+	/**
+	 * @param mainQuestion
+	 * @param answers
+	 * @param correctAnsIndex
+	 */
+	public Question(String mainQuestion, String[] answers, int correctAnsIndex){
+		
+	}
+	
+	/* Mutators */
+	/**
+	 * @param newQuestion overwrites the existing question, if any
+	 */
+	public void setQuestion(String newQuestion){
+		this._question = newQuestion;
+		}
+	
+	/**
+	 * @param newAnswer Provides a new answer for the provided index
+	 * @param index The current location of the answer that is being modified
+	 */
+	public void setAnswer(String newAnswer, int index){
+		this._answers.set(index, newAnswer); 
+		}
+	
+	/**
+	 * @param additionalAnswer Adds a new answer the array
+	 */
+	public void addAnswer(String additionalAnswer){
+		this._answers.add(additionalAnswer);
+	}
+	
+	/**
+	 * @param index of which references index of answers array
+	 */
+	public void setCorrectIndex(int index){
+		this._correctIndex = index;
+		}
+	
+	/* Accessors */
+	/**
+	 * @return The current question
+	 */
+	public String getQuestion(){
+		return this._question;
+	}
+	
+	/**
+	 * @return a list of the correct answers
+	 */
+	public String[] getAnswers(){
+		return (String[]) _answers.toArray();
+	}
+	
+	/**
+	 * @return the location to the correct answer within the answers array
+	 */
+	public int getCorrectIndex(){
+		return this._correctIndex;
+	}
+	
+	
+	public String toString(){
+		String thisQuestionString = "Question: " + this._question;
+				
+		//Now, add each of the possible answers in the provided question
+	}
+}

@@ -1,0 +1,20 @@
+package edu.CSUSM.testTaker.Backend;
+
+public class Question {
+	
+	public String _question;
+	public String _answers[];
+	public String _correctIndex;
+
+	public Question(String mainQuestion){
+		
+	}
+	
+	public Question(String mainQuestion, String[] answers, int correctAnsIndex){
+		
+	}
+	
+	/* Accessors */
+	
+	
+}
