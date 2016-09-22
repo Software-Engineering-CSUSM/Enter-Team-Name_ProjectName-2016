@@ -1,9 +1,19 @@
 package edu.CSUSM.testTaker.Backend;
 
 import java.util.ArrayList;
+<<<<<<< HEAD
 import java.util.Arrays;
+=======
+import java.io.Serializable;
+>>>>>>> master
 
-public class Question {
+public class Question implements Serializable{
+	static final long serialVersionUID = 1L;
+	String myID;
+	
+	public String getID(){
+		return myID;
+	}
 	
 	public String _question;
 	public ArrayList<String> _answers;
