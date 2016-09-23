@@ -1,0 +1,44 @@
+package edu.CSUSM.testTaker;
+
+
+import edu.CSUSM.testTaker.Backend.*;
+import java.util.HashMap;
+
+/**
+ * 
+ * @author Justin
+ * @Description This class controls the library. This class loads in the library once and is used by many GUI classes throughout.
+ * 		For successful implementation, this class should not be created more than once. Many of the variables are static, so if it is created more
+ * 			than once, the variables will not need to be re-initialized.
+ *
+ */
+public class LibraryController{
+	
+	/** 
+	 * For Implementation, we are going to use Hashmaps. This is how:
+	 * 		• The string used in the map (as the 'key') will be the identifier of the test
+	 * 		• The 'value' of the map will be the actual object.
+	 * 
+	 * The reason we are using maps is because the time complexity is W(1) and the list will not have to loop
+	 * 	through the data every time it is required.
+	 */
+	public static HashMap<String, Test> testArray;
+	public static HashMap<String, Question> questionArray;
+	public static HashMap<String, Course> classArray;
+	
+	
+	public static boolean hasInitialized = false;
+	
+	public LibraryController(){
+		
+		/** If the library ontroller has been initialized already, skip the re-init of variables */
+		if(!hasInitialized){
+			
+		}else{
+			this.hasInitialized = true;
+		}
+		
+	}
+	
+	
+}
