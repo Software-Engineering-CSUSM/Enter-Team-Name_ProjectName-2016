@@ -22,15 +22,20 @@ public class LibraryController{
 	 * The reason we are using maps is because the time complexity is W(1) and the list will not have to loop
 	 * 	through the data every time it is required.
 	 */
-	public static HashMap<String, Test> testArray;
-	public static HashMap<String, Question> questionArray;
-	public static HashMap<String, Course> classArray;
+	private static HashMap<String, Test> testArray;			//String is the testID
+	private static HashMap<String, Question> questionArray;	//String is the questionID
+	private static HashMap<String, Course> classArray;
+	
+	/**The below static variables are for the current class, not all information as done above */
+	public static HashMap<String, Test> _currentTestsInCourse;			//String is the testID
+	public static HashMap<String, Question> _currentQuestionsInCourse;	//String is the questionID 
+	public static String _currentClassID;			
 
 
 	public static boolean hasInitialized = false;
 
 	/**
-	 * Default constructor for class. Inits variables, if needed and allows access to all library objects
+	 * @description Default constructor for class. Inits variables, if needed and allows access to all library objects
 	 */
 	public LibraryController(){
 
@@ -54,7 +59,7 @@ public class LibraryController{
 	}
 
 	/**
-	 * Loads the data from where-ever it is stored
+	 * @description Loads the data from where-ever it is stored
 	 */
 	private static void loadData(){
 		/**For now, just create empty maps, then add test data to them */
@@ -66,14 +71,43 @@ public class LibraryController{
 	}
 	
 	/**
-	 * Adds sample data for testing purposes
+	 * @description Adds sample data for testing purposes
 	 */
 	private static void addTestData(){
 		testQuestion();
+		sampleCourse();
 	}
+	
+	
+	/**
+	 * @param ID - Identifier of currentCourse
+	 * @description Compiles the information/data that is relative to the current course
+	 */
+	public static void gatherCourseMaterialsForID(String ID){
+		
+		/** First, locate all of the tests within the library and add all of the questions to the currentCourseLib */
+		LibraryController._currentClassID = ID; 					//Set the currentClassID value
+		
+		/**
+		 * The way we are currently loading the course, DNE, we have to now sort the questions for this particular course.
+		 * This should be done as we read them in
+		 */
+		LibraryController._currentQuestionsInCourse.clear();		//Remove all questions from the currentClass Question map
+		
+		for(Question currentQuestion : LibraryController.questionArray.values()){
+			/** We need to gather the courseID from the question */
+			//If the testID of the question equals the currentTestID, we can add it to the map
+			if(ID.equalsIgnoreCase(currentQuestion.getCourseID()))
+				LibraryController._currentQuestionsInCourse.put(currentQuestion.getID(), currentQuestion);
+		}
+		
+	}
+	
+	
+	
 
 	/**
-	 * 	Creates a test question to ensure the question class works as expected
+	 * 	@description Creates a test question to ensure the question class works as expected
 	 */
 	private static void testQuestion(){
 		
@@ -102,6 +136,14 @@ public class LibraryController{
 	}
 	
 	/**
+	 * @description Creates a sample course to ensre the course class works as expected
+	 * @NOTE Not yet completed. Awaiting Test Class
+	 */
+	private static void sampleCourse(){
+		
+	}
+	
+	/**
 	 * @return Customized String that displays all of the relative data within the class
 	 */
 	public String toString(){
@@ -118,5 +160,25 @@ public class LibraryController{
 		return questionString;
 	}
 
-
+	/**Accesors */
+	/**
+	 * @return amount of total questions in Library
+	 */
+	public int getTotalQuestionCount(){
+		return LibraryController.questionArray.size();
+	}
+	
+	/**
+	 * @return amount of total courses in Library
+	 */
+	public int getTotalCourseCount(){
+		return LibraryController.classArray.size();
+	}
+	
+	/**
+	 * @return amount of total tests in Library
+	 */
+	public int getTotalTestCount(){
+		return LibraryController.testArray.size();
+	}
 }

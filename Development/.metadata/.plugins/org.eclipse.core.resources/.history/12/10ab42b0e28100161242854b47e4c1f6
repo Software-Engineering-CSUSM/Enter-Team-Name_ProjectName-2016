@@ -1,0 +1,21 @@
+package edu.CSUSM.testTaker.Backend;
+
+
+
+
+
+public class Course {
+	
+	public static int COURSE_COUNT; //Keeps a sum of all existing courses. Will count every time the class is init.
+	
+	public Course(){
+		
+		/** Increment the course counter */
+		Course.COURSE_COUNT++;
+		
+	}
+	
+	/**Accessors */
+	
+	
+}

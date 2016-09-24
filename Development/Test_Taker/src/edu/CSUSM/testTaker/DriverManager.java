@@ -23,7 +23,7 @@ public class DriverManager {
 		
 		//Re-init to show that the lib is not recreated
 		LibraryController secondLib = new LibraryController();
-		System.out.println("New Lib:\n" + secondLib.toString());
+		System.out.println("New Lib: (" + secondLib.getTotalQuestionCount() + ")\n" + secondLib.toString());
 	}
 	
 	
