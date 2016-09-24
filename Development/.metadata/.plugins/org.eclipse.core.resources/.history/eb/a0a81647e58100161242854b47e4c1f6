@@ -1,0 +1,125 @@
+package edu.CSUSM.testTaker.Backend;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+
+public class Course {
+	
+	public static int COURSE_COUNT; 					//Keeps a sum of all existing courses. Will count every time the class is init.
+	
+	public String courseID;
+	public double courseGrade, testsCompleted;
+	public HashMap<String, Question> questionsInCourse; 		//Used for final exams and practice quizzes
+	public ArrayList<Test> testsInCourse;				//Used for external calculations
+	
+
+
+	/**
+	 * Default Constructor
+	 */
+	public Course(){
+		
+		/** Increment the course counter */
+		Course.COURSE_COUNT++;
+		
+		/** Compile all questions from all tests into one arraylist
+		 * 		This will also assis in organizing the tests
+		 */
+		
+		
+	}
+	
+	/**
+	 * @return the questionsInCourse
+	 */
+	public ArrayList<Question> getQuestionsInCourse() {
+		return questionsInCourse;
+	}
+
+	/**
+	 * @param questionsInCourse the questionsInCourse to set
+	 */
+	public void setQuestionsInCourse(ArrayList<Question> questionsInCourse) {
+		this.questionsInCourse = questionsInCourse;
+	}
+	
+	/**
+	 * @param newQuestion Adds new question to course, not necessarily an exam
+	 */
+	public void addQuestionToCourse(Question newQuestion){
+		this.questionsInCourse.add(newQuestion);
+	}
+	
+	/**
+	 * @param quesToRemove particular question to remove from question array
+	 */
+	public void removeQuestionFromCourse(Question quesToRemove){
+		this.questionsInCourse.remove(quesToRemove);	
+	}
+	
+	/**
+	 * @param index removes a question from a particular index
+	 */
+	public void removeQuestionAtIndex(int index){
+		this.questionsInCourse.remove(index);
+	}
+
+	/**
+	 * @return the testsInCourse
+	 */
+	public ArrayList<Test> getTestsInCourse() {
+		return testsInCourse;
+	}
+
+	/**
+	 * @param testsInCourse the testsInCourse to set
+	 */
+	public void setTestsInCourse(ArrayList<Test> testsInCourse) {
+		this.testsInCourse = testsInCourse;
+	}
+
+	/**
+	 * @param courseID the courseID to set
+	 */
+	public void setCourseID(String courseID) {
+		this.courseID = courseID;
+	}
+
+	/**
+	 * @param courseGrade the courseGrade to set
+	 */
+	public void setCourseGrade(double courseGrade) {
+		this.courseGrade = courseGrade;
+	}
+
+	/**
+	 * @param testsCompleted the testsCompleted to set
+	 */
+	public void setTestsCompleted(double testsCompleted) {
+		this.testsCompleted = testsCompleted;
+	}
+
+	/**
+	 * @return the courseID
+	 */
+	public String getCourseID() {
+		return courseID;
+	}
+
+	/**
+	 * @return the courseGrade
+	 */
+	public double getCourseGrade() {
+		return courseGrade;
+	}
+
+	/**
+	 * @return the testsCompleted
+	 */
+	public double getTestsCompleted() {
+		return testsCompleted;
+	}
+	
+	
+	
+}
