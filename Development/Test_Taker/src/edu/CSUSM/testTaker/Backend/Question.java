@@ -12,9 +12,11 @@ public class Question implements Serializable{
 		return myID;
 	}
 	
-	public String _question;
+	public String _question, _courseID;
 	public ArrayList<String> _answers;
 	public int _correctIndex;
+	
+	public static int QUESTION_COUNT; //Keeps an always-updating count of questions per init in the program
 
 	/**
 	 * @param mainQuestion
@@ -22,6 +24,9 @@ public class Question implements Serializable{
 	public Question(String mainQuestion){
 		_answers = new ArrayList<String>();
 		setQuestion(mainQuestion);
+		
+		/**Increment the total count of questions*/
+		Question.QUESTION_COUNT++;
 	}
 	
 	/**
@@ -39,6 +44,9 @@ public class Question implements Serializable{
 		
 		/* Set the correct answer index */
 		setCorrectIndex(correctAnsIndex);
+		
+		/**Increment the total count of questions*/
+		Question.QUESTION_COUNT++;
 	}
 	
 	/* Mutators */
@@ -93,7 +101,21 @@ public class Question implements Serializable{
 		return this._correctIndex;
 	}
 	
+	/**
+	 * @param courseID sets the current course identifier
+	 */
+	public void setCourseID(String courseID){
+		this._courseID = courseID;
+	}
 	
+	/**
+	 * @return the associated course identifier
+	 */
+	public String getCourseID(){
+		return this._courseID;
+	}
+	
+	@Override
 	public String toString(){
 		
 		//Create the initial question

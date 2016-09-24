@@ -1,0 +1,102 @@
+package edu.CSUSM.testTaker.Backend;
+
+import java.util.ArrayList;
+
+public class Course {
+	
+	public static int COURSE_COUNT; 					//Keeps a sum of all existing courses. Will count every time the class is init.
+	
+	public String courseID;
+	public double courseGrade, testsCompleted;
+	public ArrayList<Question> questionsInCourse; 		//Used for final exams and practice quizzes
+	public ArrayList<Test> testsInCourse;				//Used for external calculations
+	
+
+
+	/**
+	 * Default Constructor
+	 */
+	public Course(){
+		
+		/** Increment the course counter */
+		Course.COURSE_COUNT++;
+		
+	}
+	
+	/**
+	 * @return the questionsInCourse
+	 */
+	public ArrayList<Question> getQuestionsInCourse() {
+		return questionsInCourse;
+	}
+
+	/**
+	 * @param questionsInCourse the questionsInCourse to set
+	 */
+	public void setQuestionsInCourse(ArrayList<Question> questionsInCourse) {
+		this.questionsInCourse = questionsInCourse;
+	}
+	
+	public void addQuestionToCourse(Question newQuestion){
+		this.questionsInCourse.add(newQuestion);
+	}
+
+	/**
+	 * @return the testsInCourse
+	 */
+	public ArrayList<Test> getTestsInCourse() {
+		return testsInCourse;
+	}
+
+	/**
+	 * @param testsInCourse the testsInCourse to set
+	 */
+	public void setTestsInCourse(ArrayList<Test> testsInCourse) {
+		this.testsInCourse = testsInCourse;
+	}
+
+	/**
+	 * @param courseID the courseID to set
+	 */
+	public void setCourseID(String courseID) {
+		this.courseID = courseID;
+	}
+
+	/**
+	 * @param courseGrade the courseGrade to set
+	 */
+	public void setCourseGrade(double courseGrade) {
+		this.courseGrade = courseGrade;
+	}
+
+	/**
+	 * @param testsCompleted the testsCompleted to set
+	 */
+	public void setTestsCompleted(double testsCompleted) {
+		this.testsCompleted = testsCompleted;
+	}
+
+	/**
+	 * @return the courseID
+	 */
+	public String getCourseID() {
+		return courseID;
+	}
+
+	/**
+	 * @return the courseGrade
+	 */
+	public double getCourseGrade() {
+		return courseGrade;
+	}
+
+	/**
+	 * @return the testsCompleted
+	 */
+	public double getTestsCompleted() {
+		return testsCompleted;
+	}
+	
+	
+	
+}

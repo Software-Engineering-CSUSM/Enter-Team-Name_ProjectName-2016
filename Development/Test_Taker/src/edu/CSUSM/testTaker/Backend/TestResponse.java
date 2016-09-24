@@ -1,6 +1,5 @@
 package edu.CSUSM.testTaker.Backend;
 
-import java.util.ArrayList;
 import java.io.Serializable;
 
 public class TestResponse implements Serializable{
