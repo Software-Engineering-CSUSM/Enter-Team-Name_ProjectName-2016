@@ -23,15 +23,12 @@ public class Test implements Serializable{
         String thisTestString = "Test: " + this.title;
                 
         //Now, add each of the possible answers in the provided question
-        for(int iterator = 0; iterator < questionList.Length() ; iterator++){
-            thisQuestionString += "\n\t\t " + (iterator+1) + ") " + this.questionList.    ;//finish this line
-            
-            //If the answer is correct, add an asterisk to the end
-            thisQuestionString += (iterator == this._correctIndex) ? " *correct*" : "";
+        for(int iterator = 0; iterator < questionList.size() ; iterator++){
+            thisTestString += "\n\t\t " + (iterator+1) + ") " + this.questionList.get(iterator).toString();
         }
         
         //Return the result
-        return thisQuestionString;
+        return thisTestString;
     }
 
 }
