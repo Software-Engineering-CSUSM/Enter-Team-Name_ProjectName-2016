@@ -15,4 +15,11 @@ public class QuestionRegistry implements Serializable{
 		questionStore.put(updated.getID(), updated);
 		return true;
 	}
+	/*	Author: John Orcino
+	 * 	@param needs the original question and the string that the user entered
+	 * 	FUNCTION: change the requested question into what the user entered
+	 * public void editQuestion(Question oldQuestion, String newQuestion){
+	 *  
+	 * }	
+	 */
 }
