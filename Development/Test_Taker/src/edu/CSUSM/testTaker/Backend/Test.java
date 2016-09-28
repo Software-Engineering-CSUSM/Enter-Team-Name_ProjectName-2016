@@ -7,16 +7,20 @@ import java.io.Serializable;
 
 public class Test implements Serializable{
 	static final long serialVersionUID = 1L;
-	String myID;
+	//String myID;
 	
+	
+	/** @brief Get the ID of the test for database storage and retrieval
+	 * @return unique ID string of this Test
+	 * @author Steven Clark
+	 */
 	public String getID(){
-		return myID;
+		return _testID;
 	}
 
-	volatile ArrayList<Question> questionList;
-	ArrayList<String> questionIDs;
-	ArrayList<Integer> questionPoints;
-	String title;
+	//volatile ArrayList<Question> questionList;
+	//ArrayList<String> questionIDs;
+	//ArrayList<Integer> questionPoints;
 	
 	//For testing purposes
 	public HashMap<String, Question> _listOfQuestionsInExam;		//Format: (String testID, Question questionWithIDBuiltIn)
@@ -59,7 +63,7 @@ public class Test implements Serializable{
 	 * @description does the work of setting up the class regardless of what vars are passed
 	 */
 	private void initTest(){
-		myID = UUID.randomUUID().toString();
+		_testID = UUID.randomUUID().toString();
 		
 	}
 	
@@ -71,6 +75,7 @@ public class Test implements Serializable{
 		return this._listOfQuestionsInExam;
 	}
 	
+
 	public String getTestID(){
 		return this._testID;
 	}
@@ -96,7 +101,14 @@ public class Test implements Serializable{
 		this._courseID = newCourseID;
 	}
 	
+	
+	/**
+	 * Utility function sets/resets the list of questions
+	 * @param newQuestionList an ArrayList of Question refs to insert
+	 */
 	public void setQuestionList(ArrayList<Question> newQuestionList){
+		_listOfQuestionsInExam = new HashMap<String,Question>();
+		
 		//Iterate through the list and add to the question map. we are going to add the test ID to each of the questions.
 		for(Question tempQuestion : newQuestionList){
 			
@@ -111,7 +123,7 @@ public class Test implements Serializable{
 		}
 	}
 	
-	/*Author: John Orcino
+	/** @author John Orcino
 	 * PARAMETER: May need one
 	 * FUNCTION: gets the Id for the question to have the array of questions and answers
 	 */
@@ -119,7 +131,7 @@ public class Test implements Serializable{
 		
 	}
 	
-	/*	Author: John Orcino
+	/** @author John Orcino
 	 * 	FUNCTION: adds up the total points of the test and returns it
 	 */
 	public int totalPointsScored(){
@@ -151,7 +163,7 @@ public class Test implements Serializable{
     public String toString(){
         
         //Create the initial question
-        String thisTestString = "Test: " + this.title;
+        String thisTestString = "Test: " + this._testName;
         
         System.out.println("Question Size: " + _listOfQuestionsInExam);
                 
