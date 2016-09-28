@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.UUID;
 import java.io.Serializable;
 
-public class Question implements Serializable{
+public class Question implements Serializable, Registerable{
 	public static final long serialVersionUID = 1L;
 	public String myID;
 	

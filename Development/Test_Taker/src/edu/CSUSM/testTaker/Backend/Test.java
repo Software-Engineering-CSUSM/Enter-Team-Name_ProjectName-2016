@@ -5,8 +5,13 @@ import java.util.HashMap;
 import java.util.UUID;
 import java.io.Serializable;
 
-public class Test implements Serializable{
+public class Test implements Serializable, Registerable{
 	static final long serialVersionUID = 1L;
+
+	volatile ArrayList<Question> questionList;
+	ArrayList<String> questionIDs;
+	ArrayList<Integer> questionPoints;
+
 	String myID;
 	
 	
@@ -17,14 +22,23 @@ public class Test implements Serializable{
 	public String getID(){
 		return myID;
 	}
-
-	//volatile ArrayList<Question> questionList;
-	//ArrayList<String> questionIDs;
-	//ArrayList<Integer> questionPoints;
 	
 	//For testing purposes
 	public HashMap<String, Question> _listOfQuestionsInExam;		//Format: (String testID, Question questionWithIDBuiltIn)
 	public String _testName, _courseID;
+
+	/**
+	 * @description does the work of setting up the class regardless of what vars are passed
+	 */
+	{
+		_testName = null;
+		myID = UUID.randomUUID().toString();
+		//_listOfQuestionsInExam = new HashMap<String,Question>();
+		questionList = new ArrayList<Question>();
+		questionIDs = new ArrayList<String>();
+		questionPoints = new ArrayList<Integer>();
+	}
+
 	
 	/**
 	 * @param testName The name of the test we just created
@@ -32,7 +46,6 @@ public class Test implements Serializable{
 	 */
 	public Test(String testName){
 		this._testName = testName;
-		initTest();
 	}
 	
 	/**
@@ -43,7 +56,6 @@ public class Test implements Serializable{
 	public Test(String testName, ArrayList<Question> listOfQuestionsForTest){
 		this._testName = testName;
 		setQuestionList(listOfQuestionsForTest);
-		initTest();
 	}
 	
 	/**
@@ -56,16 +68,8 @@ public class Test implements Serializable{
 		this._testName = testName;
 		setQuestionList(listOfQuestionsForTest);
 		this._courseID = courseID;
-		initTest();
 	}
 	
-	/**
-	 * @description does the work of setting up the class regardless of what vars are passed
-	 */
-	private void initTest(){
-		myID = UUID.randomUUID().toString();
-		
-	}
 	
 	/** Accessors */
 	/**
@@ -75,10 +79,11 @@ public class Test implements Serializable{
 		return this._listOfQuestionsInExam;
 	}
 	
-
+	/*
 	public String getTestID(){
 		return this._testID;
 	}
+	*/
 	
 	public String getTestName(){
 		return this._testName;
@@ -89,16 +94,47 @@ public class Test implements Serializable{
 	}
 	
 	/** Mutators */
-	public void setTestName(String newTestName){
-		this._testName = newTestName;
+	/**
+	 * @brief Add a new question to the test.
+	 * @param QuestionToAdd A Question to add to the question list for this test.
+	 * @param questionvalue An integer number of points to value the question at.
+	 */
+	public void addQuestion(Question QuestionToAdd, int questionvalue){
+		questionList.add(QuestionToAdd);
+		questionIDs.add(QuestionToAdd.getID());
+		questionPoints.add(questionvalue);
+		QuestionToAdd.setTestID(getID());
+		TestRegistry.store(this);		
+	}
+
+	/**
+	 * @brief Add a new question to the test.
+	 * @param QuestionToAdd A Question to add to the question list for this test.
+	 */
+	public void addQuestion(Question QuestionToAdd){
+		questionList.add(QuestionToAdd);
+		questionIDs.add(QuestionToAdd.getID());
+		questionPoints.add(0);
+		QuestionToAdd.setTestID(getID());
+		TestRegistry.store(this);		
 	}
 	
+	
+	
+	public void setTestName(String newTestName){
+		this._testName = newTestName;
+		TestRegistry.store(this);
+	}
+	
+	/*
 	public void setTestID(String newTestID){
 		this._testID = newTestID;
 	}
+	*/
 	
 	public void setCourseID(String newCourseID){
 		this._courseID = newCourseID;
+		TestRegistry.store(this);		
 	}
 	
 	
@@ -107,7 +143,7 @@ public class Test implements Serializable{
 	 * @param newQuestionList an ArrayList of Question refs to insert
 	 */
 	public void setQuestionList(ArrayList<Question> newQuestionList){
-		_listOfQuestionsInExam = new HashMap<String,Question>();
+		_listOfQuestionsInExam.clear();
 		
 		//Iterate through the list and add to the question map. we are going to add the test ID to each of the questions.
 		for(Question tempQuestion : newQuestionList){
@@ -119,8 +155,10 @@ public class Test implements Serializable{
 			System.out.println("Question ID: " + tempQuestion);
 			
 			tempQuestion.setTestID(getID());
-			this._listOfQuestionsInExam.put(tempQuestion.getID(), tempQuestion);
+			this.questionList.add(tempQuestion);
+			this.questionIDs.add(tempQuestion.getID());
 		}
+		TestRegistry.store(this);
 	}
 	
 	/** @author John Orcino
