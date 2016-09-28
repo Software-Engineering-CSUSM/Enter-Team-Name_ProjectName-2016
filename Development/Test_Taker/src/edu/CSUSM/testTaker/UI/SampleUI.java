@@ -32,7 +32,7 @@ public class SampleUI extends JFrame {
 	public static SampleUI.ChangeWelcomeLabel buttonAction;
 
 	public static void main(String[] args){
-		JFrame sampleFrame = new JFrame("Hello World");				//Sets the title of the frame
+		JFrame sampleFrame = new JFrame("Hello World Again");		//Sets the title of the frame
 		sampleFrame.setSize(500, 200);								//Sets the size of the frame
 		sampleFrame.setLocationRelativeTo(null);					//Positions the frame in the center of the screen
 		//sampleFrame.setLayout(new GridLayout(1,2));				//Sets the layout of the panel to a grid layout (Columns, Rows)
