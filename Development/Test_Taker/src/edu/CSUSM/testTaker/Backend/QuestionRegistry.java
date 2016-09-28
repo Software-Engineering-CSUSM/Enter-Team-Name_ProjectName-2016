@@ -19,7 +19,8 @@ public class QuestionRegistry implements Serializable{
 	 * @return A reference to a Question with that ID retrieved from the "database" or null for failure.
 	 */
 	public static Question retrieve(String queryString){
-		return questionStore.get(queryString); 
+		//return questionStore.get(queryString); 
+		return edu.CSUSM.testTaker.LibraryController.retrieveQuestion(queryString);
 	}
 	
 	/**
@@ -28,7 +29,8 @@ public class QuestionRegistry implements Serializable{
 	 * @return true if successful, false for failure
 	 */
 	public static boolean store(Question updated){
-		questionStore.put(updated.getID(), updated);
+		//questionStore.put(updated.getID(), updated);
+		edu.CSUSM.testTaker.LibraryController.storeQuestion(updated);
 		return true;
 	}
 	

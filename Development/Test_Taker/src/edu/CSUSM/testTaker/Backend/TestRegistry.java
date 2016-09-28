@@ -19,7 +19,8 @@ public class TestRegistry {
 	 * @return A copy of the Test associated with the given ID.
 	 */
 	public static Test retrieve(String queryID){
-		return testStore.get(queryID);
+		//return testStore.get(queryID);
+		return edu.CSUSM.testTaker.LibraryController.retrieveTest(queryID);
 	}
 	
 	/**
@@ -28,7 +29,8 @@ public class TestRegistry {
 	 * @return true for success, false for failure
 	 */
 	public static boolean store(Test updated){
-		testStore.put(updated.getID(), updated);
+		//testStore.put(updated.getID(), updated);
+		edu.CSUSM.testTaker.LibraryController.storeTest(updated);
 		return true;
 	}
 }
