@@ -1,6 +1,8 @@
 package edu.CSUSM.testTaker.Backend;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.UUID;
 import java.io.Serializable;
 
 public class Test implements Serializable{
@@ -15,6 +17,99 @@ public class Test implements Serializable{
 	ArrayList<String> questionIDs;
 	ArrayList<Integer> questionPoints;
 	String title;
+	
+	//For testing purposes
+	public HashMap<String, Question> _listOfQuestionsInExam;		//Format: (String testID, Question questionWithIDBuiltIn)
+	public String _testID, _testName, _courseID;
+	
+	/**
+	 * @param testName The name of the test we just created
+	 * @author Justin Goulet
+	 */
+	public Test(String testName){
+		this._testName = testName;
+		initTest();
+	}
+	
+	/**
+	 * @param testName Name of test
+	 * @param listOfQuestionsForTest list of questions to add to the test
+	 * @author Justin Goulet
+	 */
+	public Test(String testName, ArrayList<Question> listOfQuestionsForTest){
+		this._testName = testName;
+		setQuestionList(listOfQuestionsForTest);
+		initTest();
+	}
+	
+	/**
+	 * @param testName Name of test
+	 * @param listOfQuestionsForTest list of questions to add to the test
+	 * @param courseID course to assign the test to
+	 * @author Justin Goulet
+	 */
+	public Test(String testName, ArrayList<Question> listOfQuestionsForTest, String courseID){
+		this._testName = testName;
+		setQuestionList(listOfQuestionsForTest);
+		this._courseID = courseID;
+		initTest();
+	}
+	
+	/**
+	 * @description does the work of setting up the class regardless of what vars are passed
+	 */
+	private void initTest(){
+		myID = UUID.randomUUID().toString();
+		
+	}
+	
+	/** Accessors */
+	/**
+	 * @return current hashmap of questions (TestID, Question)
+	 */
+	public HashMap<String, Question> getQuestions(){
+		return this._listOfQuestionsInExam;
+	}
+	
+	public String getTestID(){
+		return this._testID;
+	}
+	
+	public String getTestName(){
+		return this._testName;
+	}
+	
+	public String getCourseID(){
+		return this._courseID;
+	}
+	
+	/** Mutators */
+	public void setTestName(String newTestName){
+		this._testName = newTestName;
+	}
+	
+	public void setTestID(String newTestID){
+		this._testID = newTestID;
+	}
+	
+	public void setCourseID(String newCourseID){
+		this._courseID = newCourseID;
+	}
+	
+	public void setQuestionList(ArrayList<Question> newQuestionList){
+		//Iterate through the list and add to the question map. we are going to add the test ID to each of the questions.
+		for(Question tempQuestion : newQuestionList){
+			
+			//Print out the question
+			System.out.println(tempQuestion.toString());
+			
+			//Print out the TEstID
+			System.out.println("Question ID: " + tempQuestion);
+			
+			tempQuestion.setTestID(getID());
+			this._listOfQuestionsInExam.put(tempQuestion.getID(), tempQuestion);
+		}
+	}
 	
 	/*Author: John Orcino
 	 * PARAMETER: May need one
@@ -35,9 +130,9 @@ public class Test implements Serializable{
 		return tot;
 	}
 	
-	/*	Author: John Orcino
-	 * 	PARAMETERS:
-	 * 	FUNCTION: Display the question and answers, stores the user's answer
+	/*	@Author: John Orcino
+	 * 	@PARAMETERS:
+	 * 	@FUNCTION: Display the question and answers, stores the user's answer
 	 * 
 	 */
 	
@@ -45,15 +140,28 @@ public class Test implements Serializable{
 		//iterator that uses the array of answers and questions and displays them
 	}
 	
+	
+	
+	/**
+	 *  (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 * @decription overrides the default 'toString()' to showcase a basic exam with all questions included.
+	 */
 	@Override
     public String toString(){
         
         //Create the initial question
         String thisTestString = "Test: " + this.title;
+        
+        System.out.println("Question Size: " + _listOfQuestionsInExam);
                 
-        //Now, add each of the possible answers in the provided question
-        for(int iterator = 0; iterator < questionList.size() ; iterator++){
-            thisTestString += "\n\t\t " + (iterator+1) + ") " + this.questionList.get(iterator).toString();
+        if(_listOfQuestionsInExam != null && _listOfQuestionsInExam.size() > 0){
+        	//Now, add each of the possible answers in the provided question
+            for(Question tempQuestion : _listOfQuestionsInExam.values()){
+            	thisTestString += "\n\t" + tempQuestion;
+            }
+        }else{
+        	return "No questions yet in test: " + thisTestString + "\n";
         }
         
         //Return the result

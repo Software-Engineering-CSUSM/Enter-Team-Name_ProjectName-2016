@@ -10,6 +10,17 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+/**
+ * 
+ * @author Justin Goulet
+ * @dateCreated Sept 26, 2016
+ * 
+ * @classFunctions To demonstrate a basic UI functionality and to showcase key ideas that we will be using in the project
+ * 
+ *
+ */
+
+
 public class SampleUI extends JFrame {
 	
 	/**
@@ -33,7 +44,7 @@ public class SampleUI extends JFrame {
 		//Create a JPanel
 		JPanel samplePanel = new JPanel();							//Creates a new Panel to hold content within the frame
 		samplePanel.setBounds(0,0, 
-				sampleFrame.getWidth(),			//Sets the (x-coor, y-coor, width, height) of the object
+				sampleFrame.getWidth(),								//Sets the (x-coor, y-coor, width, height) of the object
 				sampleFrame.getHeight() -STATUS_BAR_HEIGHT);		//Note that the status bar is 20pt 
 		samplePanel.setBackground(Color.WHITE);						//Sets the background color of the panel
 		sampleFrame.add(samplePanel);								//Adds the panel to the main frame
