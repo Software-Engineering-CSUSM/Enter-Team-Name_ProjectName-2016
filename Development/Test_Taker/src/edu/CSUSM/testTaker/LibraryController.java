@@ -2,6 +2,8 @@ package edu.CSUSM.testTaker;
 
 
 import edu.CSUSM.testTaker.Backend.*;
+
+import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -30,11 +32,17 @@ public class LibraryController{
 	public static HashMap<String, Test> _currentTestsInCourse;			//String is the testID
 	public static HashMap<String, Question> _currentQuestionsInCourse;	//String is the questionID 
 	public static String _currentClassID;			
+	
+	//For testing purposes
+	private static ArrayList<Question> questionsInExam;
+	
+	//End of testing purposes
 
 
 	public static boolean hasInitialized = false;
 
 	/**
+	 * @author Justin Goulet
 	 * @description Default constructor for class. Inits variables, if needed and allows access to all library objects
 	 */
 	public LibraryController(){
@@ -59,6 +67,7 @@ public class LibraryController{
 	}
 
 	/**
+	 * @author Justin Goulet
 	 * @description Loads the data from where-ever it is stored
 	 */
 	private static void loadData(){
@@ -71,15 +80,18 @@ public class LibraryController{
 	}
 	
 	/**
+	 * @author Justin Goulet
 	 * @description Adds sample data for testing purposes
 	 */
 	private static void addTestData(){
 		testQuestion();
 		sampleCourse();
+		sampleTest();
 	}
 	
 	
 	/**
+	 * @author Justin Goulet
 	 * @param ID - Identifier of currentCourse
 	 * @description Compiles the information/data that is relative to the current course
 	 */
@@ -103,10 +115,9 @@ public class LibraryController{
 		
 	}
 	
-	
-	
 
 	/**
+	 * @author Justin Goulet
 	 * 	@description Creates a test question to ensure the question class works as expected
 	 */
 	private static void testQuestion(){
@@ -136,6 +147,7 @@ public class LibraryController{
 	}
 	
 	/**
+	 * @author Justin Goulet
 	 * @description Creates a sample course to ensre the course class works as expected
 	 * @NOTE Not yet completed. Awaiting Test Class
 	 */
@@ -144,6 +156,27 @@ public class LibraryController{
 	}
 	
 	/**
+	 * @author Justin Goulet
+	 * @description Creates a sample test using the existing questions in teh map. Note that all questions will currently be added.
+	 */
+	private static void sampleTest(){
+		Test newTest = new Test("Sample Exam");
+		
+		//Create arraylist from hashmap
+		questionsInExam = new ArrayList<Question>(questionArray.values());
+		
+		//Add the arraylist to the exam
+		newTest.setQuestionList(questionsInExam);
+		
+		int lengthOfTest = newTest.toString().length();
+		String test = (lengthOfTest > 0) ? newTest.toString() : "No test Avail";
+		
+		//Print the exam
+		System.out.print("Exam: " + test);
+	}
+	
+	/**
+	 * @author Justin Goulet
 	 * @return Customized String that displays all of the relative data within the class
 	 */
 	public String toString(){
@@ -162,6 +195,7 @@ public class LibraryController{
 
 	/**Accesors */
 	/**
+	 * @author Justin Goulet
 	 * @return amount of total questions in Library
 	 */
 	public int getTotalQuestionCount(){
@@ -169,6 +203,7 @@ public class LibraryController{
 	}
 	
 	/**
+	 * @author Justin Goulet
 	 * @return amount of total courses in Library
 	 */
 	public int getTotalCourseCount(){
@@ -176,6 +211,7 @@ public class LibraryController{
 	}
 	
 	/**
+	 * @author Justin Goulet
 	 * @return amount of total tests in Library
 	 */
 	public int getTotalTestCount(){

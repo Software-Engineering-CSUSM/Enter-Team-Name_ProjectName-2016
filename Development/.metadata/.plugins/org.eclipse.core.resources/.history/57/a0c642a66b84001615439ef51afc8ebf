@@ -1,0 +1,118 @@
+package edu.CSUSM.testTaker.Backend;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.io.Serializable;
+
+public class Test implements Serializable{
+	static final long serialVersionUID = 1L;
+	String myID;
+	
+	public String getID(){
+		return myID;
+	}
+
+	volatile ArrayList<Question> questionList;
+	ArrayList<String> questionIDs;
+	ArrayList<Integer> questionPoints;
+	String title;
+	
+	//For testing purposes
+	public HashMap<String, Question> _listOfQuestionsInExam;		//Format: (String testID, Question questionWithIDBuiltIn)
+	public String _testID, _testName, _courseId;
+	
+	/**
+	 * @param testName The name of the test we just created
+	 * @author Justin Goulet
+	 */
+	public Test(String testName){
+		
+	}
+	
+	/**
+	 * @param testName Name of test
+	 * @param listOfQuestionsForTest list of questions to add to the test
+	 * @author Justin Goulet
+	 */
+	public Test(String testName, ArrayList<Question> listOfQuestionsForTest){
+		
+	}
+	
+	/**
+	 * @param testName Name of test
+	 * @param listOfQuestionsForTest list of questions to add to the test
+	 * @param courseID course to assign the test to
+	 * @author Justin Goulet
+	 */
+	public Test(String testName, ArrayList<Question> listOfQuestionsForTest, String courseID){
+		
+	}
+	
+	/** Accessors */
+	/**
+	 * @return current hashmap of questions (TestID, Question)
+	 */
+	public HashMap<String, Question> getQuestions(){
+		return this._listOfQuestionsInExam;
+	}
+	
+	public String getTestID(){
+		return this._testID;
+	}
+	
+	public String getTestName(){
+		return this._testName;
+	}
+	
+	/*Author: John Orcino
+	 * PARAMETER: May need one
+	 * FUNCTION: gets the Id for the question to have the array of questions and answers
+	 */
+	public void getQuestionIDs(){
+		
+	}
+	
+	/*	Author: John Orcino
+	 * 	FUNCTION: adds up the total points of the test and returns it
+	 */
+	public int totalPointsScored(){
+		int tot = 0;
+		
+		//iterator adding up the question points 
+		
+		return tot;
+	}
+	
+	/*	@Author: John Orcino
+	 * 	@PARAMETERS:
+	 * 	@FUNCTION: Display the question and answers, stores the user's answer
+	 * 
+	 */
+	
+	public void testDisplay(){
+		//iterator that uses the array of answers and questions and displays them
+	}
+	
+	
+	
+	/**
+	 *  (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 * @decription overrides the default 'toString()' to showcase a basic exam with all questions included.
+	 */
+	@Override
+    public String toString(){
+        
+        //Create the initial question
+        String thisTestString = "Test: " + this.title;
+                
+        //Now, add each of the possible answers in the provided question
+        for(int iterator = 0; iterator < questionList.size() ; iterator++){
+            thisTestString += "\n\t\t " + (iterator+1) + ") " + this.questionList.get(iterator).toString();
+        }
+        
+        //Return the result
+        return thisTestString;
+    }
+
+}

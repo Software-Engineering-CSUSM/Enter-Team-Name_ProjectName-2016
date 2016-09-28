@@ -2,23 +2,26 @@ package edu.CSUSM.testTaker.Backend;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.UUID;
 import java.io.Serializable;
 
 public class Question implements Serializable{
-	static final long serialVersionUID = 1L;
-	String myID;
+	public static final long serialVersionUID = 1L;
+	public String myID;
 	
 	public String getID(){
-		return myID;
+		return myID;							//Within the Question HashMap, the ID will be in the key position where the question is the value
 	}
 	
-	public String _question, _courseID;
-	public ArrayList<String> _answers;
-	public int _correctIndex;
+	public String _question, _courseID, _testID;
+	public ArrayList<String> _answers;			//To easily manage questions added and removed
+	public int _correctIndex = -1;				//The default correct index is 0 because it is not yet assigned;
+	public int _pointValue = 1;					//Sets the default point value to 1
 	
 	public static int QUESTION_COUNT; //Keeps an always-updating count of questions per init in the program
 
 	/**
+	 * @author Justin Goulet
 	 * @param mainQuestion
 	 */
 	public Question(String mainQuestion){
@@ -27,12 +30,15 @@ public class Question implements Serializable{
 		
 		/**Increment the total count of questions*/
 		Question.QUESTION_COUNT++;
+		
+		myID = UUID.randomUUID().toString();
 	}
 	
 	/**
-	 * @param mainQuestion
-	 * @param answers
-	 * @param correctAnsIndex
+	 * @author Justin Goulet
+	 * @param mainQuestion The main question to be read
+	 * @param answers A list of answers that will be included in the question
+	 * @param correctAnsIndex The index of the correct answer within the 'answers' array
 	 */
 	public Question(String mainQuestion, String[] answers, int correctAnsIndex){
 		
@@ -47,10 +53,13 @@ public class Question implements Serializable{
 		
 		/**Increment the total count of questions*/
 		Question.QUESTION_COUNT++;
+		
+		myID = UUID.randomUUID().toString();
 	}
 	
 	/* Mutators */
 	/**
+	 * @author Justin Goulet
 	 * @param newQuestion overwrites the existing question, if any
 	 */
 	public void setQuestion(String newQuestion){
@@ -58,6 +67,7 @@ public class Question implements Serializable{
 		}
 	
 	/**
+	 * @author Justin Goulet
 	 * @param newAnswer Provides a new answer for the provided index
 	 * @param index The current location of the answer that is being modified
 	 */
@@ -65,7 +75,12 @@ public class Question implements Serializable{
 		this._answers.set(index, newAnswer); 
 		}
 	
+	public void setTestID(String newID){
+		this._testID = newID;
+	}
+	
 	/**
+	 * @author Justin Goulet
 	 * @param additionalAnswer Adds a new answer the array
 	 */
 	public void addAnswer(String additionalAnswer){
@@ -73,6 +88,7 @@ public class Question implements Serializable{
 	}
 	
 	/**
+	 * @author Justin Goulet
 	 * @param index of which references index of answers array
 	 */
 	public void setCorrectIndex(int index){
@@ -81,6 +97,7 @@ public class Question implements Serializable{
 	
 	/* Accessors */
 	/**
+	 * @author Justin Goulet
 	 * @return The current question
 	 */
 	public String getQuestion(){
@@ -88,6 +105,7 @@ public class Question implements Serializable{
 	}
 	
 	/**
+	 * @author Justin Goulet
 	 * @return a list of the correct answers
 	 */
 	public String[] getAnswers(){
@@ -95,6 +113,7 @@ public class Question implements Serializable{
 	}
 	
 	/**
+	 * @author Justin Goulet
 	 * @return the location to the correct answer within the answers array
 	 */
 	public int getCorrectIndex(){
@@ -102,6 +121,7 @@ public class Question implements Serializable{
 	}
 	
 	/**
+	 * @author Justin Goulet
 	 * @param courseID sets the current course identifier
 	 */
 	public void setCourseID(String courseID){
@@ -109,17 +129,23 @@ public class Question implements Serializable{
 	}
 	
 	/**
+	 * @author Justin Goulet
 	 * @return the associated course identifier
 	 */
 	public String getCourseID(){
 		return this._courseID;
 	}
 	
+	/** (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 * @author Justin Goulet
+	 */
 	@Override
 	public String toString(){
 		
 		//Create the initial question
 		String thisQuestionString = "Question: " + this._question;
+		thisQuestionString += "\nQuestion ID: " + getID();
 				
 		//Now, add each of the possible answers in the provided question
 		for(int iterator = 0; iterator < this.getAnswers().length; iterator++){

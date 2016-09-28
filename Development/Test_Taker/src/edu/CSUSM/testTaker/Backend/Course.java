@@ -15,7 +15,8 @@ public class Course {
 
 
 	/**
-	 * Default Constructor
+	 * @author Justin Goulet
+	 * @description Default Constructor
 	 */
 	public Course(){
 		
@@ -30,7 +31,8 @@ public class Course {
 	}
 	
 	/**
-	 * Compiles all of the questions and tests for this particular course
+	 * @author Justin Goulet
+	 * @description Compiles all of the questions and tests for this particular course
 	 * Note that all of the events are happening in the libraryController class
 	 */
 	private static void compileCourse(){
@@ -39,6 +41,7 @@ public class Course {
 	
 	
 	/**
+	 * @author Justin Goulet
 	 * @param courseID the courseID to set
 	 */
 	public void setCourseID(String courseID) {
@@ -46,6 +49,7 @@ public class Course {
 	}
 
 	/**
+	 * @author Justin Goulet
 	 * @param courseGrade the courseGrade to set
 	 */
 	public void setCourseGrade(double courseGrade) {
@@ -53,6 +57,7 @@ public class Course {
 	}
 
 	/**
+	 * @author Justin Goulet
 	 * @param testsCompleted the testsCompleted to set
 	 */
 	public void setTestsCompleted(double testsCompleted) {
@@ -60,6 +65,7 @@ public class Course {
 	}
 
 	/**
+	 * @author Justin Goulet
 	 * @return the courseID
 	 */
 	public String getCourseID() {
@@ -67,6 +73,7 @@ public class Course {
 	}
 
 	/**
+	 * @author Justin Goulet
 	 * @return the courseGrade
 	 */
 	public double getCourseGrade() {
@@ -74,6 +81,7 @@ public class Course {
 	}
 
 	/**
+	 * @author Justin Goulet
 	 * @return the testsCompleted
 	 */
 	public double getTestsCompleted() {
