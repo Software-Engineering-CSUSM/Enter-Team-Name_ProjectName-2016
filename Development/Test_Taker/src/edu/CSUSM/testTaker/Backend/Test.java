@@ -8,7 +8,7 @@ import java.io.Serializable;
 public class Test implements Serializable, Registerable{
 	static final long serialVersionUID = 1L;
 
-	volatile ArrayList<Question> questionList;
+	transient ArrayList<Question> questionList;
 	ArrayList<String> questionIDs;
 	ArrayList<Integer> questionPoints;
 

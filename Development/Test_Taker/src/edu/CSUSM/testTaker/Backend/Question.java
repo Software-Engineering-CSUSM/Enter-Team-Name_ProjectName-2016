@@ -7,6 +7,8 @@ import java.io.Serializable;
 
 public class Question implements Serializable, Registerable{
 	public static final long serialVersionUID = 1L;
+	public static int QUESTION_COUNT; //Keeps an always-updating count of questions per init in the program
+
 	public String myID;
 	
 	public String getID(){
@@ -16,9 +18,9 @@ public class Question implements Serializable, Registerable{
 	public String _question, _courseID, _testID;
 	public ArrayList<String> _answers;			//To easily manage questions added and removed
 	public int _correctIndex = -1;				//The default correct index is 0 because it is not yet assigned;
-	public int _pointValue = 1;					//Sets the default point value to 1
+	//The following has been removed, points value has little meaning outside a containing context like a test.
+	//public int _pointValue = 1;					//Sets the default point value to 1
 	
-	public static int QUESTION_COUNT; //Keeps an always-updating count of questions per init in the program
 
 	/**
 	 * @author Justin Goulet
@@ -32,6 +34,7 @@ public class Question implements Serializable, Registerable{
 		Question.QUESTION_COUNT++;
 		
 		myID = UUID.randomUUID().toString();
+		QuestionRegistry.store(this);
 	}
 	
 	/**
@@ -55,6 +58,7 @@ public class Question implements Serializable, Registerable{
 		Question.QUESTION_COUNT++;
 		
 		myID = UUID.randomUUID().toString();
+		QuestionRegistry.store(this);
 	}
 	
 	/* Mutators */
@@ -64,6 +68,7 @@ public class Question implements Serializable, Registerable{
 	 */
 	public void setQuestion(String newQuestion){
 		this._question = newQuestion;
+		QuestionRegistry.store(this);
 		}
 	
 	/**
@@ -73,10 +78,12 @@ public class Question implements Serializable, Registerable{
 	 */
 	public void setAnswer(String newAnswer, int index){
 		this._answers.set(index, newAnswer); 
+		QuestionRegistry.store(this);
 		}
 	
 	public void setTestID(String newID){
 		this._testID = newID;
+		QuestionRegistry.store(this);
 	}
 	
 	/**
@@ -85,6 +92,7 @@ public class Question implements Serializable, Registerable{
 	 */
 	public void addAnswer(String additionalAnswer){
 		this._answers.add(additionalAnswer);
+		QuestionRegistry.store(this);
 	}
 	
 	/**
@@ -93,6 +101,7 @@ public class Question implements Serializable, Registerable{
 	 */
 	public void setCorrectIndex(int index){
 		this._correctIndex = index;
+		QuestionRegistry.store(this);
 		}
 	
 	/* Accessors */
@@ -110,6 +119,15 @@ public class Question implements Serializable, Registerable{
 	 */
 	public String[] getAnswers(){
 		return this._answers.toArray(new String[this._answers.size()]);
+	}
+
+	/**
+	 * Get the answer string for a given index
+	 * @param dex The index number of the answer to get.
+	 * @return The String of that answer.
+	 */
+	public String getAnswer(int dex){
+		return _answers.get(dex);
 	}
 	
 	/**
