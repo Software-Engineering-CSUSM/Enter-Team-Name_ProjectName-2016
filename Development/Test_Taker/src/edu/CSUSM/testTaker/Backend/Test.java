@@ -7,7 +7,7 @@ import java.io.Serializable;
 
 public class Test implements Serializable{
 	static final long serialVersionUID = 1L;
-	//String myID;
+	String myID;
 	
 	
 	/** @brief Get the ID of the test for database storage and retrieval
@@ -15,7 +15,7 @@ public class Test implements Serializable{
 	 * @author Steven Clark
 	 */
 	public String getID(){
-		return _testID;
+		return myID;
 	}
 
 	//volatile ArrayList<Question> questionList;
@@ -24,7 +24,7 @@ public class Test implements Serializable{
 	
 	//For testing purposes
 	public HashMap<String, Question> _listOfQuestionsInExam;		//Format: (String testID, Question questionWithIDBuiltIn)
-	public String _testID, _testName, _courseID;
+	public String _testName, _courseID;
 	
 	/**
 	 * @param testName The name of the test we just created
@@ -63,7 +63,7 @@ public class Test implements Serializable{
 	 * @description does the work of setting up the class regardless of what vars are passed
 	 */
 	private void initTest(){
-		_testID = UUID.randomUUID().toString();
+		myID = UUID.randomUUID().toString();
 		
 	}
 	
