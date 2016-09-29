@@ -79,7 +79,7 @@ The participant roles are subject to change at any time. Each participant will f
 >All links associated with the project will go here. These include items such as repository instructions, IDE setups, additional downloads and similar. For example, I placed the GitHub repo in the list below:
 - [GitHub Repository](https://github.com/Software-Engineering-CSUSM/Enter-Team-Name_ProjectName-2016)
 - [Slack Team](https://csusm-se-f2016.slack.com/) - Send [email](mailto:jstngoulet@me.com) for invite
-- [GitHub Help] (https://github.com/Software-Engineering-CSUSM/Enter-Team-Name_ProjectName-2016/blob/master/Git_Help.md "GitHub Help by J. Goulet")
+- [GitHub Help] (https://github.com/Software-Engineering-CSUSM/Test-Taker/blob/master/Project%20Documents/Team%20Help/Git_Help.md "GitHub Help by J. Goulet")
 - [Markdown Syntax Assistant] (http://www.markitdown.net/markdown)
 
 ###Repository Info
