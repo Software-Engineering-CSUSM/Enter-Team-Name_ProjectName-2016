@@ -91,7 +91,7 @@ Even simpler than on a windows
 
 >- Pull the repo to the repository to create a local copy:
 
-	git clone https://github.com/Software-Engineering-CSUSM/Enter-Team-Name_ProjectName-2016.git
+	git clone https://github.com/Software-Engineering-CSUSM/Test-Taker.git
 
 >- Create a branch so your changes will not be reflected on the master branch
 >
@@ -106,7 +106,7 @@ Even simpler than on a windows
 #####Fourth:
 >4) Now, we must set up the remote URL so Git knows where to *post* to.
 
-	git remote add [repoName] https://github.com/Software-Engineering-CSUSM/Enter-Team-Name_ProjectName-2016.git
+	git remote add [repoName] https://github.com/Software-Engineering-CSUSM/Test-Taker.git
 	
 ####Use
 >1)	Create a test file to ensure that your local repository can communicate with the remote properly
