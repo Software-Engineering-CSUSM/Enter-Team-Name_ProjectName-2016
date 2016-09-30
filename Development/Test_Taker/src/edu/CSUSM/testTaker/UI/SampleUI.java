@@ -35,10 +35,10 @@ public class SampleUI extends JFrame {
 		JFrame sampleFrame = new JFrame("Hello World Again");		//Sets the title of the frame
 		sampleFrame.setSize(500, 200);								//Sets the size of the frame
 		sampleFrame.setLocationRelativeTo(null);					//Positions the frame in the center of the screen
-		//sampleFrame.setLayout(new GridLayout(1,2));				//Sets the layout of the panel to a grid layout (Columns, Rows)
+		sampleFrame.setLayout(new GridLayout(1,2));				//Sets the layout of the panel to a grid layout (Columns, Rows)
 		sampleFrame.setLayout(null);								//Allows us to specify coordinates of objects
 		sampleFrame.setVisible(true);								//Shows the frame on the screen
-		sampleFrame.setResizable(false);							//Blocks the frame from being resized by the user
+		//sampleFrame.setResizable(false);							//Blocks the frame from being resized by the user
 		sampleFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);	//Forces the application to close when the 'X' is tapped in the top bar
 		
 		//Create a JPanel
