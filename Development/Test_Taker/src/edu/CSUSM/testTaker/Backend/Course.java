@@ -3,7 +3,14 @@ package edu.CSUSM.testTaker.Backend;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Course {
+public class Course implements Registerable{
+	String myID;
+	{
+		myID = java.util.UUID.randomUUID().toString();
+	}
+	public String getID(){
+		return myID;
+	}
 	
 	public static int COURSE_COUNT; 					//Keeps a sum of all existing courses. Will count every time the class is init.
 	

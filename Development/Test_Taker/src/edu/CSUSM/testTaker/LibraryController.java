@@ -217,4 +217,58 @@ public class LibraryController{
 	public int getTotalTestCount(){
 		return LibraryController.testArray.size();
 	}
+	
+	/**
+	 * Get a reference to a Question in the array of Questions.
+	 * @param queryID Unique ID string to look for
+	 * @return Reference to the requested Question or null for failure.
+	 * @author Steven Clark
+	 */
+	public static Question retrieveQuestion(String queryID){
+		return LibraryController.questionArray.get(queryID);
+	}
+	
+	/**
+	 * Get a reference to a Test in the array of Tests.
+	 * @param queryID Unique ID string to look for
+	 * @return Reference to the requested test or null for failure.
+	 * @author Steven Clark
+	 */
+	public static Test retrieveTest(String queryID){
+		return LibraryController.testArray.get(queryID);
+	}
+	
+	/**
+	 * Get a reference to a Course in the array of Courses.
+	 * @param queryID Unique ID string to look for
+	 * @return Reference to the requested Course or null for failure.
+	 * @author Steven Clark
+	 */
+	public static Course retrieveCourse(String queryID){
+		return LibraryController.classArray.get(queryID);
+	}
+	
+	/**
+	 * Store or update the library representation of a given Question
+	 * @param updateThing reference to a Question to store in the LibraryController
+	 */
+	public static void storeQuestion(Question updateThing){
+		LibraryController.questionArray.put(updateThing.getID(), updateThing);
+	}
+
+	/**
+	 * Store or update the library representation of a given Test
+	 * @param updateThing reference to a Test to store in the LibraryController
+	 */
+	public static void storeTest(Test updateThing){
+		LibraryController.testArray.put(updateThing.getID(), updateThing);
+	}
+
+	/**
+	 * Store or update the library representation of a given Course
+	 * @param updateThing reference to a Course to store in the LibraryController
+	 */
+	public static void storeCourse(Course updateThing){
+		LibraryController.classArray.put(updateThing.getID(), updateThing);
+	}
 }
