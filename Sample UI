@@ -1,0 +1,90 @@
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.GridLayout;
+
+import javax.swing.*;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class sampleUI extends JFrame {
+
+	public static void main (String[] args){
+		
+		new sampleUI();
+		
+	}
+	
+	public sampleUI()
+	{
+		//Set frame size, title, and location
+		this.setSize(800,600);
+		this.setTitle("Test Taker");
+		this.setLocationRelativeTo(null);
+		this.setResizable(false);
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		//Create label for image
+		ImageIcon image = new ImageIcon("image/testtaker.png");
+		JLabel imglabel = new JLabel("", image, JLabel.CENTER);
+		JPanel imgpanel = new JPanel(new BorderLayout());
+		imgpanel.add( imglabel, BorderLayout.NORTH );
+		imgpanel.setBackground(Color.WHITE);
+		
+		//Create buttons for panel
+		JButton quizButton = new JButton("   Quiz    ");	
+		JButton flashButton = new JButton("Flash Cards");
+		JButton exitButton = new JButton("Exit");
+		
+		// Create panel for buttons and add buttons to panel
+		JPanel buttonPanel = new JPanel();
+		buttonPanel.setBackground(Color.WHITE);
+		buttonPanel.setLayout(new BorderLayout());
+		
+		// Create a box to hold the buttons and put 
+		// box inside the button panel, and set the position
+		// for the buttons with glue.
+		Box buttonBox = Box.createHorizontalBox();  // Hold quiz and flash buttons
+		Box buttonBox2 = Box.createHorizontalBox(); // Hold the exit button
+		buttonBox.add(Box.createHorizontalGlue());
+		buttonBox.add(quizButton);
+		buttonBox.add(Box.createHorizontalGlue());
+		buttonBox.add(flashButton);
+		buttonBox.add(Box.createHorizontalGlue());
+		
+		// Set position for exit button
+		buttonBox2.add(Box.createVerticalStrut(50));
+		buttonBox2.add(exitButton);
+		buttonBox2.add(Box.createHorizontalStrut(20));
+		
+		// Add the boxes containing the buttons to the 
+		// button panel which is then added to the frame
+		buttonPanel.add(buttonBox, BorderLayout.CENTER);
+		buttonPanel.add(buttonBox2, BorderLayout.SOUTH);
+		this.add(imgpanel,BorderLayout.NORTH);  //Add image to the frame
+		
+		// Create welcome text and set font type + size
+		JLabel label = new JLabel("Welcome to the Test Taker!", JLabel.CENTER);
+		label.setFont(new Font("Serif", Font.BOLD, 18));
+		buttonPanel.add(label, BorderLayout.NORTH);
+		
+		
+		// Add button panel containing boxes to frame
+		this.add(buttonPanel, BorderLayout.CENTER);
+
+		// Functionality for exit button to exit
+		exitButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			
+			}
+		});
+		
+		this.setVisible(true);
+		
+		
+	}
+	
+}
