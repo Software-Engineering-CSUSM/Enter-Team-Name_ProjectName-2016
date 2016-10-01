@@ -1,0 +1,20 @@
+package edu.CSUSM.testTaker.UI;
+
+//Manages the interaction between which buttons are pressed and which pages are shown
+
+public class PageManager {
+	
+	public static JButton[] buttonsProvided;
+	public static JPanel[] panelsToDisplay;
+	public static int firstPageShownIndex;
+	
+	public PageManager(JButton[] btns,JPanel[] views, int indexOfFirstPageShown){
+		PageManager.buttonsProvided = btns;
+		PageManager.panelsToDisplay = views;
+		PageManager.firstPageShownIndex = indexOfFirstPageShown;
+		
+		showFirstDisplay();
+	}
+	
+
+}

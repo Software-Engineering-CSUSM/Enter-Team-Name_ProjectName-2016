@@ -1,0 +1,7 @@
+package edu.CSUSM.testTaker.UI;
+
+//Manages the interaction between which buttons are pressed and which pages are shown
+
+public class PageManager {
+
+}

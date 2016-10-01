@@ -27,6 +27,7 @@ public class SideMenu extends JPanel {
 	private static final int MAX_NUMBER_OF_BUTTONS = 10;
 	public static JButton[] menuOptionButtons;
 	public static Font basicFont = new Font(Font.SERIF, Font.BOLD, 16);
+	public static final int WIDTH = 200, HEIGHT = GUIController.FRAME_HEIGHT;
 	
 	/**
 	 * @param buttonNames
@@ -57,6 +58,8 @@ public class SideMenu extends JPanel {
 		
 		//Set the first button as disabled, becuse this is the one that is going to be shown
 		setStatus(false, menuOptionButtons[0]);
+		
+		this.setBounds(0, 0, SideMenu.WIDTH, SideMenu.HEIGHT);
 	}
 	
 	/**
@@ -88,11 +91,11 @@ public class SideMenu extends JPanel {
 	}
 	
 	private JButton newButton(String title){
-		
+
+		//Make custom button (Should be a seperate class)
 		UIManager.put("Button.disabledText", Color.red);	//Sets the color of the disbaled text
 		JButton temp = new JButton(title);
 		
-		//Make custom button (Should be a seperate class)
 		temp.setBorder(new EmptyBorder(50, 50, 50, 50));
 		//temp.setOpaque(true);
 		temp.setForeground(Color.WHITE);
