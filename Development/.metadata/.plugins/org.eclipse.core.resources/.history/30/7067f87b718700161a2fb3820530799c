@@ -1,0 +1,119 @@
+package edu.CSUSM.testTaker.UI;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.net.URL;
+
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.text.html.ImageView;
+
+/**
+ * 
+ * @author Justin
+ * @purpose The purpose of this class is to make it easier to create JPanels. Are panel types are quite simple to create.
+ * 			For simplicity, there are a few type of panels:
+ * 				• TWO_BUTTON_TYPE 		- Has a logo and two buttons (sBs)
+ * 				• THREE_BUTTON_TYPE 	- Has a logo and three buttons (2 on top, one centered below)
+ * 				• LOGO_ONLY_TYPE		- Has only a logo
+ * 				• QUESTION_BUILDER_TYPE	- has a question input, posible answer input and radio buttons to selct correct answer
+ *
+ */
+public class CustomPage extends JPanel {
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private static Image mainLogoToDisplay;
+
+	public static enum PanelType{
+		TWO_BUTTON_TYPE,
+		THREE_BUTTON_TYPE,
+		LOGO_ONLY_TYPE,
+		QUESTION_BUILDER_TYPE
+	};
+	
+	public CustomPage(PanelType currentPanelType, String imageAddress){
+		
+		super();
+		
+		//Create the image from the image address
+		try {                
+			URL url = new URL("https://github.com/Software-Engineering-CSUSM/Test-Taker/blob/master/Team%20Graphics/Test_Taker_LogoOption3.png?raw=true");
+	          CustomPage.mainLogoToDisplay = ImageIO.read(url);
+	       } catch (IOException ex) {
+	            // handle exception...
+	    	   System.out.println(ex.getMessage());
+	       }
+		
+		switch(currentPanelType){
+			case TWO_BUTTON_TYPE:
+				break;
+				
+			case THREE_BUTTON_TYPE:
+				break;
+				
+			case LOGO_ONLY_TYPE:
+				createLogoType();
+				break;
+				
+			case QUESTION_BUILDER_TYPE:
+				break;
+				
+			default:
+				System.out.println("Panel Type Not Found");
+				break;
+		}
+	}
+	
+	private void createLogoType(){
+		
+		//Set the layout
+		this.setLayout(new BorderLayout());
+		
+		//Set the background color
+		this.setBackground(Color.WHITE);
+		
+		//Just display an image in the panel
+		JLabel imageLabel = new JLabel();
+		try{
+			//Read the image as a buffered image
+			BufferedImage buffered = (BufferedImage)CustomPage.mainLogoToDisplay;
+			
+			//resize it
+			BufferedImage scaledImage = (BufferedImage) buffered.getScaledInstance(this.getWidth(), this.getHeight(), Image.SCALE_SMOOTH);
+			
+			ImageIcon tempIcon = new ImageIcon(CustomPage.mainLogoToDisplay);
+			if(tempIcon.getImage().toString().length() == 0) throw new NullPointerException();
+			imageLabel.setIcon(tempIcon);
+		}
+		catch(NullPointerException e){
+			System.out.println("No Logo could be found. Please check the project directory");
+		}
+		this.add(imageLabel, BorderLayout.CENTER);
+	}
+	
+	
+	
+	
+	
+	
+	
+	/** Accessors and mutators */
+
+	public static Image getMainLogoToDisplay() {
+		return mainLogoToDisplay;
+	}
+
+	public static void setMainLogoToDisplay(Image mainLogoToDisplay) {
+		CustomPage.mainLogoToDisplay = mainLogoToDisplay;
+	}
+
+}

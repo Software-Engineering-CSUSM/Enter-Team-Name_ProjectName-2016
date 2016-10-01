@@ -1,0 +1,91 @@
+/**
+ * 
+ */
+package edu.CSUSM.testTaker.UI;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+
+import edu.CSUSM.testTaker.LibraryController;
+
+/**
+ * @author Justin
+ *
+ */
+public class GUIController extends JFrame {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private static final int FRAME_WIDTH = 750, FRAME_HEIGHT = 500;		//Frame dimensions
+	private static final double DEFAULT_OFFSET = 5.0;					//Distance between frame and panels
+	public static LibraryController currentLib;								//Accesses the current library
+	
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		
+		//Create the main Frame
+		
+		//Set a particular panel to be built and shown
+		GUIController newController = new GUIController();
+		newController.setVisible(true);
+		
+		//Create the library reference
+		//currentLib = new LibraryController();
+	}
+	
+	public GUIController(){
+		super();
+		
+		//Build the frame
+		buildFrame();
+		
+		//Add a panel. Note that this one is just a blank template. There will be a new heiarchy when created.
+		//Set the layout
+		this.setLayout(new BorderLayout());
+		
+		//Create the side menu
+		SideMenu sm = new SideMenu(new String[]{"Home", "Courses", "Study Tools", "Statistics"});
+		this.add(sm, BorderLayout.WEST);
+		
+		/** For testing */
+		//Create a temp action event for the buttons
+		for(int i = 0; i < SideMenu._numberOfButtons; i++){
+			SideMenu.menuOptionButtons[i].addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				
+				//Prints out the button name
+				System.out.println(e.getActionCommand());
+				
+				//Sets the background color
+				JButton temp = (JButton)e.getSource();
+				temp.setBackground((Color.WHITE) ? Color.RED : Color.WHITE);
+			}
+		});
+		}
+		
+		
+		/** End of testing */
+	}
+	
+	private void buildFrame(){
+		
+		this.setSize(FRAME_WIDTH, FRAME_HEIGHT);
+		this.setLocationRelativeTo(null);
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setTitle("Test Taker");
+		
+	}
+	
+	
+
+}

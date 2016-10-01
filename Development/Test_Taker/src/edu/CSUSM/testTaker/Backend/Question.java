@@ -3,9 +3,13 @@ package edu.CSUSM.testTaker.Backend;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.UUID;
+
+import javax.imageio.spi.RegisterableService;
+import javax.imageio.spi.ServiceRegistry;
+
 import java.io.Serializable;
 
-public class Question implements Serializable, Registerable{
+public class Question implements Serializable, RegisterableService{
 	public static final long serialVersionUID = 1L;
 	public static int QUESTION_COUNT; //Keeps an always-updating count of questions per init in the program
 
@@ -175,5 +179,17 @@ public class Question implements Serializable, Registerable{
 		
 		//Return the result
 		return thisQuestionString;
+	}
+
+	@Override
+	public void onRegistration(ServiceRegistry registry, Class<?> category) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onDeregistration(ServiceRegistry registry, Class<?> category) {
+		// TODO Auto-generated method stub
+		
 	}
 }

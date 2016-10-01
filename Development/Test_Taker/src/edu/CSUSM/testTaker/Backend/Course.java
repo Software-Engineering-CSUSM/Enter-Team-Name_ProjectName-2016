@@ -3,7 +3,10 @@ package edu.CSUSM.testTaker.Backend;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Course implements Registerable{
+import javax.imageio.spi.RegisterableService;
+import javax.imageio.spi.ServiceRegistry;
+
+public class Course implements RegisterableService{
 	String myID;
 	{
 		myID = java.util.UUID.randomUUID().toString();
@@ -93,6 +96,18 @@ public class Course implements Registerable{
 	 */
 	public double getTestsCompleted() {
 		return this._testsCompleted;
+	}
+
+	@Override
+	public void onRegistration(ServiceRegistry registry, Class<?> category) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onDeregistration(ServiceRegistry registry, Class<?> category) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	
