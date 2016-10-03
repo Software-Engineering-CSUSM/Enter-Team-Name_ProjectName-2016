@@ -73,7 +73,7 @@ public class GUIController extends JFrame {
 		
 		//Create the page manager. This will take in all created views (just the first page of them) and the buttons from the side menu.
 		//Then, it will handle all events
-		PageManager pm = new PageManager(SideMenu.menuOptionButtons, new CustomPage[]{livePage, courses, studyTools}, 0);
+		PageManager pm = new PageManager(SideMenu.menuOptionButtons, new CustomPage[]{livePage, courses, studyTools}, 1);
 		
 		
 		/** For testing */
