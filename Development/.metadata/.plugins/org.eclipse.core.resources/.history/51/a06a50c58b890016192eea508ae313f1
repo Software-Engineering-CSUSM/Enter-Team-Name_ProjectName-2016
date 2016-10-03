@@ -1,0 +1,17 @@
+package com.jtizz.NavigationController;
+
+import javax.swing.JFrame;
+
+/**
+ * @author Justin
+ * @description Runs an example Application with the NavigationController Implementation.
+ *
+ */
+public class ExampleDriver extends JFrame{
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
