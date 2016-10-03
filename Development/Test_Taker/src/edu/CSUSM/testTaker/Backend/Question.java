@@ -7,6 +7,8 @@ import java.util.UUID;
 import javax.imageio.spi.RegisterableService;
 import javax.imageio.spi.ServiceRegistry;
 
+import edu.CSUSM.testTaker.LibraryController;
+
 import java.io.Serializable;
 
 public class Question implements Serializable, RegisterableService{
@@ -38,7 +40,7 @@ public class Question implements Serializable, RegisterableService{
 		Question.QUESTION_COUNT++;
 		
 		myID = UUID.randomUUID().toString();
-		QuestionRegistry.store(this);
+		LibraryController.storeQuestion(this);
 	}
 	
 	/**
@@ -62,7 +64,7 @@ public class Question implements Serializable, RegisterableService{
 		Question.QUESTION_COUNT++;
 		
 		myID = UUID.randomUUID().toString();
-		QuestionRegistry.store(this);
+		LibraryController.storeQuestion(this);
 	}
 	
 	/* Mutators */
@@ -72,7 +74,7 @@ public class Question implements Serializable, RegisterableService{
 	 */
 	public void setQuestion(String newQuestion){
 		this._question = newQuestion;
-		QuestionRegistry.store(this);
+		LibraryController.storeQuestion(this);
 		}
 	
 	/**
@@ -82,12 +84,12 @@ public class Question implements Serializable, RegisterableService{
 	 */
 	public void setAnswer(String newAnswer, int index){
 		this._answers.set(index, newAnswer); 
-		QuestionRegistry.store(this);
+		LibraryController.storeQuestion(this);
 		}
 	
 	public void setTestID(String newID){
 		this._testID = newID;
-		QuestionRegistry.store(this);
+		LibraryController.storeQuestion(this);
 	}
 	
 	/**
@@ -96,7 +98,7 @@ public class Question implements Serializable, RegisterableService{
 	 */
 	public void addAnswer(String additionalAnswer){
 		this._answers.add(additionalAnswer);
-		QuestionRegistry.store(this);
+		LibraryController.storeQuestion(this);
 	}
 	
 	/**
@@ -105,7 +107,7 @@ public class Question implements Serializable, RegisterableService{
 	 */
 	public void setCorrectIndex(int index){
 		this._correctIndex = index;
-		QuestionRegistry.store(this);
+		LibraryController.storeQuestion(this);
 		}
 	
 	/* Accessors */
