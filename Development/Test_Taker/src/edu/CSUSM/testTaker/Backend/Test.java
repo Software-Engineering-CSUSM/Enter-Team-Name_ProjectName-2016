@@ -3,9 +3,13 @@ package edu.CSUSM.testTaker.Backend;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.UUID;
+
+import javax.imageio.spi.RegisterableService;
+import javax.imageio.spi.ServiceRegistry;
+
 import java.io.Serializable;
 
-public class Test implements Serializable, Registerable{
+public class Test implements Serializable, RegisterableService{
 	static final long serialVersionUID = 1L;
 
 	transient ArrayList<Question> questionList;
@@ -217,5 +221,17 @@ public class Test implements Serializable, Registerable{
         //Return the result
         return thisTestString;
     }
+
+	@Override
+	public void onRegistration(ServiceRegistry registry, Class<?> category) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onDeregistration(ServiceRegistry registry, Class<?> category) {
+		// TODO Auto-generated method stub
+		
+	}
 
 }
