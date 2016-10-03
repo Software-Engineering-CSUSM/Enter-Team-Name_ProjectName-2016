@@ -5,9 +5,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.UUID;
 
-import javax.imageio.spi.RegisterableService;
-import javax.imageio.spi.ServiceRegistry;
-
 import java.io.Serializable;
 
 public class Test implements Serializable, Registerable{

@@ -4,9 +4,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.UUID;
 
-import javax.imageio.spi.RegisterableService;
-import javax.imageio.spi.ServiceRegistry;
-
 import edu.CSUSM.testTaker.LibraryController;
 
 import java.io.Serializable;
