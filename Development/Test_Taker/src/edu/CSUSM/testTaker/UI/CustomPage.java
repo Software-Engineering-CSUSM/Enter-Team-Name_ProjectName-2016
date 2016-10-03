@@ -2,6 +2,7 @@ package edu.CSUSM.testTaker.UI;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.Image;
@@ -39,6 +40,7 @@ public class CustomPage extends JPanel {
 	public static Image newImg;
 	public static ImageIcon newIcon;
 	public JLabel imageLabel = new JLabel();
+	private static int centerOfNewFrame;
 
 	
 
@@ -139,29 +141,14 @@ public class CustomPage extends JPanel {
 		//Add the image to the top of the screen. We are going to have 3 objects at the top: Back btn, logo, and currentpage title
 		 * */
 		JLabel iconLabel = new JLabel();
-		iconLabel.setBounds(0, 0, this.getWidth(), this.getHeight()/3 * 2);
+		iconLabel.setBounds(0, 0, this.getWidth(), (int) (this.getHeight()/2.25));
 		iconLabel.setIcon(newIcon);
 		//this.add(iconLabel);
 		this.add(iconLabel);
 		
-		//Add the two button
-		JButton btn[] = new RoundButton[2];
-		int centerOfNewFrame = (this.getHeight() + (this.getHeight() - (iconLabel.getY() + iconLabel.getHeight())))/2;
+		centerOfNewFrame = iconLabel.getHeight() - iconLabel.getY();
 		
-		for(int i = 0; i < btn.length; i++){
-			btn[i] = new RoundButton("Button " + (i+1));
-			
-			int originOfButton = 0;
-			if(i==0){
-				originOfButton = this.getWidth()/3 - (this.getWidth()/3)/2 - 25;
-			}else{
-				originOfButton = (this.getWidth()/3)*2 - (this.getWidth()/3)/2 + 25;
-			}
-			
-			btn[i].setBounds(originOfButton, centerOfNewFrame, this.getWidth()/3, 100);
-			btn[i].setBorder(new EmptyBorder(50, 50, 50, 50));
-			this.add(btn[i]);
-		}
+		addButtons(2);
 		
 	}
 	
@@ -170,13 +157,61 @@ public class CustomPage extends JPanel {
 		this.setBackground(Color.WHITE);
 		
 		JLabel iconLabel = new JLabel();
-		iconLabel.setBounds(0, 0, 600, 200);
+		iconLabel.setBounds(0, 0, this.getWidth(), (int) (this.getHeight()/2.25));
 		iconLabel.setIcon(newIcon);
 		//this.add(iconLabel);
 		this.add(iconLabel);
+		
+		//centerOfNewFrame = (this.getHeight() - (this.getHeight() - iconLabel.getHeight()));
+		
+		addButtons(3);
 		 
 	}
 	
+	private void addButtons(int count){
+		
+		JButton[] btn = new JButton[count+1];
+		int originOfButton = 0;
+		int yValue = centerOfNewFrame + 25;	//Added 25 to move the first button down (25 px after logo)
+		int buttonWidth = this.getWidth()/3;
+		
+		for(int i = 1; i <= count; i++){
+			
+			btn[i] = new JButton("Button " + i);
+			
+			if(i % 2 == 1){		//If the number is odd, start on the left
+				originOfButton = this.getWidth()/3 - (this.getWidth()/3)/2 - 25;
+				//originOfButton = 0;
+			}else{				//Start on the right
+				originOfButton = (this.getWidth()/3)*2 - (this.getWidth()/3)/2 + 25;
+				//originOfButton = buttonWidth;
+			}
+			
+			//If the count is odd, we need to center the last button
+			if((count == i) && (count % 2 == 1)){
+				//originOfButton = this.getWidth()/2 - this.getWidth()/6;
+				//originOfButton = buttonWidth - buttonWidth/2;
+				originOfButton = this.getWidth()/3 - (this.getWidth()/3)/2 - 25;
+				buttonWidth = this.getWidth()/3 * 2 + 50;	//The sum of btns 1 & 2, and the distance between
+			}
+			
+			//System.out.println("Stats: \nOrigin:\t" + originOfButton + "\nCenter:\t" + centerOfNewFrame + "\nWidth:\t" + this.getWidth()/3);
+			btn[i].setBounds(originOfButton, yValue, buttonWidth, 100);
+			//btn[i].setBorder(new RoundedBorder(50));
+			btn[i].setBorder(new EmptyBorder(5, 5, 5, 5));
+			btn[i].setBackground(new Color(85, 85, 85));
+			btn[i].setOpaque(true);
+			btn[i].setForeground(Color.WHITE);
+			btn[i].setFont(new Font(Font.SERIF, Font.BOLD | Font.ITALIC, 24));
+			this.add(btn[i]);
+			
+			//Move the y location for hte next one, if applicable
+			if(i % 2 == 0)
+				yValue += 125;
+		}
+		
+		
+	}
 	
 	
 	
