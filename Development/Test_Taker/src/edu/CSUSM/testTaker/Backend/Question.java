@@ -11,7 +11,7 @@ import edu.CSUSM.testTaker.LibraryController;
 
 import java.io.Serializable;
 
-public class Question implements Serializable, RegisterableService{
+public class Question implements Serializable, Registerable{
 	public static final long serialVersionUID = 1L;
 	public static int QUESTION_COUNT; //Keeps an always-updating count of questions per init in the program
 
@@ -183,15 +183,4 @@ public class Question implements Serializable, RegisterableService{
 		return thisQuestionString;
 	}
 
-	@Override
-	public void onRegistration(ServiceRegistry registry, Class<?> category) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void onDeregistration(ServiceRegistry registry, Class<?> category) {
-		// TODO Auto-generated method stub
-		
-	}
 }

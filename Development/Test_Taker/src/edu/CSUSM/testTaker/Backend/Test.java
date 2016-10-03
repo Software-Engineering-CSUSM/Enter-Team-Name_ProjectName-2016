@@ -10,7 +10,7 @@ import javax.imageio.spi.ServiceRegistry;
 
 import java.io.Serializable;
 
-public class Test implements Serializable, RegisterableService{
+public class Test implements Serializable, Registerable{
 	static final long serialVersionUID = 1L;
 
 	transient ArrayList<Question> questionList;
@@ -222,17 +222,5 @@ public class Test implements Serializable, RegisterableService{
         //Return the result
         return thisTestString;
     }
-
-	@Override
-	public void onRegistration(ServiceRegistry registry, Class<?> category) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void onDeregistration(ServiceRegistry registry, Class<?> category) {
-		// TODO Auto-generated method stub
-		
-	}
 
 }
