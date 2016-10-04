@@ -50,7 +50,7 @@ public class ExampleDriver extends JFrame{
 			nc.displayView(testPanel);
 		}
 		
-		CustomPage newPage = new CustomPage(CustomPage.PanelType.LOGO_ONLY_TYPE, "https://github.com/Software-Engineering-CSUSM/Test-Taker/blob/master/Team%20Graphics/Test_Taker_LogoOption3.png?raw=true");
+		CustomPage newPage = new CustomPage(CustomPage.PanelType.THREE_BUTTON_TYPE);
 		newPage.setName("Testing a 3 Btn");
 		nc.displayView(newPage);
 		
