@@ -11,6 +11,8 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
+import com.jtizz.NavigationController.NavigationController;
+
 import edu.CSUSM.testTaker.LibraryController;
 
 /**
@@ -57,6 +59,7 @@ public class GUIController extends JFrame {
 		SideMenu sm = new SideMenu(new String[]{"Home", "Courses", "Study Tools", "Statistics"});
 		this.add(sm, BorderLayout.WEST);
 
+		
 		//Add the main Frame
 		//Optiom 1
 		CustomPage livePage = new CustomPage(CustomPage.PanelType.LOGO_ONLY_TYPE, "https://github.com/Software-Engineering-CSUSM/Test-Taker/blob/master/Team%20Graphics/Test_Taker_LogoOption3.png?raw=true");
@@ -74,7 +77,7 @@ public class GUIController extends JFrame {
 		//Create the page manager. This will take in all created views (just the first page of them) and the buttons from the side menu.
 		//Then, it will handle all events
 		PageManager pm = new PageManager(SideMenu.menuOptionButtons, new CustomPage[]{livePage, courses, studyTools}, 0);
-
+		
 
 		/** For testing */
 		//Create a temp action event for the buttons
