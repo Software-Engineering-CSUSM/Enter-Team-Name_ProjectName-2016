@@ -42,6 +42,7 @@ public class CustomPage extends JPanel {
 	public JLabel imageLabel = new JLabel();
 	private static int centerOfNewFrame;
 	public JButton[] currentActions;
+	public String panelTypeString;
 
 
 
@@ -80,6 +81,9 @@ public class CustomPage extends JPanel {
 	}
 
 	private void buildPanel(PanelType currentPanelType){
+		
+		//Set the string value of the panel type
+		this.panelTypeString = currentPanelType.toString();
 
 		//Set the size of the panel
 		this.setBounds(SideMenu.WIDTH, 0, GUIController.FRAME_WIDTH - SideMenu.WIDTH, GUIController.FRAME_HEIGHT);
