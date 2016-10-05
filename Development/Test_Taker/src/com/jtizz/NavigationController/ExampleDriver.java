@@ -3,12 +3,14 @@ package com.jtizz.NavigationController;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import edu.CSUSM.testTaker.UI.CustomPage;
+import edu.CSUSM.testTaker.UI.*;
 
 /**
  * @author Justin
@@ -33,26 +35,37 @@ public class ExampleDriver extends JFrame{
 		this.setSize(750, 500);
 		this.setTitle("Testing Application");
 		this.setLocationRelativeTo(null);
+		this.setLayout(new BorderLayout());
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		
 		//Add the navigation Controller
 		NavigationController nc = new NavigationController();
-		this.add(nc);
+		this.add(nc, BorderLayout.CENTER);
 		
 		this.setVisible(true);
 		
-		//Now, add a few sample views, each with a label indicating the page number
-		for(int i = 0; i <= 5; i++){
-			JPanel testPanel = new JPanel();
-			testPanel.setBackground(new Color(25, 251, i*5));
-			testPanel.add(new JLabel("Label: " + (i+1)));
-			nc.displayView(testPanel);
-		}
+		SideMenu sm = new SideMenu(new String[]{"Home", "Courses", "Study Tools", "Statistics"});
+		this.add(sm, BorderLayout.WEST);
 		
 		CustomPage newPage = new CustomPage(CustomPage.PanelType.LOGO_ONLY_TYPE, "https://github.com/Software-Engineering-CSUSM/Test-Taker/blob/master/Team%20Graphics/Test_Taker_LogoOption3.png?raw=true");
-		newPage.setName("Testing a 3 Btn");
+		newPage.setName("Testing a Logo");
 		nc.displayView(newPage);
+		
+		CustomPage testingTwo = new CustomPage(CustomPage.PanelType.TWO_BUTTON_TYPE);
+		testingTwo.setName("Testing 2 Paneles");
+		nc.setInitialView(testingTwo);
+		testingTwo.currentActions[1].addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				CustomPage thirdPage = new CustomPage(CustomPage.PanelType.THREE_BUTTON_TYPE);
+				thirdPage.setName("Testing a 3 Btn");
+				nc.displayView(thirdPage);
+			}
+		});
+		
+
+		PageManager pm = new PageManager(SideMenu.menuOptionButtons, new CustomPage[]{newPage, testingTwo}, 0);
+		
 		
 		//Count all the views currently shown
 		System.out.println("View Shown in container: " + nc.getComponentCount());

@@ -41,6 +41,7 @@ public class CustomPage extends JPanel {
 	public static ImageIcon newIcon;
 	public JLabel imageLabel = new JLabel();
 	private static int centerOfNewFrame;
+	public JButton[] currentActions;
 
 
 
@@ -170,14 +171,14 @@ public class CustomPage extends JPanel {
 
 	private void addButtons(int count){
 
-		JButton[] btn = new JButton[count+1];
+		currentActions = new JButton[count+1];
 		int originOfButton = 0;
 		int yValue = centerOfNewFrame + 25;	//Added 25 to move the first button down (25 px after logo)
 		int buttonWidth = this.getWidth()/3;
 
 		for(int i = 1; i <= count; i++){
 
-			btn[i] = new JButton("Button " + i);
+			currentActions[i] = new JButton("Button " + i);
 
 			if(i % 2 == 1){		//If the number is odd, start on the left
 				originOfButton = this.getWidth()/3 - (this.getWidth()/3)/2 - 25;
@@ -196,14 +197,14 @@ public class CustomPage extends JPanel {
 			}
 
 			//System.out.println("Stats: \nOrigin:\t" + originOfButton + "\nCenter:\t" + centerOfNewFrame + "\nWidth:\t" + this.getWidth()/3);
-			btn[i].setBounds(originOfButton, yValue, buttonWidth, 100);
+			currentActions[i].setBounds(originOfButton, yValue, buttonWidth, 100);
 			//btn[i].setBorder(new RoundedBorder(50));
-			btn[i].setBorder(new EmptyBorder(5, 5, 5, 5));
-			btn[i].setBackground(new Color(85, 85, 85));
-			btn[i].setOpaque(true);
-			btn[i].setForeground(Color.WHITE);
-			btn[i].setFont(new Font(Font.SERIF, Font.BOLD | Font.ITALIC, 24));
-			this.add(btn[i]);
+			currentActions[i].setBorder(new EmptyBorder(5, 5, 5, 5));
+			currentActions[i].setBackground(new Color(85, 85, 85));
+			currentActions[i].setOpaque(true);
+			currentActions[i].setForeground(Color.WHITE);
+			currentActions[i].setFont(new Font(Font.SERIF, Font.BOLD | Font.ITALIC, 24));
+			this.add(currentActions[i]);
 
 			//Move the y location for hte next one, if applicable
 			if(i % 2 == 0)
