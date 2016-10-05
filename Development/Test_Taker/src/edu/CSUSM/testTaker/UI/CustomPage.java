@@ -68,6 +68,12 @@ public class CustomPage extends JPanel {
 
 		buildPanel(currentPanelType);
 	}
+	
+	public CustomPage(PanelType currentPanelType, BufferedImage newImage){
+		super();
+		CustomPage.mainLogoToDisplay = newImage;
+		buildPanel(currentPanelType);
+	}
 
 
 	/**

@@ -44,6 +44,7 @@ public class ExampleDriver extends JFrame{
 		//Add the navigation Controller
 		NavigationController nc = new NavigationController();
 		this.add(nc, BorderLayout.CENTER);
+		nc.setBackground(Color.WHITE);
 		
 		this.setVisible(true);
 		
@@ -51,11 +52,11 @@ public class ExampleDriver extends JFrame{
 		this.add(sm, BorderLayout.WEST);
 		
 		CustomPage newPage = new CustomPage(CustomPage.PanelType.LOGO_ONLY_TYPE, "https://github.com/Software-Engineering-CSUSM/Test-Taker/blob/master/Team%20Graphics/Test_Taker_LogoOption3.png?raw=true");
-		newPage.setName("Testing a Logo");
+		newPage.setName(SideMenu.menuOptionButtons[0].getText());
 		nc.displayView(newPage);
 		
 		CustomPage testingTwo = new CustomPage(CustomPage.PanelType.TWO_BUTTON_TYPE);
-		testingTwo.setName("Testing 2 Paneles");
+		testingTwo.setName(SideMenu.menuOptionButtons[1].getText());
 		nc.setInitialView(testingTwo);
 		testingTwo.currentActions[1].addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
@@ -67,7 +68,7 @@ public class ExampleDriver extends JFrame{
 				thirdPage.currentActions[1].addActionListener(new ActionListener(){
 					public void actionPerformed(ActionEvent e){
 						Random newRand = new Random();
-						int newRandNum = newRand.nextInt(1);
+						int newRandNum = newRand.nextInt(2);
 						CustomPage endlessPage = new CustomPage((newRandNum == 1) ? CustomPage.PanelType.THREE_BUTTON_TYPE : CustomPage.PanelType.TWO_BUTTON_TYPE);
 						endlessPage.setName(endlessPage.panelTypeString);
 						nc.displayView(endlessPage);
@@ -76,8 +77,14 @@ public class ExampleDriver extends JFrame{
 			}
 		});
 		
+		CustomPage testingThree = new CustomPage(CustomPage.PanelType.THREE_BUTTON_TYPE);
+		testingThree.setName(SideMenu.menuOptionButtons[2].getText());
+		nc.displayView(testingThree);
+		nc.reset();
+		
 
-		PageManager pm = new PageManager(SideMenu.menuOptionButtons, new CustomPage[]{newPage, testingTwo}, 0);
+		PageManager<CustomPage> pm = new PageManager<CustomPage>((JPanel)nc, SideMenu.menuOptionButtons, new CustomPage[]{newPage, testingTwo, testingThree}, 0);
+		pm.hideAllPanelsButAtIndex(0);
 		
 		//Now, when a user selects a side menu option, we need to remove all items from the stack;
 		for(JButton sideBtn : SideMenu.menuOptionButtons){
@@ -91,12 +98,12 @@ public class ExampleDriver extends JFrame{
 			});
 		}
 		
-		
+		/**
 		//Count all the views currently shown
 		System.out.println("View Shown in container: " + nc.getComponentCount());
 		for(Component a : nc.getComponents()){
 			System.out.println("Component Name: " + a.getName());
-		}
+		}*/
 	}
 
 }

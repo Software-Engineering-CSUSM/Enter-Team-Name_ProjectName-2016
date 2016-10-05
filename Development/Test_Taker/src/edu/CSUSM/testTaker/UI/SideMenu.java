@@ -69,7 +69,7 @@ public class SideMenu extends JPanel {
 				public void actionPerformed(ActionEvent e){
 
 					//Prints out the button name
-					System.out.println(e.getActionCommand());
+					//System.out.println(e.getActionCommand());
 					SideMenu.setStatus(false, (JButton)e.getSource());
 
 				}
@@ -89,10 +89,11 @@ public class SideMenu extends JPanel {
 		if(flag){							//If the button is becoming enabled
 
 		}else{								//If the button is becoming disabled
-			buttonClicked.setEnabled(false);
+			//buttonClicked.setEnabled(false);
 			buttonClicked.setFont(basicFont);
 			buttonClicked.setBackground(Color.LIGHT_GRAY);
 			buttonClicked.setOpaque(true);
+			buttonClicked.setForeground(Color.RED);
 		}
 	}
 
@@ -102,6 +103,7 @@ public class SideMenu extends JPanel {
 			menuOptionButtons[i].setFont(basicFont);
 			menuOptionButtons[i].setBackground(null);
 			menuOptionButtons[i].setOpaque(false);
+			menuOptionButtons[i].setForeground(Color.WHITE);
 		}
 	}
 
