@@ -6,15 +6,20 @@
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="" key="selection"/>
+		<item value="Color.red" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="Color.red"/>
+			<item value="Color.RED"/>
+			<item value="Color.REd"/>
+			<item value="Test"/>
+			<item value="testing the"/>
+			<item value="side"/>
 			<item value="No Logo"/>
 			<item value="No logo"/>
-			<item value="{&quot;"/>
 		</list>
 		<list key="replacehistory">
 		</list>
@@ -24,6 +29,6 @@
 		<item value="1|.SF NS Text|11.0|0|COCOA|1|.SFNSText" key="DIALOG_FONT_NAME"/>
 		<item value="409" key="DIALOG_HEIGHT"/>
 		<item value="986" key="DIALOG_X_ORIGIN"/>
-		<item value="428" key="DIALOG_Y_ORIGIN"/>
+		<item value="406" key="DIALOG_Y_ORIGIN"/>
 	</section>
 </section>
