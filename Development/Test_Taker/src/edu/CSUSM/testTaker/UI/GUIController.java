@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.UIManager;
 
 import com.jtizz.NavigationController.NavigationController;
 
@@ -77,21 +78,11 @@ public class GUIController extends JFrame {
 		//Create the page manager. This will take in all created views (just the first page of them) and the buttons from the side menu.
 		//Then, it will handle all events
 		PageManager pm = new PageManager(SideMenu.menuOptionButtons, new CustomPage[]{livePage, courses, studyTools}, 0);
-		
+
+		UIManager.put("Button.disabledText", Color.red);	//Sets the color of the disbaled text
 
 		/** For testing */
-		//Create a temp action event for the buttons
-		for(int i = 0; i < SideMenu._numberOfButtons; i++){
-			SideMenu.menuOptionButtons[i].addActionListener(new ActionListener(){
-				public void actionPerformed(ActionEvent e){
-
-					//Prints out the button name
-					System.out.println(e.getActionCommand());
-					SideMenu.setStatus(false, (JButton)e.getSource());
-
-				}
-			});
-		}
+		
 
 
 		/** End of testing */
