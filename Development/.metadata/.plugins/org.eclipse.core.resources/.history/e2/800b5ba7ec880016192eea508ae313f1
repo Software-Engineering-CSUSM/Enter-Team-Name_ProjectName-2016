@@ -1,0 +1,20 @@
+package edu.CSUSM.testTaker.UI;
+
+import java.awt.*;
+import java.awt.geom.*;
+import javax.swing.*;
+ 
+public class RoundButton extends JButton {
+ 
+  /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+public RoundButton(String label) {
+    super(label);
+ 
+    setBackground(Color.WHITE);
+    
+  }
+}
