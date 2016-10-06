@@ -62,8 +62,7 @@ public class GUIController extends JFrame {
 
 		//Add the navigation Controller
 		/** Main Page */
-		NavigationController mainNavigationController = new NavigationController();
-		mainNavigationController.setBackground(Color.RED);
+		final NavigationController mainNavigationController = new NavigationController();
 
 		CustomPage mainPage = new CustomPage(CustomPage.PanelType.LOGO_ONLY_TYPE, NavigationController.applicationImage);
 		mainPage.setName(SideMenu.menuOptionButtons[0].getText());
@@ -72,8 +71,7 @@ public class GUIController extends JFrame {
 		//After we create the main page, we need to create more. 
 		//Note that each subview will have its own nvaigation controller
 		/** Courses */
-		NavigationController coursesNC = new NavigationController();
-		coursesNC.setBackground(Color.BLUE);
+		final NavigationController coursesNC = new NavigationController();
 		
 		CustomPage coursesMain = new CustomPage(CustomPage.PanelType.TWO_BUTTON_TYPE);
 		coursesMain.setName(SideMenu.menuOptionButtons[1].getText());
@@ -85,7 +83,7 @@ public class GUIController extends JFrame {
 		 * All that is going to happen in the next few lines will be in that class.
 		 */
 		/**start Sample*/
-		coursesMain.currentActions[1].addActionListener(new ActionListener(){
+		coursesMain.currentActions[0].addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				CustomPage testPage = new CustomPage(CustomPage.PanelType.THREE_BUTTON_TYPE);
 				coursesNC.displayView(testPage);
@@ -95,16 +93,14 @@ public class GUIController extends JFrame {
 		/**end Sample*/
 		
 		/** Study Tools */
-		NavigationController studyToolsNC = new NavigationController();
-		studyToolsNC.setBackground(Color.ORANGE);
+		final NavigationController studyToolsNC = new NavigationController();
 		
 		CustomPage studyToolsMain = new CustomPage(CustomPage.PanelType.THREE_BUTTON_TYPE);
 		studyToolsMain.setName(SideMenu.menuOptionButtons[2].getText());
 		studyToolsNC.setInitialView(studyToolsMain);
 		
 		/** Statistics */
-		NavigationController statsNC = new NavigationController();
-		statsNC.setBackground(Color.PINK);
+		final NavigationController statsNC = new NavigationController();
 		
 		CustomPage statsMain = new CustomPage(CustomPage.PanelType.LOGO_ONLY_TYPE);
 		statsMain.setName(SideMenu.menuOptionButtons[3].getText());
