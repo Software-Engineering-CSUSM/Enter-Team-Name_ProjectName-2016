@@ -1,32 +1,28 @@
-import com.google.api.client.googleapis.auth.oauth2.GoogleCredential;
-import com.google.api.client.googleapis.javanet.GoogleNetHttpTransport;
-import com.google.api.client.http.HttpTransport;
-import com.google.api.client.json.JsonFactory;
-import com.google.api.client.json.gson.GsonFactory;
-
-import com.google.api.services.analytics.Analytics;
-import com.google.api.services.analytics.AnalyticsScopes;
-import com.google.api.services.analytics.model.Accounts;
-import com.google.api.services.analytics.model.GaData;
-import com.google.api.services.analytics.model.Profiles;
-import com.google.api.services.analytics.model.Webproperties;
-
-import java.io.File;
-import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class AnaSetup {
-	public static void launch(){
-	
+	private static DateFormat dateReg = new SimpleDateFormat("dd-MM-yyyy|HH:mm:ss");
+		
+	public static void sendEvent(String Action){
+		String st = assembleSt("Event");
+		
+		System.out.println(st + Action + " occured.");
 	}
 	
-	//st_date, en_date must be in format mm-dd-yyyy
-	public static void fetchSess(String st_date, String en_date){
-		String TB_id = "UA-84848653-1"; //Tracking ID for Test Taker
-		Get apiQuery = analytics.data().ga()
-			    .get(TB_id,                  // Table Id.
-			        st_date,              // Start date.
-			        en_date,              // End date.
-			        "ga:sessions")             // Metrics -- for this particular method, sessions
+	public static void sendPage(String pageName){
+		String st = assembleSt("Page ");
+		
+		System.out.println(st + pageName + " was accessed.");
+	}
+	
+	//Ex. 07-08-1995|12:12:30|Event:
+	public static String assembleSt(String category){
+		Date date = new Date();
+		
+		String msg = dateReg.format(date) + "|" + category + ": "; 
+		return msg;
 	}
 }
 
