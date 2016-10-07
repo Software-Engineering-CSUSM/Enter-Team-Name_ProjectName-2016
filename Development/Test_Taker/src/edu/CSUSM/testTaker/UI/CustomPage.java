@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.net.URL;
 
 import javax.imageio.ImageIO;
+import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -68,6 +69,12 @@ public class CustomPage extends JPanel {
 
 		buildPanel(currentPanelType);
 	}
+	
+	public CustomPage(PanelType currentPanelType, BufferedImage newImage){
+		super();
+		CustomPage.mainLogoToDisplay = newImage;
+		buildPanel(currentPanelType);
+	}
 
 
 	/**
@@ -76,6 +83,10 @@ public class CustomPage extends JPanel {
 	 */
 	public CustomPage(PanelType currentPanelType){
 		super();
+		//Set the layout
+		this.setLayout(new BorderLayout());
+		
+		//Build the contents
 		buildPanel(currentPanelType);
 
 	}
@@ -112,9 +123,6 @@ public class CustomPage extends JPanel {
 
 	private void createLogoType(){
 
-		//Set the layout
-		this.setLayout(new BorderLayout());
-
 		//Set the background color
 		this.setBackground(Color.WHITE);				//Option 1
 		//this.setBackground(new Color(39, 72, 155));	//Option 2
@@ -134,12 +142,17 @@ public class CustomPage extends JPanel {
 		catch(Exception e){
 			System.out.println("Error Finding image: " + e.getMessage());
 		}
-		this.add(imageLabel);
+		imageLabel.setBounds(0, 0, this.getWidth(), (int) (this.getHeight()/2.25));
+
+		//Align to center
+		imageLabel.setHorizontalAlignment(JLabel.CENTER);
+		imageLabel.setVerticalAlignment(JLabel.CENTER);
+		this.add(imageLabel, BorderLayout.CENTER);
+
 	}
 
 
 	private void createTwoButtonType(){
-		this.setLayout(null);
 		this.setBackground(Color.WHITE);
 
 		/** Later
@@ -149,7 +162,11 @@ public class CustomPage extends JPanel {
 		iconLabel.setBounds(0, 0, this.getWidth(), (int) (this.getHeight()/2.25));
 		iconLabel.setIcon(newIcon);
 		//this.add(iconLabel);
-		this.add(iconLabel);
+		this.add(iconLabel, BorderLayout.CENTER);
+
+		//Align to center
+		iconLabel.setHorizontalAlignment(JLabel.CENTER);
+		iconLabel.setVerticalAlignment(JLabel.CENTER);
 
 		centerOfNewFrame = iconLabel.getHeight() - iconLabel.getY();
 
@@ -158,7 +175,6 @@ public class CustomPage extends JPanel {
 	}
 
 	private void createThreeButtonType(){
-		this.setLayout(null);
 		this.setBackground(Color.WHITE);
 
 		JLabel iconLabel = new JLabel();
@@ -166,6 +182,10 @@ public class CustomPage extends JPanel {
 		iconLabel.setIcon(newIcon);
 		//this.add(iconLabel);
 		this.add(iconLabel);
+		
+		//Align to center
+		iconLabel.setHorizontalAlignment(JLabel.CENTER);
+		iconLabel.setVerticalAlignment(JLabel.CENTER);
 
 		//centerOfNewFrame = (this.getHeight() - (this.getHeight() - iconLabel.getHeight()));
 
@@ -174,7 +194,8 @@ public class CustomPage extends JPanel {
 	}
 
 	private void addButtons(int count){
-
+		
+		/*
 		currentActions = new JButton[count+1];
 		int originOfButton = 0;
 		int yValue = centerOfNewFrame + 25;	//Added 25 to move the first button down (25 px after logo)
@@ -214,8 +235,24 @@ public class CustomPage extends JPanel {
 			if(i % 2 == 0)
 				yValue += 125;
 		}
-
-
+	*/
+		//Add a panel to the south for the buttons
+		
+		JPanel buttonHolder = new JPanel();
+		buttonHolder.setLayout(new GridLayout(1, 1, 10,10));	//May need to be gridbaglayout
+		this.add(buttonHolder, BorderLayout.SOUTH);
+		
+		this.currentActions = new JButton[count];
+		
+		for(int i = 0; i < count; i++){
+			this.currentActions[i] = new JButton("Button " + (i+1));
+			this.currentActions[i].setBackground(new Color(85,85,85));
+			this.currentActions[i].setOpaque(true);
+			this.currentActions[i].setBorder(new EmptyBorder(50,0,50,0));
+			buttonHolder.add(this.currentActions[i]);
+			this.currentActions[i].setForeground(Color.WHITE);
+			this.currentActions[i].setFont(new Font(Font.SERIF, Font.BOLD | Font.ITALIC, 24));
+		}
 	}
 
 

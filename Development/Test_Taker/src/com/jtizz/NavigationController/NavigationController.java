@@ -6,12 +6,14 @@ import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Stack;
 
 import javax.imageio.ImageIO;
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -35,7 +37,7 @@ public class NavigationController extends JPanel {
 	public JLabel currentPageDescriptionLabel;
 
 	private JPanel navigationPanel;
-	private static Image applicationImage;
+	public static BufferedImage applicationImage;
 
 	//Now, for the page manager items
 	public Stack<JPanel> panelsDisplayed;	//Change to private
@@ -50,7 +52,7 @@ public class NavigationController extends JPanel {
 		addNavigationBar();
 	}
 
-	public NavigationController(Image applicationImage){
+	public NavigationController(BufferedImage applicationImage){
 		this.setLayout(new BorderLayout());
 		NavigationController.applicationImage = applicationImage;
 		addNavigationBar();
@@ -58,16 +60,18 @@ public class NavigationController extends JPanel {
 
 	private void addNavigationBar(){
 		/** For Testing */
-		URL url;
-		try {
-			url = new URL("https://github.com/Software-Engineering-CSUSM/Test-Taker/blob/master/Team%20Graphics/Test_Taker_LogoOption3.png?raw=true");
-			NavigationController.applicationImage = ImageIO.read(url);
-		} catch (MalformedURLException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		if(NavigationController.applicationImage == null){
+			URL url;
+			try {
+				url = new URL("https://github.com/Software-Engineering-CSUSM/Test-Taker/blob/master/Team%20Graphics/Test_Taker_LogoOption3.png?raw=true");
+				NavigationController.applicationImage = ImageIO.read(url);
+			} catch (MalformedURLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		/** End of Testing */ 
 		panelsDisplayed = new Stack<JPanel>();
@@ -109,6 +113,7 @@ public class NavigationController extends JPanel {
 		currentPageDescriptionLabel.setBorder(new EmptyBorder(0,0,0,DEFAULT_NAVIGATION_BAR_HEIGHT/2));
 		navigationPanel.add(currentPageDescriptionLabel, BorderLayout.EAST);
 		navigationPanel.setName("Navigation Panel");
+		navigationPanel.setBorder(BorderFactory.createRaisedBevelBorder());
 
 		this.add(navigationPanel, BorderLayout.NORTH);
 		//System.out.println("Size of Navigation Bar:\nW: " + navigationPanel.getWidth() + "\nH: " + navigationPanel.getHeight());
@@ -125,6 +130,7 @@ public class NavigationController extends JPanel {
 		this.add(this.viewShown, BorderLayout.CENTER);
 		this.backButton.setVisible(false);
 		this.initialView = this.viewShown;
+		this.currentPageDescriptionLabel.setText(firstView.getName());
 	}
 
 	//Now, for the control
@@ -141,8 +147,12 @@ public class NavigationController extends JPanel {
 		}else{
 			//If there is not a view currently shown, no need to add it to the stack before hand
 			System.out.println("Could not locate a previous view");
+			this.viewShown = panelToDisplay;
+			this.add(this.viewShown, BorderLayout.CENTER);
+			this.backButton.setVisible(false);
+			this.initialView = this.viewShown;
 		}
-		System.out.println("Size of Stack: " + this.panelsDisplayed.size());
+		//System.out.println("Size of Stack: " + this.panelsDisplayed.size());
 
 		//Now that the view is ready, display it
 		this.add(panelToDisplay, BorderLayout.CENTER);
@@ -171,9 +181,9 @@ public class NavigationController extends JPanel {
 			newPanel.setVisible(true);
 			this.viewShown = newPanel;
 		}else{
-			System.out.println("Nothing found int he stack");
+			System.out.println("Nothing found in the stack");
 		}
-		
+
 
 		currentPageDescriptionLabel.setText((this.viewShown.getName() != null) ? this.viewShown.getName() : "No Title");
 
@@ -198,15 +208,15 @@ public class NavigationController extends JPanel {
 	public void reset(){
 		//Remove all items from the stack, except the first
 		while(this.panelsDisplayed.size() > 0){
-			this.panelsDisplayed.pop();
+			dismissView();
 		}
-		System.out.println("Size of stack: " + this.panelsDisplayed.size());
+		//System.out.println("Size of stack: " + this.panelsDisplayed.size());
 
 		verifyBackButton();
 		setInitialView(initialView);
-		
+
 	}
-	
+
 	private void verifyBackButton(){
 		if(this.panelsDisplayed.size() == 0){
 			backButton.setVisible(false);

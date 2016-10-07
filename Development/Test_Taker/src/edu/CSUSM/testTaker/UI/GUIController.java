@@ -7,9 +7,11 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Random;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 import javax.swing.UIManager;
 
 import com.jtizz.NavigationController.NavigationController;
@@ -29,6 +31,7 @@ public class GUIController extends JFrame {
 	public static final int FRAME_WIDTH = 750, FRAME_HEIGHT = 500;		//Frame dimensions
 	private static final double DEFAULT_OFFSET = 5.0;					//Distance between frame and panels
 	public static LibraryController currentLib;								//Accesses the current library
+	private JPanel parentPanel;
 
 
 	/**
@@ -46,55 +49,107 @@ public class GUIController extends JFrame {
 		//currentLib = new LibraryController();
 	}
 
+	/**
+	 * @Description Builds the side menu, the main navigation controllers (One for each side menu option) and the Page Manager (to control the Side Menu actions)
+	 * @author Justin Goulet
+	 * @DateModified Oct 5, 2016
+	 */
 	public GUIController(){
 		super();
 
 		//Build the frame
 		buildFrame();
 
-		//Add a panel. Note that this one is just a blank template. There will be a new heiarchy when created.
-		//Set the layout
-		this.setLayout(null);
+		//Add the navigation Controller
+		/** Main Page */
+		final NavigationController mainNavigationController = new NavigationController();
 
-		//Create the side menu
-		SideMenu sm = new SideMenu(new String[]{"Home", "Courses", "Study Tools", "Statistics"});
-		this.add(sm, BorderLayout.WEST);
-
+		CustomPage mainPage = new CustomPage(CustomPage.PanelType.LOGO_ONLY_TYPE, NavigationController.applicationImage);
+		mainPage.setName(SideMenu.menuOptionButtons[0].getText());
+		mainNavigationController.setInitialView(mainPage);
 		
-		//Add the main Frame
-		//Optiom 1
-		CustomPage livePage = new CustomPage(CustomPage.PanelType.LOGO_ONLY_TYPE, "https://github.com/Software-Engineering-CSUSM/Test-Taker/blob/master/Team%20Graphics/Test_Taker_LogoOption3.png?raw=true");
-
-		//Option 2
-		//CustomPage livePage = new CustomPage(CustomPage.PanelType.LOGO_ONLY_TYPE, "https://cloud.githubusercontent.com/assets/21960249/18531998/20f5cf92-7a8e-11e6-8774-6e881f0f5051.png?raw=true");
-		this.add(livePage);
-
-		CustomPage courses = new CustomPage(CustomPage.PanelType.TWO_BUTTON_TYPE);
-		this.add(courses);
-
-		CustomPage studyTools = new CustomPage(CustomPage.PanelType.THREE_BUTTON_TYPE);
-		this.add(studyTools);
-
-		//Create the page manager. This will take in all created views (just the first page of them) and the buttons from the side menu.
-		//Then, it will handle all events
-		PageManager pm = new PageManager(SideMenu.menuOptionButtons, new CustomPage[]{livePage, courses, studyTools}, 0);
-
-		UIManager.put("Button.disabledText", Color.red);	//Sets the color of the disbaled text
-
-		/** For testing */
+		//After we create the main page, we need to create more. 
+		//Note that each subview will have its own nvaigation controller
+		/** Courses */
+		final NavigationController coursesNC = new NavigationController();
 		
+		CustomPage coursesMain = new CustomPage(CustomPage.PanelType.TWO_BUTTON_TYPE);
+		coursesMain.setName(SideMenu.menuOptionButtons[1].getText());
+		coursesNC.setInitialView(coursesMain);
+		
+		//For testing purposes, add a second page to the courses page. 
+		/**
+		 * Ideally, the courses main will extend the CustomPage class and become its own class.
+		 * All that is going to happen in the next few lines will be in that class.
+		 */
+		/**start Sample*/
+		coursesMain.currentActions[0].addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				CustomPage testPage = new CustomPage(CustomPage.PanelType.THREE_BUTTON_TYPE);
+				coursesNC.displayView(testPage);
+			}
+		});
+		
+		/**end Sample*/
+		
+		/** Study Tools */
+		final NavigationController studyToolsNC = new NavigationController();
+		
+		CustomPage studyToolsMain = new CustomPage(CustomPage.PanelType.THREE_BUTTON_TYPE);
+		studyToolsMain.setName(SideMenu.menuOptionButtons[2].getText());
+		studyToolsNC.setInitialView(studyToolsMain);
+		
+		/** Statistics */
+		final NavigationController statsNC = new NavigationController();
+		
+		CustomPage statsMain = new CustomPage(CustomPage.PanelType.LOGO_ONLY_TYPE);
+		statsMain.setName(SideMenu.menuOptionButtons[3].getText());
+		statsNC.setInitialView(statsMain);
 
-
-		/** End of testing */
+		/** Page manager to control the side menu use */
+		PageManager<NavigationController> pm = new PageManager<NavigationController>(this.parentPanel, SideMenu.menuOptionButtons, new NavigationController[]{mainNavigationController, coursesNC, studyToolsNC, statsNC}, 0);
+		pm.hideAllPanelsButAtIndex(0);
+		
+		
+		//When the side buttons are selected, update the title in the navigation controller
+		for(JButton temp : SideMenu.menuOptionButtons){
+			temp.addActionListener(new ActionListener(){
+				public void actionPerformed(ActionEvent e){
+					//Anything else that needs to be added to all of the side buttons
+					/** Reset all Navigation Controllers to return to the first page */
+					mainNavigationController.reset();
+					coursesNC.reset();
+					studyToolsNC.reset();
+					statsNC.reset();
+				}
+			});
+		}
+		
 	}
 
+
+
+	/**
+	 * @Description Builds the standard frame
+	 * @author Justin Goulet
+	 * @DateModified Oct 5, 2016
+	 */
 	private void buildFrame(){
 
 		this.setSize(FRAME_WIDTH, FRAME_HEIGHT);
+		this.setTitle("Testing Application");
 		this.setLocationRelativeTo(null);
+		this.setLayout(new BorderLayout());
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setResizable(false);
-		this.setTitle("Test Taker");
+		
+		this.setVisible(true);
+		this.parentPanel = new JPanel();
+		this.parentPanel.setLayout(new BorderLayout());
+		this.add(this.parentPanel, BorderLayout.CENTER);
+		
+		//Add the side menu
+		SideMenu sm = new SideMenu(new String[]{"Home", "Courses", "Study Tools", "Statistics"});
+		this.add(sm, BorderLayout.WEST);
 
 	}
 

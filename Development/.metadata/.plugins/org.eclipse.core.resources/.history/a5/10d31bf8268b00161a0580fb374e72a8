@@ -1,0 +1,9 @@
+package edu.CSUSM.testTaker.UI;
+
+public class View <CustomPanelName> extends JPanel{
+	
+	
+	
+	
+	
+}
