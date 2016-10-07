@@ -1,3 +1,8 @@
-GitRepositoriesView.GitDirectories=/Users/Justin/.git\:
-GitRepositoriesView.GitDirectories.relative=/Users/Justin/.git\:
+<<<<<<< HEAD
+GitRepositoriesView.GitDirectories=/Users/justin/Documents/Organized Documents/My Documents/School Stuff/CSUSM/Fall 2016/Software Engineering/SE Group Project/.git\:/Users/Justin/.git\:
+GitRepositoriesView.GitDirectories.relative=/Users/justin/Documents/Organized Documents/My Documents/School Stuff/CSUSM/Fall 2016/Software Engineering/SE Group Project/.git\:/Users/Justin/.git\:
+=======
+GitRepositoriesView.GitDirectories=/Users/ChrisChilders/Desktop/CS 441/Test-Taker/.git\:
+GitRepositoriesView.GitDirectories.relative=/Users/ChrisChilders/Desktop/CS 441/Test-Taker/.git\:
+>>>>>>> chrischilders
 eclipse.preferences.version=1
