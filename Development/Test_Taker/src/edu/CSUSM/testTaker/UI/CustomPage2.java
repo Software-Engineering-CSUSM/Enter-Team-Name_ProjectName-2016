@@ -31,7 +31,7 @@ import javax.swing.text.html.ImageView;
  * 				• QUESTION_BUILDER_TYPE	- has a question input, posible answer input and radio buttons to selct correct answer
  *
  */
-public class CustomPage extends JPanel {
+public class CustomPage2 extends JPanel {
 
 	/**
 	 * 
@@ -54,14 +54,14 @@ public class CustomPage extends JPanel {
 		QUESTION_BUILDER_TYPE
 	};
 
-	public CustomPage(PanelType currentPanelType, String imageAddress){
+	public CustomPage2(PanelType currentPanelType, String imageAddress){
 
 		super();
 
 		//Create the image from the image address
 		try {                
 			URL url = new URL(imageAddress);
-			CustomPage.mainLogoToDisplay = ImageIO.read(url);
+			CustomPage2.mainLogoToDisplay = ImageIO.read(url);
 		} catch (IOException ex) {
 			// handle exception...
 			System.out.println(ex.getMessage());
@@ -70,9 +70,9 @@ public class CustomPage extends JPanel {
 		buildPanel(currentPanelType);
 	}
 	
-	public CustomPage(PanelType currentPanelType, BufferedImage newImage){
+	public CustomPage2(PanelType currentPanelType, BufferedImage newImage){
 		super();
-		CustomPage.mainLogoToDisplay = newImage;
+		CustomPage2.mainLogoToDisplay = newImage;
 		buildPanel(currentPanelType);
 	}
 
@@ -81,7 +81,7 @@ public class CustomPage extends JPanel {
 	 * @param currentPanelType
 	 * @description Call if the image was already found
 	 */
-	public CustomPage(PanelType currentPanelType){
+	public CustomPage2(PanelType currentPanelType){
 		super();
 		//Set the layout
 		this.setLayout(new BorderLayout());
@@ -131,7 +131,7 @@ public class CustomPage extends JPanel {
 		imageLabel = new JLabel();
 		try{
 
-			Image img = CustomPage.mainLogoToDisplay;
+			Image img = CustomPage2.mainLogoToDisplay;
 			newImg = img.getScaledInstance((this.getWidth() == 0) ? 600 : this.getWidth(), (this.getHeight()/2 == 0) ? 250 : this.getHeight()/2,  java.awt.Image.SCALE_SMOOTH);
 			newIcon = new ImageIcon(newImg);
 			imageLabel.setIcon(newIcon);
@@ -266,7 +266,7 @@ public class CustomPage extends JPanel {
 	}
 
 	public static void setMainLogoToDisplay(BufferedImage mainLogoToDisplay) {
-		CustomPage.mainLogoToDisplay = mainLogoToDisplay;
+		CustomPage2.mainLogoToDisplay = mainLogoToDisplay;
 	}
 
 }

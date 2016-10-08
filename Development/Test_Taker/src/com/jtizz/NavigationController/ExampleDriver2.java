@@ -19,7 +19,7 @@ import edu.CSUSM.testTaker.UI.*;
  * @description Runs an example Application with the NavigationController Implementation.
  *
  */
-public class ExampleDriver extends JFrame{
+public class ExampleDriver2 extends JFrame{
 
 	/**
 	 * 
@@ -29,11 +29,11 @@ public class ExampleDriver extends JFrame{
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		new ExampleDriver();
+		new ExampleDriver2();
 
 	}
 	
-	public ExampleDriver(){
+	public ExampleDriver2(){
 		this.setSize(750, 500);
 		this.setTitle("Testing Application");
 		this.setLocationRelativeTo(null);
@@ -42,7 +42,7 @@ public class ExampleDriver extends JFrame{
 		
 		
 		//Add the navigation Controller
-		NavigationController nc = new NavigationController();
+		final NavigationController nc = new NavigationController();
 		this.add(nc, BorderLayout.CENTER);
 		nc.setBackground(Color.WHITE);
 		
@@ -87,7 +87,7 @@ public class ExampleDriver extends JFrame{
 		pm.hideAllPanelsButAtIndex(0);
 		
 		//Now, when a user selects a side menu option, we need to remove all items from the stack;
-		for(JButton sideBtn : SideMenu.menuOptionButtons){
+		for(final JButton sideBtn : SideMenu.menuOptionButtons){
 			sideBtn.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent e){
 					//Reset the views in teh current view

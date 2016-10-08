@@ -42,7 +42,7 @@ public class ExampleDriver extends JFrame{
 		
 		
 		//Add the navigation Controller
-		NavigationController nc = new NavigationController();
+		final NavigationController nc = new NavigationController();
 		this.add(nc, BorderLayout.CENTER);
 		nc.setBackground(Color.WHITE);
 		
@@ -87,7 +87,7 @@ public class ExampleDriver extends JFrame{
 		pm.hideAllPanelsButAtIndex(0);
 		
 		//Now, when a user selects a side menu option, we need to remove all items from the stack;
-		for(JButton sideBtn : SideMenu.menuOptionButtons){
+		for(final JButton sideBtn : SideMenu.menuOptionButtons){
 			sideBtn.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent e){
 					//Reset the views in teh current view

@@ -20,7 +20,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-public class NavigationController extends JPanel {
+public class NavigationController2 extends JPanel {
 
 	/**
 	 * 
@@ -44,7 +44,7 @@ public class NavigationController extends JPanel {
 	private JPanel viewShown, initialView;
 
 
-	public NavigationController(){
+	public NavigationController2(){
 
 		//For visibility, make the background black;
 		this.setBackground(Color.BLACK);
@@ -52,7 +52,7 @@ public class NavigationController extends JPanel {
 		addNavigationBar();
 	}
 
-	public NavigationController(BufferedImage applicationImage){
+	public NavigationController2(BufferedImage applicationImage){
 		this.setLayout(new BorderLayout());
 		NavigationController.applicationImage = applicationImage;
 		addNavigationBar();

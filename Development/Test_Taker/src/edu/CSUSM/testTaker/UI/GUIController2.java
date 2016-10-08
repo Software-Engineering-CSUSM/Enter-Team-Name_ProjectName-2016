@@ -22,7 +22,7 @@ import edu.CSUSM.testTaker.LibraryController;
  * @author Justin
  *
  */
-public class GUIController extends JFrame {
+public class GUIController2 extends JFrame {
 
 	/**
 	 * 
@@ -42,7 +42,7 @@ public class GUIController extends JFrame {
 		//Create the main Frame
 
 		//Set a particular panel to be built and shown
-		GUIController newController = new GUIController();
+		GUIController2 newController = new GUIController2();
 		newController.setVisible(true);
 
 		//Create the library reference
@@ -54,7 +54,7 @@ public class GUIController extends JFrame {
 	 * @author Justin Goulet
 	 * @DateModified Oct 5, 2016
 	 */
-	public GUIController(){
+	public GUIController2(){
 		super();
 
 		//Build the frame

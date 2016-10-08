@@ -19,7 +19,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-public class NavigationController extends JPanel {
+public class NavigationController2 extends JPanel {
 
 	/**
 	 * 
@@ -43,7 +43,7 @@ public class NavigationController extends JPanel {
 	private JPanel viewShown, initialView;
 
 
-	public NavigationController(){
+	public NavigationController2(){
 
 		//For visibility, make the background black;
 		this.setBackground(Color.BLACK);
@@ -51,19 +51,19 @@ public class NavigationController extends JPanel {
 		addNavigationBar();
 	}
 
-	public NavigationController(Image applicationImage){
+	public NavigationController2(Image applicationImage){
 		this.setLayout(new BorderLayout());
-		NavigationController.applicationImage = applicationImage;
+		NavigationController2.applicationImage = applicationImage;
 		addNavigationBar();
 	}
 
 	private void addNavigationBar(){
 		/** For Testing */
-		if(NavigationController.applicationImage == null){
+		if(NavigationController2.applicationImage == null){
 			URL url;
 			try {
 				url = new URL("https://github.com/Software-Engineering-CSUSM/Test-Taker/blob/master/Team%20Graphics/Test_Taker_LogoOption3.png?raw=true");
-				NavigationController.applicationImage = ImageIO.read(url);
+				NavigationController2.applicationImage = ImageIO.read(url);
 			} catch (MalformedURLException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
@@ -92,7 +92,7 @@ public class NavigationController extends JPanel {
 		//Just display an image in the panel
 		JLabel imageLabel = new JLabel();
 		try{
-			Image newImg = NavigationController.applicationImage.getScaledInstance(DEFAULT_NAVIGATION_BAR_HEIGHT*2, DEFAULT_NAVIGATION_BAR_HEIGHT,  java.awt.Image.SCALE_SMOOTH);
+			Image newImg = NavigationController2.applicationImage.getScaledInstance(DEFAULT_NAVIGATION_BAR_HEIGHT*2, DEFAULT_NAVIGATION_BAR_HEIGHT,  java.awt.Image.SCALE_SMOOTH);
 			ImageIcon newIcon = new ImageIcon(newImg);
 			imageLabel.setIcon(newIcon);
 		}

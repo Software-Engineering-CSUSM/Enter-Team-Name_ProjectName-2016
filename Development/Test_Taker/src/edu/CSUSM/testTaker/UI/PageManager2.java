@@ -8,7 +8,7 @@ import javax.swing.JPanel;
 
 //Manages the interaction between which buttons are pressed and which pages are shown
 
-public class PageManager <CustomViewType>{
+public class PageManager2 <CustomViewType>{
 	
 	public static JButton[] buttonsProvided;
 	public CustomViewType[] panelsToDisplay;
@@ -16,7 +16,7 @@ public class PageManager <CustomViewType>{
 	public static int firstPageShownIndex;
 	public static int previousPageIndex;			//Used for the subviews since the parent views don't have a previous. This will be used to return with a back button
 	
-	public PageManager(JPanel parentPanelVar, JButton[] btns, CustomViewType[] views, int indexOfFirstPageShown){
+	public PageManager2(JPanel parentPanelVar, JButton[] btns, CustomViewType[] views, int indexOfFirstPageShown){
 		PageManager.buttonsProvided = btns;
 		PageManager.firstPageShownIndex = indexOfFirstPageShown;
 		panelsToDisplay = views;
