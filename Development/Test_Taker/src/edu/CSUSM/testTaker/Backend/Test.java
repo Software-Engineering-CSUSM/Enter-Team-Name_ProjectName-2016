@@ -14,6 +14,7 @@ public class Test implements Serializable, Registerable{
 	transient ArrayList<Question> questionList;
 	ArrayList<String> questionIDs;
 	ArrayList<Integer> questionPoints;
+	public String _testName, _courseID;
 
 	String myID;
 	
@@ -27,8 +28,7 @@ public class Test implements Serializable, Registerable{
 	}
 	
 	//For testing purposes
-	public HashMap<String, Question> _listOfQuestionsInExam;		//Format: (String testID, Question questionWithIDBuiltIn)
-	public String _testName, _courseID;
+	//public HashMap<String, Question> _listOfQuestionsInExam;		//Format: (String testID, Question questionWithIDBuiltIn)
 
 	/**
 	 * @description does the work of setting up the class regardless of what vars are passed
@@ -62,9 +62,9 @@ public class Test implements Serializable, Registerable{
 	}
 	
 	/**
-	 * @param testName Name of test
-	 * @param listOfQuestionsForTest list of questions to add to the test
-	 * @param courseID course to assign the test to
+	 * @param testName Title of the test
+	 * @param listOfQuestionsForTest An ArrayList of Questions to add to the test
+	 * @param courseID ID of course that the test is associated with.
 	 * @author Justin Goulet
 	 */
 	public Test(String testName, ArrayList<Question> listOfQuestionsForTest, String courseID){
@@ -75,28 +75,75 @@ public class Test implements Serializable, Registerable{
 	
 	
 	/** Accessors */
+	
 	/**
-	 * @return current hashmap of questions (TestID, Question)
+	 * @brief Get an array of questions in the test.
+	 * @return The questions in the test, in order, at this moment in time.
 	 */
-	public HashMap<String, Question> getQuestions(){
-		return this._listOfQuestionsInExam;
+	public Question[] getQuestions(){
+		return questionList.toArray(null);
 	}
 	
-	/*
-	public String getTestID(){
-		return this._testID;
+	/**
+	 * Get a question from the test.
+	 * @param qn The index of the question to retrieve (0-indexed)
+	 * @return Reference to the question number asked for.
+	 */
+	public Question getQuestion(int qn){
+		return questionList.get(qn);
 	}
-	*/
+
+	/**
+	 * Get the number of questions presently in this test.
+	 * @return The length of the container of questions.
+	 */
+	public int numQuestions(){
+		return this.questionIDs.size();
+	}
 	
+	/**
+	 * Get the points value of a particular test question
+	 * @param qn The index of the question to retrieve (0-indexed)
+	 * @return The value of the question within this test in points.
+	 */
+	public int getQuestionPoints(int qn){
+		return questionPoints.get(qn);
+	}
+	
+	/**
+	 * Get title of the test.
+	 * @return The name of this test.
+	 */
 	public String getTestName(){
 		return this._testName;
 	}
 	
+	/**
+	 * Get the associated course.
+	 * @return The identifier string of the course this test is filed u
+	 */
 	public String getCourseID(){
 		return this._courseID;
 	}
 	
 	/** Mutators */
+	
+	/**
+	 * Allows client to set the points value of a particular question of the test.
+	 * @param qn The index (0-based) of the question to set the value of.
+	 * @param qp The number of points to value the question at.
+	 * @return true for success
+	 */
+	public boolean setQuestionPoints(int qn, int qp){
+		if(questionPoints.size() < qn && qn >= 0){
+			questionPoints.set(qn, qp);
+			LibraryController.storeTest(this);
+			return true;
+		}
+		LibraryController.storeTest(this);
+		return false;
+	}
+	
 	/**
 	 * @brief Add a new question to the test.
 	 * @param QuestionToAdd A Question to add to the question list for this test.
@@ -106,7 +153,7 @@ public class Test implements Serializable, Registerable{
 		questionList.add(QuestionToAdd);
 		questionIDs.add(QuestionToAdd.getID());
 		questionPoints.add(questionvalue);
-		QuestionToAdd.setTestID(getID());
+		//QuestionToAdd.setTestID(getID());
 		LibraryController.storeTest(this);		
 	}
 
