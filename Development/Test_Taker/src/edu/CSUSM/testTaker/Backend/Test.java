@@ -3,7 +3,7 @@ package edu.CSUSM.testTaker.Backend;
 import edu.CSUSM.testTaker.*;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.AbstractList;
 import java.util.UUID;
 
 import java.io.Serializable;
@@ -14,12 +14,11 @@ public class Test implements Serializable, Registerable{
 	transient ArrayList<Question> questionList;
 	ArrayList<String> questionIDs;
 	ArrayList<Integer> questionPoints;
-	public String _testName, _courseID;
-
+	String _testName, _courseID;
 	String myID;
 	
 	
-	/** @brief Get the ID of the test for database storage and retrieval
+	/**  Get the ID of the test for database storage and retrieval
 	 * @return unique ID string of this Test
 	 * @author Steven Clark
 	 */
@@ -44,6 +43,7 @@ public class Test implements Serializable, Registerable{
 
 	
 	/**
+	 * Initialize blank test with only a Title
 	 * @param testName The name of the test we just created
 	 * @author Justin Goulet
 	 */
@@ -52,32 +52,55 @@ public class Test implements Serializable, Registerable{
 	}
 	
 	/**
+	 * Initialize from title and List of Questions
 	 * @param testName Name of test
 	 * @param listOfQuestionsForTest list of questions to add to the test
 	 * @author Justin Goulet
 	 */
-	public Test(String testName, ArrayList<Question> listOfQuestionsForTest){
+	public Test(String testName, AbstractList<Question> listOfQuestionsForTest){
 		this._testName = testName;
 		setQuestionList(listOfQuestionsForTest);
 	}
 	
 	/**
+	 * Initialize from Title, List of questions, and associated Course
 	 * @param testName Title of the test
 	 * @param listOfQuestionsForTest An ArrayList of Questions to add to the test
 	 * @param courseID ID of course that the test is associated with.
 	 * @author Justin Goulet
 	 */
-	public Test(String testName, ArrayList<Question> listOfQuestionsForTest, String courseID){
+	public Test(String testName, AbstractList<Question> listOfQuestionsForTest, String courseID){
 		this._testName = testName;
 		setQuestionList(listOfQuestionsForTest);
 		this._courseID = courseID;
 	}
 	
+	/**
+	 * Initialize a new test from a Title and a list of question ID strings.
+	 * @param testName The title of the new test
+	 * @param qids The question ids to import into the test
+	 */
+	public Test(String testName, String ... qids){
+		this._testName=testName;
+		for(String qid : qids){
+			questionIDs.add(qid);
+		}
+		initQuestions();
+	}
 	
 	/** Accessors */
+
+	/**
+	 * Give identifier strings of all questions in Test.
+	 * @return An array with the IDs of all Questions in this Test.
+	 */
+	public String[] getQuestionIDs(){
+		return questionIDs.toArray(null);
+	}
+	
 	
 	/**
-	 * @brief Get an array of questions in the test.
+	 *  Get an array of questions in the test.
 	 * @return The questions in the test, in order, at this moment in time.
 	 */
 	public Question[] getQuestions(){
@@ -129,6 +152,23 @@ public class Test implements Serializable, Registerable{
 	/** Mutators */
 	
 	/**
+	 * Utility function to initialize reference array and optionally points from just Question IDs.
+	 */
+	public void initQuestions(){
+		questionList = new ArrayList<Question>(questionIDs.size());
+		for(String tempID : questionIDs){
+			questionList.add(LibraryController.retrieveQuestion(tempID));
+		}
+		if(questionPoints == null){
+			questionPoints = new ArrayList<Integer>(questionIDs.size());
+			for(String tempID : questionIDs){
+				questionPoints.add(0);
+			}
+			LibraryController.storeTest(this);
+		}
+	}
+	
+	/**
 	 * Allows client to set the points value of a particular question of the test.
 	 * @param qn The index (0-based) of the question to set the value of.
 	 * @param qp The number of points to value the question at.
@@ -145,7 +185,7 @@ public class Test implements Serializable, Registerable{
 	}
 	
 	/**
-	 * @brief Add a new question to the test.
+	 *  Add a new question to the test.
 	 * @param QuestionToAdd A Question to add to the question list for this test.
 	 * @param questionvalue An integer number of points to value the question at.
 	 */
@@ -158,7 +198,7 @@ public class Test implements Serializable, Registerable{
 	}
 
 	/**
-	 * @brief Add a new question to the test.
+	 *  Add a new question to the test.
 	 * @param QuestionToAdd A Question to add to the question list for this test.
 	 */
 	public void addQuestion(Question QuestionToAdd){
@@ -167,6 +207,17 @@ public class Test implements Serializable, Registerable{
 		questionPoints.add(0);
 		QuestionToAdd.setTestID(getID());
 		LibraryController.storeTest(this);		
+	}
+	
+	
+	/**
+	 * Remove a particular question number from the test.
+	 * @param qn The index of the question to remove.
+	 */
+	public void removeQuestion(int qn){
+		questionList.remove(qn);
+		questionIDs.remove(qn);
+		questionPoints.remove(qn);
 	}
 	
 	
@@ -190,56 +241,39 @@ public class Test implements Serializable, Registerable{
 	
 	/**
 	 * Utility function sets/resets the list of questions
-	 * @param newQuestionList an ArrayList of Question refs to insert
+	 * @param newQuestionList an array of Question refs to insert
 	 */
-	public void setQuestionList(ArrayList<Question> newQuestionList){
-		_listOfQuestionsInExam.clear();
+	public void setQuestionList(Question[] newQuestionList){
+		questionList.clear();
+		questionIDs.clear();
+		questionPoints.clear();
 		
 		//Iterate through the list and add to the question map. we are going to add the test ID to each of the questions.
-		for(Question tempQuestion : newQuestionList){
-			
-			//Print out the question
-			System.out.println(tempQuestion.toString());
-			
-			//Print out the TEstID
-			System.out.println("Question ID: " + tempQuestion);
-			
-			tempQuestion.setTestID(getID());
-			this.questionList.add(tempQuestion);
-			this.questionIDs.add(tempQuestion.getID());
+		for(Question tempQuestion : newQuestionList){			
+			questionList.add(tempQuestion);
+			questionIDs.add(tempQuestion.getID());
+			questionPoints.add(0);
 		}
 		LibraryController.storeTest(this);
 	}
-	
-	/** @author John Orcino
-	 * PARAMETER: May need one
-	 * FUNCTION: gets the Id for the question to have the array of questions and answers
+
+	/**
+	 * Utility function sets/resets the list of questions
+	 * @param newQuestionList a List of Question refs to insert
 	 */
-	public void getQuestionIDs(){
+	public void setQuestionList(AbstractList<Question> newQuestionList){
+		questionList.clear();
+		questionIDs.clear();
+		questionPoints.clear();
 		
+		//Iterate through the list and add to the question map. we are going to add the test ID to each of the questions.
+		for(Question tempQuestion : newQuestionList){			
+			questionList.add(tempQuestion);
+			questionIDs.add(tempQuestion.getID());
+			questionPoints.add(0);
+		}
+		LibraryController.storeTest(this);
 	}
-	
-	/** @author John Orcino
-	 * 	FUNCTION: adds up the total points of the test and returns it
-	 */
-	public int totalPointsScored(){
-		int tot = 0;
-		
-		//iterator adding up the question points 
-		
-		return tot;
-	}
-	
-	/*	@Author: John Orcino
-	 * 	@PARAMETERS:
-	 * 	@FUNCTION: Display the question and answers, stores the user's answer
-	 * 
-	 */
-	
-	public void testDisplay(){
-		//iterator that uses the array of answers and questions and displays them
-	}
-	
 	
 	
 	/**
@@ -253,12 +287,12 @@ public class Test implements Serializable, Registerable{
         //Create the initial question
         String thisTestString = "Test: " + this._testName;
         
-        System.out.println("Question Size: " + _listOfQuestionsInExam);
+        System.out.println("Question Size: " + questionList.size());
                 
-        if(_listOfQuestionsInExam != null && _listOfQuestionsInExam.size() > 0){
+        if(questionList != null && questionList.size() > 0){
         	//Now, add each of the possible answers in the provided question
-            for(Question tempQuestion : _listOfQuestionsInExam.values()){
-            	thisTestString += "\n\t" + tempQuestion;
+            for(Question tempQuestion : questionList){
+            	thisTestString += "\n\t" + tempQuestion.toString();
             }
         }else{
         	return "No questions yet in test: " + thisTestString + "\n";
