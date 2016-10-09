@@ -44,6 +44,7 @@ public class GUIController2 extends JFrame {
 		//Set a particular panel to be built and shown
 		GUIController2 newController = new GUIController2();
 		newController.setVisible(true);
+		System.out.println("Hello");
 
 		//Create the library reference
 		//currentLib = new LibraryController();

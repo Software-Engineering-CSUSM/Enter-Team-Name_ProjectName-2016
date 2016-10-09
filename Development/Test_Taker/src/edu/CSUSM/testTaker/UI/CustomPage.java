@@ -41,10 +41,13 @@ public class CustomPage extends JPanel {
 	public static Image newImg;
 	public static ImageIcon newIcon;
 	public JLabel imageLabel = new JLabel();
-	private static int centerOfNewFrame;
+	protected static int centerOfNewFrame;
 	public JButton[] currentActions;
 	public String panelTypeString;
 
+	// Created an array of string for the button names
+	private static final int MAX_NUMBER_OF_BUTTONS = 10;
+	protected static String[] buttonName = new String[MAX_NUMBER_OF_BUTTONS];
 
 
 	public static enum PanelType{
@@ -67,13 +70,13 @@ public class CustomPage extends JPanel {
 			System.out.println(ex.getMessage());
 		}
 
-		buildPanel(currentPanelType);
+		buildPanel(currentPanelType, buttonName);
 	}
 	
 	public CustomPage(PanelType currentPanelType, BufferedImage newImage){
 		super();
 		CustomPage.mainLogoToDisplay = newImage;
-		buildPanel(currentPanelType);
+		buildPanel(currentPanelType, buttonName);
 	}
 
 
@@ -87,11 +90,35 @@ public class CustomPage extends JPanel {
 		this.setLayout(new BorderLayout());
 		
 		//Build the contents
-		buildPanel(currentPanelType);
+		buildPanel(currentPanelType, buttonName);
+		
+
+	}
+	/* @author Jeremy
+	 * Created a new constructor with an array of strings
+	 * containing the button names passed from the 
+	 * GUIController
+	 * 
+	 * @param currentPanelType
+	 * @param buttonName
+	 */
+	public CustomPage(PanelType currentPanelType, String[] buttonName){
+		super();
+		//Set the layout
+		this.setLayout(new BorderLayout());
+		
+		//Build the contents
+		buildPanel(currentPanelType, buttonName);
+		
 
 	}
 
-	private void buildPanel(PanelType currentPanelType){
+	/*
+	 *  added String[] to arguments of createButton Types which is passed
+	 *  through buildPanel, so I added a String[] argument here as well
+	 * 
+	 */
+	protected void buildPanel(PanelType currentPanelType, String[] buttonName){
 		
 		//Set the string value of the panel type
 		this.panelTypeString = currentPanelType.toString();
@@ -101,11 +128,12 @@ public class CustomPage extends JPanel {
 
 		switch(currentPanelType){
 		case TWO_BUTTON_TYPE:
-			createTwoButtonType();
+		
+			createTwoButtonType(buttonName);
 			break;
 
 		case THREE_BUTTON_TYPE:
-			createThreeButtonType();
+			createThreeButtonType(buttonName);
 			break;
 
 		case LOGO_ONLY_TYPE:
@@ -121,12 +149,12 @@ public class CustomPage extends JPanel {
 		}
 	}
 
-	private void createLogoType(){
+	protected void createLogoType(){
 
 		//Set the background color
 		this.setBackground(Color.WHITE);				//Option 1
 		//this.setBackground(new Color(39, 72, 155));	//Option 2
-
+		
 		//Just display an image in the panel
 		imageLabel = new JLabel();
 		try{
@@ -150,9 +178,16 @@ public class CustomPage extends JPanel {
 		this.add(imageLabel, BorderLayout.CENTER);
 
 	}
+	
+/*
+ *  	added String[] to arguments of createButton Types
+ *	    to name the buttons with the string passed from
+ *	    the GUIController
+ * 
+ */
+	
 
-
-	private void createTwoButtonType(){
+	protected void createTwoButtonType(String[] buttonName){
 		this.setBackground(Color.WHITE);
 
 		/** Later
@@ -170,11 +205,17 @@ public class CustomPage extends JPanel {
 
 		centerOfNewFrame = iconLabel.getHeight() - iconLabel.getY();
 
-		addButtons(2);
+		addButtons(2, buttonName);
+		
+	
+		/* 
+		 * Modified same as createTwoButtonType 
+		 */
+		
 
 	}
 
-	private void createThreeButtonType(){
+	protected void createThreeButtonType(String[] buttonName){
 		this.setBackground(Color.WHITE);
 
 		JLabel iconLabel = new JLabel();
@@ -188,14 +229,19 @@ public class CustomPage extends JPanel {
 		iconLabel.setVerticalAlignment(JLabel.CENTER);
 
 		//centerOfNewFrame = (this.getHeight() - (this.getHeight() - iconLabel.getHeight()));
-
-		addButtons(3);
+		
+		//pass the string of the button name along with #of buttons
+		addButtons(3, buttonName);  
+		
 
 	}
 
-	private void addButtons(int count){
+	/* 
+	 * Modified addButtons to rename to string
+	 */
+	protected void addButtons(int count, String[] buttonName){
 		
-		/*
+		/**
 		currentActions = new JButton[count+1];
 		int originOfButton = 0;
 		int yValue = centerOfNewFrame + 25;	//Added 25 to move the first button down (25 px after logo)
@@ -245,7 +291,7 @@ public class CustomPage extends JPanel {
 		this.currentActions = new JButton[count];
 		
 		for(int i = 0; i < count; i++){
-			this.currentActions[i] = new JButton("Button " + (i+1));
+			this.currentActions[i] = new JButton(buttonName[i]);  //Sets the button name to the string passed from GUIcontroller
 			this.currentActions[i].setBackground(new Color(85,85,85));
 			this.currentActions[i].setOpaque(true);
 			this.currentActions[i].setBorder(new EmptyBorder(50,0,50,0));
@@ -254,8 +300,6 @@ public class CustomPage extends JPanel {
 			this.currentActions[i].setFont(new Font(Font.SERIF, Font.BOLD | Font.ITALIC, 24));
 		}
 	}
-
-
 
 
 

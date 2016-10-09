@@ -169,7 +169,7 @@ public class CustomPage2 extends JPanel {
 		iconLabel.setVerticalAlignment(JLabel.CENTER);
 
 		centerOfNewFrame = iconLabel.getHeight() - iconLabel.getY();
-
+		
 		addButtons(2);
 
 	}
@@ -254,8 +254,6 @@ public class CustomPage2 extends JPanel {
 			this.currentActions[i].setFont(new Font(Font.SERIF, Font.BOLD | Font.ITALIC, 24));
 		}
 	}
-
-
 
 
 

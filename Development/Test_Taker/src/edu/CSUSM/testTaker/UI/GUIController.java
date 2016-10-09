@@ -67,26 +67,28 @@ public class GUIController extends JFrame {
 		CustomPage mainPage = new CustomPage(CustomPage.PanelType.LOGO_ONLY_TYPE, NavigationController.applicationImage);
 		mainPage.setName(SideMenu.menuOptionButtons[0].getText());
 		mainNavigationController.setInitialView(mainPage);
-		
+
 		//After we create the main page, we need to create more. 
 		//Note that each subview will have its own nvaigation controller
 		/** Courses */
 		final NavigationController coursesNC = new NavigationController();
 		
-		CustomPage coursesMain = new CustomPage(CustomPage.PanelType.TWO_BUTTON_TYPE);
+		CustomPage coursesMain = new CustomPage(CustomPage.PanelType.TWO_BUTTON_TYPE, (new String[]{"Math", "Biology"}));
 		coursesMain.setName(SideMenu.menuOptionButtons[1].getText());
 		coursesNC.setInitialView(coursesMain);
-		
+
 		//For testing purposes, add a second page to the courses page. 
 		/**
 		 * Ideally, the courses main will extend the CustomPage class and become its own class.
 		 * All that is going to happen in the next few lines will be in that class.
 		 */
 		/**start Sample*/
+				
 		coursesMain.currentActions[0].addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				CustomPage testPage = new CustomPage(CustomPage.PanelType.THREE_BUTTON_TYPE);
+				CustomPage testPage = new CustomPage(CustomPage.PanelType.TWO_BUTTON_TYPE, (new String[]{"Algebra", "Geometry"}));
 				coursesNC.displayView(testPage);
+		
 			}
 		});
 		
@@ -95,16 +97,25 @@ public class GUIController extends JFrame {
 		/** Study Tools */
 		final NavigationController studyToolsNC = new NavigationController();
 		
-		CustomPage studyToolsMain = new CustomPage(CustomPage.PanelType.THREE_BUTTON_TYPE);
+		CustomPage studyToolsMain = new CustomPage(CustomPage.PanelType.THREE_BUTTON_TYPE, (new String[]{"Quiz", "Flashcard", "Other"}));
 		studyToolsMain.setName(SideMenu.menuOptionButtons[2].getText());
 		studyToolsNC.setInitialView(studyToolsMain);
 		
+			
 		/** Statistics */
 		final NavigationController statsNC = new NavigationController();
 		
 		CustomPage statsMain = new CustomPage(CustomPage.PanelType.LOGO_ONLY_TYPE);
 		statsMain.setName(SideMenu.menuOptionButtons[3].getText());
 		statsNC.setInitialView(statsMain);
+		
+		studyToolsMain.currentActions[0].addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				CustomPage testPage = new CustomPage(CustomPage.PanelType.THREE_BUTTON_TYPE);
+				coursesNC.displayView(testPage);
+
+			}
+		});
 
 		/** Page manager to control the side menu use */
 		PageManager<NavigationController> pm = new PageManager<NavigationController>(this.parentPanel, SideMenu.menuOptionButtons, new NavigationController[]{mainNavigationController, coursesNC, studyToolsNC, statsNC}, 0);
@@ -150,7 +161,7 @@ public class GUIController extends JFrame {
 		//Add the side menu
 		SideMenu sm = new SideMenu(new String[]{"Home", "Courses", "Study Tools", "Statistics"});
 		this.add(sm, BorderLayout.WEST);
-
+		
 	}
 
 
