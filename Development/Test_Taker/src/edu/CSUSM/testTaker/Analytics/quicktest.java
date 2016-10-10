@@ -20,7 +20,7 @@ import java.io.IOException;
 
 /**
  * A simple example of how to access the Google Analytics API using a service
- * account.
+ * account. 
  */
 /*
 public class HelloAnalytics {

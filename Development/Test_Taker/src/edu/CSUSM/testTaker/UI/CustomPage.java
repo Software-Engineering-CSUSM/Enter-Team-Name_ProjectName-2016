@@ -3,22 +3,20 @@ package edu.CSUSM.testTaker.UI;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.Graphics;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 
 import javax.imageio.ImageIO;
-import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.text.html.ImageView;
 
 /**
  * 
@@ -168,7 +166,7 @@ public class CustomPage extends JPanel {
 		iconLabel.setHorizontalAlignment(JLabel.CENTER);
 		iconLabel.setVerticalAlignment(JLabel.CENTER);
 
-		centerOfNewFrame = iconLabel.getHeight() - iconLabel.getY();
+		CustomPage.centerOfNewFrame = iconLabel.getHeight() - iconLabel.getY();
 
 		addButtons(2);
 
@@ -239,12 +237,28 @@ public class CustomPage extends JPanel {
 		//Add a panel to the south for the buttons
 		
 		JPanel buttonHolder = new JPanel();
-		buttonHolder.setLayout(new GridLayout(1, 1, 10,10));	//May need to be gridbaglayout
+		buttonHolder.setLayout(new GridBagLayout());	//May need to be gridbaglayout
+	    GridBagConstraints c = new GridBagConstraints();
 		this.add(buttonHolder, BorderLayout.SOUTH);
 		
 		this.currentActions = new JButton[count];
 		
 		for(int i = 0; i < count; i++){
+			
+			c.gridwidth = 1;
+			c.gridheight = 1;
+			c.gridx = i % 2;
+			c.gridy = (i % 2 == 0 && i > 0) ? c.gridy++ : c.gridy;
+			
+			this.currentActions[i] = new JButton("Button " + (i+1));
+			this.currentActions[i].setBackground(new Color(85,85,85));
+			this.currentActions[i].setOpaque(true);
+			this.currentActions[i].setBorder(new EmptyBorder(50,0,50,0));
+			this.currentActions[i].setBorder(new EmptyBorder(50,0,50,0));
+			buttonHolder.add(this.currentActions[i], c);
+			
+			
+			/*
 			this.currentActions[i] = new JButton("Button " + (i+1));
 			this.currentActions[i].setBackground(new Color(85,85,85));
 			this.currentActions[i].setOpaque(true);
@@ -252,7 +266,12 @@ public class CustomPage extends JPanel {
 			buttonHolder.add(this.currentActions[i]);
 			this.currentActions[i].setForeground(Color.WHITE);
 			this.currentActions[i].setFont(new Font(Font.SERIF, Font.BOLD | Font.ITALIC, 24));
+			*/
 		}
+	}
+	
+	public void setButtonNames(String[] btnNames){
+		
 	}
 
 

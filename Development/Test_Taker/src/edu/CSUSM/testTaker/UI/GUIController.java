@@ -4,19 +4,15 @@
 package edu.CSUSM.testTaker.UI;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Random;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.UIManager;
-
-import com.jtizz.NavigationController.NavigationController;
 
 import edu.CSUSM.testTaker.LibraryController;
+import edu.CSUSM.testTaker.UI.Pages.QuizMain;
 
 /**
  * @author Justin
@@ -29,9 +25,10 @@ public class GUIController extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 	public static final int FRAME_WIDTH = 750, FRAME_HEIGHT = 500;		//Frame dimensions
-	private static final double DEFAULT_OFFSET = 5.0;					//Distance between frame and panels
+	//private static final double DEFAULT_OFFSET = 5.0;					//Distance between frame and panels
 	public static LibraryController currentLib;								//Accesses the current library
 	private JPanel parentPanel;
+	public static NavigationController navCont;
 
 
 	/**
@@ -73,9 +70,14 @@ public class GUIController extends JFrame {
 		/** Courses */
 		final NavigationController coursesNC = new NavigationController();
 		
+		/*
 		CustomPage coursesMain = new CustomPage(CustomPage.PanelType.TWO_BUTTON_TYPE);
 		coursesMain.setName(SideMenu.menuOptionButtons[1].getText());
-		coursesNC.setInitialView(coursesMain);
+		coursesNC.setInitialView(coursesMain);*/
+		QuizMain quiz = new QuizMain(CustomPage.PanelType.TWO_BUTTON_TYPE);
+		quiz.setName("Quiz Main");
+		coursesNC.setInitialView(quiz);
+		
 		
 		//For testing purposes, add a second page to the courses page. 
 		/**
@@ -83,7 +85,7 @@ public class GUIController extends JFrame {
 		 * All that is going to happen in the next few lines will be in that class.
 		 */
 		/**start Sample*/
-		coursesMain.currentActions[0].addActionListener(new ActionListener(){
+		quiz.currentActions[0].addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				CustomPage testPage = new CustomPage(CustomPage.PanelType.THREE_BUTTON_TYPE);
 				coursesNC.displayView(testPage);

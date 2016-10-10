@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring accessors="true" comment="Delete 6 elements from project &apos;TestTaker&apos;&#x0A;- Original project: &apos;TestTaker&apos;&#x0A;- Original elements:&#x0A;     CustomPage 2.java&#x0A;     GUIController 2.java&#x0A;     NavigationController 2.java&#x0A;     PageManager 2.java&#x0A;     RoundedBorder 2.java&#x0A;     SideMenu 2.java" description="Delete elements" element1="src/edu/CSUSM/testTaker/UI/SideMenu 2.java" element2="src/edu/CSUSM/testTaker/UI/PageManager 2.java" element3="src/edu/CSUSM/testTaker/UI/NavigationController 2.java" element4="src/edu/CSUSM/testTaker/UI/RoundedBorder 2.java" element5="src/edu/CSUSM/testTaker/UI/GUIController 2.java" element6="src/edu/CSUSM/testTaker/UI/CustomPage 2.java" elements="0" flags="589830" id="org.eclipse.jdt.ui.delete" resources="6" stamp="1476113430360" subPackages="false" version="1.0"/>
+</session>

@@ -92,7 +92,7 @@
 <entry path="/Library/Java/JavaVirtualMachines/jdk1.8.0_102.jdk/Contents/Home/jre/lib/endorsed"/>
 </endorsedDirs>
 </libraryInfo>
-<libraryInfo home="/Library/Java/JavaVirtualMachines/jdk1.8.0_40.jdk/Contents/Home" version="1.8.0_40-ea">
+<libraryInfo home="/Library/Java/JavaVirtualMachines/jdk1.8.0_40.jdk/Contents/Home" version="1.8.0_40">
 <bootpath>
 <entry path="/Library/Java/JavaVirtualMachines/jdk1.8.0_40.jdk/Contents/Home/jre/lib/resources.jar"/>
 <entry path="/Library/Java/JavaVirtualMachines/jdk1.8.0_40.jdk/Contents/Home/jre/lib/rt.jar"/>
@@ -104,7 +104,7 @@
 <entry path="/Library/Java/JavaVirtualMachines/jdk1.8.0_40.jdk/Contents/Home/jre/classes"/>
 </bootpath>
 <extensionDirs>
-<entry path="/Users/ChrisChilders/Library/Java/Extensions"/>
+<entry path="/Users/Justin/Library/Java/Extensions"/>
 <entry path="/Library/Java/JavaVirtualMachines/jdk1.8.0_40.jdk/Contents/Home/jre/lib/ext"/>
 <entry path="/Library/Java/Extensions"/>
 <entry path="/Network/Library/Java/Extensions"/>
