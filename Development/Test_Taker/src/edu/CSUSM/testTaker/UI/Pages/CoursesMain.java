@@ -4,8 +4,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 
-import javax.swing.JButton;
-
 import edu.CSUSM.testTaker.UI.CustomPage;
 
 public class CoursesMain extends CustomPage {
@@ -33,57 +31,57 @@ public class CoursesMain extends CustomPage {
 		updateActions();
 	}
 
+	public void updateActions() {
 
-	public void updateActions(){
+		// Set the button names
+		setButtonNames(new String[] { "Manage Courses", "Manage Content" });
 
-		//Set the button names
-		setButtonNames(new String[]{"Manage Courses", "Manage Content"});
-
-		for(int i = 0; i < this.currentActions.length; i++){
-			switch(i){
-			case 0:
-				this.currentActions[i].addActionListener(new OpenCourseManagement());
-				break;
-			case 1:
-				this.currentActions[i].addActionListener(new OpenContentManagement());
-				break;
-			default:
-				System.out.println("Not enough implemented classes");
-				break;
+		try {
+			for (int i = 0; i < this.currentActions.length; i++) {
+				switch (i) {
+				case 0:
+					this.currentActions[i].addActionListener(new OpenCourseManagement());
+					break;
+				case 1:
+					this.currentActions[i].addActionListener(new OpenContentManagement());
+					break;
+				default:
+					System.out.println("Not enough implemented classes");
+					break;
+				}
 			}
+		} catch (NullPointerException e) {
+			System.out.println(e.getMessage());
 		}
 	}
 
-	private class OpenCourseManagement implements ActionListener{
-
+	private class OpenCourseManagement implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			//System.out.println("Opening " + this.getClass());
-			
-			ContentManagementPage cm = new ContentManagementPage(CustomPage.PanelType.THREE_BUTTON_TYPE);
+			// System.out.println("Opening " + this.getClass());
+
+			CourseManagementPage cm = new CourseManagementPage(CustomPage.PanelType.THREE_BUTTON_TYPE);
 			cm.setName("Manage Courses");
 			cm.parentController = parentController;
 			parentController.displayView(cm);
-			
+
 		}
 
 	}
 
-	private class OpenContentManagement implements ActionListener{
+	private class OpenContentManagement implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			//System.out.println("Opening " + this.getClass());
+			// System.out.println("Opening " + this.getClass());
 
-			CourseManagementPage cm = new CourseManagementPage(CustomPage.PanelType.TWO_BUTTON_TYPE);
+			ContentManagementPage cm = new ContentManagementPage(CustomPage.PanelType.TWO_BUTTON_TYPE);
 			cm.setName("Manage Content");
 			cm.parentController = parentController;
 			parentController.displayView(cm);
 		}
 
 	}
-
-
 
 }

@@ -5,7 +5,6 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.Insets;
 import java.awt.image.BufferedImage;
@@ -24,12 +23,13 @@ import edu.CSUSM.testTaker.UI.CustomObjects.CustomButton;
 /**
  * 
  * @author Justin
- * @purpose The purpose of this class is to make it easier to create JPanels. Are panel types are quite simple to create.
- * 			For simplicity, there are a few type of panels:
- * 				• TWO_BUTTON_TYPE 		- Has a logo and two buttons (sBs)
- * 				• THREE_BUTTON_TYPE 	- Has a logo and three buttons (2 on top, one centered below)
- * 				• LOGO_ONLY_TYPE		- Has only a logo
- * 				• QUESTION_BUILDER_TYPE	- has a question input, posible answer input and radio buttons to selct correct answer
+ * @purpose The purpose of this class is to make it easier to create JPanels.
+ *          Are panel types are quite simple to create. For simplicity, there
+ *          are a few type of panels: • TWO_BUTTON_TYPE - Has a logo and two
+ *          buttons (sBs) • THREE_BUTTON_TYPE - Has a logo and three buttons (2
+ *          on top, one centered below) • LOGO_ONLY_TYPE - Has only a logo •
+ *          QUESTION_BUILDER_TYPE - has a question input, posible answer input
+ *          and radio buttons to selct correct answer
  *
  */
 public class CustomPage extends JPanel {
@@ -44,24 +44,25 @@ public class CustomPage extends JPanel {
 	public JLabel imageLabel = new JLabel();
 	private static int centerOfNewFrame;
 	public JButton[] currentActions;
-	public String panelTypeString;
+	public String panelTypeString, titleOfCurrentQuestionPanel;
 	public NavigationController parentController;
 
+	/** For the Question Panel */
+	JLabel titleLabel;
+	JPanel questionsMainPanel;
 
+	/** End of question panel specific vars */
 
-	public static enum PanelType{
-		TWO_BUTTON_TYPE,
-		THREE_BUTTON_TYPE,
-		LOGO_ONLY_TYPE,
-		QUESTION_BUILDER_TYPE
+	public static enum PanelType {
+		TWO_BUTTON_TYPE, THREE_BUTTON_TYPE, LOGO_ONLY_TYPE, QUESTION_BUILDER_TYPE
 	};
 
-	public CustomPage(PanelType currentPanelType, String imageAddress){
+	public CustomPage(PanelType currentPanelType, String imageAddress) {
 
 		super();
 
-		//Create the image from the image address
-		try {                
+		// Create the image from the image address
+		try {
 			URL url = new URL(imageAddress);
 			CustomPage.mainLogoToDisplay = ImageIO.read(url);
 		} catch (IOException ex) {
@@ -71,44 +72,47 @@ public class CustomPage extends JPanel {
 
 		buildPanel(currentPanelType);
 	}
-	
-	public CustomPage(PanelType currentPanelType, BufferedImage newImage){
+
+	public CustomPage(PanelType currentPanelType, BufferedImage newImage) {
 		super();
 		CustomPage.mainLogoToDisplay = newImage;
 		buildPanel(currentPanelType);
 	}
 
-
 	/**
 	 * @param currentPanelType
 	 * @description Call if the image was already found
 	 */
-	public CustomPage(PanelType currentPanelType){
+	public CustomPage(PanelType currentPanelType) {
 		super();
-		//Set the layout
+		// Set the layout
 		this.setLayout(new BorderLayout());
-		
-		//Build the contents
+
+		// Build the contents
 		buildPanel(currentPanelType);
 
 	}
-	
+
 	/**
-	 * @param nc Navigation controller used to show the next panel
+	 * @param nc
+	 *            Navigation controller used to show the next panel
 	 */
-	public void setParentController(NavigationController nc){
+	public void setParentController(NavigationController nc) {
 		this.parentController = nc;
 	}
 
-	private void buildPanel(PanelType currentPanelType){
-		
-		//Set the string value of the panel type
+	private void buildPanel(PanelType currentPanelType) {
+
+		// Set the string value of the panel type
 		this.panelTypeString = currentPanelType.toString();
 
-		//Set the size of the panel
+		// Set the size of the panel
 		this.setBounds(SideMenu.WIDTH, 0, GUIController.FRAME_WIDTH - SideMenu.WIDTH, GUIController.FRAME_HEIGHT);
 
-		switch(currentPanelType){
+		// Set the background color
+		this.setBackground(Color.WHITE);
+
+		switch (currentPanelType) {
 		case TWO_BUTTON_TYPE:
 			createTwoButtonType();
 			break;
@@ -122,6 +126,7 @@ public class CustomPage extends JPanel {
 			break;
 
 		case QUESTION_BUILDER_TYPE:
+			createQuestionBuilderType();
 			break;
 
 		default:
@@ -130,50 +135,47 @@ public class CustomPage extends JPanel {
 		}
 	}
 
-	private void createLogoType(){
+	private void createLogoType() {
 
-		//Set the background color
-		this.setBackground(Color.WHITE);				//Option 1
-		//this.setBackground(new Color(39, 72, 155));	//Option 2
+		// Set the background color // Option 1
+		// this.setBackground(new Color(39, 72, 155)); //Option 2
 
-		//Just display an image in the panel
+		// Just display an image in the panel
 		imageLabel = new JLabel();
-		try{
+		try {
 
 			Image img = CustomPage.mainLogoToDisplay;
-			newImg = img.getScaledInstance((this.getWidth() == 0) ? 600 : this.getWidth(), (this.getHeight()/2 == 0) ? 250 : this.getHeight()/2,  java.awt.Image.SCALE_SMOOTH);
+			newImg = img.getScaledInstance((this.getWidth() == 0) ? 600 : this.getWidth(),
+					(this.getHeight() / 2 == 0) ? 250 : this.getHeight() / 2, java.awt.Image.SCALE_SMOOTH);
 			newIcon = new ImageIcon(newImg);
 			imageLabel.setIcon(newIcon);
-		}
-		catch(NullPointerException e){
+		} catch (NullPointerException e) {
 			System.out.println("No Logo could be found. Please check the project directory");
-		}
-		catch(Exception e){
+		} catch (Exception e) {
 			System.out.println("Error Finding image: " + e.getMessage());
 		}
-		imageLabel.setBounds(0, 0, this.getWidth(), (int) (this.getHeight()/2.25));
+		imageLabel.setBounds(0, 0, this.getWidth(), (int) (this.getHeight() / 2.25));
 
-		//Align to center
+		// Align to center
 		imageLabel.setHorizontalAlignment(JLabel.CENTER);
 		imageLabel.setVerticalAlignment(JLabel.CENTER);
 		this.add(imageLabel, BorderLayout.CENTER);
 
 	}
 
+	private void createTwoButtonType() {
 
-	private void createTwoButtonType(){
-		this.setBackground(Color.WHITE);
-
-		/** Later
-		//Add the image to the top of the screen. We are going to have 3 objects at the top: Back btn, logo, and currentpage title
-		 * */
+		/**
+		 * Later //Add the image to the top of the screen. We are going to have
+		 * 3 objects at the top: Back btn, logo, and currentpage title
+		 */
 		JLabel iconLabel = new JLabel();
-		iconLabel.setBounds(0, 0, this.getWidth(), (int) (this.getHeight()/2.25));
+		iconLabel.setBounds(0, 0, this.getWidth(), (int) (this.getHeight() / 2.25));
 		iconLabel.setIcon(newIcon);
-		//this.add(iconLabel);
+		// this.add(iconLabel);
 		this.add(iconLabel, BorderLayout.CENTER);
 
-		//Align to center
+		// Align to center
 		iconLabel.setHorizontalAlignment(JLabel.CENTER);
 		iconLabel.setVerticalAlignment(JLabel.CENTER);
 
@@ -183,114 +185,104 @@ public class CustomPage extends JPanel {
 
 	}
 
-	private void createThreeButtonType(){
-		this.setBackground(Color.WHITE);
+	private void createThreeButtonType() {
 
 		JLabel iconLabel = new JLabel();
-		iconLabel.setBounds(0, 0, this.getWidth(), (int) (this.getHeight()/2.25));
+		iconLabel.setBounds(0, 0, this.getWidth(), (int) (this.getHeight() / 2.25));
 		iconLabel.setIcon(newIcon);
-		//this.add(iconLabel);
 		this.add(iconLabel);
-		
-		//Align to center
+
+		// Align to center
 		iconLabel.setHorizontalAlignment(JLabel.CENTER);
 		iconLabel.setVerticalAlignment(JLabel.CENTER);
 
-		//centerOfNewFrame = (this.getHeight() - (this.getHeight() - iconLabel.getHeight()));
+		// centerOfNewFrame = (this.getHeight() - (this.getHeight() -
+		// iconLabel.getHeight()));
 
 		addButtons(3);
 
 	}
 
-	private void addButtons(int count){
-		
-		/*
-		currentActions = new JButton[count+1];
-		int originOfButton = 0;
-		int yValue = centerOfNewFrame + 25;	//Added 25 to move the first button down (25 px after logo)
-		int buttonWidth = this.getWidth()/3;
+	private void createQuestionBuilderType() {
 
-		for(int i = 1; i <= count; i++){
+		/** Testing - Move to actual class before release */
+		this.titleOfCurrentQuestionPanel = "Question Builder";
+		/** end of testing */
 
-			currentActions[i] = new JButton("Button " + i);
+		// Create a title label to demonstrate what is shown
+		this.setLayout(new BorderLayout());
+		titleLabel = new JLabel();
+		titleLabel.setHorizontalAlignment(JLabel.CENTER);
+		titleLabel.setBorder(new EmptyBorder(10, 0, 10, 0));
+		titleLabel.setFont(new Font(Font.SERIF, titleLabel.getFont().getStyle(), 24));
+		this.add(titleLabel, BorderLayout.NORTH);
 
-			if(i % 2 == 1){		//If the number is odd, start on the left
-				originOfButton = this.getWidth()/3 - (this.getWidth()/3)/2 - 25;
-				//originOfButton = 0;
-			}else{				//Start on the right
-				originOfButton = (this.getWidth()/3)*2 - (this.getWidth()/3)/2 + 25;
-				//originOfButton = buttonWidth;
-			}
+		// Now, add a panel for the questions
+		this.questionsMainPanel = new JPanel();
+		this.questionsMainPanel.setBackground(Color.RED);
+		this.add(questionsMainPanel, BorderLayout.CENTER);
 
-			//If the count is odd, we need to center the last button
-			if((count == i) && (count % 2 == 1)){
-				//originOfButton = this.getWidth()/2 - this.getWidth()/6;
-				//originOfButton = buttonWidth - buttonWidth/2;
-				originOfButton = this.getWidth()/3 - (this.getWidth()/3)/2 - 25;
-				buttonWidth = this.getWidth()/3 * 2 + 50;	//The sum of btns 1 & 2, and the distance between
-			}
+		// We need to add a few components to this view:
+		// JComboBox - Allows the user to
 
-			//System.out.println("Stats: \nOrigin:\t" + originOfButton + "\nCenter:\t" + centerOfNewFrame + "\nWidth:\t" + this.getWidth()/3);
-			currentActions[i].setBounds(originOfButton, yValue, buttonWidth, 100);
-			//btn[i].setBorder(new RoundedBorder(50));
-			currentActions[i].setBorder(new EmptyBorder(5, 5, 5, 5));
-			currentActions[i].setBackground(new Color(85, 85, 85));
-			currentActions[i].setOpaque(true);
-			currentActions[i].setForeground(Color.WHITE);
-			currentActions[i].setFont(new Font(Font.SERIF, Font.BOLD | Font.ITALIC, 24));
-			this.add(currentActions[i]);
+		addButtons(2);
+		setQuestionLayout();
+	}
 
-			//Move the y location for hte next one, if applicable
-			if(i % 2 == 0)
-				yValue += 125;
-		}
-	*/
-		//Add a panel to the south for the buttons
-		
+	private void setQuestionLayout() {
+		titleLabel.setText(this.titleOfCurrentQuestionPanel);
+	}
+
+	private void addButtons(int count) {
+		// Add a panel to the south for the buttons
+
 		JPanel buttonHolder = new JPanel();
-		buttonHolder.setLayout(new GridBagLayout());	//May need to be gridbaglayout
+		buttonHolder.setLayout(new GridBagLayout()); // May need to be
+														// gridbaglayout
 		buttonHolder.setBackground(Color.WHITE);
-	    GridBagConstraints c = new GridBagConstraints();
+		GridBagConstraints c = new GridBagConstraints();
 		this.add(buttonHolder, BorderLayout.SOUTH);
-		
+
 		this.currentActions = new CustomButton[count];
-		
-		for(int i = 0; i < count; i++){
-			
+
+		for (int i = 0; i < count; i++) {
+
 			c.gridwidth = 1;
 			c.gridheight = 1;
 			c.weightx = 0.5;
 			c.gridx = i % 2;
 			c.gridy = (i % 2 == 0 && i > 0) ? c.gridy++ : c.gridy;
 			c.fill = GridBagConstraints.HORIZONTAL;
-			c.insets = new Insets(10,10,10,10);
-			
-			//If the last button is an odd one, make it the same size as both buttons above it, combined
-			if(count % 2 == 1 && i == count- 1){
-				//System.out.println(this.panelTypeString + " for button: " + (i));
+			c.insets = new Insets(10, 10, 10, 10);
+
+			// If the last button is an odd one, make it the same size as both
+			// buttons above it, combined
+			if (count % 2 == 1 && i == count - 1) {
+				// System.out.println(this.panelTypeString + " for button: " +
+				// (i));
 				c.gridwidth = 2;
 			}
-			
-			this.currentActions[i] = new CustomButton("Button " + (i+1));
+
+			this.currentActions[i] = new CustomButton("Button " + (i + 1));
 			buttonHolder.add(this.currentActions[i], c);
 		}
 	}
-	
-	public void setButtonNames(String[] btnNames){
-		//System.out.println("Modifying Buton names");
-		
-		for(int i = 0; i < this.currentActions.length; i++){
-			try{
-				this.currentActions[i].setText(btnNames[i]);
-			}catch(ArrayIndexOutOfBoundsException e){
-				
+
+	public void setButtonNames(String[] btnNames) {
+		// System.out.println("Modifying Buton names");
+
+		try {
+			for (int i = 0; i < this.currentActions.length; i++) {
+				try {
+					this.currentActions[i].setText(btnNames[i]);
+				} catch (ArrayIndexOutOfBoundsException e) {
+
+				}
 			}
+		} catch (NullPointerException e) {
+			System.out.println(e.getMessage());
 		}
 	}
-
-
- 
-
 
 	/** Accessors and mutators */
 
