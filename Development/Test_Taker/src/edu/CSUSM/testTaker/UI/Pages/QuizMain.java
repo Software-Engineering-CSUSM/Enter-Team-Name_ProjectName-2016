@@ -33,12 +33,15 @@ public class QuizMain extends CustomPage {
 	
 	
 	public void updateActions(){
-		this.currentActions[0].setText("Changing the text");
+	
+		//Set the button names
+		setButtonNames(new String[]{"Manage Questions", "Add New Quiz"});
+		
 		this.setName("Hello World");
 		
 		this.currentActions[0].addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				System.out.println("New ACtion Lsitener");
+				System.out.println("New Action Lsitener");
 			}
 		});
 	}

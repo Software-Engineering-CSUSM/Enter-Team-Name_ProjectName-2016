@@ -87,6 +87,8 @@ public class NavigationController extends JPanel {
 		backButton.setForeground(Color.BLUE);
 		backButton.addActionListener(new BackSelected());
 		backButton.setBorder(new EmptyBorder(0, DEFAULT_NAVIGATION_BAR_HEIGHT / 2, 0, 0));
+		backButton.setBackground(navigationPanel.getBackground());
+		backButton.setOpaque(true);
 		navigationPanel.add(backButton, BorderLayout.WEST);
 
 		// Add the application Logo
@@ -129,6 +131,7 @@ public class NavigationController extends JPanel {
 		this.viewShown = firstView;
 		this.add(this.viewShown, BorderLayout.CENTER);
 		this.backButton.setVisible(false);
+		this.currentPageDescriptionLabel.setText(firstView.getName());
 		this.initialView = this.viewShown;
 	}
 

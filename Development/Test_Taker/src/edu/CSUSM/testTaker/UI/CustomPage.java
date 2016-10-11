@@ -7,6 +7,7 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Image;
+import java.awt.Insets;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URL;
@@ -17,6 +18,8 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import edu.CSUSM.testTaker.UI.CustomObjects.CustomButton;
 
 /**
  * 
@@ -42,6 +45,7 @@ public class CustomPage extends JPanel {
 	private static int centerOfNewFrame;
 	public JButton[] currentActions;
 	public String panelTypeString;
+	public NavigationController parentController;
 
 
 
@@ -87,6 +91,13 @@ public class CustomPage extends JPanel {
 		//Build the contents
 		buildPanel(currentPanelType);
 
+	}
+	
+	/**
+	 * @param nc Navigation controller used to show the next panel
+	 */
+	public void setParentController(NavigationController nc){
+		this.parentController = nc;
 	}
 
 	private void buildPanel(PanelType currentPanelType){
@@ -238,44 +249,47 @@ public class CustomPage extends JPanel {
 		
 		JPanel buttonHolder = new JPanel();
 		buttonHolder.setLayout(new GridBagLayout());	//May need to be gridbaglayout
+		buttonHolder.setBackground(Color.WHITE);
 	    GridBagConstraints c = new GridBagConstraints();
 		this.add(buttonHolder, BorderLayout.SOUTH);
 		
-		this.currentActions = new JButton[count];
+		this.currentActions = new CustomButton[count];
 		
 		for(int i = 0; i < count; i++){
 			
 			c.gridwidth = 1;
 			c.gridheight = 1;
+			c.weightx = 0.5;
 			c.gridx = i % 2;
 			c.gridy = (i % 2 == 0 && i > 0) ? c.gridy++ : c.gridy;
+			c.fill = GridBagConstraints.HORIZONTAL;
+			c.insets = new Insets(10,10,10,10);
 			
-			this.currentActions[i] = new JButton("Button " + (i+1));
-			this.currentActions[i].setBackground(new Color(85,85,85));
-			this.currentActions[i].setOpaque(true);
-			this.currentActions[i].setBorder(new EmptyBorder(50,0,50,0));
-			this.currentActions[i].setBorder(new EmptyBorder(50,0,50,0));
+			//If the last button is an odd one, make it the same size as both buttons above it, combined
+			if(count % 2 == 1 && i == count- 1){
+				//System.out.println(this.panelTypeString + " for button: " + (i));
+				c.gridwidth = 2;
+			}
+			
+			this.currentActions[i] = new CustomButton("Button " + (i+1));
 			buttonHolder.add(this.currentActions[i], c);
-			
-			
-			/*
-			this.currentActions[i] = new JButton("Button " + (i+1));
-			this.currentActions[i].setBackground(new Color(85,85,85));
-			this.currentActions[i].setOpaque(true);
-			this.currentActions[i].setBorder(new EmptyBorder(50,0,50,0));
-			buttonHolder.add(this.currentActions[i]);
-			this.currentActions[i].setForeground(Color.WHITE);
-			this.currentActions[i].setFont(new Font(Font.SERIF, Font.BOLD | Font.ITALIC, 24));
-			*/
 		}
 	}
 	
 	public void setButtonNames(String[] btnNames){
+		//System.out.println("Modifying Buton names");
 		
+		for(int i = 0; i < this.currentActions.length; i++){
+			try{
+				this.currentActions[i].setText(btnNames[i]);
+			}catch(ArrayIndexOutOfBoundsException e){
+				
+			}
+		}
 	}
 
 
-
+ 
 
 
 	/** Accessors and mutators */

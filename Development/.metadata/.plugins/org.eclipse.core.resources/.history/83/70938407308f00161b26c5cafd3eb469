@@ -1,0 +1,9 @@
+package edu.CSUSM.testTaker.UI.CustomObjects;
+
+import javax.swing.JButton;
+
+public class CustomButton extends JButton {
+	
+	
+
+}
