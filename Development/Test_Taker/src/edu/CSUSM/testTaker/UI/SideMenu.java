@@ -3,15 +3,12 @@ package edu.CSUSM.testTaker.UI;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
-import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
-import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
-import javax.swing.border.LineBorder;
 
 /**
  * @author Justin

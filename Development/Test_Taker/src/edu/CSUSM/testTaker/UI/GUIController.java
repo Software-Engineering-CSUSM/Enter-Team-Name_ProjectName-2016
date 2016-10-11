@@ -4,19 +4,17 @@
 package edu.CSUSM.testTaker.UI;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Random;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.UIManager;
-
-import com.jtizz.NavigationController.NavigationController;
 
 import edu.CSUSM.testTaker.LibraryController;
+import edu.CSUSM.testTaker.UI.Pages.CoursesMain;
+import edu.CSUSM.testTaker.UI.Pages.ContentManagementPage;
+import edu.CSUSM.testTaker.UI.Pages.QuizMain;
 
 /**
  * @author Justin
@@ -29,10 +27,27 @@ public class GUIController extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 	public static final int FRAME_WIDTH = 750, FRAME_HEIGHT = 500;		//Frame dimensions
-	private static final double DEFAULT_OFFSET = 5.0;					//Distance between frame and panels
+	//private static final double DEFAULT_OFFSET = 5.0;					//Distance between frame and panels
 	public static LibraryController currentLib;								//Accesses the current library
 	private JPanel parentPanel;
+	public static NavigationController navCont;
+	private NavigationController mainNavigationController, coursesNC, studyToolsNC, statsNC;
 
+	public static enum PageName{
+		ManageCourses,
+		ManageContent,
+		TakeFlashCards,
+		ViewQuestions,
+		ManageQuestions,
+		ViewStats,
+		HomePage,
+		StudyToolsMain
+	}
+
+	/**--------------------------------Define All Classes--------------------------------*/
+	private static CoursesMain courses;
+	private static QuizMain quizzes;
+	private static ContentManagementPage contentMgr;
 
 	/**
 	 * @param args
@@ -62,20 +77,27 @@ public class GUIController extends JFrame {
 
 		//Add the navigation Controller
 		/** Main Page */
-		final NavigationController mainNavigationController = new NavigationController();
+		mainNavigationController = new NavigationController();
 
 		CustomPage mainPage = new CustomPage(CustomPage.PanelType.LOGO_ONLY_TYPE, NavigationController.applicationImage);
 		mainPage.setName(SideMenu.menuOptionButtons[0].getText());
 		mainNavigationController.setInitialView(mainPage);
+		mainPage.parentController = mainNavigationController;
 
 		//After we create the main page, we need to create more. 
 		//Note that each subview will have its own nvaigation controller
 		/** Courses */
-		final NavigationController coursesNC = new NavigationController();
-		
-		CustomPage coursesMain = new CustomPage(CustomPage.PanelType.TWO_BUTTON_TYPE, (new String[]{"Math", "Biology"}));
+		coursesNC = new NavigationController();
+
+		/*
+		CustomPage coursesMain = new CustomPage(CustomPage.PanelType.TWO_BUTTON_TYPE);
 		coursesMain.setName(SideMenu.menuOptionButtons[1].getText());
-		coursesNC.setInitialView(coursesMain);
+		coursesNC.setInitialView(coursesMain);*/
+		courses = new CoursesMain(CustomPage.PanelType.TWO_BUTTON_TYPE);
+		courses.setName("Courses Main");
+		coursesNC.setInitialView(courses);
+		courses.parentController = coursesNC;
+
 
 		//For testing purposes, add a second page to the courses page. 
 		/**
@@ -83,36 +105,32 @@ public class GUIController extends JFrame {
 		 * All that is going to happen in the next few lines will be in that class.
 		 */
 		/**start Sample*/
-				
-		coursesMain.currentActions[0].addActionListener(new ActionListener(){
+		/*
+		quiz.currentActions[0].addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				CustomPage testPage = new CustomPage(CustomPage.PanelType.TWO_BUTTON_TYPE, (new String[]{"Algebra", "Geometry"}));
 				coursesNC.displayView(testPage);
 		
 			}
-		});
-		
+		});*/
+
 		/**end Sample*/
-		
+
 		/** Study Tools */
-		final NavigationController studyToolsNC = new NavigationController();
-		
-		CustomPage studyToolsMain = new CustomPage(CustomPage.PanelType.THREE_BUTTON_TYPE, (new String[]{"Quiz", "Flashcard", "Other"}));
+		studyToolsNC = new NavigationController();
+
+		CustomPage studyToolsMain = new CustomPage(CustomPage.PanelType.THREE_BUTTON_TYPE);
 		studyToolsMain.setName(SideMenu.menuOptionButtons[2].getText());
 		studyToolsNC.setInitialView(studyToolsMain);
-		
-			
+		studyToolsMain.parentController = studyToolsNC;
+
 		/** Statistics */
 		final NavigationController statsNC = new NavigationController();
-		
+
 		CustomPage statsMain = new CustomPage(CustomPage.PanelType.LOGO_ONLY_TYPE);
 		statsMain.setName(SideMenu.menuOptionButtons[3].getText());
 		statsNC.setInitialView(statsMain);
-		
-		studyToolsMain.currentActions[0].addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent e){
-				CustomPage testPage = new CustomPage(CustomPage.PanelType.THREE_BUTTON_TYPE);
-				coursesNC.displayView(testPage);
+		statsMain.parentController = statsNC;
 
 			}
 		});
@@ -120,11 +138,11 @@ public class GUIController extends JFrame {
 		/** Page manager to control the side menu use */
 		PageManager<NavigationController> pm = new PageManager<NavigationController>(this.parentPanel, SideMenu.menuOptionButtons, new NavigationController[]{mainNavigationController, coursesNC, studyToolsNC, statsNC}, 0);
 		pm.hideAllPanelsButAtIndex(0);
-		
-		
+
+
 		//When the side buttons are selected, update the title in the navigation controller
-		for(JButton temp : SideMenu.menuOptionButtons){
-			temp.addActionListener(new ActionListener(){
+		for(int i = 0; i < SideMenu.menuOptionButtons.length; i++){
+			SideMenu.menuOptionButtons[i].addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent e){
 					//Anything else that needs to be added to all of the side buttons
 					/** Reset all Navigation Controllers to return to the first page */
@@ -135,7 +153,7 @@ public class GUIController extends JFrame {
 				}
 			});
 		}
-		
+
 	}
 
 
@@ -152,16 +170,21 @@ public class GUIController extends JFrame {
 		this.setLocationRelativeTo(null);
 		this.setLayout(new BorderLayout());
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
+
 		this.setVisible(true);
 		this.parentPanel = new JPanel();
 		this.parentPanel.setLayout(new BorderLayout());
 		this.add(this.parentPanel, BorderLayout.CENTER);
-		
+
 		//Add the side menu
 		SideMenu sm = new SideMenu(new String[]{"Home", "Courses", "Study Tools", "Statistics"});
 		this.add(sm, BorderLayout.WEST);
 		
+	}
+
+	/**--------------------------------Manage Page Controls--------------------------------*/
+	private void setCoursesMainEvents(){
+
 	}
 
 
