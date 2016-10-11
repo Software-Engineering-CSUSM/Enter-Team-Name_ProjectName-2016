@@ -4,8 +4,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 
-import javax.swing.JButton;
-
 import edu.CSUSM.testTaker.UI.CustomPage;
 
 public class CourseManagementPage extends CustomPage {
@@ -17,7 +15,7 @@ public class CourseManagementPage extends CustomPage {
 	public CourseManagementPage(PanelType currentPanelType) {
 		super(currentPanelType);
 		// TODO Auto-generated constructor stub
-		//System.out.println("Printing a new Form");
+		// System.out.println("Printing a new Form");
 		updateActions();
 	}
 
@@ -33,19 +31,21 @@ public class CourseManagementPage extends CustomPage {
 		updateActions();
 	}
 
+	public void updateActions() {
 
-	public void updateActions(){
+		// Set the button names
+		setButtonNames(new String[] { "Course Management", "Other 1", "Other 2" });
 
-		//Set the button names
-		setButtonNames(new String[]{"Button 1", "Buton 2"});
-
-		for(int i = 0; i < this.currentActions.length; i++){
-			switch(i){
+		for (int i = 0; i < this.currentActions.length; i++) {
+			switch (i) {
 			case 0:
 				this.currentActions[i].addActionListener(new OpenCourseManagement());
 				break;
 			case 1:
-				//this.currentActions[i].addActionListener(new OpenContentManagement());
+				this.currentActions[i].addActionListener(new OpenCourseManagement());
+				break;
+			case 2:
+				this.currentActions[i].addActionListener(new OpenCourseManagement());
 				break;
 			default:
 				System.out.println("Not enough implemented classes");
@@ -54,27 +54,23 @@ public class CourseManagementPage extends CustomPage {
 		}
 	}
 
-	private static class OpenCourseManagement implements ActionListener{
+	private static class OpenCourseManagement implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			System.out.println("Opening " + this.getClass());
-			
-			
+
 		}
 
 	}
 	/*
-
-	private static class OpenContentManagement implements ActionListener{
-
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			System.out.println("Opening " + this.getClass());
-		}
-
-	}
-*/
-
+	 * 
+	 * private static class OpenContentManagement implements ActionListener{
+	 * 
+	 * @Override public void actionPerformed(ActionEvent e) {
+	 * System.out.println("Opening " + this.getClass()); }
+	 * 
+	 * }
+	 */
 
 }
