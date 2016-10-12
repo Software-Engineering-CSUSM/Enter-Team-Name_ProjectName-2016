@@ -2,7 +2,6 @@ package edu.CSUSM.testTaker.UI;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Image;
@@ -16,9 +15,9 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 
 import edu.CSUSM.testTaker.UI.CustomObjects.CustomButton;
+import edu.CSUSM.testTaker.UI.Pages.ManageData;
 
 /**
  * 
@@ -210,27 +209,22 @@ public class CustomPage extends JPanel {
 		/** end of testing */
 
 		// Create a title label to demonstrate what is shown
-		this.setLayout(new BorderLayout());
-		titleLabel = new JLabel();
-		titleLabel.setHorizontalAlignment(JLabel.CENTER);
-		titleLabel.setBorder(new EmptyBorder(10, 0, 10, 0));
-		titleLabel.setFont(new Font(Font.SERIF, titleLabel.getFont().getStyle(), 24));
-		this.add(titleLabel, BorderLayout.NORTH);
 
 		// Now, add a panel for the questions
-		this.questionsMainPanel = new JPanel();
-		this.questionsMainPanel.setBackground(Color.RED);
-		this.add(questionsMainPanel, BorderLayout.CENTER);
+		/*
+		 * this.questionsMainPanel = new JPanel();
+		 * this.questionsMainPanel.setBackground(Color.RED);
+		 * this.add(questionsMainPanel, BorderLayout.CENTER);
+		 */
 
 		// We need to add a few components to this view:
 		// JComboBox - Allows the user to
+		ManageData<String> newDataManager = new ManageData<String>(this.titleOfCurrentQuestionPanel,
+				new String[] { "Cell 1" }, new String[] { "No ID" });
+		this.add(newDataManager, BorderLayout.CENTER);
 
 		addButtons(2);
-		setQuestionLayout();
-	}
-
-	private void setQuestionLayout() {
-		titleLabel.setText(this.titleOfCurrentQuestionPanel);
+		// setQuestionLayout();
 	}
 
 	private void addButtons(int count) {

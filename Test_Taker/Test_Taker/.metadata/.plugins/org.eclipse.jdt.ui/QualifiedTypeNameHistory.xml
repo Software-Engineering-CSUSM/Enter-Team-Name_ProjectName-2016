@@ -4,4 +4,7 @@
 <fullyQualifiedTypeName name="edu.CSUSM.testTaker.Backend.Question"/>
 <fullyQualifiedTypeName name="edu.CSUSM.testTaker.UI.CustomPage"/>
 <fullyQualifiedTypeName name="edu.CSUSM.testTaker.UI.CustomPage.PanelType"/>
+<fullyQualifiedTypeName name="java.awt.Color"/>
+<fullyQualifiedTypeName name="edu.CSUSM.testTaker.UI.Pages.ManageData"/>
+<fullyQualifiedTypeName name="edu.CSUSM.testTaker.LibraryController"/>
 </qualifiedTypeNameHistroy>
