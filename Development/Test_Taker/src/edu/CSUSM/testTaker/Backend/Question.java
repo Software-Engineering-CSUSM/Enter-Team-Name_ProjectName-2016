@@ -144,6 +144,8 @@ public class Question implements Serializable, Registerable{
 	public void setCourseID(String courseID){
 		this._courseID = courseID;
 	}
+	
+	 
 
 	/* Accessors */
 	/**
@@ -190,6 +192,14 @@ public class Question implements Serializable, Registerable{
 	 */
 	public String getCourseID(){
 		return this._courseID;
+	}
+	
+	/**
+	 * Get the Test associated with this Question
+	 * @return An ID String of the Test this question is filed under.
+	 */
+	public String getTestID(){
+		return this._testID;
 	}
 	
 	/**

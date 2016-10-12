@@ -1,10 +1,6 @@
 package edu.CSUSM.testTaker.Backend;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-
-import javax.imageio.spi.RegisterableService;
-import javax.imageio.spi.ServiceRegistry;
 
 import edu.CSUSM.testTaker.LibraryController;
 
@@ -246,7 +242,10 @@ public class Course implements edu.CSUSM.testTaker.Backend.Registerable{
 	 * @param removethis The ID string of the Test or Question to remove.
 	 */
 	public void remove(String removethis){
-		testIDs.remove(removethis);
+		int tindex = testIDs.indexOf(removethis);
+		if(tindex != -1){
+			removeTestNum(tindex);
+		}
 		questionIDs.remove(removethis);
 		LibraryController.storeCourse(this);
 	}
@@ -256,7 +255,7 @@ public class Course implements edu.CSUSM.testTaker.Backend.Registerable{
 	 * @param removethis A reference to the test to be removed
 	 */
 	public void remove(Test removethis){
-		testPoints.remove(testIDs.indexOf(removethis));
+		testPoints.remove(testIDs.indexOf(removethis.getID()));
 		remove(removethis.getID());
 		LibraryController.storeCourse(this);
 	}
