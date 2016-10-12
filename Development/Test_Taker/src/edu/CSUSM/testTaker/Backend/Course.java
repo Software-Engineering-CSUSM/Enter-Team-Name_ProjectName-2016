@@ -165,16 +165,126 @@ public class Course implements edu.CSUSM.testTaker.Backend.Registerable{
 	 * Mutators:
 	 */
 	
-	
-	/*
-	 * @author Justin Goulet
-	 * @param courseID the courseID to set
+	/**
+	 * Set the name/title of the Course.
+	 * @param newname A String of the new name for this Course.
 	 */
-	/*
-	public void setCourseID(String courseID) {
-		this._courseID = courseID;
+	public void setName(String newname){
+		this.courseName = newname;
+		LibraryController.storeCourse(this);
 	}
-	*/
+	
+	/**
+	 * Add a test to the end of this Course
+	 * @param newtest A reference to the Test to add
+	 * @param newpoints An int number of points to assign to said new test
+	 */
+	public void addTest(Test newtest, int newpoints){
+		this.testIDs.add(newtest.getID());
+		this.testPoints.add(newpoints);
+		LibraryController.storeCourse(this);
+	}
+	
+	/**
+	 * Add a test to the end of this Course
+	 * @param newtest A reference to the Test to add
+	 */
+	public void addTest(Test newtest){
+		addTest(newtest, 0);
+		LibraryController.storeCourse(this);
+	}
+
+	/**
+	 * Add a test to the end of this Course
+	 * @param newtest The ID String for the Test to add
+	 * @param newpoints An int number of points to assign to said new test
+	 */
+	public void addTest(String newtestid, int newpoints){
+		if(newtestid != null && LibraryController.retrieveTest(newtestid) != null){
+			this.testIDs.add(newtestid);
+			this.testPoints.add(newpoints);			
+		}
+		LibraryController.storeCourse(this);
+	}
+	
+	/**
+	 * Add a test to the end of this Course
+	 * @param newtest The ID String for the Test to add
+	 */
+	public void addTest(String newtestid){
+		addTest(newtestid, 0);
+		LibraryController.storeCourse(this);
+	}
+	
+	/**
+	 * Remove A test or question from this course
+	 * @param removethis The ID string of the Test or Question to remove.
+	 */
+	public void remove(String removethis){
+		testIDs.remove(removethis);
+		questionIDs.remove(removethis);
+		LibraryController.storeCourse(this);
+	}
+	
+	/**
+	 * Remove a Test from this course
+	 * @param removethis A reference to the test to be removed
+	 */
+	public void remove(Test removethis){
+		testPoints.remove(testIDs.indexOf(removethis));
+		remove(removethis.getID());
+		LibraryController.storeCourse(this);
+	}
+	
+	/**
+	 * Remove a Question from this course
+	 * @param removethis A reference to the Question to be removed.
+	 * @note Does not currently remove the Question from Tests.
+	 */
+	public void remove(Question removethis){
+		remove(removethis.getID());
+		LibraryController.storeCourse(this);
+	}
+	
+	/**
+	 * Remove a numbered test from the Course
+	 * @param testnum An int (0 based) number for the Test to remove
+	 */
+	public void removeTestNum(int testnum){
+		testPoints.remove(testnum);
+		testIDs.remove(testnum);
+		LibraryController.storeCourse(this);
+	}
+	
+	/**
+	 * Remove a numbered Question from the Course
+	 * @param qnum An int (0 based) number for the Question to remove
+	 */
+	public void removeQuestionNum(int qnum){
+		questionIDs.remove(qnum);
+		LibraryController.storeCourse(this);
+	}
+	
+	/**
+	 * Insert a Test at a particular location within the Course
+	 * @param insertthis A reference to the Test to insert
+	 * @param points An int number of points to assign to the Test
+	 * @param tn The int index at which to place the Test
+	 * @note This operation can be combined with a remove operation to change the order of a Test in the Course.
+	 */
+	public void insertTest(Test insertthis, int points, int tn){
+		testIDs.add(tn, insertthis.getID());
+		testPoints.add(tn,points);
+		LibraryController.storeCourse(this);
+	}
+	
+	/**
+	 * Utility function store changes to this Course to the LibraryController
+	 * @note Currently unnecessary
+	 */
+	public void flush(){
+		LibraryController.storeCourse(this);
+	}
 
 	/**
 	 * Set the current grade for this course
@@ -184,6 +294,7 @@ public class Course implements edu.CSUSM.testTaker.Backend.Registerable{
 	 */
 	public void setCourseGrade(double courseGrade) {
 		this._courseGrade = courseGrade;
+		LibraryController.storeCourse(this);
 	}
 
 	/**
@@ -194,16 +305,6 @@ public class Course implements edu.CSUSM.testTaker.Backend.Registerable{
 	 */
 	public void setTestsCompleted(double testsCompleted) {
 		this._testsCompleted = testsCompleted;
+		LibraryController.storeCourse(this);
 	}
-
-	/*
-	 * @author Justin Goulet
-	 * @return the courseID
-	 */
-	/*
-	public String getCourseID() {
-		return this._courseID;
-	}*/
-
-	
 }

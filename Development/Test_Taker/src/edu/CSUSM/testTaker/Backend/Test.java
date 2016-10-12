@@ -218,10 +218,27 @@ public class Test implements Serializable, Registerable{
 		questionList.remove(qn);
 		questionIDs.remove(qn);
 		questionPoints.remove(qn);
+		LibraryController.storeTest(this);
 	}
 	
+	/**
+	 * Insert a Question into the test at a particular index.
+	 * @param insertit A reference to the Question to insert
+	 * @param points The number of points to assign to the Question
+	 * @param qi The index at which to insert the Question.
+	 * @note This operation along with {@link #removeQuestion(int) removeQuestion()} should allow re-ordering of Test questions.
+	 */
+	public void insertQuestion(Question insertit,int points, int qi){
+		questionList.add(qi, insertit);
+		questionIDs.add(qi,insertit.getID());
+		questionPoints.add(qi,points);
+		LibraryController.storeTest(this);
+	}
 	
-	
+	/**
+	 * Set the title/name of this Test	
+	 * @param newTestName A String of the new name for this Test
+	 */
 	public void setTestName(String newTestName){
 		this._testName = newTestName;
 		LibraryController.storeTest(this);
@@ -233,6 +250,10 @@ public class Test implements Serializable, Registerable{
 	}
 	*/
 	
+	/**
+	 * Set the Course associated with this Test
+	 * @param newCourseID An ID String for the Course this test should be filed under.
+	 */
 	public void setCourseID(String newCourseID){
 		this._courseID = newCourseID;
 		LibraryController.storeTest(this);		
@@ -276,13 +297,9 @@ public class Test implements Serializable, Registerable{
 	}
 	
 	
-	/**
-	 *  (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 * @decription overrides the default 'toString()' to showcase a basic exam with all questions included.
-	 */
+
 	@Override
-    public String toString(){
+	public String toString(){
         
         //Create the initial question
         String thisTestString = "Test: " + this._testName;

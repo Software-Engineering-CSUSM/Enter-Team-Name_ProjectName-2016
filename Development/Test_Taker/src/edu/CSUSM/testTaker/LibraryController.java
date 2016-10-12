@@ -271,4 +271,17 @@ public class LibraryController{
 	public static void storeCourse(Course updateThing){
 		LibraryController.classArray.put(updateThing.getID(), updateThing);
 	}
+	
+	public static void deleteQuestion(String delthing){
+		questionArray.remove(delthing);
+	}
+
+	public static void deleteTest(String delthing){
+		testArray.remove(delthing);
+	}
+
+	public static void deleteCourse(String delthing){
+		classArray.remove(delthing);
+	}
+
 }
