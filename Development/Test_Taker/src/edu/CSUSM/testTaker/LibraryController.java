@@ -27,6 +27,11 @@ public class LibraryController{
 	private static HashMap<String, Test> testArray;			//String is the testID
 	private static HashMap<String, Question> questionArray;	//String is the questionID
 	private static HashMap<String, Course> classArray;
+	static {
+		testArray = new HashMap<String, Test>();
+		questionArray = new HashMap<String, Question>();
+		classArray = new HashMap<String, Course>();
+	}
 	
 	/**The below static variables are for the current class, not all information as done above */
 	public static HashMap<String, Test> _currentTestsInCourse;			//String is the testID
@@ -272,14 +277,26 @@ public class LibraryController{
 		LibraryController.classArray.put(updateThing.getID(), updateThing);
 	}
 	
+	/**
+	 * Permanently remove a Question from the Library
+	 * @param delthing An ID string of a Question to remove.
+	 */
 	public static void deleteQuestion(String delthing){
 		questionArray.remove(delthing);
 	}
 
+	/**
+	 * Permanently remove a Test from the Library
+	 * @param delthing An ID string of a Test to remove.
+	 */
 	public static void deleteTest(String delthing){
 		testArray.remove(delthing);
 	}
 
+	/**
+	 * Permanently remove a Course from the Library
+	 * @param delthing An ID string of a Course to remove.
+	 */
 	public static void deleteCourse(String delthing){
 		classArray.remove(delthing);
 	}

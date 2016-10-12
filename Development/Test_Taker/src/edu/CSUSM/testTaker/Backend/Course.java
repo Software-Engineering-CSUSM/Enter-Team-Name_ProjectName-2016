@@ -173,6 +173,23 @@ public class Course implements edu.CSUSM.testTaker.Backend.Registerable{
 		this.courseName = newname;
 		LibraryController.storeCourse(this);
 	}
+
+	/**
+	 * Adds a Question to the list of Questions for this course, if it is not already in the list
+	 * @param nqID An ID string for a Question to add to the Course.
+	 */
+	public void addQuestion(String nqID){
+		if(! questionIDs.contains(nqID) )
+			questionIDs.add(nqID);
+	}
+
+	/**
+	 * Adds a Question to the list of Questions for this course, if it is not already in the list
+	 * @param nq A reference to a Question to add to the Course.
+	 */
+	public void addQuestion(Question nq){
+		addQuestion(nq.getID());
+	}
 	
 	/**
 	 * Add a test to the end of this Course
@@ -182,6 +199,9 @@ public class Course implements edu.CSUSM.testTaker.Backend.Registerable{
 	public void addTest(Test newtest, int newpoints){
 		this.testIDs.add(newtest.getID());
 		this.testPoints.add(newpoints);
+		for(int i = 0; i < newtest.numQuestions(); ++i){
+			addQuestion(newtest.getQuestion(i));
+		}
 		LibraryController.storeCourse(this);
 	}
 	
@@ -191,7 +211,7 @@ public class Course implements edu.CSUSM.testTaker.Backend.Registerable{
 	 */
 	public void addTest(Test newtest){
 		addTest(newtest, 0);
-		LibraryController.storeCourse(this);
+		//LibraryController.storeCourse(this);//implied
 	}
 
 	/**
@@ -200,11 +220,15 @@ public class Course implements edu.CSUSM.testTaker.Backend.Registerable{
 	 * @param newpoints An int number of points to assign to said new test
 	 */
 	public void addTest(String newtestid, int newpoints){
-		if(newtestid != null && LibraryController.retrieveTest(newtestid) != null){
+		Test newtest = LibraryController.retrieveTest(newtestid);
+		if(newtestid != null && newtest != null){
 			this.testIDs.add(newtestid);
-			this.testPoints.add(newpoints);			
+			this.testPoints.add(newpoints);
+			for(int i = 0; i < newtest.numQuestions(); ++i){
+				addQuestion(newtest.getQuestion(i));
+			}			
+			LibraryController.storeCourse(this);
 		}
-		LibraryController.storeCourse(this);
 	}
 	
 	/**
@@ -213,8 +237,9 @@ public class Course implements edu.CSUSM.testTaker.Backend.Registerable{
 	 */
 	public void addTest(String newtestid){
 		addTest(newtestid, 0);
-		LibraryController.storeCourse(this);
+		//LibraryController.storeCourse(this);//implied
 	}
+	
 	
 	/**
 	 * Remove A test or question from this course
@@ -276,6 +301,19 @@ public class Course implements edu.CSUSM.testTaker.Backend.Registerable{
 		testIDs.add(tn, insertthis.getID());
 		testPoints.add(tn,points);
 		LibraryController.storeCourse(this);
+	}
+	
+	/**
+	 * Add a Question somewhere in the interior of the list of Questions
+	 * @param insertthis An ID string for a Question to add to the Course
+	 * @param qn An int index at which to insert the Question
+	 * @note Will not store duplicates.
+	 */
+	public void insertQuestion(String insertthis, int qn){
+		if(! questionIDs.contains(insertthis) ){
+			questionIDs.add(qn, insertthis);
+			LibraryController.storeCourse(this);
+		}
 	}
 	
 	/**
