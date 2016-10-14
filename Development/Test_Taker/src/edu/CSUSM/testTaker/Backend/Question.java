@@ -3,6 +3,9 @@ package edu.CSUSM.testTaker.Backend;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.UUID;
+
+import edu.CSUSM.testTaker.LibraryController;
+
 import java.io.Serializable;
 
 public class Question implements Serializable, Registerable{
@@ -34,7 +37,7 @@ public class Question implements Serializable, Registerable{
 		Question.QUESTION_COUNT++;
 		
 		myID = UUID.randomUUID().toString();
-		QuestionRegistry.store(this);
+		LibraryController.storeQuestion(this);
 	}
 	
 	/**
@@ -58,7 +61,7 @@ public class Question implements Serializable, Registerable{
 		Question.QUESTION_COUNT++;
 		
 		myID = UUID.randomUUID().toString();
-		QuestionRegistry.store(this);
+		LibraryController.storeQuestion(this);
 	}
 	
 	/* Mutators */
@@ -68,7 +71,7 @@ public class Question implements Serializable, Registerable{
 	 */
 	public void setQuestion(String newQuestion){
 		this._question = newQuestion;
-		QuestionRegistry.store(this);
+		LibraryController.storeQuestion(this);
 		}
 	
 	/**
@@ -78,12 +81,12 @@ public class Question implements Serializable, Registerable{
 	 */
 	public void setAnswer(String newAnswer, int index){
 		this._answers.set(index, newAnswer); 
-		QuestionRegistry.store(this);
+		LibraryController.storeQuestion(this);
 		}
 	
 	public void setTestID(String newID){
 		this._testID = newID;
-		QuestionRegistry.store(this);
+		LibraryController.storeQuestion(this);
 	}
 	
 	/**
@@ -92,7 +95,7 @@ public class Question implements Serializable, Registerable{
 	 */
 	public void addAnswer(String additionalAnswer){
 		this._answers.add(additionalAnswer);
-		QuestionRegistry.store(this);
+		LibraryController.storeQuestion(this);
 	}
 	
 	/**
@@ -101,7 +104,7 @@ public class Question implements Serializable, Registerable{
 	 */
 	public void setCorrectIndex(int index){
 		this._correctIndex = index;
-		QuestionRegistry.store(this);
+		LibraryController.storeQuestion(this);
 		}
 	
 	/* Accessors */
@@ -190,4 +193,5 @@ public class Question implements Serializable, Registerable{
 		//Return the result
 		return thisQuestionString;
 	}
+
 }

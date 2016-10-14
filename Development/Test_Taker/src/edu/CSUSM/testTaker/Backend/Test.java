@@ -1,8 +1,11 @@
 package edu.CSUSM.testTaker.Backend;
 
+import edu.CSUSM.testTaker.*;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.UUID;
+
 import java.io.Serializable;
 
 public class Test implements Serializable, Registerable{
@@ -104,7 +107,7 @@ public class Test implements Serializable, Registerable{
 		questionIDs.add(QuestionToAdd.getID());
 		questionPoints.add(questionvalue);
 		QuestionToAdd.setTestID(getID());
-		TestRegistry.store(this);		
+		LibraryController.storeTest(this);		
 	}
 
 	/**
@@ -116,14 +119,14 @@ public class Test implements Serializable, Registerable{
 		questionIDs.add(QuestionToAdd.getID());
 		questionPoints.add(0);
 		QuestionToAdd.setTestID(getID());
-		TestRegistry.store(this);		
+		LibraryController.storeTest(this);		
 	}
 	
 	
 	
 	public void setTestName(String newTestName){
 		this._testName = newTestName;
-		TestRegistry.store(this);
+		LibraryController.storeTest(this);
 	}
 	
 	/*
@@ -134,7 +137,7 @@ public class Test implements Serializable, Registerable{
 	
 	public void setCourseID(String newCourseID){
 		this._courseID = newCourseID;
-		TestRegistry.store(this);		
+		LibraryController.storeTest(this);		
 	}
 	
 	
@@ -158,7 +161,7 @@ public class Test implements Serializable, Registerable{
 			this.questionList.add(tempQuestion);
 			this.questionIDs.add(tempQuestion.getID());
 		}
-		TestRegistry.store(this);
+		LibraryController.storeTest(this);
 	}
 	
 	
