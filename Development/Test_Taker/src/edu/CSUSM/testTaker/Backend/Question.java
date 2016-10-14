@@ -29,6 +29,15 @@ public class Question implements Serializable, Registerable{
 	//The following has been removed, points value has little meaning outside a containing context like a test.
 	//public int _pointValue = 1;					//Sets the default point value to 1
 	
+	
+	/** New question with no details
+	 */
+	public Question(){
+		_answers = new ArrayList<String>();
+		_question = "";
+		_courseID = "";
+		_testID = "";
+	}
 
 	/**New Question starting with question text
 	 * @author Justin Goulet
@@ -67,6 +76,20 @@ public class Question implements Serializable, Registerable{
 		
 		myID = UUID.randomUUID().toString();
 		LibraryController.storeQuestion(this);
+	}
+	
+	/** Make a sample question.
+	 * @return A reference to a Question, a Monty Python reference 
+	 */
+	public static Question makeExample(){
+		Question rval = new Question();
+		
+		rval.setQuestion("What! is your Quest?");
+		rval.addAnswer("What?");
+		rval.addAnswer("To find the Holy Grail");
+		rval.addAnswer("Aaaaaah");
+		rval.setCorrectIndex(1);
+		return rval;
 	}
 	
 

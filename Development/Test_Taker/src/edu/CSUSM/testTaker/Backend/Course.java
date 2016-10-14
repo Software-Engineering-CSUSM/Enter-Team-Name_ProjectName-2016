@@ -45,6 +45,18 @@ public class Course implements edu.CSUSM.testTaker.Backend.Registerable{
 		testPoints = new ArrayList<Integer>();
 	}
 	
+	/** Make an example Course
+	 * @return A reference to an example Course, a Monty Python reference
+	 */
+	public static Course makeExample(){
+		Course rval = new Course();
+		
+		rval.setName("The Quest for the Holy Grail");
+		rval.addTest(Test.makeExample(), 100);
+		
+		return rval;
+	}
+	
 	/*
 	 * Accessors:
 	 */

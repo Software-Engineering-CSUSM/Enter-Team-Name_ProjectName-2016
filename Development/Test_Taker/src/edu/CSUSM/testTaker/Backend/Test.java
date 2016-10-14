@@ -41,6 +41,11 @@ public class Test implements Serializable, Registerable{
 		questionPoints = new ArrayList<Integer>();
 	}
 
+	/** Initialize an untitled blank Test
+	 */
+	public Test(){
+		//mostly handled by inititilizer block
+	}
 	
 	/**
 	 * Initialize blank test with only a Title
@@ -86,6 +91,31 @@ public class Test implements Serializable, Registerable{
 			questionIDs.add(qid);
 		}
 		initQuestions();
+	}
+	
+	/** Make an example Test
+	 * @return A reference to a Test, a Monty Python reference
+	 */
+	public static Test makeExample(){
+		Test rval = new Test();
+		rval.setTestName("The sorceror ... Tim!");
+		rval.addQuestion(Question.makeExample(),1);
+
+		Question q2 = new Question("What! is your favorite color?");
+		q2.addAnswer("green");
+		q2.addAnswer("blue");
+		q2.addAnswer("aaaaaah");
+		q2.setCorrectIndex(2);
+		rval.addQuestion(q2,1);
+		
+		Question q3 = new Question("What! is the average landspeed of an unladended swallow?");
+		q3.addAnswer("African or European?");
+		q3.addAnswer("I don't know that!");
+		q3.addAnswer("aaaaahhhhh");
+		q3.setCorrectIndex(0);
+		rval.addQuestion(q3, 20);
+		
+		return rval;
 	}
 	
 	/** Accessors */

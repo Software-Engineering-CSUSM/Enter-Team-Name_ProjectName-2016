@@ -5,6 +5,10 @@ import edu.CSUSM.testTaker.Backend.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 
 /**
  * 
@@ -224,6 +228,43 @@ public class LibraryController{
 	}
 	
 	/**
+	 * Backup the library to a file.
+	 * @param filename A String of the filename to backup to.
+	 * @return True for success
+	 */
+	public static boolean backupLibrary(String filename){
+		try (ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream(filename))){
+			os.writeObject(questionArray);
+			os.writeObject(testArray);
+			os.writeObject(classArray);
+		}
+		catch (java.io.IOException ex){
+			return false;
+		}
+		return true;
+	}
+	
+	/**
+	 * Restore the Library from a file
+	 * @param filename A String of the filename to restore from.
+	 * @return True for success
+	 */
+	public static boolean restoreLibrary(String filename){
+		try(ObjectInputStream is = new ObjectInputStream(new FileInputStream(filename))){
+			questionArray = (HashMap <String,Question>)is.readObject();
+			testArray = (HashMap <String,Test>)is.readObject();
+			classArray = (HashMap <String,Course>)is.readObject();
+		}
+		catch (java.lang.ClassNotFoundException ex){
+			return false;
+		}
+		catch (java.io.IOException ex){
+			return false;
+		}
+		return true;
+	}
+	
+	/**
 	 * Get a reference to a Question in the array of Questions.
 	 * @param queryID Unique ID string to look for
 	 * @return Reference to the requested Question or null for failure.
@@ -240,7 +281,18 @@ public class LibraryController{
 	 * @author Steven Clark
 	 */
 	public static Test retrieveTest(String queryID){
-		return LibraryController.testArray.get(queryID);
+		Test rvalue = testArray.get(queryID);
+		rvalue.initQuestions();
+		return rvalue;
+	}
+	/**
+	 * Get a reference to a Test in the set of Tests, without necessarily valid Question references.
+	 * @param queryID Unique ID string to look for
+	 * @return Reference to the requested test or null for failure.
+	 * @author Steven Clark
+	 */
+	public static Test previewTest(String queryID){
+		return testArray.get(queryID);
 	}
 	
 	/**
