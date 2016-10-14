@@ -161,36 +161,31 @@ public class Test implements Serializable, Registerable{
 		TestRegistry.store(this);
 	}
 	
-	/** @author John Orcino
-	 * PARAMETER: May need one
-	 * FUNCTION: gets the Id for the question to have the array of questions and answers
-	 */
-	public void getQuestionIDs(){
-		
-	}
 	
 	/** @author John Orcino
-	 * 	FUNCTION: adds up the total points of the test and returns it
+	 * 	FUNCTION: use for loops to score the weighted average
 	 */
-	public int totalPointsScored(){
-		int tot = 0;
+	public double totalPointsScored(){
+		double weightAverage= 0.0;
+		double sumOfPoints = 0.0;
+		double pointsValue = 0.0;
+		double tempPoints = 0.0;
 		
-		//iterator adding up the question points 
+		/*
+		 * iterator
+		 * @description goes through the array list and adds up the sum of points
+		 */
+		for(int x = 0; x < questionPoints.size(); x++)
+		{
+			tempPoints = this.questionPoints.get(x);
+			sumOfPoints = sumOfPoints + tempPoints;
+			pointsValue = pointsValue;
+		}
 		
-		return tot;
+		weightAverage = pointsValue/sumOfPoints;
+		return weightAverage;
 	}
-	
-	/*	@Author: John Orcino
-	 * 	@PARAMETERS:
-	 * 	@FUNCTION: Display the question and answers, stores the user's answer
-	 * 
-	 */
-	
-	public void testDisplay(){
-		//iterator that uses the array of answers and questions and displays them
-	}
-	
-	
+		
 	
 	/**
 	 *  (non-Javadoc)

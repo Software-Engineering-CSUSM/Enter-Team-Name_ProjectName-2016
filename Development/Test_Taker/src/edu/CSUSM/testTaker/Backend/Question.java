@@ -154,10 +154,24 @@ public class Question implements Serializable, Registerable{
 		return this._courseID;
 	}
 	
+	/**
+	 * @author John Orcino
+	 * @description 
+	 */
+	public double pointsValue(double index){
+		if(index == _correctIndex)
+			return 1.0;
+		else 
+		return 0.0;
+	}
+	
+	
 	/** (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 * @author Justin Goulet
 	 */
+	
+	
 	@Override
 	public String toString(){
 		
