@@ -20,6 +20,7 @@ public class Question implements Serializable, Registerable{
 	
 	public String _question, _courseID, _testID;
 	public ArrayList<String> _answers;			//To easily manage questions added and removed
+	public ArrayList<Double> _answerPoints;
 	public int _correctIndex = -1;				//The default correct index is 0 because it is not yet assigned;
 	//The following has been removed, points value has little meaning outside a containing context like a test.
 	//public int _pointValue = 1;					//Sets the default point value to 1
@@ -159,7 +160,9 @@ public class Question implements Serializable, Registerable{
 	
 	/**
 	 * @author John Orcino
-	 * @description 
+	 * @param location of user's chose of answer
+	 * @description returns a 1.0 if user's index is equal with _correctIndex
+	 * otherwise return 0.0 
 	 */
 	public double pointsValue(double index){
 		if(index == _correctIndex)
@@ -168,6 +171,16 @@ public class Question implements Serializable, Registerable{
 		return 0.0;
 	}
 	
+	/**
+	 * @author John Orcino
+	 * @description calls pointsValue method and stores result into an ArrayList
+	 * @param location of user's answer
+	 */
+	public void storePoints(double index){
+		_answerPoints = new ArrayList<Double>();
+		_answerPoints.add(pointsValue(index));
+		
+	}
 	
 	/** (non-Javadoc)
 	 * @see java.lang.Object#toString()
