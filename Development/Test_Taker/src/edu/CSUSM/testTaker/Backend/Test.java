@@ -170,13 +170,13 @@ public class Test implements Serializable, Registerable{
 	 * @description goes through the loop to calculate the weighted average by 
 	 * getting the 
 	 */
-	public double totalPointsScored(){
+	public double totalPointsScored(int [] ansAry){
 		double weightAverage = 0.0;		//total points from the formula	
 		double sumOfPoints = 0.0;		//total points in the test
 		double pointValue = 0.0;		//total points of the user's correct answers
 		double tempPoints = 0.0;   		//get the point that is set in the questionPoint array index
 		double tempValue = 0.0;			//get the point that is set in the answerPoint array index
-		Question points;   				//to call question class in order to call the ArrayList
+		//Question points;   				//to call question class in order to call the ArrayList
 		
 		/**
 		 * iterator
@@ -186,7 +186,7 @@ public class Test implements Serializable, Registerable{
 		for(int x = 0; x < questionPoints.size(); x++)
 		{
 			tempPoints = this.questionPoints.get(x);
-			tempValue = points._answerPoints.get(x);
+			tempValue = questionList.get(x).pointsValue(ansAry[x]);
 			
 			sumOfPoints = sumOfPoints + tempPoints;
 			pointValue = pointValue + (tempValue*tempPoints);	
