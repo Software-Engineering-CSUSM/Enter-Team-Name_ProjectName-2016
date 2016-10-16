@@ -51,7 +51,7 @@ public class CreateQuiz extends CustomPage {
 		}
 	}
 
-	// Not opening another the CreateNewQuizPage for some reason.
+	// Not working. It is not opening the CreateNewQuizPage for some reason.
 	private class NewQuiz implements ActionListener {
 
 		@Override
