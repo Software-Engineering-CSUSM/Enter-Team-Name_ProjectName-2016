@@ -41,9 +41,11 @@ public class CoursesMain extends CustomPage {
 				switch (i) {
 				case 0:
 					this.currentActions[i].addActionListener(new OpenCourseManagement());
+					System.out.println("Mange course button");
 					break;
 				case 1:
 					this.currentActions[i].addActionListener(new OpenContentManagement());
+					System.out.println("Mange course button");
 					break;
 				default:
 					System.out.println("Not enough implemented classes");

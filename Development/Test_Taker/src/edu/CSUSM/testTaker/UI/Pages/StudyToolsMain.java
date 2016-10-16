@@ -34,7 +34,7 @@ public class StudyToolsMain extends CustomPage {
 	public void updateActions() {
 
 		// Set the button names
-		setButtonNames(new String[] { "Play Game", "Do Something", "Practice With Flash Cards" });
+		setButtonNames(new String[] { "Play Game", "Quiz Page", "Practice With Flash Cards" });
 
 		try {
 			for (int i = 0; i < this.currentActions.length; i++) {
@@ -43,8 +43,7 @@ public class StudyToolsMain extends CustomPage {
 					this.currentActions[i].addActionListener(new OpenStudyGame());
 					break;
 				case 1:
-					// this.currentActions[i].addActionListener(new
-					// OpenStudyGame());
+					this.currentActions[i].addActionListener(new OpenQuizPage());
 					break;
 				case 2:
 					this.currentActions[i].addActionListener(new OpenFlashCards());
@@ -79,6 +78,22 @@ public class StudyToolsMain extends CustomPage {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			System.out.println("Opening " + this.getClass());
+
+		}
+
+	}
+
+	private class OpenQuizPage implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			System.out.println("Opening " + this.getClass());
+
+			// System.out.println("Opening " + this.getClass());
+			QuizMain questionBuilder = new QuizMain(QuizMain.PanelType.THREE_BUTTON_TYPE);
+			questionBuilder.setName("Quiz Page");
+			questionBuilder.parentController = parentController;
+			parentController.displayView(questionBuilder);
 
 		}
 

@@ -25,10 +25,10 @@ import edu.CSUSM.testTaker.UI.Pages.ManageData;
  * @purpose The purpose of this class is to make it easier to create JPanels.
  *          Are panel types are quite simple to create. For simplicity, there
  *          are a few type of panels: • TWO_BUTTON_TYPE - Has a logo and two
- *          buttons (sBs) • THREE_BUTTON_TYPE - Has a logo and three buttons (2
- *          on top, one centered below) • LOGO_ONLY_TYPE - Has only a logo •
- *          QUESTION_BUILDER_TYPE - has a question input, posible answer input
- *          and radio buttons to selct correct answer
+ *          buttons (sBs) • THREE_BUTTON_TYPE - Has a logo and three buttons
+ *          (2 on top, one centered below) • LOGO_ONLY_TYPE - Has only a logo
+ *          • QUESTION_BUILDER_TYPE - has a question input, posible answer
+ *          input and radio buttons to selct correct answer
  *
  */
 public class CustomPage extends JPanel {

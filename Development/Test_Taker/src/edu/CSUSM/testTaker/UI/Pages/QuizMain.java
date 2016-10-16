@@ -15,7 +15,7 @@ public class QuizMain extends CustomPage {
 	public QuizMain(PanelType currentPanelType) {
 		super(currentPanelType);
 		// TODO Auto-generated constructor stub
-		System.out.println("Printing a new Form");
+		// System.out.println("Printing a new Form");
 		updateActions();
 	}
 
@@ -30,23 +30,109 @@ public class QuizMain extends CustomPage {
 		// TODO Auto-generated constructor stub
 		updateActions();
 	}
-	
-	
-	public void updateActions(){
-	
-		//Set the button names
-		setButtonNames(new String[]{"Manage Questions", "Add New Quiz"});
-		
-		this.setName("Hello World");
-		
-		this.currentActions[0].addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent e){
-				System.out.println("New Action Lsitener");
-			}
-		});
-	}
-	
-	
-	
 
+	public void updateActions() {
+
+		// Set the button names
+		setButtonNames(new String[] { "Add Question", "Create Quiz", "Take Quiz" });
+
+		for (int i = 0; i < this.currentActions.length; i++) {
+			switch (i) {
+			case 0:
+				this.currentActions[i].addActionListener(new OpenAddQuestions());
+				break;
+			case 1:
+				this.currentActions[i].addActionListener(new CreateQuizPage());
+				break;
+			case 2:
+				this.currentActions[i].addActionListener(new TakeQuizPage());
+				break;
+			default:
+				System.out.println("Not enough implemented classes");
+				break;
+			}
+		}
+	}
+
+	private class OpenQuizMain implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// System.out.println("Opening " + this.getClass());
+
+			CustomPage cm = new CustomPage(CustomPage.PanelType.TWO_BUTTON_TYPE);
+			cm.setName("Quiz Main");
+			parentController.displayView(cm);
+
+		}
+
+	}
+
+	private class OpenQuestionBuilder implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// System.out.println("Opening " + this.getClass());
+			CustomPage questionBuilder = new CustomPage(CustomPage.PanelType.QUESTION_BUILDER_TYPE);
+			questionBuilder.setName("Question Page");
+			questionBuilder.parentController = parentController;
+			parentController.displayView(questionBuilder);
+		}
+	}
+
+	// Button Listener for add question. Currently set for two button type.
+	// Needs to be updated for 2 test fields with two buttons
+	private class OpenAddQuestions implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// System.out.println("Opening " + this.getClass());
+
+			// System.out.println("Opening " + this.getClass());
+			AddQuestion questionBuilder = new AddQuestion(AddQuestion.PanelType.TWO_BUTTON_TYPE);
+			questionBuilder.setName("Add Question Page");
+			questionBuilder.parentController = parentController;
+			parentController.displayView(questionBuilder);
+
+		}
+
+	}
+
+	// Button Listener for the Take Quiz Page. Currently set to two
+	// button type. Needs to be updated to list view for list of
+	// quizzes to take and a start button
+	private class TakeQuizPage implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// System.out.println("Opening " + this.getClass());
+
+			// System.out.println("Opening " + this.getClass());
+			TakeQuiz questionBuilder = new TakeQuiz(TakeQuiz.PanelType.TWO_BUTTON_TYPE);
+			questionBuilder.setName("Take Quiz Page");
+			questionBuilder.parentController = parentController;
+			parentController.displayView(questionBuilder);
+
+		}
+
+	}
+
+	// Button Listener for the Take Quiz Page. Currently set to two
+	// button type. Needs to be updated to list view for list of
+	// quizzes to take and a start button
+	private class CreateQuizPage implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// System.out.println("Opening " + this.getClass());
+
+			// System.out.println("Opening " + this.getClass());
+			CreateQuiz questionBuilder = new CreateQuiz(CreateQuiz.PanelType.TWO_BUTTON_TYPE);
+			questionBuilder.setName("Create Quiz Page");
+			questionBuilder.parentController = parentController;
+			parentController.displayView(questionBuilder);
+
+		}
+
+	}
 }
