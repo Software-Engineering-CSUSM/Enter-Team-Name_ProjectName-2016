@@ -1,4 +1,2 @@
-INDEX VERSION 1.129+/Users/Justin/Documents/Organized Documents/My Documents/School Stuff/CSUSM/Fall 2016/Software Engineering/SE Group Project/Development/.metadata/.plugins/org.eclipse.jdt.core
-3015877139.index
-189815217.index
-3765020915.index
+INDEX VERSION 1.129+/Users/justin/Documents/Organized Documents/My Documents/School Stuff/CSUSM/Fall 2016/Software Engineering/SE Group Project/Development/.metadata/.plugins/org.eclipse.jdt.core
+1271342938.index

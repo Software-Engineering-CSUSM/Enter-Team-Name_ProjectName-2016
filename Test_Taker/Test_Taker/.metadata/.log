@@ -174,3 +174,115 @@ Binding(ALT+CTRL+P,
 
 !ENTRY com.wakatime.eclipse.plugin 1 0 2016-10-10 21:41:43.020
 !MESSAGE wakatime-cli is up to date.
+!SESSION 2016-10-12 10:48:31.109 -----------------------------------------------
+eclipse.buildId=4.6.0.I20160606-1100
+java.version=1.8.0_40
+java.vendor=Oracle Corporation
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.cpp.product -keyring /Users/Justin/.eclipse_keyring
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.eclipse.epp.package.cpp.product -keyring /Users/Justin/.eclipse_keyring
+
+!ENTRY org.eclipse.core.net 1 0 2016-10-12 10:48:34.981
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16|127.0.0.1 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.eclipse.jface 2 0 2016-10-12 10:48:37.354
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2016-10-12 10:48:37.354
+!MESSAGE A conflict occurred for ALT+CTRL+P:
+Binding(ALT+CTRL+P,
+	ParameterizedCommand(Command(org.eclipse.m2e.profiles.ui.commands.selectMavenProfileCommand,Select Maven Profiles,
+		,
+		Category(org.eclipse.ui.category.window,Window,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@2c846d55,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+Binding(ALT+CTRL+P,
+	ParameterizedCommand(Command(org.eclipse.linuxtools.changelog.core.preparechangelog,Prepare Changelog,
+		Prepares Changelog,
+		Category(org.eclipse.linuxtools.changelog,Changelog,Changelog key bindings,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@735167e1,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+
+!ENTRY com.wakatime.eclipse.plugin 1 0 2016-10-12 10:48:46.916
+!MESSAGE Upgrading wakatime-cli ...
+
+!ENTRY com.wakatime.eclipse.plugin 1 0 2016-10-12 10:48:48.792
+!MESSAGE Finished upgrading wakatime-cli.
+!SESSION 2016-10-15 13:05:00.598 -----------------------------------------------
+eclipse.buildId=4.6.0.I20160606-1100
+java.version=1.8.0_40
+java.vendor=Oracle Corporation
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.cpp.product -keyring /Users/Justin/.eclipse_keyring
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.eclipse.epp.package.cpp.product -keyring /Users/Justin/.eclipse_keyring
+
+!ENTRY org.eclipse.core.net 1 0 2016-10-15 13:05:05.804
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16|127.0.0.1 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.eclipse.jface 2 0 2016-10-15 13:05:07.168
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2016-10-15 13:05:07.168
+!MESSAGE A conflict occurred for ALT+CTRL+P:
+Binding(ALT+CTRL+P,
+	ParameterizedCommand(Command(org.eclipse.m2e.profiles.ui.commands.selectMavenProfileCommand,Select Maven Profiles,
+		,
+		Category(org.eclipse.ui.category.window,Window,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@2de96eba,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+Binding(ALT+CTRL+P,
+	ParameterizedCommand(Command(org.eclipse.linuxtools.changelog.core.preparechangelog,Prepare Changelog,
+		Prepares Changelog,
+		Category(org.eclipse.linuxtools.changelog,Changelog,Changelog key bindings,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@3ef914f5,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+
+!ENTRY org.eclipse.m2e.logback.appender 4 0 2016-10-15 13:05:15.347
+!MESSAGE 2016-10-15 13:05:14.591 xcodebuild[8212:921774] [MT] PluginLoading: Required plug-in compatibility UUID 8A66E736-A720-4B3C-92F1-33D9962C69DF for plug-in at path '~/Library/Application Support/Developer/Shared/Xcode/Plug-ins/XFunnyEditor.xcplugin' not present in DVTPlugInCompatibilityUUIDs
+2016-10-15 13:05:14.594 xcodebuild[8212:921774] [MT] PluginLoading: Required plug-in compatibility UUID 8A66E736-A720-4B3C-92F1-33D9962C69DF for plug-in at path '~/Library/Application Support/Developer/Shared/Xcode/Plug-ins/XCSnippetr.xcplugin' not present in DVTPlugInCompatibilityUUIDs
+2016-10-15 13:05:14.595 xcodebuild[8212:921774] [MT] PluginLoading: Required plug-in compatibility UUID 8A66E736-A720-4B3C-92F1-33D9962C69DF for plug-in at path '~/Library/Application Support/Developer/Shared/Xcode/Plug-ins/XCommentWrap.xcplugin' not present in DVTPlugInCompatibilityUUIDs
+2016-10-15 13:05:14.597 xcodebuild[8212:921774] [MT] PluginLoading: Required plug-in compatibility UUID 8A66E736-A720-4B3C-92F1-33D9962C69DF for plug-in at path '~/Library/Application Support/Developer/Shared/Xcode/Plug-ins/XcodeMultiEdit.xcplugin' not present in DVTPlugInCompatibilityUUIDs
+2016-10-15 13:05:14.599 xcodebuild[8212:921774] [MT] PluginLoading: Required plug-in compatibility UUID 8A66E736-A720-4B3C-92F1-33D9962C69DF for plug-in at path '~/Library/Application Support/Developer/Shared/Xcode/Plug-ins/WakaTime.xcplugin' not present in DVTPlugInCompatibilityUUIDs
+2016-10-15 13:05:14.599 xcodebuild[8212:921774] [MT] PluginLoading: Required plug-in compatibility UUID 8A66E736-A720-4B3C-92F1-33D9962C69DF for plug-in at path '~/Library/Application Support/Developer/Shared/Xcode/Plug-ins/Unity4XC.xcplugin' not present in DVTPlugInCompatibilityUUIDs
+2016-10-15 13:05:14.602 xcodebuild[8212:921774] Failed to load plugin at: /Users/Justin/Library/Application Support/Developer/Shared/Xcode/Plug-ins/Unity4XC.xcplugin, skipping.  Reason for failure: *** -[__NSPlaceholderDictionary initWithObjects:forKeys:count:]: attempt to insert nil object from objects[0]
+2016-10-15 13:05:14.603 xcodebuild[8212:921774] [MT] PluginLoading: Required plug-in compatibility UUID 8A66E736-A720-4B3C-92F1-33D9962C69DF for plug-in at path '~/Library/Application Support/Developer/Shared/Xcode/Plug-ins/SublimeShortcuts-ObjC.xcplugin' not present in DVTPlugInCompatibilityUUIDs
+2016-10-15 13:05:14.604 xcodebuild[8212:921774] [MT] PluginLoading: Required plug-in compatibility UUID 8A66E736-A720-4B3C-92F1-33D9962C69DF for plug-in at path '~/Library/Application Support/Developer/Shared/Xcode/Plug-ins/SCXcodeSwitchExpander.xcplugin' not present in DVTPlugInCompatibilityUUIDs
+2016-10-15 13:05:14.605 xcodebuild[8212:921774] [MT] PluginLoading: Required plug-in compatibility UUID 8A66E736-A720-4B3C-92F1-33D9962C69DF for plug-in at path '~/Library/Application Support/Developer/Shared/Xcode/Plug-ins/Remote.xcplugin' not present in DVTPlugInCompatibilityUUIDs
+2016-10-15 13:05:14.606 xcodebuild[8212:921774] [MT] PluginLoading: Required plug-in compatibility UUID 8A66E736-A720-4B3C-92F1-33D9962C69DF for plug-in at path '~/Library/Application Support/Developer/Shared/Xcode/Plug-ins/Open With Application.xcplugin' not present in DVTPlugInCompatibilityUUIDs
+2016-10-15 13:05:14.608 xcodebuild[8212:921774] [MT] PluginLoading: Required plug-in compatibility UUID 8A66E736-A720-4B3C-92F1-33D9962C69DF for plug-in at path '~/Library/Application Support/Developer/Shared/Xcode/Plug-ins/ObjectGraph.xcplugin' not present in DVTPlugInCompatibilityUUIDs
+2016-10-15 13:05:14.609 xcodebuild[8212:921774] [MT] PluginLoading: Required plug-in compatibility UUID 8A66E736-A720-4B3C-92F1-33D9962C69DF for plug-in at path '~/Library/Application Support/Developer/Shared/Xcode/Plug-ins/Multiplex.xcplugin' not present in DVTPlugInCompatibilityUUIDs
+2016-10-15 13:05:14.610 xcodebuild[8212:921774] [MT] PluginLoading: Required plug-in compatibility UUID 8A66E736-A720-4B3C-92F1-33D9962C69DF for plug-in at path '~/Library/Application Support/Developer/Shared/Xcode/Plug-ins/LogDisabler.xcplugin' not present in DVTPlugInCompatibilityUUIDs
+2016-10-15 13:05:14.612 xcodebuild[8212:921774] [MT] PluginLoading: Required plug-in compatibility UUID 8A66E736-A720-4B3C-92F1-33D9962C69DF for plug-in at path '~/Library/Application Support/Developer/Shared/Xcode/Plug-ins/IconMaker.xcplugin' not present in DVTPlugInCompatibilityUUIDs
+2016-10-15 13:05:14.612 xcodebuild[8212:921774] [MT] PluginLoading: Required plug-in compatibility UUID 8A66E736-A720-4B3C-92F1-33D9962C69DF for plug-in at path '~/Library/Application Support/Developer/Shared/Xcode/Plug-ins/HighlightSelectedString.xcplugin' not present in DVTPlugInCompatibilityUUIDs
+2016-10-15 13:05:14.614 xcodebuild[8212:921774] [MT] PluginLoading: Required plug-in compatibility UUID 8A66E736-A720-4B3C-92F1-33D9962C69DF for plug-in at path '~/Library/Application Support/Developer/Shared/Xcode/Plug-ins/HCTAutoFolding.xcplugin' not present in DVTPlugInCompatibilityUUIDs
+2016-10-15 13:05:14.615 xcodebuild[8212:921774] [MT] PluginLoading: Required plug-in compatibility UUID 8A66E736-A720-4B3C-92F1-33D9962C69DF for plug-in at path '~/Library/Application Support/Developer/Shared/Xcode/Plug-ins/FuzzyAutocomplete.xcplugin' not present in DVTPlugInCompatibilityUUIDs
+2016-10-15 13:05:14.616 xcodebuild[8212:921774] [MT] PluginLoading: Required plug-in compatibility UUID 8A66E736-A720-4B3C-92F1-33D9962C69DF for plug-in at path '~/Library/Application Support/Developer/Shared/Xcode/Plug-ins/DerivedData Exterminator.xcplugin' not present in DVTPlugInCompatibilityUUIDs
+2016-10-15 13:05:14.617 xcodebuild[8212:921774] [MT] PluginLoading: Required plug-in compatibility UUID 8A66E736-A720-4B3C-92F1-33D9962C69DF for plug-in at path '~/Library/Application Support/Developer/Shared/Xcode/Plug-ins/DebugSearch.xcplugin' not present in DVTPlugInCompatibilityUUIDs
+2016-10-15 13:05:14.617 xcodebuild[8212:921774] [MT] PluginLoading: Required plug-in compatibility UUID 8A66E736-A720-4B3C-92F1-33D9962C69DF for plug-in at path '~/Library/Application Support/Developer/Shared/Xcode/Plug-ins/DBSmartPanels.xcplugin' not present in DVTPlugInCompatibilityUUIDs
+2016-10-15 13:05:14.619 xcodebuild[8212:921774] [MT] PluginLoading: Required plug-in compatibility UUID 8A66E736-A720-4B3C-92F1-33D9962C69DF for plug-in at path '~/Library/Application Support/Developer/Shared/Xcode/Plug-ins/CoPilot.xcplugin' not present in DVTPlugInCompatibilityUUIDs
+2016-10-15 13:05:14.621 xcodebuild[8212:921774] [MT] PluginLoading: Required plug-in compatibility UUID 8A66E736-A720-4B3C-92F1-33D9962C69DF for plug-in at path '~/Library/Application Support/Developer/Shared/Xcode/Plug-ins/CocoaPods.xcplugin' not present in DVTPlugInCompatibilityUUIDs
+2016-10-15 13:05:14.622 xcodebuild[8212:921774] [MT] PluginLoading: Required plug-in compatibility UUID 8A66E736-A720-4B3C-92F1-33D9962C69DF for plug-in at path '~/Library/Application Support/Developer/Shared/Xcode/Plug-ins/ChangeMarks.xcplugin' not present in DVTPlugInCompatibilityUUIDs
+2016-10-15 13:05:14.622 xcodebuild[8212:921774] [MT] PluginLoading: Required plug-in compatibility UUID 8A66E736-A720-4B3C-92F1-33D9962C69DF for plug-in at path '~/Library/Application Support/Developer/Shared/Xcode/Plug-ins/CComment.xcplugin' not present in DVTPlugInCompatibilityUUIDs
+2016-10-15 13:05:14.623 xcodebuild[8212:921774] [MT] PluginLoading: Required plug-in compatibility UUID 8A66E736-A720-4B3C-92F1-33D9962C69DF for plug-in at path '~/Library/Application Support/Developer/Shared/Xcode/Plug-ins/Backlight.xcplugin' not present in DVTPlugInCompatibilityUUIDs
+2016-10-15 13:05:14.625 xcodebuild[8212:921774] [MT] PluginLoading: Required plug-in compatibility UUID 8A66E736-A720-4B3C-92F1-33D9962C69DF for plug-in at path '~/Library/Application Support/Developer/Shared/Xcode/Plug-ins/AutoIndentWithSave.xcplugin' not present in DVTPlugInCompatibilityUUIDs
+2016-10-15 13:05:14.625 xcodebuild[8212:921774] [MT] PluginLoading: Required plug-in compatibility UUID 8A66E736-A720-4B3C-92F1-33D9962C69DF for plug-in at path '~/Library/Application Support/Developer/Shared/Xcode/Plug-ins/AutoGenerateDescriptionPluginProd.xcplugin' not present in DVTPlugInCompatibilityUUIDs
+2016-10-15 13:05:14.626 xcodebuild[8212:921774] [MT] PluginLoading: Required plug-in compatibility UUID 8A66E736-A720-4B3C-92F1-33D9962C69DF for plug-in at path '~/Library/Application Support/Developer/Shared/Xcode/Plug-ins/ApportablePlugin.xcplugin' not present in DVTPlugInCompatibilityUUIDs
+2016-10-15 13:05:14.627 xcodebuild[8212:921774] [MT] PluginLoading: Required plug-in compatibility UUID 8A66E736-A720-4B3C-92F1-33D9962C69DF for plug-in at path '~/Library/Application Support/Developer/Shared/Xcode/Plug-ins/Alcatraz.xcplugin' not present in DVTPlugInCompatibilityUUIDs
+2016-10-15 13:05:14.629 xcodebuild[8212:921774] [MT] PluginLoading: Required plug-in compatibility UUID 8A66E736-A720-4B3C-92F1-33D9962C69DF for plug-in at path '~/Library/Application Support/Developer/Shared/Xcode/Plug-ins/AdjustFontSize.xcplugin' not present in DVTPlugInCompatibilityUUIDs
+2016-10-15 13:05:14.630 xcodebuild[8212:921774] [MT] PluginLoading: Required plug-in compatibility UUID 8A66E736-A720-4B3C-92F1-33D9962C69DF for plug-in at path '~/Library/Application Support/Developer/Shared/Xcode/Plug-ins/ACCodeSnippetRepository.xcplugin' not present in DVTPlugInCompatibilityUUIDs
+2016-10-15 13:05:14.825 xcodebuild[8212:921774] WARNING: Failed to load plugin at path: "/Users/Justin/Library/Application Support/Developer/Shared/Xcode/Plug-ins/XCActionBar.xcplugin", skipping. Error: Error Domain=NSCocoaErrorDomain Code=3587 "dlopen_preflight(/Users/Justin/Library/Application Support/Developer/Shared/Xcode/Plug-ins/XCActionBar.xcplugin/Contents/MacOS/XCActionBar): no suitable image found.  Did find:
+	/Users/Justin/Library/Application Support/Developer/Shared/Xcode/Plug-ins/XCActionBar.xcplugin/Contents/MacOS/XCActionBar: code signing blocked mmap() of '/Users/Justin/Library/Application Support/Developer/Shared/Xcode/Plug-ins/XCActionBar.xcplugin/Contents/MacOS/XCActionBar'" UserInfo={NSLocalizedFailureReason=The bundle is damaged or missing necessary resources., NSLocalizedRecoverySuggestion=Try reinstalling the bundle., NSFilePath=/Users/Justin/Library/Application Support/Developer/Shared/Xcode/Plug-ins/XCActionBar.xcplugin/Contents/MacOS/XCActionBar, NSDebugDescription=dlopen_preflight(/Users/Justin/Library/Application Support/Developer/Shared/Xcode/Plug-ins/XCActionBar.xcplugin/Contents/MacOS/XCActionBar): no suitable image found.  Did find:
+	/Users/Justin/Library/Application Support/Developer/Shared/Xcode/Plug-ins/XCActionBar.xcplugin/Contents/MacOS/XCActionBar: code signing blocked mmap() of '/Users/Justin/Library/Application Support/Developer/Shared/Xcode/Plug-ins/XCActionBar.xcplugin/Contents/MacOS/XCActionBar', NSBundlePath=/Users/Justin/Library/Application Support/Developer/Shared/Xcode/Plug-ins/XCActionBar.xcplugin, NSLocalizedDescription=The bundle âXCActionBarâ couldnât be loaded because it is damaged or missing necessary resources.}
+2016-10-15 13:05:14.830 xcodebuild[8212:921774] WARNING: Failed to load plugin at path: "/Users/Justin/Library/Application Support/Developer/Shared/Xcode/Plug-ins/InjectionPlugin.xcplugin", skipping. Error: Error Domain=NSCocoaErrorDomain Code=3587 "dlopen_preflight(/Users/Justin/Library/Application Support/Developer/Shared/Xcode/Plug-ins/InjectionPlugin.xcplugin/Contents/MacOS/InjectionPlugin): no suitable image found.  Did find:
+	/Users/Justin/Library/Application Support/Developer/Shared/Xcode/Plug-ins/InjectionPlugin.xcplugin/Contents/MacOS/InjectionPlugin: code signing blocked mmap() of '/Users/Justin/Library/Application Support/Developer/Shared/Xcode/Plug-ins/InjectionPlugin.xcplugin/Contents/MacOS/InjectionPlugin'" UserInfo={NSLocalizedFailureReason=The bundle is damaged or missing necessary resources., NSLocalizedRecoverySuggestion=Try reinstalling the bundle., NSFilePath=/Users/Justin/Library/Application Support/Developer/Shared/Xcode/Plug-ins/InjectionPlugin.xcplugin/Contents/MacOS/InjectionPlugin, NSDebugDescription=dlopen_preflight(/Users/Justin/Library/Application Support/Developer/Shared/Xcode/Plug-ins/InjectionPlugin.xcplugin/Contents/MacOS/InjectionPlugin): no suitable image found.  Did find:
+	/Users/Justin/Library/Application Support/Developer/Shared/Xcode/Plug-ins/InjectionPlugin.xcplugin/Contents/MacOS/InjectionPlugin: code signing blocked mmap() of '/Users/Justin/Library/Application Support/Developer/Shared/Xcode/Plug-ins/InjectionPlugin.xcplugin/Contents/MacOS/InjectionPlugin', NSBundlePath=/Users/Justin/Library/Application Support/Developer/Shared/Xcode/Plug-ins/InjectionPlugin.xcplugin, NSLocalizedDescription=The bundle âInjectionPluginâ couldnât be loaded because it is damaged or missing necessary resources.}
+
+
+!ENTRY com.wakatime.eclipse.plugin 1 0 2016-10-15 13:05:20.500
+!MESSAGE wakatime-cli is up to date.
