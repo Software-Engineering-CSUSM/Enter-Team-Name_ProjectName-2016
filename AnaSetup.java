@@ -3,18 +3,18 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class AnaSetup {
-	private static DateFormat dateReg = new SimpleDateFormat("dd-MM-yyyy|HH:mm:ss");
+	private static DateFormat dateReg = new SimpleDateFormat("MM-dd-yyyy | HH:mm:ss");
 		
 	public static void sendEvent(String Action){
 		String st = assembleSt("Event");
 		
-		System.out.println(st + Action + " occured.");
+		System.out.println(st + Action + "occured.");
 	}
 	
 	public static void sendPage(String pageName){
-		String st = assembleSt("Page ");
+		String st = assembleSt("Page");
 		
-		System.out.println(st + pageName + " was accessed.");
+		System.out.println(st + pageName + "was accessed.");
 	}
 	
 	//Ex. 07-08-1995|12:12:30|Event:
