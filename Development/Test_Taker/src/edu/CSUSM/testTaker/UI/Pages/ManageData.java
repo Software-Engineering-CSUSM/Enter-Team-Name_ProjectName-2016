@@ -126,7 +126,7 @@ public class ManageData<ObjectDisplayed> extends JPanel {
 		// Create rows for each question
 		for (Question tempQuestion : questionList) {
 			// This will eventually be more specific
-			Row newRow = new Row(tempQuestion._question, tempQuestion.myID);
+			Row newRow = new Row(tempQuestion.getQuestion(), tempQuestion.getID());
 			// newRow.setSize(this.getWidth(), this.getHeight() / 3);
 			gb.gridy++;
 			gb.fill = GridBagConstraints.BOTH;

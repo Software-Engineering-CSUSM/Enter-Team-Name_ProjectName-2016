@@ -17,8 +17,6 @@ public class Question implements Serializable, Registerable {
 
 	String myID;
 	
-	String myID;
-	
 	/**
 	 * Return the identifier string of this Question
 	 * @return A unique identifier string associated with this object.

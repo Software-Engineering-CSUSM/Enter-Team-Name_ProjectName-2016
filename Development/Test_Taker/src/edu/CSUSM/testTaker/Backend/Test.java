@@ -16,8 +16,8 @@ public class Test implements Serializable, Registerable{
 	ArrayList<Integer> questionPoints;
 	String _testName, _courseID;
 	String myID;
-	
-	
+
+
 	/**  Get the ID of the test for database storage and retrieval
 	 * @return unique ID string of this Test
 	 * @author Steven Clark
@@ -25,7 +25,7 @@ public class Test implements Serializable, Registerable{
 	public String getID(){
 		return myID;
 	}
-	
+
 	//For testing purposes
 	//public HashMap<String, Question> _listOfQuestionsInExam;		//Format: (String testID, Question questionWithIDBuiltIn)
 
@@ -46,7 +46,7 @@ public class Test implements Serializable, Registerable{
 	public Test(){
 		//mostly handled by inititilizer block
 	}
-	
+
 	/**
 	 * Initialize blank test with only a Title
 	 * @param testName The name of the test we just created
@@ -55,7 +55,7 @@ public class Test implements Serializable, Registerable{
 	public Test(String testName){
 		this._testName = testName;
 	}
-	
+
 	/**
 	 * Initialize from title and List of Questions
 	 * @param testName Name of test
@@ -66,7 +66,7 @@ public class Test implements Serializable, Registerable{
 		this._testName = testName;
 		setQuestionList(listOfQuestionsForTest);
 	}
-	
+
 	/**
 	 * Initialize from Title, List of questions, and associated Course
 	 * @param testName Title of the test
@@ -79,7 +79,7 @@ public class Test implements Serializable, Registerable{
 		setQuestionList(listOfQuestionsForTest);
 		this._courseID = courseID;
 	}
-	
+
 	/**
 	 * Initialize a new test from a Title and a list of question ID strings.
 	 * @param testName The title of the new test
@@ -92,7 +92,7 @@ public class Test implements Serializable, Registerable{
 		}
 		initQuestions();
 	}
-	
+
 	/** Make an example Test
 	 * @return A reference to a Test, a Monty Python reference
 	 */
@@ -107,17 +107,17 @@ public class Test implements Serializable, Registerable{
 		q2.addAnswer("aaaaaah");
 		q2.setCorrectIndex(2);
 		rval.addQuestion(q2,1);
-		
+
 		Question q3 = new Question("What! is the average landspeed of an unladended swallow?");
 		q3.addAnswer("African or European?");
 		q3.addAnswer("I don't know that!");
 		q3.addAnswer("aaaaahhhhh");
 		q3.setCorrectIndex(0);
 		rval.addQuestion(q3, 20);
-		
+
 		return rval;
 	}
-	
+
 	/** Accessors */
 
 	/**
@@ -127,8 +127,8 @@ public class Test implements Serializable, Registerable{
 	public String[] getQuestionIDs(){
 		return questionIDs.toArray(null);
 	}
-	
-	
+
+
 	/**
 	 *  Get an array of questions in the test.
 	 * @return The questions in the test, in order, at this moment in time.
@@ -136,7 +136,7 @@ public class Test implements Serializable, Registerable{
 	public Question[] getQuestions(){
 		return questionList.toArray(null);
 	}
-	
+
 	/**
 	 * Get a question from the test.
 	 * @param qn The index of the question to retrieve (0-indexed)
@@ -153,7 +153,7 @@ public class Test implements Serializable, Registerable{
 	public int numQuestions(){
 		return this.questionIDs.size();
 	}
-	
+
 	/**
 	 * Get the points value of a particular test question
 	 * @param qn The index of the question to retrieve (0-indexed)
@@ -162,7 +162,7 @@ public class Test implements Serializable, Registerable{
 	public int getQuestionPoints(int qn){
 		return questionPoints.get(qn);
 	}
-	
+
 	/**
 	 * Get title of the test.
 	 * @return The name of this test.
@@ -170,7 +170,7 @@ public class Test implements Serializable, Registerable{
 	public String getTestName(){
 		return this._testName;
 	}
-	
+
 	/**
 	 * Get the associated course.
 	 * @return The identifier string of the course this test is filed u
@@ -178,9 +178,9 @@ public class Test implements Serializable, Registerable{
 	public String getCourseID(){
 		return this._courseID;
 	}
-	
+
 	/** Mutators */
-	
+
 	/**
 	 * Utility function to initialize reference array and optionally points from just Question IDs.
 	 */
@@ -197,7 +197,7 @@ public class Test implements Serializable, Registerable{
 			LibraryController.storeTest(this);
 		}
 	}
-	
+
 	/**
 	 * Allows client to set the points value of a particular question of the test.
 	 * @param qn The index (0-based) of the question to set the value of.
@@ -213,7 +213,7 @@ public class Test implements Serializable, Registerable{
 		LibraryController.storeTest(this);
 		return false;
 	}
-	
+
 	/**
 	 *  Add a new question to the test.
 	 * @param QuestionToAdd A Question to add to the question list for this test.
@@ -238,8 +238,8 @@ public class Test implements Serializable, Registerable{
 		QuestionToAdd.setTestID(getID());
 		LibraryController.storeTest(this);		
 	}
-	
-	
+
+
 	/**
 	 * Remove a particular question number from the test.
 	 * @param qn The index of the question to remove.
@@ -250,7 +250,7 @@ public class Test implements Serializable, Registerable{
 		questionPoints.remove(qn);
 		LibraryController.storeTest(this);
 	}
-	
+
 	/**
 	 * Insert a Question into the test at a particular index.
 	 * @param insertit A reference to the Question to insert
@@ -264,7 +264,7 @@ public class Test implements Serializable, Registerable{
 		questionPoints.add(qi,points);
 		LibraryController.storeTest(this);
 	}
-	
+
 	/**
 	 * Set the title/name of this Test	
 	 * @param newTestName A String of the new name for this Test
@@ -273,13 +273,13 @@ public class Test implements Serializable, Registerable{
 		this._testName = newTestName;
 		LibraryController.storeTest(this);
 	}
-	
+
 	/*
 	public void setTestID(String newTestID){
 		this._testID = newTestID;
 	}
-	*/
-	
+	 */
+
 	/**
 	 * Set the Course associated with this Test
 	 * @param newCourseID An ID String for the Course this test should be filed under.
@@ -288,8 +288,8 @@ public class Test implements Serializable, Registerable{
 		this._courseID = newCourseID;
 		LibraryController.storeTest(this);		
 	}
-	
-	
+
+
 	/**
 	 * Utility function sets/resets the list of questions
 	 * @param newQuestionList an array of Question refs to insert
@@ -298,7 +298,7 @@ public class Test implements Serializable, Registerable{
 		questionList.clear();
 		questionIDs.clear();
 		questionPoints.clear();
-		
+
 		//Iterate through the list and add to the question map. we are going to add the test ID to each of the questions.
 		for(Question tempQuestion : newQuestionList){			
 			questionList.add(tempQuestion);
@@ -307,8 +307,8 @@ public class Test implements Serializable, Registerable{
 		}
 		LibraryController.storeTest(this);
 	}
-	
-	
+
+
 	/** 
 	 * @author John Orcino
 	 * @description goes through the loop to calculate the weighted average by 
@@ -325,11 +325,7 @@ public class Test implements Serializable, Registerable{
 		double tempPoints = 0.0;   		//get the point that is set in the questionPoint array index
 		double tempValue = 0.0;			//get the point that is set in the answerPoint array index
 		Question points;   				//to call question class in order to call the ArrayList
-	public void setQuestionList(AbstractList<Question> newQuestionList){
-		questionList.clear();
-		questionIDs.clear();
-		questionPoints.clear();
-		
+
 		/**
 		 * iterator
 		 * @description goes through the array list and adds up the sum of points
@@ -339,12 +335,20 @@ public class Test implements Serializable, Registerable{
 		{
 			tempPoints = this.questionPoints.get(x);
 			tempValue = questionList.get(x).pointsValue(ansAry[x]);
-			
+
 			sumOfPoints = sumOfPoints + tempPoints;
 			pointValue = pointValue + (tempValue*tempPoints);	
 		}	
 		weightAverage = pointValue/sumOfPoints;
 		return weightAverage;
+
+	}
+
+	public void setQuestionList(AbstractList<Question> newQuestionList){
+		questionList.clear();
+		questionIDs.clear();
+		questionPoints.clear();
+
 		//Iterate through the list and add to the question map. we are going to add the test ID to each of the questions.
 		for(Question tempQuestion : newQuestionList){			
 			questionList.add(tempQuestion);
@@ -353,8 +357,9 @@ public class Test implements Serializable, Registerable{
 		}
 		LibraryController.storeTest(this);
 	}
-		
-	
+
+
+
 	/**
 	 *  (non-Javadoc)
 	 * @see java.lang.Object#toString()
@@ -362,23 +367,23 @@ public class Test implements Serializable, Registerable{
 	 */
 	@Override
 	public String toString(){
-        
-        //Create the initial question
-        String thisTestString = "Test: " + this._testName;
-        
-        System.out.println("Question Size: " + questionList.size());
-                
-        if(questionList != null && questionList.size() > 0){
-        	//Now, add each of the possible answers in the provided question
-            for(Question tempQuestion : questionList){
-            	thisTestString += "\n\t" + tempQuestion.toString();
-            }
-        }else{
-        	return "No questions yet in test: " + thisTestString + "\n";
-        }
-        
-        //Return the result
-        return thisTestString;
-    }
+
+		//Create the initial question
+		String thisTestString = "Test: " + this._testName;
+
+		System.out.println("Question Size: " + questionList.size());
+
+		if(questionList != null && questionList.size() > 0){
+			//Now, add each of the possible answers in the provided question
+			for(Question tempQuestion : questionList){
+				thisTestString += "\n\t" + tempQuestion.toString();
+			}
+		}else{
+			return "No questions yet in test: " + thisTestString + "\n";
+		}
+
+		//Return the result
+		return thisTestString;
+	}
 
 }

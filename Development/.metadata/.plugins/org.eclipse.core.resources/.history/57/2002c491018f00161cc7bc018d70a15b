@@ -1,7 +1,0 @@
-package edu.CSUSM.testTaker.UI.Pages;
-
-import edu.CSUSM.testTaker.UI.CustomPage;
-
-public class QuizMain extends CustomPage {
-
-}

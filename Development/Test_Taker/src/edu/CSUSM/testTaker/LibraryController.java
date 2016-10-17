@@ -40,14 +40,7 @@ public class LibraryController {
 		questionArray = new HashMap<String, Question>();
 		classArray = new HashMap<String, Course>();
 	}
-	
-	/**The below static variables are for the current class, not all information as done above */
-	public static HashMap<String, Test> _currentTestsInCourse;			//String is the testID
-	public static HashMap<String, Question> _currentQuestionsInCourse;	//String is the questionID 
-	public static String _currentClassID;			
-	
-	//For testing purposes
-	private static ArrayList<Question> questionsInExam;
+		
 	
 	//End of testing purposes
 
