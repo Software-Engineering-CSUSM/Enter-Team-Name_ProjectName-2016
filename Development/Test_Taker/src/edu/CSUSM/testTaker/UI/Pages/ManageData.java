@@ -3,10 +3,13 @@ package edu.CSUSM.testTaker.UI.Pages;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.GridLayout;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 
+import javax.swing.ButtonGroup;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
@@ -92,13 +95,19 @@ public class ManageData<ObjectDisplayed> extends JPanel {
 		this.add(tableView, BorderLayout.CENTER);
 
 		innerView = new JPanel();
-		innerView.setLayout(new GridLayout(10, 1));
-		innerView.setBackground(Color.CYAN);
+		innerView.setLayout(new GridBagLayout());
+		innerView.setBackground(Color.WHITE);
+		GridBagConstraints gb = new GridBagConstraints();
+		gb.gridx = 0;
+		gb.gridy = 0;
+		gb.gridwidth = 5;
+		gb.fill = GridBagConstraints.HORIZONTAL;
+		gb.anchor = GridBagConstraints.WEST;
 
 		// Add the ScrollPane to it
 		JScrollPane scrollView = new JScrollPane(innerView, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
 				JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-		scrollView.setBackground(Color.GREEN);
+		// scrollView.setBackground(Color.GREEN);
 		tableView.add(scrollView);
 
 		/** Add Some Sample Questions to be displayed */
@@ -110,17 +119,23 @@ public class ManageData<ObjectDisplayed> extends JPanel {
 			// System.out.println("Current Questions: " +
 			// LibraryController.questionsInExam.toString());
 			questionList[i] = new Question("What is 5*5?", new String[] { "5", "25", "0" }, 1);
-			System.out.println("Question Created: " + questionList[i].getQuestion());
+			// System.out.println("Question Created: " +
+			// questionList[i].getQuestion());
 		}
 
 		// Create rows for each question
 		for (Question tempQuestion : questionList) {
 			// This will eventually be more specific
 			Row newRow = new Row(tempQuestion._question, tempQuestion.myID);
-
+			// newRow.setSize(this.getWidth(), this.getHeight() / 3);
+			gb.gridy++;
+			gb.fill = GridBagConstraints.BOTH;
 			// Add the row to the table
-			innerView.add(newRow);
+			innerView.add(newRow, gb);
 		}
+
+		// scrollView.setPreferredSize(new Dimension(this.getWidth(),
+		// this.getHeight() * 2));
 	}
 
 	/**
@@ -132,7 +147,8 @@ public class ManageData<ObjectDisplayed> extends JPanel {
 
 		private String rowName;
 		private String accessID;
-		private static int ROW_COUNT = 1;
+		private static int ROW_COUNT = 0;
+		public static ButtonGroup group = new ButtonGroup();
 
 		private Row(String name, String ID) {
 			setAccessID(ID);
@@ -155,6 +171,32 @@ public class ManageData<ObjectDisplayed> extends JPanel {
 			this.setBackground(Color.WHITE);
 			ROW_COUNT++;
 			this.setBorder(new LineBorder(Color.BLACK, 1));
+			this.setLayout(new GridBagLayout());
+			GridBagConstraints g = new GridBagConstraints();
+
+			// Add a label indicating the Row number
+			JLabel rowNumberLabel = new JLabel("" + ROW_COUNT + ") ");
+			rowNumberLabel.setBorder(new EmptyBorder(30, 20, 30, 0));
+			g.gridwidth = 1;
+			g.gridheight = 1;
+			g.gridx = 1;
+			g.fill = GridBagConstraints.HORIZONTAL;
+			this.add(rowNumberLabel);
+
+			// Add the label with the row name
+			JLabel rowNameLabel = new JLabel(this.rowName);
+			rowNameLabel.setBorder(new EmptyBorder(0, 10, 0, 10));
+			rowNameLabel.setHorizontalAlignment(JLabel.LEFT);
+			g.gridwidth = 5;
+			g.gridheight = 1;
+			g.gridx = 2;
+			this.add(rowNameLabel);
+
+			// Add JRadioButton
+			JRadioButton rb = new JRadioButton();
+			group.add(rb);
+			this.add(rb);
+
 		}
 
 		/**
