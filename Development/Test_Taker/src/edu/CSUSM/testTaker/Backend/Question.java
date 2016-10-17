@@ -22,9 +22,10 @@ public class Question implements Serializable, Registerable {
 		return myID;							//Within the Question HashMap, the ID will be in the key position where the question is the value
 	}
 	
-	String _question, _courseID, _testID;
-	ArrayList<String> _answers;			//To easily manage questions added and removed
-	int _correctIndex = -1;				//The default correct index is 0 because it is not yet assigned;
+	public String _question, _courseID, _testID;
+	public ArrayList<String> _answers;			//To easily manage questions added and removed
+	public ArrayList<Double> _answerPoints;
+	public int _correctIndex = -1;				//The default correct index is 0 because it is not yet assigned;
 	//The following has been removed, points value has little meaning outside a containing context like a test.
 	//public int _pointValue = 1;					//Sets the default point value to 1
 	
@@ -238,11 +239,38 @@ public class Question implements Serializable, Registerable {
 	}
 	
 	/**
+	 * @author John Orcino
+	 * @param location of user's chose of answer
+	 * @description returns a 1.0 if user's index is equal with _correctIndex
+	 * otherwise return 0.0 
+	 */
+	public double pointsValue(double index){
+		if(index == _correctIndex)
+			return 1.0;
+		else 
+		return 0.0;
+	}
+	
+	/**
+	 * @author John Orcino
+	 * @description calls pointsValue method and stores result into an ArrayList
+	 * @param location of user's answer
+	 */
+	public void storePoints(double index){
+		_answerPoints = new ArrayList<Double>();
+		_answerPoints.add(pointsValue(index));
+		
+	}
+	
+	/** (non-Javadoc)
+	/**
 	 * Return a string representation of this Question.
 	 * @see java.lang.Object#toString()
 	 * @author Justin Goulet
 	 * @return A human readable string of the contents of this question.
 	 */
+	
+	
 	@Override
 	public String toString() {
 
