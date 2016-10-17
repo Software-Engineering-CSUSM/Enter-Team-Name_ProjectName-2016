@@ -1,10 +1,2 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="java.awt.image.BufferedImage"/>
-<fullyQualifiedTypeName name="java.awt.GridBagLayout"/>
-<fullyQualifiedTypeName name="java.awt.GridBagConstraints"/>
-<fullyQualifiedTypeName name="edu.CSUSM.testTaker.UI.CustomPage.PanelType"/>
-<fullyQualifiedTypeName name="edu.CSUSM.testTaker.UI.Pages.QuizMain"/>
-<fullyQualifiedTypeName name="java.awt.event.ActionListener"/>
-<fullyQualifiedTypeName name="java.awt.event.ActionEvent"/>
-</qualifiedTypeNameHistroy>
+<qualifiedTypeNameHistroy/>

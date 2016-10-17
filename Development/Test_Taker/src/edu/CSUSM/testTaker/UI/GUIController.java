@@ -128,11 +128,17 @@ public class GUIController extends JFrame {
 		/** Statistics */
 		final NavigationController statsNC = new NavigationController();
 
-		CustomPage statsMain = new CustomPage(CustomPage.PanelType.LOGO_ONLY_TYPE);
+		CustomPage statsMain = new CustomPage(CustomPage.PanelType.THREE_BUTTON_TYPE);
 		statsMain.setName(SideMenu.menuOptionButtons[3].getText());
 		statsNC.setInitialView(statsMain);
 		statsMain.parentController = statsNC;
-
+		/*
+		 * final NavigationController quizNC = new NavigationController();
+		 * 
+		 * QuizMain quiz = new QuizMain(QuizMain.PanelType.THREE_BUTTON_TYPE);
+		 * quiz.setName(SideMenu.menuOptionButtons[3].getText());
+		 * quizNC.setInitialView(quiz ); quiz.parentController = quizNC;
+		 */
 		/** Page manager to control the side menu use */
 		PageManager<NavigationController> pm = new PageManager<NavigationController>(this.parentPanel,
 				SideMenu.menuOptionButtons,
@@ -182,7 +188,7 @@ public class GUIController extends JFrame {
 		// Add the side menu
 		SideMenu sm = new SideMenu(new String[] { "Home", "Courses", "Study Tools", "Statistics" });
 		this.add(sm, BorderLayout.WEST);
-
+		
 	}
 
 	/**

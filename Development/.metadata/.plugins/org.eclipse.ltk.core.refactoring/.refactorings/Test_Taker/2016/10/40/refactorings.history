@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Encapsulate field &apos;edu.CSUSM.testTaker.UI.CustomPage.mainLogoToDisplay&apos; in &apos;edu.CSUSM.testTaker.UI.CustomPage&apos;&#x0A;- Original project: &apos;Test_Taker&apos;&#x0A;- Original element: &apos;edu.CSUSM.testTaker.UI.CustomPage.mainLogoToDisplay&apos;&#x0A;- Getter method name: &apos;getMainLogoToDisplay&apos;&#x0A;- Setter method name: &apos;setMainLogoToDisplay&apos;&#x0A;- Field visibility: &apos;public&apos;&#x0A;- Use getter and setter methods in declaring type" comments="false" declaring="true" description="Encapsulate field &apos;mainLogoToDisplay&apos;" flags="589830" getter="getMainLogoToDisplay" id="org.eclipse.jdt.ui.self.encapsulate" input="/src&lt;edu.CSUSM.testTaker.UI{CustomPage.java[CustomPage^mainLogoToDisplay" insertion="1" setter="setMainLogoToDisplay" stamp="1475281106651" version="1.0" visibility="1"/>
-</session>
