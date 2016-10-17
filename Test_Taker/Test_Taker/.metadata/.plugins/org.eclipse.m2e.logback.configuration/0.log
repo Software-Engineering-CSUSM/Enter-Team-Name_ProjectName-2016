@@ -44,4 +44,7 @@
 	/Users/Justin/Library/Application Support/Developer/Shared/Xcode/Plug-ins/InjectionPlugin.xcplugin/Contents/MacOS/InjectionPlugin: code signing blocked mmap() of '/Users/Justin/Library/Application Support/Developer/Shared/Xcode/Plug-ins/InjectionPlugin.xcplugin/Contents/MacOS/InjectionPlugin'" UserInfo={NSLocalizedFailureReason=The bundle is damaged or missing necessary resources., NSLocalizedRecoverySuggestion=Try reinstalling the bundle., NSFilePath=/Users/Justin/Library/Application Support/Developer/Shared/Xcode/Plug-ins/InjectionPlugin.xcplugin/Contents/MacOS/InjectionPlugin, NSDebugDescription=dlopen_preflight(/Users/Justin/Library/Application Support/Developer/Shared/Xcode/Plug-ins/InjectionPlugin.xcplugin/Contents/MacOS/InjectionPlugin): no suitable image found.  Did find:
 	/Users/Justin/Library/Application Support/Developer/Shared/Xcode/Plug-ins/InjectionPlugin.xcplugin/Contents/MacOS/InjectionPlugin: code signing blocked mmap() of '/Users/Justin/Library/Application Support/Developer/Shared/Xcode/Plug-ins/InjectionPlugin.xcplugin/Contents/MacOS/InjectionPlugin', NSBundlePath=/Users/Justin/Library/Application Support/Developer/Shared/Xcode/Plug-ins/InjectionPlugin.xcplugin, NSLocalizedDescription=The bundle âInjectionPluginâ couldnât be loaded because it is damaged or missing necessary resources.}
 
+<<<<<<< HEAD
 2016-10-17 10:03:13,033 [Worker-3] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
+=======
+>>>>>>> 9282e7994333abef6d4dec5645170e4b43917be8
