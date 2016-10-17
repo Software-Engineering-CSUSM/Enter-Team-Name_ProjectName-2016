@@ -318,7 +318,7 @@ public class Test implements Serializable, Registerable{
 	 * Utility function sets/resets the list of questions
 	 * @param newQuestionList a List of Question refs to insert
 	 */
-	public double totalPointsScored(){
+	public double totalPointsScored(int [] ansAry){
 		double weightAverage = 0.0;		//total points from the formula	
 		double sumOfPoints = 0.0;		//total points in the test
 		double pointValue = 0.0;		//total points of the user's correct answers
@@ -338,7 +338,7 @@ public class Test implements Serializable, Registerable{
 		for(int x = 0; x < questionPoints.size(); x++)
 		{
 			tempPoints = this.questionPoints.get(x);
-			tempValue = points._answerPoints.get(x);
+			tempValue = questionList.get(x).pointsValue(ansAry[x]);
 			
 			sumOfPoints = sumOfPoints + tempPoints;
 			pointValue = pointValue + (tempValue*tempPoints);	

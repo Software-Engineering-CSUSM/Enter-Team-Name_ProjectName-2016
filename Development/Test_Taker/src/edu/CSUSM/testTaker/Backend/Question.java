@@ -9,8 +9,13 @@ import edu.CSUSM.testTaker.LibraryController;
 
 public class Question implements Serializable, Registerable {
 	public static final long serialVersionUID = 1L;
-	//public static int QUESTION_COUNT; //Keeps an always-updating count of questions per init in the program
-	//this feature removed until someone convinces me it's a feature of Question not LibraryController
+	
+	/**
+	 * @deprecated
+	 */
+	public static int QUESTION_COUNT; //Keeps an always-updating count of questions per init in the program
+
+	String myID;
 	
 	String myID;
 	
@@ -22,10 +27,14 @@ public class Question implements Serializable, Registerable {
 		return myID;							//Within the Question HashMap, the ID will be in the key position where the question is the value
 	}
 	
-	public String _question, _courseID, _testID;
-	public ArrayList<String> _answers;			//To easily manage questions added and removed
+	String _question, _courseID, _testID;
+	ArrayList<String> _answers;			//To easily manage questions added and removed
+	/**
+	 * @deprecated
+	 */
 	public ArrayList<Double> _answerPoints;
-	public int _correctIndex = -1;				//The default correct index is 0 because it is not yet assigned;
+	
+	int _correctIndex = -1;				//The default correct index is 0 because it is not yet assigned;
 	//The following has been removed, points value has little meaning outside a containing context like a test.
 	//public int _pointValue = 1;					//Sets the default point value to 1
 	
@@ -238,13 +247,12 @@ public class Question implements Serializable, Registerable {
 		return this._testID;
 	}
 	
-	/**
+	/** Grades an answer to this question
 	 * @author John Orcino
 	 * @param location of user's chose of answer
-	 * @description returns a 1.0 if user's index is equal with _correctIndex
-	 * otherwise return 0.0 
+	 * @description returns a 1.0 if answer given by user matches the correct answer for this Question
 	 */
-	public double pointsValue(double index){
+	public double pointsValue(int index){
 		if(index == _correctIndex)
 			return 1.0;
 		else 
@@ -255,11 +263,12 @@ public class Question implements Serializable, Registerable {
 	 * @author John Orcino
 	 * @description calls pointsValue method and stores result into an ArrayList
 	 * @param location of user's answer
+	 * @deprecated
 	 */
-	public void storePoints(double index){
-		_answerPoints = new ArrayList<Double>();
+	public void storePoints(int index){
+		if(null == this._answerPoints)
+			_answerPoints = new ArrayList<Double>();
 		_answerPoints.add(pointsValue(index));
-		
 	}
 	
 	/** (non-Javadoc)
@@ -269,8 +278,6 @@ public class Question implements Serializable, Registerable {
 	 * @author Justin Goulet
 	 * @return A human readable string of the contents of this question.
 	 */
-	
-	
 	@Override
 	public String toString() {
 
