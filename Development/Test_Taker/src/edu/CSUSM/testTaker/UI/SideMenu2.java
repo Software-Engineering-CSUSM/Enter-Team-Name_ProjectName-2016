@@ -3,12 +3,15 @@ package edu.CSUSM.testTaker.UI;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
 
 /**
  * @author Justin
@@ -16,7 +19,7 @@ import javax.swing.border.EmptyBorder;
  *
  *	Note that this may be considered a Singleton
  */
-public class SideMenu extends JPanel {
+public class SideMenu2 extends JPanel {
 
 	/**
 	 * 
@@ -31,7 +34,7 @@ public class SideMenu extends JPanel {
 	/**
 	 * @param buttonNames
 	 */
-	public SideMenu (String[] buttonNames){
+	public SideMenu2 (String[] buttonNames){
 		super();
 
 		//Set the length of the array as max amount of buttons
@@ -58,16 +61,16 @@ public class SideMenu extends JPanel {
 		//Set the first button as disabled, becuse this is the one that is going to be shown
 		setStatus(false, menuOptionButtons[0]);
 
-		this.setBounds(0, 0, SideMenu.WIDTH, SideMenu.HEIGHT);
+		this.setBounds(0, 0, SideMenu2.WIDTH, SideMenu2.HEIGHT);
 
 		//Create a temp action event for the buttons
-		for(int i = 0; i < SideMenu._numberOfButtons; i++){
-			SideMenu.menuOptionButtons[i].addActionListener(new ActionListener(){
+		for(int i = 0; i < SideMenu2._numberOfButtons; i++){
+			SideMenu2.menuOptionButtons[i].addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent e){
 
 					//Prints out the button name
 					//System.out.println(e.getActionCommand());
-					SideMenu.setStatus(false, (JButton)e.getSource());
+					SideMenu2.setStatus(false, (JButton)e.getSource());
 
 				}
 			});
@@ -115,6 +118,5 @@ public class SideMenu extends JPanel {
 		temp.setFont(basicFont);
 		return temp;
 	}
-
 
 }

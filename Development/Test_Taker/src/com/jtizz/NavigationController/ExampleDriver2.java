@@ -2,12 +2,14 @@ package com.jtizz.NavigationController;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Random;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import edu.CSUSM.testTaker.UI.*;
@@ -17,7 +19,7 @@ import edu.CSUSM.testTaker.UI.*;
  * @description Runs an example Application with the NavigationController Implementation.
  *
  */
-public class ExampleDriver extends JFrame{
+public class ExampleDriver2 extends JFrame{
 
 	/**
 	 * 
@@ -27,11 +29,11 @@ public class ExampleDriver extends JFrame{
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		new ExampleDriver();
+		new ExampleDriver2();
 
 	}
 	
-	public ExampleDriver(){
+	public ExampleDriver2(){
 		this.setSize(750, 500);
 		this.setTitle("Testing Application");
 		this.setLocationRelativeTo(null);

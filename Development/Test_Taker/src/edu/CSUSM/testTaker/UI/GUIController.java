@@ -188,7 +188,7 @@ public class GUIController extends JFrame {
 		// Add the side menu
 		SideMenu sm = new SideMenu(new String[] { "Home", "Courses", "Study Tools", "Statistics" });
 		this.add(sm, BorderLayout.WEST);
-
+		
 	}
 
 	/**
