@@ -64,6 +64,7 @@ public class Course implements Serializable, edu.CSUSM.testTaker.Backend.Registe
 		return rval;
 	}
 	
+	
 	/*
 	 * Accessors:
 	 */
@@ -174,6 +175,20 @@ public class Course implements Serializable, edu.CSUSM.testTaker.Backend.Registe
 	 */
 	private static void compileCourse(){
 		
+	}
+	
+	public String toString(){
+		String outString = "Course: ";
+		
+		outString = outString + courseName + "\n";
+		outString = outString + ((Integer)testIDs.size()).toString() + " tests:\n";
+		
+		for(String testID : testIDs){
+			Test testRef = LibraryController.previewTest(testID);
+			outString = outString + testRef.getTestName() + "\n";
+		}
+		
+		return outString;
 	}
 	
 	/*
