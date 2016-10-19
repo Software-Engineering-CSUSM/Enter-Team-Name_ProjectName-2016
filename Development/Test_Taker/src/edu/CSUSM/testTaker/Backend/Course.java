@@ -1,10 +1,17 @@
 package edu.CSUSM.testTaker.Backend;
 
 import java.util.ArrayList;
+import java.io.Serializable;
 
 import edu.CSUSM.testTaker.LibraryController;
 
-public class Course implements edu.CSUSM.testTaker.Backend.Registerable{
+public class Course implements Serializable, edu.CSUSM.testTaker.Backend.Registerable{
+	static final long serialVersionUID = 1L;
+
+	/**  Get the ID of the test for database storage and retrieval
+	 * @return unique ID string of this Course
+	 * @author Steven Clark
+	 */
 	String myID;
 	{
 		myID = java.util.UUID.randomUUID().toString();

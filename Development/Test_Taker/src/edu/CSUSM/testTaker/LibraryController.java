@@ -40,6 +40,8 @@ public class LibraryController {
 		questionArray = new HashMap<String, Question>();
 		classArray = new HashMap<String, Course>();
 	}
+	
+	
 		
 	
 	//End of testing purposes
