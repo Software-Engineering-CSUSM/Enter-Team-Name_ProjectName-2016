@@ -63,11 +63,11 @@ public class TakeQuiz extends CustomPage {
 		public void actionPerformed(ActionEvent e) {
 			System.out.println("Opening " + this.getClass());
 
-			QuizQuestionPage1 questionPage = new QuizQuestionPage1(QuizQuestionPage1.PanelType.TWO_BUTTON_TYPE);
-			questionPage.setName("Quiz Question Page " + QuizQuestionPage1.questionPageNumber);
+			QuizQuestionPage questionPage = new QuizQuestionPage(QuizQuestionPage.PanelType.TWO_BUTTON_TYPE);
+			questionPage.setName("Quiz Question Page " + QuizQuestionPage.questionPageNumber);
 			questionPage.parentController = parentController;
 			parentController.displayView(questionPage);
-			QuizQuestionPage1.questionPageNumber++; // global variable to keep
+			QuizQuestionPage.questionPageNumber++; // global variable to keep
 													// track of the number of
 													// quiz pages
 
