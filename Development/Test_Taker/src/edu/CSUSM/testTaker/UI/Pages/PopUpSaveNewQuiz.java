@@ -57,9 +57,8 @@ public class PopUpSaveNewQuiz extends CustomPage {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			System.out.println("Opening " + this.getClass());
-
 			// System.out.println("Opening " + this.getClass());
-			QuizMain quizPage = new QuizMain(QuizMain.PanelType.THREE_BUTTON_TYPE);
+			PopUp quizPage = new PopUp(PopUp.PanelType.TWO_BUTTON_TYPE);
 			quizPage.setName("Quiz Page");
 			quizPage.parentController = parentController;
 			parentController.displayView(quizPage);

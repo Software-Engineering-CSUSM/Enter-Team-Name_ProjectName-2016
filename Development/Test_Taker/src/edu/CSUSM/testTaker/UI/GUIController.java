@@ -191,6 +191,21 @@ public class GUIController extends JFrame {
 
 	}
 
+	// Added new constructor for the pop up window for saving questions
+	// and quizzes. Gave it an int parameter so there could be a
+	// second GUIController constructor.
+	public GUIController(int x) {
+
+		this.setSize(500, 250);
+		this.setTitle("Pop Up Window");
+		this.setLocationRelativeTo(null);
+		this.setLayout(new BorderLayout());
+		// this.setDefaultCloseOperation(JFrame.dispose());
+
+		this.setVisible(true);
+
+	}
+
 	/**
 	 * --------------------------------Manage Page
 	 * Controls--------------------------------
