@@ -58,9 +58,11 @@ public class AddQuestion extends CustomPage {
 		public void actionPerformed(ActionEvent e) {
 			// System.out.println("Opening " + this.getClass());
 
-			CreateQuestionSavePopUp cm = new CreateQuestionSavePopUp(CreateQuestionSavePopUp.PanelType.TWO_BUTTON_TYPE);
-			cm.setName("Save Question Pop Up Window");
-			parentController.displayView(cm);
+			CreateQuestionSavePopUp popup = new CreateQuestionSavePopUp(
+					CreateQuestionSavePopUp.PanelType.TWO_BUTTON_TYPE);
+			popup.setName("Save Question Pop Up Window");
+			popup.parentController = parentController;
+			parentController.displayView(popup);
 
 		}
 
@@ -72,9 +74,10 @@ public class AddQuestion extends CustomPage {
 		public void actionPerformed(ActionEvent e) {
 			// System.out.println("Opening " + this.getClass());
 
-			ViewQuestionList cm = new ViewQuestionList(ViewQuestionList.PanelType.QUESTION_BUILDER_TYPE);
-			cm.setName("View Questions");
-			parentController.displayView(cm);
+			ViewQuestionList list = new ViewQuestionList(ViewQuestionList.PanelType.QUESTION_BUILDER_TYPE);
+			list.setName("View Questions");
+			list.parentController = parentController;
+			parentController.displayView(list);
 
 		}
 

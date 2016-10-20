@@ -10,6 +10,9 @@ public class TakeQuiz extends CustomPage {
 	/**
 	 * 
 	 */
+	public static int totalNumQuestions = 10; // Total Number of quesitons
+												// to determinew when to load
+												// final page
 	private static final long serialVersionUID = 1L;
 
 	public TakeQuiz(PanelType currentPanelType) {
@@ -58,11 +61,15 @@ public class TakeQuiz extends CustomPage {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			// System.out.println("Opening " + this.getClass());
+			System.out.println("Opening " + this.getClass());
 
-			QuizQuestionPage1 cm = new QuizQuestionPage1(QuizQuestionPage1.PanelType.TWO_BUTTON_TYPE);
-			cm.setName("Quiz Question Page");
-			parentController.displayView(cm);
+			QuizQuestionPage1 questionPage = new QuizQuestionPage1(QuizQuestionPage1.PanelType.TWO_BUTTON_TYPE);
+			questionPage.setName("Quiz Question Page " + QuizQuestionPage1.questionPageNumber);
+			questionPage.parentController = parentController;
+			parentController.displayView(questionPage);
+			QuizQuestionPage1.questionPageNumber++; // global variable to keep
+													// track of the number of
+													// quiz pages
 
 		}
 

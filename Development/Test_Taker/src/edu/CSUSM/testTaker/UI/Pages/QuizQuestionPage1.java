@@ -11,6 +11,8 @@ public class QuizQuestionPage1 extends CustomPage {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	public static int counter2 = 1;
+	public static int questionPageNumber = 1;
 
 	public QuizQuestionPage1(PanelType currentPanelType) {
 		super(currentPanelType);
@@ -39,13 +41,13 @@ public class QuizQuestionPage1 extends CustomPage {
 		for (int i = 0; i < this.currentActions.length; i++) {
 			switch (i) {
 			case 0:
-				// this.currentActions[i].addActionListener(new NextQuestion());
+				this.currentActions[i].addActionListener(new ExitQuiz());
 				break;
 			case 1:
 				this.currentActions[i].addActionListener(new NextQuestion()); // Getting
-																				// an
-																				// error
-				break;
+				break; // an
+						// error
+
 			default:
 				System.out.println("Not enough implemented classes");
 				break;
@@ -53,32 +55,41 @@ public class QuizQuestionPage1 extends CustomPage {
 		}
 	}
 
-	// Getting an error when calling this class
+	// Go to the next question. This class calls QuestionPageBetweenFirstAndLast
+	// which is made to accomodate a 3 button style quiz page. This is
+	// only due to the fact that the first and last page have only
+	// 2 buttons. This class provides 3. Exit, Previous, and Next buttons
 	private class NextQuestion implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			System.out.println("Opening " + this.getClass());
 
-			QuestionPageBetweenFirstAndLast cm = new QuestionPageBetweenFirstAndLast(
-					QuestionPageBetweenFirstAndLast.PanelType.TWO_BUTTON_TYPE);
-			cm.setName("Quiz Question Page");
-			parentController.displayView(cm);
+			QuestionPageBetweenFirstAndLast questionPage = new QuestionPageBetweenFirstAndLast(
+					QuestionPageBetweenFirstAndLast.PanelType.THREE_BUTTON_TYPE);
+			questionPage.setName("Quiz Question Page " + QuizQuestionPage1.questionPageNumber);
+			questionPage.parentController = parentController;
+			parentController.displayView(questionPage);
+			QuizQuestionPage1.questionPageNumber++;
 
 		}
-
 	}
 
-	private class OpenQuestionBuilder implements ActionListener {
+	// Take you back to the quiz main page
+	private class ExitQuiz implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
+			System.out.println("Opening " + this.getClass());
+
 			// System.out.println("Opening " + this.getClass());
-			CustomPage questionBuilder = new CustomPage(CustomPage.PanelType.QUESTION_BUILDER_TYPE);
-			questionBuilder.setName("Question Page");
-			questionBuilder.parentController = parentController;
-			parentController.displayView(questionBuilder);
+			QuizMain quizPage = new QuizMain(QuizMain.PanelType.THREE_BUTTON_TYPE);
+			quizPage.setName("Quiz Page");
+			quizPage.parentController = parentController;
+			parentController.displayView(quizPage);
+
 		}
+
 	}
 
 }

@@ -6,26 +6,26 @@ import java.awt.image.BufferedImage;
 
 import edu.CSUSM.testTaker.UI.CustomPage;
 
-public class CreateNewQuizPage extends CustomPage {
+public class PopUpSaveNewQuiz extends CustomPage {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public CreateNewQuizPage(PanelType currentPanelType) {
+	public PopUpSaveNewQuiz(PanelType currentPanelType) {
 		super(currentPanelType);
 		// TODO Auto-generated constructor stub
 		// System.out.println("Printing a new Form");
 		updateActions();
 	}
 
-	public CreateNewQuizPage(PanelType currentPanelType, BufferedImage newImage) {
+	public PopUpSaveNewQuiz(PanelType currentPanelType, BufferedImage newImage) {
 		super(currentPanelType, newImage);
 		// TODO Auto-generated constructor stub
 		updateActions();
 	}
 
-	public CreateNewQuizPage(PanelType currentPanelType, String imageAddress) {
+	public PopUpSaveNewQuiz(PanelType currentPanelType, String imageAddress) {
 		super(currentPanelType, imageAddress);
 		// TODO Auto-generated constructor stub
 		updateActions();
@@ -34,15 +34,15 @@ public class CreateNewQuizPage extends CustomPage {
 	public void updateActions() {
 
 		// Set the button names
-		setButtonNames(new String[] { "Save Quiz", "Do Nothing" });
+		setButtonNames(new String[] { "Save and Return Quiz Main", "Do Nothing" });
 
 		for (int i = 0; i < this.currentActions.length; i++) {
 			switch (i) {
 			case 0:
-				this.currentActions[i].addActionListener(new SavePopUp());
+				this.currentActions[i].addActionListener(new SaveReturnQuizMain());
 				break;
 			case 1:
-				// do nothing
+				// this.currentActions[i].addActionListener(new OpenQuizMain());
 				break;
 			default:
 				System.out.println("Not enough implemented classes");
@@ -51,20 +51,18 @@ public class CreateNewQuizPage extends CustomPage {
 		}
 	}
 
-	// Pop up to name the new quiz. Needs to implement a pop up size window
-	// Currently set to two button type.
-	// needs to be updated to have a text field to save the name of the
-	// quiz as well as a save button
-	private class SavePopUp implements ActionListener {
+	// After saving quiz, return to quiz main
+	private class SaveReturnQuizMain implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			System.out.println("Opening " + this.getClass());
 
-			PopUpSaveNewQuiz saveQ = new PopUpSaveNewQuiz(PopUpSaveNewQuiz.PanelType.TWO_BUTTON_TYPE);
-			saveQ.setName("Pop up.Name New Quiz");
-			saveQ.parentController = parentController;
-			parentController.displayView(saveQ);
+			// System.out.println("Opening " + this.getClass());
+			QuizMain quizPage = new QuizMain(QuizMain.PanelType.THREE_BUTTON_TYPE);
+			quizPage.setName("Quiz Page");
+			quizPage.parentController = parentController;
+			parentController.displayView(quizPage);
 
 		}
 

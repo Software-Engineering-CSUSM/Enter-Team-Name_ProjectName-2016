@@ -44,7 +44,7 @@ public class CustomPage extends JPanel {
 	private static int centerOfNewFrame;
 	public JButton[] currentActions;
 	public String panelTypeString, titleOfCurrentQuestionPanel;
-	public NavigationController parentController;
+	public NavigationController parentController, parentController2;
 
 	/** For the Question Panel */
 	JLabel titleLabel;
@@ -98,6 +98,7 @@ public class CustomPage extends JPanel {
 	 */
 	public void setParentController(NavigationController nc) {
 		this.parentController = nc;
+		this.parentController2 = nc;
 	}
 
 	private void buildPanel(PanelType currentPanelType) {
