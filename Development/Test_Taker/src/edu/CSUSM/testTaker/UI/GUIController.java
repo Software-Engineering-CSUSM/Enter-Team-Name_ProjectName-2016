@@ -199,6 +199,7 @@ public class GUIController extends JFrame {
 		this.setSize(500, 250);
 		this.setTitle("Pop Up Window");
 		this.setLocationRelativeTo(null);
+		this.setResizable(false);
 		this.setLayout(new BorderLayout());
 		// this.setDefaultCloseOperation(JFrame.dispose());
 

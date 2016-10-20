@@ -43,12 +43,10 @@ public class FlashCardMain extends CustomPage {
 					this.currentActions[i].addActionListener(new OpenAddQuestions());
 					break;
 				case 1:
-					// this.currentActions[i].addActionListener(new
-					// OpenAddQuestions());
+					this.currentActions[i].addActionListener(new TakeSetPage());
 					break;
 				case 2:
-					// this.currentActions[i].addActionListener(new
-					// OpenAddQuestions());
+					this.currentActions[i].addActionListener(new CreateSetPage());
 					break;
 				default:
 					System.out.println("Not enough implemented classes");
@@ -76,6 +74,44 @@ public class FlashCardMain extends CustomPage {
 			questionPage.setName("Flashcard Page");
 			questionPage.parentController = parentController;
 			parentController.displayView(questionPage);
+
+		}
+
+	}
+
+	// Button Listener for the Take Quiz Page. Currently set to two
+	// button type. Needs to be updated to list view for list of
+	// quizzes to take and a start button
+	private class TakeSetPage implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// System.out.println("Opening " + this.getClass());
+
+			// System.out.println("Opening " + this.getClass());
+			FlashCardQuestionPage takeSet = new FlashCardQuestionPage(FlashCardQuestionPage.PanelType.TWO_BUTTON_TYPE);
+			takeSet.setName("Take Flashcard Set Page");
+			takeSet.parentController = parentController;
+			parentController.displayView(takeSet);
+
+		}
+
+	}
+
+	// Button Listener for the Take Quiz Page. Currently set to two
+	// button type. Needs to be updated to list view for list of
+	// quizzes to take and a start button
+	private class CreateSetPage implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// System.out.println("Opening " + this.getClass());
+
+			// System.out.println("Opening " + this.getClass());
+			CreateQuiz createQ = new CreateQuiz(CreateQuiz.PanelType.TWO_BUTTON_TYPE);
+			createQ.setName("Create Flashcard Set Page");
+			createQ.parentController = parentController;
+			parentController.displayView(createQ);
 
 		}
 

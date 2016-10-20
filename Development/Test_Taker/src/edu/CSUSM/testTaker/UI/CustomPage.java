@@ -98,7 +98,6 @@ public class CustomPage extends JPanel {
 	 */
 	public void setParentController(NavigationController nc) {
 		this.parentController = nc;
-		this.parentController2 = nc;
 	}
 
 	private void buildPanel(PanelType currentPanelType) {

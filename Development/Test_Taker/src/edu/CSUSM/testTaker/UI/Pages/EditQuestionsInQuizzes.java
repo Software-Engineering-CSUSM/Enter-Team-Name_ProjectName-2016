@@ -34,13 +34,12 @@ public class EditQuestionsInQuizzes extends CustomPage {
 	public void updateActions() {
 
 		// Set the button names
-		setButtonNames(new String[] { "Save", "Do Nothing" });
+		setButtonNames(new String[] { "Save and Return to Main", "Do Nothing" });
 
 		for (int i = 0; i < this.currentActions.length; i++) {
 			switch (i) {
 			case 0:
-				// this.currentActions[i].addActionListener(new
-				// SaveEditedQuiz());
+				this.currentActions[i].addActionListener(new SaveEditedQuiz());
 				break;
 			case 1:
 				// this.currentActions[i].addActionListener(new OpenQuizMain());
@@ -52,16 +51,17 @@ public class EditQuestionsInQuizzes extends CustomPage {
 		}
 	}
 
+	// Save edited quiz and return to Quiz Main
 	private class SaveEditedQuiz implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			System.out.println("Opening " + this.getClass());
 
-			CreateNewQuizPage saveQ = new CreateNewQuizPage(CreateNewQuizPage.PanelType.TWO_BUTTON_TYPE);
-			saveQ.setName("Pop up.Name New Quiz");
-			saveQ.parentController = parentController;
-			parentController.displayView(saveQ);
+			QuizMain quizPage = new QuizMain(QuizMain.PanelType.THREE_BUTTON_TYPE);
+			quizPage.setName("Quiz Main Page");
+			quizPage.parentController = parentController;
+			parentController.displayView(quizPage);
 
 		}
 

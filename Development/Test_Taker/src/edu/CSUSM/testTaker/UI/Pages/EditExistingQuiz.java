@@ -39,7 +39,7 @@ public class EditExistingQuiz extends CustomPage {
 		for (int i = 0; i < this.currentActions.length; i++) {
 			switch (i) {
 			case 0:
-				// this.currentActions[i].addActionListener(new EditQuiz());
+				this.currentActions[i].addActionListener(new EditQuiz());
 				break;
 			case 1:
 				// this.currentActions[i].addActionListener(new OpenQuizMain());
@@ -51,14 +51,17 @@ public class EditExistingQuiz extends CustomPage {
 		}
 	}
 
-	private class SaveEditedQuiz implements ActionListener {
+	// Opens the edit page with List View of of questions. Currently
+	// set to two button type. Needs to be updated to listview of
+	// questions from selected quiz with a save button.
+	private class EditQuiz implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			System.out.println("Opening " + this.getClass());
 
-			CreateNewQuizPage saveQ = new CreateNewQuizPage(CreateNewQuizPage.PanelType.TWO_BUTTON_TYPE);
-			saveQ.setName("Pop up.Name New Quiz");
+			EditQuestionsInQuizzes saveQ = new EditQuestionsInQuizzes(EditQuestionsInQuizzes.PanelType.TWO_BUTTON_TYPE);
+			saveQ.setName("Edit Existing Quiz Page");
 			saveQ.parentController = parentController;
 			parentController.displayView(saveQ);
 

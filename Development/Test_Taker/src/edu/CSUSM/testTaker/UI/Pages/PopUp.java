@@ -10,6 +10,7 @@ import javax.swing.Box;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 import edu.CSUSM.testTaker.UI.CustomPage;
 import edu.CSUSM.testTaker.UI.GUIController;
@@ -143,11 +144,18 @@ public class PopUp extends CustomPage {
 
 		// Create box to hold JLabel asking if the user would
 		// likek to create another quiz
-		Box jLabelBox = Box.createHorizontalBox(); // buttons
-		jLabelBox.add(Box.createHorizontalGlue());
+		Box jLabelBox = Box.createVerticalBox(); // buttons
+		// Create text field to enter quiz name
+		jLabelBox.add(Box.createHorizontalStrut(popUpWindow.getWidth() / 3));
 		jLabelBox.add(Box.createVerticalGlue());
 		jLabelBox.add(new JLabel("Name your quiz and click save."));
 		jLabelBox.add(Box.createHorizontalGlue());
+		jLabelBox.add(Box.createVerticalStrut(10));
+		JTextField quizName = new JTextField(20);
+		JPanel quizNamePanel = new JPanel();
+		quizNamePanel.setBackground(Color.WHITE);
+		quizNamePanel.add(quizName);
+		jLabelBox.add(quizNamePanel);
 
 		// Create buttons
 		JButton save = new JButton("Save Quiz");
@@ -158,7 +166,7 @@ public class PopUp extends CustomPage {
 		buttonPanel.setBackground(Color.WHITE);
 		buttonPanel.setLayout(new BorderLayout());
 
-		// Add the boxes containing the buttons to the
+		// Add the Jlabel box to the
 		// button panel which is then added to the frame
 
 		buttonPanel.add(jLabelBox, BorderLayout.CENTER);
@@ -166,11 +174,8 @@ public class PopUp extends CustomPage {
 		// Create a box to hold the buttons to either create a
 		// new quiz or return to quiz main
 		Box CreateorDont = Box.createHorizontalBox();
-		System.out.println("width " + popUpWindow.getWidth());
 		CreateorDont.add(Box.createHorizontalStrut(200));
 		CreateorDont.add(save);
-		// CreateorDont.add(Box.createHorizontalStrut(popUpWindow.getWidth() /
-		// 4));
 		CreateorDont.add(Box.createVerticalStrut(popUpWindow.getHeight() / 4));
 
 		buttonPanel.add(CreateorDont, BorderLayout.SOUTH);
