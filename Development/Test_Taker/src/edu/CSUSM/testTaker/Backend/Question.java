@@ -40,6 +40,7 @@ public class Question implements Serializable, Registerable {
 	/** New question with no details
 	 */
 	public Question(){
+		myID = UUID.randomUUID().toString();
 		_answers = new ArrayList<String>();
 		_question = "";
 		_courseID = "";
@@ -197,6 +198,15 @@ public class Question implements Serializable, Registerable {
 	public String getQuestion() {
 		return this._question;
 	}
+	
+	/**
+	 * Get the current number of answers to this Question.
+	 * @return An int number of answers.
+	 */
+	public int numAnswers(){
+		return _answers.size();
+	}
+	
 
 	/**
 	 * Get a list of answers to this Question.
@@ -204,7 +214,7 @@ public class Question implements Serializable, Registerable {
 	 * @return A list of the current answer choices to this Question.
 	 */
 	public String[] getAnswers(){
-		return (String[])this._answers.toArray();
+		return (String[])this._answers.toArray(new String[_answers.size()]);
 	}
 
 	/**
@@ -283,6 +293,7 @@ public class Question implements Serializable, Registerable {
 		String thisQuestionString = "Question: " + this._question;
 		thisQuestionString += "\nQuestion ID: " + getID();
 
+		
 		// Now, add each of the possible answers in the provided question
 		for (int iterator = 0; iterator < this.getAnswers().length; iterator++) {
 			thisQuestionString += "\n\t\t " + (iterator + 1) + ") " + this._answers.get(iterator);
@@ -290,7 +301,7 @@ public class Question implements Serializable, Registerable {
 			// If the answer is correct, add an asterisk to the end
 			thisQuestionString += (iterator == this._correctIndex) ? " *correct*" : "";
 		}
-
+		
 		// Return the result
 		return thisQuestionString;
 	}

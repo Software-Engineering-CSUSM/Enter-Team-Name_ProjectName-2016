@@ -35,7 +35,6 @@ public class QuizMain extends CustomPage {
 
 		// Set the button names
 		setButtonNames(new String[] { "Add Question", "Create Quiz", "Take Quiz" });
-
 		for (int i = 0; i < this.currentActions.length; i++) {
 			switch (i) {
 			case 0:
@@ -52,20 +51,6 @@ public class QuizMain extends CustomPage {
 				break;
 			}
 		}
-	}
-
-	private class OpenQuizMain implements ActionListener {
-
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			// System.out.println("Opening " + this.getClass());
-
-			CustomPage cm = new CustomPage(CustomPage.PanelType.TWO_BUTTON_TYPE);
-			cm.setName("Quiz Main");
-			parentController.displayView(cm);
-
-		}
-
 	}
 
 	private class OpenQuestionBuilder implements ActionListener {
@@ -89,10 +74,10 @@ public class QuizMain extends CustomPage {
 			// System.out.println("Opening " + this.getClass());
 
 			// System.out.println("Opening " + this.getClass());
-			AddQuestion questionBuilder = new AddQuestion(AddQuestion.PanelType.TWO_BUTTON_TYPE);
-			questionBuilder.setName("Add Question Page");
-			questionBuilder.parentController = parentController;
-			parentController.displayView(questionBuilder);
+			AddQuestion addQ = new AddQuestion(AddQuestion.PanelType.TWO_BUTTON_TYPE);
+			addQ.setName("Add Question Page");
+			addQ.parentController = parentController;
+			parentController.displayView(addQ);
 
 		}
 
@@ -108,10 +93,10 @@ public class QuizMain extends CustomPage {
 			// System.out.println("Opening " + this.getClass());
 
 			// System.out.println("Opening " + this.getClass());
-			TakeQuiz questionBuilder = new TakeQuiz(TakeQuiz.PanelType.TWO_BUTTON_TYPE);
-			questionBuilder.setName("Take Quiz Page");
-			questionBuilder.parentController = parentController;
-			parentController.displayView(questionBuilder);
+			TakeQuiz takeQ = new TakeQuiz(TakeQuiz.PanelType.TWO_BUTTON_TYPE);
+			takeQ.setName("Take Quiz Page");
+			takeQ.parentController = parentController;
+			parentController.displayView(takeQ);
 
 		}
 
@@ -127,10 +112,10 @@ public class QuizMain extends CustomPage {
 			// System.out.println("Opening " + this.getClass());
 
 			// System.out.println("Opening " + this.getClass());
-			CreateQuiz questionBuilder = new CreateQuiz(CreateQuiz.PanelType.TWO_BUTTON_TYPE);
-			questionBuilder.setName("Create Quiz Page");
-			questionBuilder.parentController = parentController;
-			parentController.displayView(questionBuilder);
+			CreateQuiz createQ = new CreateQuiz(CreateQuiz.PanelType.TWO_BUTTON_TYPE);
+			createQ.setName("Create Quiz Page");
+			createQ.parentController = parentController;
+			parentController.displayView(createQ);
 
 		}
 
