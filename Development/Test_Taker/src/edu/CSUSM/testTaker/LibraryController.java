@@ -6,6 +6,8 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.Set;
+import java.util.Iterator;
 
 import edu.CSUSM.testTaker.Backend.Course;
 import edu.CSUSM.testTaker.Backend.Question;
@@ -39,6 +41,22 @@ public class LibraryController {
 		testArray = new HashMap<String, Test>();
 		questionArray = new HashMap<String, Question>();
 		classArray = new HashMap<String, Course>();
+	}
+	
+	/**
+	 * Gives a Set view of the ID strings of all Courses in the library.
+	 * @return a reference to a Set containing all Course ID strings.
+	 */
+	public static Set<String> giveCourseSet(){
+		return classArray.keySet();
+	}
+	
+	/**
+	 * Gives an iterator of all Courses in the library.
+	 * @return A String Iterator over all Courses in the library.
+	 */
+	public static Iterator<String> courseIDIterator(){
+		return classArray.keySet().iterator();
 	}
 		
 	
