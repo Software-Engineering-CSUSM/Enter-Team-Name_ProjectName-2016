@@ -34,15 +34,15 @@ public class CreateNewQuizPage extends CustomPage {
 	public void updateActions() {
 
 		// Set the button names
-		setButtonNames(new String[] { "Save", "Do Nothing", "button 3" });
+		setButtonNames(new String[] { "Save Quiz", "Do Nothing" });
 
 		for (int i = 0; i < this.currentActions.length; i++) {
 			switch (i) {
 			case 0:
-				// this.currentActions[i].addActionListener(new EditQuiz());
+				this.currentActions[i].addActionListener(new SavePopUp());
 				break;
 			case 1:
-				// this.currentActions[i].addActionListener(new OpenQuizMain());
+				// do nothing
 				break;
 			default:
 				System.out.println("Not enough implemented classes");
@@ -51,16 +51,36 @@ public class CreateNewQuizPage extends CustomPage {
 		}
 	}
 
-	private class OpenQuestionBuilder implements ActionListener {
+	// Pop up to name the new quiz. Needs to implement a pop up size window
+	// Currently set to two button type.
+	// needs to be updated to have a text field to save the name of the
+	// quiz as well as a save button
+	private class SavePopUp implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			// System.out.println("Opening " + this.getClass());
-			CustomPage questionBuilder = new CustomPage(CustomPage.PanelType.QUESTION_BUILDER_TYPE);
-			questionBuilder.setName("Question Page");
-			questionBuilder.parentController = parentController;
-			parentController.displayView(questionBuilder);
+			System.out.println("Opening " + this.getClass());
+
+			PopUp quizPage = new PopUp(PopUp.PanelType.TWO_BUTTON_TYPE, 0); // added
+																			// a
+																			// new
+																			// constructor
+																			// with
+																			// an
+																			// int
+																			// to
+																			// determine
+																			// which
+																			// pop
+																			// up
+																			// to
+																			// display
+			quizPage.setName("Quiz Page");
+			quizPage.parentController = parentController;
+			parentController.displayView(quizPage);
+
 		}
+
 	}
 
 }

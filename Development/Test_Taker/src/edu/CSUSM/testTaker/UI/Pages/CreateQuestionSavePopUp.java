@@ -1,3 +1,4 @@
+// Can get rid of this page, if pop up is working correctly
 package edu.CSUSM.testTaker.UI.Pages;
 
 import java.awt.event.ActionEvent;
@@ -59,9 +60,10 @@ public class CreateQuestionSavePopUp extends CustomPage {
 		public void actionPerformed(ActionEvent e) {
 			// System.out.println("Opening " + this.getClass());
 
-			AddQuestion cm = new AddQuestion(AddQuestion.PanelType.TWO_BUTTON_TYPE);
-			cm.setName("Pop Up");
-			parentController.displayView(cm);
+			AddQuestion addQ = new AddQuestion(AddQuestion.PanelType.TWO_BUTTON_TYPE);
+			addQ.setName("Pop Up");
+			addQ.parentController = parentController;
+			parentController.displayView(addQ);
 
 		}
 
@@ -74,9 +76,10 @@ public class CreateQuestionSavePopUp extends CustomPage {
 		public void actionPerformed(ActionEvent e) {
 			// System.out.println("Opening " + this.getClass());
 
-			QuizMain cm = new QuizMain(QuizMain.PanelType.TWO_BUTTON_TYPE);
-			cm.setName("Pop Up");
-			parentController.displayView(cm);
+			QuizMain returnQuiz = new QuizMain(QuizMain.PanelType.TWO_BUTTON_TYPE);
+			returnQuiz.setName("Pop Up");
+			returnQuiz.parentController = parentController;
+			parentController.displayView(returnQuiz);
 
 		}
 

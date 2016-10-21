@@ -79,6 +79,10 @@ public class StudyToolsMain extends CustomPage {
 		public void actionPerformed(ActionEvent e) {
 			System.out.println("Opening " + this.getClass());
 
+			FlashCardMain flashCard = new FlashCardMain(FlashCardMain.PanelType.THREE_BUTTON_TYPE);
+			flashCard.setName("Flash Card Page");
+			flashCard.parentController = parentController;
+			parentController.displayView(flashCard);
 		}
 
 	}
@@ -90,10 +94,10 @@ public class StudyToolsMain extends CustomPage {
 			System.out.println("Opening " + this.getClass());
 
 			// System.out.println("Opening " + this.getClass());
-			QuizMain questionBuilder = new QuizMain(QuizMain.PanelType.THREE_BUTTON_TYPE);
-			questionBuilder.setName("Quiz Page");
-			questionBuilder.parentController = parentController;
-			parentController.displayView(questionBuilder);
+			QuizMain quizPage = new QuizMain(QuizMain.PanelType.THREE_BUTTON_TYPE);
+			quizPage.setName("Quiz Page");
+			quizPage.parentController = parentController;
+			parentController.displayView(quizPage);
 
 		}
 

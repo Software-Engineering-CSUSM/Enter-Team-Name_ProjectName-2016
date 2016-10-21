@@ -135,7 +135,6 @@ public class NavigationController extends JPanel {
 		this.initialView = this.viewShown;
 	}
 
-	// Now, for the control
 	public void displayView(JPanel panelToDisplay) {
 		if (this.viewShown != null) {
 			// Add it to the stack
