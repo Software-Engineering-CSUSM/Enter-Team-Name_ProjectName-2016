@@ -6,26 +6,26 @@ import java.awt.image.BufferedImage;
 
 import edu.CSUSM.testTaker.UI.CustomPage;
 
-public class EditExistingQuiz extends CustomPage {
+public class EditQuestionsInQuizzes extends CustomPage {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public EditExistingQuiz(PanelType currentPanelType) {
+	public EditQuestionsInQuizzes(PanelType currentPanelType) {
 		super(currentPanelType);
 		// TODO Auto-generated constructor stub
 		// System.out.println("Printing a new Form");
 		updateActions();
 	}
 
-	public EditExistingQuiz(PanelType currentPanelType, BufferedImage newImage) {
+	public EditQuestionsInQuizzes(PanelType currentPanelType, BufferedImage newImage) {
 		super(currentPanelType, newImage);
 		// TODO Auto-generated constructor stub
 		updateActions();
 	}
 
-	public EditExistingQuiz(PanelType currentPanelType, String imageAddress) {
+	public EditQuestionsInQuizzes(PanelType currentPanelType, String imageAddress) {
 		super(currentPanelType, imageAddress);
 		// TODO Auto-generated constructor stub
 		updateActions();
@@ -34,12 +34,12 @@ public class EditExistingQuiz extends CustomPage {
 	public void updateActions() {
 
 		// Set the button names
-		setButtonNames(new String[] { "Edit", "Do Nothing" });
+		setButtonNames(new String[] { "Save and Return to Main", "Do Nothing" });
 
 		for (int i = 0; i < this.currentActions.length; i++) {
 			switch (i) {
 			case 0:
-				this.currentActions[i].addActionListener(new EditQuiz());
+				this.currentActions[i].addActionListener(new SaveEditedQuiz());
 				break;
 			case 1:
 				// this.currentActions[i].addActionListener(new OpenQuizMain());
@@ -51,19 +51,17 @@ public class EditExistingQuiz extends CustomPage {
 		}
 	}
 
-	// Opens the edit page with List View of of questions. Currently
-	// set to two button type. Needs to be updated to listview of
-	// questions from selected quiz with a save button.
-	private class EditQuiz implements ActionListener {
+	// Save edited quiz and return to Quiz Main
+	private class SaveEditedQuiz implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			System.out.println("Opening " + this.getClass());
 
-			EditQuestionsInQuizzes saveQ = new EditQuestionsInQuizzes(EditQuestionsInQuizzes.PanelType.TWO_BUTTON_TYPE);
-			saveQ.setName("Edit Existing Quiz Page");
-			saveQ.parentController = parentController;
-			parentController.displayView(saveQ);
+			QuizMain quizPage = new QuizMain(QuizMain.PanelType.THREE_BUTTON_TYPE);
+			quizPage.setName("Quiz Main Page");
+			quizPage.parentController = parentController;
+			parentController.displayView(quizPage);
 
 		}
 

@@ -6,26 +6,26 @@ import java.awt.image.BufferedImage;
 
 import edu.CSUSM.testTaker.UI.CustomPage;
 
-public class CreateQuiz extends CustomPage {
+public class CreateFlashCardSet extends CustomPage {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public CreateQuiz(PanelType currentPanelType) {
+	public CreateFlashCardSet(PanelType currentPanelType) {
 		super(currentPanelType);
 		// TODO Auto-generated constructor stub
 		// System.out.println("Printing a new Form");
 		updateActions();
 	}
 
-	public CreateQuiz(PanelType currentPanelType, BufferedImage newImage) {
+	public CreateFlashCardSet(PanelType currentPanelType, BufferedImage newImage) {
 		super(currentPanelType, newImage);
 		// TODO Auto-generated constructor stub
 		updateActions();
 	}
 
-	public CreateQuiz(PanelType currentPanelType, String imageAddress) {
+	public CreateFlashCardSet(PanelType currentPanelType, String imageAddress) {
 		super(currentPanelType, imageAddress);
 		// TODO Auto-generated constructor stub
 		updateActions();
@@ -34,7 +34,7 @@ public class CreateQuiz extends CustomPage {
 	public void updateActions() {
 
 		// Set the button names
-		setButtonNames(new String[] { "Create New Quiz", "Edit Existing Quiz" });
+		setButtonNames(new String[] { "Create New Flashcard Set", "Edit Existing Set" });
 
 		for (int i = 0; i < this.currentActions.length; i++) {
 			switch (i) {
@@ -42,7 +42,7 @@ public class CreateQuiz extends CustomPage {
 				this.currentActions[i].addActionListener(new CreateNew());
 				break;
 			case 1:
-				this.currentActions[i].addActionListener(new EditQuiz());
+				this.currentActions[i].addActionListener(new EditSet());
 				break;
 			default:
 				System.out.println("Not enough implemented classes");
@@ -62,7 +62,7 @@ public class CreateQuiz extends CustomPage {
 
 			CreateNewQuizPage newQuiz = new CreateNewQuizPage(CreateNewQuizPage.PanelType.TWO_BUTTON_TYPE);
 			System.out.println(newQuiz.toString());
-			newQuiz.setName("Create New Page");
+			newQuiz.setName("Create Set Page");
 			newQuiz.parentController = parentController;
 			parentController.displayView(newQuiz);
 
@@ -73,14 +73,14 @@ public class CreateQuiz extends CustomPage {
 	// Currently set to two button type. Needs to be updated to
 	// have a list view of existing quizzes in the database to
 	// select a quiz to edit as well as an "edit" button
-	private class EditQuiz implements ActionListener {
+	private class EditSet implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			// System.out.println("Opening " + this.getClass());
 
 			EditExistingQuiz editQ = new EditExistingQuiz(EditExistingQuiz.PanelType.TWO_BUTTON_TYPE);
-			editQ.setName("Edit Quiz Page");
+			editQ.setName("Edit Flashcard Set Page");
 			editQ.parentController = parentController;
 			parentController.displayView(editQ);
 

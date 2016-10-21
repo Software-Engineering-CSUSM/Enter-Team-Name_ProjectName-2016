@@ -44,7 +44,7 @@ public class CustomPage extends JPanel {
 	protected static int centerOfNewFrame;
 	public JButton[] currentActions;
 	public String panelTypeString, titleOfCurrentQuestionPanel;
-	public NavigationController parentController;
+	public NavigationController parentController, parentController2;
 
 	// Created an array of string for the button names
 	private static final int MAX_NUMBER_OF_BUTTONS = 10;

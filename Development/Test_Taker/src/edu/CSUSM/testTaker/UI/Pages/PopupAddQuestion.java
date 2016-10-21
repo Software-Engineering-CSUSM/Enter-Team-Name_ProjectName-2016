@@ -6,26 +6,26 @@ import java.awt.image.BufferedImage;
 
 import edu.CSUSM.testTaker.UI.CustomPage;
 
-public class QuestionPageBetweenFirstAndLast extends CustomPage {
+public class PopupAddQuestion extends CustomPage {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public QuestionPageBetweenFirstAndLast(PanelType currentPanelType) {
+	public PopupAddQuestion(PanelType currentPanelType) {
 		super(currentPanelType);
 		// TODO Auto-generated constructor stub
 		// System.out.println("Printing a new Form");
 		updateActions();
 	}
 
-	public QuestionPageBetweenFirstAndLast(PanelType currentPanelType, BufferedImage newImage) {
+	public PopupAddQuestion(PanelType currentPanelType, BufferedImage newImage) {
 		super(currentPanelType, newImage);
 		// TODO Auto-generated constructor stub
 		updateActions();
 	}
 
-	public QuestionPageBetweenFirstAndLast(PanelType currentPanelType, String imageAddress) {
+	public PopupAddQuestion(PanelType currentPanelType, String imageAddress) {
 		super(currentPanelType, imageAddress);
 		// TODO Auto-generated constructor stub
 		updateActions();
@@ -34,17 +34,15 @@ public class QuestionPageBetweenFirstAndLast extends CustomPage {
 	public void updateActions() {
 
 		// Set the button names
-		setButtonNames(new String[] { "Exit Quiz", "Previous", "Next Question" });
+		setButtonNames(new String[] { "Save and Return Quiz Main", "Do Nothing" });
 
 		for (int i = 0; i < this.currentActions.length; i++) {
 			switch (i) {
 			case 0:
-				// this.currentActions[i].addActionListener(new StartQuiz());
+				this.currentActions[i].addActionListener(new SaveReturnQuizMain());
 				break;
 			case 1:
 				// this.currentActions[i].addActionListener(new OpenQuizMain());
-				break;
-			case 2:
 				break;
 			default:
 				System.out.println("Not enough implemented classes");
@@ -53,16 +51,20 @@ public class QuestionPageBetweenFirstAndLast extends CustomPage {
 		}
 	}
 
-	private class OpenQuestionBuilder implements ActionListener {
+	// After saving quiz, return to quiz main
+	private class SaveReturnQuizMain implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
+			System.out.println("Opening " + this.getClass());
 			// System.out.println("Opening " + this.getClass());
-			CustomPage questionBuilder = new CustomPage(CustomPage.PanelType.QUESTION_BUILDER_TYPE);
-			questionBuilder.setName("Question Page");
-			questionBuilder.parentController = parentController;
-			parentController.displayView(questionBuilder);
+			PopUp quizPage = new PopUp(PopUp.PanelType.TWO_BUTTON_TYPE);
+			quizPage.setName("Quiz Page");
+			quizPage.parentController = parentController;
+			parentController.displayView(quizPage);
+
 		}
+
 	}
 
 }

@@ -50,20 +50,6 @@ public class ViewQuestionList extends CustomPage {
 			}
 		}
 	}
-	/*
-	 * // Button Listener For Save Question. It should be a pop up window
-	 * private class ViewList implements ActionListener {
-	 * 
-	 * @Override public void actionPerformed(ActionEvent e) { //
-	 * System.out.println("Opening " + this.getClass());
-	 * 
-	 * CustomPage cm = new CustomPage(CustomPage.PanelType.LOGO_ONLY_TYPE);
-	 * cm.setName("Question List"); parentController.displayView(cm);
-	 * 
-	 * }
-	 * 
-	 * }
-	 */
 
 	private class OpenQuestionBuilder implements ActionListener {
 
