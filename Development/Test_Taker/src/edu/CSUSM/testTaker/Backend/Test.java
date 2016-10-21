@@ -369,10 +369,15 @@ public class Test implements Serializable, Registerable{
 	public String toString(){
 
 		//Create the initial question
-		String thisTestString = "Test: " + this._testName;
+		String thisTestString = "Test: " + this._testName + "\n";
+		
+		thisTestString = thisTestString + ((Integer)numQuestions()).toString() + " Questions:\n";
 
+		for(Question tempQuestion : questionList){
+			thisTestString = thisTestString + tempQuestion.getQuestion() + "\n";
+		}
+		/*
 		System.out.println("Question Size: " + questionList.size());
-
 		if(questionList != null && questionList.size() > 0){
 			//Now, add each of the possible answers in the provided question
 			for(Question tempQuestion : questionList){
@@ -381,6 +386,7 @@ public class Test implements Serializable, Registerable{
 		}else{
 			return "No questions yet in test: " + thisTestString + "\n";
 		}
+		*/
 
 		//Return the result
 		return thisTestString;

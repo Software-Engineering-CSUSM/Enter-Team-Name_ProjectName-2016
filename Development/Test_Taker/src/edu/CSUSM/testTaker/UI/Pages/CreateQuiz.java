@@ -39,7 +39,7 @@ public class CreateQuiz extends CustomPage {
 		for (int i = 0; i < this.currentActions.length; i++) {
 			switch (i) {
 			case 0:
-				this.currentActions[i].addActionListener(new NewQuiz());
+				this.currentActions[i].addActionListener(new CreateNew());
 				break;
 			case 1:
 				this.currentActions[i].addActionListener(new EditQuiz());
@@ -51,30 +51,38 @@ public class CreateQuiz extends CustomPage {
 		}
 	}
 
-	// Not working. It is not opening the CreateNewQuizPage for some reason.
-	private class NewQuiz implements ActionListener {
+	// Opens page to create a new quiz. It is currently set to a
+	// two button type. It needs to be updated to a List view
+	// for the questions to add as well as a save button.
+	private class CreateNew implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			System.out.println("Opening " + this.getClass());
 
-			CreateNewQuizPage cm = new CreateNewQuizPage(CreateNewQuizPage.PanelType.TWO_BUTTON_TYPE);
-			cm.setName("Create Quiz Page");
-			parentController.displayView(cm);
+			CreateNewQuizPage newQuiz = new CreateNewQuizPage(CreateNewQuizPage.PanelType.TWO_BUTTON_TYPE);
+			System.out.println(newQuiz.toString());
+			newQuiz.setName("Create New Page");
+			newQuiz.parentController = parentController;
+			parentController.displayView(newQuiz);
 
 		}
 
 	}
 
+	// Currently set to two button type. Needs to be updated to
+	// have a list view of existing quizzes in the database to
+	// select a quiz to edit as well as an "edit" button
 	private class EditQuiz implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			// System.out.println("Opening " + this.getClass());
 
-			EditExistingQuiz cm = new EditExistingQuiz(EditExistingQuiz.PanelType.TWO_BUTTON_TYPE);
-			cm.setName("Edit Quiz Page");
-			parentController.displayView(cm);
+			EditExistingQuiz editQ = new EditExistingQuiz(EditExistingQuiz.PanelType.TWO_BUTTON_TYPE);
+			editQ.setName("Edit Quiz Page");
+			editQ.parentController = parentController;
+			parentController.displayView(editQ);
 
 		}
 
