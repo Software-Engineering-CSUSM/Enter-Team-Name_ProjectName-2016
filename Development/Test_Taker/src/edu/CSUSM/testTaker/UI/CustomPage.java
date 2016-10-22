@@ -41,11 +41,14 @@ public class CustomPage extends JPanel {
 	public static Image newImg;
 	public static ImageIcon newIcon;
 	public JLabel imageLabel = new JLabel();
-	private static int centerOfNewFrame;
+	protected static int centerOfNewFrame;
 	public JButton[] currentActions;
 	public String panelTypeString, titleOfCurrentQuestionPanel;
 	public NavigationController parentController, parentController2;
 
+	// Created an array of string for the button names
+	private static final int MAX_NUMBER_OF_BUTTONS = 10;
+	protected static String[] buttonName = new String[MAX_NUMBER_OF_BUTTONS];
 	/** For the Question Panel */
 	JLabel titleLabel;
 	JPanel questionsMainPanel;
@@ -55,11 +58,13 @@ public class CustomPage extends JPanel {
 	public static enum PanelType {
 		TWO_BUTTON_TYPE, THREE_BUTTON_TYPE, LOGO_ONLY_TYPE, QUESTION_BUILDER_TYPE
 	};
+	public static enum PageType {
+		QUIZ, FLASHCARD
+	};
 
 	public CustomPage(PanelType currentPanelType, String imageAddress) {
 
 		super();
-
 		// Create the image from the image address
 		try {
 			URL url = new URL(imageAddress);
@@ -91,6 +96,16 @@ public class CustomPage extends JPanel {
 		buildPanel(currentPanelType);
 
 	}
+	
+	public CustomPage(PanelType currentPanelType, PageType currentPageType) {
+		super();
+		// Set the layout
+		this.setLayout(new BorderLayout());
+
+		// Build the contents
+		buildPanel(currentPanelType);
+
+	}
 
 	/**
 	 * @param nc
@@ -100,9 +115,15 @@ public class CustomPage extends JPanel {
 		this.parentController = nc;
 	}
 
+	/*
+	 *  added String[] to arguments of createButton Types which is passed
+	 *  through buildPanel, so I added a String[] argument here as well
+	 * 
+	 */
+		
+		//Set the string value of the panel type
 	private void buildPanel(PanelType currentPanelType) {
 
-		// Set the string value of the panel type
 		this.panelTypeString = currentPanelType.toString();
 
 		// Set the size of the panel
@@ -113,6 +134,7 @@ public class CustomPage extends JPanel {
 
 		switch (currentPanelType) {
 		case TWO_BUTTON_TYPE:
+		
 			createTwoButtonType();
 			break;
 
@@ -134,7 +156,7 @@ public class CustomPage extends JPanel {
 		}
 	}
 
-	private void createLogoType() {
+	protected void createLogoType(){
 
 		// Set the background color // Option 1
 		// this.setBackground(new Color(39, 72, 155)); //Option 2
@@ -161,13 +183,21 @@ public class CustomPage extends JPanel {
 		this.add(imageLabel, BorderLayout.CENTER);
 
 	}
+	
+/*
+ *  	added String[] to arguments of createButton Types
+ *	    to name the buttons with the string passed from
+ *	    the GUIController
+ * 
+ */
+	
 
-	private void createTwoButtonType() {
 
 		/**
 		 * Later //Add the image to the top of the screen. We are going to have
 		 * 3 objects at the top: Back btn, logo, and currentpage title
 		 */
+	protected void createTwoButtonType(){
 		JLabel iconLabel = new JLabel();
 		iconLabel.setBounds(0, 0, this.getWidth(), (int) (this.getHeight() / 2.25));
 		iconLabel.setIcon(newIcon);
@@ -181,6 +211,12 @@ public class CustomPage extends JPanel {
 		CustomPage.centerOfNewFrame = iconLabel.getHeight() - iconLabel.getY();
 
 		addButtons(2);
+		
+	
+		/* 
+		 * Modified same as createTwoButtonType 
+		 */
+		
 
 	}
 
@@ -197,12 +233,16 @@ public class CustomPage extends JPanel {
 
 		// centerOfNewFrame = (this.getHeight() - (this.getHeight() -
 		// iconLabel.getHeight()));
-
+		
 		addButtons(3);
+		
 
 	}
 
 	private void createQuestionBuilderType() {
+	/* 
+	 * Modified addButtons to rename to string
+	 */
 
 		/** Testing - Move to actual class before release */
 		this.titleOfCurrentQuestionPanel = "Question Builder";

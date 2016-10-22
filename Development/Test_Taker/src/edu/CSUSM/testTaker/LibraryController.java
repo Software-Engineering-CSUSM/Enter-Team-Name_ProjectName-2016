@@ -2,6 +2,12 @@ package edu.CSUSM.testTaker;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.Set;
+import java.util.Iterator;
 
 import edu.CSUSM.testTaker.Backend.Course;
 import edu.CSUSM.testTaker.Backend.Question;
@@ -28,15 +34,33 @@ public class LibraryController {
 	 * the list will not have to loop through the data every time it is
 	 * required.
 	 */
-	private static HashMap<String, Test> testArray = new HashMap<String, Test>(); // String
-																					// is
-																					// the
-																					// testID
-	private static HashMap<String, Question> questionArray = new HashMap<String, Question>(); // String
-																								// is
-																								// the
-																								// questionID
-	private static HashMap<String, Course> classArray = new HashMap<String, Course>();
+	private static HashMap<String, Test> testArray;			//String is the testID
+	private static HashMap<String, Question> questionArray;	//String is the questionID
+	private static HashMap<String, Course> classArray;
+	static {
+		testArray = new HashMap<String, Test>();
+		questionArray = new HashMap<String, Question>();
+		classArray = new HashMap<String, Course>();
+	}
+	
+	/**
+	 * Gives a Set view of the ID strings of all Courses in the library.
+	 * @return a reference to a Set containing all Course ID strings.
+	 */
+	public static Set<String> giveCourseSet(){
+		return classArray.keySet();
+	}
+	
+	/**
+	 * Gives an iterator of all Courses in the library.
+	 * @return A String Iterator over all Courses in the library.
+	 */
+	public static Iterator<String> courseIDIterator(){
+		return classArray.keySet().iterator();
+	}
+		
+	
+	//End of testing purposes
 
 	/**
 	 * The below static variables are for the current class, not all information
@@ -255,6 +279,43 @@ public class LibraryController {
 	}
 
 	/**
+	 * Backup the library to a file.
+	 * @param filename A String of the filename to backup to.
+	 * @return True for success
+	 */
+	public static boolean backupLibrary(String filename){
+		try (ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream(filename))){
+			os.writeObject(questionArray);
+			os.writeObject(testArray);
+			os.writeObject(classArray);
+		}
+		catch (java.io.IOException ex){
+			return false;
+		}
+		return true;
+	}
+	
+	/**
+	 * Restore the Library from a file
+	 * @param filename A String of the filename to restore from.
+	 * @return True for success
+	 */
+	public static boolean restoreLibrary(String filename){
+		try(ObjectInputStream is = new ObjectInputStream(new FileInputStream(filename))){
+			questionArray = (HashMap <String,Question>)is.readObject();
+			testArray = (HashMap <String,Test>)is.readObject();
+			classArray = (HashMap <String,Course>)is.readObject();
+		}
+		catch (java.lang.ClassNotFoundException ex){
+			return false;
+		}
+		catch (java.io.IOException ex){
+			return false;
+		}
+		return true;
+	}
+	
+	/**
 	 * Get a reference to a Question in the array of Questions.
 	 * 
 	 * @param queryID
@@ -274,10 +335,21 @@ public class LibraryController {
 	 * @return Reference to the requested test or null for failure.
 	 * @author Steven Clark
 	 */
-	public static Test retrieveTest(String queryID) {
-		return LibraryController.testArray.get(queryID);
+	public static Test retrieveTest(String queryID){
+		Test rvalue = testArray.get(queryID);
+		rvalue.initQuestions();
+		return rvalue;
 	}
-
+	/**
+	 * Get a reference to a Test in the set of Tests, without necessarily valid Question references.
+	 * @param queryID Unique ID string to look for
+	 * @return Reference to the requested test or null for failure.
+	 * @author Steven Clark
+	 */
+	public static Test previewTest(String queryID){
+		return testArray.get(queryID);
+	}
+	
 	/**
 	 * Get a reference to a Course in the array of Courses.
 	 * 
@@ -321,4 +393,29 @@ public class LibraryController {
 	public static void storeCourse(Course updateThing) {
 		LibraryController.classArray.put(updateThing.getID(), updateThing);
 	}
+	
+	/**
+	 * Permanently remove a Question from the Library
+	 * @param delthing An ID string of a Question to remove.
+	 */
+	public static void deleteQuestion(String delthing){
+		questionArray.remove(delthing);
+	}
+
+	/**
+	 * Permanently remove a Test from the Library
+	 * @param delthing An ID string of a Test to remove.
+	 */
+	public static void deleteTest(String delthing){
+		testArray.remove(delthing);
+	}
+
+	/**
+	 * Permanently remove a Course from the Library
+	 * @param delthing An ID string of a Course to remove.
+	 */
+	public static void deleteCourse(String delthing){
+		classArray.remove(delthing);
+	}
+
 }

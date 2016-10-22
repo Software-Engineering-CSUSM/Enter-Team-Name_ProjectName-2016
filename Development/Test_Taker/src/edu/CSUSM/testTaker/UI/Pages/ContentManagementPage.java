@@ -59,6 +59,7 @@ public class ContentManagementPage extends CustomPage {
 
 			CourseManagementPage cm = new CourseManagementPage(CustomPage.PanelType.TWO_BUTTON_TYPE);
 			cm.setName("Manage Content");
+			cm.parentController = parentController;
 			parentController.displayView(cm);
 		}
 
