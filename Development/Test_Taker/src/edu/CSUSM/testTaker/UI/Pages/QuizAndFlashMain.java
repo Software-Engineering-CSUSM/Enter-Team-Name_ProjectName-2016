@@ -1,14 +1,10 @@
 package edu.CSUSM.testTaker.UI.Pages;
 
-import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 
 import edu.CSUSM.testTaker.UI.CustomPage;
-import edu.CSUSM.testTaker.UI.CustomPage.PageType;
-import edu.CSUSM.testTaker.UI.CustomPage.PanelType;
-
 
 public class QuizAndFlashMain extends CustomPage {
 	/**
@@ -34,19 +30,18 @@ public class QuizAndFlashMain extends CustomPage {
 		// TODO Auto-generated constructor stub
 		updateActions();
 	}
+
 	public QuizAndFlashMain(PanelType currentPanelType, PageType currentPageType) {
 		super(currentPanelType, currentPageType);
 		// Set the layout
-		
 
 		// Build the contents
-		if(currentPageType == CustomPage.PageType.QUIZ)
-		updateActions();
-		else if(currentPageType == CustomPage.PageType.FLASHCARD)
+		if (currentPageType == CustomPage.PageType.QUIZ)
+			updateActions();
+		else if (currentPageType == CustomPage.PageType.FLASHCARD)
 			updateActionsFlashcard();
 		else
 			System.out.println("error");
-		
 
 	}
 
@@ -71,30 +66,30 @@ public class QuizAndFlashMain extends CustomPage {
 			}
 		}
 	}
+
 	public void updateActionsFlashcard() {
-		
 
 		// Set the button names
 		setButtonNames(new String[] { "Add Question", "Take Set", "Create Set" });
-		
-			for (int i = 0; i < this.currentActions.length; i++) {
-				switch (i) {
-				case 0:
-					System.out.println("Hello");
-					this.currentActions[i].addActionListener(new OpenAddQuestions());
-					break;
-				case 1:
-					this.currentActions[i].addActionListener(new TakeSetPage());
-					break;
-				case 2:
-					this.currentActions[i].addActionListener(new CreateSetPage());
-					break;
-				default:
-					System.out.println("Not enough implemented classes");
-					break;
-				}
-			
-		}  
+
+		for (int i = 0; i < this.currentActions.length; i++) {
+			switch (i) {
+			case 0:
+				System.out.println("Hello");
+				this.currentActions[i].addActionListener(new OpenAddQuestions());
+				break;
+			case 1:
+				this.currentActions[i].addActionListener(new TakeSetPage());
+				break;
+			case 2:
+				this.currentActions[i].addActionListener(new CreateSetPage());
+				break;
+			default:
+				System.out.println("Not enough implemented classes");
+				break;
+			}
+
+		}
 	}
 
 	private class OpenQuestionBuilder implements ActionListener {
@@ -118,7 +113,7 @@ public class QuizAndFlashMain extends CustomPage {
 			// System.out.println("Opening " + this.getClass());
 
 			// System.out.println("Opening " + this.getClass());
-			AddQuestion addQ = new AddQuestion(AddQuestion.PanelType.TWO_BUTTON_TYPE);
+			AddQuestion addQ = new AddQuestion(AddQuestion.PanelType.Q_and_A_ype);
 			addQ.setName("Add Question Page");
 			addQ.parentController = parentController;
 			parentController.displayView(addQ);
@@ -137,7 +132,8 @@ public class QuizAndFlashMain extends CustomPage {
 			// System.out.println("Opening " + this.getClass());
 
 			// System.out.println("Opening " + this.getClass());
-			TakeQuizTakeSet takeQ = new TakeQuizTakeSet(TakeQuizTakeSet.PanelType.TWO_BUTTON_TYPE,TakeQuizTakeSet.PageType.QUIZ);
+			TakeQuizTakeSet takeQ = new TakeQuizTakeSet(TakeQuizTakeSet.PanelType.TWO_BUTTON_TYPE,
+					TakeQuizTakeSet.PageType.QUIZ);
 			takeQ.setName("Take Quiz Page");
 			takeQ.parentController = parentController;
 			parentController.displayView(takeQ);
@@ -156,7 +152,8 @@ public class QuizAndFlashMain extends CustomPage {
 			// System.out.println("Opening " + this.getClass());
 
 			// System.out.println("Opening " + this.getClass());
-			CreateQuizorSet createQ = new CreateQuizorSet(CreateQuizorSet.PanelType.TWO_BUTTON_TYPE, CreateQuizorSet.PageType.QUIZ);
+			CreateQuizorSet createQ = new CreateQuizorSet(CreateQuizorSet.PanelType.TWO_BUTTON_TYPE,
+					CreateQuizorSet.PageType.QUIZ);
 			createQ.setName("Create Quiz Page");
 			createQ.parentController = parentController;
 			parentController.displayView(createQ);
@@ -164,6 +161,7 @@ public class QuizAndFlashMain extends CustomPage {
 		}
 
 	}
+
 	// Button Listener for the Take Quiz Page. Currently set to two
 	// button type. Needs to be updated to list view for list of
 	// quizzes to take and a start button
@@ -174,8 +172,10 @@ public class QuizAndFlashMain extends CustomPage {
 			// System.out.println("Opening " + this.getClass());
 
 			// System.out.println("Opening " + this.getClass());
-			//FlashCardQuestionPage takeSet = new FlashCardQuestionPage(FlashCardQuestionPage.PanelType.TWO_BUTTON_TYPE);
-			TakeQuizTakeSet takeSet = new TakeQuizTakeSet(TakeQuizTakeSet.PanelType.TWO_BUTTON_TYPE,TakeQuizTakeSet.PageType.FLASHCARD);
+			// FlashCardQuestionPage takeSet = new
+			// FlashCardQuestionPage(FlashCardQuestionPage.PanelType.TWO_BUTTON_TYPE);
+			TakeQuizTakeSet takeSet = new TakeQuizTakeSet(TakeQuizTakeSet.PanelType.TWO_BUTTON_TYPE,
+					TakeQuizTakeSet.PageType.FLASHCARD);
 			takeSet.setName("Take Flashcard Set Page");
 			takeSet.parentController = parentController;
 			parentController.displayView(takeSet);
@@ -194,7 +194,8 @@ public class QuizAndFlashMain extends CustomPage {
 			// System.out.println("Opening " + this.getClass());
 
 			// System.out.println("Opening " + this.getClass());
-			CreateQuizorSet createS = new CreateQuizorSet(CreateQuizorSet.PanelType.TWO_BUTTON_TYPE,CreateQuizorSet.PageType.FLASHCARD);
+			CreateQuizorSet createS = new CreateQuizorSet(CreateQuizorSet.PanelType.TWO_BUTTON_TYPE,
+					CreateQuizorSet.PageType.FLASHCARD);
 			createS.setName("Create Flashcard Set Page");
 			createS.parentController = parentController;
 			parentController.displayView(createS);
