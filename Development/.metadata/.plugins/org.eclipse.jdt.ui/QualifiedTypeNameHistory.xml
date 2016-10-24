@@ -1,2 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<qualifiedTypeNameHistroy/>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="edu.CSUSM.testTaker.Backend.Question"/>
+<fullyQualifiedTypeName name="edu.CSUSM.testTaker.Backend.Test"/>
+<fullyQualifiedTypeName name="edu.CSUSM.testTaker.Backend.Course"/>
+</qualifiedTypeNameHistroy>
