@@ -322,3 +322,16 @@ Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.eclipse.
 
 !ENTRY com.wakatime.eclipse.plugin 1 0 2016-10-21 08:39:50.499
 !MESSAGE wakatime-cli is up to date.
+!SESSION 2016-10-21 08:49:53.812 -----------------------------------------------
+eclipse.buildId=4.6.0.I20160606-1100
+java.version=1.8.0_101
+java.vendor=Oracle Corporation
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.java.product -keyring /Users/justin/.eclipse_keyring
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.eclipse.epp.package.java.product -keyring /Users/justin/.eclipse_keyring
+
+!ENTRY org.eclipse.core.net 1 0 2016-10-21 08:50:00.824
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY com.wakatime.eclipse.plugin 1 0 2016-10-21 08:50:08.563
+!MESSAGE wakatime-cli is up to date.

@@ -152,7 +152,6 @@ public class CustomPage extends JPanel {
 		// Just display an image in the panel
 		imageLabel = new JLabel();
 		try {
-
 			Image img = CustomPage.mainLogoToDisplay;
 			newImg = img.getScaledInstance((this.getWidth() == 0) ? 600 : this.getWidth(),
 					(this.getHeight() / 2 == 0) ? 250 : this.getHeight() / 2, java.awt.Image.SCALE_SMOOTH);
@@ -221,6 +220,8 @@ public class CustomPage extends JPanel {
 
 		// centerOfNewFrame = (this.getHeight() - (this.getHeight() -
 		// iconLabel.getHeight()));
+		
+		addButtons(3);
 
 	}
 

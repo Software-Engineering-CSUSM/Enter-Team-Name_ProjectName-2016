@@ -207,12 +207,4 @@ public class GUIController extends JFrame {
 
 	}
 
-	/**
-	 * --------------------------------Manage Page
-	 * Controls--------------------------------
-	 */
-	private void setCoursesMainEvents() {
-
-	}
-
 }
