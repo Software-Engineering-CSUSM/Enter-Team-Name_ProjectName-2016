@@ -226,9 +226,16 @@ public class CustomPage extends JPanel {
 
 	protected void createQandAype() {
 		JLabel iconLabel = new JLabel();
-		iconLabel.setBounds(0, 0, 20, 20);
+
+		// I changed the parameter for height dividing by 5 do keep the
+		// logo from covering the text fields. However, the width is not
+		// getting placed in the correct spot.
+		iconLabel.setBounds(0, 0, this.getWidth(), this.getHeight() / 5);
 		iconLabel.setIcon(newIcon);
 		this.add(iconLabel);
+		// ******************
+		// this line was commented out because it was hiding the text areas
+		// ****************
 		this.add(iconLabel, BorderLayout.NORTH);
 
 		// Align to center
@@ -237,48 +244,74 @@ public class CustomPage extends JPanel {
 
 		CustomPage.centerOfNewFrame = iconLabel.getHeight() - iconLabel.getY();
 
+		// Create a text area for the question and a text area for the answer
 		JTextArea question = new JTextArea("Question", 10, 10);
 		JTextArea answer = new JTextArea("Answer", 10, 10);
 
+		// Constraints for the panel holding the text areas for
+		// resizing purposes.
+		GridBagConstraints c = new GridBagConstraints();
+		c.gridwidth = 10;
+		c.gridheight = 10;
+		c.weightx = .5;
+		c.gridx = 1;
+		c.gridy = 1;
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.insets = new Insets(10, 10, 10, 10);
+
+		// Create border for text areas
 		Border border = BorderFactory.createLineBorder(Color.BLACK);
 		question.setBorder(border);
 		answer.setBorder(border);
-		question.setRows(5);
-		answer.setRows(5);
-		question.setColumns(20);
-		answer.setColumns(20);
+
+		// Set text area sizes and word wrapping
+		question.setMinimumSize(question.getMinimumSize());
+		answer.setMinimumSize(answer.getMinimumSize());
 		question.setLineWrap(true);
+		question.setWrapStyleWord(true);
 		answer.setLineWrap(true);
-		JPanel panel2 = new JPanel();
-		panel2.setBackground(Color.WHITE);
-		panel2.setLayout(new GridBagLayout());
 
+		// Create panel to hold the question and answer text areas
+		JPanel QandAPanel = new JPanel();
+		QandAPanel.setBackground(Color.WHITE);
+		QandAPanel.setLayout(new GridBagLayout());
+
+		// Create a vertical box for the question text area
+		// placing a label about the text area
 		Box questionBox = Box.createVerticalBox();
-
 		questionBox.add(new JLabel("Question"));
 		questionBox.add(Box.createVerticalStrut(5));
 		questionBox.add(question);
 
+		// Create a vertical box for the answer text area
+		// placing a label about the text area
 		Box answerBox = Box.createVerticalBox();
 		answerBox.add(new JLabel("Answer"));
 		answerBox.add(Box.createVerticalStrut(5));
 		answerBox.add(answer);
 
+		// Create a horizontal box to hold the question and
+		// answer text areas and use Strut to place space between them
 		Box QandABox = Box.createHorizontalBox();
-		QandABox.add(Box.createHorizontalStrut(100));
 		QandABox.add(questionBox);
-		QandABox.add(Box.createHorizontalStrut(125));
-		QandABox.add(answerBox);
 		QandABox.add(Box.createHorizontalStrut(100));
+		QandABox.add(answerBox);
 
-		panel2.add(QandABox);
+		// This box was created to make a space between the logo
+		// it was otherwise cutting off the boxes
+		Box VertQandABox = Box.createVerticalBox();
+		VertQandABox.add(Box.createVerticalStrut(91));
+		VertQandABox.add(QandABox);
 
-		this.add(panel2, BorderLayout.CENTER);
+		// Add the question and answer boxes to the panel that is
+		// using a gridbaglayout
+		QandAPanel.add(VertQandABox);
+
+		// Add the Q&A panel to the frame and place it in the center
+		// then add constraints for the gridbag panel
+		this.add(QandAPanel, BorderLayout.CENTER);
+		QandAPanel.add(VertQandABox, c);
 		addButtons(2);
-
-		/*
-		 * Modified same as createTwoButtonType
-		 */
 
 	}
 
