@@ -2,6 +2,7 @@ package edu.CSUSM.testTaker.UI;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Image;
@@ -17,11 +18,13 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.border.Border;
 
 import edu.CSUSM.testTaker.UI.CustomObjects.CustomButton;
 import edu.CSUSM.testTaker.UI.Pages.ManageData;
+import edu.CSUSM.testTaker.UI.Pages.QuizAndFlashQuestionPage;
 
 /**
  * 
@@ -60,7 +63,7 @@ public class CustomPage extends JPanel {
 	/** End of question panel specific vars */
 
 	public static enum PanelType {
-		TWO_BUTTON_TYPE, THREE_BUTTON_TYPE, LOGO_ONLY_TYPE, QUESTION_BUILDER_TYPE, Q_and_A_ype
+		TWO_BUTTON_TYPE, THREE_BUTTON_TYPE, LOGO_ONLY_TYPE, QUESTION_BUILDER_TYPE, Q_and_A_Type, QUESTIONPAGE
 	};
 
 	public static enum PageType {
@@ -151,8 +154,12 @@ public class CustomPage extends JPanel {
 			createLogoType();
 			break;
 
-		case Q_and_A_ype:
+		case Q_and_A_Type:
 			createQandAype();
+			break;
+
+		case QUESTIONPAGE:
+			createQuestionPageType();
 			break;
 
 		case QUESTION_BUILDER_TYPE:
@@ -236,7 +243,7 @@ public class CustomPage extends JPanel {
 		// ******************
 		// this line was commented out because it was hiding the text areas
 		// ****************
-		this.add(iconLabel, BorderLayout.NORTH);
+		// this.add(iconLabel, BorderLayout.NORTH);
 
 		// Align to center
 		iconLabel.setHorizontalAlignment(JLabel.CENTER);
@@ -359,6 +366,80 @@ public class CustomPage extends JPanel {
 
 		addButtons(2);
 		// setQuestionLayout();
+	}
+
+	// Create a question and answer type which displays the quesiton
+	// string as a jlabel and put the answer in the answer text area
+	protected void createQuestionPageType() {
+
+		JLabel iconLabel = new JLabel();
+		iconLabel.setBounds(0, 0, this.getWidth(), (int) (this.getHeight() / 2.25));
+		iconLabel.setIcon(newIcon);
+		// this.add(iconLabel);
+
+		// Align to center
+		iconLabel.setHorizontalAlignment(JLabel.CENTER);
+		iconLabel.setVerticalAlignment(JLabel.CENTER);
+
+		centerOfNewFrame = (this.getHeight() - (this.getHeight() - iconLabel.getHeight()));
+
+		// String to hold questions. To be updated with function that passes
+		// the string of the actual question
+		String questionStr = new String("This is where the question goes.");
+
+		// Create a JLabel to display thew question, set its
+		// alignment, font type and size
+		JLabel questionLabel = new JLabel(questionStr);
+		questionLabel.setAlignmentX(centerOfNewFrame);
+		questionLabel.setOpaque(false);
+		Font font = new Font("Courier", Font.BOLD, 16);
+		questionLabel.setFont(font);
+
+		// Set the question jlabel's max size
+		questionLabel.setMaximumSize(getMaximumSize());
+
+		// Create a text area to enter the answer in and make it into
+		// a scroll pane with scrollbars created as needed.
+		JTextArea answer = new JTextArea("Answer goes Here", 10, 10);
+		answer.setLineWrap(true);
+		answer.setFont(font);
+		JScrollPane jScrollPane = new JScrollPane(answer, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
+				JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+
+		// Create border for the answer area
+		Border border = BorderFactory.createLineBorder(Color.BLACK);
+		jScrollPane.setBorder(border);
+
+		// Create a vertical box to place the question jlabel on top
+		// of the answer text area
+		Box questionBox = Box.createVerticalBox();
+		questionBox.add(questionLabel);
+		questionBox.add(Box.createVerticalStrut(40));
+		questionBox.add(jScrollPane);
+
+		// Constraints for the panel holding the text areas for
+		// resizing purposes.
+		GridBagConstraints c = new GridBagConstraints();
+		c.gridwidth = 1;
+		c.gridheight = 1;
+		c.weightx = .5;
+		c.gridx = 1;
+		c.gridy = 1;
+		c.fill = GridBagConstraints.BOTH;
+		c.insets = new Insets(50, 50, 50, 50);
+
+		// Create a panel to hold box with the question jlabel
+		// and answer test area
+		JPanel QandA = new JPanel(new GridBagLayout());
+		QandA.add(questionBox, c);
+
+		this.add(QandA, BorderLayout.CENTER);
+
+		if (QuizAndFlashQuestionPage.questionPageNumber == 1)
+			addButtons(2);
+		else
+			addButtons(3);
+
 	}
 
 	private void addButtons(int count) {

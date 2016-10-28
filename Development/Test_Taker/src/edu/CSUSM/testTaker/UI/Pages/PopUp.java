@@ -35,8 +35,8 @@ public class PopUp extends CustomPage {
 		if (determineQuizorQuestion == 0)
 			createWindowQuizPopUp();
 		else if (determineQuizorQuestion == 1)
-	createWindowQuestionPopUp();
-		else 
+			createWindowQuestionPopUp();
+		else
 			createWindowSetPopUp();
 	}
 
@@ -131,7 +131,7 @@ public class PopUp extends CustomPage {
 			public void actionPerformed(ActionEvent e) {
 
 				popUpWindow.dispose();
-				AddQuestion addQ = new AddQuestion(AddQuestion.PanelType.TWO_BUTTON_TYPE);
+				AddQuestion addQ = new AddQuestion(AddQuestion.PanelType.Q_and_A_Type);
 				addQ.setName("Add Question Page");
 				addQ.parentController = parentController;
 				parentController.displayView(addQ);
@@ -198,6 +198,7 @@ public class PopUp extends CustomPage {
 		});
 
 	}
+
 	public void createWindowSetPopUp() {
 		GUIController popUpWindow = new GUIController(5);
 
@@ -246,7 +247,8 @@ public class PopUp extends CustomPage {
 			public void actionPerformed(ActionEvent e) {
 
 				popUpWindow.dispose();
-				QuizAndFlashMain FlashPage = new QuizAndFlashMain(QuizAndFlashMain.PanelType.THREE_BUTTON_TYPE, QuizAndFlashMain.PageType.FLASHCARD);
+				QuizAndFlashMain FlashPage = new QuizAndFlashMain(QuizAndFlashMain.PanelType.THREE_BUTTON_TYPE,
+						QuizAndFlashMain.PageType.FLASHCARD);
 				FlashPage.setName("Flashcard Main Page");
 				FlashPage.parentController = parentController;
 				parentController.displayView(FlashPage);
@@ -262,7 +264,8 @@ public class PopUp extends CustomPage {
 		public void actionPerformed(ActionEvent e) {
 			System.out.println("Opening " + this.getClass());
 
-			TakeQuizTakeSet takeSet = new TakeQuizTakeSet(TakeQuizTakeSet.PanelType.TWO_BUTTON_TYPE, TakeQuizTakeSet.PageType.FLASHCARD);
+			TakeQuizTakeSet takeSet = new TakeQuizTakeSet(TakeQuizTakeSet.PanelType.TWO_BUTTON_TYPE,
+					TakeQuizTakeSet.PageType.FLASHCARD);
 			takeSet.setName("Take Quiz Page");
 			takeSet.parentController = parentController;
 			parentController.displayView(takeSet);

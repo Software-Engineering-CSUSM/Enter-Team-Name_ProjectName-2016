@@ -1,13 +1,10 @@
 package edu.CSUSM.testTaker.UI.Pages;
 
-import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 
 import edu.CSUSM.testTaker.UI.CustomPage;
-import edu.CSUSM.testTaker.UI.CustomPage.PageType;
-import edu.CSUSM.testTaker.UI.CustomPage.PanelType;
 
 public class CreateQuizorSet extends CustomPage {
 	/**
@@ -33,25 +30,25 @@ public class CreateQuizorSet extends CustomPage {
 		// TODO Auto-generated constructor stub
 		updateActions();
 	}
+
 	public CreateQuizorSet(PanelType currentPanelType, PageType currentPageType) {
 		super(currentPanelType, currentPageType);
 		// Set the layout
 
 		// Build the contents
-		if(currentPageType == CustomPage.PageType.QUIZ)
-		updateActions();
-		else if(currentPageType == CustomPage.PageType.FLASHCARD)
+		if (currentPageType == CustomPage.PageType.QUIZ)
+			updateActions();
+		else if (currentPageType == CustomPage.PageType.FLASHCARD)
 			updateActionsFlashcard();
 		else
 			System.out.println("error");
-		
 
 	}
 
 	public void updateActions() {
 
 		// Set the button names
-		
+
 		setButtonNames(new String[] { "Create New Quiz", "Edit Existing Quiz" });
 
 		for (int i = 0; i < this.currentActions.length; i++) {
@@ -68,10 +65,11 @@ public class CreateQuizorSet extends CustomPage {
 			}
 		}
 	}
+
 	public void updateActionsFlashcard() {
 
 		// Set the button names
-		
+
 		setButtonNames(new String[] { "Create Set", "Edit Existing Set" });
 
 		for (int i = 0; i < this.currentActions.length; i++) {
@@ -89,7 +87,6 @@ public class CreateQuizorSet extends CustomPage {
 		}
 	}
 
-
 	// Opens page to create a new quiz. It is currently set to a
 	// two button type. It needs to be updated to a List view
 	// for the questions to add as well as a save button.
@@ -99,7 +96,8 @@ public class CreateQuizorSet extends CustomPage {
 		public void actionPerformed(ActionEvent e) {
 			System.out.println("Opening " + this.getClass());
 
-			CreateNewQuizOrSet newQuiz = new CreateNewQuizOrSet(CreateNewQuizOrSet.PanelType.TWO_BUTTON_TYPE, CreateNewQuizOrSet.PageType.QUIZ);
+			CreateNewQuizOrSet newQuiz = new CreateNewQuizOrSet(CreateNewQuizOrSet.PanelType.QUESTION_BUILDER_TYPE,
+					CreateNewQuizOrSet.PageType.QUIZ);
 			System.out.println(newQuiz.toString());
 			newQuiz.setName("Create New Quiz");
 			newQuiz.parentController = parentController;
@@ -108,13 +106,15 @@ public class CreateQuizorSet extends CustomPage {
 		}
 
 	}
+
 	private class CreateNewSet implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			System.out.println("Opening " + this.getClass());
 
-			CreateNewQuizOrSet newSet = new CreateNewQuizOrSet(CreateNewQuizOrSet.PanelType.TWO_BUTTON_TYPE, CreateNewQuizOrSet.PageType.FLASHCARD);
+			CreateNewQuizOrSet newSet = new CreateNewQuizOrSet(CreateNewQuizOrSet.PanelType.TWO_BUTTON_TYPE,
+					CreateNewQuizOrSet.PageType.FLASHCARD);
 			System.out.println(newSet.toString());
 			newSet.setName("Create New Flashcard Set");
 			newSet.parentController = parentController;
@@ -133,7 +133,8 @@ public class CreateQuizorSet extends CustomPage {
 		public void actionPerformed(ActionEvent e) {
 			// System.out.println("Opening " + this.getClass());
 
-			EditExistingQuizorSet editQ = new EditExistingQuizorSet(EditExistingQuizorSet.PanelType.TWO_BUTTON_TYPE, EditExistingQuizorSet.PageType.QUIZ);
+			EditExistingQuizorSet editQ = new EditExistingQuizorSet(EditExistingQuizorSet.PanelType.TWO_BUTTON_TYPE,
+					EditExistingQuizorSet.PageType.QUIZ);
 			editQ.setName("Edit Quiz Page");
 			editQ.parentController = parentController;
 			parentController.displayView(editQ);
@@ -141,13 +142,15 @@ public class CreateQuizorSet extends CustomPage {
 		}
 
 	}
+
 	private class EditFlashcard implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			// System.out.println("Opening " + this.getClass());
 
-			EditExistingQuizorSet editSet = new EditExistingQuizorSet(EditExistingQuizorSet.PanelType.TWO_BUTTON_TYPE, EditExistingQuizorSet.PageType.FLASHCARD);
+			EditExistingQuizorSet editSet = new EditExistingQuizorSet(EditExistingQuizorSet.PanelType.TWO_BUTTON_TYPE,
+					EditExistingQuizorSet.PageType.FLASHCARD);
 			editSet.setName("Edit Flashcard Set");
 			editSet.parentController = parentController;
 			parentController.displayView(editSet);

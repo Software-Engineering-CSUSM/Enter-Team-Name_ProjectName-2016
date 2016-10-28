@@ -5,8 +5,6 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 
 import edu.CSUSM.testTaker.UI.CustomPage;
-import edu.CSUSM.testTaker.UI.CustomPage.PageType;
-import edu.CSUSM.testTaker.UI.CustomPage.PanelType;
 
 public class QuizAndFlashQuestionPage extends CustomPage {
 	/**
@@ -37,19 +35,18 @@ public class QuizAndFlashQuestionPage extends CustomPage {
 		// TODO Auto-generated constructor stub
 		updateActions();
 	}
+
 	public QuizAndFlashQuestionPage(PanelType currentPanelType, PageType currentPageType) {
 		super(currentPanelType, currentPageType);
 		// Set the layout
-		
 
 		// Build the contents
-		if(currentPageType == CustomPage.PageType.QUIZ)
-		updateActions();
-		else if(currentPageType == CustomPage.PageType.FLASHCARD)
+		if (currentPageType == CustomPage.PageType.QUIZ)
+			updateActions();
+		else if (currentPageType == CustomPage.PageType.FLASHCARD)
 			updateActionsFlashcard();
 		else
 			System.out.println("error");
-		
 
 	}
 
@@ -86,6 +83,7 @@ public class QuizAndFlashQuestionPage extends CustomPage {
 			}
 		}
 	}
+
 	public void updateActionsFlashcard() {
 		// Set the button names
 		if (questionPageNumber == 1)
@@ -130,7 +128,8 @@ public class QuizAndFlashQuestionPage extends CustomPage {
 		public void actionPerformed(ActionEvent e) {
 			System.out.println("Opening " + this.getClass());
 
-			QuizAndFlashQuestionPage questionPage = new QuizAndFlashQuestionPage(QuizAndFlashQuestionPage.PanelType.THREE_BUTTON_TYPE, QuizAndFlashQuestionPage.PageType.QUIZ);
+			QuizAndFlashQuestionPage questionPage = new QuizAndFlashQuestionPage(
+					QuizAndFlashQuestionPage.PanelType.QUESTIONPAGE, QuizAndFlashQuestionPage.PageType.QUIZ);
 			questionPage.setName("Quiz Question Page " + QuizAndFlashQuestionPage.questionPageNumber);
 			questionPage.parentController = parentController;
 			parentController.displayView(questionPage);
@@ -183,13 +182,15 @@ public class QuizAndFlashQuestionPage extends CustomPage {
 									// number
 		}
 	}
+
 	private class SubmitFlash implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			System.out.println("Opening " + this.getClass());
 
-			QuizAndFlashMain fcMain = new QuizAndFlashMain(QuizAndFlashMain.PanelType.THREE_BUTTON_TYPE,QuizAndFlashMain.PageType.FLASHCARD);
+			QuizAndFlashMain fcMain = new QuizAndFlashMain(QuizAndFlashMain.PanelType.THREE_BUTTON_TYPE,
+					QuizAndFlashMain.PageType.FLASHCARD);
 			fcMain.setName("Flashcard Main Page");
 			fcMain.parentController = parentController;
 			parentController.displayView(fcMain);
@@ -197,6 +198,7 @@ public class QuizAndFlashQuestionPage extends CustomPage {
 									// number
 		}
 	}
+
 	// Go to the next question. This class calls QuestionPageBetweenFirstAndLast
 	// which is made to accomodate a 3 button style quiz page. This is
 	// only due to the fact that the first and last page have only
@@ -209,7 +211,7 @@ public class QuizAndFlashQuestionPage extends CustomPage {
 
 			QuizAndFlashQuestionPage FquestionPage = new QuizAndFlashQuestionPage(
 					QuizAndFlashQuestionPage.PanelType.THREE_BUTTON_TYPE, QuizAndFlashQuestionPage.PageType.FLASHCARD);
-			
+
 			FquestionPage.setName("Flashcard Question Page " + questionPageNumber);
 			FquestionPage.parentController = parentController;
 			parentController.displayView(FquestionPage);
@@ -217,6 +219,7 @@ public class QuizAndFlashQuestionPage extends CustomPage {
 
 		}
 	}
+
 	// Take you back to the quiz main page
 	private class ExitFlashCard implements ActionListener {
 
@@ -225,7 +228,8 @@ public class QuizAndFlashQuestionPage extends CustomPage {
 			System.out.println("Opening " + this.getClass());
 
 			// System.out.println("Opening " + this.getClass());
-			QuizAndFlashMain FlashCPage = new QuizAndFlashMain(QuizAndFlashMain.PanelType.THREE_BUTTON_TYPE, QuizAndFlashMain.PageType.FLASHCARD);
+			QuizAndFlashMain FlashCPage = new QuizAndFlashMain(QuizAndFlashMain.PanelType.THREE_BUTTON_TYPE,
+					QuizAndFlashMain.PageType.FLASHCARD);
 			FlashCPage.setName("Flashcard Page");
 			FlashCPage.parentController = parentController;
 			questionPageNumber = 1;

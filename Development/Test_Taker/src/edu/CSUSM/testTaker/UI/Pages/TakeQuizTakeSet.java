@@ -5,8 +5,6 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 
 import edu.CSUSM.testTaker.UI.CustomPage;
-import edu.CSUSM.testTaker.UI.CustomPage.PageType;
-import edu.CSUSM.testTaker.UI.CustomPage.PanelType;
 
 public class TakeQuizTakeSet extends CustomPage {
 	/**
@@ -35,19 +33,18 @@ public class TakeQuizTakeSet extends CustomPage {
 		// TODO Auto-generated constructor stub
 		updateActions();
 	}
+
 	public TakeQuizTakeSet(PanelType currentPanelType, PageType currentPageType) {
 		super(currentPanelType, currentPageType);
 		// Set the layout
-		
 
 		// Build the contents
-		if(currentPageType == CustomPage.PageType.QUIZ)
-		updateActions();
-		else if(currentPageType == CustomPage.PageType.FLASHCARD)
+		if (currentPageType == CustomPage.PageType.QUIZ)
+			updateActions();
+		else if (currentPageType == CustomPage.PageType.FLASHCARD)
 			updateActionsFlashcard();
 		else
 			System.out.println("error");
-		
 
 	}
 
@@ -70,6 +67,7 @@ public class TakeQuizTakeSet extends CustomPage {
 			}
 		}
 	}
+
 	public void updateActionsFlashcard() {
 
 		// Set the button names
@@ -99,31 +97,35 @@ public class TakeQuizTakeSet extends CustomPage {
 		public void actionPerformed(ActionEvent e) {
 			System.out.println("Opening " + this.getClass());
 
-			QuizAndFlashQuestionPage QquestionPage = new QuizAndFlashQuestionPage(QuizAndFlashQuestionPage.PanelType.TWO_BUTTON_TYPE, QuizAndFlashQuestionPage.PageType.QUIZ);
+			QuizAndFlashQuestionPage QquestionPage = new QuizAndFlashQuestionPage(
+					QuizAndFlashQuestionPage.PanelType.QUESTIONPAGE, QuizAndFlashQuestionPage.PageType.QUIZ);
 			QquestionPage.setName("Quiz Question Page " + QuizAndFlashQuestionPage.questionPageNumber);
 			QquestionPage.parentController = parentController;
 			parentController.displayView(QquestionPage);
-			QuizAndFlashQuestionPage.questionPageNumber++; // global variable to keep
-													// track of the number of
-													// quiz pages
+			QuizAndFlashQuestionPage.questionPageNumber++; // global variable to
+															// keep
+			// track of the number of
+			// quiz pages
 
 		}
 
 	}
-	
+
 	private class StartSet implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			System.out.println("Opening " + this.getClass());
 
-			QuizAndFlashQuestionPage FCquestionPage = new QuizAndFlashQuestionPage(QuizAndFlashQuestionPage.PanelType.TWO_BUTTON_TYPE, QuizAndFlashQuestionPage.PageType.FLASHCARD);
+			QuizAndFlashQuestionPage FCquestionPage = new QuizAndFlashQuestionPage(
+					QuizAndFlashQuestionPage.PanelType.TWO_BUTTON_TYPE, QuizAndFlashQuestionPage.PageType.FLASHCARD);
 			FCquestionPage.setName("Flashcard Question Page " + QuizAndFlashQuestionPage.questionPageNumber);
 			FCquestionPage.parentController = parentController;
 			parentController.displayView(FCquestionPage);
-			QuizAndFlashQuestionPage.questionPageNumber++; // global variable to keep
-													// track of the number of
-													// quiz pages
+			QuizAndFlashQuestionPage.questionPageNumber++; // global variable to
+															// keep
+			// track of the number of
+			// quiz pages
 
 		}
 

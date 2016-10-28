@@ -113,7 +113,7 @@ public class QuizAndFlashMain extends CustomPage {
 			// System.out.println("Opening " + this.getClass());
 
 			// System.out.println("Opening " + this.getClass());
-			AddQuestion addQ = new AddQuestion(AddQuestion.PanelType.Q_and_A_ype);
+			AddQuestion addQ = new AddQuestion(AddQuestion.PanelType.Q_and_A_Type);
 			addQ.setName("Add Question Page");
 			addQ.parentController = parentController;
 			parentController.displayView(addQ);
