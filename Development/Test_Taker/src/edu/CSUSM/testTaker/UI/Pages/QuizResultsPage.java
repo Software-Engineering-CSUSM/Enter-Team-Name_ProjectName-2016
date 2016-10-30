@@ -60,7 +60,7 @@ public class QuizResultsPage extends CustomPage {
 			System.out.println("Opening " + this.getClass());
 
 			// System.out.println("Opening " + this.getClass());
-			TakeQuiz quizPage = new TakeQuiz(TakeQuiz.PanelType.THREE_BUTTON_TYPE);
+			TakeQuizTakeSet quizPage = new TakeQuizTakeSet(TakeQuizTakeSet.PanelType.THREE_BUTTON_TYPE, TakeQuizTakeSet.PageType.QUIZ);
 			quizPage.setName("Quiz Page");
 			quizPage.parentController = parentController;
 			parentController.displayView(quizPage);
@@ -88,7 +88,7 @@ public class QuizResultsPage extends CustomPage {
 		public void actionPerformed(ActionEvent e) {
 			System.out.println("Opening " + this.getClass());
 
-			TakeQuiz takeQ = new TakeQuiz(TakeQuiz.PanelType.TWO_BUTTON_TYPE);
+			TakeQuizTakeSet takeQ = new TakeQuizTakeSet(TakeQuizTakeSet.PanelType.TWO_BUTTON_TYPE, TakeQuizTakeSet.PageType.QUIZ);
 			takeQ.setName("Take Quiz Page");
 			takeQ.parentController = parentController;
 			parentController.displayView(takeQ);

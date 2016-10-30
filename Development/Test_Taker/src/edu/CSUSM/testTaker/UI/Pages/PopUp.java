@@ -2,6 +2,7 @@ package edu.CSUSM.testTaker.UI.Pages;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
@@ -34,8 +35,13 @@ public class PopUp extends CustomPage {
 		// TODO Auto-generated constructor stub
 		if (determineQuizorQuestion == 0)
 			createWindowQuizPopUp();
-		else
+		else if (determineQuizorQuestion == 1)
 			createWindowQuestionPopUp();
+
+		else if (determineQuizorQuestion == 2)
+			createWindowSetPopUp();
+		else
+			createFlashAnswerPopUp();
 	}
 
 	public PopUp(PanelType currentPanelType, BufferedImage newImage) {
@@ -58,7 +64,7 @@ public class PopUp extends CustomPage {
 		for (int i = 0; i < this.currentActions.length; i++) {
 			switch (i) {
 			case 0:
-				this.currentActions[i].addActionListener(new ReturnTakeQuiz());
+				this.currentActions[i].addActionListener(new ReturnTakeMain());
 				break;
 			case 1:
 				// this.currentActions[i].addActionListener(new Previous());
@@ -115,7 +121,7 @@ public class PopUp extends CustomPage {
 			public void actionPerformed(ActionEvent e) {
 
 				popUpWindow.dispose();
-				QuizMain QuizPage = new QuizMain(QuizMain.PanelType.THREE_BUTTON_TYPE);
+				QuizAndFlashMain QuizPage = new QuizAndFlashMain(QuizAndFlashMain.PanelType.THREE_BUTTON_TYPE);
 				QuizPage.setName("Quiz Main Page");
 				QuizPage.parentController = parentController;
 				parentController.displayView(QuizPage);
@@ -129,7 +135,7 @@ public class PopUp extends CustomPage {
 			public void actionPerformed(ActionEvent e) {
 
 				popUpWindow.dispose();
-				AddQuestion addQ = new AddQuestion(AddQuestion.PanelType.TWO_BUTTON_TYPE);
+				AddQuestion addQ = new AddQuestion(AddQuestion.PanelType.Q_and_A_Type);
 				addQ.setName("Add Question Page");
 				addQ.parentController = parentController;
 				parentController.displayView(addQ);
@@ -187,7 +193,7 @@ public class PopUp extends CustomPage {
 			public void actionPerformed(ActionEvent e) {
 
 				popUpWindow.dispose();
-				QuizMain QuizPage = new QuizMain(QuizMain.PanelType.THREE_BUTTON_TYPE);
+				QuizAndFlashMain QuizPage = new QuizAndFlashMain(QuizAndFlashMain.PanelType.THREE_BUTTON_TYPE);
 				QuizPage.setName("Quiz Main Page");
 				QuizPage.parentController = parentController;
 				parentController.displayView(QuizPage);
@@ -197,18 +203,108 @@ public class PopUp extends CustomPage {
 
 	}
 
-	private class ReturnTakeQuiz implements ActionListener {
+	public void createWindowSetPopUp() {
+		GUIController popUpWindow = new GUIController(5);
+
+		// Create box to hold JLabel asking if the user would
+		// likek to create another quiz
+		Box jLabelBox = Box.createVerticalBox(); // buttons
+		// Create text field to enter quiz name
+		jLabelBox.add(Box.createHorizontalStrut(popUpWindow.getWidth() / 3));
+		jLabelBox.add(Box.createVerticalGlue());
+		jLabelBox.add(new JLabel("Name your Flashcard Set and click save."));
+		jLabelBox.add(Box.createHorizontalGlue());
+		jLabelBox.add(Box.createVerticalStrut(10));
+		JTextField quizName = new JTextField(20);
+		JPanel quizNamePanel = new JPanel();
+		quizNamePanel.setBackground(Color.WHITE);
+		quizNamePanel.add(quizName);
+		jLabelBox.add(quizNamePanel);
+
+		// Create buttons
+		JButton save = new JButton("Save Set");
+
+		// Create panel to hold the jLabelBox asking the user
+		// to create or not create a new quiz
+		JPanel buttonPanel = new JPanel();
+		buttonPanel.setBackground(Color.WHITE);
+		buttonPanel.setLayout(new BorderLayout());
+
+		// Add the Jlabel box to the
+		// button panel which is then added to the frame
+
+		buttonPanel.add(jLabelBox, BorderLayout.CENTER);
+
+		// Create a box to hold the buttons to either create a
+		// new quiz or return to quiz main
+		Box CreateorDont = Box.createHorizontalBox();
+		CreateorDont.add(Box.createHorizontalStrut(200));
+		CreateorDont.add(save);
+		CreateorDont.add(Box.createVerticalStrut(popUpWindow.getHeight() / 4));
+
+		buttonPanel.add(CreateorDont, BorderLayout.SOUTH);
+		popUpWindow.add(buttonPanel);
+
+		save.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+				popUpWindow.dispose();
+				QuizAndFlashMain FlashPage = new QuizAndFlashMain(QuizAndFlashMain.PanelType.THREE_BUTTON_TYPE,
+						QuizAndFlashMain.PageType.FLASHCARD);
+				FlashPage.setName("Flashcard Main Page");
+				FlashPage.parentController = parentController;
+				parentController.displayView(FlashPage);
+
+			}
+		});
+
+	}
+
+	private class ReturnTakeMain implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			System.out.println("Opening " + this.getClass());
 
-			TakeQuiz takeQ = new TakeQuiz(TakeQuiz.PanelType.TWO_BUTTON_TYPE);
-			takeQ.setName("Take Quiz Page");
-			takeQ.parentController = parentController;
-			parentController.displayView(takeQ);
+			TakeQuizTakeSet takeSet = new TakeQuizTakeSet(TakeQuizTakeSet.PanelType.TWO_BUTTON_TYPE,
+					TakeQuizTakeSet.PageType.FLASHCARD);
+			takeSet.setName("Take Quiz Page");
+			takeSet.parentController = parentController;
+			parentController.displayView(takeSet);
 
 		}
+	}
+
+	// Flashcard answer pop up window.
+	public void createFlashAnswerPopUp() {
+
+		// Create Frame for the pop up window
+		GUIController popUpWindow = new GUIController(5);
+		popUpWindow.setTitle("Pop Up Window");
+		// Create JLabel to hold the public string holding the
+		// answer to the flashcard question
+		JLabel FlashAnswer = new JLabel(FlashcardAnswer);
+		Font font = new Font("Courier", Font.BOLD, 18);
+		FlashAnswer.setFont(font);
+
+		// Had to add the label to a box before putting it
+		// into the panel due to it aligning to the left.
+		Box answerBox = Box.createHorizontalBox();
+		answerBox.add(Box.createHorizontalGlue());
+		answerBox.add(FlashAnswer);
+		answerBox.add(Box.createHorizontalGlue());
+
+		// Create the panel to put the answer into and set its
+		// color.
+		JPanel answerPanel = new JPanel(new BorderLayout());
+		answerPanel.setBackground(Color.WHITE);
+		answerPanel.add(answerBox);
+
+		// Add the answer panel to the popUpWindow
+		popUpWindow.add(answerPanel, BorderLayout.CENTER);
+
 	}
 
 }
