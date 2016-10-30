@@ -133,6 +133,7 @@ Binding(ALT+CTRL+P,
 	org.eclipse.ui.contexts.window,,,system)
 
 !ENTRY com.wakatime.eclipse.plugin 1 0 2016-10-17 10:52:24.843
+<<<<<<< HEAD
 !MESSAGE wakatime-cli is up to date.
 !SESSION 2016-10-19 09:08:54.320 -----------------------------------------------
 eclipse.buildId=4.6.0.I20160606-1100
@@ -334,4 +335,6 @@ Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.eclipse.
 !MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
 
 !ENTRY com.wakatime.eclipse.plugin 1 0 2016-10-21 08:50:08.563
+=======
+>>>>>>> origin/Jeremy2
 !MESSAGE wakatime-cli is up to date.

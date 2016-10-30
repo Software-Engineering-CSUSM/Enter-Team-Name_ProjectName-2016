@@ -13,7 +13,7 @@ import javax.swing.JPanel;
 import edu.CSUSM.testTaker.LibraryController;
 import edu.CSUSM.testTaker.UI.Pages.ContentManagementPage;
 import edu.CSUSM.testTaker.UI.Pages.CoursesMain;
-import edu.CSUSM.testTaker.UI.Pages.QuizMain;
+import edu.CSUSM.testTaker.UI.Pages.QuizAndFlashMain;
 import edu.CSUSM.testTaker.UI.Pages.StudyToolsMain;
 
 /**
@@ -44,7 +44,7 @@ public class GUIController extends JFrame {
 	 * Classes--------------------------------
 	 */
 	private static CoursesMain courses;
-	private static QuizMain quizzes;
+	private static QuizAndFlashMain quizzes;
 	private static ContentManagementPage contentMgr;
 
 	/**

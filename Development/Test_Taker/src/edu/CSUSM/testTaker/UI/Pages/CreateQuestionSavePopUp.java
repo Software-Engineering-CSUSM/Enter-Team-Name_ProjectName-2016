@@ -76,7 +76,7 @@ public class CreateQuestionSavePopUp extends CustomPage {
 		public void actionPerformed(ActionEvent e) {
 			// System.out.println("Opening " + this.getClass());
 
-			QuizMain returnQuiz = new QuizMain(QuizMain.PanelType.TWO_BUTTON_TYPE);
+			QuizAndFlashMain returnQuiz = new QuizAndFlashMain(QuizAndFlashMain.PanelType.TWO_BUTTON_TYPE, QuizAndFlashMain.PageType.QUIZ);
 			returnQuiz.setName("Pop Up");
 			returnQuiz.parentController = parentController;
 			parentController.displayView(returnQuiz);
