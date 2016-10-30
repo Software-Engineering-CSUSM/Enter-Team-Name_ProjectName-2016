@@ -16,6 +16,7 @@ import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -51,7 +52,11 @@ public class CustomPage extends JPanel {
 	protected static int centerOfNewFrame;
 	public JButton[] currentActions;
 	public String panelTypeString, titleOfCurrentQuestionPanel;
-	public NavigationController parentController, parentController2;
+	public NavigationController parentController;
+
+	// Added show/Hide check box to show and hide answer for flashcard
+	public JCheckBox showHide = new JCheckBox("Show/Hide Answer");
+	public static String FlashcardAnswer = "This is where the answer goes.";;
 
 	// Created an array of string for the button names
 	private static final int MAX_NUMBER_OF_BUTTONS = 10;
@@ -63,7 +68,7 @@ public class CustomPage extends JPanel {
 	/** End of question panel specific vars */
 
 	public static enum PanelType {
-		TWO_BUTTON_TYPE, THREE_BUTTON_TYPE, LOGO_ONLY_TYPE, QUESTION_BUILDER_TYPE, Q_and_A_Type, QUESTIONPAGE
+		TWO_BUTTON_TYPE, THREE_BUTTON_TYPE, LOGO_ONLY_TYPE, QUESTION_BUILDER_TYPE, Q_and_A_Type, QUESTIONPAGE, FLASHCARDPAGE
 	};
 
 	public static enum PageType {
@@ -160,6 +165,10 @@ public class CustomPage extends JPanel {
 
 		case QUESTIONPAGE:
 			createQuestionPageType();
+			break;
+
+		case FLASHCARDPAGE:
+			createFlashcardPageType();
 			break;
 
 		case QUESTION_BUILDER_TYPE:
@@ -425,6 +434,79 @@ public class CustomPage extends JPanel {
 		c.weightx = .5;
 		c.gridx = 1;
 		c.gridy = 1;
+		c.fill = GridBagConstraints.BOTH;
+		c.insets = new Insets(50, 50, 50, 50);
+
+		// Create a panel to hold box with the question jlabel
+		// and answer test area
+		JPanel QandA = new JPanel(new GridBagLayout());
+		QandA.add(questionBox, c);
+
+		this.add(QandA, BorderLayout.CENTER);
+
+		if (QuizAndFlashQuestionPage.questionPageNumber == 1)
+			addButtons(2);
+		else
+			addButtons(3);
+
+	}
+
+	private void createFlashcardPageType() {
+		System.out.println("Flash string " + FlashcardAnswer + this.getClass());
+
+		JLabel iconLabel = new JLabel();
+		iconLabel.setBounds(0, 0, this.getWidth(), (int) (this.getHeight() / 2.25));
+		iconLabel.setIcon(newIcon);
+		// this.add(iconLabel);
+
+		// Align to center
+		iconLabel.setHorizontalAlignment(JLabel.CENTER);
+		iconLabel.setVerticalAlignment(JLabel.CENTER);
+
+		centerOfNewFrame = (this.getHeight() - (this.getHeight() - iconLabel.getHeight()));
+
+		// String to hold questions. To be updated with function that passes
+		// the string of the actual question
+		String questionStr = new String("This is where the question goes.");
+		// FlashcardAnswer = "This is where the answer goes.";
+
+		// Create a JLabel to display thew question, set its
+		// alignment, font type and size
+		JLabel questionLabel = new JLabel(questionStr);
+		JLabel answerLabel = new JLabel(FlashcardAnswer);
+		questionLabel.setAlignmentX(centerOfNewFrame);
+		questionLabel.setOpaque(false);
+		answerLabel.setAlignmentX(centerOfNewFrame);
+		answerLabel.setOpaque(false);
+		Font font = new Font("Courier", Font.BOLD, 16);
+		questionLabel.setFont(font);
+		answerLabel.setFont(font);
+
+		// Set the question jlabel's max size
+		questionLabel.setMaximumSize(getMaximumSize());
+		answerLabel.setMaximumSize(getMaximumSize());
+
+		showHide.setAlignmentX(centerOfNewFrame);
+
+		// Border border = BorderFactory.createLineBorder(Color.BLACK);
+
+		// Create a vertical box to place the question jlabel on top
+		// of the answer text area
+		Box questionBox = Box.createVerticalBox();
+		questionBox.add(questionLabel);
+		questionBox.add(Box.createVerticalStrut(40));
+		questionBox.add(showHide);
+		// questionBox.add(Box.createVerticalStrut(40));
+		// questionBox.add(answerLabel);
+
+		// Constraints for the panel holding the text areas for
+		// resizing purposes.
+		GridBagConstraints c = new GridBagConstraints();
+		c.gridwidth = 1;
+		c.gridheight = 1;
+		c.weightx = .5;
+		c.gridx = 1;
+		c.gridy = 10;
 		c.fill = GridBagConstraints.BOTH;
 		c.insets = new Insets(50, 50, 50, 50);
 

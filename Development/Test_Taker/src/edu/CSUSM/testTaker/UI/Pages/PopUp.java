@@ -2,6 +2,7 @@ package edu.CSUSM.testTaker.UI.Pages;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
@@ -36,8 +37,11 @@ public class PopUp extends CustomPage {
 			createWindowQuizPopUp();
 		else if (determineQuizorQuestion == 1)
 			createWindowQuestionPopUp();
-		else
+
+		else if (determineQuizorQuestion == 2)
 			createWindowSetPopUp();
+		else
+			createFlashAnswerPopUp();
 	}
 
 	public PopUp(PanelType currentPanelType, BufferedImage newImage) {
@@ -271,6 +275,25 @@ public class PopUp extends CustomPage {
 			parentController.displayView(takeSet);
 
 		}
+	}
+
+	public void createFlashAnswerPopUp() {
+		GUIController popUpWindow = new GUIController(5);
+		JLabel FlashAnswer = new JLabel(FlashcardAnswer);
+		Font font = new Font("Courier", Font.BOLD, 18);
+		FlashAnswer.setFont(font);
+		FlashAnswer.setAlignmentX(popUpWindow.getWidth() / 2);
+		FlashAnswer.setOpaque(false);
+		Box thebox = Box.createHorizontalBox();
+		thebox.add(Box.createHorizontalGlue());
+		thebox.add(FlashAnswer);
+		thebox.add(Box.createHorizontalGlue());
+		// FlashAnswer.setMaximumSize(getMaximumSize());
+		JPanel answerPanel = new JPanel(new BorderLayout());
+		answerPanel.setBackground(Color.WHITE);
+		answerPanel.add(thebox);
+		popUpWindow.add(answerPanel, BorderLayout.CENTER);
+
 	}
 
 }

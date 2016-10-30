@@ -118,7 +118,7 @@ public class TakeQuizTakeSet extends CustomPage {
 			System.out.println("Opening " + this.getClass());
 
 			QuizAndFlashQuestionPage FCquestionPage = new QuizAndFlashQuestionPage(
-					QuizAndFlashQuestionPage.PanelType.TWO_BUTTON_TYPE, QuizAndFlashQuestionPage.PageType.FLASHCARD);
+					QuizAndFlashQuestionPage.PanelType.FLASHCARDPAGE, QuizAndFlashQuestionPage.PageType.FLASHCARD);
 			FCquestionPage.setName("Flashcard Question Page " + QuizAndFlashQuestionPage.questionPageNumber);
 			FCquestionPage.parentController = parentController;
 			parentController.displayView(FCquestionPage);

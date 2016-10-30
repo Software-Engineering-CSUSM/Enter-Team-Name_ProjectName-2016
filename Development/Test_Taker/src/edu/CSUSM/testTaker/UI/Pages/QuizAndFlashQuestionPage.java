@@ -82,6 +82,7 @@ public class QuizAndFlashQuestionPage extends CustomPage {
 				break;
 			}
 		}
+
 	}
 
 	public void updateActionsFlashcard() {
@@ -116,6 +117,20 @@ public class QuizAndFlashQuestionPage extends CustomPage {
 				break;
 			}
 		}
+		showHide.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				PopUp answer;
+				if (showHide.isSelected()) {
+					FlashcardAnswer = "This is the answer";
+					System.out.println("if statement");
+					answer = new PopUp(PopUp.PanelType.LOGO_ONLY_TYPE, 3);
+					showHide.setSelected(false);
+				}
+			}
+		});
+
 	}
 
 	// Go to the next question. This class calls QuestionPageBetweenFirstAndLast
@@ -210,7 +225,7 @@ public class QuizAndFlashQuestionPage extends CustomPage {
 			System.out.println("Opening " + this.getClass());
 
 			QuizAndFlashQuestionPage FquestionPage = new QuizAndFlashQuestionPage(
-					QuizAndFlashQuestionPage.PanelType.THREE_BUTTON_TYPE, QuizAndFlashQuestionPage.PageType.FLASHCARD);
+					QuizAndFlashQuestionPage.PanelType.FLASHCARDPAGE, QuizAndFlashQuestionPage.PageType.FLASHCARD);
 
 			FquestionPage.setName("Flashcard Question Page " + questionPageNumber);
 			FquestionPage.parentController = parentController;
@@ -218,6 +233,7 @@ public class QuizAndFlashQuestionPage extends CustomPage {
 			questionPageNumber++; // increment the quiz question number
 
 		}
+
 	}
 
 	// Take you back to the quiz main page
