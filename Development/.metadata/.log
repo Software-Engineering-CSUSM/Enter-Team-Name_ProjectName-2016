@@ -134,7 +134,11 @@ Binding(ALT+CTRL+P,
 
 !ENTRY com.wakatime.eclipse.plugin 1 0 2016-10-17 10:52:24.843
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Tizzle
 !MESSAGE wakatime-cli is up to date.
+<<<<<<< HEAD
 !SESSION 2016-10-19 09:08:54.320 -----------------------------------------------
 eclipse.buildId=4.6.0.I20160606-1100
 java.version=1.8.0_101
@@ -335,6 +339,27 @@ Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.eclipse.
 !MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
 
 !ENTRY com.wakatime.eclipse.plugin 1 0 2016-10-21 08:50:08.563
+<<<<<<< HEAD
 =======
 >>>>>>> origin/Jeremy2
+=======
+>>>>>>> Tizzle
 !MESSAGE wakatime-cli is up to date.
+!SESSION 2016-10-24 09:01:47.024 -----------------------------------------------
+eclipse.buildId=4.6.0.I20160606-1100
+java.version=1.8.0_101
+java.vendor=Oracle Corporation
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.java.product -keyring /Users/justin/.eclipse_keyring
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.eclipse.epp.package.java.product -keyring /Users/justin/.eclipse_keyring
+
+!ENTRY org.eclipse.core.net 1 0 2016-10-24 09:01:55.192
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY com.wakatime.eclipse.plugin 1 0 2016-10-24 09:02:03.431
+!MESSAGE Upgrading wakatime-cli ...
+
+!ENTRY com.wakatime.eclipse.plugin 1 0 2016-10-24 09:02:04.958
+!MESSAGE Finished upgrading wakatime-cli.
+=======
+>>>>>>> origin/Jeremy2

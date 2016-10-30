@@ -285,6 +285,10 @@ public class Question implements Serializable, Registerable {
 	 * @see java.lang.Object#toString()
 	 * @author Justin Goulet
 	 * @return A human readable string of the contents of this question.
+<<<<<<< HEAD
+=======
+	 * 
+>>>>>>> Tizzle
 	 */
 	@Override
 	public String toString() {

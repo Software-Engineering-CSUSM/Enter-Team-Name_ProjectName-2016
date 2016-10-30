@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 package edu.CSUSM.testTaker.Analytics;
 
@@ -117,6 +118,8 @@ public class HelloAnalytics {
     }
   }
 =======
+=======
+>>>>>>> Tizzle
 
 package edu.CSUSM.testTaker.Analytics;
 
@@ -234,5 +237,8 @@ public class HelloAnalytics {
       System.out.println("No results found");
     }
   }
+<<<<<<< HEAD
 >>>>>>> origin/Jeremy2
+=======
+>>>>>>> Tizzle
 }
