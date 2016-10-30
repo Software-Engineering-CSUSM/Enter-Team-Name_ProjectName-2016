@@ -277,21 +277,32 @@ public class PopUp extends CustomPage {
 		}
 	}
 
+	// Flashcard answer pop up window.
 	public void createFlashAnswerPopUp() {
+
+		// Create Frame for the pop up window
 		GUIController popUpWindow = new GUIController(5);
+		popUpWindow.setTitle("Pop Up Window");
+		// Create JLabel to hold the public string holding the
+		// answer to the flashcard question
 		JLabel FlashAnswer = new JLabel(FlashcardAnswer);
 		Font font = new Font("Courier", Font.BOLD, 18);
 		FlashAnswer.setFont(font);
-		FlashAnswer.setAlignmentX(popUpWindow.getWidth() / 2);
-		FlashAnswer.setOpaque(false);
-		Box thebox = Box.createHorizontalBox();
-		thebox.add(Box.createHorizontalGlue());
-		thebox.add(FlashAnswer);
-		thebox.add(Box.createHorizontalGlue());
-		// FlashAnswer.setMaximumSize(getMaximumSize());
+
+		// Had to add the label to a box before putting it
+		// into the panel due to it aligning to the left.
+		Box answerBox = Box.createHorizontalBox();
+		answerBox.add(Box.createHorizontalGlue());
+		answerBox.add(FlashAnswer);
+		answerBox.add(Box.createHorizontalGlue());
+
+		// Create the panel to put the answer into and set its
+		// color.
 		JPanel answerPanel = new JPanel(new BorderLayout());
 		answerPanel.setBackground(Color.WHITE);
-		answerPanel.add(thebox);
+		answerPanel.add(answerBox);
+
+		// Add the answer panel to the popUpWindow
 		popUpWindow.add(answerPanel, BorderLayout.CENTER);
 
 	}

@@ -451,12 +451,22 @@ public class CustomPage extends JPanel {
 
 	}
 
+	// Creates flashcard page type that shows the question and has a
+	// pop up window that shows the answer. Again having issues with
+	// keeping the logo on the page. It uses FlashcardAnswer as a public
+	// String which can be set by the backend function with the appropriate
+	// string
 	private void createFlashcardPageType() {
-		System.out.println("Flash string " + FlashcardAnswer + this.getClass());
 
 		JLabel iconLabel = new JLabel();
 		iconLabel.setBounds(0, 0, this.getWidth(), (int) (this.getHeight() / 2.25));
 		iconLabel.setIcon(newIcon);
+		/**
+		 * 
+		 * commened out the logo due to issues with it covering the question and
+		 * checkbox
+		 * 
+		 */
 		// this.add(iconLabel);
 
 		// Align to center
@@ -467,31 +477,28 @@ public class CustomPage extends JPanel {
 
 		// String to hold questions. To be updated with function that passes
 		// the string of the actual question
-		String questionStr = new String("This is where the question goes.");
-		// FlashcardAnswer = "This is where the answer goes.";
+		String questionStr = "This is where the question goes";
 
-		// Create a JLabel to display thew question, set its
+		// Create a JLabel to display the question, set its
 		// alignment, font type and size
 		JLabel questionLabel = new JLabel(questionStr);
-		JLabel answerLabel = new JLabel(FlashcardAnswer);
+		// JLabel answerLabel = new JLabel(FlashcardAnswer);
 		questionLabel.setAlignmentX(centerOfNewFrame);
 		questionLabel.setOpaque(false);
-		answerLabel.setAlignmentX(centerOfNewFrame);
-		answerLabel.setOpaque(false);
+		// answerLabel.setAlignmentX(centerOfNewFrame);
+		// answerLabel.setOpaque(false);
 		Font font = new Font("Courier", Font.BOLD, 16);
 		questionLabel.setFont(font);
-		answerLabel.setFont(font);
+		// answerLabel.setFont(font);
 
 		// Set the question jlabel's max size
 		questionLabel.setMaximumSize(getMaximumSize());
-		answerLabel.setMaximumSize(getMaximumSize());
+		// answerLabel.setMaximumSize(getMaximumSize());
 
 		showHide.setAlignmentX(centerOfNewFrame);
 
-		// Border border = BorderFactory.createLineBorder(Color.BLACK);
-
-		// Create a vertical box to place the question jlabel on top
-		// of the answer text area
+		// Create a vertical box to place the question string on top
+		// of the hide check box
 		Box questionBox = Box.createVerticalBox();
 		questionBox.add(questionLabel);
 		questionBox.add(Box.createVerticalStrut(40));
@@ -517,6 +524,8 @@ public class CustomPage extends JPanel {
 
 		this.add(QandA, BorderLayout.CENTER);
 
+		// If it is the first question page, it will only have 2
+		// buttons, every other page will have 3
 		if (QuizAndFlashQuestionPage.questionPageNumber == 1)
 			addButtons(2);
 		else

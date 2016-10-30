@@ -117,6 +117,7 @@ public class QuizAndFlashQuestionPage extends CustomPage {
 				break;
 			}
 		}
+		// Action Listener for the showHide checkbox
 		showHide.addActionListener(new ActionListener() {
 
 			@Override
@@ -126,6 +127,7 @@ public class QuizAndFlashQuestionPage extends CustomPage {
 					FlashcardAnswer = "This is the answer";
 					System.out.println("if statement");
 					answer = new PopUp(PopUp.PanelType.LOGO_ONLY_TYPE, 3);
+					answer.setName("Flashcard Question Answer");
 					showHide.setSelected(false);
 				}
 			}
