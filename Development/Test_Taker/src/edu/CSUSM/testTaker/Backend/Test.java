@@ -309,14 +309,11 @@ public class Test implements Serializable, Registerable{
 	}
 
 
-	/** 
-	 * @author John Orcino
-	 * @description goes through the loop to calculate the weighted average by 
-	 * getting the 
-
 	/**
-	 * Utility function sets/resets the list of questions
-	 * @param newQuestionList a List of Question refs to insert
+	 * Gets the percentage scored on a test given an array of student answers.
+	 * @author John Orcino
+	 * @param ansAry An array of ints for Test Question answer numbers.
+	 * @return An average of the scores for all Questions weighted by their points values.
 	 */
 	public double totalPointsScored(int [] ansAry){
 		double weightAverage = 0.0;		//total points from the formula	
@@ -324,7 +321,6 @@ public class Test implements Serializable, Registerable{
 		double pointValue = 0.0;		//total points of the user's correct answers
 		double tempPoints = 0.0;   		//get the point that is set in the questionPoint array index
 		double tempValue = 0.0;			//get the point that is set in the answerPoint array index
-		Question points;   				//to call question class in order to call the ArrayList
 
 		/**
 		 * iterator
@@ -338,12 +334,25 @@ public class Test implements Serializable, Registerable{
 
 			sumOfPoints = sumOfPoints + tempPoints;
 			pointValue = pointValue + (tempValue*tempPoints);	
-		}	
-		weightAverage = pointValue/sumOfPoints;
+		}
+		if(sumOfPoints != 0)
+			weightAverage = pointValue/sumOfPoints;
 		return weightAverage;
-
+	}
+	
+	/**
+	 * Get the percentage scored on this Test given an AbstractList of Integers for answers
+	 * @param answerSet Any List of Integers with answer numbers for the test Questions
+	 * @return An average of the scores for all Questions weighted by their points values.
+	 */
+	public double totalPointsScored(AbstractList <Integer> answerSet){
+		return totalPointsScored(answerSet.stream().mapToInt(i->i).toArray());
 	}
 
+	/**
+	 * Sets the entire list of questions for the Test.
+	 * @param newQuestionList Any List of Questions to set the Test to.
+	 */
 	public void setQuestionList(AbstractList<Question> newQuestionList){
 		questionList.clear();
 		questionIDs.clear();
