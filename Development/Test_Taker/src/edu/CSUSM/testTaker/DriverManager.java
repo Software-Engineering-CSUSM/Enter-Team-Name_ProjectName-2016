@@ -3,6 +3,9 @@
  */
 package edu.CSUSM.testTaker;
 
+import edu.CSUSM.testTaker.Backend.Course;
+import edu.CSUSM.testTaker.Backend.Question;
+import edu.CSUSM.testTaker.Backend.Test;
 import edu.CSUSM.testTaker.UI.GUIController;
 
 /**
@@ -29,6 +32,13 @@ public class DriverManager {
 
 		GUIController gui = new GUIController();
 		gui.setVisible(true);
+		
+		//Question.makeExample();
+		//Test.makeExample();
+		//Course.makeExample();
+		
+		//LibraryController lb = new LibraryController();
+		//System.out.println(lb.toString());
 	}
 
 }

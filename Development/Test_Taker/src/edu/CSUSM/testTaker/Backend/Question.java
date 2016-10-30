@@ -274,6 +274,10 @@ public class Question implements Serializable, Registerable {
 	 * @see java.lang.Object#toString()
 	 * @author Justin Goulet
 	 * @return A human readable string of the contents of this question.
+<<<<<<< HEAD
+=======
+	 * 
+>>>>>>> Tizzle
 	 */
 	@Override
 	public String toString() {
@@ -285,7 +289,7 @@ public class Question implements Serializable, Registerable {
 		
 		// Now, add each of the possible answers in the provided question
 		for (int iterator = 0; iterator < this.getAnswers().length; iterator++) {
-			thisQuestionString += "\n\t\t " + (iterator + 1) + ") " + this._answers.get(iterator);
+			thisQuestionString += "\n\t\t " + (iterator + 1) + ") " + this.getAnswers()[iterator];
 
 			// If the answer is correct, add an asterisk to the end
 			thisQuestionString += (iterator == this._correctIndex) ? " *correct*" : "";
