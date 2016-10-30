@@ -267,17 +267,6 @@ public class Question implements Serializable, Registerable {
 		return 0.0;
 	}
 	
-	/**
-	 * @author John Orcino
-	 * @description calls pointsValue method and stores result into an ArrayList
-	 * @param location of user's answer
-	 * @deprecated
-	 */
-	public void storePoints(int index){
-		if(null == this._answerPoints)
-			_answerPoints = new ArrayList<Double>();
-		_answerPoints.add(pointsValue(index));
-	}
 	
 	/** (non-Javadoc)
 	/**
