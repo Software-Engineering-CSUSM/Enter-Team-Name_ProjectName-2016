@@ -56,6 +56,7 @@ public class TakeQuizTakeSet extends CustomPage {
 		for (int i = 0; i < this.currentActions.length; i++) {
 			switch (i) {
 			case 0:
+				QuizAndFlashQuestionPage.questionPageNumber = 1;
 				this.currentActions[i].addActionListener(new StartQuiz());
 				break;
 			case 1:
@@ -76,6 +77,7 @@ public class TakeQuizTakeSet extends CustomPage {
 		for (int i = 0; i < this.currentActions.length; i++) {
 			switch (i) {
 			case 0:
+				QuizAndFlashQuestionPage.questionPageNumber = 1;
 				this.currentActions[i].addActionListener(new StartSet());
 				break;
 			case 1:

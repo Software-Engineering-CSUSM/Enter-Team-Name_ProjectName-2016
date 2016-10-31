@@ -26,7 +26,7 @@ public class GUIController extends JFrame {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	public static final int FRAME_WIDTH = 750, FRAME_HEIGHT = 500; // Frame
+	public static final int FRAME_WIDTH = 950, FRAME_HEIGHT = 700; // Frame
 																	// dimensions
 	// private static final double DEFAULT_OFFSET = 5.0; //Distance between
 	// frame and panels

@@ -191,7 +191,7 @@ public class QuizAndFlashQuestionPage extends CustomPage {
 		public void actionPerformed(ActionEvent e) {
 			System.out.println("Opening " + this.getClass());
 
-			QuizResultsPage results = new QuizResultsPage(QuizResultsPage.PanelType.TWO_BUTTON_TYPE);
+			QuizResultsPage results = new QuizResultsPage(QuizResultsPage.PanelType.RESULTS);
 			results.setName("Results Page");
 			results.parentController = parentController;
 			parentController.displayView(results);

@@ -26,17 +26,18 @@ import javax.swing.border.Border;
 import edu.CSUSM.testTaker.UI.CustomObjects.CustomButton;
 import edu.CSUSM.testTaker.UI.Pages.ManageData;
 import edu.CSUSM.testTaker.UI.Pages.QuizAndFlashQuestionPage;
+import edu.CSUSM.testTaker.UI.Pages.TakeQuizTakeSet;
 
 /**
  * 
  * @author Justin
  * @purpose The purpose of this class is to make it easier to create JPanels.
  *          Are panel types are quite simple to create. For simplicity, there
- *          are a few type of panels: â€¢Â TWO_BUTTON_TYPE - Has a logo and two
- *          buttons (sBs) â€¢ THREE_BUTTON_TYPE - Has a logo and three buttons
- *          (2 on top, one centered below) â€¢ LOGO_ONLY_TYPE - Has only a logo
- *          â€¢ QUESTION_BUILDER_TYPE - has a question input, posible answer
- *          input and radio buttons to selct correct answer
+ *          are a few type of panels: • TWO_BUTTON_TYPE - Has a logo and two
+ *          buttons (sBs) • THREE_BUTTON_TYPE - Has a logo and three buttons (2
+ *          on top, one centered below) • LOGO_ONLY_TYPE - Has only a logo •
+ *          QUESTION_BUILDER_TYPE - has a question input, posible answer input
+ *          and radio buttons to selct correct answer
  *
  */
 public class CustomPage extends JPanel {
@@ -57,6 +58,8 @@ public class CustomPage extends JPanel {
 	// Added show/Hide check box to show and hide answer for flashcard
 	public JCheckBox showHide = new JCheckBox("Show/Hide Answer");
 	public static String FlashcardAnswer = "This is where the answer goes.";;
+	public boolean Correct; // Bool value to determine correct or incorrect for
+							// results page
 
 	// Created an array of string for the button names
 	private static final int MAX_NUMBER_OF_BUTTONS = 10;
@@ -68,7 +71,7 @@ public class CustomPage extends JPanel {
 	/** End of question panel specific vars */
 
 	public static enum PanelType {
-		TWO_BUTTON_TYPE, THREE_BUTTON_TYPE, LOGO_ONLY_TYPE, QUESTION_BUILDER_TYPE, Q_and_A_Type, QUESTIONPAGE, FLASHCARDPAGE
+		TWO_BUTTON_TYPE, THREE_BUTTON_TYPE, LOGO_ONLY_TYPE, QUESTION_BUILDER_TYPE, Q_and_A_Type, QUESTIONPAGE, FLASHCARDPAGE, RESULTS
 	};
 
 	public static enum PageType {
@@ -171,6 +174,10 @@ public class CustomPage extends JPanel {
 			createFlashcardPageType();
 			break;
 
+		case RESULTS:
+			createResultsPageType();
+			break;
+
 		case QUESTION_BUILDER_TYPE:
 			createQuestionBuilderType();
 			break;
@@ -240,13 +247,13 @@ public class CustomPage extends JPanel {
 
 	}
 
-	protected void createQandAype() {
+	private void createQandAype() {
 		JLabel iconLabel = new JLabel();
 
 		// I changed the parameter for height dividing by 5 do keep the
 		// logo from covering the text fields. However, the width is not
 		// getting placed in the correct spot.
-		iconLabel.setBounds(0, 0, this.getWidth(), this.getHeight() / 5);
+		iconLabel.setBounds(0, 0, this.getWidth(), (int) (this.getHeight() / 3.25));
 		iconLabel.setIcon(newIcon);
 		this.add(iconLabel);
 		// ******************
@@ -273,7 +280,7 @@ public class CustomPage extends JPanel {
 		c.gridx = 1;
 		c.gridy = 1;
 		c.fill = GridBagConstraints.HORIZONTAL;
-		c.insets = new Insets(10, 10, 10, 10);
+		c.insets = new Insets(100, 10, 10, 10);
 
 		// Create border for text areas
 		Border border = BorderFactory.createLineBorder(Color.BLACK);
@@ -379,12 +386,14 @@ public class CustomPage extends JPanel {
 
 	// Create a question and answer type which displays the quesiton
 	// string as a jlabel and put the answer in the answer text area
-	protected void createQuestionPageType() {
+	private void createQuestionPageType() {
 
 		JLabel iconLabel = new JLabel();
 		iconLabel.setBounds(0, 0, this.getWidth(), (int) (this.getHeight() / 2.25));
 		iconLabel.setIcon(newIcon);
 		// this.add(iconLabel);
+
+		// this.add(iconLabel, BorderLayout.NORTH);
 
 		// Align to center
 		iconLabel.setHorizontalAlignment(JLabel.CENTER);
@@ -423,7 +432,7 @@ public class CustomPage extends JPanel {
 		// of the answer text area
 		Box questionBox = Box.createVerticalBox();
 		questionBox.add(questionLabel);
-		questionBox.add(Box.createVerticalStrut(40));
+		questionBox.add(Box.createVerticalStrut(80));
 		questionBox.add(jScrollPane);
 
 		// Constraints for the panel holding the text areas for
@@ -435,7 +444,7 @@ public class CustomPage extends JPanel {
 		c.gridx = 1;
 		c.gridy = 1;
 		c.fill = GridBagConstraints.BOTH;
-		c.insets = new Insets(50, 50, 50, 50);
+		c.insets = new Insets(1, 50, 1, 50);
 
 		// Create a panel to hold box with the question jlabel
 		// and answer test area
@@ -448,6 +457,98 @@ public class CustomPage extends JPanel {
 			addButtons(2);
 		else
 			addButtons(3);
+
+	}
+
+	private void createResultsPageType() {
+
+		JLabel iconLabel = new JLabel();
+		iconLabel.setBounds(0, 0, this.getWidth(), (int) (this.getHeight() / 2.25));
+		iconLabel.setIcon(newIcon);
+		// this.add(iconLabel);
+
+		// Create a label for to dispaly "Results" inside a panel
+		// and place it in the NORTH
+		JLabel results = new JLabel("Results");
+		Font resultsFont = new Font("Courier", Font.BOLD, 20);
+		results.setFont(resultsFont);
+		JPanel resultsPanel = new JPanel();
+		resultsPanel.setBackground(Color.WHITE);
+		resultsPanel.add(results);
+		this.add(resultsPanel, BorderLayout.NORTH);
+
+		// Align to center
+		iconLabel.setHorizontalAlignment(JLabel.CENTER);
+		iconLabel.setVerticalAlignment(JLabel.CENTER);
+
+		centerOfNewFrame = (this.getHeight() - (this.getHeight() - iconLabel.getHeight()));
+
+		// Number of incorrect and correct answers. We'll need
+		// a function to set the actual values
+		int numberCorrect = 8, numberIncorrect = 10;
+
+		// Create the string to display the score, add it to a label,
+		// set the font, and then add the score label into a panel
+		String scoreStr = "Your Score  " + numberCorrect + "/" + numberIncorrect;
+		JLabel scoreLabel = new JLabel(scoreStr);
+		Font font = new Font("Courier", Font.BOLD, 18);
+		scoreLabel.setFont(font);
+		JPanel scorePanel = new JPanel();
+		scorePanel.add(scoreLabel);
+
+		// Create a text area to display which questions are corrects
+		// and which ones are incorrect. Make the text area unable
+		// to be edited, and add to a scrollpane
+		JTextArea questionCorOrInc = new JTextArea(10, 10);
+		questionCorOrInc.setEditable(false);
+		questionCorOrInc.setLineWrap(true);
+		questionCorOrInc.setFont(font);
+		JScrollPane jScrollPane = new JScrollPane(questionCorOrInc, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
+				JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+
+		// While less than the total number of questions in the quiz
+		// display whether or not each question is correct or incorrect.
+		// this is determined by a boolean value which will be need to
+		// be obtained by some function.
+		for (int i = 0; i < TakeQuizTakeSet.totalNumQuestions; i++) {
+			if (Correct)
+				questionCorOrInc.append("Question #" + (i + 1) + "\tCorrect\n");
+			else
+				questionCorOrInc.append("Question #" + (i + 1) + "\tIncorrect\n");
+
+		}
+
+		// Create border for the answer area
+		Border border = BorderFactory.createLineBorder(Color.BLACK);
+		jScrollPane.setBorder(border);
+
+		// Create a vertical box to place the question jlabel on top
+		// of the answer text area
+		Box CorOrIncBox = Box.createVerticalBox();
+
+		CorOrIncBox.add(scorePanel);
+		CorOrIncBox.add(Box.createVerticalStrut(80));
+		CorOrIncBox.add(jScrollPane);
+
+		// Constraints for the panel holding the text areas for
+		// resizing purposes.
+		GridBagConstraints c = new GridBagConstraints();
+		c.gridwidth = 1;
+		c.gridheight = 1;
+		c.weightx = .5;
+		c.gridx = 1;
+		c.gridy = 1;
+		c.fill = GridBagConstraints.BOTH;
+		c.insets = new Insets(1, 50, 1, 50);
+
+		// Create a panel to hold box with the question text area
+		// of questions displaying which ones are correct or incorrect
+		JPanel CorOrIncPanel = new JPanel(new GridBagLayout());
+		CorOrIncPanel.add(CorOrIncBox, c);
+
+		this.add(CorOrIncPanel, BorderLayout.CENTER);
+
+		addButtons(2);
 
 	}
 
@@ -501,7 +602,7 @@ public class CustomPage extends JPanel {
 		// of the hide check box
 		Box questionBox = Box.createVerticalBox();
 		questionBox.add(questionLabel);
-		questionBox.add(Box.createVerticalStrut(40));
+		questionBox.add(Box.createVerticalStrut(100));
 		questionBox.add(showHide);
 		// questionBox.add(Box.createVerticalStrut(40));
 		// questionBox.add(answerLabel);
@@ -515,7 +616,7 @@ public class CustomPage extends JPanel {
 		c.gridx = 1;
 		c.gridy = 10;
 		c.fill = GridBagConstraints.BOTH;
-		c.insets = new Insets(50, 50, 50, 50);
+		c.insets = new Insets(50, 50, 250, 50);
 
 		// Create a panel to hold box with the question jlabel
 		// and answer test area
