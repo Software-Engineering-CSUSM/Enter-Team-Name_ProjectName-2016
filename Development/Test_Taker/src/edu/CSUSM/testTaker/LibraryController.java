@@ -1,6 +1,7 @@
 package edu.CSUSM.testTaker;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -57,6 +58,20 @@ public class LibraryController {
 	 */
 	public static Iterator<String> courseIDIterator(){
 		return classArray.keySet().iterator();
+	}
+	
+	/**
+	 * @return An array of all available courses
+	 */
+	public static ArrayList<Course> getAllCourses(){
+		//Create an array
+		ArrayList<Course> tempHolder = new ArrayList<Course>();
+		
+		//Add all classes to the array
+		tempHolder.addAll(classArray.values());
+		
+		//Return the list
+		return tempHolder;
 	}
 		
 	
