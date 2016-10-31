@@ -254,7 +254,7 @@ public class LibraryController {
 	}
 
 	/** Accesors */
-	/**
+	/** Get the number of Questions currently in the library
 	 * @author Justin Goulet
 	 * @return amount of total questions in Library
 	 */
@@ -262,7 +262,7 @@ public class LibraryController {
 		return LibraryController.questionArray.size();
 	}
 
-	/**
+	/** Get the number of Courses currently in the library
 	 * @author Justin Goulet
 	 * @return amount of total courses in Library
 	 */
@@ -270,14 +270,56 @@ public class LibraryController {
 		return LibraryController.classArray.size();
 	}
 
-	/**
+	/** Get the number of Tests currently in the library
 	 * @author Justin Goulet
 	 * @return amount of total tests in Library
 	 */
 	public int getTotalTestCount() {
 		return LibraryController.testArray.size();
 	}
+	
+	/**
+	 * Is a particular ID string the ID of a Question
+	 * @param checkID An ID String of a Question, or other Registerable object
+	 * @return true if the ID is a Question in this library
+	 */
+	public boolean isAQuestion(String checkID){
+		return questionArray.containsKey(checkID);
+	}
+	
+	/**
+	 * Is a particular ID string the ID of a Test
+	 * @param checkID An ID String of a Test, or other Registerable object
+	 * @return true if the ID is a Test in this library
+	 */
+	public boolean isATest(String checkID){
+		return testArray.containsKey(checkID);		
+	}
 
+	/**
+	 * Is a particular ID string the ID of a Course
+	 * @param checkID An ID String of a Course, or other Registerable object
+	 * @return true if the ID is a Course in this library
+	 */
+	public boolean isACourse(String checkID){
+		return classArray.containsKey(checkID);		
+	}
+	
+	/**
+	 * Gives a String of class of Registerable object an ID refers to in this library.
+	 * @param checkID The unique ID String of a Registerable object.
+	 * @return A String representing the class of the object ID given if it is in the Library. "Question", "Test", "Course" or "Unregistered"
+	 */
+	public String classNameOf(String checkID){
+		if (isAQuestion(checkID))
+			return "Question";
+		if (isATest(checkID))
+			return "Test";
+		if (isACourse(checkID))
+			return "Course";
+		return "Unregistered";
+	}
+	
 	/**
 	 * Backup the library to a file.
 	 * @param filename A String of the filename to backup to.

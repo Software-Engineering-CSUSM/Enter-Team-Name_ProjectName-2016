@@ -63,7 +63,7 @@ public class NavigationController extends JPanel {
 			URL url;
 			try {
 				url = new URL(
-						"https://github.com/Software-Engineering-CSUSM/Test-Taker/blob/master/Team%20Graphics/Test_Taker_LogoOption3.png?raw=true");
+						"https://github.com/Software-Engineering-CSUSM/Test-Taker/blob/master/Team%20Graphics/Test_Taker_LogoOption4.png?raw=true");
 				NavigationController.applicationImage = ImageIO.read(url);
 			} catch (MalformedURLException e1) {
 				// TODO Auto-generated catch block

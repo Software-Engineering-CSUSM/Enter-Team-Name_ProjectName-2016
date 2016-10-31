@@ -58,20 +58,7 @@ public class AddQuestion extends CustomPage {
 		public void actionPerformed(ActionEvent e) {
 			// System.out.println("Opening " + this.getClass());
 
-			PopUp saveQ = new PopUp(PopUp.PanelType.TWO_BUTTON_TYPE, 1); // added
-																			// a
-																			// new
-																			// constructor
-																			// with
-																			// an
-																			// int
-																			// to
-																			// determine
-																			// which
-																			// pop
-																			// up
-																			// to
-																			// display
+			PopUp saveQ = new PopUp(PopUp.PanelType.LOGO_ONLY_TYPE, 1); // added a new constructor with an int to determine which pop up to display
 			saveQ.setName("Save Question Pop Up Window");
 			saveQ.parentController = parentController;
 			parentController.displayView(saveQ);
