@@ -132,12 +132,21 @@ public class CustomPage extends JPanel {
 	}
 
 	/*
+<<<<<<< HEAD
 	 * added String[] to arguments of createButton Types which is passed through
 	 * buildPanel, so I added a String[] argument here as well
 	 * 
 	 */
 
 	// Set the string value of the panel type
+=======
+	 *  added String[] to arguments of createButton Types which is passed
+	 *  through buildPanel, so I added a String[] argument here as well
+	 * 
+	 */
+		
+		//Set the string value of the panel type
+>>>>>>> Tizzle
 	private void buildPanel(PanelType currentPanelType) {
 
 		this.panelTypeString = currentPanelType.toString();
@@ -150,7 +159,10 @@ public class CustomPage extends JPanel {
 
 		switch (currentPanelType) {
 		case TWO_BUTTON_TYPE:
+<<<<<<< HEAD
 
+=======
+>>>>>>> Tizzle
 			createTwoButtonType();
 			break;
 
@@ -196,7 +208,6 @@ public class CustomPage extends JPanel {
 		// Just display an image in the panel
 		imageLabel = new JLabel();
 		try {
-
 			Image img = CustomPage.mainLogoToDisplay;
 			newImg = img.getScaledInstance((this.getWidth() == 0) ? 600 : this.getWidth(),
 					(this.getHeight() / 2 == 0) ? 250 : this.getHeight() / 2, java.awt.Image.SCALE_SMOOTH);
@@ -215,6 +226,14 @@ public class CustomPage extends JPanel {
 		this.add(imageLabel, BorderLayout.CENTER);
 
 	}
+	
+/*
+ *  	added String[] to arguments of createButton Types
+ *	    to name the buttons with the string passed from
+ *	    the GUIController
+ * 
+ */
+	
 
 	/*
 	 * added String[] to arguments of createButton Types to name the buttons
@@ -222,11 +241,19 @@ public class CustomPage extends JPanel {
 	 * 
 	 */
 
+<<<<<<< HEAD
 	/**
 	 * Later //Add the image to the top of the screen. We are going to have 3
 	 * objects at the top: Back btn, logo, and currentpage title
 	 */
 	protected void createTwoButtonType() {
+=======
+		/**
+		 * Later //Add the image to the top of the screen. We are going to have
+		 * 3 objects at the top: Back btn, logo, and currentpage title
+		 */
+	protected void createTwoButtonType(){
+>>>>>>> Tizzle
 		JLabel iconLabel = new JLabel();
 		iconLabel.setBounds(0, 0, this.getWidth(), (int) (this.getHeight() / 2.25));
 		iconLabel.setIcon(newIcon);
@@ -240,6 +267,12 @@ public class CustomPage extends JPanel {
 		CustomPage.centerOfNewFrame = iconLabel.getHeight() - iconLabel.getY();
 
 		addButtons(2);
+		
+	
+		/* 
+		 * Modified same as createTwoButtonType 
+		 */
+		
 
 		/*
 		 * Modified same as createTwoButtonType
@@ -351,15 +384,21 @@ public class CustomPage extends JPanel {
 
 		// centerOfNewFrame = (this.getHeight() - (this.getHeight() -
 		// iconLabel.getHeight()));
-
+		
 		addButtons(3);
 
 	}
 
 	private void createQuestionBuilderType() {
+<<<<<<< HEAD
 		/*
 		 * Modified addButtons to rename to string
 		 */
+=======
+	/* 
+	 * Modified addButtons to rename to string
+	 */
+>>>>>>> Tizzle
 
 		/** Testing - Move to actual class before release */
 		this.titleOfCurrentQuestionPanel = "Question Builder";

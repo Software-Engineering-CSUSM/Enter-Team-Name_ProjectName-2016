@@ -188,7 +188,7 @@ public class GUIController extends JFrame {
 		// Add the side menu
 		SideMenu sm = new SideMenu(new String[] { "Home", "Courses", "Study Tools", "Statistics" });
 		this.add(sm, BorderLayout.WEST);
-
+		
 	}
 
 	// Added new constructor for the pop up window for saving questions
@@ -204,14 +204,6 @@ public class GUIController extends JFrame {
 		// this.setDefaultCloseOperation(JFrame.dispose());
 
 		this.setVisible(true);
-
-	}
-
-	/**
-	 * --------------------------------Manage Page
-	 * Controls--------------------------------
-	 */
-	private void setCoursesMainEvents() {
 
 	}
 
