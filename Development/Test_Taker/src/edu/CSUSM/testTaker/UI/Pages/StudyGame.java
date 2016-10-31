@@ -383,7 +383,6 @@ public class StudyGame extends JPanel {
 	public void getInfo() {
 		// Gets the info from the library controller. This is where all of the
 		// questions come from
-		LibraryController libCon = new LibraryController();
 		this.myQuestions.addAll(LibraryController._currentQuestionsInCourse.values());
 
 		// Show to the console each question

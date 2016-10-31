@@ -188,7 +188,8 @@ public class Course implements Serializable, edu.CSUSM.testTaker.Backend.Registe
 	}
 	
 	public String toString(){
-		String outString = "Course: ";
+		//String outString = "Course: ";
+		String outString = "";
 		
 		outString = outString + courseName + "\n";
 		outString = outString + ((Integer)testIDs.size()).toString() + " tests:\n";

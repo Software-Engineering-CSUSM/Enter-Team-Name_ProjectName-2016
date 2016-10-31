@@ -33,12 +33,13 @@ public class DriverManager {
 		GUIController gui = new GUIController();
 		gui.setVisible(true);
 		
-		//Question.makeExample();
-		//Test.makeExample();
-		//Course.makeExample();
+		Question sample = 		Question.makeExample();
+		Test sampleTest = 		Test.makeExample();
+		Course sampleCourse = 	Course.makeExample();
 		
-		//LibraryController lb = new LibraryController();
-		//System.out.println(lb.toString());
+		System.out.println(sample);
+		System.out.println(sampleTest);
+		System.out.println(sampleCourse);
 	}
 
 }

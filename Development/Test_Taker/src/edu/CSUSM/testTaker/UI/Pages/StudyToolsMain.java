@@ -15,7 +15,6 @@ public class StudyToolsMain extends CustomPage {
 	public StudyToolsMain(PanelType currentPanelType) {
 		super(currentPanelType);
 		// TODO Auto-generated constructor stub
-		System.out.println("Printing a new Form");
 		updateActions();
 	}
 
@@ -63,11 +62,18 @@ public class StudyToolsMain extends CustomPage {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			System.out.println("Opening " + this.getClass());
-			/*
-			 * StudyGame cm = new StudyGame(parentController.getWidth(),
-			 * parentController.getHeight(), null); cm.setName("Study Game");
-			 * parentController.displayView(cm);
-			 */
+
+			/**
+			StudyGame cm = new StudyGame(parentController.getWidth(),
+					parentController.getHeight(), null); cm.setName("Study Game");
+					parentController.displayView(cm);
+					*/
+			GamePrep prep = new GamePrep(CustomPage.PanelType.TWO_BUTTON_TYPE);
+			prep.setName("Game Setup");
+			prep.parentController = parentController;
+			parentController.displayView(prep);
+			
+
 
 		}
 
