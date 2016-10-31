@@ -221,6 +221,7 @@ public class CustomPage extends JPanel {
 
 		// centerOfNewFrame = (this.getHeight() - (this.getHeight() -
 		// iconLabel.getHeight()));
+		addButtons(3);
 
 	}
 
