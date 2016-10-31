@@ -137,13 +137,23 @@ public class Course implements Serializable, edu.CSUSM.testTaker.Backend.Registe
 	/**
 	 * Get the points value of a particular Test
 	 * @param index The number of the Test (0 base) to get the value of
-	 * @return An int of the number of points ascribed to this Test
+	 * @return An int of the number of points ascribed to this Test, negative if not found.
 	 */
 	public int getTestValue(int index){
 		if(index >=0 && index < testPoints.size()){
 			return testPoints.get(index);
 		}
-		return 0;
+		return -1;
+	}
+	
+	/**
+	 * Return the points value of a particular Test given it's ID.
+	 * @param TID the unique ID string of the Test to find.
+	 * @return An int number of points ascribed to the Test in this Course, negative if not found.
+	 */
+	public int getTestValue(String TID){
+		int tindex = this.testIDs.indexOf(TID);
+		return getTestValue(tindex);
 	}
 
 	/**
