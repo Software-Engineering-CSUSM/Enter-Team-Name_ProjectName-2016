@@ -52,11 +52,40 @@ public class LibraryController {
 	}
 	
 	/**
+	 * Gives a List of the current Course IDs
+	 * @return An ArrayList of the ID strings of the current Courses in the Library.
+	 */
+	public static ArrayList<String> giveCourseList(){
+		Set<String> tset = giveCourseSet();
+		ArrayList<String> rlist = new ArrayList<String>(tset.size());
+		for(String TID : tset){
+			rlist.add(TID);
+		}
+		return rlist;
+	}
+	
+	/**
 	 * Gives an iterator of all Courses in the library.
 	 * @return A String Iterator over all Courses in the library.
 	 */
 	public static Iterator<String> courseIDIterator(){
 		return classArray.keySet().iterator();
+	}
+	
+	/**
+	 * Gives an iterator of all Tests in the library.
+	 * @return A String Iterator over all Tests in the library.
+	 */
+	public static Iterator<String> testIDIterator(){
+		return testArray.keySet().iterator();
+	}
+	
+	/**
+	 * Gives an iterator of all Questions in the library.
+	 * @return A String Iterator over all Questions in the library.
+	 */
+	public static Iterator<String> questionIDIterator(){
+		return questionArray.keySet().iterator();
 	}
 		
 	
