@@ -107,7 +107,6 @@ public class ManageData<ObjectDisplayed> extends JPanel {
 		// Add the ScrollPane to it
 		JScrollPane scrollView = new JScrollPane(innerView, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
 				JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-		scrollView.getVerticalScrollBar().setUnitIncrement(15);
 		// scrollView.setBackground(Color.GREEN);
 		tableView.add(scrollView);
 
