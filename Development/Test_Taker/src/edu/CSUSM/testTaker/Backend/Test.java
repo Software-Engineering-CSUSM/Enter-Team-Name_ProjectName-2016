@@ -315,7 +315,7 @@ public class Test implements Serializable, Registerable{
 	 * @param ansAry An array of ints for Test Question answer numbers.
 	 * @return An average of the scores for all Questions weighted by their points values.
 	 */
-	public double totalPointsScored(int [] ansAry){
+	public double scoreAnswers(int [] ansAry){
 		double weightAverage = 0.0;		//total points from the formula	
 		double sumOfPoints = 0.0;		//total points in the test
 		double pointValue = 0.0;		//total points of the user's correct answers
@@ -330,7 +330,7 @@ public class Test implements Serializable, Registerable{
 		for(int x = 0; x < questionPoints.size(); x++)
 		{
 			tempPoints = this.questionPoints.get(x);
-			tempValue = questionList.get(x).pointsValue(ansAry[x]);
+			tempValue = questionList.get(x).scoreAnswer(ansAry[x]);
 
 			sumOfPoints = sumOfPoints + tempPoints;
 			pointValue = pointValue + (tempValue*tempPoints);	
@@ -345,8 +345,8 @@ public class Test implements Serializable, Registerable{
 	 * @param answerSet Any List of Integers with answer numbers for the test Questions
 	 * @return An average of the scores for all Questions weighted by their points values.
 	 */
-	public double totalPointsScored(AbstractList <Integer> answerSet){
-		return totalPointsScored(answerSet.stream().mapToInt(i->i).toArray());
+	public double scoreAnswers(AbstractList <Integer> answerSet){
+		return scoreAnswers(answerSet.stream().mapToInt(i->i).toArray());
 	}
 
 	/**
