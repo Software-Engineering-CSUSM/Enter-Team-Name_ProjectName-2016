@@ -132,13 +132,7 @@ public class GUIController extends JFrame {
 		statsMain.setName(SideMenu.menuOptionButtons[3].getText());
 		statsNC.setInitialView(statsMain);
 		statsMain.parentController = statsNC;
-		/*
-		 * final NavigationController quizNC = new NavigationController();
-		 * 
-		 * QuizMain quiz = new QuizMain(QuizMain.PanelType.THREE_BUTTON_TYPE);
-		 * quiz.setName(SideMenu.menuOptionButtons[3].getText());
-		 * quizNC.setInitialView(quiz ); quiz.parentController = quizNC;
-		 */
+
 		/** Page manager to control the side menu use */
 		PageManager<NavigationController> pm = new PageManager<NavigationController>(this.parentPanel,
 				SideMenu.menuOptionButtons,
@@ -188,22 +182,37 @@ public class GUIController extends JFrame {
 		// Add the side menu
 		SideMenu sm = new SideMenu(new String[] { "Home", "Courses", "Study Tools", "Statistics" });
 		this.add(sm, BorderLayout.WEST);
-		
+
 	}
 
-	// Added new constructor for the pop up window for saving questions
-	// and quizzes. Gave it an int parameter so there could be a
-	// second GUIController constructor.
+	/*
+	 * Pop Up Window Frame
+	 * 
+	 * Added new constructor for the pop up window for saving questions and
+	 * quizzes. Gave it an int parameter (dummy parameter) to add a constructor
+	 * to build the frame for the pop up windows
+	 */
 	public GUIController(int x) {
 
 		this.setSize(500, 250);
-		this.setTitle("Pop Up Window");
+
+		// If there is no title provided from the PopUp class
+		// set the frame title to Pop Up Window
+		if (this.getTitle() == "")
+			this.setTitle("Pop Up Window");
 		this.setLocationRelativeTo(null);
 		this.setResizable(false);
 		this.setLayout(new BorderLayout());
-		// this.setDefaultCloseOperation(JFrame.dispose());
 
 		this.setVisible(true);
+
+	}
+
+	/**
+	 * --------------------------------Manage Page
+	 * Controls--------------------------------
+	 */
+	private void setCoursesMainEvents() {
 
 	}
 

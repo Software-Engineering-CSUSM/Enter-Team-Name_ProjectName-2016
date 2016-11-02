@@ -57,7 +57,7 @@ public class CustomPage extends JPanel {
 
 	// Added show/Hide check box to show and hide answer for flashcard
 	public JCheckBox showHide = new JCheckBox("Show/Hide Answer");
-	public static String FlashcardAnswer = "This is where the answer goes.";;
+	public static String FlashcardAnswer;
 	public boolean Correct; // Bool value to determine correct or incorrect for
 							// results page
 
@@ -74,9 +74,18 @@ public class CustomPage extends JPanel {
 		TWO_BUTTON_TYPE, THREE_BUTTON_TYPE, LOGO_ONLY_TYPE, QUESTION_BUILDER_TYPE, Q_and_A_Type, QUESTIONPAGE, FLASHCARDPAGE, RESULTS
 	};
 
+	// Enumerator to determine whether to update actions for quizzes
+	// or for flashcards
 	public static enum PageType {
 		QUIZ, FLASHCARD
 	};
+
+	// Enumerators to determine which pop up window to display in the
+	// PopUp class
+	public static enum PopUpType {
+
+		FlashcardAnswerPopUp, AddAnotherQuestion, SaveQuiz, SaveSet
+	}
 
 	public CustomPage(PanelType currentPanelType, String imageAddress) {
 
@@ -132,21 +141,12 @@ public class CustomPage extends JPanel {
 	}
 
 	/*
-<<<<<<< HEAD
 	 * added String[] to arguments of createButton Types which is passed through
 	 * buildPanel, so I added a String[] argument here as well
 	 * 
 	 */
 
 	// Set the string value of the panel type
-=======
-	 *  added String[] to arguments of createButton Types which is passed
-	 *  through buildPanel, so I added a String[] argument here as well
-	 * 
-	 */
-		
-		//Set the string value of the panel type
->>>>>>> Tizzle
 	private void buildPanel(PanelType currentPanelType) {
 
 		this.panelTypeString = currentPanelType.toString();
@@ -159,10 +159,7 @@ public class CustomPage extends JPanel {
 
 		switch (currentPanelType) {
 		case TWO_BUTTON_TYPE:
-<<<<<<< HEAD
 
-=======
->>>>>>> Tizzle
 			createTwoButtonType();
 			break;
 
@@ -173,19 +170,19 @@ public class CustomPage extends JPanel {
 		case LOGO_ONLY_TYPE:
 			createLogoType();
 			break;
-
+		// Add Question Page
 		case Q_and_A_Type:
 			createQandAype();
 			break;
-
+		// Take Quiz
 		case QUESTIONPAGE:
 			createQuestionPageType();
 			break;
-
+		// Take Set
 		case FLASHCARDPAGE:
 			createFlashcardPageType();
 			break;
-
+		// Results Page
 		case RESULTS:
 			createResultsPageType();
 			break;
@@ -208,6 +205,7 @@ public class CustomPage extends JPanel {
 		// Just display an image in the panel
 		imageLabel = new JLabel();
 		try {
+
 			Image img = CustomPage.mainLogoToDisplay;
 			newImg = img.getScaledInstance((this.getWidth() == 0) ? 600 : this.getWidth(),
 					(this.getHeight() / 2 == 0) ? 250 : this.getHeight() / 2, java.awt.Image.SCALE_SMOOTH);
@@ -226,14 +224,6 @@ public class CustomPage extends JPanel {
 		this.add(imageLabel, BorderLayout.CENTER);
 
 	}
-	
-/*
- *  	added String[] to arguments of createButton Types
- *	    to name the buttons with the string passed from
- *	    the GUIController
- * 
- */
-	
 
 	/*
 	 * added String[] to arguments of createButton Types to name the buttons
@@ -241,19 +231,11 @@ public class CustomPage extends JPanel {
 	 * 
 	 */
 
-<<<<<<< HEAD
 	/**
 	 * Later //Add the image to the top of the screen. We are going to have 3
 	 * objects at the top: Back btn, logo, and currentpage title
 	 */
 	protected void createTwoButtonType() {
-=======
-		/**
-		 * Later //Add the image to the top of the screen. We are going to have
-		 * 3 objects at the top: Back btn, logo, and currentpage title
-		 */
-	protected void createTwoButtonType(){
->>>>>>> Tizzle
 		JLabel iconLabel = new JLabel();
 		iconLabel.setBounds(0, 0, this.getWidth(), (int) (this.getHeight() / 2.25));
 		iconLabel.setIcon(newIcon);
@@ -267,12 +249,6 @@ public class CustomPage extends JPanel {
 		CustomPage.centerOfNewFrame = iconLabel.getHeight() - iconLabel.getY();
 
 		addButtons(2);
-		
-	
-		/* 
-		 * Modified same as createTwoButtonType 
-		 */
-		
 
 		/*
 		 * Modified same as createTwoButtonType
@@ -280,6 +256,8 @@ public class CustomPage extends JPanel {
 
 	}
 
+	// This class creates the add question page for the user to be
+	// able to add a question and answer into the database.
 	private void createQandAype() {
 		JLabel iconLabel = new JLabel();
 
@@ -384,21 +362,15 @@ public class CustomPage extends JPanel {
 
 		// centerOfNewFrame = (this.getHeight() - (this.getHeight() -
 		// iconLabel.getHeight()));
-		
+
 		addButtons(3);
 
 	}
 
 	private void createQuestionBuilderType() {
-<<<<<<< HEAD
 		/*
 		 * Modified addButtons to rename to string
 		 */
-=======
-	/* 
-	 * Modified addButtons to rename to string
-	 */
->>>>>>> Tizzle
 
 		/** Testing - Move to actual class before release */
 		this.titleOfCurrentQuestionPanel = "Question Builder";
@@ -424,7 +396,8 @@ public class CustomPage extends JPanel {
 	}
 
 	// Create a question and answer type which displays the quesiton
-	// string as a jlabel and put the answer in the answer text area
+	// string as a jlabel and put the answer in the answer text area.
+	// This is used for the take quiz page.
 	private void createQuestionPageType() {
 
 		JLabel iconLabel = new JLabel();
@@ -492,6 +465,8 @@ public class CustomPage extends JPanel {
 
 		this.add(QandA, BorderLayout.CENTER);
 
+		// Only the first page has 2 buttons. set every other page
+		// to have 3 buttons
 		if (QuizAndFlashQuestionPage.questionPageNumber == 1)
 			addButtons(2);
 		else
@@ -499,6 +474,9 @@ public class CustomPage extends JPanel {
 
 	}
 
+	// This class creates a results page to display the number of questions
+	// correct out of the total number of questions. It also displays which
+	// questions are right, and which questions are wrong.
 	private void createResultsPageType() {
 
 		JLabel iconLabel = new JLabel();

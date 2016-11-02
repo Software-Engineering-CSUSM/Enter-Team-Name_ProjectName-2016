@@ -6,13 +6,25 @@ import java.awt.image.BufferedImage;
 
 import edu.CSUSM.testTaker.UI.CustomPage;
 
+/**
+ * @author Jeremy
+ *
+ * @purpose This class opens the QuizAndFlashQuestionPage for the user to take
+ *          the quiz or flash card set. It is called from QuizAndFlashMain and
+ *          is currently set to two button type. It needs to be built with only
+ *          one button.
+ */
+
 public class TakeQuizTakeSet extends CustomPage {
 	/**
 	 * 
 	 */
-	public static int totalNumQuestions = 10; // Total Number of quesitons
-												// to determinew when to load
-												// final page
+
+	// Total Number of questions for a quiz or flashcard set.
+	// should be set by a function that gets the total number of
+	// questions for each particular quiz or flashcard set
+	public static int totalNumQuestions = 10;
+
 	private static final long serialVersionUID = 1L;
 
 	public TakeQuizTakeSet(PanelType currentPanelType) {
@@ -34,11 +46,13 @@ public class TakeQuizTakeSet extends CustomPage {
 		updateActions();
 	}
 
+	// Constructor used to create page
 	public TakeQuizTakeSet(PanelType currentPanelType, PageType currentPageType) {
 		super(currentPanelType, currentPageType);
 		// Set the layout
 
-		// Build the contents
+		// If saving a quiz, call updateActions, otherwise, we'll be saving
+		// a flashcard set.
 		if (currentPageType == CustomPage.PageType.QUIZ)
 			updateActions();
 		else if (currentPageType == CustomPage.PageType.FLASHCARD)
@@ -48,6 +62,7 @@ public class TakeQuizTakeSet extends CustomPage {
 
 	}
 
+	// Button Actions for quizzes
 	public void updateActions() {
 
 		// Set the button names
@@ -69,6 +84,7 @@ public class TakeQuizTakeSet extends CustomPage {
 		}
 	}
 
+	// Button Actions for Flashcards
 	public void updateActionsFlashcard() {
 
 		// Set the button names
@@ -90,9 +106,9 @@ public class TakeQuizTakeSet extends CustomPage {
 		}
 	}
 
-	// Button listener to start the Quiz. This is currently set to a two
-	// button type. It needs to be updated to have a question, textfield for
-	// answer as well as two buttons for exit and next question.
+	// Button listener to start the Quiz. Also increments the
+	// questionPageNumber which keeps track of the question
+	// page.
 	private class StartQuiz implements ActionListener {
 
 		@Override
@@ -104,15 +120,16 @@ public class TakeQuizTakeSet extends CustomPage {
 			QquestionPage.setName("Quiz Question Page " + QuizAndFlashQuestionPage.questionPageNumber);
 			QquestionPage.parentController = parentController;
 			parentController.displayView(QquestionPage);
-			QuizAndFlashQuestionPage.questionPageNumber++; // global variable to
-															// keep
-			// track of the number of
-			// quiz pages
+			QuizAndFlashQuestionPage.questionPageNumber++; // Increment the
+															// questionPageNumber
 
 		}
 
 	}
 
+	// Button listener to start the Set. Also increments the
+	// questionPageNumber which keeps track of the question
+	// page.
 	private class StartSet implements ActionListener {
 
 		@Override
@@ -124,25 +141,11 @@ public class TakeQuizTakeSet extends CustomPage {
 			FCquestionPage.setName("Flashcard Question Page " + QuizAndFlashQuestionPage.questionPageNumber);
 			FCquestionPage.parentController = parentController;
 			parentController.displayView(FCquestionPage);
-			QuizAndFlashQuestionPage.questionPageNumber++; // global variable to
-															// keep
-			// track of the number of
-			// quiz pages
+			QuizAndFlashQuestionPage.questionPageNumber++; // Increment the
+															// questionPageNumber
 
 		}
 
-	}
-
-	private class OpenQuestionBuilder implements ActionListener {
-
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			// System.out.println("Opening " + this.getClass());
-			CustomPage questionBuilder = new CustomPage(CustomPage.PanelType.QUESTION_BUILDER_TYPE);
-			questionBuilder.setName("Question Page");
-			questionBuilder.parentController = parentController;
-			parentController.displayView(questionBuilder);
-		}
 	}
 
 }

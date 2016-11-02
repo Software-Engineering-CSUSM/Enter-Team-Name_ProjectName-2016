@@ -6,6 +6,20 @@ import java.awt.image.BufferedImage;
 
 import edu.CSUSM.testTaker.UI.CustomPage;
 
+/**
+ * @author Jeremy
+ *
+ * @purpose This is the main page for quizzes and flashcard. It is called from
+ *          the StudyToolsMain class by clicking on the side menu option "Study
+ *          Tools". It's purpose is to allow the user to select a category:
+ *          "Study Game", "Quizzes", or , "Practice With Flashcards", and then
+ *          open up the corresponding page.
+ * 
+ *          **Need to update the take quiz and take set with a jtable to be able
+ *          to select which quiz or flashcard set to take.
+ * 
+ */
+
 public class QuizAndFlashMain extends CustomPage {
 	/**
 	 * 
@@ -31,11 +45,14 @@ public class QuizAndFlashMain extends CustomPage {
 		updateActions();
 	}
 
+	// Constructor used to create page
 	public QuizAndFlashMain(PanelType currentPanelType, PageType currentPageType) {
 		super(currentPanelType, currentPageType);
 		// Set the layout
 
-		// Build the contents
+		// Build the contents, If saving a quiz, call updateActions,
+		// Otherwise, we'll be saving a flashcard set with
+		// updateActionsFlashcard.
 		if (currentPageType == CustomPage.PageType.QUIZ)
 			updateActions();
 		else if (currentPageType == CustomPage.PageType.FLASHCARD)
@@ -45,6 +62,7 @@ public class QuizAndFlashMain extends CustomPage {
 
 	}
 
+	// Button Actions for quizzes
 	public void updateActions() {
 
 		// Set the button names
@@ -67,6 +85,7 @@ public class QuizAndFlashMain extends CustomPage {
 		}
 	}
 
+	// Button Actions for Flashcards
 	public void updateActionsFlashcard() {
 
 		// Set the button names
@@ -75,7 +94,6 @@ public class QuizAndFlashMain extends CustomPage {
 		for (int i = 0; i < this.currentActions.length; i++) {
 			switch (i) {
 			case 0:
-				System.out.println("Hello");
 				this.currentActions[i].addActionListener(new OpenAddQuestions());
 				break;
 			case 1:
@@ -92,27 +110,12 @@ public class QuizAndFlashMain extends CustomPage {
 		}
 	}
 
-	private class OpenQuestionBuilder implements ActionListener {
-
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			// System.out.println("Opening " + this.getClass());
-			CustomPage questionBuilder = new CustomPage(CustomPage.PanelType.QUESTION_BUILDER_TYPE);
-			questionBuilder.setName("Question Page");
-			questionBuilder.parentController = parentController;
-			parentController.displayView(questionBuilder);
-		}
-	}
-
-	// Button Listener for add question. Currently set for two button type.
-	// Needs to be updated for 2 test fields with two buttons
+	// Open up page to add questions and answer to the database
 	private class OpenAddQuestions implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			// System.out.println("Opening " + this.getClass());
 
-			// System.out.println("Opening " + this.getClass());
 			AddQuestion addQ = new AddQuestion(AddQuestion.PanelType.Q_and_A_Type);
 			addQ.setName("Add Question Page");
 			addQ.parentController = parentController;
@@ -122,9 +125,9 @@ public class QuizAndFlashMain extends CustomPage {
 
 	}
 
-	// Button Listener for the Take Quiz Page. Currently set to two
-	// button type. Needs to be updated to list view for list of
-	// quizzes to take and a start button
+	// Button Listener for the Take Quiz Page. Currently set to question
+	// builder type. Needs to be updated to jtable for the user to be able
+	// to select which quiz to take
 	private class TakeQuizPage implements ActionListener {
 
 		@Override
@@ -132,7 +135,7 @@ public class QuizAndFlashMain extends CustomPage {
 			// System.out.println("Opening " + this.getClass());
 
 			// System.out.println("Opening " + this.getClass());
-			TakeQuizTakeSet takeQ = new TakeQuizTakeSet(TakeQuizTakeSet.PanelType.TWO_BUTTON_TYPE,
+			TakeQuizTakeSet takeQ = new TakeQuizTakeSet(TakeQuizTakeSet.PanelType.QUESTION_BUILDER_TYPE,
 					TakeQuizTakeSet.PageType.QUIZ);
 			takeQ.setName("Take Quiz Page");
 			takeQ.parentController = parentController;
@@ -142,9 +145,8 @@ public class QuizAndFlashMain extends CustomPage {
 
 	}
 
-	// Button Listener for the Take Quiz Page. Currently set to two
-	// button type. Needs to be updated to list view for list of
-	// quizzes to take and a start button
+	// Button Listener for the Create Quiz. Opens up page to create
+	// new quiz or edit an existing quiz.
 	private class CreateQuizPage implements ActionListener {
 
 		@Override
@@ -162,9 +164,9 @@ public class QuizAndFlashMain extends CustomPage {
 
 	}
 
-	// Button Listener for the Take Quiz Page. Currently set to two
-	// button type. Needs to be updated to list view for list of
-	// quizzes to take and a start button
+	// Button Listener for the Take Quiz Page. Currently set to question
+	// builder type. Needs to be updated to jtable for the user to be able
+	// to select which quiz to take
 	private class TakeSetPage implements ActionListener {
 
 		@Override
@@ -174,7 +176,7 @@ public class QuizAndFlashMain extends CustomPage {
 			// System.out.println("Opening " + this.getClass());
 			// FlashCardQuestionPage takeSet = new
 			// FlashCardQuestionPage(FlashCardQuestionPage.PanelType.TWO_BUTTON_TYPE);
-			TakeQuizTakeSet takeSet = new TakeQuizTakeSet(TakeQuizTakeSet.PanelType.TWO_BUTTON_TYPE,
+			TakeQuizTakeSet takeSet = new TakeQuizTakeSet(TakeQuizTakeSet.PanelType.QUESTION_BUILDER_TYPE,
 					TakeQuizTakeSet.PageType.FLASHCARD);
 			takeSet.setName("Take Flashcard Set Page");
 			takeSet.parentController = parentController;
@@ -184,9 +186,8 @@ public class QuizAndFlashMain extends CustomPage {
 
 	}
 
-	// Button Listener for the Take Quiz Page. Currently set to two
-	// button type. Needs to be updated to list view for list of
-	// quizzes to take and a start button
+	// Button Listener for the Create Set. Opens up page to create
+	// new quiz or edit an existing set.
 	private class CreateSetPage implements ActionListener {
 
 		@Override

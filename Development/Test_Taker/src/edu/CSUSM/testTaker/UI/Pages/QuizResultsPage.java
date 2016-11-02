@@ -6,6 +6,20 @@ import java.awt.image.BufferedImage;
 
 import edu.CSUSM.testTaker.UI.CustomPage;
 
+/**
+ * @author Jeremy
+ *
+ * @purpose This is the results page for quizzes. It is called from the
+ *          QuizAndFlashQuestionPage class by clicking Submit on the final
+ *          question. It's purpose is to show the user the results from taking
+ *          the quiz by displaying the number right out of the total number of
+ *          questions as well as which questions the user got correct and which
+ *          ones the user got wrong
+ * 
+ *          Need to implement with one button type.
+ * 
+ */
+
 public class QuizResultsPage extends CustomPage {
 	/**
 	 * 
@@ -32,6 +46,7 @@ public class QuizResultsPage extends CustomPage {
 		updateActions();
 	}
 
+	// Button action Listener. Returns the user back to the quiz main page
 	public void updateActions() {
 
 		// Set the button names
@@ -52,35 +67,6 @@ public class QuizResultsPage extends CustomPage {
 		}
 	}
 
-	// After saving quiz, return to quiz main
-	private class ExitReturnQuizMain implements ActionListener {
-
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			System.out.println("Opening " + this.getClass());
-
-			// System.out.println("Opening " + this.getClass());
-			TakeQuizTakeSet quizPage = new TakeQuizTakeSet(TakeQuizTakeSet.PanelType.THREE_BUTTON_TYPE, TakeQuizTakeSet.PageType.QUIZ);
-			quizPage.setName("Quiz Page");
-			quizPage.parentController = parentController;
-			parentController.displayView(quizPage);
-
-		}
-
-	}
-
-	private class Previous implements ActionListener {
-
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			System.out.println("Opening " + this.getClass());
-
-			parentController.dismissView();
-
-		}
-
-	}
-
 	// Returns to the Take Quiz Page
 	private class ReturnTakeQuiz implements ActionListener {
 
@@ -88,7 +74,8 @@ public class QuizResultsPage extends CustomPage {
 		public void actionPerformed(ActionEvent e) {
 			System.out.println("Opening " + this.getClass());
 
-			TakeQuizTakeSet takeQ = new TakeQuizTakeSet(TakeQuizTakeSet.PanelType.TWO_BUTTON_TYPE, TakeQuizTakeSet.PageType.QUIZ);
+			TakeQuizTakeSet takeQ = new TakeQuizTakeSet(TakeQuizTakeSet.PanelType.TWO_BUTTON_TYPE,
+					TakeQuizTakeSet.PageType.QUIZ);
 			takeQ.setName("Take Quiz Page");
 			takeQ.parentController = parentController;
 			parentController.displayView(takeQ);
