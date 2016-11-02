@@ -1,0 +1,3 @@
+1477890882195	Encapsulate field 'row'
+1477890887814	Encapsulate field 'value'
+1477891657714	Extract local variable 'rowName'
