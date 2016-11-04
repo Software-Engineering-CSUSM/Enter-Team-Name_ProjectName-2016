@@ -136,6 +136,9 @@ public class LibraryController {
 	 * @description Default constructor for class. Inits variables, if needed
 	 *              and allows access to all library objects
 	 */
+	/**
+	 * @deprecated
+	 */
 	public LibraryController() {
 
 		/**
@@ -163,6 +166,9 @@ public class LibraryController {
 	/**
 	 * @author Justin Goulet
 	 * @description Loads the data from where-ever it is stored
+	 */
+	/**
+	 * @deprecated Does not initialie any test data anymore
 	 */
 	private static void loadData() {
 		/** For now, just create empty maps, then add test data to them */
