@@ -86,6 +86,23 @@ public class Course implements Serializable, edu.CSUSM.testTaker.Backend.Registe
 	}
 	
 	/**
+	 * Get the number of Questions in this Course
+	 * @return The number of Questions as an int
+	 */
+	public int numQuestions(){
+		return questionIDs.size();
+	}
+	
+	/**
+	 * Return a static view of all Questions currently in the Course
+	 * @return An ArrayList of ID Strings of Questions
+	 */
+	@SuppressWarnings("unchecked")
+	public ArrayList <String> allQuestions(){
+		return (ArrayList <String>)questionIDs.clone();
+	}
+	
+	/**
 	 * Get the ID of a particular test in the Course.
 	 * @param index the number of the test (0 base) to retrieve
 	 * @return The string ID of that Test.
@@ -230,6 +247,16 @@ public class Course implements Serializable, edu.CSUSM.testTaker.Backend.Registe
 	 */
 	public void addQuestion(Question nq){
 		addQuestion(nq.getID());
+	}
+	
+	/**
+	 * Imports all new questions from a given test into this course.
+	 * @param nt A Test to add the Questions of to the Course.
+	 */
+	public void addTestsQuestions(Test nt){
+		for(String tqid : nt.getQuestionIDs()){
+			addQuestion(tqid);
+		}
 	}
 	
 	/**

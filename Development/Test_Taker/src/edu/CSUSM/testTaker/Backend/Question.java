@@ -260,7 +260,7 @@ public class Question implements Serializable, Registerable {
 	 * @param location of user's chose of answer
 	 * @description returns a 1.0 if answer given by user matches the correct answer for this Question
 	 */
-	public double pointsValue(int index){
+	public double scoreAnswer(int index){
 		if(index == _correctIndex)
 			return 1.0;
 		else 
