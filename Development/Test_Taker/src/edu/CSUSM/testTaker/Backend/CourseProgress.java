@@ -75,10 +75,12 @@ public class CourseProgress implements Registerable, Serializable {
 			newValue.add(i);
 		}
 		testAnswerLists.put(testID, newValue);
+		LibraryController.storeProgress(this);
 	}
 	
 	public void removeAnswersTo(String testID){
 		testAnswerLists.remove(testID);
+		LibraryController.storeProgress(this);
 	}
 	
 	/*
@@ -127,5 +129,6 @@ public class CourseProgress implements Registerable, Serializable {
 	public void rescore(){
 		takenGrade = scoreTaken();
 		totalGrade = scoreAll();
+		LibraryController.storeProgress(this);
 	}
 }
