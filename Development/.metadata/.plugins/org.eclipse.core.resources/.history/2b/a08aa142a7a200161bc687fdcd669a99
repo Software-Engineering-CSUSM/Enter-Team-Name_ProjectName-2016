@@ -135,7 +135,7 @@ public class LibraryController {
 	 * @description Loads the data from where-ever it is stored
 	 */
 	/**
-	 * @deprecated Does not initialie any test data anymore
+	 * @deprecated
 	 */
 	private static void loadData() {
 		/** For now, just create empty maps, then add test data to them */
