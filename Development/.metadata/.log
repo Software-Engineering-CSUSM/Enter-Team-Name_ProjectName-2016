@@ -351,6 +351,31 @@ Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.eclipse.
 
 !ENTRY com.wakatime.eclipse.plugin 1 0 2016-10-24 09:02:04.958
 !MESSAGE Finished upgrading wakatime-cli.
+<<<<<<< HEAD
+=======
+>>>>>>> origin/Jeremy2
+!SESSION 2016-10-30 16:01:54.871 -----------------------------------------------
+eclipse.buildId=4.6.0.I20160606-1100
+java.version=1.8.0_40
+java.vendor=Oracle Corporation
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.cpp.product -keyring /Users/Justin/.eclipse_keyring
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.eclipse.epp.package.cpp.product -keyring /Users/Justin/.eclipse_keyring
+
+!ENTRY org.eclipse.e4.ui.workbench 4 0 2016-10-30 16:01:57.430
+!MESSAGE Unable to load resource file:/Users/Justin/Documents/Organized%20Documents/My%20Documents/School%20Stuff/CSUSM/Fall%202016/Software%20Engineering/SE%20Group%20Project/Development/.metadata/.plugins/org.eclipse.e4.workbench/workbench.xmi
+!STACK 0
+org.eclipse.emf.ecore.resource.impl.ResourceSetImpl$1DiagnosticWrappedException: org.xml.sax.SAXParseExceptionpublicId: file:/Users/Justin/Documents/Organized%20Documents/My%20Documents/School%20Stuff/CSUSM/Fall%202016/Software%20Engineering/SE%20Group%20Project/Development/.metadata/.plugins/org.eclipse.e4.workbench/workbench.xmi; systemId: file:/Users/Justin/Documents/Organized%20Documents/My%20Documents/School%20Stuff/CSUSM/Fall%202016/Software%20Engineering/SE%20Group%20Project/Development/.metadata/.plugins/org.eclipse.e4.workbench/workbench.xmi; lineNumber: 3; columnNumber: 2; The content of elements must consist of well-formed character data or markup.
+	at org.eclipse.emf.ecore.resource.impl.ResourceSetImpl.handleDemandLoadException(ResourceSetImpl.java:319)
+	at org.eclipse.emf.ecore.resource.impl.ResourceSetImpl.demandLoadHelper(ResourceSetImpl.java:278)
+	at org.eclipse.emf.ecore.resource.impl.ResourceSetImpl.getResource(ResourceSetImpl.java:406)
+	at org.eclipse.e4.ui.internal.workbench.ResourceHandler.getResource(ResourceHandler.java:289)
+	at org.eclipse.e4.ui.internal.workbench.ResourceHandler.loadResource(ResourceHandler.java:265)
+	at org.eclipse.e4.ui.internal.workbench.ResourceHandler.loadMostRecentModel(ResourceHandler.java:169)
+	at org.eclipse.e4.ui.internal.workbench.swt.E4Application.loadApplicationModel(E4Application.java:377)
+	at org.eclipse.e4.ui.internal.workbench.swt.E4Application.createE4Workbench(E4Application.java:252)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:626)
+=======
 !SESSION 2016-10-31 08:34:21.289 -----------------------------------------------
 eclipse.buildId=4.6.0.I20160606-1100
 java.version=1.8.0_101
@@ -449,6 +474,7 @@ org.eclipse.swt.SWTException: Widget is disposed
 	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1022)
 	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:150)
 	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:687)
+>>>>>>> Tizzle
 	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:336)
 	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:604)
 	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:148)
@@ -461,6 +487,45 @@ org.eclipse.swt.SWTException: Widget is disposed
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+<<<<<<< HEAD
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:673)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:610)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1519)
+Caused by: org.xml.sax.SAXParseExceptionpublicId: file:/Users/Justin/Documents/Organized%20Documents/My%20Documents/School%20Stuff/CSUSM/Fall%202016/Software%20Engineering/SE%20Group%20Project/Development/.metadata/.plugins/org.eclipse.e4.workbench/workbench.xmi; systemId: file:/Users/Justin/Documents/Organized%20Documents/My%20Documents/School%20Stuff/CSUSM/Fall%202016/Software%20Engineering/SE%20Group%20Project/Development/.metadata/.plugins/org.eclipse.e4.workbench/workbench.xmi; lineNumber: 3; columnNumber: 2; The content of elements must consist of well-formed character data or markup.
+	at com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper.createSAXParseException(ErrorHandlerWrapper.java:203)
+	at com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper.fatalError(ErrorHandlerWrapper.java:177)
+	at com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(XMLErrorReporter.java:441)
+	at com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(XMLErrorReporter.java:368)
+	at com.sun.org.apache.xerces.internal.impl.XMLScanner.reportFatalError(XMLScanner.java:1436)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl$FragmentContentDriver.startOfMarkup(XMLDocumentFragmentScannerImpl.java:2636)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl$FragmentContentDriver.next(XMLDocumentFragmentScannerImpl.java:2734)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl.next(XMLDocumentScannerImpl.java:606)
+	at com.sun.org.apache.xerces.internal.impl.XMLNSDocumentScannerImpl.next(XMLNSDocumentScannerImpl.java:117)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl.scanDocument(XMLDocumentFragmentScannerImpl.java:510)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:848)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:777)
+	at com.sun.org.apache.xerces.internal.parsers.XMLParser.parse(XMLParser.java:141)
+	at com.sun.org.apache.xerces.internal.parsers.AbstractSAXParser.parse(AbstractSAXParser.java:1213)
+	at com.sun.org.apache.xerces.internal.jaxp.SAXParserImpl$JAXPSAXParser.parse(SAXParserImpl.java:649)
+	at com.sun.org.apache.xerces.internal.jaxp.SAXParserImpl.parse(SAXParserImpl.java:333)
+	at org.eclipse.emf.ecore.xmi.impl.XMLLoadImpl.load(XMLLoadImpl.java:175)
+	at org.eclipse.emf.ecore.xmi.impl.XMLResourceImpl.doLoad(XMLResourceImpl.java:261)
+	at org.eclipse.emf.ecore.resource.impl.ResourceImpl.load(ResourceImpl.java:1518)
+	at org.eclipse.emf.ecore.resource.impl.ResourceImpl.load(ResourceImpl.java:1297)
+	at org.eclipse.emf.ecore.resource.impl.ResourceSetImpl.demandLoad(ResourceSetImpl.java:259)
+	at org.eclipse.emf.ecore.resource.impl.ResourceSetImpl.demandLoadHelper(ResourceSetImpl.java:274)
+	... 23 more
+
+!ENTRY org.eclipse.e4.ui.workbench 4 0 2016-10-30 16:01:57.432
+!MESSAGE The persisted workbench has no top-level windows, so reinitializing with defaults.
+!STACK 0
+java.lang.Exception
+	at org.eclipse.e4.ui.internal.workbench.ResourceHandler.loadMostRecentModel(ResourceHandler.java:174)
+	at org.eclipse.e4.ui.internal.workbench.swt.E4Application.loadApplicationModel(E4Application.java:377)
+	at org.eclipse.e4.ui.internal.workbench.swt.E4Application.createE4Workbench(E4Application.java:252)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:626)
+=======
 	at java.lang.reflect.Method.invoke(Method.java:498)
 	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:673)
 	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:610)
@@ -553,6 +618,7 @@ org.eclipse.swt.SWTException: Widget is disposed
 	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1022)
 	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:150)
 	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:687)
+>>>>>>> Tizzle
 	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:336)
 	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:604)
 	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:148)
@@ -565,20 +631,67 @@ org.eclipse.swt.SWTException: Widget is disposed
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+<<<<<<< HEAD
+	at java.lang.reflect.Method.invoke(Method.java:497)
+=======
 	at java.lang.reflect.Method.invoke(Method.java:498)
+>>>>>>> Tizzle
 	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:673)
 	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:610)
 	at org.eclipse.equinox.launcher.Main.run(Main.java:1519)
 
+<<<<<<< HEAD
+!ENTRY org.eclipse.core.net 1 0 2016-10-30 16:02:01.341
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16|127.0.0.1 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.eclipse.jface 2 0 2016-10-30 16:02:03.320
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2016-10-30 16:02:03.320
+!MESSAGE A conflict occurred for ALT+CTRL+P:
+Binding(ALT+CTRL+P,
+	ParameterizedCommand(Command(org.eclipse.m2e.profiles.ui.commands.selectMavenProfileCommand,Select Maven Profiles,
+		,
+		Category(org.eclipse.ui.category.window,Window,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@757c685d,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+Binding(ALT+CTRL+P,
+	ParameterizedCommand(Command(org.eclipse.linuxtools.changelog.core.preparechangelog,Prepare Changelog,
+		Prepares Changelog,
+		Category(org.eclipse.linuxtools.changelog,Changelog,Changelog key bindings,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@476a970c,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+
+!ENTRY com.wakatime.eclipse.plugin 1 0 2016-10-30 16:02:23.475
+!MESSAGE Upgrading wakatime-cli ...
+
+!ENTRY com.wakatime.eclipse.plugin 1 0 2016-10-30 16:02:41.263
+!MESSAGE Finished upgrading wakatime-cli.
+
+!ENTRY org.eclipse.debug.ui 4 120 2016-10-30 16:14:38.264
+=======
 !ENTRY com.wakatime.eclipse.plugin 1 0 2016-10-31 08:34:37.462
 !MESSAGE wakatime-cli is up to date.
 
 !ENTRY org.eclipse.debug.ui 4 120 2016-10-31 08:36:35.396
+>>>>>>> Tizzle
 !MESSAGE Error logged from Debug UI: 
 !STACK 0
 org.xml.sax.SAXParseException; lineNumber: 5; columnNumber: 2; The content of elements must consist of well-formed character data or markup.
 	at com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper.createSAXParseException(ErrorHandlerWrapper.java:203)
 	at com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper.fatalError(ErrorHandlerWrapper.java:177)
+<<<<<<< HEAD
+	at com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(XMLErrorReporter.java:441)
+	at com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(XMLErrorReporter.java:368)
+	at com.sun.org.apache.xerces.internal.impl.XMLScanner.reportFatalError(XMLScanner.java:1436)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl$FragmentContentDriver.startOfMarkup(XMLDocumentFragmentScannerImpl.java:2636)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl$FragmentContentDriver.next(XMLDocumentFragmentScannerImpl.java:2734)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl.next(XMLDocumentScannerImpl.java:606)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl.scanDocument(XMLDocumentFragmentScannerImpl.java:510)
+=======
 	at com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(XMLErrorReporter.java:400)
 	at com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(XMLErrorReporter.java:327)
 	at com.sun.org.apache.xerces.internal.impl.XMLScanner.reportFatalError(XMLScanner.java:1465)
@@ -586,11 +699,16 @@ org.xml.sax.SAXParseException; lineNumber: 5; columnNumber: 2; The content of el
 	at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl$FragmentContentDriver.next(XMLDocumentFragmentScannerImpl.java:2729)
 	at com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl.next(XMLDocumentScannerImpl.java:606)
 	at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl.scanDocument(XMLDocumentFragmentScannerImpl.java:504)
+>>>>>>> Tizzle
 	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:848)
 	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:777)
 	at com.sun.org.apache.xerces.internal.parsers.XMLParser.parse(XMLParser.java:141)
 	at com.sun.org.apache.xerces.internal.parsers.DOMParser.parse(DOMParser.java:243)
+<<<<<<< HEAD
+	at com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderImpl.parse(DocumentBuilderImpl.java:348)
+=======
 	at com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderImpl.parse(DocumentBuilderImpl.java:339)
+>>>>>>> Tizzle
 	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationManager.restoreLaunchHistory(LaunchConfigurationManager.java:501)
 	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationManager.loadLaunchHistories(LaunchConfigurationManager.java:1066)
 	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationManager.getLaunchHistory(LaunchConfigurationManager.java:1038)
@@ -605,6 +723,10 @@ org.xml.sax.SAXParseException; lineNumber: 5; columnNumber: 2; The content of el
 	at org.eclipse.ui.internal.WWinPluginAction.runWithEvent(WWinPluginAction.java:228)
 	at org.eclipse.jface.action.ActionContributionItem.handleWidgetSelection(ActionContributionItem.java:565)
 	at org.eclipse.jface.action.ActionContributionItem.lambda$5(ActionContributionItem.java:436)
+<<<<<<< HEAD
+	at org.eclipse.jface.action.ActionContributionItem$$Lambda$34/347951675.handleEvent(Unknown Source)
+=======
+>>>>>>> Tizzle
 	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
 	at org.eclipse.swt.widgets.Display.sendEvent(Display.java:4248)
 	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1501)
@@ -630,11 +752,163 @@ org.xml.sax.SAXParseException; lineNumber: 5; columnNumber: 2; The content of el
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+<<<<<<< HEAD
+	at java.lang.reflect.Method.invoke(Method.java:497)
+=======
 	at java.lang.reflect.Method.invoke(Method.java:498)
+>>>>>>> Tizzle
 	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:673)
 	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:610)
 	at org.eclipse.equinox.launcher.Main.run(Main.java:1519)
 
+<<<<<<< HEAD
+!ENTRY org.eclipse.ui 4 4 2016-10-30 16:16:12.024
+!MESSAGE Conflicting handlers for org.eclipse.ltk.ui.refactor.show.refactoring.history: {ActionDelegateHandlerProxy(null,org.eclipse.jdt.internal.ui.refactoring.actions.ShowRefactoringHistoryAction in org.eclipse.jdt.ui)} vs {ActionDelegateHandlerProxy(null,org.eclipse.ltk.ui.refactoring.actions.ShowRefactoringHistoryAction in org.eclipse.cdt.ui)}
+
+!ENTRY org.eclipse.ui 4 4 2016-10-30 16:16:12.308
+!MESSAGE Conflicting handlers for org.eclipse.ltk.ui.refactor.create.refactoring.script: {ActionDelegateHandlerProxy(null,org.eclipse.jdt.internal.ui.refactoring.actions.CreateRefactoringScriptAction in org.eclipse.jdt.ui)} vs {ActionDelegateHandlerProxy(null,org.eclipse.ltk.ui.refactoring.actions.CreateRefactoringScriptAction in org.eclipse.cdt.ui)}
+
+!ENTRY org.eclipse.ui 4 4 2016-10-30 16:16:12.451
+!MESSAGE Conflicting handlers for org.eclipse.ltk.ui.refactor.apply.refactoring.script: {ActionDelegateHandlerProxy(null,org.eclipse.ltk.ui.refactoring.actions.ApplyRefactoringScriptAction in org.eclipse.cdt.ui)} vs {ActionDelegateHandlerProxy(null,org.eclipse.jdt.internal.ui.refactoring.actions.ApplyRefactoringScriptAction in org.eclipse.jdt.ui)}
+
+!ENTRY org.eclipse.jface 4 0 2016-10-30 16:16:13.037
+!MESSAGE /icons/eview16/statistics_view.gif
+!STACK 0
+java.io.FileNotFoundException: /icons/eview16/statistics_view.gif
+	at org.eclipse.osgi.storage.url.bundleentry.Handler.findBundleEntry(Handler.java:37)
+	at org.eclipse.osgi.storage.url.BundleResourceHandler.openConnection(BundleResourceHandler.java:169)
+	at java.net.URL.openConnection(URL.java:972)
+	at org.eclipse.core.internal.boot.PlatformURLConnection.connect(PlatformURLConnection.java:112)
+	at org.eclipse.core.internal.boot.PlatformURLConnection.getURLAsLocal(PlatformURLConnection.java:237)
+	at org.eclipse.core.internal.runtime.PlatformURLConverter.toFileURL(PlatformURLConverter.java:34)
+	at org.eclipse.core.runtime.FileLocator.toFileURL(FileLocator.java:207)
+	at org.eclipse.jface.resource.URLImageDescriptor.getFilePath(URLImageDescriptor.java:213)
+	at org.eclipse.jface.resource.URLImageDescriptor.access$1(URLImageDescriptor.java:200)
+	at org.eclipse.jface.resource.URLImageDescriptor$URLImageFileNameProvider.getImagePath(URLImageDescriptor.java:53)
+	at org.eclipse.swt.graphics.Image.<init>(Image.java:630)
+	at org.eclipse.jface.resource.URLImageDescriptor.createImage(URLImageDescriptor.java:244)
+	at org.eclipse.jface.resource.ImageDescriptor.createResource(ImageDescriptor.java:164)
+	at org.eclipse.jface.resource.DeviceResourceManager.allocate(DeviceResourceManager.java:52)
+	at org.eclipse.jface.resource.AbstractResourceManager.create(AbstractResourceManager.java:86)
+	at org.eclipse.jface.resource.LocalResourceManager.allocate(LocalResourceManager.java:69)
+	at org.eclipse.jface.resource.AbstractResourceManager.create(AbstractResourceManager.java:86)
+	at org.eclipse.jface.resource.ResourceManager.createImage(ResourceManager.java:172)
+	at org.eclipse.ui.internal.quickaccess.QuickAccessEntry.findOrCreateImage(QuickAccessEntry.java:132)
+	at org.eclipse.ui.internal.quickaccess.QuickAccessEntry.getImage(QuickAccessEntry.java:115)
+	at org.eclipse.ui.internal.quickaccess.QuickAccessEntry.paint(QuickAccessEntry.java:218)
+	at org.eclipse.ui.internal.quickaccess.QuickAccessContents$9.handleEvent(QuickAccessContents.java:767)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Display.sendEvent(Display.java:4248)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1501)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1524)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1509)
+	at org.eclipse.swt.widgets.Table.drawInteriorWithFrame_inView(Table.java:1176)
+	at org.eclipse.swt.widgets.Display.windowProc(Display.java:5970)
+	at org.eclipse.swt.internal.cocoa.OS.objc_msgSendSuper(Native Method)
+	at org.eclipse.swt.widgets.Widget.drawRect(Widget.java:758)
+	at org.eclipse.swt.widgets.Table.drawRect(Table.java:1193)
+	at org.eclipse.swt.widgets.Display.windowProc(Display.java:5703)
+	at org.eclipse.swt.internal.cocoa.OS.objc_msgSendSuper(Native Method)
+	at org.eclipse.swt.widgets.Display.applicationNextEventMatchingMask(Display.java:5076)
+	at org.eclipse.swt.widgets.Display.applicationProc(Display.java:5457)
+	at org.eclipse.swt.internal.cocoa.OS.objc_msgSend(Native Method)
+	at org.eclipse.swt.internal.cocoa.NSApplication.nextEventMatchingMask(NSApplication.java:94)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3692)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$4.run(PartRenderingEngine.java:1121)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:336)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1022)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:150)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:687)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:336)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:604)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:148)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:138)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:134)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:388)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:243)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:673)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:610)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1519)
+
+!ENTRY org.eclipse.ui.workbench 4 0 2016-10-30 16:16:13.045
+!MESSAGE Unable to create resource URLImageDescriptor(platform:/plugin/org.eclipse.tracecompass.tmf.analysis.xml.ui/icons/eview16/statistics_view.gif)
+!STACK 0
+org.eclipse.jface.resource.DeviceResourceException: Unable to create resource URLImageDescriptor(platform:/plugin/org.eclipse.tracecompass.tmf.analysis.xml.ui/icons/eview16/statistics_view.gif)
+	at org.eclipse.jface.resource.ImageDescriptor.createResource(ImageDescriptor.java:166)
+	at org.eclipse.jface.resource.DeviceResourceManager.allocate(DeviceResourceManager.java:52)
+	at org.eclipse.jface.resource.AbstractResourceManager.create(AbstractResourceManager.java:86)
+	at org.eclipse.jface.resource.LocalResourceManager.allocate(LocalResourceManager.java:69)
+	at org.eclipse.jface.resource.AbstractResourceManager.create(AbstractResourceManager.java:86)
+	at org.eclipse.jface.resource.ResourceManager.createImage(ResourceManager.java:172)
+	at org.eclipse.ui.internal.quickaccess.QuickAccessEntry.findOrCreateImage(QuickAccessEntry.java:132)
+	at org.eclipse.ui.internal.quickaccess.QuickAccessEntry.getImage(QuickAccessEntry.java:115)
+	at org.eclipse.ui.internal.quickaccess.QuickAccessEntry.paint(QuickAccessEntry.java:218)
+	at org.eclipse.ui.internal.quickaccess.QuickAccessContents$9.handleEvent(QuickAccessContents.java:767)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Display.sendEvent(Display.java:4248)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1501)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1524)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1509)
+	at org.eclipse.swt.widgets.Table.drawInteriorWithFrame_inView(Table.java:1176)
+	at org.eclipse.swt.widgets.Display.windowProc(Display.java:5970)
+	at org.eclipse.swt.internal.cocoa.OS.objc_msgSendSuper(Native Method)
+	at org.eclipse.swt.widgets.Widget.drawRect(Widget.java:758)
+	at org.eclipse.swt.widgets.Table.drawRect(Table.java:1193)
+	at org.eclipse.swt.widgets.Display.windowProc(Display.java:5703)
+	at org.eclipse.swt.internal.cocoa.OS.objc_msgSendSuper(Native Method)
+	at org.eclipse.swt.widgets.Display.applicationNextEventMatchingMask(Display.java:5076)
+	at org.eclipse.swt.widgets.Display.applicationProc(Display.java:5457)
+	at org.eclipse.swt.internal.cocoa.OS.objc_msgSend(Native Method)
+	at org.eclipse.swt.internal.cocoa.NSApplication.nextEventMatchingMask(NSApplication.java:94)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3692)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$4.run(PartRenderingEngine.java:1121)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:336)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1022)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:150)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:687)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:336)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:604)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:148)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:138)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:134)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:388)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:243)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:673)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:610)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1519)
+
+!ENTRY org.eclipse.recommenders.coordinates.rcp 4 5 2016-10-30 16:19:45.486
+!MESSAGE Failed to read cached coordinates from file ‘/Users/Justin/Documents/Organized Documents/My Documents/School Stuff/CSUSM/Fall 2016/Software Engineering/SE Group Project/Development/.recommenders/caches/identified-project-coordinates.json’
+!STACK 0
+com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1
+	at com.google.gson.Gson.fromJson(Gson.java:815)
+	at com.google.gson.Gson.fromJson(Gson.java:768)
+	at com.google.gson.Gson.fromJson(Gson.java:717)
+	at org.eclipse.recommenders.coordinates.rcp.EclipseProjectCoordinateAdvisorService.startUp(EclipseProjectCoordinateAdvisorService.java:172)
+	at com.google.common.util.concurrent.AbstractIdleService$2$1.run(AbstractIdleService.java:54)
+	at com.google.common.util.concurrent.Callables$3.run(Callables.java:93)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1
+	at com.google.gson.stream.JsonReader.beginObject(JsonReader.java:374)
+	at com.google.gson.internal.bind.MapTypeAdapterFactory$Adapter.read(MapTypeAdapterFactory.java:183)
+	at com.google.gson.internal.bind.MapTypeAdapterFactory$Adapter.read(MapTypeAdapterFactory.java:145)
+	at com.google.gson.Gson.fromJson(Gson.java:803)
+	... 6 more
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2016-10-30 16:19:55.914
+=======
 !ENTRY org.eclipse.epp.logging.aeri.ide 2 10 2016-10-31 08:48:06.055
 !MESSAGE Updating the index from remote failed. ; version: 2.0.1.v20160605-1811
 !STACK 0
@@ -665,6 +939,7 @@ Caused by: java.net.ConnectException: Network is down
 	... 13 more
 
 !ENTRY org.eclipse.jdt.ui 4 10001 2016-10-31 14:43:18.182
+>>>>>>> Tizzle
 !MESSAGE Internal Error
 !STACK 1
 org.eclipse.jdt.internal.ui.JavaUIException: Problems reading information from XML 'QualifiedTypeNameHistory.xml'
@@ -673,6 +948,56 @@ org.eclipse.jdt.internal.ui.JavaUIException: Problems reading information from X
 	at org.eclipse.jdt.internal.corext.util.History.load(History.java:171)
 	at org.eclipse.jdt.internal.corext.util.QualifiedTypeNameHistory.<init>(QualifiedTypeNameHistory.java:33)
 	at org.eclipse.jdt.internal.corext.util.QualifiedTypeNameHistory.getDefault(QualifiedTypeNameHistory.java:26)
+<<<<<<< HEAD
+	at org.eclipse.jdt.internal.ui.text.java.LazyJavaTypeCompletionProposal.computeRelevance(LazyJavaTypeCompletionProposal.java:398)
+	at org.eclipse.jdt.internal.ui.text.java.LazyJavaCompletionProposal.getRelevance(LazyJavaCompletionProposal.java:381)
+	at org.eclipse.recommenders.completion.rcp.processable.IntelligentCompletionProposalComputer.computeCompletionProposals(IntelligentCompletionProposalComputer.java:186)
+	at org.eclipse.jdt.internal.ui.text.java.CompletionProposalComputerDescriptor.computeCompletionProposals(CompletionProposalComputerDescriptor.java:333)
+	at org.eclipse.jdt.internal.ui.text.java.CompletionProposalCategory.computeCompletionProposals(CompletionProposalCategory.java:337)
+	at org.eclipse.jdt.internal.ui.text.java.ContentAssistProcessor.collectProposals(ContentAssistProcessor.java:331)
+	at org.eclipse.jdt.internal.ui.text.java.ContentAssistProcessor.computeCompletionProposals(ContentAssistProcessor.java:288)
+	at org.eclipse.jface.text.contentassist.ContentAssistant$3.run(ContentAssistant.java:1931)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.jface.text.contentassist.ContentAssistant.computeCompletionProposals(ContentAssistant.java:1928)
+	at org.eclipse.jface.text.contentassist.CompletionProposalPopup.computeProposals(CompletionProposalPopup.java:565)
+	at org.eclipse.jface.text.contentassist.CompletionProposalPopup.computeFilteredProposals(CompletionProposalPopup.java:1521)
+	at org.eclipse.jface.text.contentassist.CompletionProposalPopup.access$4(CompletionProposalPopup.java:1510)
+	at org.eclipse.jface.text.contentassist.CompletionProposalPopup$1.run(CompletionProposalPopup.java:362)
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:35)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:182)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:4024)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3700)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$4.run(PartRenderingEngine.java:1121)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:336)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1022)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:150)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:687)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:336)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:604)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:148)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:138)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:134)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:388)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:243)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:673)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:610)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1519)
+Caused by: org.xml.sax.SAXParseException; lineNumber: 2; columnNumber: 2; The markup in the document preceding the root element must be well-formed.
+	at com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper.createSAXParseException(ErrorHandlerWrapper.java:203)
+	at com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper.fatalError(ErrorHandlerWrapper.java:177)
+	at com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(XMLErrorReporter.java:441)
+	at com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(XMLErrorReporter.java:368)
+	at com.sun.org.apache.xerces.internal.impl.XMLScanner.reportFatalError(XMLScanner.java:1436)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl$PrologDriver.next(XMLDocumentScannerImpl.java:883)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl.next(XMLDocumentScannerImpl.java:606)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl.scanDocument(XMLDocumentFragmentScannerImpl.java:510)
+=======
 	at org.eclipse.jdt.internal.ui.JavaPlugin.stop(JavaPlugin.java:657)
 	at org.eclipse.osgi.internal.framework.BundleContextImpl$4.run(BundleContextImpl.java:830)
 	at org.eclipse.osgi.internal.framework.BundleContextImpl$4.run(BundleContextImpl.java:1)
@@ -700,34 +1025,223 @@ Caused by: org.xml.sax.SAXParseException; lineNumber: 2; columnNumber: 2; The ma
 	at com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl$PrologDriver.next(XMLDocumentScannerImpl.java:883)
 	at com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl.next(XMLDocumentScannerImpl.java:606)
 	at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl.scanDocument(XMLDocumentFragmentScannerImpl.java:504)
+>>>>>>> Tizzle
 	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:848)
 	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:777)
 	at com.sun.org.apache.xerces.internal.parsers.XMLParser.parse(XMLParser.java:141)
 	at com.sun.org.apache.xerces.internal.parsers.DOMParser.parse(DOMParser.java:243)
+<<<<<<< HEAD
+	at com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderImpl.parse(DocumentBuilderImpl.java:348)
+	at org.eclipse.jdt.internal.corext.util.History.load(History.java:261)
+	... 42 more
+!SUBENTRY 1 org.eclipse.jdt.ui 4 4 2016-10-30 16:19:55.924
+=======
 	at com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderImpl.parse(DocumentBuilderImpl.java:339)
 	at org.eclipse.jdt.internal.corext.util.History.load(History.java:261)
 	... 21 more
 !SUBENTRY 1 org.eclipse.jdt.ui 4 4 2016-10-31 14:43:18.188
+>>>>>>> Tizzle
 !MESSAGE Problems reading information from XML 'QualifiedTypeNameHistory.xml'
 !STACK 0
 org.xml.sax.SAXParseException; lineNumber: 2; columnNumber: 2; The markup in the document preceding the root element must be well-formed.
 	at com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper.createSAXParseException(ErrorHandlerWrapper.java:203)
 	at com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper.fatalError(ErrorHandlerWrapper.java:177)
+<<<<<<< HEAD
+	at com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(XMLErrorReporter.java:441)
+	at com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(XMLErrorReporter.java:368)
+	at com.sun.org.apache.xerces.internal.impl.XMLScanner.reportFatalError(XMLScanner.java:1436)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl$PrologDriver.next(XMLDocumentScannerImpl.java:883)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl.next(XMLDocumentScannerImpl.java:606)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl.scanDocument(XMLDocumentFragmentScannerImpl.java:510)
+=======
 	at com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(XMLErrorReporter.java:400)
 	at com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(XMLErrorReporter.java:327)
 	at com.sun.org.apache.xerces.internal.impl.XMLScanner.reportFatalError(XMLScanner.java:1465)
 	at com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl$PrologDriver.next(XMLDocumentScannerImpl.java:883)
 	at com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl.next(XMLDocumentScannerImpl.java:606)
 	at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl.scanDocument(XMLDocumentFragmentScannerImpl.java:504)
+>>>>>>> Tizzle
 	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:848)
 	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:777)
 	at com.sun.org.apache.xerces.internal.parsers.XMLParser.parse(XMLParser.java:141)
 	at com.sun.org.apache.xerces.internal.parsers.DOMParser.parse(DOMParser.java:243)
+<<<<<<< HEAD
+	at com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderImpl.parse(DocumentBuilderImpl.java:348)
+=======
 	at com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderImpl.parse(DocumentBuilderImpl.java:339)
+>>>>>>> Tizzle
 	at org.eclipse.jdt.internal.corext.util.History.load(History.java:261)
 	at org.eclipse.jdt.internal.corext.util.History.load(History.java:171)
 	at org.eclipse.jdt.internal.corext.util.QualifiedTypeNameHistory.<init>(QualifiedTypeNameHistory.java:33)
 	at org.eclipse.jdt.internal.corext.util.QualifiedTypeNameHistory.getDefault(QualifiedTypeNameHistory.java:26)
+<<<<<<< HEAD
+	at org.eclipse.jdt.internal.ui.text.java.LazyJavaTypeCompletionProposal.computeRelevance(LazyJavaTypeCompletionProposal.java:398)
+	at org.eclipse.jdt.internal.ui.text.java.LazyJavaCompletionProposal.getRelevance(LazyJavaCompletionProposal.java:381)
+	at org.eclipse.recommenders.completion.rcp.processable.IntelligentCompletionProposalComputer.computeCompletionProposals(IntelligentCompletionProposalComputer.java:186)
+	at org.eclipse.jdt.internal.ui.text.java.CompletionProposalComputerDescriptor.computeCompletionProposals(CompletionProposalComputerDescriptor.java:333)
+	at org.eclipse.jdt.internal.ui.text.java.CompletionProposalCategory.computeCompletionProposals(CompletionProposalCategory.java:337)
+	at org.eclipse.jdt.internal.ui.text.java.ContentAssistProcessor.collectProposals(ContentAssistProcessor.java:331)
+	at org.eclipse.jdt.internal.ui.text.java.ContentAssistProcessor.computeCompletionProposals(ContentAssistProcessor.java:288)
+	at org.eclipse.jface.text.contentassist.ContentAssistant$3.run(ContentAssistant.java:1931)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.jface.text.contentassist.ContentAssistant.computeCompletionProposals(ContentAssistant.java:1928)
+	at org.eclipse.jface.text.contentassist.CompletionProposalPopup.computeProposals(CompletionProposalPopup.java:565)
+	at org.eclipse.jface.text.contentassist.CompletionProposalPopup.computeFilteredProposals(CompletionProposalPopup.java:1521)
+	at org.eclipse.jface.text.contentassist.CompletionProposalPopup.access$4(CompletionProposalPopup.java:1510)
+	at org.eclipse.jface.text.contentassist.CompletionProposalPopup$1.run(CompletionProposalPopup.java:362)
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:35)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:182)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:4024)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3700)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$4.run(PartRenderingEngine.java:1121)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:336)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1022)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:150)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:687)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:336)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:604)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:148)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:138)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:134)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:388)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:243)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:673)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:610)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1519)
+
+!ENTRY org.eclipse.ui 4 4 2016-10-30 21:50:39.433
+!MESSAGE Conflicting handlers for org.eclipse.ltk.ui.refactor.show.refactoring.history: {ActionDelegateHandlerProxy(null,org.eclipse.jdt.internal.ui.refactoring.actions.ShowRefactoringHistoryAction in org.eclipse.jdt.ui)} vs {ActionDelegateHandlerProxy(null,org.eclipse.ltk.ui.refactoring.actions.ShowRefactoringHistoryAction in org.eclipse.cdt.ui)}
+
+!ENTRY org.eclipse.ui 4 4 2016-10-30 21:50:39.451
+!MESSAGE Conflicting handlers for org.eclipse.ltk.ui.refactor.create.refactoring.script: {ActionDelegateHandlerProxy(null,org.eclipse.jdt.internal.ui.refactoring.actions.CreateRefactoringScriptAction in org.eclipse.jdt.ui)} vs {ActionDelegateHandlerProxy(null,org.eclipse.ltk.ui.refactoring.actions.CreateRefactoringScriptAction in org.eclipse.cdt.ui)}
+
+!ENTRY org.eclipse.ui 4 4 2016-10-30 21:50:39.465
+!MESSAGE Conflicting handlers for org.eclipse.ltk.ui.refactor.apply.refactoring.script: {ActionDelegateHandlerProxy(null,org.eclipse.ltk.ui.refactoring.actions.ApplyRefactoringScriptAction in org.eclipse.cdt.ui)} vs {ActionDelegateHandlerProxy(null,org.eclipse.jdt.internal.ui.refactoring.actions.ApplyRefactoringScriptAction in org.eclipse.jdt.ui)}
+
+!ENTRY org.eclipse.jface 4 0 2016-10-30 21:50:39.647
+!MESSAGE /icons/eview16/critical-path.png
+!STACK 0
+java.io.FileNotFoundException: /icons/eview16/critical-path.png
+	at org.eclipse.osgi.storage.url.bundleentry.Handler.findBundleEntry(Handler.java:37)
+	at org.eclipse.osgi.storage.url.BundleResourceHandler.openConnection(BundleResourceHandler.java:169)
+	at java.net.URL.openConnection(URL.java:972)
+	at org.eclipse.core.internal.boot.PlatformURLConnection.connect(PlatformURLConnection.java:112)
+	at org.eclipse.core.internal.boot.PlatformURLConnection.getURLAsLocal(PlatformURLConnection.java:237)
+	at org.eclipse.core.internal.runtime.PlatformURLConverter.toFileURL(PlatformURLConverter.java:34)
+	at org.eclipse.core.runtime.FileLocator.toFileURL(FileLocator.java:207)
+	at org.eclipse.jface.resource.URLImageDescriptor.getFilePath(URLImageDescriptor.java:213)
+	at org.eclipse.jface.resource.URLImageDescriptor.access$1(URLImageDescriptor.java:200)
+	at org.eclipse.jface.resource.URLImageDescriptor$URLImageFileNameProvider.getImagePath(URLImageDescriptor.java:53)
+	at org.eclipse.swt.graphics.Image.<init>(Image.java:630)
+	at org.eclipse.jface.resource.URLImageDescriptor.createImage(URLImageDescriptor.java:244)
+	at org.eclipse.jface.resource.ImageDescriptor.createResource(ImageDescriptor.java:164)
+	at org.eclipse.jface.resource.DeviceResourceManager.allocate(DeviceResourceManager.java:52)
+	at org.eclipse.jface.resource.AbstractResourceManager.create(AbstractResourceManager.java:86)
+	at org.eclipse.jface.resource.LocalResourceManager.allocate(LocalResourceManager.java:69)
+	at org.eclipse.jface.resource.AbstractResourceManager.create(AbstractResourceManager.java:86)
+	at org.eclipse.jface.resource.ResourceManager.createImage(ResourceManager.java:172)
+	at org.eclipse.ui.internal.quickaccess.QuickAccessEntry.findOrCreateImage(QuickAccessEntry.java:132)
+	at org.eclipse.ui.internal.quickaccess.QuickAccessEntry.getImage(QuickAccessEntry.java:115)
+	at org.eclipse.ui.internal.quickaccess.QuickAccessEntry.paint(QuickAccessEntry.java:218)
+	at org.eclipse.ui.internal.quickaccess.QuickAccessContents$9.handleEvent(QuickAccessContents.java:767)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Display.sendEvent(Display.java:4248)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1501)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1524)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1509)
+	at org.eclipse.swt.widgets.Table.drawInteriorWithFrame_inView(Table.java:1176)
+	at org.eclipse.swt.widgets.Display.windowProc(Display.java:5970)
+	at org.eclipse.swt.internal.cocoa.OS.objc_msgSendSuper(Native Method)
+	at org.eclipse.swt.widgets.Widget.drawRect(Widget.java:758)
+	at org.eclipse.swt.widgets.Table.drawRect(Table.java:1193)
+	at org.eclipse.swt.widgets.Display.windowProc(Display.java:5703)
+	at org.eclipse.swt.internal.cocoa.OS.objc_msgSendSuper(Native Method)
+	at org.eclipse.swt.widgets.Display.applicationNextEventMatchingMask(Display.java:5076)
+	at org.eclipse.swt.widgets.Display.applicationProc(Display.java:5457)
+	at org.eclipse.swt.internal.cocoa.OS.objc_msgSend(Native Method)
+	at org.eclipse.swt.internal.cocoa.NSApplication.nextEventMatchingMask(NSApplication.java:94)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3692)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$4.run(PartRenderingEngine.java:1121)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:336)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1022)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:150)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:687)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:336)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:604)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:148)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:138)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:134)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:388)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:243)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:673)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:610)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1519)
+
+!ENTRY org.eclipse.ui.workbench 4 0 2016-10-30 21:50:39.648
+!MESSAGE Unable to create resource URLImageDescriptor(platform:/plugin/org.eclipse.tracecompass.analysis.graph.ui/icons/eview16/critical-path.png)
+!STACK 0
+org.eclipse.jface.resource.DeviceResourceException: Unable to create resource URLImageDescriptor(platform:/plugin/org.eclipse.tracecompass.analysis.graph.ui/icons/eview16/critical-path.png)
+	at org.eclipse.jface.resource.ImageDescriptor.createResource(ImageDescriptor.java:166)
+	at org.eclipse.jface.resource.DeviceResourceManager.allocate(DeviceResourceManager.java:52)
+	at org.eclipse.jface.resource.AbstractResourceManager.create(AbstractResourceManager.java:86)
+	at org.eclipse.jface.resource.LocalResourceManager.allocate(LocalResourceManager.java:69)
+	at org.eclipse.jface.resource.AbstractResourceManager.create(AbstractResourceManager.java:86)
+	at org.eclipse.jface.resource.ResourceManager.createImage(ResourceManager.java:172)
+	at org.eclipse.ui.internal.quickaccess.QuickAccessEntry.findOrCreateImage(QuickAccessEntry.java:132)
+	at org.eclipse.ui.internal.quickaccess.QuickAccessEntry.getImage(QuickAccessEntry.java:115)
+	at org.eclipse.ui.internal.quickaccess.QuickAccessEntry.paint(QuickAccessEntry.java:218)
+	at org.eclipse.ui.internal.quickaccess.QuickAccessContents$9.handleEvent(QuickAccessContents.java:767)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Display.sendEvent(Display.java:4248)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1501)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1524)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1509)
+	at org.eclipse.swt.widgets.Table.drawInteriorWithFrame_inView(Table.java:1176)
+	at org.eclipse.swt.widgets.Display.windowProc(Display.java:5970)
+	at org.eclipse.swt.internal.cocoa.OS.objc_msgSendSuper(Native Method)
+	at org.eclipse.swt.widgets.Widget.drawRect(Widget.java:758)
+	at org.eclipse.swt.widgets.Table.drawRect(Table.java:1193)
+	at org.eclipse.swt.widgets.Display.windowProc(Display.java:5703)
+	at org.eclipse.swt.internal.cocoa.OS.objc_msgSendSuper(Native Method)
+	at org.eclipse.swt.widgets.Display.applicationNextEventMatchingMask(Display.java:5076)
+	at org.eclipse.swt.widgets.Display.applicationProc(Display.java:5457)
+	at org.eclipse.swt.internal.cocoa.OS.objc_msgSend(Native Method)
+	at org.eclipse.swt.internal.cocoa.NSApplication.nextEventMatchingMask(NSApplication.java:94)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3692)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$4.run(PartRenderingEngine.java:1121)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:336)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1022)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:150)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:687)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:336)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:604)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:148)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:138)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:134)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:388)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:243)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:673)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:610)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1519)
+=======
 	at org.eclipse.jdt.internal.ui.JavaPlugin.stop(JavaPlugin.java:657)
 	at org.eclipse.osgi.internal.framework.BundleContextImpl$4.run(BundleContextImpl.java:830)
 	at org.eclipse.osgi.internal.framework.BundleContextImpl$4.run(BundleContextImpl.java:1)
@@ -812,6 +1326,7 @@ Caused by: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING
 	at com.google.gson.internal.bind.MapTypeAdapterFactory$Adapter.read(MapTypeAdapterFactory.java:145)
 	at com.google.gson.Gson.fromJson(Gson.java:803)
 	... 6 more
+<<<<<<< HEAD
 !SESSION 2016-11-04 08:54:12.804 -----------------------------------------------
 eclipse.buildId=4.6.0.I20160606-1100
 java.version=1.8.0_101
@@ -828,3 +1343,6 @@ Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.eclipse.
 
 !ENTRY com.wakatime.eclipse.plugin 1 0 2016-11-04 08:54:25.208
 !MESSAGE wakatime-cli is up to date.
+=======
+>>>>>>> Tizzle
+>>>>>>> stevenc
