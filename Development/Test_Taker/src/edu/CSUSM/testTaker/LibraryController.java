@@ -93,8 +93,8 @@ public class LibraryController {
 		return progressMap.keySet().iterator();
 	}
 	
-	/**
-	 * @return An array of all available courses
+	/** Gets an array of references to live copies of all Courses in the library
+	 * @return An ArrayList of all available courses
 	 */
 	public static ArrayList<Course> getAllCourses(){
 		//Create an array
@@ -114,21 +114,35 @@ public class LibraryController {
 	 * The below static variables are for the current class, not all information
 	 * as done above
 	 */
+	/**
+	 * @deprecated
+	 */
 	public static HashMap<String, Test> _currentTestsInCourse = new HashMap<String, Test>(); // String
 																								// is
 																								// the
 																								// testID
+	/** @deprecated
+	 * 
+	 */
 	public static HashMap<String, Question> _currentQuestionsInCourse = new HashMap<String, Question>(); // String
 																											// is
 																											// the
-																											// questionID
+	/**
+	 * @deprecated																										// questionID
+	 */
 	public static String _currentClassID;
 
 	// For testing purposes
+	/**
+	 * @deprecated
+	 */
 	public static ArrayList<Question> questionsInExam;
 
 	// End of testing purposes
 
+	/**
+	 * @deprecated
+	 */
 	public static boolean hasInitialized = false;
 
 	/**
@@ -182,6 +196,7 @@ public class LibraryController {
 	/**
 	 * @author Justin Goulet
 	 * @description Adds sample data for testing purposes
+	 * @deprecated
 	 */
 	private static void addTestData() {
 		testQuestion();
@@ -195,6 +210,7 @@ public class LibraryController {
 	 *            - Identifier of currentCourse
 	 * @description Compiles the information/data that is relative to the
 	 *              current course
+	 * @deprecated
 	 */
 	public static void gatherCourseMaterialsForID(String ID) {
 
@@ -229,6 +245,7 @@ public class LibraryController {
 	 * @author Justin Goulet
 	 * @description Creates a test question to ensure the question class works
 	 *              as expected
+	 * @deprecated
 	 */
 	private static void testQuestion() {
 
@@ -261,6 +278,7 @@ public class LibraryController {
 	 * @description Creates a sample course to ensre the course class works as
 	 *              expected
 	 * @NOTE Not yet completed. Awaiting Test Class
+	 * @deprecated
 	 */
 	private static void sampleCourse() {
 
@@ -270,6 +288,7 @@ public class LibraryController {
 	 * @author Justin Goulet
 	 * @description Creates a sample test using the existing questions in teh
 	 *              map. Note that all questions will currently be added.
+	 * @deprecated
 	 */
 	private static void sampleTest() {
 		Test newTest = new Test("Sample Exam");
@@ -460,6 +479,11 @@ public class LibraryController {
 		return LibraryController.courseMap.get(queryID);
 	}
 	
+	/**
+	 * Retrieve a live reference to a CourseProgress from the Library given it's ID String.
+	 * @param queryID A unique ID string for a CourseProgress
+	 * @return A live CourseProgress found in the library with that ID.
+	 */
 	public static CourseProgress retrieveProgress(String queryID){
 		return LibraryController.progressMap.get(queryID);
 	}
@@ -496,6 +520,12 @@ public class LibraryController {
 		LibraryController.courseMap.put(updateThing.getID(), updateThing);
 	}
 	
+	/**
+	 * Store or update the library representation of a given CourseProgress
+	 * 
+	 * @param updateThing
+	 *            reference to a CourseProgress to store in the LibraryController
+	 */
 	public static void storeProgress(CourseProgress updated){
 		LibraryController.progressMap.put(updated.getID(), updated);
 	}
@@ -522,6 +552,14 @@ public class LibraryController {
 	 */
 	public static void deleteCourse(String delthing){
 		courseMap.remove(delthing);
+	}
+	
+	/**
+	 * Permanently remove a CourseProgress from the Library
+	 * @param delthing An ID string of a CourseProgress to remove.
+	 */
+	public static void deleteProgress(String delID){
+		progressMap.remove(delID);
 	}
 
 }
