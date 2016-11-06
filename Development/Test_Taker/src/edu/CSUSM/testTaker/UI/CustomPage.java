@@ -60,6 +60,10 @@ public class CustomPage extends JPanel {
 	public static String FlashcardAnswer;
 	public boolean Correct; // Bool value to determine correct or incorrect for
 							// results page
+	
+	// Made the text areas public so that they can be saved into
+	// a string in the QuizAndFlashMain class.
+	public JTextArea question, answer;
 
 	// Created an array of string for the button names
 	private static final int MAX_NUMBER_OF_BUTTONS = 10;
@@ -279,8 +283,8 @@ public class CustomPage extends JPanel {
 		CustomPage.centerOfNewFrame = iconLabel.getHeight() - iconLabel.getY();
 
 		// Create a text area for the question and a text area for the answer
-		JTextArea question = new JTextArea("Question", 10, 10);
-		JTextArea answer = new JTextArea("Answer", 10, 10);
+		 question = new JTextArea("Question", 10, 10);
+		 answer = new JTextArea("Answer", 10, 10);
 
 		// Constraints for the panel holding the text areas for
 		// resizing purposes.

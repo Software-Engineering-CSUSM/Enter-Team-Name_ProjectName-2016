@@ -14,18 +14,19 @@ import edu.CSUSM.testTaker.UI.CustomPage;
  *          question for a quiz by writing the question into the question text
  *          area and its answer into the answer text area, and clicking save.
  * 
- * @date 11/1. Currently, the save button prompts a pop up to create another
- *       question or not. Text can be written into the text area, but action
- *       listeners need to be implemented with a function to save the question
- *       and answer
- * 
- *       View List must also still be implemented
+ * @date 11/5. Modified save to save the question and answer textarea into
+ * 			  a pulbic string.  Class needs to be implemented to set the string
+ * 			to the correct string array.
  * 
  */
 
 public class AddQuestion extends CustomPage {
 
 	private static final long serialVersionUID = 1L;
+	
+	// String to hold the question and answer from the question
+	// and answer text area.
+	public String questionStr, answerStr;
 
 	public AddQuestion(PanelType currentPanelType) {
 		super(currentPanelType);
@@ -74,7 +75,15 @@ public class AddQuestion extends CustomPage {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			System.out.println("Opening " + this.getClass());
-
+			
+			// Saves the question and answer into a string and prints it
+			// out for testing purposes
+			questionStr = question.getText();
+			answerStr = answer.getText();
+			System.out.println("question: " + questionStr);
+			System.out.println("\nanswer: " + answerStr);
+			
+			
 			// Constructor uses a main window with just a logo type, and
 			// an AddAnotherQuestion to create the correct popUp window in the
 			// PopUp class

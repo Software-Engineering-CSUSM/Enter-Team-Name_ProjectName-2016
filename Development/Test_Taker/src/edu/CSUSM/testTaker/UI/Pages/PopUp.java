@@ -5,6 +5,8 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 
 import javax.swing.Box;
@@ -23,15 +25,21 @@ import edu.CSUSM.testTaker.UI.GUIController;
  *          different classes: AddQuestion (save added question,
  *          CreateNewQuizOrSet (Save Quiz or Save Set), and
  *          QuizAndFlashQuestionPage (showHide action listener to show flashcard
- *          answer)
+ *          answer). CreateWindowQuiz and CreateWindowSet currently save the
+ *          names into a public string.
+ *          
+ *          We need to implement the function to set the string name inside both
+ *          function's save action listener.
  * 
- *          Need to implement function to save the string of the saved set or
- *          quiz inside the save button action listeners.
  * 
  */
 
 public class PopUp extends CustomPage {
 
+	// Temporary to store textfield into for saving quiz
+	// and set names
+	public String quizNameStr, setNameStr;
+	
 	/**
 	 * 
 	 */
@@ -163,7 +171,8 @@ public class PopUp extends CustomPage {
 				addQ.setName("Add Question Page");
 				addQ.parentController = parentController;
 				parentController.displayView(addQ);
-
+				
+				
 			}
 		});
 
@@ -232,11 +241,17 @@ public class PopUp extends CustomPage {
 				QuizPage.setName("Quiz Main Page");
 				QuizPage.parentController = parentController;
 				parentController.displayView(QuizPage);
+				
+				// Saves the quiz named typed in the text field
+				// into a string.
+				quizNameStr = quizName.getText();
+				System.out.println(quizNameStr);
 
 			}
 		});
 
 	}
+
 
 	// Creates a pop up window prompting the user to type the name
 	// of the newly created set and click save to save it.
@@ -263,10 +278,10 @@ public class PopUp extends CustomPage {
 
 		// Create text field to enter in name of quiz to save
 		// add it to a panel, and put the panel inside the box
-		JTextField quizName = new JTextField(20);
+		JTextField setName = new JTextField(20);
 		JPanel quizNamePanel = new JPanel();
 		quizNamePanel.setBackground(Color.WHITE);
-		quizNamePanel.add(quizName);
+		quizNamePanel.add(setName);
 		jLabelBox.add(quizNamePanel);
 
 		// Create save button and add to a panel
@@ -307,6 +322,11 @@ public class PopUp extends CustomPage {
 				FlashPage.setName("Flashcard Main Page");
 				FlashPage.parentController = parentController;
 				parentController.displayView(FlashPage);
+				
+				// Saves the set named typed in the text field
+				// into a string.
+				setNameStr = setName.getText();
+				System.out.println(setNameStr);
 
 			}
 		});
