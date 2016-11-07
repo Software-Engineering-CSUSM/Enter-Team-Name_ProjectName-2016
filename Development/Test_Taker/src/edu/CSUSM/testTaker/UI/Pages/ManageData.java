@@ -5,6 +5,9 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JLabel;
@@ -14,6 +17,9 @@ import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
+import edu.CSUSM.testTaker.LibraryController;
+import edu.CSUSM.testTaker.LibraryController.CourseInfo;
+import edu.CSUSM.testTaker.Backend.Course;
 import edu.CSUSM.testTaker.Backend.Question;
 
 /**
@@ -112,28 +118,41 @@ public class ManageData<ObjectDisplayed> extends JPanel {
 		tableView.add(scrollView);
 
 		/** Add Some Sample Questions to be displayed */
-		Question questionList[] = new Question[10];
+		//Question questionList[] = new Question[10];
 		// LibraryController lb = new LibraryController();
+		
+		//Get all of the questions from the libcontroller
+		//System.out.println(LibraryController.giveCourseList());
+		
+		for(CourseInfo aCourseSet : LibraryController.giveCourseList()){
+			
+			//Add a few times
+			for(int i = 0; i < 10; i++){
+				Course currentCourse = aCourseSet.thisCourse;
 
-		for (int i = 0; i < 10; i++) {
-			// For testing, just add 3 of the same question
-			// System.out.println("Current Questions: " +
-			// LibraryController.questionsInExam.toString());
-			questionList[i] = new Question("What is 5*5?", new String[] { "5", "25", "0" }, 1);
-			// System.out.println("Question Created: " +
-			// questionList[i].getQuestion());
+				// This will eventually be more specific
+				Row newRow = new Row(currentCourse.getName(), currentCourse.getID());
+				// newRow.setSize(this.getWidth(), this.getHeight() / 3);
+				gb.gridy++;
+				gb.weightx = 1;
+				gb.weighty = 1;
+				gb.fill = GridBagConstraints.HORIZONTAL;
+				// Add the row to the table
+				innerView.add(newRow, gb);
+			}
 		}
 
 		// Create rows for each question
-		for (Question tempQuestion : questionList) {
+		/*
+		for (Course tempQuestion : questionList) {
 			// This will eventually be more specific
-			Row newRow = new Row(tempQuestion.getQuestion(), tempQuestion.getID());
+			Row newRow = new Row(tempQuestion.getName(), tempQuestion.getID());
 			// newRow.setSize(this.getWidth(), this.getHeight() / 3);
 			gb.gridy++;
 			gb.fill = GridBagConstraints.BOTH;
 			// Add the row to the table
 			innerView.add(newRow, gb);
-		}
+		}*/
 
 		// scrollView.setPreferredSize(new Dimension(this.getWidth(),
 		// this.getHeight() * 2));
@@ -172,31 +191,37 @@ public class ManageData<ObjectDisplayed> extends JPanel {
 			this.setBackground(Color.WHITE);
 			ROW_COUNT++;
 			this.setBorder(new LineBorder(Color.BLACK, 1));
-			this.setLayout(new GridBagLayout());
-			GridBagConstraints g = new GridBagConstraints();
+			this.setLayout(new BorderLayout());
 
 			// Add a label indicating the Row number
 			JLabel rowNumberLabel = new JLabel("" + ROW_COUNT + ") ");
 			rowNumberLabel.setBorder(new EmptyBorder(30, 20, 30, 0));
-			g.gridwidth = 1;
-			g.gridheight = 1;
-			g.gridx = 1;
-			g.fill = GridBagConstraints.HORIZONTAL;
-			this.add(rowNumberLabel);
+			//rowNumberLabel.setBackground(Color.RED);
+			//rowNumberLabel.setOpaque(true);
+			this.add(rowNumberLabel, BorderLayout.WEST);
 
 			// Add the label with the row name
 			JLabel rowNameLabel = new JLabel(this.rowName);
+			//rowNameLabel.setBackground(Color.BLUE);
 			rowNameLabel.setBorder(new EmptyBorder(0, 10, 0, 10));
 			rowNameLabel.setHorizontalAlignment(JLabel.LEFT);
-			g.gridwidth = 5;
-			g.gridheight = 1;
-			g.gridx = 2;
-			this.add(rowNameLabel);
+			//rowNameLabel.setOpaque(true);
+			this.add(rowNameLabel, BorderLayout.CENTER);
 
 			// Add JRadioButton
 			JRadioButton rb = new JRadioButton();
+			rb.setActionCommand(this.accessID);
 			group.add(rb);
-			this.add(rb);
+			this.add(rb, BorderLayout.EAST);
+			
+			rb.addActionListener(new ActionListener(){
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					//Print out the action command
+					System.out.println(e.getActionCommand());
+				}
+			});
 
 		}
 

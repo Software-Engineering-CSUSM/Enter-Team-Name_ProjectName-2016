@@ -56,14 +56,26 @@ public class LibraryController {
 	 * Gives a List of the current Course IDs
 	 * @return An ArrayList of the ID strings of the current Courses in the Library.
 	 */
-	public static ArrayList<String> giveCourseList(){
-		Set<String> tset = giveCourseSet();
-		ArrayList<String> rlist = new ArrayList<String>(tset.size());
-		for(String TID : tset){
-			rlist.add(TID);
+	public static ArrayList<CourseInfo> giveCourseList(){
+		
+		//Create a local Arraylist for the classes
+		//Note that a custom class will have to be implemented for storage
+		ArrayList<CourseInfo> rlist = new ArrayList<CourseInfo>();
+		for(Course aCourse : courseMap.values()){
+			rlist.add(new CourseInfo(aCourse, aCourse.getID()));
 		}
+		
 		return rlist;
 	}
+	
+	public static class CourseInfo{
+		public Course thisCourse;
+		public String thisID;
+		public CourseInfo(Course courseAct, String id){
+			this.thisCourse = courseAct; this.thisID = id;
+		}
+	}
+	
 	
 	/**
 	 * Gives an iterator of all Courses in the library.
