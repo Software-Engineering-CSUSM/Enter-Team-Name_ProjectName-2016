@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 
+import edu.CSUSM.testTaker.LibraryController;
 import edu.CSUSM.testTaker.UI.CustomPage;
 import edu.CSUSM.testTaker.UI.CustomPage.PanelType;
 
@@ -70,6 +71,11 @@ public class ContentManagementPage extends CustomPage {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			// System.out.println("Opening " + this.getClass());
+			
+			//Set row Headers and idens
+			CustomPage.setQBRowHeaders(LibraryController.getAllQuestionsInCourse(""));
+			CustomPage.setQBRowIDs(LibraryController.getAllQuestionsInCourseID(""));
+			
 			CustomPage questionBuilder = new CustomPage("Question Manager", CustomPage.PanelType.QUESTION_BUILDER_TYPE);
 			questionBuilder.parentController = parentController;
 			parentController.displayView(questionBuilder);

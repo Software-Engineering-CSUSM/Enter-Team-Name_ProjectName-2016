@@ -563,9 +563,45 @@ public class LibraryController{
 			return thisList.toArray(new String[thisList.size()]);
 		}
 		
+	//Get a list of all questions in a particular course. If null, get all questions
+		public static String[] getAllQuestionsInCourse(String courseID){
+			
+			//Create the arraylist
+			ArrayList<String> tempList = new ArrayList<String>();
+			
+			for(Question temp : questionMap.values()){
+				if(courseID.length() > 0){
+					//If not null, only do the course ID specified
+					if(temp.getCourseID().equals(courseID)){
+						tempList.add(temp.currentName);
+					}
+				}else{
+					tempList.add(temp.currentName);
+				}
+			}
+			return tempList.toArray(new String[tempList.size()]);
+			
+		}
 	
-	
-	
+		//Get a list of all question IDs in a particular course. If null, get all questions
+				public static String[] getAllQuestionsInCourseID(String courseID){
+					
+					//Create the arraylist
+					ArrayList<String> tempList = new ArrayList<String>();
+					
+					for(Question temp : questionMap.values()){
+						if(courseID.length() > 0){
+							//If not null, only do the course ID specified
+							if(temp.getCourseID().equals(courseID)){
+								tempList.add(temp.currentID);
+							}
+						}else{
+							tempList.add(temp.currentID);
+						}
+					}
+					return tempList.toArray(new String[tempList.size()]);
+					
+				}
 	
 	
 	
