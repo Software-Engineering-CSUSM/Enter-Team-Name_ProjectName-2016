@@ -1,6 +1,7 @@
 package edu.CSUSM.testTaker;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -9,9 +10,7 @@ import java.io.ObjectOutputStream;
 import java.util.Set;
 import java.util.Iterator;
 
-import edu.CSUSM.testTaker.Backend.Course;
-import edu.CSUSM.testTaker.Backend.Question;
-import edu.CSUSM.testTaker.Backend.Test;
+import edu.CSUSM.testTaker.Backend.*;
 
 /**
  * 
@@ -23,7 +22,7 @@ import edu.CSUSM.testTaker.Backend.Test;
  *              once, the variables will not need to be re-initialized.
  *
  */
-public class LibraryController {
+public class LibraryController{
 
 	/**
 	 * For Implementation, we are going to use Hashmaps. This is how: • The
@@ -34,13 +33,15 @@ public class LibraryController {
 	 * the list will not have to loop through the data every time it is
 	 * required.
 	 */
-	private static HashMap<String, Test> testArray;			//String is the testID
-	private static HashMap<String, Question> questionArray;	//String is the questionID
-	private static HashMap<String, Course> classArray;
+	private static HashMap<String, Test> testMap;			//String is the testID
+	private static HashMap<String, Question> questionMap;	//String is the questionID
+	private static HashMap<String, Course> courseMap;
+	private static HashMap<String, CourseProgress> progressMap;
 	static {
-		testArray = new HashMap<String, Test>();
-		questionArray = new HashMap<String, Question>();
-		classArray = new HashMap<String, Course>();
+		testMap = new HashMap<String, Test>();
+		questionMap = new HashMap<String, Question>();
+		courseMap = new HashMap<String, Course>();
+		progressMap = new HashMap<String, CourseProgress>();
 	}
 	
 	/**
@@ -48,15 +49,74 @@ public class LibraryController {
 	 * @return a reference to a Set containing all Course ID strings.
 	 */
 	public static Set<String> giveCourseSet(){
-		return classArray.keySet();
+		return courseMap.keySet();
 	}
+	
+	/**
+	 * Gives a List of the current Course IDs
+	 * @return An ArrayList of the ID strings of the current Courses in the Library.
+	 */
+	public static ArrayList<CourseInfo> giveCourseList(){
+		
+		//Create a local Arraylist for the classes
+		//Note that a custom class will have to be implemented for storage
+		ArrayList<CourseInfo> rlist = new ArrayList<CourseInfo>();
+		for(Course aCourse : courseMap.values()){
+			rlist.add(new CourseInfo(aCourse, aCourse.getID()));
+		}
+		
+		return rlist;
+	}
+	
+	public static class CourseInfo{
+		public Course thisCourse;
+		public String thisID;
+		public CourseInfo(Course courseAct, String id){
+			this.thisCourse = courseAct; this.thisID = id;
+		}
+	}
+	
 	
 	/**
 	 * Gives an iterator of all Courses in the library.
 	 * @return A String Iterator over all Courses in the library.
 	 */
 	public static Iterator<String> courseIDIterator(){
-		return classArray.keySet().iterator();
+		return courseMap.keySet().iterator();
+	}
+	
+	/**
+	 * Gives an iterator of all Tests in the library.
+	 * @return A String Iterator over all Tests in the library.
+	 */
+	public static Iterator<String> testIDIterator(){
+		return testMap.keySet().iterator();
+	}
+	
+	/**
+	 * Gives an iterator of all Questions in the library.
+	 * @return A String Iterator over all Questions in the library.
+	 */
+	public static Iterator<String> questionIDIterator(){
+		return questionMap.keySet().iterator();
+	}
+	
+	public static Iterator<String> progressIDIterator(){
+		return progressMap.keySet().iterator();
+	}
+	
+	/**
+	 * @return An array of all available courses
+	 */
+	public static ArrayList<Course> getAllCourses(){
+		//Create an array
+		ArrayList<Course> tempHolder = new ArrayList<Course>();
+		
+		//Add all classes to the array
+		tempHolder.addAll(courseMap.values());
+		
+		//Return the list
+		return tempHolder;
 	}
 		
 	
@@ -88,6 +148,9 @@ public class LibraryController {
 	 * @description Default constructor for class. Inits variables, if needed
 	 *              and allows access to all library objects
 	 */
+	/**
+	 * @deprecated
+	 */
 	public LibraryController() {
 
 		/**
@@ -116,11 +179,14 @@ public class LibraryController {
 	 * @author Justin Goulet
 	 * @description Loads the data from where-ever it is stored
 	 */
+	/**
+	 * @deprecated Does not initialie any test data anymore
+	 */
 	private static void loadData() {
 		/** For now, just create empty maps, then add test data to them */
-		testArray = new HashMap<String, Test>();
-		questionArray = new HashMap<String, Question>();
-		classArray = new HashMap<String, Course>();
+		testMap = new HashMap<String, Test>();
+		questionMap = new HashMap<String, Question>();
+		courseMap = new HashMap<String, Course>();
 
 		addTestData();
 	}
@@ -161,7 +227,7 @@ public class LibraryController {
 																// currentClass
 																// Question map
 
-		for (Question currentQuestion : LibraryController.questionArray.values()) {
+		for (Question currentQuestion : LibraryController.questionMap.values()) {
 			/** We need to gather the courseID from the question */
 			// If the testID of the question equals the currentTestID, we can
 			// add it to the map
@@ -198,8 +264,8 @@ public class LibraryController {
 		// System.out.println(anotherQuestion.toString());
 
 		// Add the sample questions to the hashmap
-		questionArray.put("1", aSampleQuestion);
-		questionArray.put("2", anotherQuestion);
+		questionMap.put("1", aSampleQuestion);
+		questionMap.put("2", anotherQuestion);
 	}
 
 	/**
@@ -221,7 +287,7 @@ public class LibraryController {
 		Test newTest = new Test("Sample Exam");
 
 		// Create arraylist from hashmap
-		questionsInExam = new ArrayList<Question>(questionArray.values());
+		questionsInExam = new ArrayList<Question>(questionMap.values());
 
 		// Add the arraylist to the exam
 		newTest.setQuestionList(questionsInExam);
@@ -245,7 +311,7 @@ public class LibraryController {
 		String questionString = "Questions in Library: \n--------------------";
 
 		// Add the question hashmap to the question string
-		for (Question questionInLib : questionArray.values()) {
+		for (Question questionInLib : questionMap.values()) {
 			questionString += "\n" + questionInLib + "\n";
 		}
 
@@ -259,7 +325,7 @@ public class LibraryController {
 	 * @return amount of total questions in Library
 	 */
 	public int getTotalQuestionCount() {
-		return LibraryController.questionArray.size();
+		return LibraryController.questionMap.size();
 	}
 
 	/** Get the number of Courses currently in the library
@@ -267,7 +333,7 @@ public class LibraryController {
 	 * @return amount of total courses in Library
 	 */
 	public int getTotalCourseCount() {
-		return LibraryController.classArray.size();
+		return LibraryController.courseMap.size();
 	}
 
 	/** Get the number of Tests currently in the library
@@ -275,7 +341,7 @@ public class LibraryController {
 	 * @return amount of total tests in Library
 	 */
 	public int getTotalTestCount() {
-		return LibraryController.testArray.size();
+		return LibraryController.testMap.size();
 	}
 	
 	/**
@@ -284,7 +350,7 @@ public class LibraryController {
 	 * @return true if the ID is a Question in this library
 	 */
 	public boolean isAQuestion(String checkID){
-		return questionArray.containsKey(checkID);
+		return questionMap.containsKey(checkID);
 	}
 	
 	/**
@@ -293,7 +359,7 @@ public class LibraryController {
 	 * @return true if the ID is a Test in this library
 	 */
 	public boolean isATest(String checkID){
-		return testArray.containsKey(checkID);		
+		return testMap.containsKey(checkID);		
 	}
 
 	/**
@@ -302,7 +368,7 @@ public class LibraryController {
 	 * @return true if the ID is a Course in this library
 	 */
 	public boolean isACourse(String checkID){
-		return classArray.containsKey(checkID);		
+		return courseMap.containsKey(checkID);		
 	}
 	
 	/**
@@ -327,9 +393,10 @@ public class LibraryController {
 	 */
 	public static boolean backupLibrary(String filename){
 		try (ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream(filename))){
-			os.writeObject(questionArray);
-			os.writeObject(testArray);
-			os.writeObject(classArray);
+			os.writeObject(questionMap);
+			os.writeObject(testMap);
+			os.writeObject(courseMap);
+			os.writeObject(progressMap);
 		}
 		catch (java.io.IOException ex){
 			return false;
@@ -344,9 +411,10 @@ public class LibraryController {
 	 */
 	public static boolean restoreLibrary(String filename){
 		try(ObjectInputStream is = new ObjectInputStream(new FileInputStream(filename))){
-			questionArray = (HashMap <String,Question>)is.readObject();
-			testArray = (HashMap <String,Test>)is.readObject();
-			classArray = (HashMap <String,Course>)is.readObject();
+			questionMap = (HashMap <String,Question>)is.readObject();
+			testMap = (HashMap <String,Test>)is.readObject();
+			courseMap = (HashMap <String,Course>)is.readObject();
+			progressMap = (HashMap <String, CourseProgress>)is.readObject();
 		}
 		catch (java.lang.ClassNotFoundException ex){
 			return false;
@@ -366,7 +434,7 @@ public class LibraryController {
 	 * @author Steven Clark
 	 */
 	public static Question retrieveQuestion(String queryID) {
-		return LibraryController.questionArray.get(queryID);
+		return LibraryController.questionMap.get(queryID);
 	}
 
 	/**
@@ -378,7 +446,7 @@ public class LibraryController {
 	 * @author Steven Clark
 	 */
 	public static Test retrieveTest(String queryID){
-		Test rvalue = testArray.get(queryID);
+		Test rvalue = testMap.get(queryID);
 		rvalue.initQuestions();
 		return rvalue;
 	}
@@ -389,7 +457,7 @@ public class LibraryController {
 	 * @author Steven Clark
 	 */
 	public static Test previewTest(String queryID){
-		return testArray.get(queryID);
+		return testMap.get(queryID);
 	}
 	
 	/**
@@ -401,7 +469,11 @@ public class LibraryController {
 	 * @author Steven Clark
 	 */
 	public static Course retrieveCourse(String queryID) {
-		return LibraryController.classArray.get(queryID);
+		return LibraryController.courseMap.get(queryID);
+	}
+	
+	public static CourseProgress retrieveProgress(String queryID){
+		return LibraryController.progressMap.get(queryID);
 	}
 
 	/**
@@ -413,7 +485,7 @@ public class LibraryController {
 	public static void storeQuestion(Question updateThing) {
 		// System.out.println("Question ID: " + updateThing.getID() +
 		// "\nQuestion: " + updateThing);
-		LibraryController.questionArray.put(updateThing.getID(), updateThing);
+		LibraryController.questionMap.put(updateThing.getID(), updateThing);
 	}
 
 	/**
@@ -423,7 +495,7 @@ public class LibraryController {
 	 *            reference to a Test to store in the LibraryController
 	 */
 	public static void storeTest(Test updateThing) {
-		LibraryController.testArray.put(updateThing.getID(), updateThing);
+		LibraryController.testMap.put(updateThing.getID(), updateThing);
 	}
 
 	/**
@@ -433,7 +505,11 @@ public class LibraryController {
 	 *            reference to a Course to store in the LibraryController
 	 */
 	public static void storeCourse(Course updateThing) {
-		LibraryController.classArray.put(updateThing.getID(), updateThing);
+		LibraryController.courseMap.put(updateThing.getID(), updateThing);
+	}
+	
+	public static void storeProgress(CourseProgress updated){
+		LibraryController.progressMap.put(updated.getID(), updated);
 	}
 	
 	/**
@@ -441,7 +517,7 @@ public class LibraryController {
 	 * @param delthing An ID string of a Question to remove.
 	 */
 	public static void deleteQuestion(String delthing){
-		questionArray.remove(delthing);
+		questionMap.remove(delthing);
 	}
 
 	/**
@@ -449,7 +525,7 @@ public class LibraryController {
 	 * @param delthing An ID string of a Test to remove.
 	 */
 	public static void deleteTest(String delthing){
-		testArray.remove(delthing);
+		testMap.remove(delthing);
 	}
 
 	/**
@@ -457,7 +533,80 @@ public class LibraryController {
 	 * @param delthing An ID string of a Course to remove.
 	 */
 	public static void deleteCourse(String delthing){
-		classArray.remove(delthing);
+		courseMap.remove(delthing);
 	}
+	
+	//Get a list of all of the course names
+	public static String[] getAllCoursesAvailable(){
+		ArrayList<String> thisList = new ArrayList<String>();
+		
+		//Add all of the course to it
+		for(Course temp : LibraryController.courseMap.values()){
+			thisList.add(temp.getName());
+			//System.out.println(temp.getName());
+		}
+		
+		//Return the list of names
+		return thisList.toArray(new String[thisList.size()]);
+	}
+	
+	//Get a list of all of the course idens
+		public static String[] getAllCoursesAvailableIDs(){
+			ArrayList<String> thisList = new ArrayList<String>();
+			
+			//Add all of the course to it
+			for(Course temp : LibraryController.courseMap.values()){
+				thisList.add(temp.getID());
+			}
+			
+			//Return the list of names
+			return thisList.toArray(new String[thisList.size()]);
+		}
+		
+	//Get a list of all questions in a particular course. If null, get all questions
+		public static String[] getAllQuestionsInCourse(String courseID){
+			
+			//Create the arraylist
+			ArrayList<String> tempList = new ArrayList<String>();
+			
+			for(Question temp : questionMap.values()){
+				if(courseID.length() > 0){
+					//If not null, only do the course ID specified
+					if(temp.getCourseID().equals(courseID)){
+						tempList.add(temp.currentName);
+					}
+				}else{
+					tempList.add(temp.currentName);
+				}
+			}
+			return tempList.toArray(new String[tempList.size()]);
+			
+		}
+	
+		//Get a list of all question IDs in a particular course. If null, get all questions
+				public static String[] getAllQuestionsInCourseID(String courseID){
+					
+					//Create the arraylist
+					ArrayList<String> tempList = new ArrayList<String>();
+					
+					for(Question temp : questionMap.values()){
+						if(courseID.length() > 0){
+							//If not null, only do the course ID specified
+							if(temp.getCourseID().equals(courseID)){
+								tempList.add(temp.currentID);
+							}
+						}else{
+							tempList.add(temp.currentID);
+						}
+					}
+					return tempList.toArray(new String[tempList.size()]);
+					
+				}
+	
+	
+	
+	
+	
+	
 
 }

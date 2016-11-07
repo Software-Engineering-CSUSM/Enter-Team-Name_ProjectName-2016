@@ -7,7 +7,7 @@ import java.util.UUID;
 
 import edu.CSUSM.testTaker.LibraryController;
 
-public class Question implements Serializable, Registerable {
+public class Question extends TaskObject implements Serializable, Registerable{
 	public static final long serialVersionUID = 1L;
 	
 	/**
@@ -62,6 +62,8 @@ public class Question implements Serializable, Registerable {
 		//Question.QUESTION_COUNT++;
 		
 		myID = UUID.randomUUID().toString();
+		this.currentID = myID;
+		this.currentName = mainQuestion;
 		LibraryController.storeQuestion(this);
 	}
 	
@@ -260,24 +262,13 @@ public class Question implements Serializable, Registerable {
 	 * @param location of user's chose of answer
 	 * @description returns a 1.0 if answer given by user matches the correct answer for this Question
 	 */
-	public double pointsValue(int index){
+	public double scoreAnswer(int index){
 		if(index == _correctIndex)
 			return 1.0;
 		else 
 		return 0.0;
 	}
 	
-	/**
-	 * @author John Orcino
-	 * @description calls pointsValue method and stores result into an ArrayList
-	 * @param location of user's answer
-	 * @deprecated
-	 */
-	public void storePoints(int index){
-		if(null == this._answerPoints)
-			_answerPoints = new ArrayList<Double>();
-		_answerPoints.add(pointsValue(index));
-	}
 	
 	/** (non-Javadoc)
 	/**
@@ -285,10 +276,6 @@ public class Question implements Serializable, Registerable {
 	 * @see java.lang.Object#toString()
 	 * @author Justin Goulet
 	 * @return A human readable string of the contents of this question.
-<<<<<<< HEAD
-=======
-	 * 
->>>>>>> Tizzle
 	 */
 	@Override
 	public String toString() {

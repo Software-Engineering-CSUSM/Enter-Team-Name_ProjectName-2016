@@ -5,7 +5,7 @@ import java.io.Serializable;
 
 import edu.CSUSM.testTaker.LibraryController;
 
-public class Course implements Serializable, edu.CSUSM.testTaker.Backend.Registerable{
+public class Course extends TaskObject implements Serializable, edu.CSUSM.testTaker.Backend.Registerable{
 	static final long serialVersionUID = 1L;
 
 	/**  Get the ID of the test for database storage and retrieval
@@ -50,6 +50,8 @@ public class Course implements Serializable, edu.CSUSM.testTaker.Backend.Registe
 		questionIDs = new ArrayList<String>();
 		testIDs = new ArrayList<String>();
 		testPoints = new ArrayList<Integer>();
+		this.currentID = getID();
+		this.currentName = courseName;
 	}
 	
 	/** Make an example Course
@@ -74,6 +76,7 @@ public class Course implements Serializable, edu.CSUSM.testTaker.Backend.Registe
 	 * @return Course's name as String;
 	 */
 	public String getName(){
+
 		return courseName;
 	}
 	
@@ -83,6 +86,23 @@ public class Course implements Serializable, edu.CSUSM.testTaker.Backend.Registe
 	 */
 	public int numTests(){
 		return testIDs.size();
+	}
+	
+	/**
+	 * Get the number of Questions in this Course
+	 * @return The number of Questions as an int
+	 */
+	public int numQuestions(){
+		return questionIDs.size();
+	}
+	
+	/**
+	 * Return a static view of all Questions currently in the Course
+	 * @return An ArrayList of ID Strings of Questions
+	 */
+	@SuppressWarnings("unchecked")
+	public ArrayList <String> allQuestions(){
+		return (ArrayList <String>)questionIDs.clone();
 	}
 	
 	/**
@@ -137,13 +157,23 @@ public class Course implements Serializable, edu.CSUSM.testTaker.Backend.Registe
 	/**
 	 * Get the points value of a particular Test
 	 * @param index The number of the Test (0 base) to get the value of
-	 * @return An int of the number of points ascribed to this Test
+	 * @return An int of the number of points ascribed to this Test, negative if not found.
 	 */
 	public int getTestValue(int index){
 		if(index >=0 && index < testPoints.size()){
 			return testPoints.get(index);
 		}
-		return 0;
+		return -1;
+	}
+	
+	/**
+	 * Return the points value of a particular Test given it's ID.
+	 * @param TID the unique ID string of the Test to find.
+	 * @return An int number of points ascribed to the Test in this Course, negative if not found.
+	 */
+	public int getTestValue(String TID){
+		int tindex = this.testIDs.indexOf(TID);
+		return getTestValue(tindex);
 	}
 
 	/**
@@ -178,7 +208,8 @@ public class Course implements Serializable, edu.CSUSM.testTaker.Backend.Registe
 	}
 	
 	public String toString(){
-		String outString = "Course: ";
+		//String outString = "Course: ";
+		String outString = "";
 		
 		outString = outString + courseName + "\n";
 		outString = outString + ((Integer)testIDs.size()).toString() + " tests:\n";
@@ -201,6 +232,7 @@ public class Course implements Serializable, edu.CSUSM.testTaker.Backend.Registe
 	 */
 	public void setName(String newname){
 		this.courseName = newname;
+		this.currentName = courseName;
 		LibraryController.storeCourse(this);
 	}
 
@@ -219,6 +251,16 @@ public class Course implements Serializable, edu.CSUSM.testTaker.Backend.Registe
 	 */
 	public void addQuestion(Question nq){
 		addQuestion(nq.getID());
+	}
+	
+	/**
+	 * Imports all new questions from a given test into this course.
+	 * @param nt A Test to add the Questions of to the Course.
+	 */
+	public void addTestsQuestions(Test nt){
+		for(String tqid : nt.getQuestionIDs()){
+			addQuestion(tqid);
+		}
 	}
 	
 	/**

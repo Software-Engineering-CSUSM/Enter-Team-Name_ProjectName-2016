@@ -1,7 +1,7 @@
 Software Engineering Fall-2016
 =================================
-##Team Name
-###Team Members and Primary Abilities
+## Team Name
+### Team Members and Primary Abilities
 
 |#|Name|Primary Task|
 |---|---|---|
@@ -12,11 +12,11 @@ Software Engineering Fall-2016
 |5|		[Christian Mathias](https://github.com/cmmathias95 "Christian Mathias")		    |	[Analytics Manager](#Analytics Manager)|
 |6|		[Chris Childers](https://github.com/chili24137 "Chris Childers")		        |	[UI Designer](#UI Designer)|
 
-###Role Descriptions
+### Role Descriptions
 The participant roles are subject to change at any time. Each participant will fulfill each role at some point in time during the project. As a precursor, each participant will be assigned a primary function, denoted in the table above. Below is a description of each role. <br>
 
 
->####Project Manager / SCRUM Master - (1 Person)
+>#### Project Manager / SCRUM Master - (1 Person)
 >- Oversees every part of the project. Ensures project members stay on task, meet deadlines, and fulfill requirements as assigned. Product manager is in charge of scheduling meetings, project documentation and oversees the project at every step - keeping a particular close eye on version control, commenting and code quality. Here are some example tasks that the **project manager** will take a large role in:
     - Competing product design wireframes
     - Managing set communication methods
@@ -28,7 +28,7 @@ The participant roles are subject to change at any time. Each participant will f
     - Assists with any portion of the project that needs further work to meet assigned deadlines.
     
 <p>
->####UI Designer(s) - (2 People)
+>#### UI Designer(s) - (2 People)
 >- Tasked with managing the interface of the final project. The UI Designer(s) will work with team members to bring a high quality product, in terms of design, to the portfolio. 
     - Designated person to ensure design of product meets that of project manager's design documentation
     - Takes feedback from team to ensure reliability and ease of User Interface
@@ -41,7 +41,7 @@ The participant roles are subject to change at any time. Each participant will f
         - Ensures classes may be accessed when needed by development team
     
 <p>    
->####Analytics Manager - (1 Person)
+> ####Analytics Manager - (1 Person)
 >- Develops and maintains integrated analytics for overall project. Major tasks include creating necessary classes for custom analytic events, analytics db management where required and notifying development team of critical events that need attention. Task details include:
     - Integrating solutions such as Google Analytics, Google Firebase, or other analytics engine
     - Catching all exceptions and reporting them to the analytic event handler
@@ -58,7 +58,7 @@ The participant roles are subject to change at any time. Each participant will f
     - Analytics should be independent of project and should be usable on other projects without changing code.
     
 <p>
->####Development Team - (2 People)
+>#### Development Team - (2 People)
 >- Team in charge of overall development of project. This team is designated the task of creating the functional methods and procedures of the application and will integrate the use of the developed UI from the design team. So the work is spread out, the following tasks are designated to this team:
     - Work directly with the UI Designer(s) to ensure code is synchronous and integrate smoothly
     - Creates driver class to control all aspects of the program
@@ -70,26 +70,27 @@ The participant roles are subject to change at any time. Each participant will f
         - If buttons are required, buttons will need event listeners
     
 
-###Project Description
+### Project Description
 >Project Description will go here. There will be a project summary and list of requirements we must fulfill.
 - Requirement #1
 - Requirement #2
 
-###Links
+### Links
 >All links associated with the project will go here. These include items such as repository instructions, IDE setups, additional downloads and similar. For example, I placed the GitHub repo in the list below:
 - [GitHub Repository](https://github.com/Software-Engineering-CSUSM/Enter-Team-Name_ProjectName-2016)
 - [Slack Team](https://csusm-se-f2016.slack.com/) - Send [email](mailto:jstngoulet@me.com) for invite
 - [GitHub Help] (https://github.com/Software-Engineering-CSUSM/Test-Taker/blob/master/Project%20Documents/Team%20Help/Git_Help.md "GitHub Help by J. Goulet")
 - [Markdown Syntax Assistant] (http://www.markitdown.net/markdown)
+- [Google Docs] (https://drive.google.com/drive/folders/0B85piijFOwuZZW9UWTVsX0VVbXc?usp=sharing)
 
-###Repository Info
+### Repository Info
 > The repo is currently set to an organization, [Software-Engineering-CSUSM](https://github.com/Software-Engineering-CSUSM) so that it is not tied to a single individual, for credit purposes. As such: 
 - All contributors will be known as **collaborators** instead of owners.
 - All contributors should create their own branches, which will be merged to the master when required.
 
-###Slack Info
+### Slack Info
 > We may use Slack integrations. Feel free to add any you like :smiley:
     
-####Let's start as soon as we can!
+#### Let's start as soon as we can!
 
 It will be fun :smiley:

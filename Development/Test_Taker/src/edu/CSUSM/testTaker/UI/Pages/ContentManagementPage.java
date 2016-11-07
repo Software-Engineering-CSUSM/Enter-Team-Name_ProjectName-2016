@@ -4,7 +4,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 
+import edu.CSUSM.testTaker.LibraryController;
 import edu.CSUSM.testTaker.UI.CustomPage;
+import edu.CSUSM.testTaker.UI.CustomPage.PanelType;
 
 public class ContentManagementPage extends CustomPage {
 	/**
@@ -12,21 +14,21 @@ public class ContentManagementPage extends CustomPage {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public ContentManagementPage(PanelType currentPanelType) {
-		super(currentPanelType);
+	public ContentManagementPage(String panelName, PanelType currentPanelType) {
+		super(panelName, currentPanelType);
 		// TODO Auto-generated constructor stub
 		// System.out.println("Printing a new Form");
 		updateActions();
 	}
 
-	public ContentManagementPage(PanelType currentPanelType, BufferedImage newImage) {
-		super(currentPanelType, newImage);
+	public ContentManagementPage(String panelName, PanelType currentPanelType, BufferedImage newImage) {
+		super(panelName, currentPanelType, newImage);
 		// TODO Auto-generated constructor stub
 		updateActions();
 	}
 
-	public ContentManagementPage(PanelType currentPanelType, String imageAddress) {
-		super(currentPanelType, imageAddress);
+	public ContentManagementPage(String panelName, PanelType currentPanelType, String imageAddress) {
+		super(panelName, currentPanelType, imageAddress);
 		// TODO Auto-generated constructor stub
 		updateActions();
 	}
@@ -57,8 +59,7 @@ public class ContentManagementPage extends CustomPage {
 		public void actionPerformed(ActionEvent e) {
 			// System.out.println("Opening " + this.getClass());
 
-			CourseManagementPage cm = new CourseManagementPage(CustomPage.PanelType.TWO_BUTTON_TYPE);
-			cm.setName("Manage Content");
+			CourseManagementPage cm = new CourseManagementPage("Manage Content", CustomPage.PanelType.TWO_BUTTON_TYPE);
 			cm.parentController = parentController;
 			parentController.displayView(cm);
 		}
@@ -70,8 +71,12 @@ public class ContentManagementPage extends CustomPage {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			// System.out.println("Opening " + this.getClass());
-			CustomPage questionBuilder = new CustomPage(CustomPage.PanelType.QUESTION_BUILDER_TYPE);
-			questionBuilder.setName("Question Manager");
+			
+			//Set row Headers and idens
+			CustomPage.setQBRowHeaders(LibraryController.getAllQuestionsInCourse(""));
+			CustomPage.setQBRowIDs(LibraryController.getAllQuestionsInCourseID(""));
+			
+			CustomPage questionBuilder = new CustomPage("Question Manager", CustomPage.PanelType.QUESTION_BUILDER_TYPE);
 			questionBuilder.parentController = parentController;
 			parentController.displayView(questionBuilder);
 		}
