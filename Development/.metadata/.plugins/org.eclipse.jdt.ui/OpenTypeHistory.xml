@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <typeInfoHistroy>
+<<<<<<< HEAD
 <typeInfo handle="=Test_Taker/src&lt;edu.CSUSM.testTaker.UI.CustomObjects{CustomButton.java[CustomButton" modifiers="1" timestamp="1476727458000"/>
 <typeInfo handle="=Test_Taker/src&lt;edu.CSUSM.testTaker.UI{CustomPage.java[CustomPage" modifiers="1" timestamp="1478497927000"/>
+=======
+<typeInfo handle="=Test_Taker/src&lt;edu.CSUSM.testTaker.UI{CustomPage.java[CustomPage" modifiers="1" timestamp="1477324603000"/>
+>>>>>>> chris
 </typeInfoHistroy>
