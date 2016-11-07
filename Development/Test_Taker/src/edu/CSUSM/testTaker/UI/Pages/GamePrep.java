@@ -17,21 +17,21 @@ public class GamePrep extends CustomPage {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public GamePrep(PanelType currentPanelType) {
-		super(currentPanelType);
+	public GamePrep(String panelName, PanelType currentPanelType) {
+		super(panelName, currentPanelType);
 		// TODO Auto-generated constructor stub
-		System.out.println("Printing a new Form");
+		// System.out.println("Printing a new Form");
 		updateActions();
 	}
 
-	public GamePrep(PanelType currentPanelType, BufferedImage newImage) {
-		super(currentPanelType, newImage);
+	public GamePrep(String panelName, PanelType currentPanelType, BufferedImage newImage) {
+		super(panelName, currentPanelType, newImage);
 		// TODO Auto-generated constructor stub
 		updateActions();
 	}
 
-	public GamePrep(PanelType currentPanelType, String imageAddress) {
-		super(currentPanelType, imageAddress);
+	public GamePrep(String panelName, PanelType currentPanelType, String imageAddress) {
+		super(panelName, currentPanelType, imageAddress);
 		// TODO Auto-generated constructor stub
 		updateActions();
 	}

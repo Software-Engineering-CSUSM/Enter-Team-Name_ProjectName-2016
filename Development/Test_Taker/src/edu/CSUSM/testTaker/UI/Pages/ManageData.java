@@ -65,6 +65,7 @@ public class ManageData<ObjectDisplayed> extends JPanel {
 	private String[] rowHeaders, rowIdentifiers;
 	public JPanel tableView;
 	private JPanel innerView;
+	public static String currentIDSelected;
 
 	/**
 	 * @param panelTitle
@@ -88,6 +89,9 @@ public class ManageData<ObjectDisplayed> extends JPanel {
 		// Set local values
 		this.setRowHeaders(rowLabels);
 		this.setRowIdentifiers(objectIdentifiers);
+		
+		//Rest the row count
+		Row.ROW_COUNT = 0;
 
 		// Build the panel to hold the smaller panels
 		buildTable();
@@ -108,7 +112,7 @@ public class ManageData<ObjectDisplayed> extends JPanel {
 		gb.gridy = 0;
 		gb.gridwidth = 5;
 		gb.fill = GridBagConstraints.HORIZONTAL;
-		gb.anchor = GridBagConstraints.WEST;
+		gb.anchor = GridBagConstraints.NORTHWEST;
 
 		// Add the ScrollPane to it
 		JScrollPane scrollView = new JScrollPane(innerView, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
@@ -124,15 +128,30 @@ public class ManageData<ObjectDisplayed> extends JPanel {
 		//Get all of the questions from the libcontroller
 		//System.out.println(LibraryController.giveCourseList());
 		
-		for(CourseInfo aCourseSet : LibraryController.giveCourseList()){
+		if(this.getRowHeaders().length == 0 || this.getRowIdentifiers().length == 0){
 			
-			//Add a few times
-			for(int i = 0; i < 10; i++){
-				Course currentCourse = aCourseSet.thisCourse;
+			//Add test data
+			for(CourseInfo aCourseSet : LibraryController.giveCourseList()){
 
-				// This will eventually be more specific
-				Row newRow = new Row(currentCourse.getName(), currentCourse.getID());
-				// newRow.setSize(this.getWidth(), this.getHeight() / 3);
+				//Add a few times
+				for(int i = 0; i < 10; i++){
+					Course currentCourse = aCourseSet.thisCourse;
+
+					// This will eventually be more specific
+					Row newRow = new Row(currentCourse.getName(), currentCourse.getID());
+					// newRow.setSize(this.getWidth(), this.getHeight() / 3);
+					gb.gridy++;
+					gb.weightx = 1;
+					gb.weighty = 1;
+					gb.fill = GridBagConstraints.HORIZONTAL;
+					// Add the row to the table
+					innerView.add(newRow, gb);
+				}
+			}
+		}else{
+			//Add the data requested
+			for(int i = 0; i < this.getRowHeaders().length; i++){
+				Row newRow = new Row(rowHeaders[i], rowIdentifiers[i]);
 				gb.gridy++;
 				gb.weightx = 1;
 				gb.weighty = 1;
@@ -141,18 +160,6 @@ public class ManageData<ObjectDisplayed> extends JPanel {
 				innerView.add(newRow, gb);
 			}
 		}
-
-		// Create rows for each question
-		/*
-		for (Course tempQuestion : questionList) {
-			// This will eventually be more specific
-			Row newRow = new Row(tempQuestion.getName(), tempQuestion.getID());
-			// newRow.setSize(this.getWidth(), this.getHeight() / 3);
-			gb.gridy++;
-			gb.fill = GridBagConstraints.BOTH;
-			// Add the row to the table
-			innerView.add(newRow, gb);
-		}*/
 
 		// scrollView.setPreferredSize(new Dimension(this.getWidth(),
 		// this.getHeight() * 2));
@@ -165,6 +172,10 @@ public class ManageData<ObjectDisplayed> extends JPanel {
 	 */
 	private static class Row extends JPanel {
 
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
 		private String rowName;
 		private String accessID;
 		private static int ROW_COUNT = 0;
@@ -219,7 +230,10 @@ public class ManageData<ObjectDisplayed> extends JPanel {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					//Print out the action command
-					System.out.println(e.getActionCommand());
+					System.out.println(e.getActionCommand()); //Displays the id of the row when selected.
+					
+					//This is where we are going to open whatever content we need from the id (now that we have it)
+					currentIDSelected = e.getActionCommand();
 				}
 			});
 

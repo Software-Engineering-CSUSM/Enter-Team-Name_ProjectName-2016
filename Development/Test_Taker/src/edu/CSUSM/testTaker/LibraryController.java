@@ -22,7 +22,7 @@ import edu.CSUSM.testTaker.Backend.*;
  *              once, the variables will not need to be re-initialized.
  *
  */
-public class LibraryController {
+public class LibraryController{
 
 	/**
 	 * For Implementation, we are going to use Hashmaps. This is how: • The
@@ -535,5 +535,42 @@ public class LibraryController {
 	public static void deleteCourse(String delthing){
 		courseMap.remove(delthing);
 	}
+	
+	//Get a list of all of the course names
+	public static String[] getAllCoursesAvailable(){
+		ArrayList<String> thisList = new ArrayList<String>();
+		
+		//Add all of the course to it
+		for(Course temp : LibraryController.courseMap.values()){
+			thisList.add(temp.getName());
+			//System.out.println(temp.getName());
+		}
+		
+		//Return the list of names
+		return thisList.toArray(new String[thisList.size()]);
+	}
+	
+	//Get a list of all of the course idens
+		public static String[] getAllCoursesAvailableIDs(){
+			ArrayList<String> thisList = new ArrayList<String>();
+			
+			//Add all of the course to it
+			for(Course temp : LibraryController.courseMap.values()){
+				thisList.add(temp.getID());
+			}
+			
+			//Return the list of names
+			return thisList.toArray(new String[thisList.size()]);
+		}
+		
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 }

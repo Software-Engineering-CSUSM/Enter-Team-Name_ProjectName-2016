@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 
+import edu.CSUSM.testTaker.LibraryController;
 import edu.CSUSM.testTaker.UI.CustomPage;
 
 /**
@@ -20,21 +21,21 @@ public class ViewQuestionList extends CustomPage {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public ViewQuestionList(PanelType currentPanelType) {
-		super(currentPanelType);
+	public ViewQuestionList(String panelName, PanelType currentPanelType) {
+		super(panelName, currentPanelType);
 		// TODO Auto-generated constructor stub
 		// System.out.println("Printing a new Form");
 		updateActions();
 	}
 
-	public ViewQuestionList(PanelType currentPanelType, BufferedImage newImage) {
-		super(currentPanelType, newImage);
+	public ViewQuestionList(String panelName, PanelType currentPanelType, BufferedImage newImage) {
+		super(panelName, currentPanelType, newImage);
 		// TODO Auto-generated constructor stub
 		updateActions();
 	}
 
-	public ViewQuestionList(PanelType currentPanelType, String imageAddress) {
-		super(currentPanelType, imageAddress);
+	public ViewQuestionList(String panelName, PanelType currentPanelType, String imageAddress) {
+		super(panelName, currentPanelType, imageAddress);
 		// TODO Auto-generated constructor stub
 		updateActions();
 	}
@@ -64,8 +65,9 @@ public class ViewQuestionList extends CustomPage {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			// System.out.println("Opening " + this.getClass());
-			CustomPage questionBuilder = new CustomPage(CustomPage.PanelType.QUESTION_BUILDER_TYPE);
-			questionBuilder.setName("Question Page");
+			
+			
+			CustomPage questionBuilder = new CustomPage("Question Page", CustomPage.PanelType.QUESTION_BUILDER_TYPE);
 			questionBuilder.parentController = parentController;
 			parentController.displayView(questionBuilder);
 		}

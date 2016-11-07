@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 
 import edu.CSUSM.testTaker.UI.CustomPage;
+import edu.CSUSM.testTaker.UI.CustomPage.PanelType;
 
 /**
  * @author Jeremy
@@ -28,21 +29,21 @@ public class AddQuestion extends CustomPage {
 	// and answer text area.
 	public String questionStr, answerStr;
 
-	public AddQuestion(PanelType currentPanelType) {
-		super(currentPanelType);
+	public AddQuestion(String panelName, PanelType currentPanelType) {
+		super(panelName, currentPanelType);
 		// TODO Auto-generated constructor stub
 		// System.out.println("Printing a new Form");
 		updateActions();
 	}
 
-	public AddQuestion(PanelType currentPanelType, BufferedImage newImage) {
-		super(currentPanelType, newImage);
+	public AddQuestion(String panelName, PanelType currentPanelType, BufferedImage newImage) {
+		super(panelName, currentPanelType, newImage);
 		// TODO Auto-generated constructor stub
 		updateActions();
 	}
 
-	public AddQuestion(PanelType currentPanelType, String imageAddress) {
-		super(currentPanelType, imageAddress);
+	public AddQuestion(String panelName, PanelType currentPanelType, String imageAddress) {
+		super(panelName, currentPanelType, imageAddress);
 		// TODO Auto-generated constructor stub
 		updateActions();
 	}
@@ -87,8 +88,7 @@ public class AddQuestion extends CustomPage {
 			// Constructor uses a main window with just a logo type, and
 			// an AddAnotherQuestion to create the correct popUp window in the
 			// PopUp class
-			PopUp saveQ = new PopUp(PopUp.PanelType.LOGO_ONLY_TYPE, PopUpType.AddAnotherQuestion);
-			saveQ.setName("Save Question Pop Up Window");
+			PopUp saveQ = new PopUp("Add Question Page", PopUp.PanelType.LOGO_ONLY_TYPE, PopUpType.AddAnotherQuestion);
 			saveQ.parentController = parentController;
 			parentController.displayView(saveQ);
 
@@ -103,8 +103,7 @@ public class AddQuestion extends CustomPage {
 		public void actionPerformed(ActionEvent e) {
 			// System.out.println("Opening " + this.getClass());
 
-			ViewQuestionList list = new ViewQuestionList(ViewQuestionList.PanelType.QUESTION_BUILDER_TYPE);
-			list.setName("View Questions");
+			AddQuestion list = new AddQuestion("View Questions", AddQuestion.PanelType.QUESTION_BUILDER_TYPE);
 			list.parentController = parentController;
 			parentController.displayView(list);
 

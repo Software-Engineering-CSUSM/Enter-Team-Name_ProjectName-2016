@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 
 import edu.CSUSM.testTaker.UI.CustomPage;
+import edu.CSUSM.testTaker.UI.CustomPage.PanelType;
 
 /**
  * @author Jeremy
@@ -26,28 +27,28 @@ public class CreateQuizorSet extends CustomPage {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public CreateQuizorSet(PanelType currentPanelType) {
-		super(currentPanelType);
+	public CreateQuizorSet(String panelName, PanelType currentPanelType) {
+		super(panelName, currentPanelType);
 		// TODO Auto-generated constructor stub
 		// System.out.println("Printing a new Form");
 		updateActions();
 	}
 
-	public CreateQuizorSet(PanelType currentPanelType, BufferedImage newImage) {
-		super(currentPanelType, newImage);
+	public CreateQuizorSet(String panelName, PanelType currentPanelType, BufferedImage newImage) {
+		super(panelName, currentPanelType, newImage);
 		// TODO Auto-generated constructor stub
 		updateActions();
 	}
 
-	public CreateQuizorSet(PanelType currentPanelType, String imageAddress) {
-		super(currentPanelType, imageAddress);
+	public CreateQuizorSet(String panelName, PanelType currentPanelType, String imageAddress) {
+		super(panelName, currentPanelType, imageAddress);
 		// TODO Auto-generated constructor stub
 		updateActions();
 	}
 
 	// Constructor used to create page
-	public CreateQuizorSet(PanelType currentPanelType, PageType currentPageType) {
-		super(currentPanelType, currentPageType);
+	public CreateQuizorSet(String panelName, PanelType currentPanelType, PageType currentPageType) {
+		super(panelName, currentPanelType, currentPageType);
 		// Set the layout
 
 		// Build the contents, If saving a quiz, call updateActions,
@@ -116,10 +117,9 @@ public class CreateQuizorSet extends CustomPage {
 		public void actionPerformed(ActionEvent e) {
 			System.out.println("Opening " + this.getClass());
 
-			CreateNewQuizOrSet newQuiz = new CreateNewQuizOrSet(CreateNewQuizOrSet.PanelType.QUESTION_BUILDER_TYPE,
+			CreateNewQuizOrSet newQuiz = new CreateNewQuizOrSet("Create New Quiz", CreateNewQuizOrSet.PanelType.QUESTION_BUILDER_TYPE,
 					CreateNewQuizOrSet.PageType.QUIZ);
-			System.out.println(newQuiz.toString());
-			newQuiz.setName("Create New Quiz");
+			//System.out.println(newQuiz.toString());
 			newQuiz.parentController = parentController;
 			parentController.displayView(newQuiz);
 
@@ -136,10 +136,9 @@ public class CreateQuizorSet extends CustomPage {
 		public void actionPerformed(ActionEvent e) {
 			System.out.println("Opening " + this.getClass());
 
-			CreateNewQuizOrSet newSet = new CreateNewQuizOrSet(CreateNewQuizOrSet.PanelType.QUESTION_BUILDER_TYPE,
+			CreateNewQuizOrSet newSet = new CreateNewQuizOrSet("Create New Flash Card Set", CreateNewQuizOrSet.PanelType.QUESTION_BUILDER_TYPE,
 					CreateNewQuizOrSet.PageType.FLASHCARD);
 			System.out.println(newSet.toString());
-			newSet.setName("Create New Flashcard Set");
 			newSet.parentController = parentController;
 			parentController.displayView(newSet);
 
@@ -156,9 +155,8 @@ public class CreateQuizorSet extends CustomPage {
 		public void actionPerformed(ActionEvent e) {
 			// System.out.println("Opening " + this.getClass());
 
-			EditExistingQuizorSet editQ = new EditExistingQuizorSet(
+			EditExistingQuizorSet editQ = new EditExistingQuizorSet("Edit Quiz Page", 
 					EditExistingQuizorSet.PanelType.QUESTION_BUILDER_TYPE, EditExistingQuizorSet.PageType.QUIZ);
-			editQ.setName("Edit Quiz Page");
 			editQ.parentController = parentController;
 			parentController.displayView(editQ);
 
@@ -175,7 +173,7 @@ public class CreateQuizorSet extends CustomPage {
 		public void actionPerformed(ActionEvent e) {
 			// System.out.println("Opening " + this.getClass());
 
-			EditExistingQuizorSet editSet = new EditExistingQuizorSet(
+			EditExistingQuizorSet editSet = new EditExistingQuizorSet("Edit Flash Card Set", 
 					EditExistingQuizorSet.PanelType.QUESTION_BUILDER_TYPE, EditExistingQuizorSet.PageType.FLASHCARD);
 			editSet.setName("Edit Flashcard Set");
 			editSet.parentController = parentController;
@@ -190,8 +188,7 @@ public class CreateQuizorSet extends CustomPage {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			// System.out.println("Opening " + this.getClass());
-			CustomPage questionBuilder = new CustomPage(CustomPage.PanelType.QUESTION_BUILDER_TYPE);
-			questionBuilder.setName("Question Page");
+			CustomPage questionBuilder = new CustomPage("Question Page", CustomPage.PanelType.QUESTION_BUILDER_TYPE);
 			questionBuilder.parentController = parentController;
 			parentController.displayView(questionBuilder);
 		}

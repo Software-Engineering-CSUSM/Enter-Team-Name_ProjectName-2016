@@ -2,22 +2,30 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="LibraryContr" key="selection"/>
+		<item value="TakeQuizTakeSet" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
-			<item value="LibraryContr"/>
-			<item value="toStr"/>
-			<item value="toStrn"/>
-			<item value="alignment"/>
-			<item value="CourseID"/>
-			<item value="courseID"/>
-			<item value="course"/>
-			<item value="courseD"/>
+			<item value="ViewQuestionList"/>
+			<item value="titleof"/>
+			<item value="question "/>
+			<item value="createQuest"/>
+			<item value="CourseManagement"/>
+			<item value="parentController"/>
+			<item value="setna"/>
+			<item value="setquestion"/>
 		</list>
 		<list key="replacehistory">
+			<item value="TakeQuizTakeSet"/>
+			<item value="StudyToolsMain"/>
+			<item value="QuizResultsPage"/>
+			<item value="QuizAndFlashQuestionPage"/>
+			<item value="PopUp"/>
+			<item value="EditQuestionFromExisting"/>
+			<item value="EditExistingQuizorSet"/>
+			<item value="CreateQuizorSet"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">

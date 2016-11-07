@@ -17,6 +17,7 @@ import javax.swing.JTextField;
 
 import edu.CSUSM.testTaker.UI.CustomPage;
 import edu.CSUSM.testTaker.UI.GUIController;
+import edu.CSUSM.testTaker.UI.CustomPage.PanelType;
 
 /**
  * @author Jeremy
@@ -45,8 +46,8 @@ public class PopUp extends CustomPage {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public PopUp(PanelType currentPanelType) {
-		super(currentPanelType);
+	public PopUp(String panelName, PanelType currentPanelType) {
+		super(panelName, currentPanelType);
 		// TODO Auto-generated constructor stub
 
 		// createWindowQuestionPopUp();
@@ -54,8 +55,8 @@ public class PopUp extends CustomPage {
 
 	// Constructor to create pop up windows. It uses enum type
 	// to determine the appropriate window to display.
-	public PopUp(PanelType currentPanelType, PopUpType pType) {
-		super(currentPanelType);
+	public PopUp(String panelName, PanelType currentPanelType, PopUpType pType) {
+		super(panelName, currentPanelType);
 		// TODO Auto-generated constructor stub
 
 		if (pType == PopUpType.SaveQuiz)
@@ -69,14 +70,14 @@ public class PopUp extends CustomPage {
 
 	}
 
-	public PopUp(PanelType currentPanelType, BufferedImage newImage) {
-		super(currentPanelType, newImage);
+	public PopUp(String panelName, PanelType currentPanelType, BufferedImage newImage) {
+		super(panelName, currentPanelType, newImage);
 		// TODO Auto-generated constructor stub
 		updateActions();
 	}
 
-	public PopUp(PanelType currentPanelType, String imageAddress) {
-		super(currentPanelType, imageAddress);
+	public PopUp(String panelName, PanelType currentPanelType, String imageAddress) {
+		super(panelName, currentPanelType, imageAddress);
 		// TODO Auto-generated constructor stub
 		updateActions();
 	}
@@ -151,8 +152,7 @@ public class PopUp extends CustomPage {
 			public void actionPerformed(ActionEvent e) {
 
 				popUpWindow.dispose();
-				StudyToolsMain QandFMain = new StudyToolsMain(StudyToolsMain.PanelType.THREE_BUTTON_TYPE);
-				QandFMain.setName("Quiz Main Page");
+				StudyToolsMain QandFMain = new StudyToolsMain("Quiz Main Page", StudyToolsMain.PanelType.THREE_BUTTON_TYPE);
 				QandFMain.parentController = parentController;
 				parentController.displayView(QandFMain);
 
@@ -167,8 +167,7 @@ public class PopUp extends CustomPage {
 			public void actionPerformed(ActionEvent e) {
 
 				popUpWindow.dispose();
-				AddQuestion addQ = new AddQuestion(AddQuestion.PanelType.Q_and_A_Type);
-				addQ.setName("Add Question Page");
+				AddQuestion addQ = new AddQuestion("Add Question Page", AddQuestion.PanelType.Q_and_A_Type);
 				addQ.parentController = parentController;
 				parentController.displayView(addQ);
 				
@@ -237,8 +236,7 @@ public class PopUp extends CustomPage {
 			public void actionPerformed(ActionEvent e) {
 
 				popUpWindow.dispose();
-				QuizAndFlashMain QuizPage = new QuizAndFlashMain(QuizAndFlashMain.PanelType.THREE_BUTTON_TYPE);
-				QuizPage.setName("Quiz Main Page");
+				QuizAndFlashMain QuizPage = new QuizAndFlashMain("Quiz Main Page", QuizAndFlashMain.PanelType.THREE_BUTTON_TYPE);
 				QuizPage.parentController = parentController;
 				parentController.displayView(QuizPage);
 				
@@ -317,7 +315,7 @@ public class PopUp extends CustomPage {
 			public void actionPerformed(ActionEvent e) {
 
 				popUpWindow.dispose();
-				QuizAndFlashMain FlashPage = new QuizAndFlashMain(QuizAndFlashMain.PanelType.THREE_BUTTON_TYPE,
+				QuizAndFlashMain FlashPage = new QuizAndFlashMain("Flash Card Main Page", QuizAndFlashMain.PanelType.THREE_BUTTON_TYPE,
 						QuizAndFlashMain.PageType.FLASHCARD);
 				FlashPage.setName("Flashcard Main Page");
 				FlashPage.parentController = parentController;
@@ -339,9 +337,8 @@ public class PopUp extends CustomPage {
 		public void actionPerformed(ActionEvent e) {
 			System.out.println("Opening " + this.getClass());
 
-			TakeQuizTakeSet takeSet = new TakeQuizTakeSet(TakeQuizTakeSet.PanelType.TWO_BUTTON_TYPE,
+			TakeQuizTakeSet takeSet = new TakeQuizTakeSet("Take Quiz Page", TakeQuizTakeSet.PanelType.TWO_BUTTON_TYPE,
 					TakeQuizTakeSet.PageType.FLASHCARD);
-			takeSet.setName("Take Quiz Page");
 			takeSet.parentController = parentController;
 			parentController.displayView(takeSet);
 

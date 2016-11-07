@@ -1,2 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<qualifiedTypeNameHistroy/>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="edu.CSUSM.testTaker.Backend.Course"/>
+<fullyQualifiedTypeName name="edu.CSUSM.testTaker.LibraryController.CourseInfo"/>
+<fullyQualifiedTypeName name="java.awt.GridBagConstraints"/>
+<fullyQualifiedTypeName name="java.awt.GridLayout"/>
+<fullyQualifiedTypeName name="java.awt.event.ActionListener"/>
+<fullyQualifiedTypeName name="edu.CSUSM.testTaker.LibraryController"/>
+</qualifiedTypeNameHistroy>

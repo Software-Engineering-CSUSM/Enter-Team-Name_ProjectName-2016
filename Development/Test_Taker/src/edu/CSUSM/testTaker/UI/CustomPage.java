@@ -52,7 +52,7 @@ public class CustomPage extends JPanel {
 	public JLabel imageLabel = new JLabel();
 	protected static int centerOfNewFrame;
 	public JButton[] currentActions;
-	public String panelTypeString, titleOfCurrentQuestionPanel;
+	public String panelTypeString;
 	public NavigationController parentController;
 
 	// Added show/Hide check box to show and hide answer for flashcard
@@ -71,6 +71,7 @@ public class CustomPage extends JPanel {
 	/** For the Question Panel */
 	JLabel titleLabel;
 	JPanel questionsMainPanel;
+	static String rowHeaders[], idens[];
 
 	/** End of question panel specific vars */
 
@@ -90,8 +91,16 @@ public class CustomPage extends JPanel {
 
 		FlashcardAnswerPopUp, AddAnotherQuestion, SaveQuiz, SaveSet
 	}
+	
+	public static void setQBRowHeaders(String[] list){
+		rowHeaders = list;
+	}
+	
+	public static void setQBRowIDs(String[] list){
+		idens = list;
+	}
 
-	public CustomPage(PanelType currentPanelType, String imageAddress) {
+	public CustomPage(String panelName, PanelType currentPanelType, String imageAddress) {
 
 		super();
 		// Create the image from the image address
@@ -102,34 +111,40 @@ public class CustomPage extends JPanel {
 			// handle exception...
 			System.out.println(ex.getMessage());
 		}
+		setName(panelName);
 
 		buildPanel(currentPanelType);
 	}
 
-	public CustomPage(PanelType currentPanelType, BufferedImage newImage) {
+	public CustomPage(String panelName, PanelType currentPanelType, BufferedImage newImage) {
 		super();
 		CustomPage.mainLogoToDisplay = newImage;
 		buildPanel(currentPanelType);
+		setName(panelName);
 	}
 
 	/**
 	 * @param currentPanelType
 	 * @description Call if the image was already found
 	 */
-	public CustomPage(PanelType currentPanelType) {
+	public CustomPage(String nameOfPanel, PanelType currentPanelType) {
 		super();
 		// Set the layout
 		this.setLayout(new BorderLayout());
+		
+		this.setName(nameOfPanel);
 
 		// Build the contents
 		buildPanel(currentPanelType);
 
 	}
 
-	public CustomPage(PanelType currentPanelType, PageType currentPageType) {
+	public CustomPage(String nameOfPanel, PanelType currentPanelType, PageType currentPageType) {
 		super();
 		// Set the layout
 		this.setLayout(new BorderLayout());
+		
+		this.setName(nameOfPanel);
 
 		// Build the contents
 		buildPanel(currentPanelType);
@@ -381,10 +396,6 @@ public class CustomPage extends JPanel {
 		 * Modified addButtons to rename to string
 		 */
 
-		/** Testing - Move to actual class before release */
-		this.titleOfCurrentQuestionPanel = "Question Builder";
-		/** end of testing */
-
 		// Create a title label to demonstrate what is shown
 
 		// Now, add a panel for the questions
@@ -396,8 +407,7 @@ public class CustomPage extends JPanel {
 
 		// We need to add a few components to this view:
 		// JComboBox - Allows the user to
-		ManageData<String> newDataManager = new ManageData<String>(this.titleOfCurrentQuestionPanel,
-				new String[] { "Cell 1" }, new String[] { "No ID" });
+		ManageData<String> newDataManager = new ManageData<String>(this.getName(), rowHeaders, idens);
 		this.add(newDataManager, BorderLayout.CENTER);
 
 		addButtons(2);

@@ -79,9 +79,7 @@ public class GUIController extends JFrame {
 		/** Main Page */
 		mainNavigationController = new NavigationController();
 
-		CustomPage mainPage = new CustomPage(CustomPage.PanelType.LOGO_ONLY_TYPE,
-				NavigationController.applicationImage);
-		mainPage.setName(SideMenu.menuOptionButtons[0].getText());
+		CustomPage mainPage = new CustomPage(SideMenu.menuOptionButtons[0].getText(), CustomPage.PanelType.LOGO_ONLY_TYPE, NavigationController.applicationImage);
 		mainNavigationController.setInitialView(mainPage);
 		mainPage.parentController = mainNavigationController;
 
@@ -96,8 +94,7 @@ public class GUIController extends JFrame {
 		 * coursesMain.setName(SideMenu.menuOptionButtons[1].getText());
 		 * coursesNC.setInitialView(coursesMain);
 		 */
-		courses = new CoursesMain(CustomPage.PanelType.TWO_BUTTON_TYPE);
-		courses.setName("Courses Main");
+		courses = new CoursesMain(SideMenu.menuOptionButtons[1].getText(), CustomPage.PanelType.TWO_BUTTON_TYPE);
 		coursesNC.setInitialView(courses);
 		courses.parentController = coursesNC;
 
@@ -120,16 +117,14 @@ public class GUIController extends JFrame {
 		/** Study Tools */
 		studyToolsNC = new NavigationController();
 
-		StudyToolsMain studyToolsMain = new StudyToolsMain(CustomPage.PanelType.THREE_BUTTON_TYPE);
-		studyToolsMain.setName(SideMenu.menuOptionButtons[2].getText());
+		StudyToolsMain studyToolsMain = new StudyToolsMain(SideMenu.menuOptionButtons[2].getText(), CustomPage.PanelType.THREE_BUTTON_TYPE);
 		studyToolsNC.setInitialView(studyToolsMain);
 		studyToolsMain.parentController = studyToolsNC;
 
 		/** Statistics */
 		final NavigationController statsNC = new NavigationController();
 
-		CustomPage statsMain = new CustomPage(CustomPage.PanelType.THREE_BUTTON_TYPE);
-		statsMain.setName(SideMenu.menuOptionButtons[3].getText());
+		CustomPage statsMain = new CustomPage(SideMenu.menuOptionButtons[3].getText(), CustomPage.PanelType.THREE_BUTTON_TYPE);
 		statsNC.setInitialView(statsMain);
 		statsMain.parentController = statsNC;
 

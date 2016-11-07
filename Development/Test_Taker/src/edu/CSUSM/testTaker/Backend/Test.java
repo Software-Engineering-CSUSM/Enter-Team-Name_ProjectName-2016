@@ -8,7 +8,7 @@ import java.util.UUID;
 
 import java.io.Serializable;
 
-public class Test implements Serializable, Registerable{
+public class Test extends TaskObject implements Serializable, Registerable{
 	static final long serialVersionUID = 1L;
 
 	transient ArrayList<Question> questionList;
@@ -54,6 +54,7 @@ public class Test implements Serializable, Registerable{
 	 */
 	public Test(String testName){
 		this._testName = testName;
+		this.currentName = testName;
 	}
 
 	/**
@@ -64,6 +65,8 @@ public class Test implements Serializable, Registerable{
 	 */
 	public Test(String testName, AbstractList<Question> listOfQuestionsForTest){
 		this._testName = testName;
+		this.currentID = getID();
+		this.currentName = testName;
 		setQuestionList(listOfQuestionsForTest);
 	}
 
@@ -77,7 +80,9 @@ public class Test implements Serializable, Registerable{
 	public Test(String testName, AbstractList<Question> listOfQuestionsForTest, String courseID){
 		this._testName = testName;
 		setQuestionList(listOfQuestionsForTest);
+		this.currentName = testName;
 		this._courseID = courseID;
+		this.currentID = courseID;
 	}
 
 	/**
