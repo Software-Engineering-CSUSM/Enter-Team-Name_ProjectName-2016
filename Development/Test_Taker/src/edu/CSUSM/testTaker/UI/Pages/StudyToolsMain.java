@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 
 import edu.CSUSM.testTaker.UI.CustomPage;
+import edu.CSUSM.testTaker.UI.CustomPage.PanelType;
 
 public class StudyToolsMain extends CustomPage {
 	/**
@@ -12,20 +13,21 @@ public class StudyToolsMain extends CustomPage {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public StudyToolsMain(PanelType currentPanelType) {
-		super(currentPanelType);
+	public StudyToolsMain(String panelName, PanelType currentPanelType) {
+		super(panelName, currentPanelType);
+		// TODO Auto-generated constructor stub
+		// System.out.println("Printing a new Form");
+		updateActions();
+	}
+
+	public StudyToolsMain(String panelName, PanelType currentPanelType, BufferedImage newImage) {
+		super(panelName, currentPanelType, newImage);
 		// TODO Auto-generated constructor stub
 		updateActions();
 	}
 
-	public StudyToolsMain(PanelType currentPanelType, BufferedImage newImage) {
-		super(currentPanelType, newImage);
-		// TODO Auto-generated constructor stub
-		updateActions();
-	}
-
-	public StudyToolsMain(PanelType currentPanelType, String imageAddress) {
-		super(currentPanelType, imageAddress);
+	public StudyToolsMain(String panelName, PanelType currentPanelType, String imageAddress) {
+		super(panelName, currentPanelType, imageAddress);
 		// TODO Auto-generated constructor stub
 		updateActions();
 	}
@@ -68,8 +70,7 @@ public class StudyToolsMain extends CustomPage {
 					parentController.getHeight(), null); cm.setName("Study Game");
 					parentController.displayView(cm);
 					*/
-			GamePrep prep = new GamePrep(CustomPage.PanelType.TWO_BUTTON_TYPE);
-			prep.setName("Game Setup");
+			GamePrep prep = new GamePrep("Game Setup", CustomPage.PanelType.TWO_BUTTON_TYPE);
 			prep.parentController = parentController;
 			parentController.displayView(prep);
 			
@@ -86,8 +87,7 @@ public class StudyToolsMain extends CustomPage {
 			System.out.println("Opening " + this.getClass());
 
 			//FlashCardMain flashCard = new FlashCardMain(FlashCardMain.PanelType.THREE_BUTTON_TYPE);
-			QuizAndFlashMain flashCard = new QuizAndFlashMain(QuizAndFlashMain.PanelType.THREE_BUTTON_TYPE, QuizAndFlashMain.PageType.FLASHCARD);
-			flashCard.setName("Flash Card Page");
+			QuizAndFlashMain flashCard = new QuizAndFlashMain("Flash Card Page", QuizAndFlashMain.PanelType.THREE_BUTTON_TYPE, QuizAndFlashMain.PageType.FLASHCARD);
 			flashCard.parentController = parentController;
 			parentController.displayView(flashCard);
 		}
@@ -101,7 +101,7 @@ public class StudyToolsMain extends CustomPage {
 			System.out.println("Opening " + this.getClass());
 
 			// System.out.println("Opening " + this.getClass());
-			QuizAndFlashMain quizPage = new QuizAndFlashMain(QuizAndFlashMain.PanelType.THREE_BUTTON_TYPE, QuizAndFlashMain.PageType.QUIZ);
+			QuizAndFlashMain quizPage = new QuizAndFlashMain("Quiz Page", QuizAndFlashMain.PanelType.THREE_BUTTON_TYPE, QuizAndFlashMain.PageType.QUIZ);
 			quizPage.setName("Quiz Page");
 			quizPage.parentController = parentController;
 			parentController.displayView(quizPage);

@@ -832,6 +832,8 @@ java.io.FileNotFoundException: /icons/eview16/statistics_view.gif
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.lang.reflect.Method.invoke(Method.java:497)
+<<<<<<< HEAD
+=======
 	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:673)
 	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:610)
 	at org.eclipse.equinox.launcher.Main.run(Main.java:1519)
@@ -885,10 +887,67 @@ org.eclipse.jface.resource.DeviceResourceException: Unable to create resource UR
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.lang.reflect.Method.invoke(Method.java:497)
+>>>>>>> stevenc
 	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:673)
 	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:610)
 	at org.eclipse.equinox.launcher.Main.run(Main.java:1519)
 
+<<<<<<< HEAD
+!ENTRY org.eclipse.ui.workbench 4 0 2016-10-30 16:16:13.045
+!MESSAGE Unable to create resource URLImageDescriptor(platform:/plugin/org.eclipse.tracecompass.tmf.analysis.xml.ui/icons/eview16/statistics_view.gif)
+!STACK 0
+org.eclipse.jface.resource.DeviceResourceException: Unable to create resource URLImageDescriptor(platform:/plugin/org.eclipse.tracecompass.tmf.analysis.xml.ui/icons/eview16/statistics_view.gif)
+	at org.eclipse.jface.resource.ImageDescriptor.createResource(ImageDescriptor.java:166)
+	at org.eclipse.jface.resource.DeviceResourceManager.allocate(DeviceResourceManager.java:52)
+	at org.eclipse.jface.resource.AbstractResourceManager.create(AbstractResourceManager.java:86)
+	at org.eclipse.jface.resource.LocalResourceManager.allocate(LocalResourceManager.java:69)
+	at org.eclipse.jface.resource.AbstractResourceManager.create(AbstractResourceManager.java:86)
+	at org.eclipse.jface.resource.ResourceManager.createImage(ResourceManager.java:172)
+	at org.eclipse.ui.internal.quickaccess.QuickAccessEntry.findOrCreateImage(QuickAccessEntry.java:132)
+	at org.eclipse.ui.internal.quickaccess.QuickAccessEntry.getImage(QuickAccessEntry.java:115)
+	at org.eclipse.ui.internal.quickaccess.QuickAccessEntry.paint(QuickAccessEntry.java:218)
+	at org.eclipse.ui.internal.quickaccess.QuickAccessContents$9.handleEvent(QuickAccessContents.java:767)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Display.sendEvent(Display.java:4248)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1501)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1524)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1509)
+	at org.eclipse.swt.widgets.Table.drawInteriorWithFrame_inView(Table.java:1176)
+	at org.eclipse.swt.widgets.Display.windowProc(Display.java:5970)
+	at org.eclipse.swt.internal.cocoa.OS.objc_msgSendSuper(Native Method)
+	at org.eclipse.swt.widgets.Widget.drawRect(Widget.java:758)
+	at org.eclipse.swt.widgets.Table.drawRect(Table.java:1193)
+	at org.eclipse.swt.widgets.Display.windowProc(Display.java:5703)
+	at org.eclipse.swt.internal.cocoa.OS.objc_msgSendSuper(Native Method)
+	at org.eclipse.swt.widgets.Display.applicationNextEventMatchingMask(Display.java:5076)
+	at org.eclipse.swt.widgets.Display.applicationProc(Display.java:5457)
+	at org.eclipse.swt.internal.cocoa.OS.objc_msgSend(Native Method)
+	at org.eclipse.swt.internal.cocoa.NSApplication.nextEventMatchingMask(NSApplication.java:94)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3692)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$4.run(PartRenderingEngine.java:1121)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:336)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1022)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:150)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:687)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:336)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:604)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:148)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:138)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:134)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:388)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:243)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:673)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:610)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1519)
+
+=======
+>>>>>>> stevenc
 !ENTRY org.eclipse.recommenders.coordinates.rcp 4 5 2016-10-30 16:19:45.486
 !MESSAGE Failed to read cached coordinates from file ‘/Users/Justin/Documents/Organized Documents/My Documents/School Stuff/CSUSM/Fall 2016/Software Engineering/SE Group Project/Development/.recommenders/caches/identified-project-coordinates.json’
 !STACK 0
@@ -1326,4 +1385,3835 @@ Caused by: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING
 	at com.google.gson.internal.bind.MapTypeAdapterFactory$Adapter.read(MapTypeAdapterFactory.java:145)
 	at com.google.gson.Gson.fromJson(Gson.java:803)
 	... 6 more
+<<<<<<< HEAD
+<<<<<<< HEAD
+!SESSION 2016-11-04 08:54:12.804 -----------------------------------------------
+eclipse.buildId=4.6.0.I20160606-1100
+java.version=1.8.0_101
+java.vendor=Oracle Corporation
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.java.product -keyring /Users/justin/.eclipse_keyring
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.eclipse.epp.package.java.product -keyring /Users/justin/.eclipse_keyring
+
+!ENTRY org.eclipse.core.resources 2 10035 2016-11-04 08:54:16.904
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.core.net 1 0 2016-11-04 08:54:17.226
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY com.wakatime.eclipse.plugin 1 0 2016-11-04 08:54:25.208
+!MESSAGE wakatime-cli is up to date.
+=======
 >>>>>>> Tizzle
+>>>>>>> stevenc
+=======
+>>>>>>> Tizzle
+>>>>>>> stevenc
+!SESSION 2016-11-04 09:03:29.075 -----------------------------------------------
+eclipse.buildId=4.6.0.I20160606-1100
+java.version=1.8.0_101
+java.vendor=Oracle Corporation
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.java.product -keyring /Users/justin/.eclipse_keyring
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.eclipse.epp.package.java.product -keyring /Users/justin/.eclipse_keyring
+
+!ENTRY org.eclipse.e4.ui.workbench 4 0 2016-11-04 09:03:40.211
+!MESSAGE Unable to load resource file:/Users/justin/Documents/Organized%20Documents/My%20Documents/School%20Stuff/CSUSM/Fall%202016/Software%20Engineering/SE%20Group%20Project/Development/.metadata/.plugins/org.eclipse.e4.workbench/workbench.xmi
+!STACK 0
+org.eclipse.emf.ecore.resource.impl.ResourceSetImpl$1DiagnosticWrappedException: org.xml.sax.SAXParseExceptionpublicId: file:/Users/justin/Documents/Organized%20Documents/My%20Documents/School%20Stuff/CSUSM/Fall%202016/Software%20Engineering/SE%20Group%20Project/Development/.metadata/.plugins/org.eclipse.e4.workbench/workbench.xmi; systemId: file:/Users/justin/Documents/Organized%20Documents/My%20Documents/School%20Stuff/CSUSM/Fall%202016/Software%20Engineering/SE%20Group%20Project/Development/.metadata/.plugins/org.eclipse.e4.workbench/workbench.xmi; lineNumber: 2; columnNumber: 2; The markup in the document preceding the root element must be well-formed.
+	at org.eclipse.emf.ecore.resource.impl.ResourceSetImpl.handleDemandLoadException(ResourceSetImpl.java:319)
+	at org.eclipse.emf.ecore.resource.impl.ResourceSetImpl.demandLoadHelper(ResourceSetImpl.java:278)
+	at org.eclipse.emf.ecore.resource.impl.ResourceSetImpl.getResource(ResourceSetImpl.java:406)
+	at org.eclipse.e4.ui.internal.workbench.ResourceHandler.getResource(ResourceHandler.java:289)
+	at org.eclipse.e4.ui.internal.workbench.ResourceHandler.loadResource(ResourceHandler.java:265)
+	at org.eclipse.e4.ui.internal.workbench.ResourceHandler.loadMostRecentModel(ResourceHandler.java:169)
+	at org.eclipse.e4.ui.internal.workbench.swt.E4Application.loadApplicationModel(E4Application.java:377)
+	at org.eclipse.e4.ui.internal.workbench.swt.E4Application.createE4Workbench(E4Application.java:252)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:626)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:336)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:604)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:148)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:138)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:134)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:388)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:243)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:673)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:610)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1519)
+Caused by: org.xml.sax.SAXParseExceptionpublicId: file:/Users/justin/Documents/Organized%20Documents/My%20Documents/School%20Stuff/CSUSM/Fall%202016/Software%20Engineering/SE%20Group%20Project/Development/.metadata/.plugins/org.eclipse.e4.workbench/workbench.xmi; systemId: file:/Users/justin/Documents/Organized%20Documents/My%20Documents/School%20Stuff/CSUSM/Fall%202016/Software%20Engineering/SE%20Group%20Project/Development/.metadata/.plugins/org.eclipse.e4.workbench/workbench.xmi; lineNumber: 2; columnNumber: 2; The markup in the document preceding the root element must be well-formed.
+	at com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper.createSAXParseException(ErrorHandlerWrapper.java:203)
+	at com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper.fatalError(ErrorHandlerWrapper.java:177)
+	at com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(XMLErrorReporter.java:400)
+	at com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(XMLErrorReporter.java:327)
+	at com.sun.org.apache.xerces.internal.impl.XMLScanner.reportFatalError(XMLScanner.java:1465)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl$PrologDriver.next(XMLDocumentScannerImpl.java:883)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl.next(XMLDocumentScannerImpl.java:606)
+	at com.sun.org.apache.xerces.internal.impl.XMLNSDocumentScannerImpl.next(XMLNSDocumentScannerImpl.java:118)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl.scanDocument(XMLDocumentFragmentScannerImpl.java:504)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:848)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:777)
+	at com.sun.org.apache.xerces.internal.parsers.XMLParser.parse(XMLParser.java:141)
+	at com.sun.org.apache.xerces.internal.parsers.AbstractSAXParser.parse(AbstractSAXParser.java:1213)
+	at com.sun.org.apache.xerces.internal.jaxp.SAXParserImpl$JAXPSAXParser.parse(SAXParserImpl.java:643)
+	at com.sun.org.apache.xerces.internal.jaxp.SAXParserImpl.parse(SAXParserImpl.java:327)
+	at org.eclipse.emf.ecore.xmi.impl.XMLLoadImpl.load(XMLLoadImpl.java:175)
+	at org.eclipse.emf.ecore.xmi.impl.XMLResourceImpl.doLoad(XMLResourceImpl.java:261)
+	at org.eclipse.emf.ecore.resource.impl.ResourceImpl.load(ResourceImpl.java:1518)
+	at org.eclipse.emf.ecore.resource.impl.ResourceImpl.load(ResourceImpl.java:1297)
+	at org.eclipse.emf.ecore.resource.impl.ResourceSetImpl.demandLoad(ResourceSetImpl.java:259)
+	at org.eclipse.emf.ecore.resource.impl.ResourceSetImpl.demandLoadHelper(ResourceSetImpl.java:274)
+	... 23 more
+
+!ENTRY org.eclipse.e4.ui.workbench 4 0 2016-11-04 09:03:40.214
+!MESSAGE The persisted workbench has no top-level windows, so reinitializing with defaults.
+!STACK 0
+java.lang.Exception
+	at org.eclipse.e4.ui.internal.workbench.ResourceHandler.loadMostRecentModel(ResourceHandler.java:174)
+	at org.eclipse.e4.ui.internal.workbench.swt.E4Application.loadApplicationModel(E4Application.java:377)
+	at org.eclipse.e4.ui.internal.workbench.swt.E4Application.createE4Workbench(E4Application.java:252)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:626)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:336)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:604)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:148)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:138)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:134)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:388)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:243)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:673)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:610)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1519)
+
+!ENTRY org.eclipse.core.net 1 0 2016-11-04 09:03:41.573
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.eclipse.epp.logging.aeri.ide 2 16 2016-11-04 09:03:45.162
+!MESSAGE Server ‘org.eclipse.epp.logging.aeri.ide.server’ failed with exception: com.google.gson.stream.MalformedJsonException: Expected ':' at line 4 column 10. ; version: 2.0.1.v20160605-1811
+!STACK 0
+com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Expected ':' at line 4 column 10
+	at com.google.gson.Gson.fromJson(Gson.java:818)
+	at com.google.gson.Gson.fromJson(Gson.java:768)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.json.Json.deserialize(Json.java:97)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.json.Json.deserialize(Json.java:106)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.IO.loadConfiguration(IO.java:75)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.ServerConnection.startUp(ServerConnection.java:98)
+	at com.google.common.util.concurrent.AbstractIdleService$2$1.run(AbstractIdleService.java:54)
+	at com.google.common.util.concurrent.Callables$3.run(Callables.java:93)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: com.google.gson.stream.MalformedJsonException: Expected ':' at line 4 column 10
+	at com.google.gson.stream.JsonReader.syntaxError(JsonReader.java:1505)
+	at com.google.gson.stream.JsonReader.doPeek(JsonReader.java:519)
+	at com.google.gson.stream.JsonReader.skipValue(JsonReader.java:1209)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:170)
+	at com.google.gson.Gson.fromJson(Gson.java:803)
+	... 8 more
+
+!ENTRY com.wakatime.eclipse.plugin 1 0 2016-11-04 09:03:48.761
+!MESSAGE wakatime-cli is up to date.
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2016-11-05 12:56:32.085
+!MESSAGE Internal Error
+!STACK 1
+org.eclipse.jdt.internal.ui.JavaUIException: Problems reading information from XML 'QualifiedTypeNameHistory.xml'
+	at org.eclipse.jdt.internal.corext.util.History.createException(History.java:74)
+	at org.eclipse.jdt.internal.corext.util.History.load(History.java:263)
+	at org.eclipse.jdt.internal.corext.util.History.load(History.java:171)
+	at org.eclipse.jdt.internal.corext.util.QualifiedTypeNameHistory.<init>(QualifiedTypeNameHistory.java:33)
+	at org.eclipse.jdt.internal.corext.util.QualifiedTypeNameHistory.getDefault(QualifiedTypeNameHistory.java:26)
+	at org.eclipse.jdt.internal.ui.JavaPlugin.stop(JavaPlugin.java:657)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl$4.run(BundleContextImpl.java:830)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl$4.run(BundleContextImpl.java:1)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl.stop(BundleContextImpl.java:823)
+	at org.eclipse.osgi.internal.framework.EquinoxBundle.stopWorker0(EquinoxBundle.java:946)
+	at org.eclipse.osgi.internal.framework.EquinoxBundle$EquinoxModule.stopWorker(EquinoxBundle.java:314)
+	at org.eclipse.osgi.container.Module.doStop(Module.java:636)
+	at org.eclipse.osgi.container.Module.stop(Module.java:498)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.decStartLevel(ModuleContainer.java:1661)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1580)
+	at org.eclipse.osgi.container.SystemModule.stopWorker(SystemModule.java:253)
+	at org.eclipse.osgi.internal.framework.EquinoxBundle$SystemBundle$EquinoxSystemModule.stopWorker(EquinoxBundle.java:147)
+	at org.eclipse.osgi.container.Module.doStop(Module.java:636)
+	at org.eclipse.osgi.container.Module.stop(Module.java:498)
+	at org.eclipse.osgi.container.SystemModule.stop(SystemModule.java:191)
+	at org.eclipse.osgi.internal.framework.EquinoxBundle$SystemBundle$EquinoxSystemModule$1.run(EquinoxBundle.java:165)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: org.xml.sax.SAXParseException; lineNumber: 2; columnNumber: 2; The markup in the document preceding the root element must be well-formed.
+	at com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper.createSAXParseException(ErrorHandlerWrapper.java:203)
+	at com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper.fatalError(ErrorHandlerWrapper.java:177)
+	at com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(XMLErrorReporter.java:400)
+	at com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(XMLErrorReporter.java:327)
+	at com.sun.org.apache.xerces.internal.impl.XMLScanner.reportFatalError(XMLScanner.java:1465)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl$PrologDriver.next(XMLDocumentScannerImpl.java:883)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl.next(XMLDocumentScannerImpl.java:606)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl.scanDocument(XMLDocumentFragmentScannerImpl.java:504)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:848)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:777)
+	at com.sun.org.apache.xerces.internal.parsers.XMLParser.parse(XMLParser.java:141)
+	at com.sun.org.apache.xerces.internal.parsers.DOMParser.parse(DOMParser.java:243)
+	at com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderImpl.parse(DocumentBuilderImpl.java:339)
+	at org.eclipse.jdt.internal.corext.util.History.load(History.java:261)
+	... 21 more
+!SUBENTRY 1 org.eclipse.jdt.ui 4 4 2016-11-05 12:56:32.087
+!MESSAGE Problems reading information from XML 'QualifiedTypeNameHistory.xml'
+!STACK 0
+org.xml.sax.SAXParseException; lineNumber: 2; columnNumber: 2; The markup in the document preceding the root element must be well-formed.
+	at com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper.createSAXParseException(ErrorHandlerWrapper.java:203)
+	at com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper.fatalError(ErrorHandlerWrapper.java:177)
+	at com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(XMLErrorReporter.java:400)
+	at com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(XMLErrorReporter.java:327)
+	at com.sun.org.apache.xerces.internal.impl.XMLScanner.reportFatalError(XMLScanner.java:1465)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl$PrologDriver.next(XMLDocumentScannerImpl.java:883)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl.next(XMLDocumentScannerImpl.java:606)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl.scanDocument(XMLDocumentFragmentScannerImpl.java:504)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:848)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:777)
+	at com.sun.org.apache.xerces.internal.parsers.XMLParser.parse(XMLParser.java:141)
+	at com.sun.org.apache.xerces.internal.parsers.DOMParser.parse(DOMParser.java:243)
+	at com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderImpl.parse(DocumentBuilderImpl.java:339)
+	at org.eclipse.jdt.internal.corext.util.History.load(History.java:261)
+	at org.eclipse.jdt.internal.corext.util.History.load(History.java:171)
+	at org.eclipse.jdt.internal.corext.util.QualifiedTypeNameHistory.<init>(QualifiedTypeNameHistory.java:33)
+	at org.eclipse.jdt.internal.corext.util.QualifiedTypeNameHistory.getDefault(QualifiedTypeNameHistory.java:26)
+	at org.eclipse.jdt.internal.ui.JavaPlugin.stop(JavaPlugin.java:657)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl$4.run(BundleContextImpl.java:830)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl$4.run(BundleContextImpl.java:1)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl.stop(BundleContextImpl.java:823)
+	at org.eclipse.osgi.internal.framework.EquinoxBundle.stopWorker0(EquinoxBundle.java:946)
+	at org.eclipse.osgi.internal.framework.EquinoxBundle$EquinoxModule.stopWorker(EquinoxBundle.java:314)
+	at org.eclipse.osgi.container.Module.doStop(Module.java:636)
+	at org.eclipse.osgi.container.Module.stop(Module.java:498)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.decStartLevel(ModuleContainer.java:1661)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1580)
+	at org.eclipse.osgi.container.SystemModule.stopWorker(SystemModule.java:253)
+	at org.eclipse.osgi.internal.framework.EquinoxBundle$SystemBundle$EquinoxSystemModule.stopWorker(EquinoxBundle.java:147)
+	at org.eclipse.osgi.container.Module.doStop(Module.java:636)
+	at org.eclipse.osgi.container.Module.stop(Module.java:498)
+	at org.eclipse.osgi.container.SystemModule.stop(SystemModule.java:191)
+	at org.eclipse.osgi.internal.framework.EquinoxBundle$SystemBundle$EquinoxSystemModule$1.run(EquinoxBundle.java:165)
+	at java.lang.Thread.run(Thread.java:745)
+!SESSION 2016-11-06 19:42:54.536 -----------------------------------------------
+eclipse.buildId=4.6.0.I20160606-1100
+java.version=1.8.0_40
+java.vendor=Oracle Corporation
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.cpp.product -keyring /Users/Justin/.eclipse_keyring
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.eclipse.epp.package.cpp.product -keyring /Users/Justin/.eclipse_keyring
+
+!ENTRY org.eclipse.core.net 1 0 2016-11-06 19:43:07.843
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16|127.0.0.1 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.eclipse.jface 2 0 2016-11-06 19:43:09.418
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2016-11-06 19:43:09.418
+!MESSAGE A conflict occurred for ALT+CTRL+P:
+Binding(ALT+CTRL+P,
+	ParameterizedCommand(Command(org.eclipse.m2e.profiles.ui.commands.selectMavenProfileCommand,Select Maven Profiles,
+		,
+		Category(org.eclipse.ui.category.window,Window,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@17d0d3d7,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+Binding(ALT+CTRL+P,
+	ParameterizedCommand(Command(org.eclipse.linuxtools.changelog.core.preparechangelog,Prepare Changelog,
+		Prepares Changelog,
+		Category(org.eclipse.linuxtools.changelog,Changelog,Changelog key bindings,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@39fc17be,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+
+!ENTRY org.eclipse.epp.logging.aeri.ide 2 16 2016-11-06 19:43:15.630
+!MESSAGE Server ‘org.eclipse.epp.logging.aeri.ide.server’ failed with exception: com.google.gson.stream.MalformedJsonException: Expected ':' at line 4 column 10. ; version: 2.0.1.v20160605-1811
+!STACK 0
+com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Expected ':' at line 4 column 10
+	at com.google.gson.Gson.fromJson(Gson.java:818)
+	at com.google.gson.Gson.fromJson(Gson.java:768)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.json.Json.deserialize(Json.java:97)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.json.Json.deserialize(Json.java:106)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.IO.loadConfiguration(IO.java:75)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.ServerConnection.startUp(ServerConnection.java:98)
+	at com.google.common.util.concurrent.AbstractIdleService$2$1.run(AbstractIdleService.java:54)
+	at com.google.common.util.concurrent.Callables$3.run(Callables.java:93)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: com.google.gson.stream.MalformedJsonException: Expected ':' at line 4 column 10
+	at com.google.gson.stream.JsonReader.syntaxError(JsonReader.java:1505)
+	at com.google.gson.stream.JsonReader.doPeek(JsonReader.java:519)
+	at com.google.gson.stream.JsonReader.skipValue(JsonReader.java:1209)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:170)
+	at com.google.gson.Gson.fromJson(Gson.java:803)
+	... 8 more
+
+!ENTRY com.wakatime.eclipse.plugin 1 0 2016-11-06 19:43:29.860
+!MESSAGE wakatime-cli is up to date.
+!SESSION 2016-11-06 19:58:45.482 -----------------------------------------------
+eclipse.buildId=4.6.0.I20160606-1100
+java.version=1.8.0_40
+java.vendor=Oracle Corporation
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.cpp.product -keyring /Users/Justin/.eclipse_keyring
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.eclipse.epp.package.cpp.product -keyring /Users/Justin/.eclipse_keyring
+
+!ENTRY org.eclipse.core.net 1 0 2016-11-06 19:58:50.385
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16|127.0.0.1 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.eclipse.jface 2 0 2016-11-06 19:58:51.791
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2016-11-06 19:58:51.791
+!MESSAGE A conflict occurred for ALT+CTRL+P:
+Binding(ALT+CTRL+P,
+	ParameterizedCommand(Command(org.eclipse.m2e.profiles.ui.commands.selectMavenProfileCommand,Select Maven Profiles,
+		,
+		Category(org.eclipse.ui.category.window,Window,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@23dc70c1,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+Binding(ALT+CTRL+P,
+	ParameterizedCommand(Command(org.eclipse.linuxtools.changelog.core.preparechangelog,Prepare Changelog,
+		Prepares Changelog,
+		Category(org.eclipse.linuxtools.changelog,Changelog,Changelog key bindings,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@53b907d9,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+
+!ENTRY org.eclipse.epp.logging.aeri.ide 2 16 2016-11-06 19:58:56.745
+!MESSAGE Server ‘org.eclipse.epp.logging.aeri.ide.server’ failed with exception: com.google.gson.stream.MalformedJsonException: Expected ':' at line 4 column 10. ; version: 2.0.1.v20160605-1811
+!STACK 0
+com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Expected ':' at line 4 column 10
+	at com.google.gson.Gson.fromJson(Gson.java:818)
+	at com.google.gson.Gson.fromJson(Gson.java:768)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.json.Json.deserialize(Json.java:97)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.json.Json.deserialize(Json.java:106)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.IO.loadConfiguration(IO.java:75)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.ServerConnection.startUp(ServerConnection.java:98)
+	at com.google.common.util.concurrent.AbstractIdleService$2$1.run(AbstractIdleService.java:54)
+	at com.google.common.util.concurrent.Callables$3.run(Callables.java:93)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: com.google.gson.stream.MalformedJsonException: Expected ':' at line 4 column 10
+	at com.google.gson.stream.JsonReader.syntaxError(JsonReader.java:1505)
+	at com.google.gson.stream.JsonReader.doPeek(JsonReader.java:519)
+	at com.google.gson.stream.JsonReader.skipValue(JsonReader.java:1209)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:170)
+	at com.google.gson.Gson.fromJson(Gson.java:803)
+	... 8 more
+
+!ENTRY com.wakatime.eclipse.plugin 1 0 2016-11-06 19:59:03.585
+!MESSAGE wakatime-cli is up to date.
+
+!ENTRY org.eclipse.jdt.core 4 4 2016-11-06 21:52:00.613
+!MESSAGE Exception occurred during compilation unit conversion:
+----------------------------------- SOURCE BEGIN -------------------------------------
+package edu.CSUSM.testTaker.UI;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Image;
+import java.awt.Insets;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.net.URL;
+
+import javax.imageio.ImageIO;
+import javax.swing.BorderFactory;
+import javax.swing.Box;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.border.Border;
+
+import edu.CSUSM.testTaker.UI.CustomObjects.CustomButton;
+import edu.CSUSM.testTaker.UI.Pages.ManageData;
+import edu.CSUSM.testTaker.UI.Pages.QuizAndFlashQuestionPage;
+import edu.CSUSM.testTaker.UI.Pages.TakeQuizTakeSet;
+
+/**
+ * 
+ * @author Justin
+ * @purpose The purpose of this class is to make it easier to create JPanels.
+ *          Are panel types are quite simple to create. For simplicity, there
+ *          are a few type of panels: ��TWO_BUTTON_TYPE - Has a logo and two
+ *          buttons (sBs) � THREE_BUTTON_TYPE - Has a logo and three buttons (2
+ *          on top, one centered below) � LOGO_ONLY_TYPE - Has only a logo �
+ *          QUESTION_BUILDER_TYPE - has a question input, posible answer input
+ *          and radio buttons to selct correct answer
+ *
+ */
+public class CustomPage extends JPanel {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private static BufferedImage mainLogoToDisplay;
+	public static Image newImg;
+	public static ImageIcon newIcon;
+	public JLabel imageLabel = new JLabel();
+	protected static int centerOfNewFrame;
+	public JButton[] currentActions;
+	public String panelTypeString;
+	public NavigationController parentController;
+
+	// Added show/Hide check box to show and hide answer for flashcard
+	public JCheckBox showHide = new JCheckBox("Show/Hide Answer");
+	public static String FlashcardAnswer;
+	public boolean Correct; // Bool value to determine correct or incorrect for
+							// results page
+	public static String name;
+	
+	// Made the text areas public so that they can be saved into
+	// a string in the QuizAndFlashMain class.
+	public JTextArea question, answer;
+
+	// Created an array of string for the button names
+	private static final int MAX_NUMBER_OF_BUTTONS = 10;
+	protected static String[] buttonName = new String[MAX_NUMBER_OF_BUTTONS];
+	/** For the Question Panel */
+	JLabel titleLabel;
+	JPanel questionsMainPanel;
+	static String rowHeaders[], idens[];
+
+	/** End of question panel specific vars */
+
+	public static enum PanelType {
+		TWO_BUTTON_TYPE, THREE_BUTTON_TYPE, LOGO_ONLY_TYPE, QUESTION_BUILDER_TYPE, Q_and_A_Type, QUESTIONPAGE, FLASHCARDPAGE, RESULTS
+	};
+	
+	public static setName(String){
+		
+	}
+
+	// Enumerator to determine whether to update actions for quizzes
+	// or for flashcards
+	public static enum PageType {
+		QUIZ, FLASHCARD
+	};
+
+	// Enumerators to determine which pop up window to display in the
+	// PopUp class
+	public static enum PopUpType {
+
+		FlashcardAnswerPopUp, AddAnotherQuestion, SaveQuiz, SaveSet
+	}
+	
+	public static void setQBRowHeaders(String[] list){
+		rowHeaders = list;
+	}
+	
+	public static void setQBRowIDs(String[] list){
+		idens = list;
+	}
+
+	public CustomPage(PanelType currentPanelType, String imageAddress) {
+
+		super();
+		// Create the image from the image address
+		try {
+			URL url = new URL(imageAddress);
+			CustomPage.mainLogoToDisplay = ImageIO.read(url);
+		} catch (IOException ex) {
+			// handle exception...
+			System.out.println(ex.getMessage());
+		}
+
+		buildPanel(currentPanelType);
+	}
+
+	public CustomPage(PanelType currentPanelType, BufferedImage newImage) {
+		super();
+		CustomPage.mainLogoToDisplay = newImage;
+		buildPanel(currentPanelType);
+	}
+
+	/**
+	 * @param currentPanelType
+	 * @description Call if the image was already found
+	 */
+	public CustomPage(PanelType currentPanelType) {
+		super();
+		// Set the layout
+		this.setLayout(new BorderLayout());
+
+		// Build the contents
+		buildPanel(currentPanelType);
+
+	}
+
+	public CustomPage(PanelType currentPanelType, PageType currentPageType) {
+		super();
+		// Set the layout
+		this.setLayout(new BorderLayout());
+
+		// Build the contents
+		buildPanel(currentPanelType);
+
+	}
+	
+	public CustomPage(){
+		this.setLayout(new BorderLayout());
+		this.setBackground(Color.WHITE);
+	}
+
+	/**
+	 * @param nc
+	 *            Navigation controller used to show the next panel
+	 */
+	public void setParentController(NavigationController nc) {
+		this.parentController = nc;
+	}
+
+	/*
+	 * added String[] to arguments of createButton Types which is passed through
+	 * buildPanel, so I added a String[] argument here as well
+	 * 
+	 */
+
+	// Set the string value of the panel type
+	private void buildPanel(PanelType currentPanelType) {
+
+		this.panelTypeString = currentPanelType.toString();
+
+		// Set the size of the panel
+		this.setBounds(SideMenu.WIDTH, 0, GUIController.FRAME_WIDTH - SideMenu.WIDTH, GUIController.FRAME_HEIGHT);
+
+		// Set the background color
+		this.setBackground(Color.WHITE);
+
+		switch (currentPanelType) {
+		case TWO_BUTTON_TYPE:
+
+			createTwoButtonType();
+			break;
+
+		case THREE_BUTTON_TYPE:
+			createThreeButtonType();
+			break;
+
+		case LOGO_ONLY_TYPE:
+			createLogoType();
+			break;
+		// Add Question Page
+		case Q_and_A_Type:
+			createQandAype();
+			break;
+		// Take Quiz
+		case QUESTIONPAGE:
+			createQuestionPageType();
+			break;
+		// Take Set
+		case FLASHCARDPAGE:
+			createFlashcardPageType();
+			break;
+		// Results Page
+		case RESULTS:
+			createResultsPageType();
+			break;
+
+		case QUESTION_BUILDER_TYPE:
+			createQuestionBuilderType();
+			break;
+
+		default:
+			System.out.println("Panel Type Not Found");
+			break;
+		}
+	}
+
+	protected void createLogoType() {
+
+		// Set the background color // Option 1
+		// this.setBackground(new Color(39, 72, 155)); //Option 2
+
+		// Just display an image in the panel
+		imageLabel = new JLabel();
+		try {
+
+			Image img = CustomPage.mainLogoToDisplay;
+			newImg = img.getScaledInstance((this.getWidth() == 0) ? 600 : this.getWidth(),
+					(this.getHeight() / 2 == 0) ? 250 : this.getHeight() / 2, java.awt.Image.SCALE_SMOOTH);
+			newIcon = new ImageIcon(newImg);
+			imageLabel.setIcon(newIcon);
+		} catch (NullPointerException e) {
+			System.out.println("No Logo could be found. Please check the project directory");
+		} catch (Exception e) {
+			System.out.println("Error Finding image: " + e.getMessage());
+		}
+		imageLabel.setBounds(0, 0, this.getWidth(), (int) (this.getHeight() / 2.25));
+
+		// Align to center
+		imageLabel.setHorizontalAlignment(JLabel.CENTER);
+		imageLabel.setVerticalAlignment(JLabel.CENTER);
+		this.add(imageLabel, BorderLayout.CENTER);
+
+	}
+
+	/*
+	 * added String[] to arguments of createButton Types to name the buttons
+	 * with the string passed from the GUIController
+	 * 
+	 */
+
+	/**
+	 * Later //Add the image to the top of the screen. We are going to have 3
+	 * objects at the top: Back btn, logo, and currentpage title
+	 */
+	protected void createTwoButtonType() {
+		JLabel iconLabel = new JLabel();
+		iconLabel.setBounds(0, 0, this.getWidth(), (int) (this.getHeight() / 2.25));
+		iconLabel.setIcon(newIcon);
+		// this.add(iconLabel);
+		this.add(iconLabel, BorderLayout.CENTER);
+
+		// Align to center
+		iconLabel.setHorizontalAlignment(JLabel.CENTER);
+		iconLabel.setVerticalAlignment(JLabel.CENTER);
+
+		CustomPage.centerOfNewFrame = iconLabel.getHeight() - iconLabel.getY();
+
+		addButtons(2);
+
+		/*
+		 * Modified same as createTwoButtonType
+		 */
+
+	}
+
+	// This class creates the add question page for the user to be
+	// able to add a question and answer into the database.
+	private void createQandAype() {
+		JLabel iconLabel = new JLabel();
+
+		// I changed the parameter for height dividing by 5 do keep the
+		// logo from covering the text fields. However, the width is not
+		// getting placed in the correct spot.
+		iconLabel.setBounds(0, 0, this.getWidth(), (int) (this.getHeight() / 3.25));
+		iconLabel.setIcon(newIcon);
+		this.add(iconLabel);
+		// ******************
+		// this line was commented out because it was hiding the text areas
+		// ****************
+		// this.add(iconLabel, BorderLayout.NORTH);
+
+		// Align to center
+		iconLabel.setHorizontalAlignment(JLabel.CENTER);
+		iconLabel.setVerticalAlignment(JLabel.CENTER);
+
+		CustomPage.centerOfNewFrame = iconLabel.getHeight() - iconLabel.getY();
+
+		// Create a text area for the question and a text area for the answer
+		 question = new JTextArea("Question", 10, 10);
+		 answer = new JTextArea("Answer", 10, 10);
+
+		// Constraints for the panel holding the text areas for
+		// resizing purposes.
+		GridBagConstraints c = new GridBagConstraints();
+		c.gridwidth = 10;
+		c.gridheight = 10;
+		c.weightx = .5;
+		c.gridx = 1;
+		c.gridy = 1;
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.insets = new Insets(100, 10, 10, 10);
+
+		// Create border for text areas
+		Border border = BorderFactory.createLineBorder(Color.BLACK);
+		question.setBorder(border);
+		answer.setBorder(border);
+
+		// Set text area sizes and word wrapping
+		question.setMinimumSize(question.getMinimumSize());
+		answer.setMinimumSize(answer.getMinimumSize());
+		question.setLineWrap(true);
+		question.setWrapStyleWord(true);
+		answer.setLineWrap(true);
+
+		// Create panel to hold the question and answer text areas
+		JPanel QandAPanel = new JPanel();
+		QandAPanel.setBackground(Color.WHITE);
+		QandAPanel.setLayout(new GridBagLayout());
+
+		// Create a vertical box for the question text area
+		// placing a label about the text area
+		Box questionBox = Box.createVerticalBox();
+		questionBox.add(new JLabel("Question"));
+		questionBox.add(Box.createVerticalStrut(5));
+		questionBox.add(question);
+
+		// Create a vertical box for the answer text area
+		// placing a label about the text area
+		Box answerBox = Box.createVerticalBox();
+		answerBox.add(new JLabel("Answer"));
+		answerBox.add(Box.createVerticalStrut(5));
+		answerBox.add(answer);
+
+		// Create a horizontal box to hold the question and
+		// answer text areas and use Strut to place space between them
+		Box QandABox = Box.createHorizontalBox();
+		QandABox.add(questionBox);
+		QandABox.add(Box.createHorizontalStrut(100));
+		QandABox.add(answerBox);
+
+		// This box was created to make a space between the logo
+		// it was otherwise cutting off the boxes
+		Box VertQandABox = Box.createVerticalBox();
+		VertQandABox.add(Box.createVerticalStrut(91));
+		VertQandABox.add(QandABox);
+
+		// Add the question and answer boxes to the panel that is
+		// using a gridbaglayout
+		QandAPanel.add(VertQandABox);
+
+		// Add the Q&A panel to the frame and place it in the center
+		// then add constraints for the gridbag panel
+		this.add(QandAPanel, BorderLayout.CENTER);
+		QandAPanel.add(VertQandABox, c);
+		addButtons(2);
+
+	}
+
+	private void createThreeButtonType() {
+
+		JLabel iconLabel = new JLabel();
+		iconLabel.setBounds(0, 0, this.getWidth(), (int) (this.getHeight() / 2.25));
+		iconLabel.setIcon(newIcon);
+		this.add(iconLabel);
+
+		// Align to center
+		iconLabel.setHorizontalAlignment(JLabel.CENTER);
+		iconLabel.setVerticalAlignment(JLabel.CENTER);
+
+		// centerOfNewFrame = (this.getHeight() - (this.getHeight() -
+		// iconLabel.getHeight()));
+
+		addButtons(3);
+
+	}
+
+	private void createQuestionBuilderType() {
+		/*
+		 * Modified addButtons to rename to string
+		 */
+
+		// Create a title label to demonstrate what is shown
+
+		// Now, add a panel for the questions
+		/*
+		 * this.questionsMainPanel = new JPanel();
+		 * this.questionsMainPanel.setBackground(Color.RED);
+		 * this.add(questionsMainPanel, BorderLayout.CENTER);
+		 */
+
+		// We need to add a few components to this view:
+		// JComboBox - Allows the user to
+		ManageData<String> newDataManager = new ManageData<String>(this.getName(), rowHeaders, idens);
+		this.add(newDataManager, BorderLayout.CENTER);
+
+		addButtons(2);
+		// setQuestionLayout();
+	}
+
+	// Create a question and answer type which displays the quesiton
+	// string as a jlabel and put the answer in the answer text area.
+	// This is used for the take quiz page.
+	private void createQuestionPageType() {
+
+		JLabel iconLabel = new JLabel();
+		iconLabel.setBounds(0, 0, this.getWidth(), (int) (this.getHeight() / 2.25));
+		iconLabel.setIcon(newIcon);
+		// this.add(iconLabel);
+
+		// this.add(iconLabel, BorderLayout.NORTH);
+
+		// Align to center
+		iconLabel.setHorizontalAlignment(JLabel.CENTER);
+		iconLabel.setVerticalAlignment(JLabel.CENTER);
+
+		centerOfNewFrame = (this.getHeight() - (this.getHeight() - iconLabel.getHeight()));
+
+		// String to hold questions. To be updated with function that passes
+		// the string of the actual question
+		String questionStr = new String("This is where the question goes.");
+
+		// Create a JLabel to display thew question, set its
+		// alignment, font type and size
+		JLabel questionLabel = new JLabel(questionStr);
+		questionLabel.setAlignmentX(centerOfNewFrame);
+		questionLabel.setOpaque(false);
+		Font font = new Font("Courier", Font.BOLD, 16);
+		questionLabel.setFont(font);
+
+		// Set the question jlabel's max size
+		questionLabel.setMaximumSize(getMaximumSize());
+
+		// Create a text area to enter the answer in and make it into
+		// a scroll pane with scrollbars created as needed.
+		JTextArea answer = new JTextArea("Answer goes Here", 10, 10);
+		answer.setLineWrap(true);
+		answer.setFont(font);
+		JScrollPane jScrollPane = new JScrollPane(answer, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
+				JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+
+		// Create border for the answer area
+		Border border = BorderFactory.createLineBorder(Color.BLACK);
+		jScrollPane.setBorder(border);
+
+		// Create a vertical box to place the question jlabel on top
+		// of the answer text area
+		Box questionBox = Box.createVerticalBox();
+		questionBox.add(questionLabel);
+		questionBox.add(Box.createVerticalStrut(80));
+		questionBox.add(jScrollPane);
+
+		// Constraints for the panel holding the text areas for
+		// resizing purposes.
+		GridBagConstraints c = new GridBagConstraints();
+		c.gridwidth = 1;
+		c.gridheight = 1;
+		c.weightx = .5;
+		c.gridx = 1;
+		c.gridy = 1;
+		c.fill = GridBagConstraints.BOTH;
+		c.insets = new Insets(1, 50, 1, 50);
+
+		// Create a panel to hold box with the question jlabel
+		// and answer test area
+		JPanel QandA = new JPanel(new GridBagLayout());
+		QandA.add(questionBox, c);
+
+		this.add(QandA, BorderLayout.CENTER);
+
+		// Only the first page has 2 buttons. set every other page
+		// to have 3 buttons
+		if (QuizAndFlashQuestionPage.questionPageNumber == 1)
+			addButtons(2);
+		else
+			addButtons(3);
+
+	}
+
+	// This class creates a results page to display the number of questions
+	// correct out of the total number of questions. It also displays which
+	// questions are right, and which questions are wrong.
+	private void createResultsPageType() {
+
+		JLabel iconLabel = new JLabel();
+		iconLabel.setBounds(0, 0, this.getWidth(), (int) (this.getHeight() / 2.25));
+		iconLabel.setIcon(newIcon);
+		// this.add(iconLabel);
+
+		// Create a label for to dispaly "Results" inside a panel
+		// and place it in the NORTH
+		JLabel results = new JLabel("Results");
+		Font resultsFont = new Font("Courier", Font.BOLD, 20);
+		results.setFont(resultsFont);
+		JPanel resultsPanel = new JPanel();
+		resultsPanel.setBackground(Color.WHITE);
+		resultsPanel.add(results);
+		this.add(resultsPanel, BorderLayout.NORTH);
+
+		// Align to center
+		iconLabel.setHorizontalAlignment(JLabel.CENTER);
+		iconLabel.setVerticalAlignment(JLabel.CENTER);
+
+		centerOfNewFrame = (this.getHeight() - (this.getHeight() - iconLabel.getHeight()));
+
+		// Number of incorrect and correct answers. We'll need
+		// a function to set the actual values
+		int numberCorrect = 8, numberIncorrect = 10;
+
+		// Create the string to display the score, add it to a label,
+		// set the font, and then add the score label into a panel
+		String scoreStr = "Your Score  " + numberCorrect + "/" + numberIncorrect;
+		JLabel scoreLabel = new JLabel(scoreStr);
+		Font font = new Font("Courier", Font.BOLD, 18);
+		scoreLabel.setFont(font);
+		JPanel scorePanel = new JPanel();
+		scorePanel.add(scoreLabel);
+
+		// Create a text area to display which questions are corrects
+		// and which ones are incorrect. Make the text area unable
+		// to be edited, and add to a scrollpane
+		JTextArea questionCorOrInc = new JTextArea(10, 10);
+		questionCorOrInc.setEditable(false);
+		questionCorOrInc.setLineWrap(true);
+		questionCorOrInc.setFont(font);
+		JScrollPane jScrollPane = new JScrollPane(questionCorOrInc, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
+				JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+
+		// While less than the total number of questions in the quiz
+		// display whether or not each question is correct or incorrect.
+		// this is determined by a boolean value which will be need to
+		// be obtained by some function.
+		for (int i = 0; i < TakeQuizTakeSet.totalNumQuestions; i++) {
+			if (Correct)
+				questionCorOrInc.append("Question #" + (i + 1) + "\tCorrect\n");
+			else
+				questionCorOrInc.append("Question #" + (i + 1) + "\tIncorrect\n");
+
+		}
+
+		// Create border for the answer area
+		Border border = BorderFactory.createLineBorder(Color.BLACK);
+		jScrollPane.setBorder(border);
+
+		// Create a vertical box to place the question jlabel on top
+		// of the answer text area
+		Box CorOrIncBox = Box.createVerticalBox();
+
+		CorOrIncBox.add(scorePanel);
+		CorOrIncBox.add(Box.createVerticalStrut(80));
+		CorOrIncBox.add(jScrollPane);
+
+		// Constraints for the panel holding the text areas for
+		// resizing purposes.
+		GridBagConstraints c = new GridBagConstraints();
+		c.gridwidth = 1;
+		c.gridheight = 1;
+		c.weightx = .5;
+		c.gridx = 1;
+		c.gridy = 1;
+		c.fill = GridBagConstraints.BOTH;
+		c.insets = new Insets(1, 50, 1, 50);
+
+		// Create a panel to hold box with the question text area
+		// of questions displaying which ones are correct or incorrect
+		JPanel CorOrIncPanel = new JPanel(new GridBagLayout());
+		CorOrIncPanel.add(CorOrIncBox, c);
+
+		this.add(CorOrIncPanel, BorderLayout.CENTER);
+
+		addButtons(2);
+
+	}
+
+	// Creates flashcard page type that shows the question and has a
+	// pop up window that shows the answer. Again having issues with
+	// keeping the logo on the page. It uses FlashcardAnswer as a public
+	// String which can be set by the backend function with the appropriate
+	// string
+	private void createFlashcardPageType() {
+
+		JLabel iconLabel = new JLabel();
+		iconLabel.setBounds(0, 0, this.getWidth(), (int) (this.getHeight() / 2.25));
+		iconLabel.setIcon(newIcon);
+		/**
+		 * 
+		 * commened out the logo due to issues with it covering the question and
+		 * checkbox
+		 * 
+		 */
+		// this.add(iconLabel);
+
+		// Align to center
+		iconLabel.setHorizontalAlignment(JLabel.CENTER);
+		iconLabel.setVerticalAlignment(JLabel.CENTER);
+
+		centerOfNewFrame = (this.getHeight() - (this.getHeight() - iconLabel.getHeight()));
+
+		// String to hold questions. To be updated with function that passes
+		// the string of the actual question
+		String questionStr = "This is where the question goes";
+
+		// Create a JLabel to display the question, set its
+		// alignment, font type and size
+		JLabel questionLabel = new JLabel(questionStr);
+		// JLabel answerLabel = new JLabel(FlashcardAnswer);
+		questionLabel.setAlignmentX(centerOfNewFrame);
+		questionLabel.setOpaque(false);
+		// answerLabel.setAlignmentX(centerOfNewFrame);
+		// answerLabel.setOpaque(false);
+		Font font = new Font("Courier", Font.BOLD, 16);
+		questionLabel.setFont(font);
+		// answerLabel.setFont(font);
+
+		// Set the question jlabel's max size
+		questionLabel.setMaximumSize(getMaximumSize());
+		// answerLabel.setMaximumSize(getMaximumSize());
+
+		showHide.setAlignmentX(centerOfNewFrame);
+
+		// Create a vertical box to place the question string on top
+		// of the hide check box
+		Box questionBox = Box.createVerticalBox();
+		questionBox.add(questionLabel);
+		questionBox.add(Box.createVerticalStrut(100));
+		questionBox.add(showHide);
+		// questionBox.add(Box.createVerticalStrut(40));
+		// questionBox.add(answerLabel);
+
+		// Constraints for the panel holding the text areas for
+		// resizing purposes.
+		GridBagConstraints c = new GridBagConstraints();
+		c.gridwidth = 1;
+		c.gridheight = 1;
+		c.weightx = .5;
+		c.gridx = 1;
+		c.gridy = 10;
+		c.fill = GridBagConstraints.BOTH;
+		c.insets = new Insets(50, 50, 250, 50);
+
+		// Create a panel to hold box with the question jlabel
+		// and answer test area
+		JPanel QandA = new JPanel(new GridBagLayout());
+		QandA.add(questionBox, c);
+
+		this.add(QandA, BorderLayout.CENTER);
+
+		// If it is the first question page, it will only have 2
+		// buttons, every other page will have 3
+		if (QuizAndFlashQuestionPage.questionPageNumber == 1)
+			addButtons(2);
+		else
+			addButtons(3);
+
+	}
+
+	protected void addButtons(int count) {
+		// Add a panel to the south for the buttons
+
+		JPanel buttonHolder = new JPanel();
+		buttonHolder.setLayout(new GridBagLayout()); // May need to be
+														// gridbaglayout
+		buttonHolder.setBackground(Color.WHITE);
+		GridBagConstraints c = new GridBagConstraints();
+		this.add(buttonHolder, BorderLayout.SOUTH);
+
+		this.currentActions = new CustomButton[count];
+
+		for (int i = 0; i < count; i++) {
+
+			c.gridwidth = 1;
+			c.gridheight = 1;
+			c.weightx = 0.5;
+			c.gridx = i % 2;
+			c.gridy = (i % 2 == 0 && i > 0) ? c.gridy++ : c.gridy;
+			c.fill = GridBagConstraints.HORIZONTAL;
+			c.insets = new Insets(10, 10, 10, 10);
+
+			// If the last button is an odd one, make it the same size as both
+			// buttons above it, combined
+			if (count % 2 == 1 && i == count - 1) {
+				// System.out.println(this.panelTypeString + " for button: " +
+				// (i));
+				c.gridwidth = 2;
+			}
+
+			this.currentActions[i] = new CustomButton("Button " + (i + 1));
+			buttonHolder.add(this.currentActions[i], c);
+		}
+	}
+
+	public void setButtonNames(String[] btnNames) {
+		// System.out.println("Modifying Buton names");
+
+		try {
+			for (int i = 0; i < this.currentActions.length; i++) {
+				try {
+					this.currentActions[i].setText(btnNames[i]);
+				} catch (ArrayIndexOutOfBoundsException e) {
+
+				}
+			}
+		} catch (NullPointerException e) {
+			System.out.println(e.getMessage());
+		}
+	}
+
+	/** Accessors and mutators */
+
+	public static BufferedImage getMainLogoToDisplay() {
+		return mainLogoToDisplay;
+	}
+
+	public static void setMainLogoToDisplay(BufferedImage mainLogoToDisplay) {
+		CustomPage.mainLogoToDisplay = mainLogoToDisplay;
+	}
+
+}
+
+----------------------------------- SOURCE END -------------------------------------
+!STACK 0
+java.lang.IllegalArgumentException
+	at org.eclipse.jdt.core.dom.ASTNode.setSourceRange(ASTNode.java:2845)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1572)
+	at org.eclipse.jdt.core.dom.ASTConverter.buildBodyDeclarations(ASTConverter.java:258)
+	at org.eclipse.jdt.core.dom.ASTConverter.convertToEnumDeclaration(ASTConverter.java:3194)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2901)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2733)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:639)
+	at org.eclipse.jdt.core.dom.ASTConverter.buildBodyDeclarations(ASTConverter.java:195)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2965)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1374)
+	at org.eclipse.jdt.core.dom.AST.convertCompilationUnit(AST.java:270)
+	at org.eclipse.jdt.internal.core.CompilationUnit.buildStructure(CompilationUnit.java:202)
+	at org.eclipse.jdt.internal.core.Openable.generateInfos(Openable.java:259)
+	at org.eclipse.jdt.internal.core.JavaElement.openWhenClosed(JavaElement.java:579)
+	at org.eclipse.jdt.internal.core.CompilationUnit.makeConsistent(CompilationUnit.java:1085)
+	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.makeConsistent(ReconcileWorkingCopyOperation.java:171)
+	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.executeOperation(ReconcileWorkingCopyOperation.java:90)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:724)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.runOperation(JavaModelOperation.java:790)
+	at org.eclipse.jdt.internal.core.CompilationUnit.reconcile(CompilationUnit.java:1250)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:128)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.access$0(JavaReconcilingStrategy.java:110)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy$1.run(JavaReconcilingStrategy.java:90)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:87)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:154)
+	at org.eclipse.jdt.internal.ui.text.CompositeReconcilingStrategy.reconcile(CompositeReconcilingStrategy.java:89)
+	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconcile(JavaCompositeReconcilingStrategy.java:104)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:73)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
+
+!ENTRY org.eclipse.jdt.ui 4 2 2016-11-06 21:52:00.647
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.jdt.ui".
+!STACK 0
+java.lang.IllegalArgumentException
+	at org.eclipse.jdt.core.dom.ASTNode.setSourceRange(ASTNode.java:2845)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1572)
+	at org.eclipse.jdt.core.dom.ASTConverter.buildBodyDeclarations(ASTConverter.java:258)
+	at org.eclipse.jdt.core.dom.ASTConverter.convertToEnumDeclaration(ASTConverter.java:3194)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2901)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2733)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:639)
+	at org.eclipse.jdt.core.dom.ASTConverter.buildBodyDeclarations(ASTConverter.java:195)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2965)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1374)
+	at org.eclipse.jdt.core.dom.AST.convertCompilationUnit(AST.java:270)
+	at org.eclipse.jdt.internal.core.CompilationUnit.buildStructure(CompilationUnit.java:202)
+	at org.eclipse.jdt.internal.core.Openable.generateInfos(Openable.java:259)
+	at org.eclipse.jdt.internal.core.JavaElement.openWhenClosed(JavaElement.java:579)
+	at org.eclipse.jdt.internal.core.CompilationUnit.makeConsistent(CompilationUnit.java:1085)
+	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.makeConsistent(ReconcileWorkingCopyOperation.java:171)
+	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.executeOperation(ReconcileWorkingCopyOperation.java:90)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:724)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.runOperation(JavaModelOperation.java:790)
+	at org.eclipse.jdt.internal.core.CompilationUnit.reconcile(CompilationUnit.java:1250)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:128)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.access$0(JavaReconcilingStrategy.java:110)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy$1.run(JavaReconcilingStrategy.java:90)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:87)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:154)
+	at org.eclipse.jdt.internal.ui.text.CompositeReconcilingStrategy.reconcile(CompositeReconcilingStrategy.java:89)
+	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconcile(JavaCompositeReconcilingStrategy.java:104)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:73)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
+
+!ENTRY org.eclipse.jdt.ui 4 0 2016-11-06 21:52:00.651
+!MESSAGE Error in JDT Core during reconcile
+!STACK 0
+java.lang.IllegalArgumentException
+	at org.eclipse.jdt.core.dom.ASTNode.setSourceRange(ASTNode.java:2845)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1572)
+	at org.eclipse.jdt.core.dom.ASTConverter.buildBodyDeclarations(ASTConverter.java:258)
+	at org.eclipse.jdt.core.dom.ASTConverter.convertToEnumDeclaration(ASTConverter.java:3194)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2901)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2733)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:639)
+	at org.eclipse.jdt.core.dom.ASTConverter.buildBodyDeclarations(ASTConverter.java:195)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2965)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1374)
+	at org.eclipse.jdt.core.dom.AST.convertCompilationUnit(AST.java:270)
+	at org.eclipse.jdt.internal.core.CompilationUnit.buildStructure(CompilationUnit.java:202)
+	at org.eclipse.jdt.internal.core.Openable.generateInfos(Openable.java:259)
+	at org.eclipse.jdt.internal.core.JavaElement.openWhenClosed(JavaElement.java:579)
+	at org.eclipse.jdt.internal.core.CompilationUnit.makeConsistent(CompilationUnit.java:1085)
+	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.makeConsistent(ReconcileWorkingCopyOperation.java:171)
+	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.executeOperation(ReconcileWorkingCopyOperation.java:90)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:724)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.runOperation(JavaModelOperation.java:790)
+	at org.eclipse.jdt.internal.core.CompilationUnit.reconcile(CompilationUnit.java:1250)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:128)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.access$0(JavaReconcilingStrategy.java:110)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy$1.run(JavaReconcilingStrategy.java:90)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:87)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:154)
+	at org.eclipse.jdt.internal.ui.text.CompositeReconcilingStrategy.reconcile(CompositeReconcilingStrategy.java:89)
+	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconcile(JavaCompositeReconcilingStrategy.java:104)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:73)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
+
+!ENTRY org.eclipse.jdt.core 4 4 2016-11-06 21:52:00.751
+!MESSAGE Exception occurred during compilation unit conversion:
+----------------------------------- SOURCE BEGIN -------------------------------------
+package edu.CSUSM.testTaker.UI;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Image;
+import java.awt.Insets;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.net.URL;
+
+import javax.imageio.ImageIO;
+import javax.swing.BorderFactory;
+import javax.swing.Box;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.border.Border;
+
+import edu.CSUSM.testTaker.UI.CustomObjects.CustomButton;
+import edu.CSUSM.testTaker.UI.Pages.ManageData;
+import edu.CSUSM.testTaker.UI.Pages.QuizAndFlashQuestionPage;
+import edu.CSUSM.testTaker.UI.Pages.TakeQuizTakeSet;
+
+/**
+ * 
+ * @author Justin
+ * @purpose The purpose of this class is to make it easier to create JPanels.
+ *          Are panel types are quite simple to create. For simplicity, there
+ *          are a few type of panels: ��TWO_BUTTON_TYPE - Has a logo and two
+ *          buttons (sBs) � THREE_BUTTON_TYPE - Has a logo and three buttons (2
+ *          on top, one centered below) � LOGO_ONLY_TYPE - Has only a logo �
+ *          QUESTION_BUILDER_TYPE - has a question input, posible answer input
+ *          and radio buttons to selct correct answer
+ *
+ */
+public class CustomPage extends JPanel {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private static BufferedImage mainLogoToDisplay;
+	public static Image newImg;
+	public static ImageIcon newIcon;
+	public JLabel imageLabel = new JLabel();
+	protected static int centerOfNewFrame;
+	public JButton[] currentActions;
+	public String panelTypeString;
+	public NavigationController parentController;
+
+	// Added show/Hide check box to show and hide answer for flashcard
+	public JCheckBox showHide = new JCheckBox("Show/Hide Answer");
+	public static String FlashcardAnswer;
+	public boolean Correct; // Bool value to determine correct or incorrect for
+							// results page
+	public static String name;
+	
+	// Made the text areas public so that they can be saved into
+	// a string in the QuizAndFlashMain class.
+	public JTextArea question, answer;
+
+	// Created an array of string for the button names
+	private static final int MAX_NUMBER_OF_BUTTONS = 10;
+	protected static String[] buttonName = new String[MAX_NUMBER_OF_BUTTONS];
+	/** For the Question Panel */
+	JLabel titleLabel;
+	JPanel questionsMainPanel;
+	static String rowHeaders[], idens[];
+
+	/** End of question panel specific vars */
+
+	public static enum PanelType {
+		TWO_BUTTON_TYPE, THREE_BUTTON_TYPE, LOGO_ONLY_TYPE, QUESTION_BUILDER_TYPE, Q_and_A_Type, QUESTIONPAGE, FLASHCARDPAGE, RESULTS
+	};
+	
+	public static setName(String){
+		
+	}
+
+	// Enumerator to determine whether to update actions for quizzes
+	// or for flashcards
+	public static enum PageType {
+		QUIZ, FLASHCARD
+	};
+
+	// Enumerators to determine which pop up window to display in the
+	// PopUp class
+	public static enum PopUpType {
+
+		FlashcardAnswerPopUp, AddAnotherQuestion, SaveQuiz, SaveSet
+	}
+	
+	public static void setQBRowHeaders(String[] list){
+		rowHeaders = list;
+	}
+	
+	public static void setQBRowIDs(String[] list){
+		idens = list;
+	}
+
+	public CustomPage(PanelType currentPanelType, String imageAddress) {
+
+		super();
+		// Create the image from the image address
+		try {
+			URL url = new URL(imageAddress);
+			CustomPage.mainLogoToDisplay = ImageIO.read(url);
+		} catch (IOException ex) {
+			// handle exception...
+			System.out.println(ex.getMessage());
+		}
+
+		buildPanel(currentPanelType);
+	}
+
+	public CustomPage(PanelType currentPanelType, BufferedImage newImage) {
+		super();
+		CustomPage.mainLogoToDisplay = newImage;
+		buildPanel(currentPanelType);
+	}
+
+	/**
+	 * @param currentPanelType
+	 * @description Call if the image was already found
+	 */
+	public CustomPage(PanelType currentPanelType) {
+		super();
+		// Set the layout
+		this.setLayout(new BorderLayout());
+
+		// Build the contents
+		buildPanel(currentPanelType);
+
+	}
+
+	public CustomPage(PanelType currentPanelType, PageType currentPageType) {
+		super();
+		// Set the layout
+		this.setLayout(new BorderLayout());
+
+		// Build the contents
+		buildPanel(currentPanelType);
+
+	}
+	
+	public CustomPage(){
+		this.setLayout(new BorderLayout());
+		this.setBackground(Color.WHITE);
+	}
+
+	/**
+	 * @param nc
+	 *            Navigation controller used to show the next panel
+	 */
+	public void setParentController(NavigationController nc) {
+		this.parentController = nc;
+	}
+
+	/*
+	 * added String[] to arguments of createButton Types which is passed through
+	 * buildPanel, so I added a String[] argument here as well
+	 * 
+	 */
+
+	// Set the string value of the panel type
+	private void buildPanel(PanelType currentPanelType) {
+
+		this.panelTypeString = currentPanelType.toString();
+
+		// Set the size of the panel
+		this.setBounds(SideMenu.WIDTH, 0, GUIController.FRAME_WIDTH - SideMenu.WIDTH, GUIController.FRAME_HEIGHT);
+
+		// Set the background color
+		this.setBackground(Color.WHITE);
+
+		switch (currentPanelType) {
+		case TWO_BUTTON_TYPE:
+
+			createTwoButtonType();
+			break;
+
+		case THREE_BUTTON_TYPE:
+			createThreeButtonType();
+			break;
+
+		case LOGO_ONLY_TYPE:
+			createLogoType();
+			break;
+		// Add Question Page
+		case Q_and_A_Type:
+			createQandAype();
+			break;
+		// Take Quiz
+		case QUESTIONPAGE:
+			createQuestionPageType();
+			break;
+		// Take Set
+		case FLASHCARDPAGE:
+			createFlashcardPageType();
+			break;
+		// Results Page
+		case RESULTS:
+			createResultsPageType();
+			break;
+
+		case QUESTION_BUILDER_TYPE:
+			createQuestionBuilderType();
+			break;
+
+		default:
+			System.out.println("Panel Type Not Found");
+			break;
+		}
+	}
+
+	protected void createLogoType() {
+
+		// Set the background color // Option 1
+		// this.setBackground(new Color(39, 72, 155)); //Option 2
+
+		// Just display an image in the panel
+		imageLabel = new JLabel();
+		try {
+
+			Image img = CustomPage.mainLogoToDisplay;
+			newImg = img.getScaledInstance((this.getWidth() == 0) ? 600 : this.getWidth(),
+					(this.getHeight() / 2 == 0) ? 250 : this.getHeight() / 2, java.awt.Image.SCALE_SMOOTH);
+			newIcon = new ImageIcon(newImg);
+			imageLabel.setIcon(newIcon);
+		} catch (NullPointerException e) {
+			System.out.println("No Logo could be found. Please check the project directory");
+		} catch (Exception e) {
+			System.out.println("Error Finding image: " + e.getMessage());
+		}
+		imageLabel.setBounds(0, 0, this.getWidth(), (int) (this.getHeight() / 2.25));
+
+		// Align to center
+		imageLabel.setHorizontalAlignment(JLabel.CENTER);
+		imageLabel.setVerticalAlignment(JLabel.CENTER);
+		this.add(imageLabel, BorderLayout.CENTER);
+
+	}
+
+	/*
+	 * added String[] to arguments of createButton Types to name the buttons
+	 * with the string passed from the GUIController
+	 * 
+	 */
+
+	/**
+	 * Later //Add the image to the top of the screen. We are going to have 3
+	 * objects at the top: Back btn, logo, and currentpage title
+	 */
+	protected void createTwoButtonType() {
+		JLabel iconLabel = new JLabel();
+		iconLabel.setBounds(0, 0, this.getWidth(), (int) (this.getHeight() / 2.25));
+		iconLabel.setIcon(newIcon);
+		// this.add(iconLabel);
+		this.add(iconLabel, BorderLayout.CENTER);
+
+		// Align to center
+		iconLabel.setHorizontalAlignment(JLabel.CENTER);
+		iconLabel.setVerticalAlignment(JLabel.CENTER);
+
+		CustomPage.centerOfNewFrame = iconLabel.getHeight() - iconLabel.getY();
+
+		addButtons(2);
+
+		/*
+		 * Modified same as createTwoButtonType
+		 */
+
+	}
+
+	// This class creates the add question page for the user to be
+	// able to add a question and answer into the database.
+	private void createQandAype() {
+		JLabel iconLabel = new JLabel();
+
+		// I changed the parameter for height dividing by 5 do keep the
+		// logo from covering the text fields. However, the width is not
+		// getting placed in the correct spot.
+		iconLabel.setBounds(0, 0, this.getWidth(), (int) (this.getHeight() / 3.25));
+		iconLabel.setIcon(newIcon);
+		this.add(iconLabel);
+		// ******************
+		// this line was commented out because it was hiding the text areas
+		// ****************
+		// this.add(iconLabel, BorderLayout.NORTH);
+
+		// Align to center
+		iconLabel.setHorizontalAlignment(JLabel.CENTER);
+		iconLabel.setVerticalAlignment(JLabel.CENTER);
+
+		CustomPage.centerOfNewFrame = iconLabel.getHeight() - iconLabel.getY();
+
+		// Create a text area for the question and a text area for the answer
+		 question = new JTextArea("Question", 10, 10);
+		 answer = new JTextArea("Answer", 10, 10);
+
+		// Constraints for the panel holding the text areas for
+		// resizing purposes.
+		GridBagConstraints c = new GridBagConstraints();
+		c.gridwidth = 10;
+		c.gridheight = 10;
+		c.weightx = .5;
+		c.gridx = 1;
+		c.gridy = 1;
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.insets = new Insets(100, 10, 10, 10);
+
+		// Create border for text areas
+		Border border = BorderFactory.createLineBorder(Color.BLACK);
+		question.setBorder(border);
+		answer.setBorder(border);
+
+		// Set text area sizes and word wrapping
+		question.setMinimumSize(question.getMinimumSize());
+		answer.setMinimumSize(answer.getMinimumSize());
+		question.setLineWrap(true);
+		question.setWrapStyleWord(true);
+		answer.setLineWrap(true);
+
+		// Create panel to hold the question and answer text areas
+		JPanel QandAPanel = new JPanel();
+		QandAPanel.setBackground(Color.WHITE);
+		QandAPanel.setLayout(new GridBagLayout());
+
+		// Create a vertical box for the question text area
+		// placing a label about the text area
+		Box questionBox = Box.createVerticalBox();
+		questionBox.add(new JLabel("Question"));
+		questionBox.add(Box.createVerticalStrut(5));
+		questionBox.add(question);
+
+		// Create a vertical box for the answer text area
+		// placing a label about the text area
+		Box answerBox = Box.createVerticalBox();
+		answerBox.add(new JLabel("Answer"));
+		answerBox.add(Box.createVerticalStrut(5));
+		answerBox.add(answer);
+
+		// Create a horizontal box to hold the question and
+		// answer text areas and use Strut to place space between them
+		Box QandABox = Box.createHorizontalBox();
+		QandABox.add(questionBox);
+		QandABox.add(Box.createHorizontalStrut(100));
+		QandABox.add(answerBox);
+
+		// This box was created to make a space between the logo
+		// it was otherwise cutting off the boxes
+		Box VertQandABox = Box.createVerticalBox();
+		VertQandABox.add(Box.createVerticalStrut(91));
+		VertQandABox.add(QandABox);
+
+		// Add the question and answer boxes to the panel that is
+		// using a gridbaglayout
+		QandAPanel.add(VertQandABox);
+
+		// Add the Q&A panel to the frame and place it in the center
+		// then add constraints for the gridbag panel
+		this.add(QandAPanel, BorderLayout.CENTER);
+		QandAPanel.add(VertQandABox, c);
+		addButtons(2);
+
+	}
+
+	private void createThreeButtonType() {
+
+		JLabel iconLabel = new JLabel();
+		iconLabel.setBounds(0, 0, this.getWidth(), (int) (this.getHeight() / 2.25));
+		iconLabel.setIcon(newIcon);
+		this.add(iconLabel);
+
+		// Align to center
+		iconLabel.setHorizontalAlignment(JLabel.CENTER);
+		iconLabel.setVerticalAlignment(JLabel.CENTER);
+
+		// centerOfNewFrame = (this.getHeight() - (this.getHeight() -
+		// iconLabel.getHeight()));
+
+		addButtons(3);
+
+	}
+
+	private void createQuestionBuilderType() {
+		/*
+		 * Modified addButtons to rename to string
+		 */
+
+		// Create a title label to demonstrate what is shown
+
+		// Now, add a panel for the questions
+		/*
+		 * this.questionsMainPanel = new JPanel();
+		 * this.questionsMainPanel.setBackground(Color.RED);
+		 * this.add(questionsMainPanel, BorderLayout.CENTER);
+		 */
+
+		// We need to add a few components to this view:
+		// JComboBox - Allows the user to
+		ManageData<String> newDataManager = new ManageData<String>(this.getName(), rowHeaders, idens);
+		this.add(newDataManager, BorderLayout.CENTER);
+
+		addButtons(2);
+		// setQuestionLayout();
+	}
+
+	// Create a question and answer type which displays the quesiton
+	// string as a jlabel and put the answer in the answer text area.
+	// This is used for the take quiz page.
+	private void createQuestionPageType() {
+
+		JLabel iconLabel = new JLabel();
+		iconLabel.setBounds(0, 0, this.getWidth(), (int) (this.getHeight() / 2.25));
+		iconLabel.setIcon(newIcon);
+		// this.add(iconLabel);
+
+		// this.add(iconLabel, BorderLayout.NORTH);
+
+		// Align to center
+		iconLabel.setHorizontalAlignment(JLabel.CENTER);
+		iconLabel.setVerticalAlignment(JLabel.CENTER);
+
+		centerOfNewFrame = (this.getHeight() - (this.getHeight() - iconLabel.getHeight()));
+
+		// String to hold questions. To be updated with function that passes
+		// the string of the actual question
+		String questionStr = new String("This is where the question goes.");
+
+		// Create a JLabel to display thew question, set its
+		// alignment, font type and size
+		JLabel questionLabel = new JLabel(questionStr);
+		questionLabel.setAlignmentX(centerOfNewFrame);
+		questionLabel.setOpaque(false);
+		Font font = new Font("Courier", Font.BOLD, 16);
+		questionLabel.setFont(font);
+
+		// Set the question jlabel's max size
+		questionLabel.setMaximumSize(getMaximumSize());
+
+		// Create a text area to enter the answer in and make it into
+		// a scroll pane with scrollbars created as needed.
+		JTextArea answer = new JTextArea("Answer goes Here", 10, 10);
+		answer.setLineWrap(true);
+		answer.setFont(font);
+		JScrollPane jScrollPane = new JScrollPane(answer, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
+				JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+
+		// Create border for the answer area
+		Border border = BorderFactory.createLineBorder(Color.BLACK);
+		jScrollPane.setBorder(border);
+
+		// Create a vertical box to place the question jlabel on top
+		// of the answer text area
+		Box questionBox = Box.createVerticalBox();
+		questionBox.add(questionLabel);
+		questionBox.add(Box.createVerticalStrut(80));
+		questionBox.add(jScrollPane);
+
+		// Constraints for the panel holding the text areas for
+		// resizing purposes.
+		GridBagConstraints c = new GridBagConstraints();
+		c.gridwidth = 1;
+		c.gridheight = 1;
+		c.weightx = .5;
+		c.gridx = 1;
+		c.gridy = 1;
+		c.fill = GridBagConstraints.BOTH;
+		c.insets = new Insets(1, 50, 1, 50);
+
+		// Create a panel to hold box with the question jlabel
+		// and answer test area
+		JPanel QandA = new JPanel(new GridBagLayout());
+		QandA.add(questionBox, c);
+
+		this.add(QandA, BorderLayout.CENTER);
+
+		// Only the first page has 2 buttons. set every other page
+		// to have 3 buttons
+		if (QuizAndFlashQuestionPage.questionPageNumber == 1)
+			addButtons(2);
+		else
+			addButtons(3);
+
+	}
+
+	// This class creates a results page to display the number of questions
+	// correct out of the total number of questions. It also displays which
+	// questions are right, and which questions are wrong.
+	private void createResultsPageType() {
+
+		JLabel iconLabel = new JLabel();
+		iconLabel.setBounds(0, 0, this.getWidth(), (int) (this.getHeight() / 2.25));
+		iconLabel.setIcon(newIcon);
+		// this.add(iconLabel);
+
+		// Create a label for to dispaly "Results" inside a panel
+		// and place it in the NORTH
+		JLabel results = new JLabel("Results");
+		Font resultsFont = new Font("Courier", Font.BOLD, 20);
+		results.setFont(resultsFont);
+		JPanel resultsPanel = new JPanel();
+		resultsPanel.setBackground(Color.WHITE);
+		resultsPanel.add(results);
+		this.add(resultsPanel, BorderLayout.NORTH);
+
+		// Align to center
+		iconLabel.setHorizontalAlignment(JLabel.CENTER);
+		iconLabel.setVerticalAlignment(JLabel.CENTER);
+
+		centerOfNewFrame = (this.getHeight() - (this.getHeight() - iconLabel.getHeight()));
+
+		// Number of incorrect and correct answers. We'll need
+		// a function to set the actual values
+		int numberCorrect = 8, numberIncorrect = 10;
+
+		// Create the string to display the score, add it to a label,
+		// set the font, and then add the score label into a panel
+		String scoreStr = "Your Score  " + numberCorrect + "/" + numberIncorrect;
+		JLabel scoreLabel = new JLabel(scoreStr);
+		Font font = new Font("Courier", Font.BOLD, 18);
+		scoreLabel.setFont(font);
+		JPanel scorePanel = new JPanel();
+		scorePanel.add(scoreLabel);
+
+		// Create a text area to display which questions are corrects
+		// and which ones are incorrect. Make the text area unable
+		// to be edited, and add to a scrollpane
+		JTextArea questionCorOrInc = new JTextArea(10, 10);
+		questionCorOrInc.setEditable(false);
+		questionCorOrInc.setLineWrap(true);
+		questionCorOrInc.setFont(font);
+		JScrollPane jScrollPane = new JScrollPane(questionCorOrInc, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
+				JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+
+		// While less than the total number of questions in the quiz
+		// display whether or not each question is correct or incorrect.
+		// this is determined by a boolean value which will be need to
+		// be obtained by some function.
+		for (int i = 0; i < TakeQuizTakeSet.totalNumQuestions; i++) {
+			if (Correct)
+				questionCorOrInc.append("Question #" + (i + 1) + "\tCorrect\n");
+			else
+				questionCorOrInc.append("Question #" + (i + 1) + "\tIncorrect\n");
+
+		}
+
+		// Create border for the answer area
+		Border border = BorderFactory.createLineBorder(Color.BLACK);
+		jScrollPane.setBorder(border);
+
+		// Create a vertical box to place the question jlabel on top
+		// of the answer text area
+		Box CorOrIncBox = Box.createVerticalBox();
+
+		CorOrIncBox.add(scorePanel);
+		CorOrIncBox.add(Box.createVerticalStrut(80));
+		CorOrIncBox.add(jScrollPane);
+
+		// Constraints for the panel holding the text areas for
+		// resizing purposes.
+		GridBagConstraints c = new GridBagConstraints();
+		c.gridwidth = 1;
+		c.gridheight = 1;
+		c.weightx = .5;
+		c.gridx = 1;
+		c.gridy = 1;
+		c.fill = GridBagConstraints.BOTH;
+		c.insets = new Insets(1, 50, 1, 50);
+
+		// Create a panel to hold box with the question text area
+		// of questions displaying which ones are correct or incorrect
+		JPanel CorOrIncPanel = new JPanel(new GridBagLayout());
+		CorOrIncPanel.add(CorOrIncBox, c);
+
+		this.add(CorOrIncPanel, BorderLayout.CENTER);
+
+		addButtons(2);
+
+	}
+
+	// Creates flashcard page type that shows the question and has a
+	// pop up window that shows the answer. Again having issues with
+	// keeping the logo on the page. It uses FlashcardAnswer as a public
+	// String which can be set by the backend function with the appropriate
+	// string
+	private void createFlashcardPageType() {
+
+		JLabel iconLabel = new JLabel();
+		iconLabel.setBounds(0, 0, this.getWidth(), (int) (this.getHeight() / 2.25));
+		iconLabel.setIcon(newIcon);
+		/**
+		 * 
+		 * commened out the logo due to issues with it covering the question and
+		 * checkbox
+		 * 
+		 */
+		// this.add(iconLabel);
+
+		// Align to center
+		iconLabel.setHorizontalAlignment(JLabel.CENTER);
+		iconLabel.setVerticalAlignment(JLabel.CENTER);
+
+		centerOfNewFrame = (this.getHeight() - (this.getHeight() - iconLabel.getHeight()));
+
+		// String to hold questions. To be updated with function that passes
+		// the string of the actual question
+		String questionStr = "This is where the question goes";
+
+		// Create a JLabel to display the question, set its
+		// alignment, font type and size
+		JLabel questionLabel = new JLabel(questionStr);
+		// JLabel answerLabel = new JLabel(FlashcardAnswer);
+		questionLabel.setAlignmentX(centerOfNewFrame);
+		questionLabel.setOpaque(false);
+		// answerLabel.setAlignmentX(centerOfNewFrame);
+		// answerLabel.setOpaque(false);
+		Font font = new Font("Courier", Font.BOLD, 16);
+		questionLabel.setFont(font);
+		// answerLabel.setFont(font);
+
+		// Set the question jlabel's max size
+		questionLabel.setMaximumSize(getMaximumSize());
+		// answerLabel.setMaximumSize(getMaximumSize());
+
+		showHide.setAlignmentX(centerOfNewFrame);
+
+		// Create a vertical box to place the question string on top
+		// of the hide check box
+		Box questionBox = Box.createVerticalBox();
+		questionBox.add(questionLabel);
+		questionBox.add(Box.createVerticalStrut(100));
+		questionBox.add(showHide);
+		// questionBox.add(Box.createVerticalStrut(40));
+		// questionBox.add(answerLabel);
+
+		// Constraints for the panel holding the text areas for
+		// resizing purposes.
+		GridBagConstraints c = new GridBagConstraints();
+		c.gridwidth = 1;
+		c.gridheight = 1;
+		c.weightx = .5;
+		c.gridx = 1;
+		c.gridy = 10;
+		c.fill = GridBagConstraints.BOTH;
+		c.insets = new Insets(50, 50, 250, 50);
+
+		// Create a panel to hold box with the question jlabel
+		// and answer test area
+		JPanel QandA = new JPanel(new GridBagLayout());
+		QandA.add(questionBox, c);
+
+		this.add(QandA, BorderLayout.CENTER);
+
+		// If it is the first question page, it will only have 2
+		// buttons, every other page will have 3
+		if (QuizAndFlashQuestionPage.questionPageNumber == 1)
+			addButtons(2);
+		else
+			addButtons(3);
+
+	}
+
+	protected void addButtons(int count) {
+		// Add a panel to the south for the buttons
+
+		JPanel buttonHolder = new JPanel();
+		buttonHolder.setLayout(new GridBagLayout()); // May need to be
+														// gridbaglayout
+		buttonHolder.setBackground(Color.WHITE);
+		GridBagConstraints c = new GridBagConstraints();
+		this.add(buttonHolder, BorderLayout.SOUTH);
+
+		this.currentActions = new CustomButton[count];
+
+		for (int i = 0; i < count; i++) {
+
+			c.gridwidth = 1;
+			c.gridheight = 1;
+			c.weightx = 0.5;
+			c.gridx = i % 2;
+			c.gridy = (i % 2 == 0 && i > 0) ? c.gridy++ : c.gridy;
+			c.fill = GridBagConstraints.HORIZONTAL;
+			c.insets = new Insets(10, 10, 10, 10);
+
+			// If the last button is an odd one, make it the same size as both
+			// buttons above it, combined
+			if (count % 2 == 1 && i == count - 1) {
+				// System.out.println(this.panelTypeString + " for button: " +
+				// (i));
+				c.gridwidth = 2;
+			}
+
+			this.currentActions[i] = new CustomButton("Button " + (i + 1));
+			buttonHolder.add(this.currentActions[i], c);
+		}
+	}
+
+	public void setButtonNames(String[] btnNames) {
+		// System.out.println("Modifying Buton names");
+
+		try {
+			for (int i = 0; i < this.currentActions.length; i++) {
+				try {
+					this.currentActions[i].setText(btnNames[i]);
+				} catch (ArrayIndexOutOfBoundsException e) {
+
+				}
+			}
+		} catch (NullPointerException e) {
+			System.out.println(e.getMessage());
+		}
+	}
+
+	/** Accessors and mutators */
+
+	public static BufferedImage getMainLogoToDisplay() {
+		return mainLogoToDisplay;
+	}
+
+	public static void setMainLogoToDisplay(BufferedImage mainLogoToDisplay) {
+		CustomPage.mainLogoToDisplay = mainLogoToDisplay;
+	}
+
+}
+
+----------------------------------- SOURCE END -------------------------------------
+!STACK 0
+java.lang.IllegalArgumentException
+	at org.eclipse.jdt.core.dom.ASTNode.setSourceRange(ASTNode.java:2845)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1572)
+	at org.eclipse.jdt.core.dom.ASTConverter.buildBodyDeclarations(ASTConverter.java:258)
+	at org.eclipse.jdt.core.dom.ASTConverter.convertToEnumDeclaration(ASTConverter.java:3194)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2901)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2733)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:639)
+	at org.eclipse.jdt.core.dom.ASTConverter.buildBodyDeclarations(ASTConverter.java:195)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2965)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1374)
+	at org.eclipse.jdt.core.dom.CompilationUnitResolver.convert(CompilationUnitResolver.java:295)
+	at org.eclipse.jdt.core.dom.ASTParser.internalCreateAST(ASTParser.java:1216)
+	at org.eclipse.jdt.core.dom.ASTParser.createAST(ASTParser.java:812)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider$1.run(ASTProvider.java:551)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider.createAST(ASTProvider.java:543)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider.getAST(ASTProvider.java:486)
+	at org.eclipse.jdt.ui.SharedASTProvider.getAST(SharedASTProvider.java:128)
+	at org.eclipse.recommenders.rcp.utils.JdtUtils.findAstNodeFromEditorSelection(JdtUtils.java:663)
+	at org.eclipse.recommenders.internal.rcp.JavaElementSelectionService.handleSelectionInEditor(JavaElementSelectionService.java:110)
+	at org.eclipse.recommenders.internal.rcp.JavaElementSelectionService.access$1(JavaElementSelectionService.java:105)
+	at org.eclipse.recommenders.internal.rcp.JavaElementSelectionService$1.run(JavaElementSelectionService.java:82)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:293)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+
+!ENTRY org.eclipse.jdt.ui 4 2 2016-11-06 21:52:00.800
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.jdt.ui".
+!STACK 0
+java.lang.IllegalArgumentException
+	at org.eclipse.jdt.core.dom.ASTNode.setSourceRange(ASTNode.java:2845)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1572)
+	at org.eclipse.jdt.core.dom.ASTConverter.buildBodyDeclarations(ASTConverter.java:258)
+	at org.eclipse.jdt.core.dom.ASTConverter.convertToEnumDeclaration(ASTConverter.java:3194)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2901)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2733)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:639)
+	at org.eclipse.jdt.core.dom.ASTConverter.buildBodyDeclarations(ASTConverter.java:195)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2965)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1374)
+	at org.eclipse.jdt.core.dom.CompilationUnitResolver.convert(CompilationUnitResolver.java:295)
+	at org.eclipse.jdt.core.dom.ASTParser.internalCreateAST(ASTParser.java:1216)
+	at org.eclipse.jdt.core.dom.ASTParser.createAST(ASTParser.java:812)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider$1.run(ASTProvider.java:551)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider.createAST(ASTProvider.java:543)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider.getAST(ASTProvider.java:486)
+	at org.eclipse.jdt.ui.SharedASTProvider.getAST(SharedASTProvider.java:128)
+	at org.eclipse.recommenders.rcp.utils.JdtUtils.findAstNodeFromEditorSelection(JdtUtils.java:663)
+	at org.eclipse.recommenders.internal.rcp.JavaElementSelectionService.handleSelectionInEditor(JavaElementSelectionService.java:110)
+	at org.eclipse.recommenders.internal.rcp.JavaElementSelectionService.access$1(JavaElementSelectionService.java:105)
+	at org.eclipse.recommenders.internal.rcp.JavaElementSelectionService$1.run(JavaElementSelectionService.java:82)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:293)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+
+!ENTRY org.eclipse.jdt.ui 4 0 2016-11-06 21:52:00.802
+!MESSAGE Error in JDT Core during AST creation
+!STACK 0
+java.lang.IllegalArgumentException
+	at org.eclipse.jdt.core.dom.ASTNode.setSourceRange(ASTNode.java:2845)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1572)
+	at org.eclipse.jdt.core.dom.ASTConverter.buildBodyDeclarations(ASTConverter.java:258)
+	at org.eclipse.jdt.core.dom.ASTConverter.convertToEnumDeclaration(ASTConverter.java:3194)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2901)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2733)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:639)
+	at org.eclipse.jdt.core.dom.ASTConverter.buildBodyDeclarations(ASTConverter.java:195)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2965)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1374)
+	at org.eclipse.jdt.core.dom.CompilationUnitResolver.convert(CompilationUnitResolver.java:295)
+	at org.eclipse.jdt.core.dom.ASTParser.internalCreateAST(ASTParser.java:1216)
+	at org.eclipse.jdt.core.dom.ASTParser.createAST(ASTParser.java:812)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider$1.run(ASTProvider.java:551)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider.createAST(ASTProvider.java:543)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider.getAST(ASTProvider.java:486)
+	at org.eclipse.jdt.ui.SharedASTProvider.getAST(SharedASTProvider.java:128)
+	at org.eclipse.recommenders.rcp.utils.JdtUtils.findAstNodeFromEditorSelection(JdtUtils.java:663)
+	at org.eclipse.recommenders.internal.rcp.JavaElementSelectionService.handleSelectionInEditor(JavaElementSelectionService.java:110)
+	at org.eclipse.recommenders.internal.rcp.JavaElementSelectionService.access$1(JavaElementSelectionService.java:105)
+	at org.eclipse.recommenders.internal.rcp.JavaElementSelectionService$1.run(JavaElementSelectionService.java:82)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:293)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+
+!ENTRY org.eclipse.jdt.core 4 4 2016-11-06 21:52:01.002
+!MESSAGE Exception occurred during compilation unit conversion:
+----------------------------------- SOURCE BEGIN -------------------------------------
+package edu.CSUSM.testTaker.UI;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Image;
+import java.awt.Insets;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.net.URL;
+
+import javax.imageio.ImageIO;
+import javax.swing.BorderFactory;
+import javax.swing.Box;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.border.Border;
+
+import edu.CSUSM.testTaker.UI.CustomObjects.CustomButton;
+import edu.CSUSM.testTaker.UI.Pages.ManageData;
+import edu.CSUSM.testTaker.UI.Pages.QuizAndFlashQuestionPage;
+import edu.CSUSM.testTaker.UI.Pages.TakeQuizTakeSet;
+
+/**
+ * 
+ * @author Justin
+ * @purpose The purpose of this class is to make it easier to create JPanels.
+ *          Are panel types are quite simple to create. For simplicity, there
+ *          are a few type of panels: ��TWO_BUTTON_TYPE - Has a logo and two
+ *          buttons (sBs) � THREE_BUTTON_TYPE - Has a logo and three buttons (2
+ *          on top, one centered below) � LOGO_ONLY_TYPE - Has only a logo �
+ *          QUESTION_BUILDER_TYPE - has a question input, posible answer input
+ *          and radio buttons to selct correct answer
+ *
+ */
+public class CustomPage extends JPanel {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private static BufferedImage mainLogoToDisplay;
+	public static Image newImg;
+	public static ImageIcon newIcon;
+	public JLabel imageLabel = new JLabel();
+	protected static int centerOfNewFrame;
+	public JButton[] currentActions;
+	public String panelTypeString;
+	public NavigationController parentController;
+
+	// Added show/Hide check box to show and hide answer for flashcard
+	public JCheckBox showHide = new JCheckBox("Show/Hide Answer");
+	public static String FlashcardAnswer;
+	public boolean Correct; // Bool value to determine correct or incorrect for
+							// results page
+	public static String name;
+	
+	// Made the text areas public so that they can be saved into
+	// a string in the QuizAndFlashMain class.
+	public JTextArea question, answer;
+
+	// Created an array of string for the button names
+	private static final int MAX_NUMBER_OF_BUTTONS = 10;
+	protected static String[] buttonName = new String[MAX_NUMBER_OF_BUTTONS];
+	/** For the Question Panel */
+	JLabel titleLabel;
+	JPanel questionsMainPanel;
+	static String rowHeaders[], idens[];
+
+	/** End of question panel specific vars */
+
+	public static enum PanelType {
+		TWO_BUTTON_TYPE, THREE_BUTTON_TYPE, LOGO_ONLY_TYPE, QUESTION_BUILDER_TYPE, Q_and_A_Type, QUESTIONPAGE, FLASHCARDPAGE, RESULTS
+	};
+	
+	public static setName(String){
+		
+	}
+
+	// Enumerator to determine whether to update actions for quizzes
+	// or for flashcards
+	public static enum PageType {
+		QUIZ, FLASHCARD
+	};
+
+	// Enumerators to determine which pop up window to display in the
+	// PopUp class
+	public static enum PopUpType {
+
+		FlashcardAnswerPopUp, AddAnotherQuestion, SaveQuiz, SaveSet
+	}
+	
+	public static void setQBRowHeaders(String[] list){
+		rowHeaders = list;
+	}
+	
+	public static void setQBRowIDs(String[] list){
+		idens = list;
+	}
+
+	public CustomPage(PanelType currentPanelType, String imageAddress) {
+
+		super();
+		// Create the image from the image address
+		try {
+			URL url = new URL(imageAddress);
+			CustomPage.mainLogoToDisplay = ImageIO.read(url);
+		} catch (IOException ex) {
+			// handle exception...
+			System.out.println(ex.getMessage());
+		}
+
+		buildPanel(currentPanelType);
+	}
+
+	public CustomPage(PanelType currentPanelType, BufferedImage newImage) {
+		super();
+		CustomPage.mainLogoToDisplay = newImage;
+		buildPanel(currentPanelType);
+	}
+
+	/**
+	 * @param currentPanelType
+	 * @description Call if the image was already found
+	 */
+	public CustomPage(PanelType currentPanelType) {
+		super();
+		// Set the layout
+		this.setLayout(new BorderLayout());
+
+		// Build the contents
+		buildPanel(currentPanelType);
+
+	}
+
+	public CustomPage(PanelType currentPanelType, PageType currentPageType) {
+		super();
+		// Set the layout
+		this.setLayout(new BorderLayout());
+
+		// Build the contents
+		buildPanel(currentPanelType);
+
+	}
+	
+	public CustomPage(){
+		this.setLayout(new BorderLayout());
+		this.setBackground(Color.WHITE);
+	}
+
+	/**
+	 * @param nc
+	 *            Navigation controller used to show the next panel
+	 */
+	public void setParentController(NavigationController nc) {
+		this.parentController = nc;
+	}
+
+	/*
+	 * added String[] to arguments of createButton Types which is passed through
+	 * buildPanel, so I added a String[] argument here as well
+	 * 
+	 */
+
+	// Set the string value of the panel type
+	private void buildPanel(PanelType currentPanelType) {
+
+		this.panelTypeString = currentPanelType.toString();
+
+		// Set the size of the panel
+		this.setBounds(SideMenu.WIDTH, 0, GUIController.FRAME_WIDTH - SideMenu.WIDTH, GUIController.FRAME_HEIGHT);
+
+		// Set the background color
+		this.setBackground(Color.WHITE);
+
+		switch (currentPanelType) {
+		case TWO_BUTTON_TYPE:
+
+			createTwoButtonType();
+			break;
+
+		case THREE_BUTTON_TYPE:
+			createThreeButtonType();
+			break;
+
+		case LOGO_ONLY_TYPE:
+			createLogoType();
+			break;
+		// Add Question Page
+		case Q_and_A_Type:
+			createQandAype();
+			break;
+		// Take Quiz
+		case QUESTIONPAGE:
+			createQuestionPageType();
+			break;
+		// Take Set
+		case FLASHCARDPAGE:
+			createFlashcardPageType();
+			break;
+		// Results Page
+		case RESULTS:
+			createResultsPageType();
+			break;
+
+		case QUESTION_BUILDER_TYPE:
+			createQuestionBuilderType();
+			break;
+
+		default:
+			System.out.println("Panel Type Not Found");
+			break;
+		}
+	}
+
+	protected void createLogoType() {
+
+		// Set the background color // Option 1
+		// this.setBackground(new Color(39, 72, 155)); //Option 2
+
+		// Just display an image in the panel
+		imageLabel = new JLabel();
+		try {
+
+			Image img = CustomPage.mainLogoToDisplay;
+			newImg = img.getScaledInstance((this.getWidth() == 0) ? 600 : this.getWidth(),
+					(this.getHeight() / 2 == 0) ? 250 : this.getHeight() / 2, java.awt.Image.SCALE_SMOOTH);
+			newIcon = new ImageIcon(newImg);
+			imageLabel.setIcon(newIcon);
+		} catch (NullPointerException e) {
+			System.out.println("No Logo could be found. Please check the project directory");
+		} catch (Exception e) {
+			System.out.println("Error Finding image: " + e.getMessage());
+		}
+		imageLabel.setBounds(0, 0, this.getWidth(), (int) (this.getHeight() / 2.25));
+
+		// Align to center
+		imageLabel.setHorizontalAlignment(JLabel.CENTER);
+		imageLabel.setVerticalAlignment(JLabel.CENTER);
+		this.add(imageLabel, BorderLayout.CENTER);
+
+	}
+
+	/*
+	 * added String[] to arguments of createButton Types to name the buttons
+	 * with the string passed from the GUIController
+	 * 
+	 */
+
+	/**
+	 * Later //Add the image to the top of the screen. We are going to have 3
+	 * objects at the top: Back btn, logo, and currentpage title
+	 */
+	protected void createTwoButtonType() {
+		JLabel iconLabel = new JLabel();
+		iconLabel.setBounds(0, 0, this.getWidth(), (int) (this.getHeight() / 2.25));
+		iconLabel.setIcon(newIcon);
+		// this.add(iconLabel);
+		this.add(iconLabel, BorderLayout.CENTER);
+
+		// Align to center
+		iconLabel.setHorizontalAlignment(JLabel.CENTER);
+		iconLabel.setVerticalAlignment(JLabel.CENTER);
+
+		CustomPage.centerOfNewFrame = iconLabel.getHeight() - iconLabel.getY();
+
+		addButtons(2);
+
+		/*
+		 * Modified same as createTwoButtonType
+		 */
+
+	}
+
+	// This class creates the add question page for the user to be
+	// able to add a question and answer into the database.
+	private void createQandAype() {
+		JLabel iconLabel = new JLabel();
+
+		// I changed the parameter for height dividing by 5 do keep the
+		// logo from covering the text fields. However, the width is not
+		// getting placed in the correct spot.
+		iconLabel.setBounds(0, 0, this.getWidth(), (int) (this.getHeight() / 3.25));
+		iconLabel.setIcon(newIcon);
+		this.add(iconLabel);
+		// ******************
+		// this line was commented out because it was hiding the text areas
+		// ****************
+		// this.add(iconLabel, BorderLayout.NORTH);
+
+		// Align to center
+		iconLabel.setHorizontalAlignment(JLabel.CENTER);
+		iconLabel.setVerticalAlignment(JLabel.CENTER);
+
+		CustomPage.centerOfNewFrame = iconLabel.getHeight() - iconLabel.getY();
+
+		// Create a text area for the question and a text area for the answer
+		 question = new JTextArea("Question", 10, 10);
+		 answer = new JTextArea("Answer", 10, 10);
+
+		// Constraints for the panel holding the text areas for
+		// resizing purposes.
+		GridBagConstraints c = new GridBagConstraints();
+		c.gridwidth = 10;
+		c.gridheight = 10;
+		c.weightx = .5;
+		c.gridx = 1;
+		c.gridy = 1;
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.insets = new Insets(100, 10, 10, 10);
+
+		// Create border for text areas
+		Border border = BorderFactory.createLineBorder(Color.BLACK);
+		question.setBorder(border);
+		answer.setBorder(border);
+
+		// Set text area sizes and word wrapping
+		question.setMinimumSize(question.getMinimumSize());
+		answer.setMinimumSize(answer.getMinimumSize());
+		question.setLineWrap(true);
+		question.setWrapStyleWord(true);
+		answer.setLineWrap(true);
+
+		// Create panel to hold the question and answer text areas
+		JPanel QandAPanel = new JPanel();
+		QandAPanel.setBackground(Color.WHITE);
+		QandAPanel.setLayout(new GridBagLayout());
+
+		// Create a vertical box for the question text area
+		// placing a label about the text area
+		Box questionBox = Box.createVerticalBox();
+		questionBox.add(new JLabel("Question"));
+		questionBox.add(Box.createVerticalStrut(5));
+		questionBox.add(question);
+
+		// Create a vertical box for the answer text area
+		// placing a label about the text area
+		Box answerBox = Box.createVerticalBox();
+		answerBox.add(new JLabel("Answer"));
+		answerBox.add(Box.createVerticalStrut(5));
+		answerBox.add(answer);
+
+		// Create a horizontal box to hold the question and
+		// answer text areas and use Strut to place space between them
+		Box QandABox = Box.createHorizontalBox();
+		QandABox.add(questionBox);
+		QandABox.add(Box.createHorizontalStrut(100));
+		QandABox.add(answerBox);
+
+		// This box was created to make a space between the logo
+		// it was otherwise cutting off the boxes
+		Box VertQandABox = Box.createVerticalBox();
+		VertQandABox.add(Box.createVerticalStrut(91));
+		VertQandABox.add(QandABox);
+
+		// Add the question and answer boxes to the panel that is
+		// using a gridbaglayout
+		QandAPanel.add(VertQandABox);
+
+		// Add the Q&A panel to the frame and place it in the center
+		// then add constraints for the gridbag panel
+		this.add(QandAPanel, BorderLayout.CENTER);
+		QandAPanel.add(VertQandABox, c);
+		addButtons(2);
+
+	}
+
+	private void createThreeButtonType() {
+
+		JLabel iconLabel = new JLabel();
+		iconLabel.setBounds(0, 0, this.getWidth(), (int) (this.getHeight() / 2.25));
+		iconLabel.setIcon(newIcon);
+		this.add(iconLabel);
+
+		// Align to center
+		iconLabel.setHorizontalAlignment(JLabel.CENTER);
+		iconLabel.setVerticalAlignment(JLabel.CENTER);
+
+		// centerOfNewFrame = (this.getHeight() - (this.getHeight() -
+		// iconLabel.getHeight()));
+
+		addButtons(3);
+
+	}
+
+	private void createQuestionBuilderType() {
+		/*
+		 * Modified addButtons to rename to string
+		 */
+
+		// Create a title label to demonstrate what is shown
+
+		// Now, add a panel for the questions
+		/*
+		 * this.questionsMainPanel = new JPanel();
+		 * this.questionsMainPanel.setBackground(Color.RED);
+		 * this.add(questionsMainPanel, BorderLayout.CENTER);
+		 */
+
+		// We need to add a few components to this view:
+		// JComboBox - Allows the user to
+		ManageData<String> newDataManager = new ManageData<String>(this.getName(), rowHeaders, idens);
+		this.add(newDataManager, BorderLayout.CENTER);
+
+		addButtons(2);
+		// setQuestionLayout();
+	}
+
+	// Create a question and answer type which displays the quesiton
+	// string as a jlabel and put the answer in the answer text area.
+	// This is used for the take quiz page.
+	private void createQuestionPageType() {
+
+		JLabel iconLabel = new JLabel();
+		iconLabel.setBounds(0, 0, this.getWidth(), (int) (this.getHeight() / 2.25));
+		iconLabel.setIcon(newIcon);
+		// this.add(iconLabel);
+
+		// this.add(iconLabel, BorderLayout.NORTH);
+
+		// Align to center
+		iconLabel.setHorizontalAlignment(JLabel.CENTER);
+		iconLabel.setVerticalAlignment(JLabel.CENTER);
+
+		centerOfNewFrame = (this.getHeight() - (this.getHeight() - iconLabel.getHeight()));
+
+		// String to hold questions. To be updated with function that passes
+		// the string of the actual question
+		String questionStr = new String("This is where the question goes.");
+
+		// Create a JLabel to display thew question, set its
+		// alignment, font type and size
+		JLabel questionLabel = new JLabel(questionStr);
+		questionLabel.setAlignmentX(centerOfNewFrame);
+		questionLabel.setOpaque(false);
+		Font font = new Font("Courier", Font.BOLD, 16);
+		questionLabel.setFont(font);
+
+		// Set the question jlabel's max size
+		questionLabel.setMaximumSize(getMaximumSize());
+
+		// Create a text area to enter the answer in and make it into
+		// a scroll pane with scrollbars created as needed.
+		JTextArea answer = new JTextArea("Answer goes Here", 10, 10);
+		answer.setLineWrap(true);
+		answer.setFont(font);
+		JScrollPane jScrollPane = new JScrollPane(answer, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
+				JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+
+		// Create border for the answer area
+		Border border = BorderFactory.createLineBorder(Color.BLACK);
+		jScrollPane.setBorder(border);
+
+		// Create a vertical box to place the question jlabel on top
+		// of the answer text area
+		Box questionBox = Box.createVerticalBox();
+		questionBox.add(questionLabel);
+		questionBox.add(Box.createVerticalStrut(80));
+		questionBox.add(jScrollPane);
+
+		// Constraints for the panel holding the text areas for
+		// resizing purposes.
+		GridBagConstraints c = new GridBagConstraints();
+		c.gridwidth = 1;
+		c.gridheight = 1;
+		c.weightx = .5;
+		c.gridx = 1;
+		c.gridy = 1;
+		c.fill = GridBagConstraints.BOTH;
+		c.insets = new Insets(1, 50, 1, 50);
+
+		// Create a panel to hold box with the question jlabel
+		// and answer test area
+		JPanel QandA = new JPanel(new GridBagLayout());
+		QandA.add(questionBox, c);
+
+		this.add(QandA, BorderLayout.CENTER);
+
+		// Only the first page has 2 buttons. set every other page
+		// to have 3 buttons
+		if (QuizAndFlashQuestionPage.questionPageNumber == 1)
+			addButtons(2);
+		else
+			addButtons(3);
+
+	}
+
+	// This class creates a results page to display the number of questions
+	// correct out of the total number of questions. It also displays which
+	// questions are right, and which questions are wrong.
+	private void createResultsPageType() {
+
+		JLabel iconLabel = new JLabel();
+		iconLabel.setBounds(0, 0, this.getWidth(), (int) (this.getHeight() / 2.25));
+		iconLabel.setIcon(newIcon);
+		// this.add(iconLabel);
+
+		// Create a label for to dispaly "Results" inside a panel
+		// and place it in the NORTH
+		JLabel results = new JLabel("Results");
+		Font resultsFont = new Font("Courier", Font.BOLD, 20);
+		results.setFont(resultsFont);
+		JPanel resultsPanel = new JPanel();
+		resultsPanel.setBackground(Color.WHITE);
+		resultsPanel.add(results);
+		this.add(resultsPanel, BorderLayout.NORTH);
+
+		// Align to center
+		iconLabel.setHorizontalAlignment(JLabel.CENTER);
+		iconLabel.setVerticalAlignment(JLabel.CENTER);
+
+		centerOfNewFrame = (this.getHeight() - (this.getHeight() - iconLabel.getHeight()));
+
+		// Number of incorrect and correct answers. We'll need
+		// a function to set the actual values
+		int numberCorrect = 8, numberIncorrect = 10;
+
+		// Create the string to display the score, add it to a label,
+		// set the font, and then add the score label into a panel
+		String scoreStr = "Your Score  " + numberCorrect + "/" + numberIncorrect;
+		JLabel scoreLabel = new JLabel(scoreStr);
+		Font font = new Font("Courier", Font.BOLD, 18);
+		scoreLabel.setFont(font);
+		JPanel scorePanel = new JPanel();
+		scorePanel.add(scoreLabel);
+
+		// Create a text area to display which questions are corrects
+		// and which ones are incorrect. Make the text area unable
+		// to be edited, and add to a scrollpane
+		JTextArea questionCorOrInc = new JTextArea(10, 10);
+		questionCorOrInc.setEditable(false);
+		questionCorOrInc.setLineWrap(true);
+		questionCorOrInc.setFont(font);
+		JScrollPane jScrollPane = new JScrollPane(questionCorOrInc, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
+				JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+
+		// While less than the total number of questions in the quiz
+		// display whether or not each question is correct or incorrect.
+		// this is determined by a boolean value which will be need to
+		// be obtained by some function.
+		for (int i = 0; i < TakeQuizTakeSet.totalNumQuestions; i++) {
+			if (Correct)
+				questionCorOrInc.append("Question #" + (i + 1) + "\tCorrect\n");
+			else
+				questionCorOrInc.append("Question #" + (i + 1) + "\tIncorrect\n");
+
+		}
+
+		// Create border for the answer area
+		Border border = BorderFactory.createLineBorder(Color.BLACK);
+		jScrollPane.setBorder(border);
+
+		// Create a vertical box to place the question jlabel on top
+		// of the answer text area
+		Box CorOrIncBox = Box.createVerticalBox();
+
+		CorOrIncBox.add(scorePanel);
+		CorOrIncBox.add(Box.createVerticalStrut(80));
+		CorOrIncBox.add(jScrollPane);
+
+		// Constraints for the panel holding the text areas for
+		// resizing purposes.
+		GridBagConstraints c = new GridBagConstraints();
+		c.gridwidth = 1;
+		c.gridheight = 1;
+		c.weightx = .5;
+		c.gridx = 1;
+		c.gridy = 1;
+		c.fill = GridBagConstraints.BOTH;
+		c.insets = new Insets(1, 50, 1, 50);
+
+		// Create a panel to hold box with the question text area
+		// of questions displaying which ones are correct or incorrect
+		JPanel CorOrIncPanel = new JPanel(new GridBagLayout());
+		CorOrIncPanel.add(CorOrIncBox, c);
+
+		this.add(CorOrIncPanel, BorderLayout.CENTER);
+
+		addButtons(2);
+
+	}
+
+	// Creates flashcard page type that shows the question and has a
+	// pop up window that shows the answer. Again having issues with
+	// keeping the logo on the page. It uses FlashcardAnswer as a public
+	// String which can be set by the backend function with the appropriate
+	// string
+	private void createFlashcardPageType() {
+
+		JLabel iconLabel = new JLabel();
+		iconLabel.setBounds(0, 0, this.getWidth(), (int) (this.getHeight() / 2.25));
+		iconLabel.setIcon(newIcon);
+		/**
+		 * 
+		 * commened out the logo due to issues with it covering the question and
+		 * checkbox
+		 * 
+		 */
+		// this.add(iconLabel);
+
+		// Align to center
+		iconLabel.setHorizontalAlignment(JLabel.CENTER);
+		iconLabel.setVerticalAlignment(JLabel.CENTER);
+
+		centerOfNewFrame = (this.getHeight() - (this.getHeight() - iconLabel.getHeight()));
+
+		// String to hold questions. To be updated with function that passes
+		// the string of the actual question
+		String questionStr = "This is where the question goes";
+
+		// Create a JLabel to display the question, set its
+		// alignment, font type and size
+		JLabel questionLabel = new JLabel(questionStr);
+		// JLabel answerLabel = new JLabel(FlashcardAnswer);
+		questionLabel.setAlignmentX(centerOfNewFrame);
+		questionLabel.setOpaque(false);
+		// answerLabel.setAlignmentX(centerOfNewFrame);
+		// answerLabel.setOpaque(false);
+		Font font = new Font("Courier", Font.BOLD, 16);
+		questionLabel.setFont(font);
+		// answerLabel.setFont(font);
+
+		// Set the question jlabel's max size
+		questionLabel.setMaximumSize(getMaximumSize());
+		// answerLabel.setMaximumSize(getMaximumSize());
+
+		showHide.setAlignmentX(centerOfNewFrame);
+
+		// Create a vertical box to place the question string on top
+		// of the hide check box
+		Box questionBox = Box.createVerticalBox();
+		questionBox.add(questionLabel);
+		questionBox.add(Box.createVerticalStrut(100));
+		questionBox.add(showHide);
+		// questionBox.add(Box.createVerticalStrut(40));
+		// questionBox.add(answerLabel);
+
+		// Constraints for the panel holding the text areas for
+		// resizing purposes.
+		GridBagConstraints c = new GridBagConstraints();
+		c.gridwidth = 1;
+		c.gridheight = 1;
+		c.weightx = .5;
+		c.gridx = 1;
+		c.gridy = 10;
+		c.fill = GridBagConstraints.BOTH;
+		c.insets = new Insets(50, 50, 250, 50);
+
+		// Create a panel to hold box with the question jlabel
+		// and answer test area
+		JPanel QandA = new JPanel(new GridBagLayout());
+		QandA.add(questionBox, c);
+
+		this.add(QandA, BorderLayout.CENTER);
+
+		// If it is the first question page, it will only have 2
+		// buttons, every other page will have 3
+		if (QuizAndFlashQuestionPage.questionPageNumber == 1)
+			addButtons(2);
+		else
+			addButtons(3);
+
+	}
+
+	protected void addButtons(int count) {
+		// Add a panel to the south for the buttons
+
+		JPanel buttonHolder = new JPanel();
+		buttonHolder.setLayout(new GridBagLayout()); // May need to be
+														// gridbaglayout
+		buttonHolder.setBackground(Color.WHITE);
+		GridBagConstraints c = new GridBagConstraints();
+		this.add(buttonHolder, BorderLayout.SOUTH);
+
+		this.currentActions = new CustomButton[count];
+
+		for (int i = 0; i < count; i++) {
+
+			c.gridwidth = 1;
+			c.gridheight = 1;
+			c.weightx = 0.5;
+			c.gridx = i % 2;
+			c.gridy = (i % 2 == 0 && i > 0) ? c.gridy++ : c.gridy;
+			c.fill = GridBagConstraints.HORIZONTAL;
+			c.insets = new Insets(10, 10, 10, 10);
+
+			// If the last button is an odd one, make it the same size as both
+			// buttons above it, combined
+			if (count % 2 == 1 && i == count - 1) {
+				// System.out.println(this.panelTypeString + " for button: " +
+				// (i));
+				c.gridwidth = 2;
+			}
+
+			this.currentActions[i] = new CustomButton("Button " + (i + 1));
+			buttonHolder.add(this.currentActions[i], c);
+		}
+	}
+
+	public void setButtonNames(String[] btnNames) {
+		// System.out.println("Modifying Buton names");
+
+		try {
+			for (int i = 0; i < this.currentActions.length; i++) {
+				try {
+					this.currentActions[i].setText(btnNames[i]);
+				} catch (ArrayIndexOutOfBoundsException e) {
+
+				}
+			}
+		} catch (NullPointerException e) {
+			System.out.println(e.getMessage());
+		}
+	}
+
+	/** Accessors and mutators */
+
+	public static BufferedImage getMainLogoToDisplay() {
+		return mainLogoToDisplay;
+	}
+
+	public static void setMainLogoToDisplay(BufferedImage mainLogoToDisplay) {
+		CustomPage.mainLogoToDisplay = mainLogoToDisplay;
+	}
+
+}
+
+----------------------------------- SOURCE END -------------------------------------
+!STACK 0
+java.lang.IllegalArgumentException
+	at org.eclipse.jdt.core.dom.ASTNode.setSourceRange(ASTNode.java:2845)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1572)
+	at org.eclipse.jdt.core.dom.ASTConverter.buildBodyDeclarations(ASTConverter.java:258)
+	at org.eclipse.jdt.core.dom.ASTConverter.convertToEnumDeclaration(ASTConverter.java:3194)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2901)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2733)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:639)
+	at org.eclipse.jdt.core.dom.ASTConverter.buildBodyDeclarations(ASTConverter.java:195)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2965)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1374)
+	at org.eclipse.jdt.core.dom.CompilationUnitResolver.convert(CompilationUnitResolver.java:295)
+	at org.eclipse.jdt.core.dom.ASTParser.internalCreateAST(ASTParser.java:1216)
+	at org.eclipse.jdt.core.dom.ASTParser.createAST(ASTParser.java:812)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider$1.run(ASTProvider.java:551)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider.createAST(ASTProvider.java:543)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider.getAST(ASTProvider.java:486)
+	at org.eclipse.jdt.ui.SharedASTProvider.getAST(SharedASTProvider.java:128)
+	at org.eclipse.jdt.internal.ui.viewsupport.SelectionListenerWithASTManager$PartListenerGroup.calculateASTandInform(SelectionListenerWithASTManager.java:173)
+	at org.eclipse.jdt.internal.ui.viewsupport.SelectionListenerWithASTManager$PartListenerGroup$3.run(SelectionListenerWithASTManager.java:158)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.jdt.ui 4 2 2016-11-06 21:52:01.012
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.jdt.ui".
+!STACK 0
+java.lang.IllegalArgumentException
+	at org.eclipse.jdt.core.dom.ASTNode.setSourceRange(ASTNode.java:2845)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1572)
+	at org.eclipse.jdt.core.dom.ASTConverter.buildBodyDeclarations(ASTConverter.java:258)
+	at org.eclipse.jdt.core.dom.ASTConverter.convertToEnumDeclaration(ASTConverter.java:3194)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2901)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2733)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:639)
+	at org.eclipse.jdt.core.dom.ASTConverter.buildBodyDeclarations(ASTConverter.java:195)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2965)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1374)
+	at org.eclipse.jdt.core.dom.CompilationUnitResolver.convert(CompilationUnitResolver.java:295)
+	at org.eclipse.jdt.core.dom.ASTParser.internalCreateAST(ASTParser.java:1216)
+	at org.eclipse.jdt.core.dom.ASTParser.createAST(ASTParser.java:812)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider$1.run(ASTProvider.java:551)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider.createAST(ASTProvider.java:543)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider.getAST(ASTProvider.java:486)
+	at org.eclipse.jdt.ui.SharedASTProvider.getAST(SharedASTProvider.java:128)
+	at org.eclipse.jdt.internal.ui.viewsupport.SelectionListenerWithASTManager$PartListenerGroup.calculateASTandInform(SelectionListenerWithASTManager.java:173)
+	at org.eclipse.jdt.internal.ui.viewsupport.SelectionListenerWithASTManager$PartListenerGroup$3.run(SelectionListenerWithASTManager.java:158)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.jdt.ui 4 0 2016-11-06 21:52:01.015
+!MESSAGE Error in JDT Core during AST creation
+!STACK 0
+java.lang.IllegalArgumentException
+	at org.eclipse.jdt.core.dom.ASTNode.setSourceRange(ASTNode.java:2845)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1572)
+	at org.eclipse.jdt.core.dom.ASTConverter.buildBodyDeclarations(ASTConverter.java:258)
+	at org.eclipse.jdt.core.dom.ASTConverter.convertToEnumDeclaration(ASTConverter.java:3194)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2901)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2733)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:639)
+	at org.eclipse.jdt.core.dom.ASTConverter.buildBodyDeclarations(ASTConverter.java:195)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2965)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1374)
+	at org.eclipse.jdt.core.dom.CompilationUnitResolver.convert(CompilationUnitResolver.java:295)
+	at org.eclipse.jdt.core.dom.ASTParser.internalCreateAST(ASTParser.java:1216)
+	at org.eclipse.jdt.core.dom.ASTParser.createAST(ASTParser.java:812)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider$1.run(ASTProvider.java:551)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider.createAST(ASTProvider.java:543)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider.getAST(ASTProvider.java:486)
+	at org.eclipse.jdt.ui.SharedASTProvider.getAST(SharedASTProvider.java:128)
+	at org.eclipse.jdt.internal.ui.viewsupport.SelectionListenerWithASTManager$PartListenerGroup.calculateASTandInform(SelectionListenerWithASTManager.java:173)
+	at org.eclipse.jdt.internal.ui.viewsupport.SelectionListenerWithASTManager$PartListenerGroup$3.run(SelectionListenerWithASTManager.java:158)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.jdt.core 4 4 2016-11-06 21:52:02.084
+!MESSAGE Exception occurred during compilation unit conversion:
+----------------------------------- SOURCE BEGIN -------------------------------------
+package edu.CSUSM.testTaker.UI;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Image;
+import java.awt.Insets;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.net.URL;
+
+import javax.imageio.ImageIO;
+import javax.swing.BorderFactory;
+import javax.swing.Box;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.border.Border;
+
+import edu.CSUSM.testTaker.UI.CustomObjects.CustomButton;
+import edu.CSUSM.testTaker.UI.Pages.ManageData;
+import edu.CSUSM.testTaker.UI.Pages.QuizAndFlashQuestionPage;
+import edu.CSUSM.testTaker.UI.Pages.TakeQuizTakeSet;
+
+/**
+ * 
+ * @author Justin
+ * @purpose The purpose of this class is to make it easier to create JPanels.
+ *          Are panel types are quite simple to create. For simplicity, there
+ *          are a few type of panels: ��TWO_BUTTON_TYPE - Has a logo and two
+ *          buttons (sBs) � THREE_BUTTON_TYPE - Has a logo and three buttons (2
+ *          on top, one centered below) � LOGO_ONLY_TYPE - Has only a logo �
+ *          QUESTION_BUILDER_TYPE - has a question input, posible answer input
+ *          and radio buttons to selct correct answer
+ *
+ */
+public class CustomPage extends JPanel {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private static BufferedImage mainLogoToDisplay;
+	public static Image newImg;
+	public static ImageIcon newIcon;
+	public JLabel imageLabel = new JLabel();
+	protected static int centerOfNewFrame;
+	public JButton[] currentActions;
+	public String panelTypeString;
+	public NavigationController parentController;
+
+	// Added show/Hide check box to show and hide answer for flashcard
+	public JCheckBox showHide = new JCheckBox("Show/Hide Answer");
+	public static String FlashcardAnswer;
+	public boolean Correct; // Bool value to determine correct or incorrect for
+							// results page
+	public static String name;
+	
+	// Made the text areas public so that they can be saved into
+	// a string in the QuizAndFlashMain class.
+	public JTextArea question, answer;
+
+	// Created an array of string for the button names
+	private static final int MAX_NUMBER_OF_BUTTONS = 10;
+	protected static String[] buttonName = new String[MAX_NUMBER_OF_BUTTONS];
+	/** For the Question Panel */
+	JLabel titleLabel;
+	JPanel questionsMainPanel;
+	static String rowHeaders[], idens[];
+
+	/** End of question panel specific vars */
+
+	public static enum PanelType {
+		TWO_BUTTON_TYPE, THREE_BUTTON_TYPE, LOGO_ONLY_TYPE, QUESTION_BUILDER_TYPE, Q_and_A_Type, QUESTIONPAGE, FLASHCARDPAGE, RESULTS
+	};
+	
+	public static setName(String){
+		
+	}
+
+	// Enumerator to determine whether to update actions for quizzes
+	// or for flashcards
+	public static enum PageType {
+		QUIZ, FLASHCARD
+	};
+
+	// Enumerators to determine which pop up window to display in the
+	// PopUp class
+	public static enum PopUpType {
+
+		FlashcardAnswerPopUp, AddAnotherQuestion, SaveQuiz, SaveSet
+	}
+	
+	public static void setQBRowHeaders(String[] list){
+		rowHeaders = list;
+	}
+	
+	public static void setQBRowIDs(String[] list){
+		idens = list;
+	}
+
+	public CustomPage(PanelType currentPanelType, String imageAddress) {
+
+		super();
+		// Create the image from the image address
+		try {
+			URL url = new URL(imageAddress);
+			CustomPage.mainLogoToDisplay = ImageIO.read(url);
+		} catch (IOException ex) {
+			// handle exception...
+			System.out.println(ex.getMessage());
+		}
+
+		buildPanel(currentPanelType);
+	}
+
+	public CustomPage(PanelType currentPanelType, BufferedImage newImage) {
+		super();
+		CustomPage.mainLogoToDisplay = newImage;
+		buildPanel(currentPanelType);
+	}
+
+	/**
+	 * @param currentPanelType
+	 * @description Call if the image was already found
+	 */
+	public CustomPage(PanelType currentPanelType) {
+		super();
+		// Set the layout
+		this.setLayout(new BorderLayout());
+
+		// Build the contents
+		buildPanel(currentPanelType);
+
+	}
+
+	public CustomPage(PanelType currentPanelType, PageType currentPageType) {
+		super();
+		// Set the layout
+		this.setLayout(new BorderLayout());
+
+		// Build the contents
+		buildPanel(currentPanelType);
+
+	}
+	
+	public CustomPage(){
+		this.setLayout(new BorderLayout());
+		this.setBackground(Color.WHITE);
+	}
+
+	/**
+	 * @param nc
+	 *            Navigation controller used to show the next panel
+	 */
+	public void setParentController(NavigationController nc) {
+		this.parentController = nc;
+	}
+
+	/*
+	 * added String[] to arguments of createButton Types which is passed through
+	 * buildPanel, so I added a String[] argument here as well
+	 * 
+	 */
+
+	// Set the string value of the panel type
+	private void buildPanel(PanelType currentPanelType) {
+
+		this.panelTypeString = currentPanelType.toString();
+
+		// Set the size of the panel
+		this.setBounds(SideMenu.WIDTH, 0, GUIController.FRAME_WIDTH - SideMenu.WIDTH, GUIController.FRAME_HEIGHT);
+
+		// Set the background color
+		this.setBackground(Color.WHITE);
+
+		switch (currentPanelType) {
+		case TWO_BUTTON_TYPE:
+
+			createTwoButtonType();
+			break;
+
+		case THREE_BUTTON_TYPE:
+			createThreeButtonType();
+			break;
+
+		case LOGO_ONLY_TYPE:
+			createLogoType();
+			break;
+		// Add Question Page
+		case Q_and_A_Type:
+			createQandAype();
+			break;
+		// Take Quiz
+		case QUESTIONPAGE:
+			createQuestionPageType();
+			break;
+		// Take Set
+		case FLASHCARDPAGE:
+			createFlashcardPageType();
+			break;
+		// Results Page
+		case RESULTS:
+			createResultsPageType();
+			break;
+
+		case QUESTION_BUILDER_TYPE:
+			createQuestionBuilderType();
+			break;
+
+		default:
+			System.out.println("Panel Type Not Found");
+			break;
+		}
+	}
+
+	protected void createLogoType() {
+
+		// Set the background color // Option 1
+		// this.setBackground(new Color(39, 72, 155)); //Option 2
+
+		// Just display an image in the panel
+		imageLabel = new JLabel();
+		try {
+
+			Image img = CustomPage.mainLogoToDisplay;
+			newImg = img.getScaledInstance((this.getWidth() == 0) ? 600 : this.getWidth(),
+					(this.getHeight() / 2 == 0) ? 250 : this.getHeight() / 2, java.awt.Image.SCALE_SMOOTH);
+			newIcon = new ImageIcon(newImg);
+			imageLabel.setIcon(newIcon);
+		} catch (NullPointerException e) {
+			System.out.println("No Logo could be found. Please check the project directory");
+		} catch (Exception e) {
+			System.out.println("Error Finding image: " + e.getMessage());
+		}
+		imageLabel.setBounds(0, 0, this.getWidth(), (int) (this.getHeight() / 2.25));
+
+		// Align to center
+		imageLabel.setHorizontalAlignment(JLabel.CENTER);
+		imageLabel.setVerticalAlignment(JLabel.CENTER);
+		this.add(imageLabel, BorderLayout.CENTER);
+
+	}
+
+	/*
+	 * added String[] to arguments of createButton Types to name the buttons
+	 * with the string passed from the GUIController
+	 * 
+	 */
+
+	/**
+	 * Later //Add the image to the top of the screen. We are going to have 3
+	 * objects at the top: Back btn, logo, and currentpage title
+	 */
+	protected void createTwoButtonType() {
+		JLabel iconLabel = new JLabel();
+		iconLabel.setBounds(0, 0, this.getWidth(), (int) (this.getHeight() / 2.25));
+		iconLabel.setIcon(newIcon);
+		// this.add(iconLabel);
+		this.add(iconLabel, BorderLayout.CENTER);
+
+		// Align to center
+		iconLabel.setHorizontalAlignment(JLabel.CENTER);
+		iconLabel.setVerticalAlignment(JLabel.CENTER);
+
+		CustomPage.centerOfNewFrame = iconLabel.getHeight() - iconLabel.getY();
+
+		addButtons(2);
+
+		/*
+		 * Modified same as createTwoButtonType
+		 */
+
+	}
+
+	// This class creates the add question page for the user to be
+	// able to add a question and answer into the database.
+	private void createQandAype() {
+		JLabel iconLabel = new JLabel();
+
+		// I changed the parameter for height dividing by 5 do keep the
+		// logo from covering the text fields. However, the width is not
+		// getting placed in the correct spot.
+		iconLabel.setBounds(0, 0, this.getWidth(), (int) (this.getHeight() / 3.25));
+		iconLabel.setIcon(newIcon);
+		this.add(iconLabel);
+		// ******************
+		// this line was commented out because it was hiding the text areas
+		// ****************
+		// this.add(iconLabel, BorderLayout.NORTH);
+
+		// Align to center
+		iconLabel.setHorizontalAlignment(JLabel.CENTER);
+		iconLabel.setVerticalAlignment(JLabel.CENTER);
+
+		CustomPage.centerOfNewFrame = iconLabel.getHeight() - iconLabel.getY();
+
+		// Create a text area for the question and a text area for the answer
+		 question = new JTextArea("Question", 10, 10);
+		 answer = new JTextArea("Answer", 10, 10);
+
+		// Constraints for the panel holding the text areas for
+		// resizing purposes.
+		GridBagConstraints c = new GridBagConstraints();
+		c.gridwidth = 10;
+		c.gridheight = 10;
+		c.weightx = .5;
+		c.gridx = 1;
+		c.gridy = 1;
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.insets = new Insets(100, 10, 10, 10);
+
+		// Create border for text areas
+		Border border = BorderFactory.createLineBorder(Color.BLACK);
+		question.setBorder(border);
+		answer.setBorder(border);
+
+		// Set text area sizes and word wrapping
+		question.setMinimumSize(question.getMinimumSize());
+		answer.setMinimumSize(answer.getMinimumSize());
+		question.setLineWrap(true);
+		question.setWrapStyleWord(true);
+		answer.setLineWrap(true);
+
+		// Create panel to hold the question and answer text areas
+		JPanel QandAPanel = new JPanel();
+		QandAPanel.setBackground(Color.WHITE);
+		QandAPanel.setLayout(new GridBagLayout());
+
+		// Create a vertical box for the question text area
+		// placing a label about the text area
+		Box questionBox = Box.createVerticalBox();
+		questionBox.add(new JLabel("Question"));
+		questionBox.add(Box.createVerticalStrut(5));
+		questionBox.add(question);
+
+		// Create a vertical box for the answer text area
+		// placing a label about the text area
+		Box answerBox = Box.createVerticalBox();
+		answerBox.add(new JLabel("Answer"));
+		answerBox.add(Box.createVerticalStrut(5));
+		answerBox.add(answer);
+
+		// Create a horizontal box to hold the question and
+		// answer text areas and use Strut to place space between them
+		Box QandABox = Box.createHorizontalBox();
+		QandABox.add(questionBox);
+		QandABox.add(Box.createHorizontalStrut(100));
+		QandABox.add(answerBox);
+
+		// This box was created to make a space between the logo
+		// it was otherwise cutting off the boxes
+		Box VertQandABox = Box.createVerticalBox();
+		VertQandABox.add(Box.createVerticalStrut(91));
+		VertQandABox.add(QandABox);
+
+		// Add the question and answer boxes to the panel that is
+		// using a gridbaglayout
+		QandAPanel.add(VertQandABox);
+
+		// Add the Q&A panel to the frame and place it in the center
+		// then add constraints for the gridbag panel
+		this.add(QandAPanel, BorderLayout.CENTER);
+		QandAPanel.add(VertQandABox, c);
+		addButtons(2);
+
+	}
+
+	private void createThreeButtonType() {
+
+		JLabel iconLabel = new JLabel();
+		iconLabel.setBounds(0, 0, this.getWidth(), (int) (this.getHeight() / 2.25));
+		iconLabel.setIcon(newIcon);
+		this.add(iconLabel);
+
+		// Align to center
+		iconLabel.setHorizontalAlignment(JLabel.CENTER);
+		iconLabel.setVerticalAlignment(JLabel.CENTER);
+
+		// centerOfNewFrame = (this.getHeight() - (this.getHeight() -
+		// iconLabel.getHeight()));
+
+		addButtons(3);
+
+	}
+
+	private void createQuestionBuilderType() {
+		/*
+		 * Modified addButtons to rename to string
+		 */
+
+		// Create a title label to demonstrate what is shown
+
+		// Now, add a panel for the questions
+		/*
+		 * this.questionsMainPanel = new JPanel();
+		 * this.questionsMainPanel.setBackground(Color.RED);
+		 * this.add(questionsMainPanel, BorderLayout.CENTER);
+		 */
+
+		// We need to add a few components to this view:
+		// JComboBox - Allows the user to
+		ManageData<String> newDataManager = new ManageData<String>(this.getName(), rowHeaders, idens);
+		this.add(newDataManager, BorderLayout.CENTER);
+
+		addButtons(2);
+		// setQuestionLayout();
+	}
+
+	// Create a question and answer type which displays the quesiton
+	// string as a jlabel and put the answer in the answer text area.
+	// This is used for the take quiz page.
+	private void createQuestionPageType() {
+
+		JLabel iconLabel = new JLabel();
+		iconLabel.setBounds(0, 0, this.getWidth(), (int) (this.getHeight() / 2.25));
+		iconLabel.setIcon(newIcon);
+		// this.add(iconLabel);
+
+		// this.add(iconLabel, BorderLayout.NORTH);
+
+		// Align to center
+		iconLabel.setHorizontalAlignment(JLabel.CENTER);
+		iconLabel.setVerticalAlignment(JLabel.CENTER);
+
+		centerOfNewFrame = (this.getHeight() - (this.getHeight() - iconLabel.getHeight()));
+
+		// String to hold questions. To be updated with function that passes
+		// the string of the actual question
+		String questionStr = new String("This is where the question goes.");
+
+		// Create a JLabel to display thew question, set its
+		// alignment, font type and size
+		JLabel questionLabel = new JLabel(questionStr);
+		questionLabel.setAlignmentX(centerOfNewFrame);
+		questionLabel.setOpaque(false);
+		Font font = new Font("Courier", Font.BOLD, 16);
+		questionLabel.setFont(font);
+
+		// Set the question jlabel's max size
+		questionLabel.setMaximumSize(getMaximumSize());
+
+		// Create a text area to enter the answer in and make it into
+		// a scroll pane with scrollbars created as needed.
+		JTextArea answer = new JTextArea("Answer goes Here", 10, 10);
+		answer.setLineWrap(true);
+		answer.setFont(font);
+		JScrollPane jScrollPane = new JScrollPane(answer, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
+				JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+
+		// Create border for the answer area
+		Border border = BorderFactory.createLineBorder(Color.BLACK);
+		jScrollPane.setBorder(border);
+
+		// Create a vertical box to place the question jlabel on top
+		// of the answer text area
+		Box questionBox = Box.createVerticalBox();
+		questionBox.add(questionLabel);
+		questionBox.add(Box.createVerticalStrut(80));
+		questionBox.add(jScrollPane);
+
+		// Constraints for the panel holding the text areas for
+		// resizing purposes.
+		GridBagConstraints c = new GridBagConstraints();
+		c.gridwidth = 1;
+		c.gridheight = 1;
+		c.weightx = .5;
+		c.gridx = 1;
+		c.gridy = 1;
+		c.fill = GridBagConstraints.BOTH;
+		c.insets = new Insets(1, 50, 1, 50);
+
+		// Create a panel to hold box with the question jlabel
+		// and answer test area
+		JPanel QandA = new JPanel(new GridBagLayout());
+		QandA.add(questionBox, c);
+
+		this.add(QandA, BorderLayout.CENTER);
+
+		// Only the first page has 2 buttons. set every other page
+		// to have 3 buttons
+		if (QuizAndFlashQuestionPage.questionPageNumber == 1)
+			addButtons(2);
+		else
+			addButtons(3);
+
+	}
+
+	// This class creates a results page to display the number of questions
+	// correct out of the total number of questions. It also displays which
+	// questions are right, and which questions are wrong.
+	private void createResultsPageType() {
+
+		JLabel iconLabel = new JLabel();
+		iconLabel.setBounds(0, 0, this.getWidth(), (int) (this.getHeight() / 2.25));
+		iconLabel.setIcon(newIcon);
+		// this.add(iconLabel);
+
+		// Create a label for to dispaly "Results" inside a panel
+		// and place it in the NORTH
+		JLabel results = new JLabel("Results");
+		Font resultsFont = new Font("Courier", Font.BOLD, 20);
+		results.setFont(resultsFont);
+		JPanel resultsPanel = new JPanel();
+		resultsPanel.setBackground(Color.WHITE);
+		resultsPanel.add(results);
+		this.add(resultsPanel, BorderLayout.NORTH);
+
+		// Align to center
+		iconLabel.setHorizontalAlignment(JLabel.CENTER);
+		iconLabel.setVerticalAlignment(JLabel.CENTER);
+
+		centerOfNewFrame = (this.getHeight() - (this.getHeight() - iconLabel.getHeight()));
+
+		// Number of incorrect and correct answers. We'll need
+		// a function to set the actual values
+		int numberCorrect = 8, numberIncorrect = 10;
+
+		// Create the string to display the score, add it to a label,
+		// set the font, and then add the score label into a panel
+		String scoreStr = "Your Score  " + numberCorrect + "/" + numberIncorrect;
+		JLabel scoreLabel = new JLabel(scoreStr);
+		Font font = new Font("Courier", Font.BOLD, 18);
+		scoreLabel.setFont(font);
+		JPanel scorePanel = new JPanel();
+		scorePanel.add(scoreLabel);
+
+		// Create a text area to display which questions are corrects
+		// and which ones are incorrect. Make the text area unable
+		// to be edited, and add to a scrollpane
+		JTextArea questionCorOrInc = new JTextArea(10, 10);
+		questionCorOrInc.setEditable(false);
+		questionCorOrInc.setLineWrap(true);
+		questionCorOrInc.setFont(font);
+		JScrollPane jScrollPane = new JScrollPane(questionCorOrInc, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
+				JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+
+		// While less than the total number of questions in the quiz
+		// display whether or not each question is correct or incorrect.
+		// this is determined by a boolean value which will be need to
+		// be obtained by some function.
+		for (int i = 0; i < TakeQuizTakeSet.totalNumQuestions; i++) {
+			if (Correct)
+				questionCorOrInc.append("Question #" + (i + 1) + "\tCorrect\n");
+			else
+				questionCorOrInc.append("Question #" + (i + 1) + "\tIncorrect\n");
+
+		}
+
+		// Create border for the answer area
+		Border border = BorderFactory.createLineBorder(Color.BLACK);
+		jScrollPane.setBorder(border);
+
+		// Create a vertical box to place the question jlabel on top
+		// of the answer text area
+		Box CorOrIncBox = Box.createVerticalBox();
+
+		CorOrIncBox.add(scorePanel);
+		CorOrIncBox.add(Box.createVerticalStrut(80));
+		CorOrIncBox.add(jScrollPane);
+
+		// Constraints for the panel holding the text areas for
+		// resizing purposes.
+		GridBagConstraints c = new GridBagConstraints();
+		c.gridwidth = 1;
+		c.gridheight = 1;
+		c.weightx = .5;
+		c.gridx = 1;
+		c.gridy = 1;
+		c.fill = GridBagConstraints.BOTH;
+		c.insets = new Insets(1, 50, 1, 50);
+
+		// Create a panel to hold box with the question text area
+		// of questions displaying which ones are correct or incorrect
+		JPanel CorOrIncPanel = new JPanel(new GridBagLayout());
+		CorOrIncPanel.add(CorOrIncBox, c);
+
+		this.add(CorOrIncPanel, BorderLayout.CENTER);
+
+		addButtons(2);
+
+	}
+
+	// Creates flashcard page type that shows the question and has a
+	// pop up window that shows the answer. Again having issues with
+	// keeping the logo on the page. It uses FlashcardAnswer as a public
+	// String which can be set by the backend function with the appropriate
+	// string
+	private void createFlashcardPageType() {
+
+		JLabel iconLabel = new JLabel();
+		iconLabel.setBounds(0, 0, this.getWidth(), (int) (this.getHeight() / 2.25));
+		iconLabel.setIcon(newIcon);
+		/**
+		 * 
+		 * commened out the logo due to issues with it covering the question and
+		 * checkbox
+		 * 
+		 */
+		// this.add(iconLabel);
+
+		// Align to center
+		iconLabel.setHorizontalAlignment(JLabel.CENTER);
+		iconLabel.setVerticalAlignment(JLabel.CENTER);
+
+		centerOfNewFrame = (this.getHeight() - (this.getHeight() - iconLabel.getHeight()));
+
+		// String to hold questions. To be updated with function that passes
+		// the string of the actual question
+		String questionStr = "This is where the question goes";
+
+		// Create a JLabel to display the question, set its
+		// alignment, font type and size
+		JLabel questionLabel = new JLabel(questionStr);
+		// JLabel answerLabel = new JLabel(FlashcardAnswer);
+		questionLabel.setAlignmentX(centerOfNewFrame);
+		questionLabel.setOpaque(false);
+		// answerLabel.setAlignmentX(centerOfNewFrame);
+		// answerLabel.setOpaque(false);
+		Font font = new Font("Courier", Font.BOLD, 16);
+		questionLabel.setFont(font);
+		// answerLabel.setFont(font);
+
+		// Set the question jlabel's max size
+		questionLabel.setMaximumSize(getMaximumSize());
+		// answerLabel.setMaximumSize(getMaximumSize());
+
+		showHide.setAlignmentX(centerOfNewFrame);
+
+		// Create a vertical box to place the question string on top
+		// of the hide check box
+		Box questionBox = Box.createVerticalBox();
+		questionBox.add(questionLabel);
+		questionBox.add(Box.createVerticalStrut(100));
+		questionBox.add(showHide);
+		// questionBox.add(Box.createVerticalStrut(40));
+		// questionBox.add(answerLabel);
+
+		// Constraints for the panel holding the text areas for
+		// resizing purposes.
+		GridBagConstraints c = new GridBagConstraints();
+		c.gridwidth = 1;
+		c.gridheight = 1;
+		c.weightx = .5;
+		c.gridx = 1;
+		c.gridy = 10;
+		c.fill = GridBagConstraints.BOTH;
+		c.insets = new Insets(50, 50, 250, 50);
+
+		// Create a panel to hold box with the question jlabel
+		// and answer test area
+		JPanel QandA = new JPanel(new GridBagLayout());
+		QandA.add(questionBox, c);
+
+		this.add(QandA, BorderLayout.CENTER);
+
+		// If it is the first question page, it will only have 2
+		// buttons, every other page will have 3
+		if (QuizAndFlashQuestionPage.questionPageNumber == 1)
+			addButtons(2);
+		else
+			addButtons(3);
+
+	}
+
+	protected void addButtons(int count) {
+		// Add a panel to the south for the buttons
+
+		JPanel buttonHolder = new JPanel();
+		buttonHolder.setLayout(new GridBagLayout()); // May need to be
+														// gridbaglayout
+		buttonHolder.setBackground(Color.WHITE);
+		GridBagConstraints c = new GridBagConstraints();
+		this.add(buttonHolder, BorderLayout.SOUTH);
+
+		this.currentActions = new CustomButton[count];
+
+		for (int i = 0; i < count; i++) {
+
+			c.gridwidth = 1;
+			c.gridheight = 1;
+			c.weightx = 0.5;
+			c.gridx = i % 2;
+			c.gridy = (i % 2 == 0 && i > 0) ? c.gridy++ : c.gridy;
+			c.fill = GridBagConstraints.HORIZONTAL;
+			c.insets = new Insets(10, 10, 10, 10);
+
+			// If the last button is an odd one, make it the same size as both
+			// buttons above it, combined
+			if (count % 2 == 1 && i == count - 1) {
+				// System.out.println(this.panelTypeString + " for button: " +
+				// (i));
+				c.gridwidth = 2;
+			}
+
+			this.currentActions[i] = new CustomButton("Button " + (i + 1));
+			buttonHolder.add(this.currentActions[i], c);
+		}
+	}
+
+	public void setButtonNames(String[] btnNames) {
+		// System.out.println("Modifying Buton names");
+
+		try {
+			for (int i = 0; i < this.currentActions.length; i++) {
+				try {
+					this.currentActions[i].setText(btnNames[i]);
+				} catch (ArrayIndexOutOfBoundsException e) {
+
+				}
+			}
+		} catch (NullPointerException e) {
+			System.out.println(e.getMessage());
+		}
+	}
+
+	/** Accessors and mutators */
+
+	public static BufferedImage getMainLogoToDisplay() {
+		return mainLogoToDisplay;
+	}
+
+	public static void setMainLogoToDisplay(BufferedImage mainLogoToDisplay) {
+		CustomPage.mainLogoToDisplay = mainLogoToDisplay;
+	}
+
+}
+
+----------------------------------- SOURCE END -------------------------------------
+!STACK 0
+java.lang.IllegalArgumentException
+	at org.eclipse.jdt.core.dom.ASTNode.setSourceRange(ASTNode.java:2845)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1572)
+	at org.eclipse.jdt.core.dom.ASTConverter.buildBodyDeclarations(ASTConverter.java:258)
+	at org.eclipse.jdt.core.dom.ASTConverter.convertToEnumDeclaration(ASTConverter.java:3194)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2901)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2733)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:639)
+	at org.eclipse.jdt.core.dom.ASTConverter.buildBodyDeclarations(ASTConverter.java:195)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2965)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1374)
+	at org.eclipse.jdt.core.dom.CompilationUnitResolver.convert(CompilationUnitResolver.java:295)
+	at org.eclipse.jdt.core.dom.ASTParser.internalCreateAST(ASTParser.java:1216)
+	at org.eclipse.jdt.core.dom.ASTParser.createAST(ASTParser.java:812)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider$1.run(ASTProvider.java:551)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider.createAST(ASTProvider.java:543)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider.getAST(ASTProvider.java:486)
+	at org.eclipse.jdt.ui.SharedASTProvider.getAST(SharedASTProvider.java:128)
+	at org.eclipse.jdt.internal.ui.viewsupport.SelectionListenerWithASTManager$PartListenerGroup.calculateASTandInform(SelectionListenerWithASTManager.java:173)
+	at org.eclipse.jdt.internal.ui.viewsupport.SelectionListenerWithASTManager$PartListenerGroup$3.run(SelectionListenerWithASTManager.java:158)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.jdt.ui 4 2 2016-11-06 21:52:02.094
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.jdt.ui".
+!STACK 0
+java.lang.IllegalArgumentException
+	at org.eclipse.jdt.core.dom.ASTNode.setSourceRange(ASTNode.java:2845)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1572)
+	at org.eclipse.jdt.core.dom.ASTConverter.buildBodyDeclarations(ASTConverter.java:258)
+	at org.eclipse.jdt.core.dom.ASTConverter.convertToEnumDeclaration(ASTConverter.java:3194)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2901)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2733)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:639)
+	at org.eclipse.jdt.core.dom.ASTConverter.buildBodyDeclarations(ASTConverter.java:195)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2965)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1374)
+	at org.eclipse.jdt.core.dom.CompilationUnitResolver.convert(CompilationUnitResolver.java:295)
+	at org.eclipse.jdt.core.dom.ASTParser.internalCreateAST(ASTParser.java:1216)
+	at org.eclipse.jdt.core.dom.ASTParser.createAST(ASTParser.java:812)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider$1.run(ASTProvider.java:551)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider.createAST(ASTProvider.java:543)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider.getAST(ASTProvider.java:486)
+	at org.eclipse.jdt.ui.SharedASTProvider.getAST(SharedASTProvider.java:128)
+	at org.eclipse.jdt.internal.ui.viewsupport.SelectionListenerWithASTManager$PartListenerGroup.calculateASTandInform(SelectionListenerWithASTManager.java:173)
+	at org.eclipse.jdt.internal.ui.viewsupport.SelectionListenerWithASTManager$PartListenerGroup$3.run(SelectionListenerWithASTManager.java:158)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.jdt.ui 4 0 2016-11-06 21:52:02.096
+!MESSAGE Error in JDT Core during AST creation
+!STACK 0
+java.lang.IllegalArgumentException
+	at org.eclipse.jdt.core.dom.ASTNode.setSourceRange(ASTNode.java:2845)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1572)
+	at org.eclipse.jdt.core.dom.ASTConverter.buildBodyDeclarations(ASTConverter.java:258)
+	at org.eclipse.jdt.core.dom.ASTConverter.convertToEnumDeclaration(ASTConverter.java:3194)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2901)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2733)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:639)
+	at org.eclipse.jdt.core.dom.ASTConverter.buildBodyDeclarations(ASTConverter.java:195)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2965)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1374)
+	at org.eclipse.jdt.core.dom.CompilationUnitResolver.convert(CompilationUnitResolver.java:295)
+	at org.eclipse.jdt.core.dom.ASTParser.internalCreateAST(ASTParser.java:1216)
+	at org.eclipse.jdt.core.dom.ASTParser.createAST(ASTParser.java:812)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider$1.run(ASTProvider.java:551)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider.createAST(ASTProvider.java:543)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider.getAST(ASTProvider.java:486)
+	at org.eclipse.jdt.ui.SharedASTProvider.getAST(SharedASTProvider.java:128)
+	at org.eclipse.jdt.internal.ui.viewsupport.SelectionListenerWithASTManager$PartListenerGroup.calculateASTandInform(SelectionListenerWithASTManager.java:173)
+	at org.eclipse.jdt.internal.ui.viewsupport.SelectionListenerWithASTManager$PartListenerGroup$3.run(SelectionListenerWithASTManager.java:158)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+!SESSION 2016-11-07 08:32:14.197 -----------------------------------------------
+eclipse.buildId=4.6.0.I20160606-1100
+java.version=1.8.0_101
+java.vendor=Oracle Corporation
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.java.product -keyring /Users/justin/.eclipse_keyring
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.eclipse.epp.package.java.product -keyring /Users/justin/.eclipse_keyring
+
+!ENTRY org.eclipse.core.net 1 0 2016-11-07 08:32:20.187
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.eclipse.epp.logging.aeri.ide 2 16 2016-11-07 08:32:25.476
+!MESSAGE Server ‘org.eclipse.epp.logging.aeri.ide.server’ failed with exception: com.google.gson.stream.MalformedJsonException: Expected ':' at line 4 column 10. ; version: 2.0.1.v20160605-1811
+!STACK 0
+com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Expected ':' at line 4 column 10
+	at com.google.gson.Gson.fromJson(Gson.java:818)
+	at com.google.gson.Gson.fromJson(Gson.java:768)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.json.Json.deserialize(Json.java:97)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.json.Json.deserialize(Json.java:106)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.IO.loadConfiguration(IO.java:75)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.ServerConnection.startUp(ServerConnection.java:98)
+	at com.google.common.util.concurrent.AbstractIdleService$2$1.run(AbstractIdleService.java:54)
+	at com.google.common.util.concurrent.Callables$3.run(Callables.java:93)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: com.google.gson.stream.MalformedJsonException: Expected ':' at line 4 column 10
+	at com.google.gson.stream.JsonReader.syntaxError(JsonReader.java:1505)
+	at com.google.gson.stream.JsonReader.doPeek(JsonReader.java:519)
+	at com.google.gson.stream.JsonReader.skipValue(JsonReader.java:1209)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:170)
+	at com.google.gson.Gson.fromJson(Gson.java:803)
+	... 8 more
+
+!ENTRY com.wakatime.eclipse.plugin 1 0 2016-11-07 08:32:31.056
+!MESSAGE wakatime-cli is up to date.
+
+!ENTRY org.eclipse.e4.ui.workbench 2 0 2016-11-07 08:32:31.916
+!MESSAGE Removing part descriptor with the 'org.eclipse.cdt.codan.internal.ui.views.ProblemDetails' id and the 'Problem Details' description. Points to the invalid 'bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView' class.
+
+!ENTRY org.eclipse.e4.ui.workbench 2 0 2016-11-07 08:32:31.916
+!MESSAGE Removing part descriptor with the 'org.eclipse.cdt.debug.ui.executablesView' id and the 'Executables' description. Points to the invalid 'bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView' class.
+
+!ENTRY org.eclipse.e4.ui.workbench 2 0 2016-11-07 08:32:31.917
+!MESSAGE Removing part descriptor with the 'org.eclipse.cdt.debug.ui.SignalsView' id and the 'Signals' description. Points to the invalid 'bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView' class.
+
+!ENTRY org.eclipse.e4.ui.workbench 2 0 2016-11-07 08:32:31.917
+!MESSAGE Removing part descriptor with the 'org.eclipse.cdt.debug.ui.memory.memorybrowser.MemoryBrowser' id and the 'Memory Browser' description. Points to the invalid 'bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView' class.
+
+!ENTRY org.eclipse.e4.ui.workbench 2 0 2016-11-07 08:32:31.917
+!MESSAGE Removing part descriptor with the 'org.eclipse.cdt.dsf.gdb.ui.tracecontrol.view' id and the 'Trace Control' description. Points to the invalid 'bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView' class.
+
+!ENTRY org.eclipse.e4.ui.workbench 2 0 2016-11-07 08:32:31.917
+!MESSAGE Removing part descriptor with the 'org.eclipse.cdt.dsf.gdb.ui.osresources.view' id and the 'OS Resources' description. Points to the invalid 'bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView' class.
+
+!ENTRY org.eclipse.e4.ui.workbench 2 0 2016-11-07 08:32:31.918
+!MESSAGE Removing part descriptor with the 'org.eclipse.cdt.dsf.debug.ui.disassembly.view' id and the 'Disassembly' description. Points to the invalid 'bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView' class.
+
+!ENTRY org.eclipse.e4.ui.workbench 2 0 2016-11-07 08:32:31.918
+!MESSAGE Removing part descriptor with the 'org.eclipse.cdt.make.ui.views.MakeView' id and the 'Make Target' description. Points to the invalid 'bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView' class.
+
+!ENTRY org.eclipse.e4.ui.workbench 2 0 2016-11-07 08:32:31.918
+!MESSAGE Removing part descriptor with the 'org.eclipse.cdt.ui.CView' id and the 'C/C++ Projects' description. Points to the invalid 'bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView' class.
+
+!ENTRY org.eclipse.e4.ui.workbench 2 0 2016-11-07 08:32:31.918
+!MESSAGE Removing part descriptor with the 'org.eclipse.cdt.ui.IndexView' id and the 'C/C++ Index' description. Points to the invalid 'bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView' class.
+
+!ENTRY org.eclipse.e4.ui.workbench 2 0 2016-11-07 08:32:31.919
+!MESSAGE Removing part descriptor with the 'org.eclipse.cdt.ui.includeBrowser' id and the 'Include Browser' description. Points to the invalid 'bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView' class.
+
+!ENTRY org.eclipse.e4.ui.workbench 2 0 2016-11-07 08:32:31.919
+!MESSAGE Removing part descriptor with the 'org.eclipse.cdt.ui.callHierarchy' id and the 'Call Hierarchy' description. Points to the invalid 'bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView' class.
+
+!ENTRY org.eclipse.e4.ui.workbench 2 0 2016-11-07 08:32:31.919
+!MESSAGE Removing part descriptor with the 'org.eclipse.cdt.ui.typeHierarchy' id and the 'Type Hierarchy' description. Points to the invalid 'bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView' class.
+
+!ENTRY org.eclipse.e4.ui.workbench 2 0 2016-11-07 08:32:31.919
+!MESSAGE Removing part descriptor with the 'org.eclipse.linuxtools.dataviewers.charts.view' id and the 'Chart View' description. Points to the invalid 'bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView' class.
+
+!ENTRY org.eclipse.e4.ui.workbench 2 0 2016-11-07 08:32:31.921
+!MESSAGE Removing part descriptor with the 'org.eclipse.linuxtools.gcov.view' id and the 'gcov' description. Points to the invalid 'bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView' class.
+
+!ENTRY org.eclipse.e4.ui.workbench 2 0 2016-11-07 08:32:31.922
+!MESSAGE Removing part descriptor with the 'org.eclipse.linuxtools.gprof.view' id and the 'gprof' description. Points to the invalid 'bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView' class.
+
+!ENTRY org.eclipse.e4.ui.workbench 2 0 2016-11-07 08:32:31.922
+!MESSAGE Removing part descriptor with the 'org.eclipse.linuxtools.valgrind.ui.valgrindview' id and the 'Valgrind' description. Points to the invalid 'bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView' class.
+
+!ENTRY org.eclipse.e4.ui.workbench 2 0 2016-11-07 08:32:31.922
+!MESSAGE Removing part descriptor with the 'org.eclipse.remote.ui.view.connections' id and the 'Connections' description. Points to the invalid 'bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView' class.
+
+!ENTRY org.eclipse.e4.ui.workbench 2 0 2016-11-07 08:32:31.923
+!MESSAGE Removing part descriptor with the 'org.eclipse.rse.shells.ui.view.commandsView' id and the 'Remote Shell' description. Points to the invalid 'bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView' class.
+
+!ENTRY org.eclipse.e4.ui.workbench 2 0 2016-11-07 08:32:31.923
+!MESSAGE Removing part descriptor with the 'org.eclipse.rse.ui.view.systemView' id and the 'Remote Systems' description. Points to the invalid 'bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView' class.
+
+!ENTRY org.eclipse.e4.ui.workbench 2 0 2016-11-07 08:32:31.923
+!MESSAGE Removing part descriptor with the 'org.eclipse.rse.ui.view.teamView' id and the 'Team' description. Points to the invalid 'bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView' class.
+
+!ENTRY org.eclipse.e4.ui.workbench 2 0 2016-11-07 08:32:31.923
+!MESSAGE Removing part descriptor with the 'org.eclipse.rse.ui.view.systemTableView' id and the 'Remote System Details' description. Points to the invalid 'bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView' class.
+
+!ENTRY org.eclipse.e4.ui.workbench 2 0 2016-11-07 08:32:31.924
+!MESSAGE Removing part descriptor with the 'org.eclipse.rse.ui.view.SystemSearchView' id and the 'Remote Search' description. Points to the invalid 'bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView' class.
+
+!ENTRY org.eclipse.e4.ui.workbench 2 0 2016-11-07 08:32:31.924
+!MESSAGE Removing part descriptor with the 'org.eclipse.rse.ui.view.scratchpad.SystemScratchpadViewPart' id and the 'Remote Scratchpad' description. Points to the invalid 'bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView' class.
+
+!ENTRY org.eclipse.e4.ui.workbench 2 0 2016-11-07 08:32:31.924
+!MESSAGE Removing part descriptor with the 'org.eclipse.rse.ui.view.monitorView' id and the 'Remote Monitor' description. Points to the invalid 'bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView' class.
+
+!ENTRY org.eclipse.e4.ui.workbench 2 0 2016-11-07 08:32:31.924
+!MESSAGE Removing part descriptor with the 'org.eclipse.linuxtools.tmf.analysis.graph.ui.criticalpath.view.criticalpathview' id and the 'Critical Flow View' description. Points to the invalid 'bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView' class.
+
+!ENTRY org.eclipse.e4.ui.workbench 2 0 2016-11-07 08:32:31.925
+!MESSAGE Removing part descriptor with the 'org.eclipse.tracecompass.analysis.lami.views.reportview' id and the 'Analysis Report' description. Points to the invalid 'bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView' class.
+
+!ENTRY org.eclipse.e4.ui.workbench 2 0 2016-11-07 08:32:31.925
+!MESSAGE Removing part descriptor with the 'org.eclipse.tracecompass.analysis.os.linux.views.controlflow' id and the 'Control Flow' description. Points to the invalid 'bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView' class.
+
+!ENTRY org.eclipse.e4.ui.workbench 2 0 2016-11-07 08:32:31.925
+!MESSAGE Removing part descriptor with the 'org.eclipse.tracecompass.analysis.os.linux.views.resources' id and the 'Resources' description. Points to the invalid 'bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView' class.
+
+!ENTRY org.eclipse.e4.ui.workbench 2 0 2016-11-07 08:32:31.926
+!MESSAGE Removing part descriptor with the 'org.eclipse.tracecompass.analysis.os.linux.views.cpuusage' id and the 'CPU Usage' description. Points to the invalid 'bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView' class.
+
+!ENTRY org.eclipse.e4.ui.workbench 2 0 2016-11-07 08:32:31.926
+!MESSAGE Removing part descriptor with the 'org.eclipse.tracecompass.analysis.os.linux.views.latency' id and the 'System Call Latencies' description. Points to the invalid 'bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView' class.
+
+!ENTRY org.eclipse.e4.ui.workbench 2 0 2016-11-07 08:32:31.926
+!MESSAGE Removing part descriptor with the 'org.eclipse.tracecompass.analysis.os.linux.views.latency.scatter' id and the 'System Call Latency vs Time' description. Points to the invalid 'bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView' class.
+
+!ENTRY org.eclipse.e4.ui.workbench 2 0 2016-11-07 08:32:31.926
+!MESSAGE Removing part descriptor with the 'org.eclipse.tracecompass.analysis.os.linux.ui.views.latency.statsview' id and the 'System Call Latency Statistics' description. Points to the invalid 'bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView' class.
+
+!ENTRY org.eclipse.e4.ui.workbench 2 0 2016-11-07 08:32:31.927
+!MESSAGE Removing part descriptor with the 'org.eclipse.tracecompass.analysis.os.linux.views.latency.density' id and the 'System Call Density' description. Points to the invalid 'bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView' class.
+
+!ENTRY org.eclipse.e4.ui.workbench 2 0 2016-11-07 08:32:31.927
+!MESSAGE Removing part descriptor with the 'org.eclipse.tracecompass.analysis.os.linux.ui.kernelmemoryusageview' id and the 'Kernel Memory Usage View' description. Points to the invalid 'bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView' class.
+
+!ENTRY org.eclipse.e4.ui.workbench 2 0 2016-11-07 08:32:31.927
+!MESSAGE Removing part descriptor with the 'org.eclipse.tracecompass.analysis.os.linux.views.diskioactivity' id and the 'Disk I/O Activity' description. Points to the invalid 'bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView' class.
+
+!ENTRY org.eclipse.e4.ui.workbench 2 0 2016-11-07 08:32:31.927
+!MESSAGE Removing part descriptor with the 'org.eclipse.linuxtools.internal.lttng2.ui.views.control' id and the 'Control' description. Points to the invalid 'bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView' class.
+
+!ENTRY org.eclipse.e4.ui.workbench 2 0 2016-11-07 08:32:31.928
+!MESSAGE Removing part descriptor with the 'org.eclipse.tracecompass.lttng2.analysis.vm.ui.vmview' id and the 'Virtual CPU View' description. Points to the invalid 'bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView' class.
+
+!ENTRY org.eclipse.e4.ui.workbench 2 0 2016-11-07 08:32:31.928
+!MESSAGE Removing part descriptor with the 'org.eclipse.linuxtools.lttng2.ust.memoryusage' id and the 'UST Memory Usage' description. Points to the invalid 'bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView' class.
+
+!ENTRY org.eclipse.e4.ui.workbench 2 0 2016-11-07 08:32:31.928
+!MESSAGE Removing part descriptor with the 'org.eclipse.linuxtools.tmf.analysis.xml.ui.views.timegraph' id and the 'XML Time Graph View' description. Points to the invalid 'bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView' class.
+
+!ENTRY org.eclipse.e4.ui.workbench 2 0 2016-11-07 08:32:31.928
+!MESSAGE Removing part descriptor with the 'org.eclipse.linuxtools.internal.tmf.analysis.xml.ui.views.xyview' id and the 'XML XY Chart View' description. Points to the invalid 'bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView' class.
+
+!ENTRY org.eclipse.e4.ui.workbench 2 0 2016-11-07 08:32:31.928
+!MESSAGE Removing part descriptor with the 'org.eclipse.tracecompass.internal.tmf.analysis.xml.ui.views.latencytable' id and the 'Latency Table' description. Points to the invalid 'bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView' class.
+
+!ENTRY org.eclipse.e4.ui.workbench 2 0 2016-11-07 08:32:31.929
+!MESSAGE Removing part descriptor with the 'org.eclipse.tracecompass.internal.tmf.analysis.xml.ui.views.scattergraph' id and the 'Latency vs Time' description. Points to the invalid 'bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView' class.
+
+!ENTRY org.eclipse.e4.ui.workbench 2 0 2016-11-07 08:32:31.929
+!MESSAGE Removing part descriptor with the 'org.eclipse.tracecompass.internal.tmf.analysis.xml.ui.views.density' id and the 'Latency vs Count' description. Points to the invalid 'bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView' class.
+
+!ENTRY org.eclipse.e4.ui.workbench 2 0 2016-11-07 08:32:31.929
+!MESSAGE Removing part descriptor with the 'org.eclipse.tracecompass.internal.tmf.analysis.xml.ui.views.statistics' id and the 'Latency Statistics' description. Points to the invalid 'bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView' class.
+
+!ENTRY org.eclipse.e4.ui.workbench 2 0 2016-11-07 08:32:31.930
+!MESSAGE Removing part descriptor with the 'org.eclipse.linuxtools.tmf.ui.views.timechart' id and the 'Time Chart' description. Points to the invalid 'bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView' class.
+
+!ENTRY org.eclipse.e4.ui.workbench 2 0 2016-11-07 08:32:31.930
+!MESSAGE Removing part descriptor with the 'org.eclipse.linuxtools.tmf.ui.views.ssvisualizer' id and the 'State System Explorer' description. Points to the invalid 'bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView' class.
+
+!ENTRY org.eclipse.e4.ui.workbench 2 0 2016-11-07 08:32:31.930
+!MESSAGE Removing part descriptor with the 'org.eclipse.linuxtools.tmf.ui.views.colors' id and the 'Colors' description. Points to the invalid 'bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView' class.
+
+!ENTRY org.eclipse.e4.ui.workbench 2 0 2016-11-07 08:32:31.930
+!MESSAGE Removing part descriptor with the 'org.eclipse.linuxtools.tmf.ui.views.filter' id and the 'Filters' description. Points to the invalid 'bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView' class.
+
+!ENTRY org.eclipse.e4.ui.workbench 2 0 2016-11-07 08:32:31.931
+!MESSAGE Removing part descriptor with the 'org.eclipse.linuxtools.tmf.ui.tmfUml2SDSyncView' id and the 'Sequence Diagram' description. Points to the invalid 'bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView' class.
+
+!ENTRY org.eclipse.e4.ui.workbench 2 0 2016-11-07 08:32:31.931
+!MESSAGE Removing part descriptor with the 'org.eclipse.linuxtools.tmf.ui.views.statistics' id and the 'Statistics' description. Points to the invalid 'bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView' class.
+
+!ENTRY org.eclipse.e4.ui.workbench 2 0 2016-11-07 08:32:31.932
+!MESSAGE Removing part descriptor with the 'org.eclipse.linuxtools.tmf.ui.views.histogram' id and the 'Histogram' description. Points to the invalid 'bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView' class.
+
+!ENTRY org.eclipse.e4.ui.workbench 2 0 2016-11-07 08:32:31.932
+!MESSAGE Removing part descriptor with the 'org.eclipse.linuxtools.tmf.ui.views.callstack' id and the 'Call Stack' description. Points to the invalid 'bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView' class.
+
+!ENTRY org.eclipse.e4.ui.workbench 2 0 2016-11-07 08:32:31.932
+!MESSAGE Removing part descriptor with the 'org.eclipse.linuxtools.tmf.ui.views.synchronization' id and the 'Synchronization' description. Points to the invalid 'bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView' class.

@@ -1,25 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<<<<<<< HEAD
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="java.awt.event.ActionEvent"/>
-<fullyQualifiedTypeName name="java.awt.event.ActionListener"/>
-<fullyQualifiedTypeName name="edu.CSUSM.testTaker.UI.CustomPage.PanelType"/>
-<fullyQualifiedTypeName name="edu.CSUSM.testTaker.LibraryController"/>
-<fullyQualifiedTypeName name="edu.CSUSM.testTaker.UI.ListView"/>
-<fullyQualifiedTypeName name="java.util.Arrays"/>
-<fullyQualifiedTypeName name="javax.swing.JPanel"/>
 <fullyQualifiedTypeName name="edu.CSUSM.testTaker.Backend.Course"/>
-<fullyQualifiedTypeName name="edu.CSUSM.testTaker.Backend.Test"/>
-<fullyQualifiedTypeName name="edu.CSUSM.testTaker.Backend.Question"/>
-<fullyQualifiedTypeName name="java.awt.Color"/>
-<fullyQualifiedTypeName name="java.awt.Component"/>
-<fullyQualifiedTypeName name="java.awt.FlowLayout"/>
-<fullyQualifiedTypeName name="java.util.ArrayList"/>
-<fullyQualifiedTypeName name="javax.swing.JTable"/>
-<fullyQualifiedTypeName name="java.awt.Dimension"/>
-<fullyQualifiedTypeName name="javax.swing.JScrollPane"/>
-<fullyQualifiedTypeName name="javax.swing.table.DefaultTableModel"/>
+<fullyQualifiedTypeName name="edu.CSUSM.testTaker.LibraryController.CourseInfo"/>
+<fullyQualifiedTypeName name="java.awt.GridBagConstraints"/>
+<fullyQualifiedTypeName name="java.awt.GridLayout"/>
+<fullyQualifiedTypeName name="java.awt.event.ActionListener"/>
+<fullyQualifiedTypeName name="edu.CSUSM.testTaker.LibraryController"/>
 </qualifiedTypeNameHistroy>
-=======
-<qualifiedTypeNameHistroy/>
->>>>>>> Tizzle

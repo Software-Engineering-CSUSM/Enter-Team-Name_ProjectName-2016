@@ -5,32 +5,50 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 
 import edu.CSUSM.testTaker.UI.CustomPage;
+import edu.CSUSM.testTaker.UI.CustomPage.PanelType;
+
+/**
+ * @author Jeremy
+ *
+ * @purpose This is the add question page. It is called from the
+ *          QuizAndFlashMain by clicking Add Question It's purpose create a
+ *          question for a quiz by writing the question into the question text
+ *          area and its answer into the answer text area, and clicking save.
+ * 
+ * @date 11/5. Modified save to save the question and answer textarea into
+ * 			  a pulbic string.  Class needs to be implemented to set the string
+ * 			to the correct string array.
+ * 
+ */
 
 public class AddQuestion extends CustomPage {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 
-	public AddQuestion(PanelType currentPanelType) {
-		super(currentPanelType);
+	private static final long serialVersionUID = 1L;
+	
+	// String to hold the question and answer from the question
+	// and answer text area.
+	public String questionStr, answerStr;
+
+	public AddQuestion(String panelName, PanelType currentPanelType) {
+		super(panelName, currentPanelType);
 		// TODO Auto-generated constructor stub
 		// System.out.println("Printing a new Form");
 		updateActions();
 	}
 
-	public AddQuestion(PanelType currentPanelType, BufferedImage newImage) {
-		super(currentPanelType, newImage);
+	public AddQuestion(String panelName, PanelType currentPanelType, BufferedImage newImage) {
+		super(panelName, currentPanelType, newImage);
 		// TODO Auto-generated constructor stub
 		updateActions();
 	}
 
-	public AddQuestion(PanelType currentPanelType, String imageAddress) {
-		super(currentPanelType, imageAddress);
+	public AddQuestion(String panelName, PanelType currentPanelType, String imageAddress) {
+		super(panelName, currentPanelType, imageAddress);
 		// TODO Auto-generated constructor stub
 		updateActions();
 	}
 
+	// Set button names and action listeners
 	public void updateActions() {
 
 		// Set the button names
@@ -51,15 +69,26 @@ public class AddQuestion extends CustomPage {
 		}
 	}
 
-	// Button Listener For Save Question. It should be a pop up window
+	// Button Listener For Save Question. Clicking Save creates pop up
+	// window by calling the PopUp class.
 	private class QuestionSavePopUp implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			// System.out.println("Opening " + this.getClass());
-
-			PopUp saveQ = new PopUp(PopUp.PanelType.LOGO_ONLY_TYPE, 1); // added a new constructor with an int to determine which pop up to display
-			saveQ.setName("Save Question Pop Up Window");
+			System.out.println("Opening " + this.getClass());
+			
+			// Saves the question and answer into a string and prints it
+			// out for testing purposes
+			questionStr = question.getText();
+			answerStr = answer.getText();
+			System.out.println("question: " + questionStr);
+			System.out.println("\nanswer: " + answerStr);
+			
+			
+			// Constructor uses a main window with just a logo type, and
+			// an AddAnotherQuestion to create the correct popUp window in the
+			// PopUp class
+			PopUp saveQ = new PopUp("Add Question Page", PopUp.PanelType.LOGO_ONLY_TYPE, PopUpType.AddAnotherQuestion);
 			saveQ.parentController = parentController;
 			parentController.displayView(saveQ);
 
@@ -67,31 +96,19 @@ public class AddQuestion extends CustomPage {
 
 	}
 
+	// Do we need this class?
 	private class ViewList implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			// System.out.println("Opening " + this.getClass());
 
-			ViewQuestionList list = new ViewQuestionList(ViewQuestionList.PanelType.QUESTION_BUILDER_TYPE);
-			list.setName("View Questions");
+			AddQuestion list = new AddQuestion("View Questions", AddQuestion.PanelType.QUESTION_BUILDER_TYPE);
 			list.parentController = parentController;
 			parentController.displayView(list);
 
 		}
 
-	}
-
-	private class OpenQuestionBuilder implements ActionListener {
-
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			// System.out.println("Opening " + this.getClass());
-			CustomPage questionBuilder = new CustomPage(CustomPage.PanelType.QUESTION_BUILDER_TYPE);
-			questionBuilder.setName("Question Page");
-			questionBuilder.parentController = parentController;
-			parentController.displayView(questionBuilder);
-		}
 	}
 
 }

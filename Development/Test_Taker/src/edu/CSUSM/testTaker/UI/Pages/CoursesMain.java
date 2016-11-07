@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 
 import edu.CSUSM.testTaker.UI.CustomPage;
+import edu.CSUSM.testTaker.UI.CustomPage.PanelType;
 
 public class CoursesMain extends CustomPage {
 	/**
@@ -12,21 +13,21 @@ public class CoursesMain extends CustomPage {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public CoursesMain(PanelType currentPanelType) {
-		super(currentPanelType);
+	public CoursesMain(String panelName, PanelType currentPanelType) {
+		super(panelName, currentPanelType);
 		// TODO Auto-generated constructor stub
-		System.out.println("Printing a new Form");
+		// System.out.println("Printing a new Form");
 		updateActions();
 	}
 
-	public CoursesMain(PanelType currentPanelType, BufferedImage newImage) {
-		super(currentPanelType, newImage);
+	public CoursesMain(String panelName, PanelType currentPanelType, BufferedImage newImage) {
+		super(panelName, currentPanelType, newImage);
 		// TODO Auto-generated constructor stub
 		updateActions();
 	}
 
-	public CoursesMain(PanelType currentPanelType, String imageAddress) {
-		super(currentPanelType, imageAddress);
+	public CoursesMain(String panelName, PanelType currentPanelType, String imageAddress) {
+		super(panelName, currentPanelType, imageAddress);
 		// TODO Auto-generated constructor stub
 		updateActions();
 	}
@@ -63,7 +64,7 @@ public class CoursesMain extends CustomPage {
 		public void actionPerformed(ActionEvent e) {
 			// System.out.println("Opening " + this.getClass());
 
-			CourseManagementPage cm = new CourseManagementPage(CustomPage.PanelType.THREE_BUTTON_TYPE);
+			CourseManagementPage cm = new CourseManagementPage("Manage Courses", CustomPage.PanelType.THREE_BUTTON_TYPE);
 			cm.setName("Manage Courses");
 			cm.parentController = parentController;
 			parentController.displayView(cm);
@@ -78,8 +79,7 @@ public class CoursesMain extends CustomPage {
 		public void actionPerformed(ActionEvent e) {
 			// System.out.println("Opening " + this.getClass());
 
-			ContentManagementPage cm = new ContentManagementPage(CustomPage.PanelType.TWO_BUTTON_TYPE);
-			cm.setName("Manage Content");
+			ContentManagementPage cm = new ContentManagementPage("Manage Content", CustomPage.PanelType.TWO_BUTTON_TYPE);
 			cm.parentController = parentController;
 			parentController.displayView(cm);
 		}

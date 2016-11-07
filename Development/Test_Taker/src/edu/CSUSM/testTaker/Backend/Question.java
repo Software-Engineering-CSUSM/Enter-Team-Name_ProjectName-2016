@@ -7,7 +7,7 @@ import java.util.UUID;
 
 import edu.CSUSM.testTaker.LibraryController;
 
-public class Question implements Serializable, Registerable {
+public class Question extends TaskObject implements Serializable, Registerable{
 	public static final long serialVersionUID = 1L;
 	
 	/**
@@ -62,6 +62,8 @@ public class Question implements Serializable, Registerable {
 		//Question.QUESTION_COUNT++;
 		
 		myID = UUID.randomUUID().toString();
+		this.currentID = myID;
+		this.currentName = mainQuestion;
 		LibraryController.storeQuestion(this);
 	}
 	
@@ -274,10 +276,6 @@ public class Question implements Serializable, Registerable {
 	 * @see java.lang.Object#toString()
 	 * @author Justin Goulet
 	 * @return A human readable string of the contents of this question.
-<<<<<<< HEAD
-=======
-	 * 
->>>>>>> Tizzle
 	 */
 	@Override
 	public String toString() {
