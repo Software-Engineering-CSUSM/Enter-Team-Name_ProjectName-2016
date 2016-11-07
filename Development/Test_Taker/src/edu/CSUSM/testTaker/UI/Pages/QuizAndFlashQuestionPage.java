@@ -12,9 +12,11 @@ public class QuizAndFlashQuestionPage extends CustomPage {
 	 *
 	 * @purpose Question Page able to navigate from next and previous questions.
 	 *          Has submit button for final question which takes you to a
-	 *          results page
+	 *          results page. Works for both quiz and flashcards question sets
 	 */
 	private static final long serialVersionUID = 1L;
+
+	// Public int to keep track of the question page numbers.
 	public static int questionPageNumber = 1;
 
 	public QuizAndFlashQuestionPage(PanelType currentPanelType) {
@@ -36,11 +38,13 @@ public class QuizAndFlashQuestionPage extends CustomPage {
 		updateActions();
 	}
 
+	// Constructor used to create page
 	public QuizAndFlashQuestionPage(PanelType currentPanelType, PageType currentPageType) {
 		super(currentPanelType, currentPageType);
 		// Set the layout
 
-		// Build the contents
+		// If saving a quiz, call updateActions, otherwise, we'll be saving
+		// a flashcard set.
 		if (currentPageType == CustomPage.PageType.QUIZ)
 			updateActions();
 		else if (currentPageType == CustomPage.PageType.FLASHCARD)
@@ -50,6 +54,11 @@ public class QuizAndFlashQuestionPage extends CustomPage {
 
 	}
 
+	// Button actions for quiz. Uses conditional statements to determine
+	// which buttons to display: exit and next for the first page, exit,
+	// previous
+	// and next for every page between the first and last, and exit previous and
+	// submit for the last page.
 	public void updateActions() {
 		// Set the button names
 		if (questionPageNumber == 1)
@@ -85,6 +94,11 @@ public class QuizAndFlashQuestionPage extends CustomPage {
 
 	}
 
+	// Button actions for Flashcard. Uses conditional statements to determine
+	// which buttons to display: exit and next for the first page, exit,
+	// previous
+	// and next for every page between the first and last, and exit previous and
+	// submit for the last page.
 	public void updateActionsFlashcard() {
 		// Set the button names
 		if (questionPageNumber == 1)
@@ -117,16 +131,21 @@ public class QuizAndFlashQuestionPage extends CustomPage {
 				break;
 			}
 		}
-		// Action Listener for the showHide checkbox
+		// Action Listener for the showHide checkbox. FlashcardAnswer
+		// is a public variable and should be set by a function that
+		// get the answer for the current question
 		showHide.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				// Create PopUp object
 				PopUp answer;
+
+				// If showHide is checked then show the answer. After
+				// answer box is closed, the checkbox will become unselected
 				if (showHide.isSelected()) {
 					FlashcardAnswer = "This is the answer";
-					System.out.println("if statement");
-					answer = new PopUp(PopUp.PanelType.LOGO_ONLY_TYPE, 3);
+					answer = new PopUp(PopUp.PanelType.LOGO_ONLY_TYPE, PopUpType.FlashcardAnswerPopUp);
 					answer.setName("Flashcard Question Answer");
 					showHide.setSelected(false);
 				}
@@ -135,10 +154,8 @@ public class QuizAndFlashQuestionPage extends CustomPage {
 
 	}
 
-	// Go to the next question. This class calls QuestionPageBetweenFirstAndLast
-	// which is made to accomodate a 3 button style quiz page. This is
-	// only due to the fact that the first and last page have only
-	// 2 buttons. This class provides 3. Exit, Previous, and Next buttons
+	// Action listener for next question button. Clicking it takes the user
+	// to the next question and increments the public questionPageNumber
 	private class NextQuestion implements ActionListener {
 
 		@Override
@@ -155,6 +172,8 @@ public class QuizAndFlashQuestionPage extends CustomPage {
 		}
 	}
 
+	// Dismisses the current window and returns back to the last window.
+	// It also decrements the questionPageNumber
 	private class Previous implements ActionListener {
 
 		@Override
@@ -185,21 +204,24 @@ public class QuizAndFlashQuestionPage extends CustomPage {
 
 	}
 
+	// Submit the quiz and go to the results page. Also reset the
+	// questionPageNumber
 	private class Submit implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			System.out.println("Opening " + this.getClass());
 
-			QuizResultsPage results = new QuizResultsPage(QuizResultsPage.PanelType.TWO_BUTTON_TYPE);
+			QuizResultsPage results = new QuizResultsPage(QuizResultsPage.PanelType.RESULTS);
 			results.setName("Results Page");
 			results.parentController = parentController;
 			parentController.displayView(results);
-			questionPageNumber = 1; // quiz questionreset page
-									// number
+			questionPageNumber = 1; // Reset the questionPageNumber
 		}
 	}
 
+	// Exits the flashcard take set and return to QuizAndFlashMain
+	// Also resets the questionPageNumber
 	private class SubmitFlash implements ActionListener {
 
 		@Override
@@ -211,15 +233,12 @@ public class QuizAndFlashQuestionPage extends CustomPage {
 			fcMain.setName("Flashcard Main Page");
 			fcMain.parentController = parentController;
 			parentController.displayView(fcMain);
-			questionPageNumber = 1; // quiz questionreset page
-									// number
+			questionPageNumber = 1; // reset questionPageNumber
 		}
 	}
 
-	// Go to the next question. This class calls QuestionPageBetweenFirstAndLast
-	// which is made to accomodate a 3 button style quiz page. This is
-	// only due to the fact that the first and last page have only
-	// 2 buttons. This class provides 3. Exit, Previous, and Next buttons
+	// Action listener for next question button. Clicking it takes the user
+	// to the next question and increments the public questionPageNumber
 	private class FlashNextQuestion implements ActionListener {
 
 		@Override

@@ -6,11 +6,27 @@ import java.awt.image.BufferedImage;
 
 import edu.CSUSM.testTaker.UI.CustomPage;
 
+/**
+ * @author Jeremy
+ *
+ * @purpose This is the add question page. It is called from the
+ *          QuizAndFlashMain by clicking Add Question It's purpose create a
+ *          question for a quiz by writing the question into the question text
+ *          area and its answer into the answer text area, and clicking save.
+ * 
+ * @date 11/5. Modified save to save the question and answer textarea into
+ * 			  a pulbic string.  Class needs to be implemented to set the string
+ * 			to the correct string array.
+ * 
+ */
+
 public class AddQuestion extends CustomPage {
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
+	
+	// String to hold the question and answer from the question
+	// and answer text area.
+	public String questionStr, answerStr;
 
 	public AddQuestion(PanelType currentPanelType) {
 		super(currentPanelType);
@@ -31,6 +47,7 @@ public class AddQuestion extends CustomPage {
 		updateActions();
 	}
 
+	// Set button names and action listeners
 	public void updateActions() {
 
 		// Set the button names
@@ -51,14 +68,26 @@ public class AddQuestion extends CustomPage {
 		}
 	}
 
-	// Button Listener For Save Question. It should be a pop up window
+	// Button Listener For Save Question. Clicking Save creates pop up
+	// window by calling the PopUp class.
 	private class QuestionSavePopUp implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			// System.out.println("Opening " + this.getClass());
-
-			PopUp saveQ = new PopUp(PopUp.PanelType.LOGO_ONLY_TYPE, 1); // added a new constructor with an int to determine which pop up to display
+			System.out.println("Opening " + this.getClass());
+			
+			// Saves the question and answer into a string and prints it
+			// out for testing purposes
+			questionStr = question.getText();
+			answerStr = answer.getText();
+			System.out.println("question: " + questionStr);
+			System.out.println("\nanswer: " + answerStr);
+			
+			
+			// Constructor uses a main window with just a logo type, and
+			// an AddAnotherQuestion to create the correct popUp window in the
+			// PopUp class
+			PopUp saveQ = new PopUp(PopUp.PanelType.LOGO_ONLY_TYPE, PopUpType.AddAnotherQuestion);
 			saveQ.setName("Save Question Pop Up Window");
 			saveQ.parentController = parentController;
 			parentController.displayView(saveQ);
@@ -67,6 +96,7 @@ public class AddQuestion extends CustomPage {
 
 	}
 
+	// Do we need this class?
 	private class ViewList implements ActionListener {
 
 		@Override
@@ -80,18 +110,6 @@ public class AddQuestion extends CustomPage {
 
 		}
 
-	}
-
-	private class OpenQuestionBuilder implements ActionListener {
-
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			// System.out.println("Opening " + this.getClass());
-			CustomPage questionBuilder = new CustomPage(CustomPage.PanelType.QUESTION_BUILDER_TYPE);
-			questionBuilder.setName("Question Page");
-			questionBuilder.parentController = parentController;
-			parentController.displayView(questionBuilder);
-		}
 	}
 
 }

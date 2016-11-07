@@ -6,6 +6,14 @@ import java.awt.image.BufferedImage;
 
 import edu.CSUSM.testTaker.UI.CustomPage;
 
+/**
+ * This class is in the wire frame, but I'm not sure if we need it. I believe
+ * it's purpose is to display a list of existing questions in the database.
+ * However, the create quiz and set have the same functionality
+ * 
+ * 
+ */
+
 public class ViewQuestionList extends CustomPage {
 	/**
 	 * 
