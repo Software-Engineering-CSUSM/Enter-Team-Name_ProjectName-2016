@@ -28,7 +28,9 @@ public class Course implements Serializable, edu.CSUSM.testTaker.Backend.Registe
 	
 	//public static int COURSE_COUNT; 					//Keeps a sum of all existing courses. Will count every time the class is init.
 	//I think this is a feature of LibraryController
-	
+	/**
+	 * @deprecated
+	 */
 	double _courseGrade, _testsCompleted;
 	ArrayList<String> questionIDs;
 	ArrayList<String> testIDs;
@@ -213,7 +215,7 @@ public class Course implements Serializable, edu.CSUSM.testTaker.Backend.Registe
 		
 		for(String testID : testIDs){
 			Test testRef = LibraryController.previewTest(testID);
-			outString = outString + testRef.getTestName() + "\n";
+			outString = outString + testRef.getName() + "\n";
 		}
 		
 		return outString;
