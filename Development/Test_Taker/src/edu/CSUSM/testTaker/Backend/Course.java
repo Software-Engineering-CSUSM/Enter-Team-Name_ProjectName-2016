@@ -5,7 +5,7 @@ import java.io.Serializable;
 
 import edu.CSUSM.testTaker.LibraryController;
 
-public class Course implements Serializable, edu.CSUSM.testTaker.Backend.Registerable{
+public class Course extends TaskObject implements Serializable, edu.CSUSM.testTaker.Backend.Registerable{
 	static final long serialVersionUID = 1L;
 
 	/**  Get the ID of the test for database storage and retrieval
@@ -53,6 +53,8 @@ public class Course implements Serializable, edu.CSUSM.testTaker.Backend.Registe
 		questionIDs = new ArrayList<String>();
 		testIDs = new ArrayList<String>();
 		testPoints = new ArrayList<Integer>();
+		this.currentID = getID();
+		this.currentName = courseName;
 	}
 	
 	/** Make an example Course
@@ -77,6 +79,7 @@ public class Course implements Serializable, edu.CSUSM.testTaker.Backend.Registe
 	 * @return Course's name as String;
 	 */
 	public String getName(){
+
 		return courseName;
 	}
 	
@@ -232,6 +235,7 @@ public class Course implements Serializable, edu.CSUSM.testTaker.Backend.Registe
 	 */
 	public void setName(String newname){
 		this.courseName = newname;
+		this.currentName = courseName;
 		LibraryController.storeCourse(this);
 	}
 
