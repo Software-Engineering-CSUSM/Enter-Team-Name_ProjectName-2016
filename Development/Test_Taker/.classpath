@@ -2,5 +2,6 @@
 <classpath>
 	<classpathentry excluding="edu/CSUSM/testTaker/Analytics/AnaSetup.java|edu/CSUSM/testTaker/Analytics/HelloAnalytics.java" kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
+	<classpathentry kind="lib" path="lib/h2small-1.4.192.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
