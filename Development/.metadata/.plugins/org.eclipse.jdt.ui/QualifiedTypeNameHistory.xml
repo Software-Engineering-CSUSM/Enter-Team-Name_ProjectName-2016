@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="edu.CSUSM.testTaker.Backend.Course"/>
 <fullyQualifiedTypeName name="edu.CSUSM.testTaker.LibraryController.CourseInfo"/>
 <fullyQualifiedTypeName name="java.awt.GridBagConstraints"/>
 <fullyQualifiedTypeName name="java.awt.GridLayout"/>
 <fullyQualifiedTypeName name="java.awt.event.ActionListener"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="java.awt.image.BufferedImage"/>
+<fullyQualifiedTypeName name="edu.CSUSM.testTaker.UI.CustomObjects.CustomButton"/>
 <fullyQualifiedTypeName name="edu.CSUSM.testTaker.LibraryController"/>
+<fullyQualifiedTypeName name="edu.CSUSM.testTaker.Backend.Test"/>
+<fullyQualifiedTypeName name="edu.CSUSM.testTaker.Backend.Course"/>
 </qualifiedTypeNameHistroy>
