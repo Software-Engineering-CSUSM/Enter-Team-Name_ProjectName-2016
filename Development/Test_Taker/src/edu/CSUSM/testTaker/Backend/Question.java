@@ -25,6 +25,10 @@ public class Question implements Serializable, Registerable {
 		return myID;							//Within the Question HashMap, the ID will be in the key position where the question is the value
 	}
 	
+	public String getName(){
+		return getQuestion();
+	}
+	
 	String _question;
 	/**
 	 * @deprecated

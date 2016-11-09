@@ -9,6 +9,11 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.Set;
 import java.util.Iterator;
+import java.sql.PreparedStatement;
+import java.sql.Connection;
+import java.sql.Statement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import edu.CSUSM.testTaker.Backend.*;
 
@@ -44,6 +49,95 @@ public class LibraryController {
 		progressMap = new HashMap<String, CourseProgress>();
 	}
 	
+	
+	/**
+	 * Get an open database connection
+	 * @return An open connection to the database.
+	 * @throws SQLException
+	 */
+	protected static Connection connect()
+	throws SQLException{
+		return java.sql.DriverManager.getConnection("jdbc:h2:~/Test_Taker.db","","");
+	}
+	
+	
+	/**
+	 * Reset the database
+	 */
+	public static void initDB(){
+		try(Connection dbcon = connect()){
+			Statement sqlLine = dbcon.createStatement();
+			sqlLine.execute("drop table if exists QUESTIONS;");
+			sqlLine.execute("drop table if exists TESTS;");
+			sqlLine.execute("drop table if exists COURSES;");
+			sqlLine.execute("drop table if exists COURSEWORKS;");
+			sqlLine.execute("create table QUESTIONS(ID binary(36) primary key, name varchar(255), data other);");
+			sqlLine.execute("create table TESTS(ID binary(36) primary key, name varchar(255), data other);");
+			sqlLine.execute("create table COURSES(ID binary(36) primary key, name varchar(255), data other);");
+			sqlLine.execute("create table COURSEWORKS(ID binary(36) primary key, name varchar(255), data other);");
+			dbcon.close();
+		}
+		catch(SQLException e){
+			e.printStackTrace();
+			System.exit(1);
+		}
+	}
+	
+	/**
+	 * Is the given ID in the named table
+	 * @param id Unique ID String of the object in question.
+	 * @param tablename "questions" "tests" "courses" or "courseworks" a name of a table in the DB
+	 * @return True if found, false otherwise.
+	 */
+	public static boolean inTable(String id,String tablename){
+		try(Connection dbcon = connect()){
+			PreparedStatement myquery = dbcon.prepareStatement("select name from " + tablename + " where id = ?;");
+			myquery.setBytes(1, id.getBytes());
+			ResultSet myresults = myquery.executeQuery();
+			boolean rval = myresults.next();
+			dbcon.close();
+			return rval;
+		}
+		catch(SQLException ex){
+			ex.printStackTrace();
+			System.exit(1);
+			return false;
+		}
+	}
+	
+	
+	public static void addOrUpdate(Registerable reg, String tablename){
+		if(inTable(reg.getID(), tablename)){
+			try(Connection dbcon = connect()){
+				PreparedStatement myupdate = dbcon.prepareStatement("update " + tablename + " set name = ?, data = ? where ID = ?;");
+				myupdate.setString(1, reg.getName());
+				myupdate.setObject(2, reg);
+				myupdate.setBytes(3, reg.getID().getBytes());
+				myupdate.executeUpdate();
+			}
+			catch(SQLException e){
+				e.printStackTrace();
+				System.exit(1);
+			}
+		}
+		else{
+			try(Connection dbcon = connect()){
+				PreparedStatement myupdate = dbcon.prepareStatement("insert into " + tablename + " values(?,?,?);");
+				myupdate.setBytes(1, reg.getID().getBytes());
+				myupdate.setString(2, reg.getName());
+				myupdate.setObject(3, reg);
+				myupdate.executeUpdate();
+			}
+			catch(SQLException e){
+				e.printStackTrace();
+				System.exit(1);
+			}
+			
+		}
+	}
+	
+	
+
 	/**
 	 * Gives a Set view of the ID strings of all Courses in the library.
 	 * @return a reference to a Set containing all Course ID strings.
