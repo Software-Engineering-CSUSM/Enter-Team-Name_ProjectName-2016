@@ -2,22 +2,23 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="TakeQuizTakeSet" key="selection"/>
+		<item value="addPanel2" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
-			<item value="ViewQuestionList"/>
-			<item value="titleof"/>
-			<item value="question "/>
-			<item value="createQuest"/>
-			<item value="CourseManagement"/>
-			<item value="parentController"/>
-			<item value="setna"/>
-			<item value="setquestion"/>
+			<item value="addpanel2"/>
+			<item value="addpanel3"/>
+			<item value="addpanel1"/>
+			<item value="stats"/>
+			<item value="Stats"/>
+			<item value="add Question"/>
+			<item value="Add Question"/>
+			<item value="Add Semes"/>
 		</list>
 		<list key="replacehistory">
+			<item value="CustomButton"/>
 			<item value="TakeQuizTakeSet"/>
 			<item value="StudyToolsMain"/>
 			<item value="QuizResultsPage"/>
@@ -25,7 +26,6 @@
 			<item value="PopUp"/>
 			<item value="EditQuestionFromExisting"/>
 			<item value="EditExistingQuizorSet"/>
-			<item value="CreateQuizorSet"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
