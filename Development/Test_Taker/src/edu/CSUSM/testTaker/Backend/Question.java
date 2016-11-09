@@ -25,7 +25,11 @@ public class Question extends TaskObject implements Serializable, Registerable{
 		return myID;							//Within the Question HashMap, the ID will be in the key position where the question is the value
 	}
 	
-	String _question, _courseID, _testID;
+	String _question;
+	/**
+	 * @deprecated
+	 */
+	String _courseID, _testID;
 	ArrayList<String> _answers;			//To easily manage questions added and removed
 	/**
 	 * @deprecated
@@ -152,6 +156,7 @@ public class Question extends TaskObject implements Serializable, Registerable{
 	/**
 	 * Set the associated Test to file this question under
 	 * @param newID the ID string associated with the Test.
+	 * @deprecated
 	 */
 	public void setTestID(String newID){
 		this._testID = newID;
@@ -184,6 +189,7 @@ public class Question extends TaskObject implements Serializable, Registerable{
 	 * Set the Course associated with this Question
 	 * @author Justin Goulet
 	 * @param courseID The ID string of the Course to associate this Question with.
+	 * @deprecated
 	 */
 	public void setCourseID(String courseID){
 		this._courseID = courseID;
@@ -244,6 +250,7 @@ public class Question extends TaskObject implements Serializable, Registerable{
 	 * Get the Course associated with this Question
 	 * @author Justin Goulet
 	 * @return The associated course identifier.
+	 * @deprecated
 	 */
 	public String getCourseID(){
 		return this._courseID;
@@ -252,6 +259,7 @@ public class Question extends TaskObject implements Serializable, Registerable{
 	/**
 	 * Get the Test associated with this Question
 	 * @return An ID String of the Test this question is filed under.
+	 * @deprecated
 	 */
 	public String getTestID(){
 		return this._testID;

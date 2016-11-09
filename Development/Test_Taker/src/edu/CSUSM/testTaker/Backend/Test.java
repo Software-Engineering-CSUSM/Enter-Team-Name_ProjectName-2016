@@ -14,7 +14,9 @@ public class Test extends TaskObject implements Serializable, Registerable{
 	transient ArrayList<Question> questionList;
 	ArrayList<String> questionIDs;
 	ArrayList<Integer> questionPoints;
-	String _testName, _courseID;
+	String _testName;
+	/**@deprecated*/
+	String _courseID;
 	String myID;
 
 
@@ -103,7 +105,7 @@ public class Test extends TaskObject implements Serializable, Registerable{
 	 */
 	public static Test makeExample(){
 		Test rval = new Test();
-		rval.setTestName("The sorceror ... Tim!");
+		rval.setName("The sorceror ... Tim!");
 		rval.addQuestion(Question.makeExample(),1);
 
 		Question q2 = new Question("What! is your favorite color?");
@@ -172,7 +174,7 @@ public class Test extends TaskObject implements Serializable, Registerable{
 	 * Get title of the test.
 	 * @return The name of this test.
 	 */
-	public String getTestName(){
+	public String getName(){
 		return this._testName;
 	}
 
@@ -274,7 +276,7 @@ public class Test extends TaskObject implements Serializable, Registerable{
 	 * Set the title/name of this Test	
 	 * @param newTestName A String of the new name for this Test
 	 */
-	public void setTestName(String newTestName){
+	public void setName(String newTestName){
 		this._testName = newTestName;
 		LibraryController.storeTest(this);
 	}

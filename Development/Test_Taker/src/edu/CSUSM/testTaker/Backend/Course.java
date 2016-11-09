@@ -28,7 +28,9 @@ public class Course extends TaskObject implements Serializable, edu.CSUSM.testTa
 	
 	//public static int COURSE_COUNT; 					//Keeps a sum of all existing courses. Will count every time the class is init.
 	//I think this is a feature of LibraryController
-	
+	/**
+	 * @deprecated
+	 */
 	double _courseGrade, _testsCompleted;
 	ArrayList<String> questionIDs;
 	ArrayList<String> testIDs;
@@ -216,7 +218,7 @@ public class Course extends TaskObject implements Serializable, edu.CSUSM.testTa
 		
 		for(String testID : testIDs){
 			Test testRef = LibraryController.previewTest(testID);
-			outString = outString + testRef.getTestName() + "\n";
+			outString = outString + testRef.getName() + "\n";
 		}
 		
 		return outString;
