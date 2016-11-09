@@ -57,7 +57,7 @@ public class LibraryController {
 	 */
 	protected static Connection connect()
 	throws SQLException{
-		return java.sql.DriverManager.getConnection("jdbc:h2:~/Test_Taker.db","","");
+		return java.sql.DriverManager.getConnection("jdbc:h2:~/Test-Taker.db");
 	}
 	
 	
