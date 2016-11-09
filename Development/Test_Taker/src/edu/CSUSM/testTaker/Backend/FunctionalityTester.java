@@ -29,6 +29,15 @@ public class FunctionalityTester {
 		System.out.println("Testing for presence.");
 		System.out.println("course:"+LibraryController.inTable(testcourse.getID(), "COURSES"));
 		System.out.println("test:"+LibraryController.inTable(testtest.getID(), "TESTS"));
-		System.out.println("question:"+LibraryController.inTable(testquestion.getID(), "QUESTIONS"));	
+		System.out.println("question:"+LibraryController.inTable(testquestion.getID(), "QUESTIONS"));
+		
+		System.out.println("Attempting to retrieve objects from database.");
+		Course rcourse = (Course)LibraryController.pullFromTable(testcourse.getID(), "courses");
+		Test rtest = (Test)LibraryController.pullFromTable(testtest.getID(), "tests");
+		Question rquestion = (Question)LibraryController.pullFromTable(testquestion.getID(), "questions");
+
+		System.out.println(rcourse);
+		System.out.println(rtest);
+		System.out.println(rquestion);
 	}
 }

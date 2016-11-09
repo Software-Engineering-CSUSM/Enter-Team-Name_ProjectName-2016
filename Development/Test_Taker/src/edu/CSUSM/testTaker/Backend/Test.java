@@ -388,6 +388,9 @@ public class Test extends TaskObject implements Serializable, Registerable{
 		String thisTestString = "Test: " + this._testName + "\n";
 		
 		thisTestString = thisTestString + ((Integer)numQuestions()).toString() + " Questions:\n";
+		
+		if(null == questionList || questionList.isEmpty())
+			initQuestions();
 
 		for(Question tempQuestion : questionList){
 			thisTestString = thisTestString + tempQuestion.getQuestion() + "\n";

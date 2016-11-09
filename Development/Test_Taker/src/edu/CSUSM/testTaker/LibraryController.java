@@ -137,6 +137,24 @@ public class LibraryController{
 		}
 	}
 	
+	public static Registerable pullFromTable(String ID, String tablename){
+		Registerable rval = null;
+		try(Connection dbcon = connect()){
+			PreparedStatement myquery = dbcon.prepareStatement("select DATA from " + tablename + " where ID = ?;");
+			myquery.setBytes(1, ID.getBytes());
+			ResultSet results = myquery.executeQuery();
+			if(results.next()){
+				rval = (Registerable) results.getObject(1);
+				dbcon.close();
+			}
+		}
+		catch(SQLException e){
+			e.printStackTrace();
+			System.exit(1);
+		}
+		return rval;
+	}
+	
 	
 
 	/**
@@ -757,10 +775,10 @@ public class LibraryController{
 			if(courseID.length() > 0){
 				//If not null, only do the course ID specified
 				if(temp.getCourseID().equals(courseID)){
-					tempList.add(temp.getTestName());
+					tempList.add(temp.getName());
 				}
 			}else{
-				tempList.add(temp.getTestName());
+				tempList.add(temp.getName());
 			}
 		}
 		return tempList.toArray(new String[tempList.size()]);
