@@ -584,7 +584,7 @@ public class LibraryController{
 	}
 
 	// Get a list of all of the course idens
-	public static String[] getAllCoursesAvailableIDs(){
+	public static String[] getAllCourseIDsAvailable(){
 		ArrayList<String> thisList = new ArrayList<String>();
 
 		//Add all of the course to it
@@ -608,13 +608,32 @@ public class LibraryController{
 	}
 
 	/// Get a list of all question IDs in a particular course. If null, get all questions
-	public static String[] getAllQuestionsInCourseID(String courseID){
+	public static String[] getAllQuestionIDsInCourse(String courseID){
 		Course coursefound = retrieveCourse(courseID);
 		if(coursefound != null){
 			return coursefound.getQuestionIDs().toArray(new String[coursefound.numQuestions()]);
 		}
 		else
 			return (String[])questionMap.keySet().toArray();	
+	}
+	
+	/// get a list of names of Questions in a particular course
+	public static String[] getAllQuestionNamesInCourse(String courseID){
+		Course coursefound = retrieveCourse(courseID);
+		ArrayList <String> tval;
+		if(coursefound != null){
+			tval = new ArrayList<String>(coursefound.numQuestions());
+			for(int i = 0; i < coursefound.numQuestions(); ++i){
+				tval.add(LibraryController.retrieveQuestion(coursefound.getQuestionID(i)).getName());
+			}
+		}
+		else{
+			tval = new ArrayList<String>(questionMap.size());
+			for(String qid : questionMap.keySet()){
+				tval.add(LibraryController.retrieveQuestion(qid).getName());
+			}
+		}
+		return tval.toArray(new String[coursefound.numQuestions()]);	
 	}
 
 	/// Get a list of all Tests in a particular course. If null, get all questions
@@ -628,7 +647,7 @@ public class LibraryController{
 	}
 
 	///Get a list of all question IDs in a particular course. If null, get all questions
-	public static String[] getAllTestsInCourseID(String courseID){
+	public static String[] getAllTestIDsInCourse(String courseID){
 		Course coursefound = retrieveCourse(courseID);
 		if(coursefound != null){
 			return coursefound.getTestIDs().toArray(new String[coursefound.numTests()]);
@@ -637,5 +656,23 @@ public class LibraryController{
 			return (String[])testMap.keySet().toArray();
 	}
 
+	/// get a list of names of Questions in a particular course
+	public static String[] getAllTestNamesInCourse(String courseID){
+		Course coursefound = retrieveCourse(courseID);
+		ArrayList <String> tval;
+		if(coursefound != null){
+			tval = new ArrayList<String>(coursefound.numTests());
+			for(int i = 0; i < coursefound.numTests(); ++i){
+				tval.add(LibraryController.retrieveTest(coursefound.getTestID(i)).getName());
+			}
+		}
+		else{
+			tval = new ArrayList<String>(testMap.size());
+			for(String tid : testMap.keySet()){
+				tval.add(LibraryController.retrieveTest(tid).getName());
+			}
+		}
+		return tval.toArray(new String[coursefound.numTests()]);	
+	}
 
 }

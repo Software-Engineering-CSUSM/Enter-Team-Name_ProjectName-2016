@@ -107,6 +107,7 @@ public class Course /*extends TaskObject*/ implements Serializable, edu.CSUSM.te
 		return rval;
 	}
 	
+	
 	/**
 	 * Return a static view of all Questions currently in the Course
 	 * @return An ArrayList of Questions
@@ -119,6 +120,7 @@ public class Course /*extends TaskObject*/ implements Serializable, edu.CSUSM.te
 		return rval;
 	}
 
+	
 	/**
 	 * Return a static view of all Tests currently in the Course
 	 * @return An ArrayList of ID Strings of Tests
