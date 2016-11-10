@@ -10,11 +10,6 @@ import edu.CSUSM.testTaker.LibraryController;
 public class Question extends TaskObject implements Serializable, Registerable{
 	public static final long serialVersionUID = 1L;
 	
-	/**
-	 * @deprecated
-	 */
-	public static int QUESTION_COUNT; //Keeps an always-updating count of questions per init in the program
-
 	String myID;
 	
 	/**
@@ -35,16 +30,7 @@ public class Question extends TaskObject implements Serializable, Registerable{
 
 	
 	String _question;
-	/**
-	 * @deprecated
-	 */
-	String _courseID, _testID;
 	ArrayList<String> _answers;			//To easily manage questions added and removed
-	/**
-	 * @deprecated
-	 */
-	public ArrayList<Double> _answerPoints;
-	
 	int _correctIndex = -1;				//The default correct index is 0 because it is not yet assigned;
 	//The following has been removed, points value has little meaning outside a containing context like a test.
 	//public int _pointValue = 1;					//Sets the default point value to 1
@@ -56,8 +42,8 @@ public class Question extends TaskObject implements Serializable, Registerable{
 		myID = UUID.randomUUID().toString();
 		_answers = new ArrayList<String>();
 		_question = "";
-		_courseID = "";
-		_testID = "";
+		//_courseID = "";
+		//_testID = "";
 	}
 
 	/**New Question starting with question text
@@ -163,16 +149,6 @@ public class Question extends TaskObject implements Serializable, Registerable{
 	}
 	
 	/**
-	 * Set the associated Test to file this question under
-	 * @param newID the ID string associated with the Test.
-	 * @deprecated
-	 */
-	public void setTestID(String newID){
-		this._testID = newID;
-		LibraryController.storeQuestion(this);
-	}
-
-	/**
 	 * Add a new answer to the set of answers for this question.
 	 * @author Justin Goulet
 	 * @param additionalAnswer A new answer to add to the array
@@ -193,18 +169,6 @@ public class Question extends TaskObject implements Serializable, Registerable{
 			LibraryController.storeQuestion(this);
 			}
 		}
-
-	/**
-	 * Set the Course associated with this Question
-	 * @author Justin Goulet
-	 * @param courseID The ID string of the Course to associate this Question with.
-	 * @deprecated
-	 */
-	public void setCourseID(String courseID){
-		this._courseID = courseID;
-	}
-	
-	 
 
 	/* Accessors */
 	/**
@@ -254,25 +218,6 @@ public class Question extends TaskObject implements Serializable, Registerable{
 		return this._correctIndex;
 	}
 	
-	
-	/**
-	 * Get the Course associated with this Question
-	 * @author Justin Goulet
-	 * @return The associated course identifier.
-	 * @deprecated
-	 */
-	public String getCourseID(){
-		return this._courseID;
-	}
-
-	/**
-	 * Get the Test associated with this Question
-	 * @return An ID String of the Test this question is filed under.
-	 * @deprecated
-	 */
-	public String getTestID(){
-		return this._testID;
-	}
 	
 	/** Grades an answer to this question
 	 * @author John Orcino

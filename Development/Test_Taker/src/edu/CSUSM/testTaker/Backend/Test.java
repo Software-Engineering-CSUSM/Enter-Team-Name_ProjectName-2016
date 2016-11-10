@@ -15,8 +15,6 @@ public class Test extends TaskObject implements Serializable, Registerable{
 	ArrayList<String> questionIDs;
 	ArrayList<Integer> questionPoints;
 	String _testName;
-	/**@deprecated*/
-	String _courseID;
 	String myID;
 
 
@@ -74,21 +72,6 @@ public class Test extends TaskObject implements Serializable, Registerable{
 		this.currentID = getID();
 		this.currentName = testName;
 		setQuestionList(listOfQuestionsForTest);
-	}
-
-	/**
-	 * Initialize from Title, List of questions, and associated Course
-	 * @param testName Title of the test
-	 * @param listOfQuestionsForTest An ArrayList of Questions to add to the test
-	 * @param courseID ID of course that the test is associated with.
-	 * @author Justin Goulet
-	 */
-	public Test(String testName, AbstractList<Question> listOfQuestionsForTest, String courseID){
-		this._testName = testName;
-		setQuestionList(listOfQuestionsForTest);
-		this.currentName = testName;
-		this._courseID = courseID;
-		this.currentID = courseID;
 	}
 
 	/**
@@ -190,13 +173,7 @@ public class Test extends TaskObject implements Serializable, Registerable{
 		return getName();
 	}
 
-	/**
-	 * Get the associated course.
-	 * @return The identifier string of the course this test is filed u
-	 */
-	public String getCourseID(){
-		return this._courseID;
-	}
+	
 
 	/** Mutators */
 
@@ -254,7 +231,7 @@ public class Test extends TaskObject implements Serializable, Registerable{
 		questionList.add(QuestionToAdd);
 		questionIDs.add(QuestionToAdd.getID());
 		questionPoints.add(0);
-		QuestionToAdd.setTestID(getID());
+//		QuestionToAdd.setTestID(getID());
 		LibraryController.storeTest(this);		
 	}
 
@@ -298,16 +275,6 @@ public class Test extends TaskObject implements Serializable, Registerable{
 		this._testID = newTestID;
 	}
 	 */
-
-	/**
-	 * Set the Course associated with this Test
-	 * @param newCourseID An ID String for the Course this test should be filed under.
-	 */
-	public void setCourseID(String newCourseID){
-		this._courseID = newCourseID;
-		LibraryController.storeTest(this);		
-	}
-
 
 	/**
 	 * Utility function sets/resets the list of questions
