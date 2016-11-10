@@ -25,6 +25,15 @@ public class Question extends TaskObject implements Serializable, Registerable{
 		return myID;							//Within the Question HashMap, the ID will be in the key position where the question is the value
 	}
 	
+	public String getName(){
+		return getQuestion();
+	}
+	
+	public String getTypeName(){
+		return "Question";
+	}
+
+	
 	String _question;
 	/**
 	 * @deprecated

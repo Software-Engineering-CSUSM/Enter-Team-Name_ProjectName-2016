@@ -27,6 +27,10 @@ public class Test extends TaskObject implements Serializable, Registerable{
 	public String getID(){
 		return myID;
 	}
+	
+	public String getTypeName(){
+		return "Test";
+	}
 
 	//For testing purposes
 	//public HashMap<String, Question> _listOfQuestionsInExam;		//Format: (String testID, Question questionWithIDBuiltIn)
@@ -176,6 +180,14 @@ public class Test extends TaskObject implements Serializable, Registerable{
 	 */
 	public String getName(){
 		return this._testName;
+	}
+	
+	/**
+	 * Get title of the test.
+	 * @return The name of this test.
+	 */
+	public String getTestName(){
+		return getName();
 	}
 
 	/**
@@ -388,6 +400,9 @@ public class Test extends TaskObject implements Serializable, Registerable{
 		String thisTestString = "Test: " + this._testName + "\n";
 		
 		thisTestString = thisTestString + ((Integer)numQuestions()).toString() + " Questions:\n";
+		
+		if(null == questionList || questionList.isEmpty())
+			initQuestions();
 
 		for(Question tempQuestion : questionList){
 			thisTestString = thisTestString + tempQuestion.getQuestion() + "\n";
