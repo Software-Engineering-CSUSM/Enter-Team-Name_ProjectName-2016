@@ -29,6 +29,11 @@ public class Question extends TaskObject implements Serializable, Registerable{
 		return getQuestion();
 	}
 	
+	public String getTypeName(){
+		return "Question";
+	}
+
+	
 	String _question;
 	/**
 	 * @deprecated

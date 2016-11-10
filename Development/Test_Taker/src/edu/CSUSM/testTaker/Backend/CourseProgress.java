@@ -26,6 +26,11 @@ public class CourseProgress implements Registerable, Serializable {
 		return name;
 	}
 
+	public String getTypeName(){
+		return "CourseProgress";
+	}
+
+	
 	String name;
 	HashMap<String,ArrayList<Integer>> testAnswerLists;
 	String associatedCourse;

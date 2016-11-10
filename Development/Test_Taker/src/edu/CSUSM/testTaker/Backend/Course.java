@@ -26,6 +26,10 @@ public class Course /*extends TaskObject*/ implements Serializable, edu.CSUSM.te
 		return myID;
 	}
 	
+	public String getTypeName(){
+		return "Course";
+	}
+
 	
 	//public static int COURSE_COUNT; 					//Keeps a sum of all existing courses. Will count every time the class is init.
 	//I think this is a feature of LibraryController

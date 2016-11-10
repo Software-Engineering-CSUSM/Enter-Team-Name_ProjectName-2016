@@ -3,6 +3,7 @@ package edu.CSUSM.testTaker;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
@@ -16,6 +17,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import edu.CSUSM.testTaker.Backend.*;
+import edu.CSUSM.testTaker.UI.Pages.StudyGame.allMatched;
 
 /**
  * 
@@ -28,6 +30,15 @@ import edu.CSUSM.testTaker.Backend.*;
  *
  */
 public class LibraryController{
+	
+	/** Config values for database here:
+	 * 
+	 */
+	protected static String databaseName = "Test-Taker";
+	protected static String DBUserName = "";
+	protected static String DBPassword = "";//* < should probably be derived from a cyphertext if ever used
+	
+	
 
 	/**
 	 * For Implementation, we are going to use Hashmaps. This is how: • The
@@ -58,7 +69,7 @@ public class LibraryController{
 	 */
 	protected static Connection connect()
 	throws SQLException{
-		return java.sql.DriverManager.getConnection("jdbc:h2:~/Test-Taker.db");
+		return java.sql.DriverManager.getConnection("jdbc:h2:~/"+databaseName,DBUserName,DBPassword);
 	}
 	
 	
@@ -68,14 +79,8 @@ public class LibraryController{
 	public static void initDB(){
 		try(Connection dbcon = connect()){
 			Statement sqlLine = dbcon.createStatement();
-			sqlLine.execute("drop table if exists QUESTIONS;");
-			sqlLine.execute("drop table if exists TESTS;");
-			sqlLine.execute("drop table if exists COURSES;");
-			sqlLine.execute("drop table if exists COURSEWORKS;");
-			sqlLine.execute("create table QUESTIONS(ID binary(36) primary key, name varchar(255), data other);");
-			sqlLine.execute("create table TESTS(ID binary(36) primary key, name varchar(255), data other);");
-			sqlLine.execute("create table COURSES(ID binary(36) primary key, name varchar(255), data other);");
-			sqlLine.execute("create table COURSEWORKS(ID binary(36) primary key, name varchar(255), data other);");
+			sqlLine.execute("drop table if exists REGISTRY;");
+			sqlLine.execute("create table REGISTRY(ID binary(36) primary key,typename varchar(31), name varchar(255), data other);");
 			dbcon.close();
 		}
 		catch(SQLException e){
@@ -85,14 +90,13 @@ public class LibraryController{
 	}
 	
 	/**
-	 * Is the given ID in the named table
+	 * Is the given ID in the registry
 	 * @param id Unique ID String of the object in question.
-	 * @param tablename "questions" "tests" "courses" or "courseworks" a name of a table in the DB
 	 * @return True if found, false otherwise.
 	 */
-	public static boolean inTable(String id,String tablename){
+	public static boolean containsID(String id){
 		try(Connection dbcon = connect()){
-			PreparedStatement myquery = dbcon.prepareStatement("select name from " + tablename + " where id = ?;");
+			PreparedStatement myquery = dbcon.prepareStatement("select name from REGISTRY where id = ?;");
 			myquery.setBytes(1, id.getBytes());
 			ResultSet myresults = myquery.executeQuery();
 			boolean rval = myresults.next();
@@ -106,14 +110,18 @@ public class LibraryController{
 		}
 	}
 	
-	
-	public static void addOrUpdate(Registerable reg, String tablename){
-		if(inTable(reg.getID(), tablename)){
+	/**
+	 * Inserts or updates an item in the registry
+	 * @param reg A reference to an object implementing the Registerable interface
+	 */
+	public static void putItem(Registerable reg){
+		if(containsID(reg.getID())){
 			try(Connection dbcon = connect()){
-				PreparedStatement myupdate = dbcon.prepareStatement("update " + tablename + " set name = ?, data = ? where ID = ?;");
+				PreparedStatement myupdate = dbcon.prepareStatement("update REGISTRY set name = ?, typename = ?, data = ? where ID = ?;");
 				myupdate.setString(1, reg.getName());
-				myupdate.setObject(2, reg);
-				myupdate.setBytes(3, reg.getID().getBytes());
+				myupdate.setString(2, reg.getTypeName());
+				myupdate.setObject(3, reg);
+				myupdate.setBytes(4, reg.getID().getBytes());
 				myupdate.executeUpdate();
 			}
 			catch(SQLException e){
@@ -123,10 +131,11 @@ public class LibraryController{
 		}
 		else{
 			try(Connection dbcon = connect()){
-				PreparedStatement myupdate = dbcon.prepareStatement("insert into " + tablename + " values(?,?,?);");
+				PreparedStatement myupdate = dbcon.prepareStatement("insert into REGISTRY values(?,?,?,?);");
 				myupdate.setBytes(1, reg.getID().getBytes());
-				myupdate.setString(2, reg.getName());
-				myupdate.setObject(3, reg);
+				myupdate.setString(2, reg.getTypeName());
+				myupdate.setString(3, reg.getName());
+				myupdate.setObject(4, reg);
 				myupdate.executeUpdate();
 			}
 			catch(SQLException e){
@@ -137,10 +146,15 @@ public class LibraryController{
 		}
 	}
 	
-	public static Registerable pullFromTable(String ID, String tablename){
+	/**
+	 * Get a live reference to an object from the registry.
+	 * @param id Unique ID String of the object in question.
+	 * @return A reference to an object that implements the Registerable interface
+	 */
+	public static Registerable getItem(String ID){
 		Registerable rval = null;
 		try(Connection dbcon = connect()){
-			PreparedStatement myquery = dbcon.prepareStatement("select DATA from " + tablename + " where ID = ?;");
+			PreparedStatement myquery = dbcon.prepareStatement("select DATA from REGISTRY where ID = ?;");
 			myquery.setBytes(1, ID.getBytes());
 			ResultSet results = myquery.executeQuery();
 			if(results.next()){
@@ -155,6 +169,76 @@ public class LibraryController{
 		return rval;
 	}
 	
+	/**
+	 * Get the name of an object in the registry without instantiating it.
+	 * @param ID Unique ID string of the object in question.
+	 * @return The name or title of the requested object as a String.
+	 */
+	public static String getItemName(String ID){
+		String rval = null;
+		try(Connection dbcon = connect()){
+			PreparedStatement myquery = dbcon.prepareStatement("select NAME from REGISTRY where ID = ?;");
+			myquery.setBytes(1, ID.getBytes());
+			ResultSet results = myquery.executeQuery();
+			if(results.next()){
+				rval = results.getString(1);
+				dbcon.close();
+			}
+		}
+		catch(SQLException e){
+			e.printStackTrace();
+			System.exit(1);
+		}
+		return rval;
+	}
+	
+	/**
+	 * Get a String describing the type of an object in the registry without instantiating it.
+	 * @param ID Unique ID string of the object in question.
+	 * @return The name of the type of the requested object as a String.
+	 */
+	public static String getItemType(String ID){
+		String rval = null;
+		try(Connection dbcon = connect()){
+			PreparedStatement myquery = dbcon.prepareStatement("select TYPENAME from REGISTRY where ID = ?;");
+			myquery.setBytes(1, ID.getBytes());
+			ResultSet results = myquery.executeQuery();
+			if(results.next()){
+				rval = results.getString(1);
+				dbcon.close();
+			}
+		}
+		catch(SQLException e){
+			e.printStackTrace();
+			System.exit(1);
+		}
+		return rval;
+	}
+	
+	/**
+	 * Remove an object from the registry
+	 * @param ID Unique ID string of the object in question.
+	 */
+	public static void deleteItem(String ID){
+		try(Connection dbcon = connect()){
+			PreparedStatement myquery = dbcon.prepareStatement("delete from REGISTRY where ID = ?;");
+			myquery.setBytes(1, ID.getBytes());
+			myquery.executeUpdate();
+		}
+		catch(SQLException e){
+			e.printStackTrace();
+			System.exit(1);
+		}		
+	}
+	
+	/**
+	 * Does the database file already exist on this system
+	 * @return true if a file with expected name and path exists.
+	 */
+	public static boolean checkForDB(){
+		File testfile = new File(System.getProperty("user.home") + File.separator + databaseName + ".mv.db");
+		return testfile.exists();
+	}
 	
 
 	/**
