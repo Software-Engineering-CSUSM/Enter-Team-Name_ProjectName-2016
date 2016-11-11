@@ -91,7 +91,7 @@ public class LibraryController{
 	}
 	
 	/**
-	 * Is the given ID in the registry
+	 * Is the given ID in the database
 	 * @param id Unique ID String of the object in question.
 	 * @return True if found, false otherwise.
 	 */
@@ -112,7 +112,7 @@ public class LibraryController{
 	}
 	
 	/**
-	 * Inserts or updates an item in the registry
+	 * Inserts or updates an item in the database
 	 * @param reg A reference to an object implementing the Registerable interface
 	 */
 	public static void putItem(Registerable reg){
@@ -148,7 +148,7 @@ public class LibraryController{
 	}
 	
 	/**
-	 * Get a live reference to an object from the registry.
+	 * Get a live reference to an object from the database.
 	 * @param id Unique ID String of the object in question.
 	 * @return A reference to an object that implements the Registerable interface
 	 */
@@ -171,7 +171,7 @@ public class LibraryController{
 	}
 	
 	/**
-	 * Get the name of an object in the registry without instantiating it.
+	 * Get the name of an object in the database without instantiating it.
 	 * @param ID Unique ID string of the object in question.
 	 * @return The name or title of the requested object as a String.
 	 */
@@ -194,7 +194,7 @@ public class LibraryController{
 	}
 	
 	/**
-	 * Get a String describing the type of an object in the registry without instantiating it.
+	 * Get a String describing the type of an object in the database without instantiating it.
 	 * @param ID Unique ID string of the object in question.
 	 * @return The name of the type of the requested object as a String.
 	 */
@@ -217,7 +217,7 @@ public class LibraryController{
 	}
 	
 	/**
-	 * Remove an object from the registry
+	 * Remove an object from the database
 	 * @param ID Unique ID string of the object in question.
 	 */
 	public static void deleteItem(String ID){
@@ -239,6 +239,42 @@ public class LibraryController{
 	public static boolean checkForDB(){
 		File testfile = new File(System.getProperty("user.home") + File.separator + databaseName + ".mv.db");
 		return testfile.exists();
+	}
+	
+	/**
+	 * Give all IDs of Courses in the database
+	 * @return an ArrayList of ID Strings for all Courses in the database.
+	 */
+	public static ArrayList<String> getCourseItemIDs(){
+		ArrayList<String> rval = null;
+		try(Connection dbcon = connect()){
+			ResultSet myresults = dbcon.createStatement().executeQuery("select ID from REGISTRY where TYPENAME = 'Course';");
+			rval = new ArrayList<String>();
+			while(myresults.next()){
+				rval.add(new String(myresults.getBytes(1)));
+			}
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
+		return rval;
+	}
+	
+	/**
+	 * Give all Names of Courses in the database
+	 * @return an ArrayList of name Strings for all Courses in the database.
+	 */
+	public static ArrayList<String> getCourseItemNames(){
+		ArrayList<String> rval = null;
+		try(Connection dbcon = connect()){
+			ResultSet myresults = dbcon.createStatement().executeQuery("select NAME from REGISTRY where TYPENAME = 'Course';");
+			rval = new ArrayList<String>();
+			while(myresults.next()){
+				rval.add(myresults.getString(1));
+			}			
+		}catch(SQLException e){
+			e.printStackTrace();
+		}		
+		return rval;
 	}
 	
 

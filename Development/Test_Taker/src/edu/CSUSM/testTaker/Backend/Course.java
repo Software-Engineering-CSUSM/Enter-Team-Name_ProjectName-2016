@@ -1,6 +1,7 @@
 package edu.CSUSM.testTaker.Backend;
 
 import java.util.ArrayList;
+import java.util.UUID;
 import java.io.Serializable;
 
 import edu.CSUSM.testTaker.LibraryController;
@@ -17,17 +18,16 @@ public class Course /*extends TaskObject*/ implements Serializable, edu.CSUSM.te
 		myID = java.util.UUID.randomUUID().toString();
 	}
 	
-	/**
-	 * Get the unique identifier string of this Course
-	 * @return A string unique to this particular Course
-	 * @override
-	 */
 	public String getID(){
 		return myID;
 	}
 	
 	public String getTypeName(){
 		return "Course";
+	}
+	
+	public void turnIntoDuplicate(){
+		myID = UUID.randomUUID().toString();
 	}
 
 	

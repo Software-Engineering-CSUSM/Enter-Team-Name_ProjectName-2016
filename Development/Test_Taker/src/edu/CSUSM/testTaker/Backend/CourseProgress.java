@@ -15,7 +15,6 @@ public class CourseProgress implements Registerable, Serializable {
 		myID = java.util.UUID.randomUUID();
 	}
 	
-	@Override
 	public String getID() {
 		if(myID != null)
 			return myID.toString();
@@ -28,6 +27,10 @@ public class CourseProgress implements Registerable, Serializable {
 
 	public String getTypeName(){
 		return "CourseProgress";
+	}
+	
+	public void turnIntoDuplicate(){
+		myID = java.util.UUID.randomUUID();
 	}
 
 	

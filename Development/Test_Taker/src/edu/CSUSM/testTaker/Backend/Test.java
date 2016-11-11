@@ -8,7 +8,7 @@ import java.util.UUID;
 
 import java.io.Serializable;
 
-public class Test extends TaskObject implements Serializable, Registerable{
+public class Test /*extends TaskObject*/ implements Serializable, Registerable{
 	static final long serialVersionUID = 1L;
 
 	transient ArrayList<Question> questionList;
@@ -17,17 +17,16 @@ public class Test extends TaskObject implements Serializable, Registerable{
 	String _testName;
 	String myID;
 
-
-	/**  Get the ID of the test for database storage and retrieval
-	 * @return unique ID string of this Test
-	 * @author Steven Clark
-	 */
 	public String getID(){
 		return myID;
 	}
 	
 	public String getTypeName(){
 		return "Test";
+	}
+	
+	public void turnIntoDuplicate(){
+		myID = UUID.randomUUID().toString();
 	}
 
 	//For testing purposes
@@ -58,7 +57,7 @@ public class Test extends TaskObject implements Serializable, Registerable{
 	 */
 	public Test(String testName){
 		this._testName = testName;
-		this.currentName = testName;
+		//this.currentName = testName;
 	}
 
 	/**
@@ -69,8 +68,8 @@ public class Test extends TaskObject implements Serializable, Registerable{
 	 */
 	public Test(String testName, AbstractList<Question> listOfQuestionsForTest){
 		this._testName = testName;
-		this.currentID = getID();
-		this.currentName = testName;
+		//this.currentID = getID();
+		//this.currentName = testName;
 		setQuestionList(listOfQuestionsForTest);
 	}
 

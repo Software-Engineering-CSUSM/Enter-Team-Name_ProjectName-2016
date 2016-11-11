@@ -7,7 +7,7 @@ import java.util.UUID;
 
 import edu.CSUSM.testTaker.LibraryController;
 
-public class Question extends TaskObject implements Serializable, Registerable{
+public class Question /*extends TaskObject*/ implements Serializable, Registerable{
 	public static final long serialVersionUID = 1L;
 	
 	String myID;
@@ -26,6 +26,10 @@ public class Question extends TaskObject implements Serializable, Registerable{
 	
 	public String getTypeName(){
 		return "Question";
+	}
+	
+	public void turnIntoDuplicate(){
+		myID = UUID.randomUUID().toString();
 	}
 
 	
@@ -61,8 +65,8 @@ public class Question extends TaskObject implements Serializable, Registerable{
 		//Question.QUESTION_COUNT++;
 		
 		myID = UUID.randomUUID().toString();
-		this.currentID = myID;
-		this.currentName = mainQuestion;
+		//this.currentID = myID;
+		//this.currentName = mainQuestion;
 		LibraryController.storeQuestion(this);
 	}
 	
