@@ -260,6 +260,62 @@ public class LibraryController{
 	}
 	
 	/**
+	 * Give all IDs of CourseProgresses in the database
+	 * @return an ArrayList of ID Strings for all CourseProgresses in the database.
+	 */
+	public static ArrayList<String> getProgressItemIDs(){
+		ArrayList<String> rval = null;
+		try(Connection dbcon = connect()){
+			ResultSet myresults = dbcon.createStatement().executeQuery("select ID from REGISTRY where TYPENAME = 'CourseProgress';");
+			rval = new ArrayList<String>();
+			while(myresults.next()){
+				rval.add(new String(myresults.getBytes(1)));
+			}
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
+		return rval;
+	}
+	/**
+	 * Give all IDs of Tests in the database
+	 * @return an ArrayList of ID Strings for all Tests in the database.
+	 * @deprecated
+	 */
+	public static ArrayList<String> getTestItemIDs(){
+		ArrayList<String> rval = null;
+		try(Connection dbcon = connect()){
+			ResultSet myresults = dbcon.createStatement().executeQuery("select ID from REGISTRY where TYPENAME = 'Test';");
+			rval = new ArrayList<String>();
+			while(myresults.next()){
+				rval.add(new String(myresults.getBytes(1)));
+			}
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
+		return rval;
+	}
+
+	/**
+	 * Give all IDs of Tests in the database
+	 * @return an ArrayList of ID Strings for all Tests in the database.
+	 * @deprecated
+	 */
+	public static ArrayList<String> getQuestionItemIDs(){
+		ArrayList<String> rval = null;
+		try(Connection dbcon = connect()){
+			ResultSet myresults = dbcon.createStatement().executeQuery("select ID from REGISTRY where TYPENAME = 'Question';");
+			rval = new ArrayList<String>();
+			while(myresults.next()){
+				rval.add(new String(myresults.getBytes(1)));
+			}
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
+		return rval;
+	}
+
+	
+	/**
 	 * Give all Names of Courses in the database
 	 * @return an ArrayList of name Strings for all Courses in the database.
 	 */
@@ -274,6 +330,84 @@ public class LibraryController{
 		}catch(SQLException e){
 			e.printStackTrace();
 		}		
+		return rval;
+	}
+	
+	/**
+	 * Give all Names of CourseProgresses in the database
+	 * @return an ArrayList of name Strings for all CourseProgresses in the database.
+	 */
+	public static ArrayList<String> getProgressItemNames(){
+		ArrayList<String> rval = null;
+		try(Connection dbcon = connect()){
+			ResultSet myresults = dbcon.createStatement().executeQuery("select NAME from REGISTRY where TYPENAME = 'CourseProgress';");
+			rval = new ArrayList<String>();
+			while(myresults.next()){
+				rval.add(myresults.getString(1));
+			}			
+		}catch(SQLException e){
+			e.printStackTrace();
+		}		
+		return rval;
+	}
+	
+	/**
+	 * Give all Names of Tests in the database
+	 * @return an ArrayList of name Strings for all Tests in the database.
+	 * @deprecated
+	 */
+	public static ArrayList<String> getTestItemNames(){
+		ArrayList<String> rval = null;
+		try(Connection dbcon = connect()){
+			ResultSet myresults = dbcon.createStatement().executeQuery("select NAME from REGISTRY where TYPENAME = 'Test';");
+			rval = new ArrayList<String>();
+			while(myresults.next()){
+				rval.add(myresults.getString(1));
+			}			
+		}catch(SQLException e){
+			e.printStackTrace();
+		}		
+		return rval;
+	}
+
+	/**
+	 * Give all Names of Tests in the database
+	 * @return an ArrayList of name Strings for all Tests in the database.
+	 * @deprecated
+	 */
+	public static ArrayList<String> getQuestionItemNames(){
+		ArrayList<String> rval = null;
+		try(Connection dbcon = connect()){
+			ResultSet myresults = dbcon.createStatement().executeQuery("select NAME from REGISTRY where TYPENAME = 'Question';");
+			rval = new ArrayList<String>();
+			while(myresults.next()){
+				rval.add(myresults.getString(1));
+			}			
+		}catch(SQLException e){
+			e.printStackTrace();
+		}		
+		return rval;
+	}
+
+	
+	/**
+	 * Get a list of Registerable items from a Collection for their IDs
+	 * @param terms A Collection of unique ID Strings
+	 * @return An ArrayList of Registerable objects pulled from the database.
+	 */
+	public static ArrayList<Registerable> getItemsForIDs(Collection <String> terms){
+		ArrayList <Registerable> rval = null;
+		try(Connection dbcon = connect()){
+			if(terms != null && !terms.isEmpty()){
+				rval = new ArrayList<Registerable>(terms.size());
+				for(String termID : terms){
+					rval.add(getItem(termID));
+				}
+			}
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
+		
 		return rval;
 	}
 	
