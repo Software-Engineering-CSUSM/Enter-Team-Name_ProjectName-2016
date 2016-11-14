@@ -662,10 +662,10 @@ public class LibraryController{
 			if(courseID.length() > 0){
 				//If not null, only do the course ID specified
 				if(temp.getCourseID().equals(courseID)){
-					tempList.add(temp.getTestName());
+					tempList.add(temp.getName());
 				}
 			}else{
-				tempList.add(temp.getTestName());
+				tempList.add(temp.getName());
 			}
 		}
 		return tempList.toArray(new String[tempList.size()]);
