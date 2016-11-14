@@ -5,7 +5,7 @@ import java.io.Serializable;
 
 import edu.CSUSM.testTaker.LibraryController;
 
-public class Course extends TaskObject implements Serializable, edu.CSUSM.testTaker.Backend.Registerable{
+public class Course /*extends TaskObject*/ implements Serializable, edu.CSUSM.testTaker.Backend.Registerable{
 	static final long serialVersionUID = 1L;
 
 	/**  Get the ID of the test for database storage and retrieval
@@ -26,12 +26,11 @@ public class Course extends TaskObject implements Serializable, edu.CSUSM.testTa
 		return myID;
 	}
 	
-	//public static int COURSE_COUNT; 					//Keeps a sum of all existing courses. Will count every time the class is init.
-	//I think this is a feature of LibraryController
-	/**
-	 * @deprecated
-	 */
-	double _courseGrade, _testsCompleted;
+	public String getTypeName(){
+		return "Course";
+	}
+
+	
 	ArrayList<String> questionIDs;
 	ArrayList<String> testIDs;
 	ArrayList<Integer> testPoints;
@@ -45,15 +44,15 @@ public class Course extends TaskObject implements Serializable, edu.CSUSM.testTa
 	 * @description Default Constructor
 	 */
 	public Course(){
-		_courseGrade = 0.0;
-		_testsCompleted = 0.0;		
+		//_courseGrade = 0.0;
+		//_testsCompleted = 0.0;		
 		
-		courseName = "";
+		courseName = "New Course";
 		questionIDs = new ArrayList<String>();
 		testIDs = new ArrayList<String>();
 		testPoints = new ArrayList<Integer>();
-		this.currentID = getID();
-		this.currentName = courseName;
+		//this.currentID = getID();
+		//this.currentName = courseName;
 	}
 	
 	/** Make an example Course
@@ -102,9 +101,57 @@ public class Course extends TaskObject implements Serializable, edu.CSUSM.testTa
 	 * Return a static view of all Questions currently in the Course
 	 * @return An ArrayList of ID Strings of Questions
 	 */
-	@SuppressWarnings("unchecked")
-	public ArrayList <String> allQuestions(){
-		return (ArrayList <String>)questionIDs.clone();
+	public ArrayList <String> getQuestionIDs(){
+		ArrayList <String>rval = new ArrayList <String>(questionIDs.size());
+		rval.addAll(questionIDs);
+		return rval;
+	}
+	
+	
+	/**
+	 * Return a static view of all Questions currently in the Course
+	 * @return An ArrayList of Questions
+	 */
+	public ArrayList <Question> getQuestions(){
+		ArrayList <Question> rval = new ArrayList <Question>(questionIDs.size());
+		for(String qid : questionIDs){
+			rval.add(LibraryController.retrieveQuestion(qid));
+		}
+		return rval;
+	}
+
+	
+	/**
+	 * Return a static view of all Tests currently in the Course
+	 * @return An ArrayList of ID Strings of Tests
+	 */
+	public ArrayList <String> getTestIDs(){
+		ArrayList <String>rval = new ArrayList <String>(testIDs.size());
+		rval.addAll(testIDs);
+		return rval;
+	}
+	
+	/**
+	 * Return a static view of all Tests currently in the Course
+	 * @return An ArrayList of Tests
+	 */
+	public ArrayList <Test> getTests(){
+		ArrayList <Test> rval = new ArrayList <Test>(testIDs.size());
+		for(String tid : testIDs){
+			rval.add(LibraryController.retrieveTest(tid));
+		}
+		return rval;
+	}
+	
+	/**
+	 * Give a listing of the current points values of all Tests in this Course
+	 * @return an ArrayList of Integers
+	 */
+	public ArrayList <Integer> getTestValues(){
+		ArrayList <Integer>rval = new ArrayList <Integer>(testPoints.size());
+		rval.addAll(testPoints);
+		return rval;
+		
 	}
 	
 	/**
@@ -178,37 +225,6 @@ public class Course extends TaskObject implements Serializable, edu.CSUSM.testTa
 		return getTestValue(tindex);
 	}
 
-	/**
-	 * Get the current grade in this course
-	 * @author Justin Goulet
-	 * @return The grade of the Course so far.
-	 * @deprecated
-	 */
-	public double getCourseGrade() {
-		return this._courseGrade;
-	}
-
-	/**
-	 * Get the number of tests completed in the course so far.
-	 * @author Justin Goulet
-	 * @return The number of tests completed
-	 * @deprecated
-	 */
-	public double getTestsCompleted() {
-		return this._testsCompleted;
-	}
-
-		
-	/**
-	 * @author Justin Goulet
-	 * @description Compiles all of the questions and tests for this particular course
-	 * Note that all of the events are happening in the libraryController class
-	 * @deprecated
-	 */
-	private static void compileCourse(){
-		
-	}
-	
 	public String toString(){
 		//String outString = "Course: ";
 		String outString = "";
@@ -234,7 +250,7 @@ public class Course extends TaskObject implements Serializable, edu.CSUSM.testTa
 	 */
 	public void setName(String newname){
 		this.courseName = newname;
-		this.currentName = courseName;
+		//this.currentName = courseName;
 		LibraryController.storeCourse(this);
 	}
 
@@ -398,28 +414,6 @@ public class Course extends TaskObject implements Serializable, edu.CSUSM.testTa
 	 * @note Currently unnecessary
 	 */
 	public void flush(){
-		LibraryController.storeCourse(this);
-	}
-
-	/**
-	 * Set the current grade for this course
-	 * @author Justin Goulet
-	 * @param courseGrade The courseGrade to set
-	 * @deprecated
-	 */
-	public void setCourseGrade(double courseGrade) {
-		this._courseGrade = courseGrade;
-		LibraryController.storeCourse(this);
-	}
-
-	/**
-	 * Set the number of tests completed in this course.
-	 * @author Justin Goulet
-	 * @param testsCompleted The number of tests that have been taken so far.
-	 * @deprecated
-	 */
-	public void setTestsCompleted(double testsCompleted) {
-		this._testsCompleted = testsCompleted;
 		LibraryController.storeCourse(this);
 	}
 }

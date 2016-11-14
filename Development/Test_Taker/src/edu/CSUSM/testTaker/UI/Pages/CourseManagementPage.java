@@ -65,7 +65,7 @@ public class CourseManagementPage extends CustomPage {
 			//Should show a list of all available courses
 			//Set the row headers to be that of the type we are displaying (Questions, in this case)
 			CustomPage.setQBRowHeaders(LibraryController.getAllCoursesAvailable());
-			CustomPage.setQBRowIDs(LibraryController.getAllCoursesAvailableIDs());
+			CustomPage.setQBRowIDs(LibraryController.getAllCourseIDsAvailable());
 			CourseList courseList = new CourseList("Course List", CustomPage.PanelType.QUESTION_BUILDER_TYPE);
 			courseList.parentController = parentController;
 			parentController.displayView(courseList);

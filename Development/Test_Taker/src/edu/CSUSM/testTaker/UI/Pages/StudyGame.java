@@ -380,10 +380,12 @@ public class StudyGame extends JPanel {
 		return result.trim();
 	}
 
+	// Stevenc: I don't think this ever worked as expected, I've attempted to fix it. But I still think it's incomplete.
+	// namely it should get the questions in a Course so at least they have a chance of being relevant.
 	public void getInfo() {
 		// Gets the info from the library controller. This is where all of the
 		// questions come from
-		this.myQuestions.addAll(LibraryController._currentQuestionsInCourse.values());
+		this.myQuestions.addAll(LibraryController.giveAllQuestions());
 
 		// Show to the console each question
 		for (Question temp : this.myQuestions) {

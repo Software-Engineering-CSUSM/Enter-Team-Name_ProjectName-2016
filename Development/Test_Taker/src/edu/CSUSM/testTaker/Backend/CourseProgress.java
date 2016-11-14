@@ -21,7 +21,17 @@ public class CourseProgress implements Registerable, Serializable {
 			return myID.toString();
 		return null;
 	}
+	
+	public String getName(){
+		return name;
+	}
 
+	public String getTypeName(){
+		return "CourseProgress";
+	}
+
+	
+	String name;
 	HashMap<String,ArrayList<Integer>> testAnswerLists;
 	String associatedCourse;
 	double totalGrade;
@@ -32,6 +42,7 @@ public class CourseProgress implements Registerable, Serializable {
 		associatedCourse = courseID;
 		totalGrade = 0.0;
 		takenGrade = 0.0;
+		name = "Unknown Student's work on " + LibraryController.retrieveCourse(courseID).getName();
 	}
 	
 	/*

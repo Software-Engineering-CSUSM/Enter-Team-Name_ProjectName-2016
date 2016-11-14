@@ -73,8 +73,8 @@ public class ContentManagementPage extends CustomPage {
 			// System.out.println("Opening " + this.getClass());
 			
 			//Set row Headers and idens
-			CustomPage.setQBRowHeaders(LibraryController.getAllQuestionsInCourse(""));
-			CustomPage.setQBRowIDs(LibraryController.getAllQuestionsInCourseID(""));
+			CustomPage.setQBRowHeaders(LibraryController.getAllQuestionNamesInCourse(""));
+			CustomPage.setQBRowIDs(LibraryController.getAllQuestionIDsInCourse(""));
 			
 			CustomPage questionBuilder = new CustomPage("Question Manager", CustomPage.PanelType.QUESTION_BUILDER_TYPE);
 			questionBuilder.parentController = parentController;

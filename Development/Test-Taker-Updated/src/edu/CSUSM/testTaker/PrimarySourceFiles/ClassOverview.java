@@ -145,7 +145,7 @@ public class ClassOverview extends JPanel
 				testBox.removeAllItems();
 				testBox.addItem("Please Select Test");
 				
-				for(String temp : LibraryController.getAllTestsInCourse("")){
+				for(String temp : LibraryController.getAllTestNamesInCourse("")){
 					testBox.addItem(temp);
 				}
 				
@@ -300,7 +300,7 @@ public class ClassOverview extends JPanel
 								testBox.addItem(i);
 							}*/
 							
-							for(String temp : LibraryController.getAllTestsInCourse("")){
+							for(String temp : LibraryController.getAllTestNamesInCourse("")){
 								testBox.addItem(temp);
 							}
 							testBox.setSelectedItem(testInputByUser);
