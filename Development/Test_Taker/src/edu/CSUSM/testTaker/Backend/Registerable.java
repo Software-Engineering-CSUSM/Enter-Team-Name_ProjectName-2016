@@ -4,6 +4,8 @@
 
 package edu.CSUSM.testTaker.Backend;
 
+import edu.CSUSM.testTaker.LibraryController;
+
 /**
  * An interface for all objects that can be stored in LibraryController.
  * Operations that can be done on an object in the library regardless of what it is belong here.
@@ -15,6 +17,13 @@ public interface Registerable {
 	 * This function has not been specified and the previous implementation in TaskObject didn't do anything.
 	 */
 	default public void getObjects(){};
+	
+	/**
+	 * Manually flush changes in this object to the database.
+	 */
+	default public void flush(){
+		LibraryController.putItem(this);
+	}
 	
 	/**
 	 * Set this object to be stored in a new location of the Library by resetting it's unique ID.
