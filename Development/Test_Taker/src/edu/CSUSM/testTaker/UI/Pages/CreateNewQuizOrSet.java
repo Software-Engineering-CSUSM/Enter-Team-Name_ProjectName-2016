@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 
 import edu.CSUSM.testTaker.UI.CustomPage;
+import edu.CSUSM.testTaker.UI.CustomPage.PanelType;
 
 /**
  * @author Jeremy
@@ -31,28 +32,28 @@ public class CreateNewQuizOrSet extends CustomPage {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public CreateNewQuizOrSet(PanelType currentPanelType) {
-		super(currentPanelType);
+	public CreateNewQuizOrSet(String panelName, PanelType currentPanelType) {
+		super(panelName, currentPanelType);
 		// TODO Auto-generated constructor stub
 		// System.out.println("Printing a new Form");
 		updateActions();
 	}
 
-	public CreateNewQuizOrSet(PanelType currentPanelType, BufferedImage newImage) {
-		super(currentPanelType, newImage);
+	public CreateNewQuizOrSet(String panelName, PanelType currentPanelType, BufferedImage newImage) {
+		super(panelName, currentPanelType, newImage);
 		// TODO Auto-generated constructor stub
 		updateActions();
 	}
 
-	public CreateNewQuizOrSet(PanelType currentPanelType, String imageAddress) {
-		super(currentPanelType, imageAddress);
+	public CreateNewQuizOrSet(String panelName, PanelType currentPanelType, String imageAddress) {
+		super(panelName, currentPanelType, imageAddress);
 		// TODO Auto-generated constructor stub
 		updateActions();
 	}
 
 	// Constructor used to create page
-	public CreateNewQuizOrSet(PanelType currentPanelType, PageType currentPageType) {
-		super(currentPanelType, currentPageType);
+	public CreateNewQuizOrSet(String panelName, PanelType currentPanelType, PageType currentPageType) {
+		super(panelName, currentPanelType, currentPageType);
 		// Set the layout
 
 		// If saving a quiz, call updateActions, otherwise, we'll be saving
@@ -127,9 +128,7 @@ public class CreateNewQuizOrSet extends CustomPage {
 			// Constructor uses a main window with just a logo type, and
 			// an SaveQuiz to create the correct popUp window in the
 			// PopUp class
-			PopUp quizPage = new PopUp(PopUp.PanelType.LOGO_ONLY_TYPE, PopUpType.SaveQuiz);
-
-			quizPage.setName("Save Quiz Page");
+			PopUp quizPage = new PopUp("Save Quiz Page", PopUp.PanelType.LOGO_ONLY_TYPE, PopUpType.SaveQuiz);
 			quizPage.parentController = parentController;
 			parentController.displayView(quizPage);
 
@@ -149,9 +148,7 @@ public class CreateNewQuizOrSet extends CustomPage {
 			// Constructor uses a main window with just a logo type, and
 			// an SaveQuiz to create the correct popUp window in the
 			// PopUp class
-			PopUp FlashcardPage = new PopUp(PopUp.PanelType.LOGO_ONLY_TYPE, PopUpType.SaveSet);
-
-			FlashcardPage.setName("Save Flashcard Page");
+			PopUp FlashcardPage = new PopUp("Save Flashcard Page", PopUp.PanelType.LOGO_ONLY_TYPE, PopUpType.SaveSet);
 			FlashcardPage.parentController = parentController;
 			parentController.displayView(FlashcardPage);
 

@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 
 import edu.CSUSM.testTaker.UI.CustomPage;
+import edu.CSUSM.testTaker.UI.CustomPage.PanelType;
 
 /**
  * @author Jeremy
@@ -29,28 +30,28 @@ public class EditQuestionsFromExisting extends CustomPage {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public EditQuestionsFromExisting(PanelType currentPanelType) {
-		super(currentPanelType);
+	public EditQuestionsFromExisting(String panelName, PanelType currentPanelType) {
+		super(panelName, currentPanelType);
 		// TODO Auto-generated constructor stub
 		// System.out.println("Printing a new Form");
 		updateActions();
 	}
 
-	public EditQuestionsFromExisting(PanelType currentPanelType, BufferedImage newImage) {
-		super(currentPanelType, newImage);
+	public EditQuestionsFromExisting(String panelName, PanelType currentPanelType, BufferedImage newImage) {
+		super(panelName, currentPanelType, newImage);
 		// TODO Auto-generated constructor stub
 		updateActions();
 	}
 
-	public EditQuestionsFromExisting(PanelType currentPanelType, String imageAddress) {
-		super(currentPanelType, imageAddress);
+	public EditQuestionsFromExisting(String panelName, PanelType currentPanelType, String imageAddress) {
+		super(panelName, currentPanelType, imageAddress);
 		// TODO Auto-generated constructor stub
 		updateActions();
 	}
 
 	// Constructor used to create the panel
-	public EditQuestionsFromExisting(PanelType currentPanelType, PageType currentPageType) {
-		super(currentPanelType, currentPageType);
+	public EditQuestionsFromExisting(String panelName, PanelType currentPanelType, PageType currentPageType) {
+		super(panelName, currentPanelType, currentPageType);
 		// Set the layout
 
 		// Build the contents. Uses condition statements to determine
@@ -114,8 +115,7 @@ public class EditQuestionsFromExisting extends CustomPage {
 		public void actionPerformed(ActionEvent e) {
 			System.out.println("Opening " + this.getClass());
 
-			QuizAndFlashMain quizPage = new QuizAndFlashMain(QuizAndFlashMain.PanelType.THREE_BUTTON_TYPE);
-			quizPage.setName("Quiz Main Page");
+			QuizAndFlashMain quizPage = new QuizAndFlashMain("Quiz Main Page", QuizAndFlashMain.PanelType.THREE_BUTTON_TYPE);
 			quizPage.parentController = parentController;
 			parentController.displayView(quizPage);
 
@@ -131,8 +131,7 @@ public class EditQuestionsFromExisting extends CustomPage {
 		public void actionPerformed(ActionEvent e) {
 			System.out.println("Opening " + this.getClass());
 
-			QuizAndFlashMain FlashcardPage = new QuizAndFlashMain(QuizAndFlashMain.PanelType.THREE_BUTTON_TYPE);
-			FlashcardPage.setName("Quiz Main Page");
+			QuizAndFlashMain FlashcardPage = new QuizAndFlashMain("Quiz Main Page", QuizAndFlashMain.PanelType.THREE_BUTTON_TYPE);
 			FlashcardPage.parentController = parentController;
 			parentController.displayView(FlashcardPage);
 

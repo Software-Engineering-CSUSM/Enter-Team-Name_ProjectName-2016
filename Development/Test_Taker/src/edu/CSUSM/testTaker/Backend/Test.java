@@ -8,13 +8,13 @@ import java.util.UUID;
 
 import java.io.Serializable;
 
-public class Test implements Serializable, Registerable{
+public class Test extends TaskObject implements Serializable, Registerable{
 	static final long serialVersionUID = 1L;
 
 	transient ArrayList<Question> questionList;
 	ArrayList<String> questionIDs;
 	ArrayList<Integer> questionPoints;
-	String _testName, _courseID;
+	String _testName;
 	String myID;
 
 
@@ -24,6 +24,10 @@ public class Test implements Serializable, Registerable{
 	 */
 	public String getID(){
 		return myID;
+	}
+	
+	public String getTypeName(){
+		return "Test";
 	}
 
 	//For testing purposes
@@ -54,6 +58,7 @@ public class Test implements Serializable, Registerable{
 	 */
 	public Test(String testName){
 		this._testName = testName;
+		this.currentName = testName;
 	}
 
 	/**
@@ -64,20 +69,9 @@ public class Test implements Serializable, Registerable{
 	 */
 	public Test(String testName, AbstractList<Question> listOfQuestionsForTest){
 		this._testName = testName;
+		this.currentID = getID();
+		this.currentName = testName;
 		setQuestionList(listOfQuestionsForTest);
-	}
-
-	/**
-	 * Initialize from Title, List of questions, and associated Course
-	 * @param testName Title of the test
-	 * @param listOfQuestionsForTest An ArrayList of Questions to add to the test
-	 * @param courseID ID of course that the test is associated with.
-	 * @author Justin Goulet
-	 */
-	public Test(String testName, AbstractList<Question> listOfQuestionsForTest, String courseID){
-		this._testName = testName;
-		setQuestionList(listOfQuestionsForTest);
-		this._courseID = courseID;
 	}
 
 	/**
@@ -98,7 +92,7 @@ public class Test implements Serializable, Registerable{
 	 */
 	public static Test makeExample(){
 		Test rval = new Test();
-		rval.setTestName("The sorceror ... Tim!");
+		rval.setName("The sorceror ... Tim!");
 		rval.addQuestion(Question.makeExample(),1);
 
 		Question q2 = new Question("What! is your favorite color?");
@@ -167,17 +161,19 @@ public class Test implements Serializable, Registerable{
 	 * Get title of the test.
 	 * @return The name of this test.
 	 */
-	public String getTestName(){
+	public String getName(){
 		return this._testName;
 	}
-
+	
 	/**
-	 * Get the associated course.
-	 * @return The identifier string of the course this test is filed u
+	 * Get title of the test.
+	 * @return The name of this test.
 	 */
-	public String getCourseID(){
-		return this._courseID;
+	public String getTestName(){
+		return getName();
 	}
+
+	
 
 	/** Mutators */
 
@@ -235,7 +231,7 @@ public class Test implements Serializable, Registerable{
 		questionList.add(QuestionToAdd);
 		questionIDs.add(QuestionToAdd.getID());
 		questionPoints.add(0);
-		QuestionToAdd.setTestID(getID());
+//		QuestionToAdd.setTestID(getID());
 		LibraryController.storeTest(this);		
 	}
 
@@ -269,7 +265,7 @@ public class Test implements Serializable, Registerable{
 	 * Set the title/name of this Test	
 	 * @param newTestName A String of the new name for this Test
 	 */
-	public void setTestName(String newTestName){
+	public void setName(String newTestName){
 		this._testName = newTestName;
 		LibraryController.storeTest(this);
 	}
@@ -279,16 +275,6 @@ public class Test implements Serializable, Registerable{
 		this._testID = newTestID;
 	}
 	 */
-
-	/**
-	 * Set the Course associated with this Test
-	 * @param newCourseID An ID String for the Course this test should be filed under.
-	 */
-	public void setCourseID(String newCourseID){
-		this._courseID = newCourseID;
-		LibraryController.storeTest(this);		
-	}
-
 
 	/**
 	 * Utility function sets/resets the list of questions
@@ -309,22 +295,18 @@ public class Test implements Serializable, Registerable{
 	}
 
 
-	/** 
-	 * @author John Orcino
-	 * @description goes through the loop to calculate the weighted average by 
-	 * getting the 
-
 	/**
-	 * Utility function sets/resets the list of questions
-	 * @param newQuestionList a List of Question refs to insert
+	 * Gets the percentage scored on a test given an array of student answers.
+	 * @author John Orcino
+	 * @param ansAry An array of ints for Test Question answer numbers.
+	 * @return An average of the scores for all Questions weighted by their points values.
 	 */
-	public double totalPointsScored(int [] ansAry){
+	public double scoreAnswers(int [] ansAry){
 		double weightAverage = 0.0;		//total points from the formula	
 		double sumOfPoints = 0.0;		//total points in the test
 		double pointValue = 0.0;		//total points of the user's correct answers
 		double tempPoints = 0.0;   		//get the point that is set in the questionPoint array index
 		double tempValue = 0.0;			//get the point that is set in the answerPoint array index
-		Question points;   				//to call question class in order to call the ArrayList
 
 		/**
 		 * iterator
@@ -334,16 +316,29 @@ public class Test implements Serializable, Registerable{
 		for(int x = 0; x < questionPoints.size(); x++)
 		{
 			tempPoints = this.questionPoints.get(x);
-			tempValue = questionList.get(x).pointsValue(ansAry[x]);
+			tempValue = questionList.get(x).scoreAnswer(ansAry[x]);
 
 			sumOfPoints = sumOfPoints + tempPoints;
 			pointValue = pointValue + (tempValue*tempPoints);	
-		}	
-		weightAverage = pointValue/sumOfPoints;
+		}
+		if(sumOfPoints != 0)
+			weightAverage = pointValue/sumOfPoints;
 		return weightAverage;
-
+	}
+	
+	/**
+	 * Get the percentage scored on this Test given an AbstractList of Integers for answers
+	 * @param answerSet Any List of Integers with answer numbers for the test Questions
+	 * @return An average of the scores for all Questions weighted by their points values.
+	 */
+	public double scoreAnswers(AbstractList <Integer> answerSet){
+		return scoreAnswers(answerSet.stream().mapToInt(i->i).toArray());
 	}
 
+	/**
+	 * Sets the entire list of questions for the Test.
+	 * @param newQuestionList Any List of Questions to set the Test to.
+	 */
 	public void setQuestionList(AbstractList<Question> newQuestionList){
 		questionList.clear();
 		questionIDs.clear();
@@ -372,6 +367,9 @@ public class Test implements Serializable, Registerable{
 		String thisTestString = "Test: " + this._testName + "\n";
 		
 		thisTestString = thisTestString + ((Integer)numQuestions()).toString() + " Questions:\n";
+		
+		if(null == questionList || questionList.isEmpty())
+			initQuestions();
 
 		for(Question tempQuestion : questionList){
 			thisTestString = thisTestString + tempQuestion.getQuestion() + "\n";

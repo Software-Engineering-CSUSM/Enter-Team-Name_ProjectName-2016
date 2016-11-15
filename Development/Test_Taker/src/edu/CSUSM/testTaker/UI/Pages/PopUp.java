@@ -17,6 +17,7 @@ import javax.swing.JTextField;
 
 import edu.CSUSM.testTaker.UI.CustomPage;
 import edu.CSUSM.testTaker.UI.GUIController;
+import edu.CSUSM.testTaker.UI.CustomPage.PanelType;
 
 /**
  * @author Jeremy
@@ -36,17 +37,19 @@ import edu.CSUSM.testTaker.UI.GUIController;
 
 public class PopUp extends CustomPage {
 
-	// Temporary to store textfield into for saving quiz
-	// and set names
-	public String quizNameStr, setNameStr;
+	
 	
 	/**
 	 * 
 	 */
+	// Temporary to store textfield into for saving quiz
+	// and set names
+	public String quizNameStr, setNameStr, courseNameStr, testNameStr, questionNameStr;
+	
 	private static final long serialVersionUID = 1L;
 
-	public PopUp(PanelType currentPanelType) {
-		super(currentPanelType);
+	public PopUp(String panelName, PanelType currentPanelType) {
+		super(panelName, currentPanelType);
 		// TODO Auto-generated constructor stub
 
 		// createWindowQuestionPopUp();
@@ -54,29 +57,32 @@ public class PopUp extends CustomPage {
 
 	// Constructor to create pop up windows. It uses enum type
 	// to determine the appropriate window to display.
-	public PopUp(PanelType currentPanelType, PopUpType pType) {
-		super(currentPanelType);
+	public PopUp(String panelName, PanelType currentPanelType, PopUpType pType) {
+		super(panelName, currentPanelType);
 		// TODO Auto-generated constructor stub
 
-		if (pType == PopUpType.SaveQuiz)
-			createWindowQuizPopUp();
-		else if (pType == PopUpType.AddAnotherQuestion)
-			createWindowQuestionPopUp();
-		else if (pType == PopUpType.SaveSet)
-			createWindowSetPopUp();
-		else if (pType == PopUpType.FlashcardAnswerPopUp)
-			createFlashAnswerPopUp();
+		// Text field with save Pop-Up Save name of quiz, set, test, or course
+				if (pType == PopUpType.SaveQuiz || pType == PopUpType.SaveSet || pType == PopUpType.AddCourse || pType == PopUpType.AddTest || pType == PopUpType.AddQuestionName)
+					createSaveWindowPopUp(pType);
+				// Two button Pop-Up.  For add another question ("Create" or "Don't)
+				// and for deleting course or test confirmation ("Yes" or "No")
+				else if (pType == PopUpType.AddAnotherQuestion || pType == PopUpType.DeleteCourse || pType == PopUpType.DeleteTest || pType == PopUpType.DeleteQuestion)
+					AddQuestion_or_DeleteItemPopUp(pType);
+				//else if (pType == PopUpType.DeleteCourse)
+					//deleteCoursePopUp();
+				else if (pType == PopUpType.FlashcardAnswerPopUp)
+					createFlashAnswerPopUp();
 
 	}
 
-	public PopUp(PanelType currentPanelType, BufferedImage newImage) {
-		super(currentPanelType, newImage);
+	public PopUp(String panelName, PanelType currentPanelType, BufferedImage newImage) {
+		super(panelName, currentPanelType, newImage);
 		// TODO Auto-generated constructor stub
 		updateActions();
 	}
 
-	public PopUp(PanelType currentPanelType, String imageAddress) {
-		super(currentPanelType, imageAddress);
+	public PopUp(String panelName, PanelType currentPanelType, String imageAddress) {
+		super(panelName, currentPanelType, imageAddress);
 		// TODO Auto-generated constructor stub
 		updateActions();
 	}
@@ -98,291 +104,393 @@ public class PopUp extends CustomPage {
 	}
 
 	// This window is created to ask the user if they would like
-	// to add another question from the add question page
-	public void createWindowQuestionPopUp() {
-		// Creates the window using the GUIContoller to build the
-		// frame. Note* the parameter is a dummy parameter which was
-		// created to create 2 GUIController constructors
-		GUIController popUpWindow = new GUIController(5);
-		popUpWindow.setTitle("Add Question");
-
-		// Create box to hold JLabel asking if the user would
-		// likek to create another quiz
-		Box jLabelBox = Box.createHorizontalBox(); // buttons
-		jLabelBox.add(Box.createHorizontalGlue());
-		jLabelBox.add(Box.createVerticalGlue());
-		jLabelBox.add(new JLabel("Would you like to add another question?"));
-		jLabelBox.add(Box.createHorizontalGlue());
-
-		// Create buttons
-		JButton create = new JButton("Create Another Question");
-		JButton dontCreate = new JButton("Don't Create Another");
-
-		// Create panel to hold the jLabelBox asking the user
-		// to create or not create a new quiz
-		JPanel buttonPanel = new JPanel();
-		buttonPanel.setBackground(Color.WHITE);
-		buttonPanel.setLayout(new BorderLayout());
-
-		// Add the boxes containing the buttons to the
-		// button panel which is then added to the frame
-
-		buttonPanel.add(jLabelBox, BorderLayout.CENTER);
-
-		// Create a box to hold the buttons to either create a
-		// new quiz or return to quiz main
-		Box CreateorDont = Box.createHorizontalBox();
-		CreateorDont.add(Box.createHorizontalStrut(popUpWindow.getWidth() / 8));
-		CreateorDont.add(create);
-		CreateorDont.add(Box.createHorizontalStrut(popUpWindow.getWidth() / 10));
-		CreateorDont.add(dontCreate);
-		CreateorDont.add(Box.createHorizontalStrut(popUpWindow.getWidth() / 8));
-		CreateorDont.add(Box.createVerticalStrut(popUpWindow.getHeight() / 4));
-
-		// Add the buttons to the bottom of the panel
-		buttonPanel.add(CreateorDont, BorderLayout.SOUTH);
-		popUpWindow.add(buttonPanel);
-
-		// Action listener for don't create. If selected, it closes the
-		// window and return to QuizandFlashcardMain
-		dontCreate.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-
-				popUpWindow.dispose();
-				StudyToolsMain QandFMain = new StudyToolsMain(StudyToolsMain.PanelType.THREE_BUTTON_TYPE);
-				QandFMain.setName("Quiz Main Page");
-				QandFMain.parentController = parentController;
-				parentController.displayView(QandFMain);
-
+		// to add another question from the add question page
+	public void AddQuestion_or_DeleteItemPopUp(PopUpType pType) 
+		{
+			// Creates the window using the GUIContoller to build the
+			// frame. Note* the parameter is a dummy parameter which was
+			// created to create 2 GUIController constructors
+			GUIController popUpWindow = new GUIController(5);
+			
+			JLabel courseOrQuestionLabel = new JLabel();
+			
+			// Create buttons
+			JButton create_Yes = new JButton();
+			JButton dontCreate_No = new JButton();
+			
+			// Creating window for adding another question
+			if(pType == PopUpType.AddAnotherQuestion)
+			{
+				popUpWindow.setTitle("Add Question");
+				courseOrQuestionLabel = new JLabel("Would you like to add another question?");
+				create_Yes = new JButton("Create Another Question");
+				dontCreate_No = new JButton("Don't Create Another");
 			}
-		});
-
-		// Action listener for create. If selected, calls the add question
-		// page to allow the user to add another question
-		create.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-
-				popUpWindow.dispose();
-				AddQuestion addQ = new AddQuestion(AddQuestion.PanelType.Q_and_A_Type);
-				addQ.setName("Add Question Page");
-				addQ.parentController = parentController;
-				parentController.displayView(addQ);
-				
+			// Creating window for deleting a course
+			else if(pType == PopUpType.DeleteCourse)
+			{
+				popUpWindow.setTitle("Delete Course");
+				courseOrQuestionLabel = new JLabel("Are you sure you want to delete this course?");
+				create_Yes = new JButton("Yes");
+				dontCreate_No = new JButton("No");
+							
+			}
+			// Creating window for deleting a test
+			else if(pType == PopUpType.DeleteTest)
+			{
+				popUpWindow.setTitle("Delete Test");
+				courseOrQuestionLabel = new JLabel("Are you sure you want to delete this test?");
+				create_Yes = new JButton("Yes");
+				dontCreate_No = new JButton("No");
 				
 			}
-		});
-
-	}
-
-	// Creates a pop up window prompting the user to type the name
-	// of the newly created quiz and click save to save it.
-	public void createWindowQuizPopUp() {
-
-		// Creates the window using the GUIContoller to build the
-		// frame. Note* the parameter is a dummy parameter which was
-		// created to create 2 GUIController constructors
-		GUIController popUpWindow = new GUIController(5);
-		popUpWindow.setTitle("Save Quiz");
-
-		// Create box to hold JLabel asking if the user to name
-		// quiz and click save
-		Box jLabelBox = Box.createVerticalBox();
-
-		// Set positioning of components for the box
-		jLabelBox.add(Box.createHorizontalStrut(popUpWindow.getWidth() / 3));
-		jLabelBox.add(Box.createVerticalGlue());
-		jLabelBox.add(new JLabel("Name your quiz and click save."));
-		jLabelBox.add(Box.createHorizontalGlue());
-		jLabelBox.add(Box.createVerticalStrut(10));
-
-		// Create text field to enter in name of quiz to save
-		// add it to a panel, and put the panel inside the box
-		JTextField quizName = new JTextField(20);
-		JPanel quizNamePanel = new JPanel();
-		quizNamePanel.setBackground(Color.WHITE);
-		quizNamePanel.add(quizName);
-		jLabelBox.add(quizNamePanel);
-
-		// Create save button and add to a panel
-		JButton save = new JButton("Save Quiz");
-		JPanel buttonPanel = new JPanel();
-		buttonPanel.setBackground(Color.WHITE);
-		buttonPanel.setLayout(new BorderLayout());
-
-		// Add the Jlabel box to the
-		// button panel which is then added to the frame
-		buttonPanel.add(jLabelBox, BorderLayout.CENTER);
-
-		// Create a box to hold all the components and add them
-		// into the pop up window
-		Box saveQuizBox = Box.createHorizontalBox();
-		saveQuizBox.add(Box.createHorizontalStrut(200));
-		saveQuizBox.add(save);
-		saveQuizBox.add(Box.createVerticalStrut(popUpWindow.getHeight() / 4));
-
-		buttonPanel.add(saveQuizBox, BorderLayout.SOUTH);
-		popUpWindow.add(buttonPanel);
-
-		// Action listner to save the quiz name. Need to implement a function
-		// to save the name of the quiz. After clicking save, the pop up window
-		// is closed and then the user is returned to the Quiz and Flash Main
-		// page
-		save.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-
-				popUpWindow.dispose();
-				QuizAndFlashMain QuizPage = new QuizAndFlashMain(QuizAndFlashMain.PanelType.THREE_BUTTON_TYPE);
-				QuizPage.setName("Quiz Main Page");
-				QuizPage.parentController = parentController;
-				parentController.displayView(QuizPage);
-				
-				// Saves the quiz named typed in the text field
-				// into a string.
-				quizNameStr = quizName.getText();
-				System.out.println(quizNameStr);
-
+			// Creating window for deleting a question
+			else if(pType == PopUpType.DeleteQuestion)
+			{
+				popUpWindow.setTitle("Delete Question");
+				courseOrQuestionLabel = new JLabel("Are you sure you want to delete this question?");
+				create_Yes = new JButton("Yes");
+				dontCreate_No = new JButton("No");
 			}
-		});
+			
+			
 
-	}
+			// Create box to hold JLabel asking if the user would
+			// likek to create another quiz
+			Box jLabelBox = Box.createHorizontalBox(); // buttons
+			jLabelBox.add(Box.createHorizontalGlue());
+			jLabelBox.add(Box.createVerticalGlue());
+			jLabelBox.add(courseOrQuestionLabel);
+			jLabelBox.add(Box.createHorizontalGlue());
 
 
-	// Creates a pop up window prompting the user to type the name
-	// of the newly created set and click save to save it.
-	public void createWindowSetPopUp() {
+			// Create panel to hold the jLabelBox asking the user
+			// to create or not create a new quiz
+			JPanel buttonPanel = new JPanel();
+			buttonPanel.setBackground(Color.WHITE);
+			buttonPanel.setLayout(new BorderLayout());
 
-		// Creates the window using the GUIContoller to build the
-		// frame. Note* the parameter is a dummy parameter which was
-		// created to create 2 GUIController constructors
-		GUIController popUpWindow = new GUIController(5);
+			// Add the boxes containing the buttons to the
+			// button panel which is then added to the frame
 
-		// Set the windows title
-		popUpWindow.setTitle("Save Set");
+			buttonPanel.add(jLabelBox, BorderLayout.CENTER);
 
-		// Create box to hold JLabel asking if the user to name
-		// set and click save
-		Box jLabelBox = Box.createVerticalBox();
+			// Create a box to hold the buttons to either create a
+			// new quiz or return to quiz main
+			Box CreateorDont = Box.createHorizontalBox();
+			CreateorDont.add(Box.createHorizontalGlue());
+			CreateorDont.add(create_Yes);
+			CreateorDont.add(Box.createHorizontalGlue());
+			CreateorDont.add(dontCreate_No);
+			CreateorDont.add(Box.createVerticalStrut(popUpWindow.getHeight() / 4));
 
-		// Set positioning of components for the box
-		jLabelBox.add(Box.createHorizontalStrut(popUpWindow.getWidth() / 3));
-		jLabelBox.add(Box.createVerticalGlue());
-		jLabelBox.add(new JLabel("Name your Flashcard Set and click save."));
-		jLabelBox.add(Box.createHorizontalGlue());
-		jLabelBox.add(Box.createVerticalStrut(10));
+			// Add the buttons to the bottom of the panel
+			buttonPanel.add(CreateorDont, BorderLayout.SOUTH);
+			popUpWindow.add(buttonPanel);
 
-		// Create text field to enter in name of quiz to save
-		// add it to a panel, and put the panel inside the box
-		JTextField setName = new JTextField(20);
-		JPanel quizNamePanel = new JPanel();
-		quizNamePanel.setBackground(Color.WHITE);
-		quizNamePanel.add(setName);
-		jLabelBox.add(quizNamePanel);
+			// Action listener for don't create. If selected, it closes the
+			// window and return to QuizandFlashcardMain. Also action listener
+			// for "No" for delete course
+			dontCreate_No.addActionListener(new ActionListener() {
 
-		// Create save button and add to a panel
-		JButton save = new JButton("Save Set");
+				@Override
+				public void actionPerformed(ActionEvent e) {
 
-		// Create panel to hold the jLabelBox asking the user
-		// to create or not create a new quiz
-		JPanel buttonPanel = new JPanel();
-		buttonPanel.setBackground(Color.WHITE);
-		buttonPanel.setLayout(new BorderLayout());
+					popUpWindow.dispose();
+					
+					//Case for don't create another question for add question popup
+					if(pType == PopUpType.AddAnotherQuestion)
+					{
+						StudyToolsMain QandFMain = new StudyToolsMain("Quiz Main Page", StudyToolsMain.PanelType.THREE_BUTTON_TYPE);
+						//QandFMain.setName("Quiz Main Page");
+						QandFMain.parentController = parentController;
+						parentController.displayView(QandFMain);
+					}
+					
+					//Case for don't delete course for delete course pop up
+					
+					else if(pType == PopUpType.DeleteCourse)
+					{
+						System.out.println("Do not delete course");
+						
+					}
+					//Case for don't delete test for delete test pop up
+					else if(pType == PopUpType.DeleteTest)
+					{
+						System.out.println("Do not delete test");
+						
+					}
+					//Case for don't delete test for delete question pop up
+					else if(pType == PopUpType.DeleteQuestion)
+					{
+						System.out.println("Do not delete question");
+						
+					}
+					
 
-		// Add the Jlabel box to the
-		// button panel which is then added to the frame
-		buttonPanel.add(jLabelBox, BorderLayout.CENTER);
+				}
+			});
 
-		// Create a box to hold all the components and add them
-		// into the pop up window
-		Box saveSetBox = Box.createHorizontalBox();
-		saveSetBox.add(Box.createHorizontalStrut(200));
-		saveSetBox.add(save);
-		saveSetBox.add(Box.createVerticalStrut(popUpWindow.getHeight() / 4));
+			// Action listener for create. If selected, calls the add question
+			// page to allow the user to add another question.  Also listener for
+			// delete course pop up.  
+			create_Yes.addActionListener(new ActionListener() {
 
-		buttonPanel.add(saveSetBox, BorderLayout.SOUTH);
-		popUpWindow.add(buttonPanel);
+				@Override
+				public void actionPerformed(ActionEvent e) {
 
-		// Action listener to save the set name. Need to implement a function
-		// to save the name of the set. After clicking save, the pop up window
-		// is closed and then the user is returned to the Quiz and Flash Main
-		// page
-		save.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-
-				popUpWindow.dispose();
-				QuizAndFlashMain FlashPage = new QuizAndFlashMain(QuizAndFlashMain.PanelType.THREE_BUTTON_TYPE,
-						QuizAndFlashMain.PageType.FLASHCARD);
-				FlashPage.setName("Flashcard Main Page");
-				FlashPage.parentController = parentController;
-				parentController.displayView(FlashPage);
-				
-				// Saves the set named typed in the text field
-				// into a string.
-				setNameStr = setName.getText();
-				System.out.println(setNameStr);
-
-			}
-		});
-
-	}
-
-	private class ReturnTakeMain implements ActionListener {
-
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			System.out.println("Opening " + this.getClass());
-
-			TakeQuizTakeSet takeSet = new TakeQuizTakeSet(TakeQuizTakeSet.PanelType.TWO_BUTTON_TYPE,
-					TakeQuizTakeSet.PageType.FLASHCARD);
-			takeSet.setName("Take Quiz Page");
-			takeSet.parentController = parentController;
-			parentController.displayView(takeSet);
+					popUpWindow.dispose();
+					
+					//Case for create another question to add question
+					if(pType == PopUpType.AddAnotherQuestion)
+					{
+					AddQuestion addQ = new AddQuestion("Add Question Page", AddQuestion.PanelType.Q_and_A_Type);
+					//addQ.setName("Add Question Page");
+					addQ.parentController = parentController;
+					parentController.displayView(addQ);
+					}
+					
+					//Case if user wants to delete course for delete course
+					// Add function to delete the course
+					else if(pType == PopUpType.DeleteCourse)
+					{
+						System.out.println("Deleting course");
+						
+					}
+					
+					//Case if user wants to delete test for delete course
+					// add function to delete the test
+					else if(pType == PopUpType.DeleteTest)
+					{
+						System.out.println("Deleting test");
+						
+					}
+					//Case for delete question for delete course pop up
+					else if(pType == PopUpType.DeleteQuestion)
+					{
+						System.out.println("Deleting question");
+						
+					}
+					
+				}
+			});
 
 		}
+
+		// Creates a pop up window prompting the user to type the name
+		// of the newly created quiz and click save to save it.
+		public void createSaveWindowPopUp(PopUpType pType) {
+			
+			
+			// Creates the window using the GUIContoller to build the
+			// frame. Note* the parameter is a dummy parameter which was
+			// created to create 2 GUIController constructors
+			GUIController popUpWindow = new GUIController(5);
+			
+			
+			JLabel quizSetOrCourseLabel = new JLabel();
+			JButton save = new JButton();
+			if(pType == PopUpType.SaveQuiz)
+			{
+				popUpWindow.setTitle("Save Quiz");
+				quizSetOrCourseLabel = new JLabel("Name your quiz and click save.");
+				save = new JButton("Save Quiz");
+			}
+			else if(pType == PopUpType.SaveSet)
+			{
+				popUpWindow.setTitle("Save Set");
+				quizSetOrCourseLabel = new JLabel("Name your Flashcard Set and click save.");
+				save = new JButton("Save Set");
+			}
+			else if(pType == PopUpType.AddCourse)
+			{
+				popUpWindow.setTitle("Add Course");
+				quizSetOrCourseLabel = new JLabel("Name your course and click save.");
+				save = new JButton("Save Course");
+				
+			}
+			else if(pType == PopUpType.AddTest)
+			{
+				popUpWindow.setTitle("Add Test");
+				quizSetOrCourseLabel = new JLabel("Name your test and click save.");
+				save = new JButton("Save Test");
+				
+			}
+			
+			else if(pType == PopUpType.AddQuestionName)
+			{
+				popUpWindow.setTitle("Add Question");
+				quizSetOrCourseLabel = new JLabel("Name your Question and click save.");
+				save = new JButton("Save Question");
+				
+			}
+		
+			// Create box to hold JLabel asking if the user to name
+			// quiz and click save
+			Box jLabelBox = Box.createVerticalBox();
+
+			// Set positioning of components for the box
+			jLabelBox.add(Box.createHorizontalStrut(popUpWindow.getWidth() / 3));
+			jLabelBox.add(Box.createVerticalGlue());
+			jLabelBox.add(quizSetOrCourseLabel);
+			jLabelBox.add(Box.createHorizontalGlue());
+			jLabelBox.add(Box.createVerticalStrut(10));
+
+			// Create text field to enter in name of quiz, set, test, or
+			//course add it to a panel, and put the panel inside the box
+			JTextField Quiz_Set_Test_Course_or_Question = new JTextField(20);
+			JPanel quizNamePanel = new JPanel();
+			quizNamePanel.setBackground(Color.WHITE);
+			quizNamePanel.add(Quiz_Set_Test_Course_or_Question);
+			jLabelBox.add(quizNamePanel);
+
+			// Create save button and add to a panel
+			//JButton save = new JButton("Save Quiz");
+			JPanel buttonPanel = new JPanel();
+			buttonPanel.setBackground(Color.WHITE);
+			buttonPanel.setLayout(new BorderLayout());
+
+			// Add the Jlabel box to the
+			// button panel which is then added to the frame
+			buttonPanel.add(jLabelBox, BorderLayout.CENTER);
+
+			// Create a box to hold all the components and add them
+			// into the pop up window
+			Box saveQuizBox = Box.createHorizontalBox();
+			saveQuizBox.add(Box.createHorizontalStrut(200));
+			saveQuizBox.add(save);
+			saveQuizBox.add(Box.createVerticalStrut(popUpWindow.getHeight() / 4));
+
+			buttonPanel.add(saveQuizBox, BorderLayout.SOUTH);
+			popUpWindow.add(buttonPanel);
+
+			// Action listner to save the quiz name. Need to implement a function
+			// to save the name of the quiz. After clicking save, the pop up window
+			// is closed and then the user is returned to the Quiz and Flash Main
+			// page
+			save.addActionListener(new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+
+					popUpWindow.dispose();
+				
+					// Case for Quiz
+					// Saves the quiz named typed in the text field
+					// into a string, and return to quizandflashmain
+					if(pType == PopUpType.SaveQuiz)
+					{
+						
+						quizNameStr = Quiz_Set_Test_Course_or_Question.getText();
+						System.out.println(quizNameStr);
+						
+						QuizAndFlashMain QuizPage = new QuizAndFlashMain("Quiz Main Page", QuizAndFlashMain.PanelType.THREE_BUTTON_TYPE);
+						//QuizPage.setName("Quiz Main Page");
+						QuizPage.parentController = parentController;
+						parentController.displayView(QuizPage);
+						
+					}
+					// Case for Flashcard Set
+					// Saves the set named typed in the text field
+					// into a string, and return to quizandflashmain
+					else if(pType == PopUpType.SaveSet)
+					{
+						
+						setNameStr = Quiz_Set_Test_Course_or_Question.getText();
+						System.out.println(setNameStr);
+						
+						QuizAndFlashMain QuizPage = new QuizAndFlashMain("Quiz Main Page", QuizAndFlashMain.PanelType.THREE_BUTTON_TYPE);
+						//QuizPage.setName("Quiz Main Page");
+						QuizPage.parentController = parentController;
+						parentController.displayView(QuizPage);
+						
+					}
+					// Case for AddCourse
+					// Saves the course name typed in the text field into a string
+					// a prints for testing purposes
+					else if(pType == PopUpType.AddCourse)
+					{
+						courseNameStr = Quiz_Set_Test_Course_or_Question.getText();
+						System.out.println(courseNameStr);					
+						
+					}
+					// Case for AddTest
+					// Saves the test name typed in the text field into a string
+					// a prints for testing purposes
+					else if(pType == PopUpType.AddTest)
+					{
+						testNameStr = Quiz_Set_Test_Course_or_Question.getText();
+						System.out.println(testNameStr);
+						
+					}
+					
+					// Case for Add Question Name
+					// Saves the question name typed in the text field into a string
+					// a prints for testing purposes
+					else if(pType == PopUpType.AddQuestionName)
+					{
+						questionNameStr = Quiz_Set_Test_Course_or_Question.getText();
+						System.out.println(questionNameStr);
+						
+					}
+
+				}
+			});
+
+		}
+
+
+
+		private class ReturnTakeMain implements ActionListener {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("Opening " + this.getClass());
+
+				TakeQuizTakeSet takeSet = new TakeQuizTakeSet("Take Quiz Page", TakeQuizTakeSet.PanelType.TWO_BUTTON_TYPE,
+						TakeQuizTakeSet.PageType.FLASHCARD);
+				//takeSet.setName("Take Quiz Page");
+				takeSet.parentController = parentController;
+				parentController.displayView(takeSet);
+
+			}
+		}
+
+		// Flashcard answer pop up window. Creates pop up window that
+		// displays the answer to the flashcard question when the show/hide
+		// checkbox is clicked
+		public void createFlashAnswerPopUp() {
+
+			// Creates the window using the GUIContoller to build the
+			// frame. Note* the parameter is a dummy parameter which was
+			// created to create 2 GUIController constructors
+			GUIController popUpWindow = new GUIController(5);
+
+			// Set the title of the window
+			popUpWindow.setTitle("Flashcard Answer");
+
+			// Create JLabel to hold the public string holding the
+			// answer to the flashcard question
+			JLabel FlashAnswer = new JLabel(FlashcardAnswer);
+			Font font = new Font("Courier", Font.BOLD, 18);
+			FlashAnswer.setFont(font);
+
+			// Had to add the label to a box before putting it
+			// into the panel due to it aligning to the left.
+			Box answerBox = Box.createHorizontalBox();
+			answerBox.add(Box.createHorizontalGlue());
+			answerBox.add(FlashAnswer);
+			answerBox.add(Box.createHorizontalGlue());
+
+			// Create the panel to put the answer into and set its
+			// color.
+			JPanel answerPanel = new JPanel(new BorderLayout());
+			answerPanel.setBackground(Color.WHITE);
+			answerPanel.add(answerBox);
+
+			// Add the answer panel to the popUpWindow
+			popUpWindow.add(answerPanel, BorderLayout.CENTER);
+
+		}
+
 	}
-
-	// Flashcard answer pop up window. Creates pop up window that
-	// displays the answer to the flashcard question when the show/hide
-	// checkbox is clicked
-	public void createFlashAnswerPopUp() {
-
-		// Creates the window using the GUIContoller to build the
-		// frame. Note* the parameter is a dummy parameter which was
-		// created to create 2 GUIController constructors
-		GUIController popUpWindow = new GUIController(5);
-
-		// Set the title of the window
-		popUpWindow.setTitle("Flashcard Answer");
-
-		// Create JLabel to hold the public string holding the
-		// answer to the flashcard question
-		JLabel FlashAnswer = new JLabel(FlashcardAnswer);
-		Font font = new Font("Courier", Font.BOLD, 18);
-		FlashAnswer.setFont(font);
-
-		// Had to add the label to a box before putting it
-		// into the panel due to it aligning to the left.
-		Box answerBox = Box.createHorizontalBox();
-		answerBox.add(Box.createHorizontalGlue());
-		answerBox.add(FlashAnswer);
-		answerBox.add(Box.createHorizontalGlue());
-
-		// Create the panel to put the answer into and set its
-		// color.
-		JPanel answerPanel = new JPanel(new BorderLayout());
-		answerPanel.setBackground(Color.WHITE);
-		answerPanel.add(answerBox);
-
-		// Add the answer panel to the popUpWindow
-		popUpWindow.add(answerPanel, BorderLayout.CENTER);
-
-	}
-
-}

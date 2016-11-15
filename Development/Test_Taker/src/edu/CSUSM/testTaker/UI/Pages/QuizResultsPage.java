@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 
 import edu.CSUSM.testTaker.UI.CustomPage;
+import edu.CSUSM.testTaker.UI.CustomPage.PanelType;
 
 /**
  * @author Jeremy
@@ -26,22 +27,21 @@ public class QuizResultsPage extends CustomPage {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public QuizResultsPage(PanelType currentPanelType) {
-		super(currentPanelType);
+	public QuizResultsPage(String panelName, PanelType currentPanelType) {
+		super(panelName, currentPanelType);
 		// TODO Auto-generated constructor stub
 		// System.out.println("Printing a new Form");
 		updateActions();
-
 	}
 
-	public QuizResultsPage(PanelType currentPanelType, BufferedImage newImage) {
-		super(currentPanelType, newImage);
+	public QuizResultsPage(String panelName, PanelType currentPanelType, BufferedImage newImage) {
+		super(panelName, currentPanelType, newImage);
 		// TODO Auto-generated constructor stub
 		updateActions();
 	}
 
-	public QuizResultsPage(PanelType currentPanelType, String imageAddress) {
-		super(currentPanelType, imageAddress);
+	public QuizResultsPage(String panelName, PanelType currentPanelType, String imageAddress) {
+		super(panelName, currentPanelType, imageAddress);
 		// TODO Auto-generated constructor stub
 		updateActions();
 	}
@@ -74,9 +74,8 @@ public class QuizResultsPage extends CustomPage {
 		public void actionPerformed(ActionEvent e) {
 			System.out.println("Opening " + this.getClass());
 
-			TakeQuizTakeSet takeQ = new TakeQuizTakeSet(TakeQuizTakeSet.PanelType.TWO_BUTTON_TYPE,
+		TakeQuizTakeSet takeQ = new TakeQuizTakeSet("Take Quiz Page", TakeQuizTakeSet.PanelType.TWO_BUTTON_TYPE,
 					TakeQuizTakeSet.PageType.QUIZ);
-			takeQ.setName("Take Quiz Page");
 			takeQ.parentController = parentController;
 			parentController.displayView(takeQ);
 

@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 
 import edu.CSUSM.testTaker.UI.CustomPage;
+import edu.CSUSM.testTaker.UI.CustomPage.PanelType;
 
 /**
  * @author Jeremy
@@ -28,28 +29,28 @@ public class EditExistingQuizorSet extends CustomPage {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public EditExistingQuizorSet(PanelType currentPanelType) {
-		super(currentPanelType);
+	public EditExistingQuizorSet(String panelName, PanelType currentPanelType) {
+		super(panelName, currentPanelType);
 		// TODO Auto-generated constructor stub
 		// System.out.println("Printing a new Form");
 		updateActions();
 	}
 
-	public EditExistingQuizorSet(PanelType currentPanelType, BufferedImage newImage) {
-		super(currentPanelType, newImage);
+	public EditExistingQuizorSet(String panelName, PanelType currentPanelType, BufferedImage newImage) {
+		super(panelName, currentPanelType, newImage);
 		// TODO Auto-generated constructor stub
 		updateActions();
 	}
 
-	public EditExistingQuizorSet(PanelType currentPanelType, String imageAddress) {
-		super(currentPanelType, imageAddress);
+	public EditExistingQuizorSet(String panelName, PanelType currentPanelType, String imageAddress) {
+		super(panelName, currentPanelType, imageAddress);
 		// TODO Auto-generated constructor stub
 		updateActions();
 	}
 
 	// Constructor used to create the panel
-	public EditExistingQuizorSet(PanelType currentPanelType, PageType currentPageType) {
-		super(currentPanelType, currentPageType);
+	public EditExistingQuizorSet(String panelName, PanelType currentPanelType, PageType currentPageType) {
+		super(panelName, currentPanelType, currentPageType);
 		// Set the layout
 
 		// Build the contents. Uses condition statements to determine
@@ -113,7 +114,7 @@ public class EditExistingQuizorSet extends CustomPage {
 		public void actionPerformed(ActionEvent e) {
 			System.out.println("Opening " + this.getClass());
 
-			EditQuestionsFromExisting editQ = new EditQuestionsFromExisting(
+			EditQuestionsFromExisting editQ = new EditQuestionsFromExisting("Edit Existing Quiz Page",
 					EditQuestionsFromExisting.PanelType.TWO_BUTTON_TYPE, EditQuestionsFromExisting.PageType.QUIZ);
 			editQ.setName("Edit Existing Quiz Page");
 			editQ.parentController = parentController;
@@ -131,7 +132,7 @@ public class EditExistingQuizorSet extends CustomPage {
 		public void actionPerformed(ActionEvent e) {
 			System.out.println("Opening " + this.getClass());
 
-			EditQuestionsFromExisting editFC = new EditQuestionsFromExisting(
+			EditQuestionsFromExisting editFC = new EditQuestionsFromExisting("Edit Existing Quiz Page",
 					EditQuestionsFromExisting.PanelType.TWO_BUTTON_TYPE, EditQuestionsFromExisting.PageType.FLASHCARD);
 			editFC.setName("Edit Existing Quiz Page");
 			editFC.parentController = parentController;

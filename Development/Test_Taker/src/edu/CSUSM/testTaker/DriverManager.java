@@ -7,6 +7,7 @@ import edu.CSUSM.testTaker.Backend.Course;
 import edu.CSUSM.testTaker.Backend.Question;
 import edu.CSUSM.testTaker.Backend.Test;
 import edu.CSUSM.testTaker.UI.GUIController;
+import java.io.File;
 
 /**
  * @author Justin
@@ -19,26 +20,27 @@ public class DriverManager {
 	 */
 	public static void main(String[] args) {
 
-		// Create a sample question to ensure the class works
-		// LibraryController mainLib = new LibraryController();
-
-		/** Print the final library to screen (After init) */
-		// System.out.println(mainLib.toString());
-
-		// Re-init to show that the lib is not recreated
-		// LibraryController secondLib = new LibraryController();
-		// System.out.println("New Lib: (" + secondLib.getTotalQuestionCount() +
-		// ")\n" + secondLib.toString());
-
 		GUIController gui = new GUIController();
 		gui.setVisible(true);
 		
-		//Question.makeExample();
-		//Test.makeExample();
-		//Course.makeExample();
+		//Restore Library if it exists
+		File testfile = new File("Library.bin");
+		if(testfile.exists()){
+			LibraryController.restoreLibrary("Library.bin");
+		}else{
+			//Load content into library only once
+			Question sample = 		Question.makeExample();
+			Test sampleTest = 		Test.makeExample();
+			Course sampleCourse = 	Course.makeExample();
+			
+			System.out.println(sample);
+			System.out.println(sampleTest);
+			System.out.println(sampleCourse);
+			
+		}
 		
-		//LibraryController lb = new LibraryController();
-		//System.out.println(lb.toString());
+		//Add shutdown hook to store the library at exit
+		java.lang.Runtime.getRuntime().addShutdownHook(ShutdownManager.getInstance());
 	}
 
 }

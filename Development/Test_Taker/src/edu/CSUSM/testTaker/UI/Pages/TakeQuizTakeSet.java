@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 
 import edu.CSUSM.testTaker.UI.CustomPage;
+import edu.CSUSM.testTaker.UI.CustomPage.PanelType;
 
 /**
  * @author Jeremy
@@ -27,28 +28,28 @@ public class TakeQuizTakeSet extends CustomPage {
 
 	private static final long serialVersionUID = 1L;
 
-	public TakeQuizTakeSet(PanelType currentPanelType) {
-		super(currentPanelType);
+	public TakeQuizTakeSet(String panelName, PanelType currentPanelType) {
+		super(panelName, currentPanelType);
 		// TODO Auto-generated constructor stub
 		// System.out.println("Printing a new Form");
 		updateActions();
 	}
 
-	public TakeQuizTakeSet(PanelType currentPanelType, BufferedImage newImage) {
-		super(currentPanelType, newImage);
+	public TakeQuizTakeSet(String panelName, PanelType currentPanelType, BufferedImage newImage) {
+		super(panelName, currentPanelType, newImage);
 		// TODO Auto-generated constructor stub
 		updateActions();
 	}
 
-	public TakeQuizTakeSet(PanelType currentPanelType, String imageAddress) {
-		super(currentPanelType, imageAddress);
+	public TakeQuizTakeSet(String panelName, PanelType currentPanelType, String imageAddress) {
+		super(panelName, currentPanelType, imageAddress);
 		// TODO Auto-generated constructor stub
 		updateActions();
 	}
 
 	// Constructor used to create page
-	public TakeQuizTakeSet(PanelType currentPanelType, PageType currentPageType) {
-		super(currentPanelType, currentPageType);
+	public TakeQuizTakeSet(String panelName, PanelType currentPanelType, PageType currentPageType) {
+		super(panelName, currentPanelType, currentPageType);
 		// Set the layout
 
 		// If saving a quiz, call updateActions, otherwise, we'll be saving
@@ -115,9 +116,8 @@ public class TakeQuizTakeSet extends CustomPage {
 		public void actionPerformed(ActionEvent e) {
 			System.out.println("Opening " + this.getClass());
 
-			QuizAndFlashQuestionPage QquestionPage = new QuizAndFlashQuestionPage(
+			QuizAndFlashQuestionPage QquestionPage = new QuizAndFlashQuestionPage("Quiz Question Page: " + QuizAndFlashQuestionPage.questionPageNumber,
 					QuizAndFlashQuestionPage.PanelType.QUESTIONPAGE, QuizAndFlashQuestionPage.PageType.QUIZ);
-			QquestionPage.setName("Quiz Question Page " + QuizAndFlashQuestionPage.questionPageNumber);
 			QquestionPage.parentController = parentController;
 			parentController.displayView(QquestionPage);
 			QuizAndFlashQuestionPage.questionPageNumber++; // Increment the
@@ -136,9 +136,8 @@ public class TakeQuizTakeSet extends CustomPage {
 		public void actionPerformed(ActionEvent e) {
 			System.out.println("Opening " + this.getClass());
 
-			QuizAndFlashQuestionPage FCquestionPage = new QuizAndFlashQuestionPage(
+			QuizAndFlashQuestionPage FCquestionPage = new QuizAndFlashQuestionPage("Flash Card Question Page: " + QuizAndFlashQuestionPage.questionPageNumber,
 					QuizAndFlashQuestionPage.PanelType.FLASHCARDPAGE, QuizAndFlashQuestionPage.PageType.FLASHCARD);
-			FCquestionPage.setName("Flashcard Question Page " + QuizAndFlashQuestionPage.questionPageNumber);
 			FCquestionPage.parentController = parentController;
 			parentController.displayView(FCquestionPage);
 			QuizAndFlashQuestionPage.questionPageNumber++; // Increment the

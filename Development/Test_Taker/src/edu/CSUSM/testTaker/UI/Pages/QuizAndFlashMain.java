@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 
 import edu.CSUSM.testTaker.UI.CustomPage;
+import edu.CSUSM.testTaker.UI.CustomPage.PanelType;
 
 /**
  * @author Jeremy
@@ -26,28 +27,28 @@ public class QuizAndFlashMain extends CustomPage {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public QuizAndFlashMain(PanelType currentPanelType) {
-		super(currentPanelType);
+	public QuizAndFlashMain(String panelName, PanelType currentPanelType) {
+		super(panelName, currentPanelType);
 		// TODO Auto-generated constructor stub
 		// System.out.println("Printing a new Form");
 		updateActions();
 	}
 
-	public QuizAndFlashMain(PanelType currentPanelType, BufferedImage newImage) {
-		super(currentPanelType, newImage);
+	public QuizAndFlashMain(String panelName, PanelType currentPanelType, BufferedImage newImage) {
+		super(panelName, currentPanelType, newImage);
 		// TODO Auto-generated constructor stub
 		updateActions();
 	}
 
-	public QuizAndFlashMain(PanelType currentPanelType, String imageAddress) {
-		super(currentPanelType, imageAddress);
+	public QuizAndFlashMain(String panelName, PanelType currentPanelType, String imageAddress) {
+		super(panelName, currentPanelType, imageAddress);
 		// TODO Auto-generated constructor stub
 		updateActions();
 	}
 
 	// Constructor used to create page
-	public QuizAndFlashMain(PanelType currentPanelType, PageType currentPageType) {
-		super(currentPanelType, currentPageType);
+	public QuizAndFlashMain(String nameofPanel, PanelType currentPanelType, PageType currentPageType) {
+		super(nameofPanel, currentPanelType, currentPageType);
 		// Set the layout
 
 		// Build the contents, If saving a quiz, call updateActions,
@@ -116,8 +117,7 @@ public class QuizAndFlashMain extends CustomPage {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 
-			AddQuestion addQ = new AddQuestion(AddQuestion.PanelType.Q_and_A_Type);
-			addQ.setName("Add Question Page");
+			AddQuestion addQ = new AddQuestion("Add Question Page", AddQuestion.PanelType.Q_and_A_Type);
 			addQ.parentController = parentController;
 			parentController.displayView(addQ);
 
@@ -135,9 +135,8 @@ public class QuizAndFlashMain extends CustomPage {
 			// System.out.println("Opening " + this.getClass());
 
 			// System.out.println("Opening " + this.getClass());
-			TakeQuizTakeSet takeQ = new TakeQuizTakeSet(TakeQuizTakeSet.PanelType.QUESTION_BUILDER_TYPE,
+			TakeQuizTakeSet takeQ = new TakeQuizTakeSet("Take Quiz Page", TakeQuizTakeSet.PanelType.QUESTION_BUILDER_TYPE,
 					TakeQuizTakeSet.PageType.QUIZ);
-			takeQ.setName("Take Quiz Page");
 			takeQ.parentController = parentController;
 			parentController.displayView(takeQ);
 
@@ -154,9 +153,8 @@ public class QuizAndFlashMain extends CustomPage {
 			// System.out.println("Opening " + this.getClass());
 
 			// System.out.println("Opening " + this.getClass());
-			CreateQuizorSet createQ = new CreateQuizorSet(CreateQuizorSet.PanelType.TWO_BUTTON_TYPE,
+			CreateQuizorSet createQ = new CreateQuizorSet("Create Quiz Page", CreateQuizorSet.PanelType.TWO_BUTTON_TYPE,
 					CreateQuizorSet.PageType.QUIZ);
-			createQ.setName("Create Quiz Page");
 			createQ.parentController = parentController;
 			parentController.displayView(createQ);
 
@@ -176,9 +174,8 @@ public class QuizAndFlashMain extends CustomPage {
 			// System.out.println("Opening " + this.getClass());
 			// FlashCardQuestionPage takeSet = new
 			// FlashCardQuestionPage(FlashCardQuestionPage.PanelType.TWO_BUTTON_TYPE);
-			TakeQuizTakeSet takeSet = new TakeQuizTakeSet(TakeQuizTakeSet.PanelType.QUESTION_BUILDER_TYPE,
+			TakeQuizTakeSet takeSet = new TakeQuizTakeSet("Take Flashcard Set Page", TakeQuizTakeSet.PanelType.QUESTION_BUILDER_TYPE,
 					TakeQuizTakeSet.PageType.FLASHCARD);
-			takeSet.setName("Take Flashcard Set Page");
 			takeSet.parentController = parentController;
 			parentController.displayView(takeSet);
 
@@ -195,9 +192,8 @@ public class QuizAndFlashMain extends CustomPage {
 			// System.out.println("Opening " + this.getClass());
 
 			// System.out.println("Opening " + this.getClass());
-			CreateQuizorSet createS = new CreateQuizorSet(CreateQuizorSet.PanelType.TWO_BUTTON_TYPE,
+			CreateQuizorSet createS = new CreateQuizorSet("Create Flash Card Set Page", CreateQuizorSet.PanelType.TWO_BUTTON_TYPE,
 					CreateQuizorSet.PageType.FLASHCARD);
-			createS.setName("Create Flashcard Set Page");
 			createS.parentController = parentController;
 			parentController.displayView(createS);
 
