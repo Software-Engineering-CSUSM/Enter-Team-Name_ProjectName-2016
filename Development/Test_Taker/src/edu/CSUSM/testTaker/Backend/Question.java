@@ -7,7 +7,7 @@ import java.util.UUID;
 
 import edu.CSUSM.testTaker.LibraryController;
 
-public class Question extends TaskObject implements Serializable, Registerable{
+public class Question /*extends TaskObject*/ implements Serializable, Registerable{
 	public static final long serialVersionUID = 1L;
 	
 	String myID;
@@ -27,13 +27,15 @@ public class Question extends TaskObject implements Serializable, Registerable{
 	public String getTypeName(){
 		return "Question";
 	}
+	
+	public void turnIntoDuplicate(){
+		myID = UUID.randomUUID().toString();
+	}
 
 	
 	String _question;
 	ArrayList<String> _answers;			//To easily manage questions added and removed
 	int _correctIndex = -1;				//The default correct index is 0 because it is not yet assigned;
-	//The following has been removed, points value has little meaning outside a containing context like a test.
-	//public int _pointValue = 1;					//Sets the default point value to 1
 	
 	
 	/** New question with no details
@@ -42,8 +44,6 @@ public class Question extends TaskObject implements Serializable, Registerable{
 		myID = UUID.randomUUID().toString();
 		_answers = new ArrayList<String>();
 		_question = "";
-		//_courseID = "";
-		//_testID = "";
 	}
 
 	/**New Question starting with question text
@@ -57,13 +57,10 @@ public class Question extends TaskObject implements Serializable, Registerable{
 		_answers = new ArrayList<String>();
 		setQuestion(mainQuestion);
 		
-		/**Increment the total count of questions*/
-		//Question.QUESTION_COUNT++;
+		/*Increment the total count of questions*/
 		
 		myID = UUID.randomUUID().toString();
-		this.currentID = myID;
-		this.currentName = mainQuestion;
-		LibraryController.storeQuestion(this);
+		this.flush();
 	}
 	
 	/** Complete question definition, with question, answers, and correct answer index
@@ -88,11 +85,8 @@ public class Question extends TaskObject implements Serializable, Registerable{
 		/* Set the correct answer index */
 		setCorrectIndex(correctAnsIndex);
 		
-		/**Increment the total count of questions*/
-		//Question.QUESTION_COUNT++;
-		
 		myID = UUID.randomUUID().toString();
-		LibraryController.storeQuestion(this);
+		this.flush();
 	}
 	
 	/** Make a sample question.
@@ -119,7 +113,7 @@ public class Question extends TaskObject implements Serializable, Registerable{
 	 */
 	public void setQuestion(String newQuestion) {
 		this._question = newQuestion;
-		LibraryController.storeQuestion(this);
+		this.flush();
 	}
 
 	/**
@@ -133,7 +127,7 @@ public class Question extends TaskObject implements Serializable, Registerable{
 	public void setAnswer(String newAnswer, int index){
 		if(index <= _answers.size()){
 			this._answers.set(index, newAnswer); 
-			LibraryController.storeQuestion(this);
+			this.flush();
 			}
 		}
 	
@@ -155,7 +149,7 @@ public class Question extends TaskObject implements Serializable, Registerable{
 	 */
 	public void addAnswer(String additionalAnswer) {
 		this._answers.add(additionalAnswer);
-		LibraryController.storeQuestion(this);
+		this.flush();
 	}
 
 	/**
@@ -166,7 +160,7 @@ public class Question extends TaskObject implements Serializable, Registerable{
 	public void setCorrectIndex(int index){
 		if(index < _answers.size()){
 			this._correctIndex = index;
-			LibraryController.storeQuestion(this);
+			this.flush();
 			}
 		}
 

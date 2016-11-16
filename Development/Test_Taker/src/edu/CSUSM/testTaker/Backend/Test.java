@@ -8,7 +8,7 @@ import java.util.UUID;
 
 import java.io.Serializable;
 
-public class Test extends TaskObject implements Serializable, Registerable{
+public class Test /*extends TaskObject*/ implements Serializable, Registerable{
 	static final long serialVersionUID = 1L;
 
 	transient ArrayList<Question> questionList;
@@ -17,11 +17,6 @@ public class Test extends TaskObject implements Serializable, Registerable{
 	String _testName;
 	String myID;
 
-
-	/**  Get the ID of the test for database storage and retrieval
-	 * @return unique ID string of this Test
-	 * @author Steven Clark
-	 */
 	public String getID(){
 		return myID;
 	}
@@ -29,9 +24,10 @@ public class Test extends TaskObject implements Serializable, Registerable{
 	public String getTypeName(){
 		return "Test";
 	}
-
-	//For testing purposes
-	//public HashMap<String, Question> _listOfQuestionsInExam;		//Format: (String testID, Question questionWithIDBuiltIn)
+	
+	public void turnIntoDuplicate(){
+		myID = UUID.randomUUID().toString();
+	}
 
 	/**
 	 * @description does the work of setting up the class regardless of what vars are passed
@@ -48,7 +44,7 @@ public class Test extends TaskObject implements Serializable, Registerable{
 	/** Initialize an untitled blank Test
 	 */
 	public Test(){
-		//mostly handled by inititilizer block
+		//mostly handled by initializer block
 	}
 
 	/**
@@ -58,7 +54,7 @@ public class Test extends TaskObject implements Serializable, Registerable{
 	 */
 	public Test(String testName){
 		this._testName = testName;
-		this.currentName = testName;
+		//this.currentName = testName;
 	}
 
 	/**
@@ -69,8 +65,8 @@ public class Test extends TaskObject implements Serializable, Registerable{
 	 */
 	public Test(String testName, AbstractList<Question> listOfQuestionsForTest){
 		this._testName = testName;
-		this.currentID = getID();
-		this.currentName = testName;
+		//this.currentID = getID();
+		//this.currentName = testName;
 		setQuestionList(listOfQuestionsForTest);
 	}
 
@@ -181,16 +177,13 @@ public class Test extends TaskObject implements Serializable, Registerable{
 	 * Utility function to initialize reference array and optionally points from just Question IDs.
 	 */
 	public void initQuestions(){
-		questionList = new ArrayList<Question>(questionIDs.size());
-		for(String tempID : questionIDs){
-			questionList.add(LibraryController.retrieveQuestion(tempID));
-		}
-		if(questionPoints == null){
+		questionList = (ArrayList)LibraryController.getItemsForIDs(questionIDs);
+		if(questionPoints == null || questionPoints.size() != questionIDs.size()){
 			questionPoints = new ArrayList<Integer>(questionIDs.size());
 			for(String tempID : questionIDs){
 				questionPoints.add(0);
 			}
-			LibraryController.storeTest(this);
+			this.flush();
 		}
 	}
 
@@ -203,10 +196,9 @@ public class Test extends TaskObject implements Serializable, Registerable{
 	public boolean setQuestionPoints(int qn, int qp){
 		if(questionPoints.size() < qn && qn >= 0){
 			questionPoints.set(qn, qp);
-			LibraryController.storeTest(this);
+			this.flush();
 			return true;
 		}
-		LibraryController.storeTest(this);
 		return false;
 	}
 
@@ -219,8 +211,7 @@ public class Test extends TaskObject implements Serializable, Registerable{
 		questionList.add(QuestionToAdd);
 		questionIDs.add(QuestionToAdd.getID());
 		questionPoints.add(questionvalue);
-		//QuestionToAdd.setTestID(getID());
-		LibraryController.storeTest(this);		
+		this.flush();
 	}
 
 	/**
@@ -231,8 +222,7 @@ public class Test extends TaskObject implements Serializable, Registerable{
 		questionList.add(QuestionToAdd);
 		questionIDs.add(QuestionToAdd.getID());
 		questionPoints.add(0);
-//		QuestionToAdd.setTestID(getID());
-		LibraryController.storeTest(this);		
+		this.flush();
 	}
 
 
@@ -244,7 +234,7 @@ public class Test extends TaskObject implements Serializable, Registerable{
 		questionList.remove(qn);
 		questionIDs.remove(qn);
 		questionPoints.remove(qn);
-		LibraryController.storeTest(this);
+		this.flush();
 	}
 
 	/**
@@ -258,7 +248,7 @@ public class Test extends TaskObject implements Serializable, Registerable{
 		questionList.add(qi, insertit);
 		questionIDs.add(qi,insertit.getID());
 		questionPoints.add(qi,points);
-		LibraryController.storeTest(this);
+		this.flush();
 	}
 
 	/**
@@ -267,14 +257,9 @@ public class Test extends TaskObject implements Serializable, Registerable{
 	 */
 	public void setName(String newTestName){
 		this._testName = newTestName;
-		LibraryController.storeTest(this);
+		this.flush();
 	}
 
-	/*
-	public void setTestID(String newTestID){
-		this._testID = newTestID;
-	}
-	 */
 
 	/**
 	 * Utility function sets/resets the list of questions
@@ -291,7 +276,7 @@ public class Test extends TaskObject implements Serializable, Registerable{
 			questionIDs.add(tempQuestion.getID());
 			questionPoints.add(0);
 		}
-		LibraryController.storeTest(this);
+		this.flush();
 	}
 
 
@@ -350,12 +335,12 @@ public class Test extends TaskObject implements Serializable, Registerable{
 			questionIDs.add(tempQuestion.getID());
 			questionPoints.add(0);
 		}
-		LibraryController.storeTest(this);
+		this.flush();
 	}
 
 
 
-	/**
+	/*
 	 *  (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 * @decription overrides the default 'toString()' to showcase a basic exam with all questions included.
@@ -374,18 +359,6 @@ public class Test extends TaskObject implements Serializable, Registerable{
 		for(Question tempQuestion : questionList){
 			thisTestString = thisTestString + tempQuestion.getQuestion() + "\n";
 		}
-		/*
-		System.out.println("Question Size: " + questionList.size());
-		if(questionList != null && questionList.size() > 0){
-			//Now, add each of the possible answers in the provided question
-			for(Question tempQuestion : questionList){
-				thisTestString += "\n\t" + tempQuestion.toString();
-			}
-		}else{
-			return "No questions yet in test: " + thisTestString + "\n";
-		}
-		*/
-
 		//Return the result
 		return thisTestString;
 	}

@@ -15,7 +15,6 @@ public class CourseProgress implements Registerable, Serializable {
 		myID = java.util.UUID.randomUUID();
 	}
 	
-	@Override
 	public String getID() {
 		if(myID != null)
 			return myID.toString();
@@ -28,6 +27,10 @@ public class CourseProgress implements Registerable, Serializable {
 
 	public String getTypeName(){
 		return "CourseProgress";
+	}
+	
+	public void turnIntoDuplicate(){
+		myID = java.util.UUID.randomUUID();
 	}
 
 	
@@ -42,7 +45,7 @@ public class CourseProgress implements Registerable, Serializable {
 		associatedCourse = courseID;
 		totalGrade = 0.0;
 		takenGrade = 0.0;
-		name = "Unknown Student's work on " + LibraryController.retrieveCourse(courseID).getName();
+		name = "User's work on " + LibraryController.getItemName(associatedCourse);
 	}
 	
 	/*
@@ -86,12 +89,12 @@ public class CourseProgress implements Registerable, Serializable {
 			newValue.add(i);
 		}
 		testAnswerLists.put(testID, newValue);
-		LibraryController.storeProgress(this);
+		this.flush();
 	}
 	
 	public void removeAnswersTo(String testID){
 		testAnswerLists.remove(testID);
-		LibraryController.storeProgress(this);
+		this.flush();
 	}
 	
 	/*
@@ -99,11 +102,11 @@ public class CourseProgress implements Registerable, Serializable {
 	 */
 	
 	public double scoreTaken(){
-		Course courseRef = LibraryController.retrieveCourse(associatedCourse);
+		Course courseRef = (Course)LibraryController.getItem(associatedCourse);
 		double numerator = 0;
 		double denominator = 0;
 		for(String testID : testAnswerLists.keySet()){
-			Test tref = LibraryController.retrieveTest(testID);
+			Test tref = (Test)LibraryController.getItem(testID);
 			ArrayList <Integer>alist = testAnswerLists.get(testID);
 			double ptot = (double)courseRef.getTestValue(testID);
 			double prcvd = tref.scoreAnswers(alist) * ptot;
@@ -116,7 +119,7 @@ public class CourseProgress implements Registerable, Serializable {
 	}
 	
 	public double scoreAll(){
-		Course courseRef = LibraryController.retrieveCourse(associatedCourse);
+		Course courseRef = (Course)LibraryController.getItem(associatedCourse);
 		double numerator = 0;
 		double denominator = 0;
 		for(int i = 0; i<courseRef.numTests(); i++){
@@ -140,6 +143,6 @@ public class CourseProgress implements Registerable, Serializable {
 	public void rescore(){
 		takenGrade = scoreTaken();
 		totalGrade = scoreAll();
-		LibraryController.storeProgress(this);
+		this.flush();
 	}
 }

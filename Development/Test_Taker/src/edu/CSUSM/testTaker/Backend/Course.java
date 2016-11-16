@@ -1,6 +1,7 @@
 package edu.CSUSM.testTaker.Backend;
 
 import java.util.ArrayList;
+import java.util.UUID;
 import java.io.Serializable;
 
 import edu.CSUSM.testTaker.LibraryController;
@@ -18,16 +19,24 @@ public class Course /*extends TaskObject*/ implements Serializable, edu.CSUSM.te
 	}
 	
 	/**
-	 * Get the unique identifier string of this Course
-	 * @return A string unique to this particular Course
-	 * @override
+	 * {@inheritDoc}
 	 */
 	public String getID(){
 		return myID;
 	}
 	
+	/**
+	 * {@inheritDoc}
+	 */
 	public String getTypeName(){
 		return "Course";
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 */
+	public void turnIntoDuplicate(){
+		myID = UUID.randomUUID().toString();
 	}
 
 	
@@ -44,15 +53,10 @@ public class Course /*extends TaskObject*/ implements Serializable, edu.CSUSM.te
 	 * @description Default Constructor
 	 */
 	public Course(){
-		//_courseGrade = 0.0;
-		//_testsCompleted = 0.0;		
-		
 		courseName = "New Course";
 		questionIDs = new ArrayList<String>();
 		testIDs = new ArrayList<String>();
 		testPoints = new ArrayList<Integer>();
-		//this.currentID = getID();
-		//this.currentName = courseName;
 	}
 	
 	/** Make an example Course
@@ -115,7 +119,7 @@ public class Course /*extends TaskObject*/ implements Serializable, edu.CSUSM.te
 	public ArrayList <Question> getQuestions(){
 		ArrayList <Question> rval = new ArrayList <Question>(questionIDs.size());
 		for(String qid : questionIDs){
-			rval.add(LibraryController.retrieveQuestion(qid));
+			rval.add((Question)LibraryController.getItem(qid));
 		}
 		return rval;
 	}
@@ -138,7 +142,7 @@ public class Course /*extends TaskObject*/ implements Serializable, edu.CSUSM.te
 	public ArrayList <Test> getTests(){
 		ArrayList <Test> rval = new ArrayList <Test>(testIDs.size());
 		for(String tid : testIDs){
-			rval.add(LibraryController.retrieveTest(tid));
+			rval.add((Test)LibraryController.getItem(tid));
 		}
 		return rval;
 	}
@@ -173,7 +177,7 @@ public class Course /*extends TaskObject*/ implements Serializable, edu.CSUSM.te
 	 */
 	public Test getTest(int index){
 		if(index >=0 && index < testIDs.size()){
-			return LibraryController.retrieveTest(testIDs.get(index));
+			return (Test)LibraryController.getItem(testIDs.get(index));
 		}
 		return null;
 	}
@@ -198,7 +202,7 @@ public class Course /*extends TaskObject*/ implements Serializable, edu.CSUSM.te
 	 */
 	public Question getQuestion(int index){
 		if(index >=0 && index < questionIDs.size()){
-			return LibraryController.retrieveQuestion(questionIDs.get(index));
+			return (Question)LibraryController.getItem(questionIDs.get(index));
 		}
 		return null;
 	}
@@ -250,8 +254,7 @@ public class Course /*extends TaskObject*/ implements Serializable, edu.CSUSM.te
 	 */
 	public void setName(String newname){
 		this.courseName = newname;
-		//this.currentName = courseName;
-		LibraryController.storeCourse(this);
+		this.flush();
 	}
 
 	/**
@@ -261,6 +264,7 @@ public class Course /*extends TaskObject*/ implements Serializable, edu.CSUSM.te
 	public void addQuestion(String nqID){
 		if(! questionIDs.contains(nqID) )
 			questionIDs.add(nqID);
+		this.flush();
 	}
 
 	/**
@@ -269,6 +273,7 @@ public class Course /*extends TaskObject*/ implements Serializable, edu.CSUSM.te
 	 */
 	public void addQuestion(Question nq){
 		addQuestion(nq.getID());
+		this.flush();
 	}
 	
 	/**
@@ -279,6 +284,7 @@ public class Course /*extends TaskObject*/ implements Serializable, edu.CSUSM.te
 		for(String tqid : nt.getQuestionIDs()){
 			addQuestion(tqid);
 		}
+		this.flush();
 	}
 	
 	/**
@@ -292,7 +298,7 @@ public class Course /*extends TaskObject*/ implements Serializable, edu.CSUSM.te
 		for(int i = 0; i < newtest.numQuestions(); ++i){
 			addQuestion(newtest.getQuestion(i));
 		}
-		LibraryController.storeCourse(this);
+		this.flush();
 	}
 	
 	/**
@@ -301,7 +307,7 @@ public class Course /*extends TaskObject*/ implements Serializable, edu.CSUSM.te
 	 */
 	public void addTest(Test newtest){
 		addTest(newtest, 0);
-		//LibraryController.storeCourse(this);//implied
+		this.flush();
 	}
 
 	/**
@@ -310,14 +316,14 @@ public class Course /*extends TaskObject*/ implements Serializable, edu.CSUSM.te
 	 * @param newpoints An int number of points to assign to said new test
 	 */
 	public void addTest(String newtestid, int newpoints){
-		Test newtest = LibraryController.retrieveTest(newtestid);
+		Test newtest = (Test)LibraryController.getItem(newtestid);
 		if(newtestid != null && newtest != null){
 			this.testIDs.add(newtestid);
 			this.testPoints.add(newpoints);
 			for(int i = 0; i < newtest.numQuestions(); ++i){
 				addQuestion(newtest.getQuestion(i));
 			}			
-			LibraryController.storeCourse(this);
+			this.flush();
 		}
 	}
 	
@@ -327,7 +333,7 @@ public class Course /*extends TaskObject*/ implements Serializable, edu.CSUSM.te
 	 */
 	public void addTest(String newtestid){
 		addTest(newtestid, 0);
-		//LibraryController.storeCourse(this);//implied
+		this.flush();
 	}
 	
 	
@@ -341,7 +347,7 @@ public class Course /*extends TaskObject*/ implements Serializable, edu.CSUSM.te
 			removeTestNum(tindex);
 		}
 		questionIDs.remove(removethis);
-		LibraryController.storeCourse(this);
+		this.flush();
 	}
 	
 	/**
@@ -351,7 +357,7 @@ public class Course /*extends TaskObject*/ implements Serializable, edu.CSUSM.te
 	public void remove(Test removethis){
 		testPoints.remove(testIDs.indexOf(removethis.getID()));
 		remove(removethis.getID());
-		LibraryController.storeCourse(this);
+		this.flush();
 	}
 	
 	/**
@@ -361,7 +367,7 @@ public class Course /*extends TaskObject*/ implements Serializable, edu.CSUSM.te
 	 */
 	public void remove(Question removethis){
 		remove(removethis.getID());
-		LibraryController.storeCourse(this);
+		this.flush();
 	}
 	
 	/**
@@ -371,7 +377,7 @@ public class Course /*extends TaskObject*/ implements Serializable, edu.CSUSM.te
 	public void removeTestNum(int testnum){
 		testPoints.remove(testnum);
 		testIDs.remove(testnum);
-		LibraryController.storeCourse(this);
+		this.flush();
 	}
 	
 	/**
@@ -380,7 +386,7 @@ public class Course /*extends TaskObject*/ implements Serializable, edu.CSUSM.te
 	 */
 	public void removeQuestionNum(int qnum){
 		questionIDs.remove(qnum);
-		LibraryController.storeCourse(this);
+		this.flush();
 	}
 	
 	/**
@@ -393,7 +399,7 @@ public class Course /*extends TaskObject*/ implements Serializable, edu.CSUSM.te
 	public void insertTest(Test insertthis, int points, int tn){
 		testIDs.add(tn, insertthis.getID());
 		testPoints.add(tn,points);
-		LibraryController.storeCourse(this);
+		this.flush();
 	}
 	
 	/**
@@ -405,15 +411,8 @@ public class Course /*extends TaskObject*/ implements Serializable, edu.CSUSM.te
 	public void insertQuestion(String insertthis, int qn){
 		if(! questionIDs.contains(insertthis) ){
 			questionIDs.add(qn, insertthis);
-			LibraryController.storeCourse(this);
+			this.flush();
 		}
 	}
 	
-	/**
-	 * Utility function store changes to this Course to the LibraryController
-	 * @note Currently unnecessary
-	 */
-	public void flush(){
-		LibraryController.storeCourse(this);
-	}
 }
