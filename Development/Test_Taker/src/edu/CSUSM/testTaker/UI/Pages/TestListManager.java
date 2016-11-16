@@ -160,6 +160,7 @@ public class TestListManager extends CustomPage {
 			
 			QuestionListManager qlm = new QuestionListManager("Question List Manager", QuestionListManager.PanelType.QUESTION_BUILDER_TYPE);
 			//qlm.setName("Question List Manager");
+			ManageData.resetButtons();
 			qlm.parentController = parentController;
 			parentController.displayView(qlm);
 			

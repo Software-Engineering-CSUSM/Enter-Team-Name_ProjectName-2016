@@ -149,7 +149,7 @@ public class CoursesMain extends CustomPage {
 
 			//Check to see if a test is selected. If not, alert the user they must seect one
 			if(ManageData.currentIDSelected.length() == 0){
-
+				JOptionPane.showMessageDialog(null, "Please select a course before continuing");
 			}else{
 				CustomPage.setqBuilderNumButtons(3);
 
@@ -157,9 +157,12 @@ public class CoursesMain extends CustomPage {
 				CustomPage.setQBRowHeaders(LibraryController.getAllTestNamesInCourse(ManageData.currentIDSelected));
 				CustomPage.setQBRowIDs(LibraryController.getAllTestIDsInCourse(ManageData.currentIDSelected));
 
-				TestListManager tm = new TestListManager("Test List Manager", CustomPage.PanelType.QUESTION_BUILDER_TYPE);
+
 				TestListManager.setCourse(LibraryController.retrieveCourse(ManageData.currentIDSelected));
+				TestListManager tm = new TestListManager("Test List Manager", CustomPage.PanelType.QUESTION_BUILDER_TYPE);
+				System.out.println("Current ID Selected: " + ManageData.currentIDSelected);
 				//tm.setName("Test List Manager");
+				ManageData.resetButtons();
 				tm.parentController = parentController;
 				parentController.displayView(tm);
 			}

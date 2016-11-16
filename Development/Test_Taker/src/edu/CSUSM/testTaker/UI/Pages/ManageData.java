@@ -16,6 +16,7 @@ import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
+import javax.swing.border.MatteBorder;
 
 import edu.CSUSM.testTaker.LibraryController;
 import edu.CSUSM.testTaker.LibraryController.CourseInfo;
@@ -103,7 +104,7 @@ public class ManageData<ObjectDisplayed> extends JPanel {
 			System.out.println(e.getLocalizedMessage());
 		}
 
-		currentIDSelected = "";		//Resets the ID each time
+		//currentIDSelected = "";		//Resets the ID each time
 	}
 	
 	/**
@@ -121,6 +122,13 @@ public class ManageData<ObjectDisplayed> extends JPanel {
 		revalidate();
 	}
 
+	/**
+	 * @Desctiption - unsets the selected one from the button group
+	 */
+	public static void resetButtons(){
+		Row.resetRowButtons(); //From Row();
+	}
+	
 	/**
 	 * @Description - Builds the table based on the current Rows and IDs set.
 	 */
@@ -162,12 +170,12 @@ public class ManageData<ObjectDisplayed> extends JPanel {
 			
 		}else{
 			//Add the data requested
-			for(int i = 0; i < this.getRowHeaders().length; i++){
+			for(int i = 0; i < this.getRowIdentifiers().length; i++){
 				Row newRow = new Row(rowHeaders[i], rowIdentifiers[i]);
 				gb.gridy++;
 				gb.weightx = 1;
 				gb.weighty = 1;
-				gb.fill = GridBagConstraints.HORIZONTAL;
+				gb.fill = GridBagConstraints.BOTH;
 				// Add the row to the table
 				innerView.add(newRow, gb);
 			}
@@ -199,6 +207,13 @@ public class ManageData<ObjectDisplayed> extends JPanel {
 
 			build();
 		}
+		
+		/**
+		 * @Desctiption - unsets the selected one from the button group
+		 */
+		public static void resetRowButtons(){
+			group.clearSelection();
+		}
 
 		private Row() {
 			setAccessID("NoID");
@@ -213,7 +228,7 @@ public class ManageData<ObjectDisplayed> extends JPanel {
 		private void build() {
 			this.setBackground(Color.WHITE);
 			ROW_COUNT++;
-			this.setBorder(new LineBorder(Color.BLACK, 1));
+			this.setBorder(new MatteBorder(0,5, 1, 5, Color.LIGHT_GRAY));
 			this.setLayout(new BorderLayout());
 
 			// Add a label indicating the Row number
@@ -233,6 +248,7 @@ public class ManageData<ObjectDisplayed> extends JPanel {
 
 			// Add JRadioButton
 			JRadioButton rb = new JRadioButton();
+			rb.setBorder(new MatteBorder(0, 25, 1, 25, Color.BLACK));
 			rb.setActionCommand(this.accessID);
 			group.add(rb);
 			this.add(rb, BorderLayout.EAST);
@@ -242,7 +258,7 @@ public class ManageData<ObjectDisplayed> extends JPanel {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					//Print out the action command
-					System.out.println(e.getActionCommand()); //Displays the id of the row when selected.
+					//System.out.println(e.getActionCommand()); //Displays the id of the row when selected.
 					
 					//This is where we are going to open whatever content we need from the id (now that we have it)
 					currentIDSelected = e.getActionCommand();
