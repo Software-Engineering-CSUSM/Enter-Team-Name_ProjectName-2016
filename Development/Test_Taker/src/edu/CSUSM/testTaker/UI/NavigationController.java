@@ -56,6 +56,39 @@ public class NavigationController extends JPanel {
 		NavigationController.applicationImage = applicationImage;
 		addNavigationBar();
 	}
+	
+	public JPanel getViewShown(){
+		return viewShown;
+	}
+	
+	/**
+	 * @description Shows the new page without showing the back button or addinga  new page to the stack.
+	 * @param page
+	 */
+	public void replaceCurrentView(JPanel page){
+		//Check to see if view shown is null
+		if(this.viewShown != null){
+			//Do the replacement
+			//Remove the current page
+			this.remove(this.viewShown);
+			
+			//Set the view shown to the new page
+			this.viewShown = page;
+			
+			//Add the view
+			this.add(this.viewShown, BorderLayout.CENTER);
+			
+			revalidate();
+			repaint();
+			
+			System.out.println("Overriding the current page");
+			
+			
+		}else{
+			//Set the page as thte first page
+			displayView(page);
+		}
+	}
 
 	private void addNavigationBar() {
 		/** For Testing */
@@ -217,6 +250,10 @@ public class NavigationController extends JPanel {
 
 		verifyBackButton();
 		setInitialView(initialView);
+		
+		//repaint the initial view
+		initialView.repaint();
+		initialView.revalidate();
 
 	}
 

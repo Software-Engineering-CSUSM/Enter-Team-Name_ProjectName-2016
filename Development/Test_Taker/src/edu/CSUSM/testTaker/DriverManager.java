@@ -23,6 +23,8 @@ public class DriverManager {
 		GUIController gui = new GUIController();
 		gui.setVisible(true);
 		
+		
+		
 		//Restore Library if it exists
 		File testfile = new File("Library.bin");
 		if(testfile.exists()){
