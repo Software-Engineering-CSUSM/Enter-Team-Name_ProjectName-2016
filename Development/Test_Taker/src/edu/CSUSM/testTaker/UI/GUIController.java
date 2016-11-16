@@ -94,7 +94,10 @@ public class GUIController extends JFrame {
 		 * coursesMain.setName(SideMenu.menuOptionButtons[1].getText());
 		 * coursesNC.setInitialView(coursesMain);
 		 */
-		courses = new CoursesMain(SideMenu.menuOptionButtons[1].getText(), CustomPage.PanelType.TWO_BUTTON_TYPE);
+		
+		// Set number of buttons for question builder type before calling constructor
+		CustomPage.setqBuilderNumButtons(3);
+		courses = new CoursesMain(SideMenu.menuOptionButtons[1].getText(), CustomPage.PanelType.QUESTION_BUILDER_TYPE);
 		coursesNC.setInitialView(courses);
 		courses.parentController = coursesNC;
 

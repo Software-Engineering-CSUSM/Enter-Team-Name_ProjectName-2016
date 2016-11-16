@@ -64,6 +64,9 @@ public class CustomPage extends JPanel {
 	// Made the text areas public so that they can be saved into
 	// a string in the QuizAndFlashMain class.
 	public JTextArea question, answer;
+	
+	//int to set Number of buttons for type QuestionBuilder
+		protected static int qBuilderNumButtons;
 
 	// Created an array of string for the button names
 	private static final int MAX_NUMBER_OF_BUTTONS = 10;
@@ -89,7 +92,12 @@ public class CustomPage extends JPanel {
 	// PopUp class
 	public static enum PopUpType {
 
-		FlashcardAnswerPopUp, AddAnotherQuestion, SaveQuiz, SaveSet
+		FlashcardAnswerPopUp, AddAnotherQuestion, SaveQuiz, SaveSet, AddCourse, DeleteCourse, 
+		AddTest, DeleteTest, AddQuestionName, DeleteQuestion
+	};
+	
+	public static void setQBRowHeaders(String[] list){
+		rowHeaders = list;
 	}
 	
 	public static void setQBRowHeaders(String[] list){
@@ -410,8 +418,13 @@ public class CustomPage extends JPanel {
 		ManageData<String> newDataManager = new ManageData<String>(this.getName(), rowHeaders, idens);
 		this.add(newDataManager, BorderLayout.CENTER);
 
-		addButtons(2);
+		//addButtons(2);
 		// setQuestionLayout();
+		
+		// Add the number of buttons set by the function setqBuilderNumButtons()
+				// which should be called prior to calling the constructor of a class that uses
+				// the question builder type
+				addButtons(qBuilderNumButtons);
 	}
 
 	// Create a question and answer type which displays the quesiton
@@ -729,6 +742,12 @@ public class CustomPage extends JPanel {
 
 	public static void setMainLogoToDisplay(BufferedImage mainLogoToDisplay) {
 		CustomPage.mainLogoToDisplay = mainLogoToDisplay;
+	}
+	protected static void setqBuilderNumButtons(int numButtons){
+		
+		
+		qBuilderNumButtons = numButtons;
+		
 	}
 
 }
