@@ -111,6 +111,23 @@ public class Course /*extends TaskObject*/ implements Serializable, edu.CSUSM.te
 		return rval;
 	}
 	
+	/**
+	 * Give a particular Question's name from the course.
+	 * @param index an int index for the question
+	 * @return a name String for that Question
+	 */
+	public String getQuestionName(int index){
+		return LibraryController.getItemName(questionIDs.get(index));
+	}
+	
+	/**
+	 * Give a list of names of Questions in the Course.
+	 * @return An ArrayList of name Strings
+	 */
+	public ArrayList <String> getQuestionNames(){
+		return LibraryController.getNamesForIDs(questionIDs);
+	}
+	
 	
 	/**
 	 * Return a static view of all Questions currently in the Course
@@ -133,6 +150,23 @@ public class Course /*extends TaskObject*/ implements Serializable, edu.CSUSM.te
 		ArrayList <String>rval = new ArrayList <String>(testIDs.size());
 		rval.addAll(testIDs);
 		return rval;
+	}
+	
+	/**
+	 * Get a list of names of Tests in this Course
+	 * @return an ArrayList of name Strings of Tests
+	 */
+	public ArrayList <String> getTestNames(){
+		return LibraryController.getNamesForIDs(testIDs);
+	}
+	
+	/**
+	 * Get the name of a Test number
+	 * @param index an index number of a Test
+	 * @return a name String of the test
+	 */
+	public String getTestName(int index){
+		return LibraryController.getItemName(testIDs.get(index));
 	}
 	
 	/**

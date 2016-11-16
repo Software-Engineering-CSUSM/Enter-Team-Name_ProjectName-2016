@@ -400,17 +400,28 @@ public class LibraryController{
 	 */
 	public static ArrayList<Registerable> getItemsForIDs(Collection <String> terms){
 		ArrayList <Registerable> rval = null;
-		try(Connection dbcon = connect()){
-			if(terms != null && !terms.isEmpty()){
-				rval = new ArrayList<Registerable>(terms.size());
-				for(String termID : terms){
-					rval.add(getItem(termID));
-				}
+		if(terms != null && !terms.isEmpty()){
+			rval = new ArrayList<Registerable>(terms.size());
+			for(String termID : terms){
+				rval.add(getItem(termID));
 			}
-		}catch(SQLException e){
-			e.printStackTrace();
 		}
-		
+		return rval;
+	}
+	
+	/**
+	 * Get a list of names from a collection of their IDs
+	 * @param terms a Collection of ID strings
+	 * @return an ArrayList of Name strings pulled from the database.
+	 */
+	public static ArrayList<String> getNamesForIDs(Collection <String> terms){
+		ArrayList <String> rval = null;
+		if(terms != null && !terms.isEmpty()){
+			rval = new ArrayList<String>(terms.size());
+			for(String termid : terms){
+				rval.add(getItemName(termid));
+			}
+		}
 		return rval;
 	}
 	
