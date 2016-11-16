@@ -94,7 +94,28 @@ public class ManageData<ObjectDisplayed> extends JPanel {
 		Row.ROW_COUNT = 0;
 
 		// Build the panel to hold the smaller panels
+		try{
+			buildTable();
+		}catch(NullPointerException e){
+			System.out.println(e.getMessage());
+		}
+		catch(Exception e){
+			//If not a null pointer:
+			System.out.println(e.getLocalizedMessage());
+		}
+
+		currentIDSelected = "";		//Resets the ID each time
+	}
+	
+	public void rebuildTable(){
+		//Reset the current table
+		tableView = null;
+		
+		//Rebuild table
 		buildTable();
+		
+		//revalidate frame
+		revalidate();
 	}
 
 	private void buildTable() {

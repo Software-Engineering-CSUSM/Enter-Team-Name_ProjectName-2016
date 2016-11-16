@@ -901,13 +901,31 @@ public class LibraryController{
 			tval = getTestItemNames();
 		}
 		else if(isACourse(courseID)){
-			tval = (ArrayList)getItemsForIDs(retrieveCourse(courseID).getTestIDs());
+			//tval = retrieveCourse(courseID).getTestIDs();
+			tval = LibraryController.getTestItemNames();
 		}
 		
 		if(tval != null){
 			return tval.toArray(new String[tval.size()]);
 		}
 		return null;
+	}
+
+	/**
+	 * @deprecated new method will be set.
+	 * @param string
+	 */
+	public static void backupLibrary(String string) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	/**
+	 * @deprecated new restore function will be set
+	 */
+	public static void restoreLibrary(String string) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

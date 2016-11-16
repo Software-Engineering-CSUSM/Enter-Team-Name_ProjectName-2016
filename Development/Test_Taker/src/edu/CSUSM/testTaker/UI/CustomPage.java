@@ -100,10 +100,6 @@ public class CustomPage extends JPanel {
 		rowHeaders = list;
 	}
 	
-	public static void setQBRowHeaders(String[] list){
-		rowHeaders = list;
-	}
-	
 	public static void setQBRowIDs(String[] list){
 		idens = list;
 	}
@@ -416,6 +412,10 @@ public class CustomPage extends JPanel {
 		// We need to add a few components to this view:
 		// JComboBox - Allows the user to
 		ManageData<String> newDataManager = new ManageData<String>(this.getName(), rowHeaders, idens);
+		
+		//For testing, show the amount of questions found:
+		System.out.println("Rows Found: " + rowHeaders.length + "\nRow IDs Found: " + idens.length);
+		
 		this.add(newDataManager, BorderLayout.CENTER);
 
 		//addButtons(2);

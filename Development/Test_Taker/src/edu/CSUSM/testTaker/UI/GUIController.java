@@ -97,6 +97,8 @@ public class GUIController extends JFrame {
 		
 		// Set number of buttons for question builder type before calling constructor
 		CustomPage.setqBuilderNumButtons(3);
+		CustomPage.setQBRowHeaders(LibraryController.getAllCoursesAvailable());
+		CustomPage.setQBRowIDs(LibraryController.getAllCourseIDsAvailable());
 		courses = new CoursesMain(SideMenu.menuOptionButtons[1].getText(), CustomPage.PanelType.QUESTION_BUILDER_TYPE);
 		coursesNC.setInitialView(courses);
 		courses.parentController = coursesNC;
