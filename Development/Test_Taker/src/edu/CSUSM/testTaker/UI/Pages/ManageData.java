@@ -5,12 +5,12 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
@@ -19,8 +19,6 @@ import javax.swing.border.LineBorder;
 
 import edu.CSUSM.testTaker.LibraryController;
 import edu.CSUSM.testTaker.LibraryController.CourseInfo;
-import edu.CSUSM.testTaker.Backend.Course;
-import edu.CSUSM.testTaker.Backend.Question;
 
 /**
  * 
@@ -68,9 +66,10 @@ public class ManageData<ObjectDisplayed> extends JPanel {
 	public static String currentIDSelected;
 
 	/**
-	 * @param panelTitle
-	 * @param rowLabels
-	 * @param objectIdentifiers
+	 * @Description - Default constructor for a simple table view. All fields are required.
+	 * @param panelTitle - Sets the panel title (Big letters)
+	 * @param rowLabels - Sets the row's text
+	 * @param objectIdentifiers	- The ID that is refrered to when a radio button is selected. This is the action command,
 	 */
 	public ManageData(String panelTitle, String[] rowLabels, String[] objectIdentifiers) {
 		// First, let's just see if the class works the way we want it to from
@@ -107,6 +106,10 @@ public class ManageData<ObjectDisplayed> extends JPanel {
 		currentIDSelected = "";		//Resets the ID each time
 	}
 	
+	/**
+	 * @Description - REbuilds the table if content is reloaded from library controller - DNF
+	 * @deprecated
+	 */
 	public void rebuildTable(){
 		//Reset the current table
 		tableView = null;
@@ -118,6 +121,9 @@ public class ManageData<ObjectDisplayed> extends JPanel {
 		revalidate();
 	}
 
+	/**
+	 * @Description - Builds the table based on the current Rows and IDs set.
+	 */
 	private void buildTable() {
 		// Create the main Table view
 		tableView = new JPanel();
@@ -149,26 +155,11 @@ public class ManageData<ObjectDisplayed> extends JPanel {
 		//Get all of the questions from the libcontroller
 		//System.out.println(LibraryController.giveCourseList());
 		
-		if(this.getRowHeaders().length == 0 || this.getRowIdentifiers().length == 0){
+		if(this.getRowIdentifiers() == null || this.getRowHeaders() == null || this.getRowHeaders().length == 0 || this.getRowIdentifiers().length == 0){
 			
-			//Add test data
-			for(CourseInfo aCourseSet : LibraryController.giveCourseList()){
-
-				//Add a few times
-				for(int i = 0; i < 10; i++){
-					Course currentCourse = aCourseSet.thisCourse;
-
-					// This will eventually be more specific
-					Row newRow = new Row(currentCourse.getName(), currentCourse.getID());
-					// newRow.setSize(this.getWidth(), this.getHeight() / 3);
-					gb.gridy++;
-					gb.weightx = 1;
-					gb.weighty = 1;
-					gb.fill = GridBagConstraints.HORIZONTAL;
-					// Add the row to the table
-					innerView.add(newRow, gb);
-				}
-			}
+			//Alert the user that no data was found
+			//JOptionPane.showMessageDialog(null, "No Content Was Found.\nPlease add content by selecting \"Add\" below");
+			
 		}else{
 			//Add the data requested
 			for(int i = 0; i < this.getRowHeaders().length; i++){
@@ -278,7 +269,7 @@ public class ManageData<ObjectDisplayed> extends JPanel {
 	}
 
 	/**
-	 * 
+	 * @Description - Sets the title label of the table (Caption)
 	 */
 	public void setQuestionLayout() {
 		titleLabel.setText(this.titleOfCurrentQuestionPanel);

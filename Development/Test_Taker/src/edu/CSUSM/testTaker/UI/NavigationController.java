@@ -20,6 +20,14 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+/**
+ * @author Justin
+ *
+ */
+/**
+ * @author Justin
+ *
+ */
 public class NavigationController extends JPanel {
 
 	/**
@@ -43,6 +51,9 @@ public class NavigationController extends JPanel {
 	private Stack<JPanel> panelsDisplayed; // Change to private
 	private JPanel viewShown, initialView;
 
+	/**
+	 * @Description Default constructor for the Navigation Controller. Adds the Navigation Bar to the top.
+	 */
 	public NavigationController() {
 
 		// For visibility, make the background black;
@@ -51,12 +62,20 @@ public class NavigationController extends JPanel {
 		addNavigationBar();
 	}
 
+	/**
+	 * @Description constructor to create a Navigation Controller when an image is wished to be used.
+	 * @param applicationImage - Image to display in the navigation bar
+	 */
 	public NavigationController(BufferedImage applicationImage) {
 		this.setLayout(new BorderLayout());
 		NavigationController.applicationImage = applicationImage;
 		addNavigationBar();
 	}
 	
+	
+	/**
+	 * @return The current view shown in the stack
+	 */
 	public JPanel getViewShown(){
 		return viewShown;
 	}
@@ -78,11 +97,11 @@ public class NavigationController extends JPanel {
 			//Add the view
 			this.add(this.viewShown, BorderLayout.CENTER);
 			
+			verifyBackButton();
+			
+			//reloads content
 			revalidate();
 			repaint();
-			
-			System.out.println("Overriding the current page");
-			
 			
 		}else{
 			//Set the page as thte first page
@@ -90,6 +109,9 @@ public class NavigationController extends JPanel {
 		}
 	}
 
+	/**
+	 * @Description - Adds the navigation bar to the top of the page. This is to manage the page navigation.
+	 */
 	private void addNavigationBar() {
 		/** For Testing */
 		if (NavigationController.applicationImage == null) {
@@ -149,9 +171,8 @@ public class NavigationController extends JPanel {
 		navigationPanel.setName("Navigation Panel");
 		navigationPanel.setBorder(BorderFactory.createRaisedBevelBorder());
 
+		//Add the navigation bar to the top of the page/
 		this.add(navigationPanel, BorderLayout.NORTH);
-		// System.out.println("Size of Navigation Bar:\nW: " +
-		// navigationPanel.getWidth() + "\nH: " + navigationPanel.getHeight());
 
 		// If the stack is empty, hide the back button
 		if (panelsDisplayed.isEmpty()) {
@@ -160,6 +181,9 @@ public class NavigationController extends JPanel {
 		this.setVisible(true);
 	}
 
+	/**
+	 * @param firstView - Sets the first view that will be shown in the navigation controller.
+	 */
 	public void setInitialView(JPanel firstView) {
 		this.viewShown = firstView;
 		this.add(this.viewShown, BorderLayout.CENTER);
@@ -168,6 +192,10 @@ public class NavigationController extends JPanel {
 		this.initialView = this.viewShown;
 	}
 
+	/**
+	 * @Description - Displays the next view in the lineup and pushes the current view in the stack, to be referenced as the back button is pressed.
+	 * @param panelToDisplay - The panel that will be displayed next to the view
+	 */
 	public void displayView(JPanel panelToDisplay) {
 		if (this.viewShown != null) {
 			// Add it to the stack
@@ -257,6 +285,10 @@ public class NavigationController extends JPanel {
 
 	}
 
+	
+	/**
+	 * @Description - Determines if the back button should be viewed of not. - Based on the size of the stack.
+	 */
 	private void verifyBackButton() {
 		if (this.panelsDisplayed.size() == 0) {
 			backButton.setVisible(false);
@@ -265,6 +297,10 @@ public class NavigationController extends JPanel {
 		}
 	}
 
+	/**
+	 * @Description - Sets the current panel name - to be displayed in the navigation bar;
+	 * @param newName
+	 */
 	public void setCurrentPanelName(String newName) {
 		// Set the panel name
 		this.viewShown.setName(newName);

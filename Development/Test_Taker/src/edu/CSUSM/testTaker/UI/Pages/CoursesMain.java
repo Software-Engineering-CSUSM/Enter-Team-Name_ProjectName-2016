@@ -80,7 +80,7 @@ public class CoursesMain extends CustomPage {
 			//PopUp popup = new PopUp( "",PopUp.PanelType.LOGO_ONLY_TYPE, PopUpType.AddCourse);
 
 			//Display a JDialogBox
-			String newTestName = JOptionPane.showInputDialog("Please name your test: ");
+			String newTestName = JOptionPane.showInputDialog("Please name your Course: ");
 			if(newTestName != null && newTestName.length() != 0){
 				
 				//Add the Course
@@ -145,7 +145,7 @@ public class CoursesMain extends CustomPage {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			System.out.println("Opening " + this.getClass() + "\nID: " + ManageData.currentIDSelected);
+			//System.out.println("Opening " + this.getClass() + "\nID: " + ManageData.currentIDSelected);
 
 			//Check to see if a test is selected. If not, alert the user they must seect one
 			if(ManageData.currentIDSelected.length() == 0){
@@ -158,6 +158,7 @@ public class CoursesMain extends CustomPage {
 				CustomPage.setQBRowIDs(LibraryController.getAllTestIDsInCourse(ManageData.currentIDSelected));
 
 				TestListManager tm = new TestListManager("Test List Manager", CustomPage.PanelType.QUESTION_BUILDER_TYPE);
+				TestListManager.setCourse(LibraryController.retrieveCourse(ManageData.currentIDSelected));
 				//tm.setName("Test List Manager");
 				tm.parentController = parentController;
 				parentController.displayView(tm);
