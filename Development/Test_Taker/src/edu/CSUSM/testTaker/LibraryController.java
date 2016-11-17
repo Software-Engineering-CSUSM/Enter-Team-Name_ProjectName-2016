@@ -838,7 +838,7 @@ public class LibraryController{
 			tval = getQuestionItemNames();
 		}
 		else if(isACourse(courseID)){
-			tval = (ArrayList)getItemsForIDs(retrieveCourse(courseID).getQuestionIDs());
+			tval = getNamesForIDs(retrieveCourse(courseID).getQuestionIDs());
 		}
 		
 		if(tval != null){
