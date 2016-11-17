@@ -127,6 +127,9 @@ public class ManageData<ObjectDisplayed> extends JPanel {
 	 */
 	public static void resetButtons(){
 		Row.resetRowButtons(); //From Row();
+		
+		//reset the current ID
+		ManageData.currentIDSelected = null;
 	}
 	
 	/**
@@ -153,6 +156,7 @@ public class ManageData<ObjectDisplayed> extends JPanel {
 		JScrollPane scrollView = new JScrollPane(innerView, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
 				JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		scrollView.getVerticalScrollBar().setUnitIncrement(15);
+		scrollView.setBorder(new MatteBorder(1,0,1,0, Color.lightGray));
 		// scrollView.setBackground(Color.GREEN);
 		tableView.add(scrollView);
 

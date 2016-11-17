@@ -19,6 +19,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.border.MatteBorder;
 
 /**
  * @author Justin
@@ -169,7 +170,7 @@ public class NavigationController extends JPanel {
 		currentPageDescriptionLabel.setBorder(new EmptyBorder(0, 0, 0, DEFAULT_NAVIGATION_BAR_HEIGHT / 2));
 		navigationPanel.add(currentPageDescriptionLabel, BorderLayout.EAST);
 		navigationPanel.setName("Navigation Panel");
-		navigationPanel.setBorder(BorderFactory.createRaisedBevelBorder());
+		navigationPanel.setBorder(new MatteBorder(0,0, 1, 0, Color.LIGHT_GRAY));
 
 		//Add the navigation bar to the top of the page/
 		this.add(navigationPanel, BorderLayout.NORTH);

@@ -8,14 +8,14 @@
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="HAHAAAH"/>
+			<item value="reset"/>
+			<item value="question"/>
+			<item value="line"/>
+			<item value="border"/>
+			<item value="baorder"/>
+			<item value="matte"/>
 			<item value="What "/>
-			<item value="Whatis"/>
-			<item value="What is 5*5"/>
-			<item value="addpanel2"/>
-			<item value="addpanel3"/>
-			<item value="addpanel1"/>
-			<item value="stats"/>
-			<item value="Stats"/>
 		</list>
 		<list key="replacehistory">
 			<item value="CustomButton"/>
