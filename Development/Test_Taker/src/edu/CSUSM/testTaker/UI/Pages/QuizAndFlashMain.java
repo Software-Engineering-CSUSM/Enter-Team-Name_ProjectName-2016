@@ -139,6 +139,7 @@ public class QuizAndFlashMain extends CustomPage {
 			// System.out.println("Opening " + this.getClass());
 
 			// System.out.println("Opening " + this.getClass());
+			CustomPage.setqBuilderNumButtons(1);
 			TakeQuizTakeSet takeQ = new TakeQuizTakeSet("Take Quiz Page", TakeQuizTakeSet.PanelType.QUESTION_BUILDER_TYPE,
 					TakeQuizTakeSet.PageType.QUIZ);
 			takeQ.parentController = parentController;

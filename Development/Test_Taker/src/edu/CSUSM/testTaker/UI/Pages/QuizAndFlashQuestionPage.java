@@ -48,6 +48,10 @@ public class QuizAndFlashQuestionPage extends CustomPage {
 		// a flashcard set.
 		if (currentPageType == CustomPage.PageType.QUIZ)
 			updateActions();
+		if (currentPageType == CustomPage.PageType.QUIZ_MC)
+		{
+			updateActionsQuizMC();
+		}
 		else if (currentPageType == CustomPage.PageType.FLASHCARD)
 			updateActionsFlashcard();
 		else
@@ -83,6 +87,46 @@ public class QuizAndFlashQuestionPage extends CustomPage {
 			case 2:
 				if (questionPageNumber < TakeQuizTakeSet.totalNumQuestions)
 					this.currentActions[i].addActionListener(new NextQuestion());
+				else
+					this.currentActions[i].addActionListener(new Submit());
+				break;
+
+			default:
+				System.out.println("Not enough implemented classes");
+				break;
+			}
+		}
+
+	}
+	
+	// Button actions for quiz. Uses conditional statements to determine
+	// which buttons to display: exit and next for the first page, exit,
+	// previous
+	// and next for every page between the first and last, and exit previous and
+	// submit for the last page.
+	public void updateActionsQuizMC() {
+		// Set the button names
+		if (questionPageNumber == 1)
+			setButtonNames(new String[] { "Exit Quiz", "Next Question" });
+		else if (questionPageNumber > 1 && questionPageNumber < TakeQuizTakeSet.totalNumQuestions)
+			setButtonNames(new String[] { "Exit Quiz", "Previous Question", "Next Question", });
+		else if (questionPageNumber == TakeQuizTakeSet.totalNumQuestions) {
+			setButtonNames(new String[] { "Exit Quiz", "Previous Question", "Submit and Finish" });
+		}
+		for (int i = 0; i < this.currentActions.length; i++) {
+			switch (i) {
+			case 0:
+				this.currentActions[i].addActionListener(new ExitQuiz());
+				break;
+			case 1:
+				if (questionPageNumber == 1)
+					this.currentActions[i].addActionListener(new NextQuestionMC());
+				else if (questionPageNumber > 1)
+					this.currentActions[i].addActionListener(new Previous());
+				break;
+			case 2:
+				if (questionPageNumber < TakeQuizTakeSet.totalNumQuestions)
+					this.currentActions[i].addActionListener(new NextQuestionMC());
 				else
 					this.currentActions[i].addActionListener(new Submit());
 				break;
@@ -164,6 +208,20 @@ public class QuizAndFlashQuestionPage extends CustomPage {
 
 			QuizAndFlashQuestionPage questionPage = new QuizAndFlashQuestionPage("Quiz Question Page: " + QuizAndFlashQuestionPage.questionPageNumber,
 					QuizAndFlashQuestionPage.PanelType.QUESTIONPAGE, QuizAndFlashQuestionPage.PageType.QUIZ);
+			questionPage.parentController = parentController;
+			parentController.displayView(questionPage);
+			questionPageNumber++; // increment the quiz question number
+
+		}
+	}
+	private class NextQuestionMC implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			System.out.println("Opening " + this.getClass());
+
+			QuizAndFlashQuestionPage questionPage = new QuizAndFlashQuestionPage("Quiz Question Page: " + QuizAndFlashQuestionPage.questionPageNumber,
+					QuizAndFlashQuestionPage.PanelType.QUESTIONPAGEMC, QuizAndFlashQuestionPage.PageType.QUIZ_MC);
 			questionPage.parentController = parentController;
 			parentController.displayView(questionPage);
 			questionPageNumber++; // increment the quiz question number

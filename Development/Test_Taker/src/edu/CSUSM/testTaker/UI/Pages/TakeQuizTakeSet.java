@@ -116,12 +116,18 @@ public class TakeQuizTakeSet extends CustomPage {
 		public void actionPerformed(ActionEvent e) {
 			System.out.println("Opening " + this.getClass());
 
-			QuizAndFlashQuestionPage QquestionPage = new QuizAndFlashQuestionPage("Quiz Question Page: " + QuizAndFlashQuestionPage.questionPageNumber,
+			/*QuizAndFlashQuestionPage QquestionPage = new QuizAndFlashQuestionPage("Quiz Question Page: " + QuizAndFlashQuestionPage.questionPageNumber,
 					QuizAndFlashQuestionPage.PanelType.QUESTIONPAGE, QuizAndFlashQuestionPage.PageType.QUIZ);
 			QquestionPage.parentController = parentController;
 			parentController.displayView(QquestionPage);
-			QuizAndFlashQuestionPage.questionPageNumber++; // Increment the
-															// questionPageNumber
+			QuizAndFlashQuestionPage.questionPageNumber++; */
+			
+			QuizAndFlashQuestionPage QquestionPage = new QuizAndFlashQuestionPage("Quiz Question Page: " + QuizAndFlashQuestionPage.questionPageNumber,
+					QuizAndFlashQuestionPage.PanelType.QUESTIONPAGEMC, QuizAndFlashQuestionPage.PageType.QUIZ_MC);
+			QquestionPage.parentController = parentController;
+			parentController.displayView(QquestionPage);
+			QuizAndFlashQuestionPage.questionPageNumber++; 
+												
 
 		}
 
