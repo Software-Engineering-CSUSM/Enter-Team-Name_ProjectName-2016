@@ -4,6 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 
+import edu.CSUSM.testTaker.LibraryController;
+import edu.CSUSM.testTaker.Backend.Question;
 import edu.CSUSM.testTaker.UI.CustomPage;
 import edu.CSUSM.testTaker.UI.CustomPage.PanelType;
 
@@ -139,7 +141,16 @@ public void updateActionsMC() {
 				
 				answerStrMC[i] = answerTextMC[i].getText();
 			
-				System.out.println("anwer " + answerStrMC[i]);
+				//System.out.println("anwer " + answerStrMC[i]);
+			}
+			
+			//Save the question
+			Question newQ = new Question(questionStr, answerStrMC, 0);
+			try{
+				LibraryController.CURRENT_TEST.addQuestion(newQ, 5);
+			}catch(NullPointerException ex){
+				System.out.println("Course Value: " + LibraryController.CURRENT_COURSE.toString());
+				System.out.println("Test Value: " + LibraryController.CURRENT_TEST.toString());
 			}
 			
 			// Constructor uses a main window with just a logo type, and

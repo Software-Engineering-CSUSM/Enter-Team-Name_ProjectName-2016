@@ -145,7 +145,7 @@ public class CoursesMain extends CustomPage {
 			catch(NullPointerException ex){
 				JOptionPane.showMessageDialog(null, "Please select a course before continuing");
 			}finally{
-				LibraryController.initDB();
+				//LibraryController.initDB();
 			}
 
 		}
@@ -171,8 +171,9 @@ public class CoursesMain extends CustomPage {
 
 
 					TestListManager.setCourse(LibraryController.retrieveCourse(ManageData.currentIDSelected));
+					LibraryController.CURRENT_COURSE = TestListManager.CourseID;
 					TestListManager tm = new TestListManager("Test List Manager", CustomPage.PanelType.QUESTION_BUILDER_TYPE);
-					System.out.println("Current ID Selected: " + ManageData.currentIDSelected);
+					//System.out.println("Current ID Selected: " + ManageData.currentIDSelected);
 					//tm.setName("Test List Manager");
 					ManageData.resetButtons();
 					tm.parentController = parentController;
