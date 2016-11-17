@@ -66,7 +66,7 @@ public class PopUp extends CustomPage {
 					createSaveWindowPopUp(pType);
 				// Two button Pop-Up.  For add another question ("Create" or "Don't)
 				// and for deleting course or test confirmation ("Yes" or "No")
-				else if (pType == PopUpType.AddAnotherQuestion || pType == PopUpType.DeleteCourse || pType == PopUpType.DeleteTest || pType == PopUpType.DeleteQuestion)
+				else if (pType == PopUpType.AddAnotherQuestion || pType == PopUpType.AddAnotherQuestionMC ||  pType == PopUpType.DeleteCourse || pType == PopUpType.DeleteTest || pType == PopUpType.DeleteQuestion)
 					AddQuestion_or_DeleteItemPopUp(pType);
 				//else if (pType == PopUpType.DeleteCourse)
 					//deleteCoursePopUp();
@@ -125,6 +125,14 @@ public class PopUp extends CustomPage {
 				courseOrQuestionLabel = new JLabel("Would you like to add another question?");
 				create_Yes = new JButton("Create Another Question");
 				dontCreate_No = new JButton("Don't Create Another");
+			}
+			else if(pType == PopUpType.AddAnotherQuestionMC)
+			{
+				popUpWindow.setTitle("Add Question");
+				courseOrQuestionLabel = new JLabel("Would you like to add another question?");
+				create_Yes = new JButton("Create Another Question");
+				dontCreate_No = new JButton("Don't Create Another");
+			
 			}
 			// Creating window for deleting a course
 			else if(pType == PopUpType.DeleteCourse)
@@ -199,13 +207,14 @@ public class PopUp extends CustomPage {
 					popUpWindow.dispose();
 					
 					//Case for don't create another question for add question popup
-					if(pType == PopUpType.AddAnotherQuestion)
+					if(pType == PopUpType.AddAnotherQuestion || pType == PopUpType.AddAnotherQuestionMC)
 					{
 						StudyToolsMain QandFMain = new StudyToolsMain("Quiz Main Page", StudyToolsMain.PanelType.THREE_BUTTON_TYPE);
 						//QandFMain.setName("Quiz Main Page");
 						QandFMain.parentController = parentController;
 						parentController.displayView(QandFMain);
 					}
+		
 					
 					//Case for don't delete course for delete course pop up
 					
@@ -244,11 +253,21 @@ public class PopUp extends CustomPage {
 					//Case for create another question to add question
 					if(pType == PopUpType.AddAnotherQuestion)
 					{
-					AddQuestion addQ = new AddQuestion("Add Question Page", AddQuestion.PanelType.Q_and_A_Type);
-					//addQ.setName("Add Question Page");
+					
+					AddQuestion addQ = new AddQuestion("Add Question Page", AddQuestion.PanelType.Q_and_A_Type_MC);
 					addQ.parentController = parentController;
 					parentController.displayView(addQ);
+					addQ.revalidate();
 					}
+					else if(pType == PopUpType.AddAnotherQuestionMC)
+					{
+					
+					AddQuestion addQ = new AddQuestion("Add Question Page", AddQuestion.PanelType.Q_and_A_Type_MC);
+					addQ.parentController = parentController;
+					parentController.displayView(addQ);
+					addQ.revalidate();
+					}
+
 					
 					//Case if user wants to delete course for delete course
 					// Add function to delete the course

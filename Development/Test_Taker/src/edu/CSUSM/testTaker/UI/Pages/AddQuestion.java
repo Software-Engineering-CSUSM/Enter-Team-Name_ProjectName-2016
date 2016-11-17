@@ -28,12 +28,20 @@ public class AddQuestion extends CustomPage {
 	// String to hold the question and answer from the question
 	// and answer text area.
 	public String questionStr, answerStr;
-
+	
+	//String array to hold answers for Multiple Choice Questions
+	public String answerStrMC[] = new String[4];
+	
+	
+	
 	public AddQuestion(String panelName, PanelType currentPanelType) {
 		super(panelName, currentPanelType);
 		// TODO Auto-generated constructor stub
 		// System.out.println("Printing a new Form");
-		updateActions();
+		if(currentPanelType == CustomPage.PanelType.Q_and_A_Type_MC)
+			updateActionsMC();
+		else
+			updateActions();
 	}
 
 	public AddQuestion(String panelName, PanelType currentPanelType, BufferedImage newImage) {
@@ -69,10 +77,30 @@ public class AddQuestion extends CustomPage {
 		}
 	}
 
+public void updateActionsMC() {
+
+		// Set the button names
+		setButtonNames(new String[] { "Save Question", "View Question" });
+
+		for (int i = 0; i < this.currentActions.length; i++) {
+			switch (i) {
+			case 0:
+				this.currentActions[i].addActionListener(new QuestionSavePopUpMC());
+				break;
+			case 1:
+				this.currentActions[i].addActionListener(new ViewList());
+				break;
+			default:
+				System.out.println("Not enough implemented classes");
+				break;
+			}
+		}
+	}
 	// Button Listener For Save Question. Clicking Save creates pop up
 	// window by calling the PopUp class.
 	private class QuestionSavePopUp implements ActionListener {
 
+		
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			System.out.println("Opening " + this.getClass());
@@ -91,11 +119,39 @@ public class AddQuestion extends CustomPage {
 			PopUp saveQ = new PopUp("Add Question Page", PopUp.PanelType.LOGO_ONLY_TYPE, PopUpType.AddAnotherQuestion);
 			saveQ.parentController = parentController;
 			parentController.displayView(saveQ);
+			
 
 		}
 
 	}
+	private class QuestionSavePopUpMC implements ActionListener {
 
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			System.out.println("Opening " + this.getClass());
+			
+			// Saves the question and answer into a string and prints it
+			// out for testing purposes
+			questionStr = question.getText();
+			System.out.println("question: " + questionStr);
+			for(int i = 0; i < 4; i++)
+			{
+				
+				answerStrMC[i] = answerTextMC[i].getText();
+			
+				System.out.println("anwer " + answerStrMC[i]);
+			}
+			
+			// Constructor uses a main window with just a logo type, and
+			// an AddAnotherQuestion to create the correct popUp window in the
+			// PopUp class
+			PopUp saveQ = new PopUp("Add Question Page", PopUp.PanelType.LOGO_ONLY_TYPE, PopUpType.AddAnotherQuestionMC);
+			saveQ.parentController = parentController;
+			parentController.displayView(saveQ);
+
+		}
+
+	}
 	// Do we need this class?
 	private class ViewList implements ActionListener {
 

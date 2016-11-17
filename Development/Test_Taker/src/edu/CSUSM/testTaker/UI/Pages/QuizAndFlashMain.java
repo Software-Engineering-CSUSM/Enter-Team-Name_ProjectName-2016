@@ -117,7 +117,11 @@ public class QuizAndFlashMain extends CustomPage {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 
-			AddQuestion addQ = new AddQuestion("Add Question Page", AddQuestion.PanelType.Q_and_A_Type);
+			/*AddQuestion addQ = new AddQuestion("Add Question Page", AddQuestion.PanelType.Q_and_A_Type);
+			addQ.parentController = parentController;
+			parentController.displayView(addQ);*/
+			
+			AddQuestion addQ = new AddQuestion("Add Question Page", AddQuestion.PanelType.Q_and_A_Type_MC);
 			addQ.parentController = parentController;
 			parentController.displayView(addQ);
 
