@@ -21,6 +21,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
 import javax.swing.border.Border;
 
 import edu.CSUSM.testTaker.UI.CustomObjects.CustomButton;
@@ -65,6 +66,8 @@ public class CustomPage extends JPanel {
 	// a string in the QuizAndFlashMain class.
 	public JTextArea question, answer;
 	
+	public  JTextField answerTextMC[] = new JTextField[4];
+	
 	//int to set Number of buttons for type QuestionBuilder
 		protected static int qBuilderNumButtons;
 
@@ -79,7 +82,8 @@ public class CustomPage extends JPanel {
 	/** End of question panel specific vars */
 
 	public static enum PanelType {
-		TWO_BUTTON_TYPE, THREE_BUTTON_TYPE, LOGO_ONLY_TYPE, QUESTION_BUILDER_TYPE, Q_and_A_Type, QUESTIONPAGE, FLASHCARDPAGE, RESULTS
+		TWO_BUTTON_TYPE, THREE_BUTTON_TYPE, LOGO_ONLY_TYPE, QUESTION_BUILDER_TYPE, Q_and_A_Type, QUESTIONPAGE, FLASHCARDPAGE, RESULTS,
+		Q_and_A_Type_MC
 	};
 
 	// Enumerator to determine whether to update actions for quizzes
@@ -92,7 +96,7 @@ public class CustomPage extends JPanel {
 	// PopUp class
 	public static enum PopUpType {
 
-		FlashcardAnswerPopUp, AddAnotherQuestion, SaveQuiz, SaveSet, AddCourse, DeleteCourse, 
+		FlashcardAnswerPopUp, AddAnotherQuestion, AddAnotherQuestionMC, SaveQuiz, SaveSet, AddCourse, DeleteCourse, 
 		AddTest, DeleteTest, AddQuestionName, DeleteQuestion
 	};
 	
@@ -201,6 +205,9 @@ public class CustomPage extends JPanel {
 		// Add Question Page
 		case Q_and_A_Type:
 			createQandAype();
+			break;
+		case Q_and_A_Type_MC:
+			createMultipleChoice();
 			break;
 		// Take Quiz
 		case QUESTIONPAGE:
@@ -377,6 +384,120 @@ public class CustomPage extends JPanel {
 
 	}
 
+private void createMultipleChoice() {
+		JLabel iconLabel = new JLabel();
+
+		// I changed the parameter for height dividing by 5 do keep the
+		// logo from covering the text fields. However, the width is not
+		// getting placed in the correct spot.
+		iconLabel.setBounds(0, 0, this.getWidth(), (int) (this.getHeight() / 3.25));
+		iconLabel.setIcon(newIcon);
+		this.add(iconLabel);
+		// ******************
+		// this line was commented out because it was hiding the text areas
+		// ****************
+		// this.add(iconLabel, BorderLayout.NORTH);
+
+		// Align to center
+		iconLabel.setHorizontalAlignment(JLabel.CENTER);
+		iconLabel.setVerticalAlignment(JLabel.CENTER);
+
+		CustomPage.centerOfNewFrame = iconLabel.getHeight() - iconLabel.getY();
+
+		// Create a text area for the question and a text area for the answer
+		 question = new JTextArea("Question", 10, 10);
+		 answer = new JTextArea("Answer", 10, 10);
+		 
+
+		// Constraints for the panel holding the text areas for
+		// resizing purposes.
+		GridBagConstraints c = new GridBagConstraints();
+		c.gridwidth = 10;
+		c.gridheight = 10;
+		c.weightx = .5;
+		c.gridx = 1;
+		c.gridy = 1;
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.insets = new Insets(100, 50, 1, 50);
+
+		// Create border for text areas
+		Border border = BorderFactory.createLineBorder(Color.BLACK);
+		question.setBorder(border);
+		answer.setBorder(border);
+
+		// Set text area sizes and word wrapping
+		question.setMinimumSize(question.getMinimumSize());
+		answer.setMinimumSize(answer.getMinimumSize());
+		question.setLineWrap(true);
+		question.setWrapStyleWord(true);
+		answer.setLineWrap(true);
+
+		// Create panel to hold the question and answer text areas
+		JPanel QandAPanel = new JPanel();
+		QandAPanel.setBackground(Color.WHITE);
+		QandAPanel.setLayout(new GridBagLayout());
+
+		// Create a vertical box for the question text area
+		// placing a label about the text area
+		Box questionBox = Box.createVerticalBox();
+		questionBox.add(new JLabel("Question"));
+		questionBox.add(Box.createVerticalStrut(5));
+		questionBox.add(question);
+
+		
+		 //Create text areas for the multiple choice answers.  The answer
+		 // for box 0 will be the correct answer
+		// JTextField answerTextMC[] = new JTextField[4];
+		 
+		 Box answerBox = Box.createVerticalBox();
+		 answerBox.add(Box.createVerticalStrut(20));
+		 for(int i = 0; i < 4; i++)
+		 {
+			
+			if(i == 0)
+				answerTextMC[i] = new JTextField("Correct Answer", 25);
+			else
+				answerTextMC[i] = new JTextField("False Answer", 25);
+		 
+			answerBox.add(answerTextMC[i]);
+			answerBox.add(Box.createVerticalGlue());
+			
+		}
+		
+		
+		
+		// Create a vertical box for the answer text area
+		// placing a label about the text area
+		/*Box answerBox = Box.createVerticalBox();
+		answerBox.add(new JLabel("Answer"));
+		answerBox.add(Box.createVerticalStrut(5));
+		answerBox.add(answer);*/
+
+		// Create a horizontal box to hold the question and
+		// answer text areas and use Strut to place space between them
+		Box QandABox = Box.createHorizontalBox();
+		QandABox.add(questionBox);
+		QandABox.add(Box.createHorizontalStrut(100));
+		QandABox.add(answerBox);
+
+		// This box was created to make a space between the logo
+		// it was otherwise cutting off the boxes
+		Box VertQandABox = Box.createVerticalBox();
+		VertQandABox.add(Box.createVerticalStrut(91));
+		VertQandABox.add(QandABox);
+
+		// Add the question and answer boxes to the panel that is
+		// using a gridbaglayout
+		QandAPanel.add(VertQandABox);
+
+		// Add the Q&A panel to the frame and place it in the center
+		// then add constraints for the gridbag panel
+		this.add(QandAPanel, BorderLayout.CENTER);
+		QandAPanel.add(VertQandABox, c);
+		addButtons(2);
+
+	}
+	
 	private void createThreeButtonType() {
 
 		JLabel iconLabel = new JLabel();
@@ -414,7 +535,7 @@ public class CustomPage extends JPanel {
 		ManageData<String> newDataManager = new ManageData<String>(this.getName(), rowHeaders, idens);
 		
 		//For testing, show the amount of questions found:
-		System.out.println("Rows Found: " + rowHeaders.length + "\nRow IDs Found: " + idens.length);
+		//System.out.println("Rows Found: " + rowHeaders.length + "\nRow IDs Found: " + idens.length);
 		
 		this.add(newDataManager, BorderLayout.CENTER);
 

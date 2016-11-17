@@ -39,7 +39,10 @@ public class LibraryController{
 	protected static String DBUserName = "";
 	protected static String DBPassword = "";//* < should probably be derived from a cyphertext if ever used
 	
-	
+	//Save current data for access elsewhere
+	public static Course CURRENT_COURSE;
+	public static Test CURRENT_TEST;
+	public static Question CURRENT_QUESTION;
 
 	/**
 	 * For Implementation, we are going to use Hashmaps. This is how: • The
