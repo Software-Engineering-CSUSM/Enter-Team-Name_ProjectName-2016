@@ -3,6 +3,7 @@ package edu.CSUSM.testTaker.UI.Pages;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
+import java.util.Scanner;
 
 import edu.CSUSM.testTaker.UI.CustomPage;
 import edu.CSUSM.testTaker.UI.CustomPage.PanelType;
@@ -53,7 +54,11 @@ public class QuizAndFlashQuestionPage extends CustomPage {
 			updateActionsQuizMC();
 		}
 		else if (currentPageType == CustomPage.PageType.FLASHCARD)
+		{
+
 			updateActionsFlashcard();
+		
+		}
 		else
 			System.out.println("error");
 
@@ -147,7 +152,7 @@ public class QuizAndFlashQuestionPage extends CustomPage {
 	public void updateActionsFlashcard() {
 		// Set the button names
 		if (questionPageNumber == 1)
-			setButtonNames(new String[] { "Exit Flashcard", "Next Question" });
+			setButtonNames(new String[] { "Exit Flashcard", "Next Question", "SHOW" });
 		else if (questionPageNumber > 1 && questionPageNumber < TakeQuizTakeSet.totalNumQuestions)
 			setButtonNames(new String[] { "Exit Flashcard", "Previous Question", "Next Question", });
 		else if (questionPageNumber == TakeQuizTakeSet.totalNumQuestions) {
@@ -158,15 +163,21 @@ public class QuizAndFlashQuestionPage extends CustomPage {
 			case 0:
 				this.currentActions[i].addActionListener(new ExitFlashCard());
 				break;
+				// The questionPageNumber increment was moved here to be able
+				// to use show/Hide without a pop up
 			case 1:
-				if (questionPageNumber == 1)
-					this.currentActions[i].addActionListener(new FlashNextQuestion());
+				if (questionPageNumber == 1){
+					questionPageNumber++;
+					this.currentActions[i].addActionListener(new FlashNextQuestion());}
 				else if (questionPageNumber > 1)
 					this.currentActions[i].addActionListener(new Previous());
 				break;
+				// The questionPageNumber increment was moved here to be able
+				// to use show/Hide without a pop up
 			case 2:
-				if (questionPageNumber < TakeQuizTakeSet.totalNumQuestions)
-					this.currentActions[i].addActionListener(new FlashNextQuestion());
+				if (questionPageNumber < TakeQuizTakeSet.totalNumQuestions){
+					questionPageNumber++;
+					this.currentActions[i].addActionListener(new FlashNextQuestion());}
 				else
 					this.currentActions[i].addActionListener(new SubmitFlash());
 				break;
@@ -180,22 +191,62 @@ public class QuizAndFlashQuestionPage extends CustomPage {
 		// is a public variable and should be set by a function that
 		// get the answer for the current question
 		showHide.addActionListener(new ActionListener() {
-
+			
+			
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				
+				//Save this code in case there is a problem with the show/Hide, and 
+				// we need to revert back to the popup
+				
 				// Create PopUp object
-				PopUp answer;
-
+				//PopUp answer;
+				
 				// If showHide is checked then show the answer. After
 				// answer box is closed, the checkbox will become unselected
-				if (showHide.isSelected()) {
+				/*if (showHide.isSelected()) 
+				{
+					
 					FlashcardAnswer = "This is the answer";
-					answer = new PopUp("FlashCard Question/Answer", PopUp.PanelType.LOGO_ONLY_TYPE, PopUpType.FlashcardAnswerPopUp);
+					//answer = new PopUp("FlashCard Question/Answer", PopUp.PanelType.LOGO_ONLY_TYPE, PopUpType.FlashcardAnswerPopUp);
 					showHide.setSelected(false);
+					
+				}*/
+			
+		
+				
+				// Set the answer string to NULL if show is checked.  Also need to set
+				// the flashcard answer to the appropriate string here using the whatever
+				// backend function was created
+				if(isChecked  == true)
+				{
+					FlashcardAnswer = "This is the answer";
+					
 				}
-			}
-		});
-
+				else
+				{
+					FlashcardAnswer = "";
+					
+				}
+				
+				// Decrement the page number to prevent the show/Hide box from advancing
+				// to the next page
+				questionPageNumber--;
+				
+			// Rebuild the page
+			QuizAndFlashQuestionPage FquestionPage = new QuizAndFlashQuestionPage("Flash Card Question Page: " + QuizAndFlashQuestionPage.questionPageNumber,
+						QuizAndFlashQuestionPage.PanelType.FLASHCARDPAGE, QuizAndFlashQuestionPage.PageType.FLASHCARD);
+		    FquestionPage.parentController = parentController;
+			parentController.replaceCurrentView(FquestionPage);
+		    
+			// Change boolean value of checked or unchecked to determine which string to
+			// show: NULL or the answer string
+			isChecked = !isChecked;
+				
+			}  	// end actionPerformed
+			
+		});		// end showHide.addActionListener
+		
 	}
 
 	// Action listener for next question button. Clicking it takes the user
@@ -242,6 +293,7 @@ public class QuizAndFlashQuestionPage extends CustomPage {
 		}
 
 	}
+
 
 	// Take you back to the quiz main page
 	private class ExitQuiz implements ActionListener {
@@ -303,8 +355,8 @@ public class QuizAndFlashQuestionPage extends CustomPage {
 					QuizAndFlashQuestionPage.PanelType.FLASHCARDPAGE, QuizAndFlashQuestionPage.PageType.FLASHCARD);
 			FquestionPage.parentController = parentController;
 			parentController.displayView(FquestionPage);
-			questionPageNumber++; // increment the quiz question number
-
+			//questionPageNumber++; // increment the quiz question number
+			
 		}
 
 	}

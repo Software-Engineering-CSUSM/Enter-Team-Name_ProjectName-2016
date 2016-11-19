@@ -67,16 +67,13 @@ public class TakeQuizTakeSet extends CustomPage {
 	public void updateActions() {
 
 		// Set the button names
-		setButtonNames(new String[] { "Start", "Do Nothing" });
+		setButtonNames(new String[] { "Take Selected Quiz"});
 
 		for (int i = 0; i < this.currentActions.length; i++) {
 			switch (i) {
 			case 0:
 				QuizAndFlashQuestionPage.questionPageNumber = 1;
 				this.currentActions[i].addActionListener(new StartQuiz());
-				break;
-			case 1:
-				// this.currentActions[i].addActionListener(new OpenQuizMain());
 				break;
 			default:
 				System.out.println("Not enough implemented classes");
@@ -89,16 +86,13 @@ public class TakeQuizTakeSet extends CustomPage {
 	public void updateActionsFlashcard() {
 
 		// Set the button names
-		setButtonNames(new String[] { "Start", "Do Nothing" });
+		setButtonNames(new String[] { "Take Selected Set"});
 
 		for (int i = 0; i < this.currentActions.length; i++) {
 			switch (i) {
 			case 0:
 				QuizAndFlashQuestionPage.questionPageNumber = 1;
 				this.currentActions[i].addActionListener(new StartSet());
-				break;
-			case 1:
-				// this.currentActions[i].addActionListener(new OpenQuizMain());
 				break;
 			default:
 				System.out.println("Not enough implemented classes");
@@ -116,6 +110,8 @@ public class TakeQuizTakeSet extends CustomPage {
 		public void actionPerformed(ActionEvent e) {
 			System.out.println("Opening " + this.getClass());
 
+			// This is for short answer quiz			 
+			
 			/*QuizAndFlashQuestionPage QquestionPage = new QuizAndFlashQuestionPage("Quiz Question Page: " + QuizAndFlashQuestionPage.questionPageNumber,
 					QuizAndFlashQuestionPage.PanelType.QUESTIONPAGE, QuizAndFlashQuestionPage.PageType.QUIZ);
 			QquestionPage.parentController = parentController;
@@ -135,20 +131,26 @@ public class TakeQuizTakeSet extends CustomPage {
 
 	// Button listener to start the Set. Also increments the
 	// questionPageNumber which keeps track of the question
-	// page.
+	// page.  The questionPageNumber was commented out and moved into
+	// the update action to be able to use show hide without a pop up.
 	private class StartSet implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			System.out.println("Opening " + this.getClass());
 
-			QuizAndFlashQuestionPage FCquestionPage = new QuizAndFlashQuestionPage("Flash Card Question Page: " + QuizAndFlashQuestionPage.questionPageNumber,
-					QuizAndFlashQuestionPage.PanelType.FLASHCARDPAGE, QuizAndFlashQuestionPage.PageType.FLASHCARD);
-			FCquestionPage.parentController = parentController;
-			parentController.displayView(FCquestionPage);
-			QuizAndFlashQuestionPage.questionPageNumber++; // Increment the
-															// questionPageNumber
-
+			
+				QuizAndFlashQuestionPage FCquestionPage = new QuizAndFlashQuestionPage("Flash Card Question Page: " + QuizAndFlashQuestionPage.questionPageNumber,
+						QuizAndFlashQuestionPage.PanelType.FLASHCARDPAGE, QuizAndFlashQuestionPage.PageType.FLASHCARD);
+				FCquestionPage.parentController = parentController;
+				parentController.displayView(FCquestionPage);
+				
+				//Save questionPageNumber incrementer in case we need to switch back
+				// to pop up
+				
+				//QuizAndFlashQuestionPage.questionPageNumber++;
+	
+			
 		}
 
 	}

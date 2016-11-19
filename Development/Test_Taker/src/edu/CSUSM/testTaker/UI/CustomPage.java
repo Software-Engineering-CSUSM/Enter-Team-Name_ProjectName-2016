@@ -64,10 +64,15 @@ public class CustomPage extends JPanel {
 	public boolean Correct; // Bool value to determine correct or incorrect for
 							// results page
 	
+	// Variables used for the show/Hide checkbox
+	public static int CheckUncheck = 0;
+	public static boolean isChecked = true;
+	
 	// Made the text areas public so that they can be saved into
 	// a string in the QuizAndFlashMain class.
 	public JTextArea question, answer;
 	
+	// Multiple choice textfields and radiobuttons
 	public  JTextField answerTextMC[] = new JTextField[4];
 	public  JRadioButton MC_Answers[] = new JRadioButton[4];
 	
@@ -811,23 +816,16 @@ private void createResultsPageType() {
 	// String which can be set by the backend function with the appropriate
 	// string
 	private void createFlashcardPageType() {
-
-		JLabel iconLabel = new JLabel();
-		iconLabel.setBounds(0, 0, this.getWidth(), (int) (this.getHeight() / 2.25));
-		iconLabel.setIcon(newIcon);
-		/**
-		 * 
-		 * commened out the logo due to issues with it covering the question and
-		 * checkbox
-		 * 
-		 */
-		// this.add(iconLabel);
-
-		// Align to center
-		iconLabel.setHorizontalAlignment(JLabel.CENTER);
-		iconLabel.setVerticalAlignment(JLabel.CENTER);
-
-		centerOfNewFrame = (this.getHeight() - (this.getHeight() - iconLabel.getHeight()));
+		
+	
+		// Condition to check the show/hide button every other click
+		if(CheckUncheck % 2 == 0)
+			showHide.setSelected(true);
+	
+		CheckUncheck++;
+		
+		// Alignment for question label, answer label, and show/Hide box
+		centerOfNewFrame = (this.getHeight() - (this.getHeight() - ((int) (this.getHeight() / 2.25))));
 
 		// String to hold questions. To be updated with function that passes
 		// the string of the actual question
@@ -836,18 +834,18 @@ private void createResultsPageType() {
 		// Create a JLabel to display the question, set its
 		// alignment, font type and size
 		JLabel questionLabel = new JLabel(questionStr);
-		// JLabel answerLabel = new JLabel(FlashcardAnswer);
+		JLabel answerLabel = new JLabel(FlashcardAnswer);
 		questionLabel.setAlignmentX(centerOfNewFrame);
 		questionLabel.setOpaque(false);
-		// answerLabel.setAlignmentX(centerOfNewFrame);
-		// answerLabel.setOpaque(false);
+		answerLabel.setAlignmentX(centerOfNewFrame);
+		answerLabel.setOpaque(false);
 		Font font = new Font("Courier", Font.BOLD, 16);
 		questionLabel.setFont(font);
-		// answerLabel.setFont(font);
+		answerLabel.setFont(font);
 
-		// Set the question jlabel's max size
+		//Set the question jlabel's max size
 		questionLabel.setMaximumSize(getMaximumSize());
-		// answerLabel.setMaximumSize(getMaximumSize());
+		answerLabel.setMaximumSize(getMaximumSize());
 
 		showHide.setAlignmentX(centerOfNewFrame);
 
@@ -857,8 +855,8 @@ private void createResultsPageType() {
 		questionBox.add(questionLabel);
 		questionBox.add(Box.createVerticalStrut(100));
 		questionBox.add(showHide);
-		// questionBox.add(Box.createVerticalStrut(40));
-		// questionBox.add(answerLabel);
+		questionBox.add(Box.createVerticalStrut(40));
+		questionBox.add(answerLabel);
 
 		// Constraints for the panel holding the text areas for
 		// resizing purposes.
@@ -880,10 +878,14 @@ private void createResultsPageType() {
 
 		// If it is the first question page, it will only have 2
 		// buttons, every other page will have 3
+		System.out.println("questionPageNumber is " + QuizAndFlashQuestionPage.questionPageNumber);
 		if (QuizAndFlashQuestionPage.questionPageNumber == 1)
 			addButtons(2);
+		
 		else
 			addButtons(3);
+		
+		
 
 	}
 
