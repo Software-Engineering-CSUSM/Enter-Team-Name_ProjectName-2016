@@ -5,22 +5,21 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
+import javax.swing.border.MatteBorder;
 
 import edu.CSUSM.testTaker.LibraryController;
 import edu.CSUSM.testTaker.LibraryController.CourseInfo;
-import edu.CSUSM.testTaker.Backend.Course;
-import edu.CSUSM.testTaker.Backend.Question;
 
 /**
  * 
@@ -68,9 +67,10 @@ public class ManageData<ObjectDisplayed> extends JPanel {
 	public static String currentIDSelected;
 
 	/**
-	 * @param panelTitle
-	 * @param rowLabels
-	 * @param objectIdentifiers
+	 * @Description - Default constructor for a simple table view. All fields are required.
+	 * @param panelTitle - Sets the panel title (Big letters)
+	 * @param rowLabels - Sets the row's text
+	 * @param objectIdentifiers	- The ID that is refrered to when a radio button is selected. This is the action command,
 	 */
 	public ManageData(String panelTitle, String[] rowLabels, String[] objectIdentifiers) {
 		// First, let's just see if the class works the way we want it to from
@@ -104,9 +104,13 @@ public class ManageData<ObjectDisplayed> extends JPanel {
 			System.out.println(e.getLocalizedMessage());
 		}
 
-		currentIDSelected = "";		//Resets the ID each time
+		//currentIDSelected = "";		//Resets the ID each time
 	}
 	
+	/**
+	 * @Description - REbuilds the table if content is reloaded from library controller - DNF
+	 * @deprecated
+	 */
 	public void rebuildTable(){
 		//Reset the current table
 		tableView = null;
@@ -118,6 +122,19 @@ public class ManageData<ObjectDisplayed> extends JPanel {
 		revalidate();
 	}
 
+	/**
+	 * @Desctiption - unsets the selected one from the button group
+	 */
+	public static void resetButtons(){
+		Row.resetRowButtons(); //From Row();
+		
+		//reset the current ID
+		ManageData.currentIDSelected = null;
+	}
+	
+	/**
+	 * @Description - Builds the table based on the current Rows and IDs set.
+	 */
 	private void buildTable() {
 		// Create the main Table view
 		tableView = new JPanel();
@@ -139,6 +156,7 @@ public class ManageData<ObjectDisplayed> extends JPanel {
 		JScrollPane scrollView = new JScrollPane(innerView, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
 				JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		scrollView.getVerticalScrollBar().setUnitIncrement(15);
+		scrollView.setBorder(new MatteBorder(1,0,1,0, Color.lightGray));
 		// scrollView.setBackground(Color.GREEN);
 		tableView.add(scrollView);
 
@@ -149,34 +167,19 @@ public class ManageData<ObjectDisplayed> extends JPanel {
 		//Get all of the questions from the libcontroller
 		//System.out.println(LibraryController.giveCourseList());
 		
-		if(this.getRowHeaders().length == 0 || this.getRowIdentifiers().length == 0){
+		if(this.getRowIdentifiers() == null || this.getRowHeaders() == null || this.getRowHeaders().length == 0 || this.getRowIdentifiers().length == 0){
 			
-			//Add test data
-			for(CourseInfo aCourseSet : LibraryController.giveCourseList()){
-
-				//Add a few times
-				for(int i = 0; i < 10; i++){
-					Course currentCourse = aCourseSet.thisCourse;
-
-					// This will eventually be more specific
-					Row newRow = new Row(currentCourse.getName(), currentCourse.getID());
-					// newRow.setSize(this.getWidth(), this.getHeight() / 3);
-					gb.gridy++;
-					gb.weightx = 1;
-					gb.weighty = 1;
-					gb.fill = GridBagConstraints.HORIZONTAL;
-					// Add the row to the table
-					innerView.add(newRow, gb);
-				}
-			}
+			//Alert the user that no data was found
+			//JOptionPane.showMessageDialog(null, "No Content Was Found.\nPlease add content by selecting \"Add\" below");
+			
 		}else{
 			//Add the data requested
-			for(int i = 0; i < this.getRowHeaders().length; i++){
+			for(int i = 0; i < this.getRowIdentifiers().length; i++){
 				Row newRow = new Row(rowHeaders[i], rowIdentifiers[i]);
 				gb.gridy++;
 				gb.weightx = 1;
 				gb.weighty = 1;
-				gb.fill = GridBagConstraints.HORIZONTAL;
+				gb.fill = GridBagConstraints.BOTH;
 				// Add the row to the table
 				innerView.add(newRow, gb);
 			}
@@ -208,6 +211,13 @@ public class ManageData<ObjectDisplayed> extends JPanel {
 
 			build();
 		}
+		
+		/**
+		 * @Desctiption - unsets the selected one from the button group
+		 */
+		public static void resetRowButtons(){
+			group.clearSelection();
+		}
 
 		private Row() {
 			setAccessID("NoID");
@@ -222,7 +232,7 @@ public class ManageData<ObjectDisplayed> extends JPanel {
 		private void build() {
 			this.setBackground(Color.WHITE);
 			ROW_COUNT++;
-			this.setBorder(new LineBorder(Color.BLACK, 1));
+			this.setBorder(new MatteBorder(0,5, 1, 5, Color.LIGHT_GRAY));
 			this.setLayout(new BorderLayout());
 
 			// Add a label indicating the Row number
@@ -242,6 +252,7 @@ public class ManageData<ObjectDisplayed> extends JPanel {
 
 			// Add JRadioButton
 			JRadioButton rb = new JRadioButton();
+			rb.setBorder(new MatteBorder(0, 25, 1, 25, Color.BLACK));
 			rb.setActionCommand(this.accessID);
 			group.add(rb);
 			this.add(rb, BorderLayout.EAST);
@@ -251,7 +262,7 @@ public class ManageData<ObjectDisplayed> extends JPanel {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					//Print out the action command
-					System.out.println(e.getActionCommand()); //Displays the id of the row when selected.
+					//System.out.println(e.getActionCommand()); //Displays the id of the row when selected.
 					
 					//This is where we are going to open whatever content we need from the id (now that we have it)
 					currentIDSelected = e.getActionCommand();
@@ -278,7 +289,7 @@ public class ManageData<ObjectDisplayed> extends JPanel {
 	}
 
 	/**
-	 * 
+	 * @Description - Sets the title label of the table (Caption)
 	 */
 	public void setQuestionLayout() {
 		titleLabel.setText(this.titleOfCurrentQuestionPanel);

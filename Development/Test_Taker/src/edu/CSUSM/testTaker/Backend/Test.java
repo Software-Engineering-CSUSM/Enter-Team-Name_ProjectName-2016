@@ -115,7 +115,15 @@ public class Test /*extends TaskObject*/ implements Serializable, Registerable{
 	 * @return An array with the IDs of all Questions in this Test.
 	 */
 	public String[] getQuestionIDs(){
-		return questionIDs.toArray(null);
+		return questionIDs.toArray(new String[questionIDs.size()]);
+	}
+	
+	/**
+	 * Give identifier strings of all questions in Test.
+	 * @return An ArrayList with the ID Strings of all Questions in this Test.
+	 */
+	public ArrayList <String> getQuestionIDList(){
+		return new ArrayList<String>(questionIDs);
 	}
 
 
@@ -124,7 +132,15 @@ public class Test /*extends TaskObject*/ implements Serializable, Registerable{
 	 * @return The questions in the test, in order, at this moment in time.
 	 */
 	public Question[] getQuestions(){
-		return questionList.toArray(null);
+		return questionList.toArray(new Question[questionList.size()]);
+	}
+	
+	/**
+	 * Get a list of all Questions in the test
+	 * @return The questions in the test, in order, at this moment in time in an ArrayList.
+	 */
+	public ArrayList<Question> getQuestionList(){
+		return new ArrayList<Question>(questionList);
 	}
 
 	/**
@@ -134,6 +150,33 @@ public class Test /*extends TaskObject*/ implements Serializable, Registerable{
 	 */
 	public Question getQuestion(int qn){
 		return questionList.get(qn);
+	}
+	
+	/**
+	 * Get the ID of a particular Question
+	 * @param index the index of the Question to retrieve the ID of
+	 * @return a unique ID String for retrieving the Question from the Library
+	 */
+	public String getQuestionID(int index){
+		return questionIDs.get(index);
+	}
+	
+	
+	/**
+	 * Get the Name of a particular question
+	 * @param index the index of the Question to retrieve the name of
+	 * @return the name String of the Question
+	 */
+	public String getQuestionName(int index){
+		return LibraryController.getItemName(questionIDs.get(index));
+	}
+	
+	/**
+	 * Get a list of the "names" of all the Questions
+	 * @return an ArrayList of name Strings
+	 */
+	public ArrayList <String> getQuestionNames(){
+		return LibraryController.getNamesForIDs(questionIDs);
 	}
 
 	/**
@@ -151,6 +194,14 @@ public class Test /*extends TaskObject*/ implements Serializable, Registerable{
 	 */
 	public int getQuestionPoints(int qn){
 		return questionPoints.get(qn);
+	}
+	
+	/**
+	 * Get a list of the points values for all Questions in the Test in order
+	 * @return an ArrayList of Integers
+	 */
+	public ArrayList<Integer> getQuestionPoints(){
+		return new ArrayList<Integer>(questionPoints);
 	}
 
 	/**

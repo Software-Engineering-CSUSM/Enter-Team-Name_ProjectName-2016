@@ -4,6 +4,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 
+import javax.swing.JOptionPane;
+
+import edu.CSUSM.testTaker.LibraryController;
+import edu.CSUSM.testTaker.Backend.Course;
+import edu.CSUSM.testTaker.Backend.Test;
 import edu.CSUSM.testTaker.UI.CustomPage;
 
 /*
@@ -19,6 +24,7 @@ public class TestListManager extends CustomPage {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	public static Course CourseID;
 
 	public TestListManager(String panelName, PanelType currentPanelType) {
 		super(panelName, currentPanelType);
@@ -38,7 +44,11 @@ public class TestListManager extends CustomPage {
 		// TODO Auto-generated constructor stub
 		updateActions();
 	}
-	
+
+	public static void setCourse(Course id){
+		CourseID = id;
+	}
+
 	public void updateActions() {
 
 		// Set the button names
@@ -75,22 +85,41 @@ public class TestListManager extends CustomPage {
 			// Constructor uses a main window with just a logo type, and
 			// an SaveQuiz to create the correct popUp window in the
 			// PopUp class
-			PopUp popup = new PopUp("",PopUp.PanelType.LOGO_ONLY_TYPE, PopUpType.AddTest);
-			
-			
-			//After saving course name in the pop up, call test main and refresh
-			CustomPage.setqBuilderNumButtons(3);
-			TestListManager tlm = new TestListManager("Test List Manager", TestListManager.PanelType.QUESTION_BUILDER_TYPE);
-			//tlm.setName("Test List Manager");
-			tlm.parentController = parentController;
-			parentController.displayView(tlm);
-			
-			tlm.revalidate();
+			try{
+				//Check to see if a test is selected. If not, alert the user they must seect one
+				if(ManageData.currentIDSelected == null || ManageData.currentIDSelected.length() == 0){
+					throw new NullPointerException();
+				}else{
+					String newTestName = JOptionPane.showInputDialog("Please name your test: ");
+					if(newTestName != null && newTestName.length() != 0){
+
+						//Add the Course
+						Test newCourse = new Test();
+						newCourse.setName(newTestName);
+
+						CourseID.addTest(newCourse);
+
+						//After saving course name in the pop up, call courses main and refresh
+						CustomPage.setqBuilderNumButtons(3);
+
+						CustomPage.setQBRowHeaders(LibraryController.getAllTestNamesInCourse(CourseID.getID()));
+						CustomPage.setQBRowIDs(LibraryController.getAllTestIDsInCourse(CourseID.getID()));
+						TestListManager cm = new TestListManager("Tests", CustomPage.PanelType.QUESTION_BUILDER_TYPE);
+						cm.parentController = parentController;
+						parentController.replaceCurrentView(cm);
+						//System.out.println("Value Found: " + newTestName.toString());
+					}else{
+						System.out.println("No Value Found");
+					}
+				}
+			}catch(NullPointerException ex){
+				JOptionPane.showMessageDialog(null, "Please select a test before continuing");
+			}
 
 		}
 
 	}
-	
+
 	private class DeleteTest implements ActionListener {
 
 		@Override
@@ -99,36 +128,81 @@ public class TestListManager extends CustomPage {
 
 			// Call Pop Up window to confirm deleting test.  To actually delete test upon clicking
 			// "yes", implement the function in the action listener in the PopUp class
-			PopUp popup = new PopUp("", PopUp.PanelType.LOGO_ONLY_TYPE, PopUpType.DeleteTest);
-			
-			
-			//After deleting a test from the pop up, call courses main and refresh
-			CustomPage.setqBuilderNumButtons(3);
-			TestListManager tlm = new TestListManager("Test List Manager", TestListManager.PanelType.QUESTION_BUILDER_TYPE);
-			//tlm.setName("Test List Manager");
-			tlm.parentController = parentController;
-			parentController.displayView(tlm);
-			
-			tlm.revalidate();
+			//PopUp popup = new PopUp("", PopUp.PanelType.LOGO_ONLY_TYPE, PopUpType.DeleteTest);
+
+			try{
+				//Check to see if a test is selected. If not, alert the user they must seect one
+				if(ManageData.currentIDSelected == null || ManageData.currentIDSelected.length() == 0){
+					throw new NullPointerException();
+				}else{
+					//After deleting a test from the pop up, call courses main and refresh
+					int reply = JOptionPane.showConfirmDialog(null, "Are you sure you wish to delete the test?:\n" + LibraryController.retrieveCourse(ManageData.currentIDSelected), "Delete Course", JOptionPane.YES_NO_OPTION);
+					if (reply == JOptionPane.YES_OPTION) {
+						//Refresh the table here
+
+						LibraryController.deleteTest(ManageData.currentIDSelected);
+
+						//After deleting a course from the pop up, call courses main and refresh
+						CustomPage.setqBuilderNumButtons(3);
+
+						CustomPage.setQBRowHeaders(LibraryController.getAllTestNamesInCourse(CourseID.getID()));
+						CustomPage.setQBRowIDs(LibraryController.getAllTestIDsInCourse(CourseID.getID()));
+						TestListManager cm = new TestListManager("Tests", CustomPage.PanelType.QUESTION_BUILDER_TYPE);
+						cm.parentController = parentController;
+						parentController.replaceCurrentView(cm);
+					}
+					else {
+						//Do nothing
+					}
+				}
+			}catch(NullPointerException ex){
+				JOptionPane.showMessageDialog(null, "Please select a test before continuing");
+			}
 
 		}
 
 	}
-	
+
 	private class ManageSelectedTest implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			 System.out.println("Opening " + this.getClass());
+			//System.out.println("Opening " + this.getClass());
 
-			// Set number of buttons to two for next page
-			CustomPage.setqBuilderNumButtons(2);
-			
-			QuestionListManager qlm = new QuestionListManager("Question List Manager", QuestionListManager.PanelType.QUESTION_BUILDER_TYPE);
-			//qlm.setName("Question List Manager");
-			qlm.parentController = parentController;
-			parentController.displayView(qlm);
-			
+			try{
+				//Check to see if a test is selected. If not, alert the user they must seect one
+				if(ManageData.currentIDSelected == null || ManageData.currentIDSelected.length() == 0){
+					throw new NullPointerException();
+				}else{
+					// Set number of buttons to two for next page
+					CustomPage.setqBuilderNumButtons(2);
+
+					//Set the rows to all questions in teh test
+					CustomPage.setQBRowHeaders(LibraryController.getAllQuestionNamesInCourse(ManageData.currentIDSelected));
+					CustomPage.setQBRowIDs(LibraryController.getAllQuestionIDsInCourse(ManageData.currentIDSelected));
+					
+					//Save the reference to the current test
+					/** Currently returning a null object */
+					try{
+						LibraryController.CURRENT_TEST = LibraryController.retrieveTest(ManageData.currentIDSelected);
+						System.out.print(LibraryController.retrieveTest(ManageData.currentIDSelected).toString());
+					}catch(Exception ex){
+						System.out.println("Error getting test: " + ex.getMessage());
+					}finally{
+						System.out.println("DATA: " + LibraryController.retrieveTest(ManageData.currentIDSelected));
+						System.out.println("CurrentID: " + ManageData.currentIDSelected);
+					}
+
+					QuestionListManager qlm = new QuestionListManager("Question List Manager", QuestionListManager.PanelType.QUESTION_BUILDER_TYPE);
+					//qlm.setName("Question List Manager");
+					ManageData.resetButtons();
+					qlm.parentController = parentController;
+					parentController.displayView(qlm);
+				}
+			}
+			catch(NullPointerException ex){
+				JOptionPane.showMessageDialog(null, "Please select a test before continuing");
+			}
 
 		}
 

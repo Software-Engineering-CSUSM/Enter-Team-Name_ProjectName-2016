@@ -519,7 +519,7 @@ private void createMultipleChoice() {
 		ManageData<String> newDataManager = new ManageData<String>(this.getName(), rowHeaders, idens);
 		
 		//For testing, show the amount of questions found:
-		System.out.println("Rows Found: " + rowHeaders.length + "\nRow IDs Found: " + idens.length);
+		//System.out.println("Rows Found: " + rowHeaders.length + "\nRow IDs Found: " + idens.length);
 		
 		this.add(newDataManager, BorderLayout.CENTER);
 
