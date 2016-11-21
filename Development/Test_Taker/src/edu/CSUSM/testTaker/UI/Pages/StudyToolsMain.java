@@ -86,10 +86,11 @@ public class StudyToolsMain extends CustomPage {
 		public void actionPerformed(ActionEvent e) {
 			System.out.println("Opening " + this.getClass());
 
-			//FlashCardMain flashCard = new FlashCardMain(FlashCardMain.PanelType.THREE_BUTTON_TYPE);
-			QuizAndFlashMain flashCard = new QuizAndFlashMain("Flash Card Page", QuizAndFlashMain.PanelType.THREE_BUTTON_TYPE, QuizAndFlashMain.PageType.FLASHCARD);
-			flashCard.parentController = parentController;
-			parentController.displayView(flashCard);
+			CustomPage.setqBuilderNumButtons(1);
+			TakeQuizTakeSet takeSet = new TakeQuizTakeSet("Select Flashcard Set" , TakeQuizTakeSet.PanelType.QUESTION_BUILDER_TYPE,
+					TakeQuizTakeSet.PageType.FLASHCARD);
+			takeSet.parentController = parentController;
+			parentController.displayView(takeSet);
 		}
 
 	}
@@ -101,10 +102,11 @@ public class StudyToolsMain extends CustomPage {
 			System.out.println("Opening " + this.getClass());
 
 			// System.out.println("Opening " + this.getClass());
-			QuizAndFlashMain quizPage = new QuizAndFlashMain("Quiz Page", QuizAndFlashMain.PanelType.THREE_BUTTON_TYPE, QuizAndFlashMain.PageType.QUIZ);
-			quizPage.setName("Quiz Page");
-			quizPage.parentController = parentController;
-			parentController.displayView(quizPage);
+			CustomPage.setqBuilderNumButtons(1);
+			TakeQuizTakeSet takeQ = new TakeQuizTakeSet("Take Quiz Page", TakeQuizTakeSet.PanelType.QUESTION_BUILDER_TYPE,
+					TakeQuizTakeSet.PageType.QUIZ);
+			takeQ.parentController = parentController;
+			parentController.displayView(takeQ);
 
 		}
 
