@@ -14,11 +14,13 @@ import java.net.URL;
 import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
+import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -62,11 +64,29 @@ public class CustomPage extends JPanel {
 	public boolean Correct; // Bool value to determine correct or incorrect for
 							// results page
 	
+	// Variables used for the show/Hide checkbox
+	public static int CheckUncheck = 0;
+	public static boolean isChecked = true;
+	
 	// Made the text areas public so that they can be saved into
 	// a string in the QuizAndFlashMain class.
 	public JTextArea question, answer;
 	
+	// Multiple choice textfields and radiobuttons
 	public  JTextField answerTextMC[] = new JTextField[4];
+	public  JRadioButton MC_Answers[] = new JRadioButton[4];
+	
+	// Integer array to hole a random number to use as the index for
+			// the multiple choice answers
+	public static int randAnswerNum[] = new int[4];
+	
+	// Total Number of questions for a quiz or flashcard set.
+	// should be set by a function that gets the total number of
+	// questions for each particular quiz or flashcard set
+	public static int totalNumQuestions = 5;
+	
+	public static int resultsChecker[] = new int[100];
+	public static int radioButtonTracker[] = new int [100];
 	
 	//int to set Number of buttons for type QuestionBuilder
 		protected static int qBuilderNumButtons;
@@ -82,14 +102,14 @@ public class CustomPage extends JPanel {
 	/** End of question panel specific vars */
 
 	public static enum PanelType {
-		TWO_BUTTON_TYPE, THREE_BUTTON_TYPE, LOGO_ONLY_TYPE, QUESTION_BUILDER_TYPE, Q_and_A_Type, QUESTIONPAGE, FLASHCARDPAGE, RESULTS,
+		TWO_BUTTON_TYPE, THREE_BUTTON_TYPE, LOGO_ONLY_TYPE, QUESTION_BUILDER_TYPE, Q_and_A_Type, QUESTIONPAGE, QUESTIONPAGEMC, FLASHCARDPAGE, RESULTS,
 		Q_and_A_Type_MC
 	};
 
 	// Enumerator to determine whether to update actions for quizzes
 	// or for flashcards
 	public static enum PageType {
-		QUIZ, FLASHCARD
+		QUIZ, QUIZ_MC, FLASHCARD
 	};
 
 	// Enumerators to determine which pop up window to display in the
@@ -213,6 +233,10 @@ public class CustomPage extends JPanel {
 		case QUESTIONPAGE:
 			createQuestionPageType();
 			break;
+			//Multiple Choice
+		case QUESTIONPAGEMC:
+			createQuestionPageTypeMC();
+			break;
 		// Take Set
 		case FLASHCARDPAGE:
 			createFlashcardPageType();
@@ -299,17 +323,17 @@ public class CustomPage extends JPanel {
 		// I changed the parameter for height dividing by 5 do keep the
 		// logo from covering the text fields. However, the width is not
 		// getting placed in the correct spot.
-		iconLabel.setBounds(0, 0, this.getWidth(), (int) (this.getHeight() / 3.25));
-		iconLabel.setIcon(newIcon);
-		this.add(iconLabel);
+		//iconLabel.setBounds(0, 0, this.getWidth(), (int) (this.getHeight() / 3.25));
+		//iconLabel.setIcon(newIcon);
+		//this.add(iconLabel);
 		// ******************
 		// this line was commented out because it was hiding the text areas
 		// ****************
 		// this.add(iconLabel, BorderLayout.NORTH);
 
 		// Align to center
-		iconLabel.setHorizontalAlignment(JLabel.CENTER);
-		iconLabel.setVerticalAlignment(JLabel.CENTER);
+		//iconLabel.setHorizontalAlignment(JLabel.CENTER);
+		//iconLabel.setVerticalAlignment(JLabel.CENTER);
 
 		CustomPage.centerOfNewFrame = iconLabel.getHeight() - iconLabel.getY();
 
@@ -326,7 +350,8 @@ public class CustomPage extends JPanel {
 		c.gridx = 1;
 		c.gridy = 1;
 		c.fill = GridBagConstraints.HORIZONTAL;
-		c.insets = new Insets(100, 10, 10, 10);
+		//c.insets = new Insets(100, 10, 10, 10);
+		c.insets = new Insets(100, 50, 120, 50);
 
 		// Create border for text areas
 		Border border = BorderFactory.createLineBorder(Color.BLACK);
@@ -385,24 +410,7 @@ public class CustomPage extends JPanel {
 	}
 
 private void createMultipleChoice() {
-		JLabel iconLabel = new JLabel();
 
-		// I changed the parameter for height dividing by 5 do keep the
-		// logo from covering the text fields. However, the width is not
-		// getting placed in the correct spot.
-		iconLabel.setBounds(0, 0, this.getWidth(), (int) (this.getHeight() / 3.25));
-		iconLabel.setIcon(newIcon);
-		this.add(iconLabel);
-		// ******************
-		// this line was commented out because it was hiding the text areas
-		// ****************
-		// this.add(iconLabel, BorderLayout.NORTH);
-
-		// Align to center
-		iconLabel.setHorizontalAlignment(JLabel.CENTER);
-		iconLabel.setVerticalAlignment(JLabel.CENTER);
-
-		CustomPage.centerOfNewFrame = iconLabel.getHeight() - iconLabel.getY();
 
 		// Create a text area for the question and a text area for the answer
 		 question = new JTextArea("Question", 10, 10);
@@ -418,7 +426,7 @@ private void createMultipleChoice() {
 		c.gridx = 1;
 		c.gridy = 1;
 		c.fill = GridBagConstraints.HORIZONTAL;
-		c.insets = new Insets(100, 50, 1, 50);
+		c.insets = new Insets(100, 50, 120, 50);
 
 		// Create border for text areas
 		Border border = BorderFactory.createLineBorder(Color.BLACK);
@@ -445,12 +453,13 @@ private void createMultipleChoice() {
 		questionBox.add(question);
 
 		
-		 //Create text areas for the multiple choice answers.  The answer
-		 // for box 0 will be the correct answer
-		// JTextField answerTextMC[] = new JTextField[4];
-		 
+		
+		 // Create Box to hold the textfield for the answers to the multiple
+		// choice.  The first textfield box will hold the correct answer
 		 Box answerBox = Box.createVerticalBox();
 		 answerBox.add(Box.createVerticalStrut(20));
+		 
+		 // Create the 4 textfield boxes for the multiple choice answers
 		 for(int i = 0; i < 4; i++)
 		 {
 			
@@ -464,14 +473,6 @@ private void createMultipleChoice() {
 			
 		}
 		
-		
-		
-		// Create a vertical box for the answer text area
-		// placing a label about the text area
-		/*Box answerBox = Box.createVerticalBox();
-		answerBox.add(new JLabel("Answer"));
-		answerBox.add(Box.createVerticalStrut(5));
-		answerBox.add(answer);*/
 
 		// Create a horizontal box to hold the question and
 		// answer text areas and use Strut to place space between them
@@ -626,16 +627,124 @@ private void createMultipleChoice() {
 			addButtons(3);
 
 	}
+	private void createQuestionPageTypeMC() {
 
-	// This class creates a results page to display the number of questions
-	// correct out of the total number of questions. It also displays which
-	// questions are right, and which questions are wrong.
-	private void createResultsPageType() {
+		
+		// String to hold questions. To be updated with function that passes
+		// the string of the actual question
+		String questionStr = new String("This is where the question goes.");
 
-		JLabel iconLabel = new JLabel();
-		iconLabel.setBounds(0, 0, this.getWidth(), (int) (this.getHeight() / 2.25));
-		iconLabel.setIcon(newIcon);
-		// this.add(iconLabel);
+		// Create a JLabel to display thew question, set its
+		// alignment, font type and size
+		JLabel questionLabel = new JLabel(questionStr);
+		questionLabel.setAlignmentX(centerOfNewFrame);
+		questionLabel.setOpaque(false);
+		Font font = new Font("Courier", Font.BOLD, 16);
+		questionLabel.setFont(font);
+
+		// Set the question jlabel's max size
+		questionLabel.setMaximumSize(getMaximumSize());
+
+
+
+		// Create a vertical box to place the question jlabel on top
+		// of the answer text area
+		Box questionBox = Box.createVerticalBox();
+	
+		// Button Group for Multiple Choice answers
+		ButtonGroup MCButtonGroup = new ButtonGroup();
+		
+		// Integer array to hole a random number to use as the index for
+		// the multiple choice answers
+		//int randAnswerNum[] = new int[4];
+		
+		//Intialize the array of random index values
+		for(int i = 0; i < 4; i++){
+			randAnswerNum[i] = 0;}
+
+		// Set random index values to the integer array
+		randAnswerNum[0] = (int)(Math.random()*4);
+	while(randAnswerNum[1] == randAnswerNum[0] || randAnswerNum[1] == randAnswerNum[2] || randAnswerNum[1] == randAnswerNum[3])
+	{randAnswerNum[1] = (int)(Math.random()*4);}
+	while(randAnswerNum[2] == randAnswerNum[0] || randAnswerNum[2] == randAnswerNum[1] || randAnswerNum[2] == randAnswerNum[3])
+	{randAnswerNum[2] = (int)(Math.random()*4);}
+	while(randAnswerNum[3] == randAnswerNum[0] || randAnswerNum[3] == randAnswerNum[1] || randAnswerNum[3] == randAnswerNum[2])
+	{randAnswerNum[3] = (int)(Math.random()*4);}
+		
+	// Assign the textfield answers with a random index
+		for(int i = 0; i < 4; i++)
+		{
+			MC_Answers[i] = new JRadioButton("Answer " + (randAnswerNum[i]));
+			MCButtonGroup.add(MC_Answers[i]);
+		}
+		
+		
+			// Set the button to selected if it was selected and the back button was
+			// pressed.
+			if(resultsChecker[QuizAndFlashQuestionPage.questionPageNumber - 1] != -1)
+			{
+				MC_Answers[radioButtonTracker[QuizAndFlashQuestionPage.questionPageNumber - 1]].setSelected(true);
+			}
+		
+		
+		// Create two horizontal boxes. The top will hold the first two
+		// answers and the bottom will hold the last 2
+		Box radioBoxTop = Box.createHorizontalBox();
+		Box radioBoxBottom = Box.createHorizontalBox();
+		
+		radioBoxTop.add(Box.createHorizontalGlue());
+		radioBoxTop.add(MC_Answers[0]);
+		radioBoxTop.add(Box.createHorizontalGlue());
+		radioBoxTop.add(MC_Answers[1]);
+		radioBoxTop.add(Box.createHorizontalGlue());
+		
+		radioBoxBottom.add(Box.createHorizontalGlue());
+		radioBoxBottom.add(MC_Answers[2]);
+		radioBoxBottom.add(Box.createHorizontalGlue());
+		radioBoxBottom.add(MC_Answers[3]);
+		radioBoxBottom.add(Box.createHorizontalGlue());
+		
+	
+		questionBox.add(questionLabel);
+		questionBox.add(Box.createVerticalStrut(80));
+		//Border border = BorderFactory.createLineBorder(Color.BLACK);
+		//questionBox.setBorder(border);
+		questionBox.add(radioBoxTop);
+		questionBox.add(Box.createVerticalStrut(80));
+		questionBox.add(radioBoxBottom);
+		
+		
+		// Constraints for the panel holding the text areas for
+		// resizing purposes.
+		GridBagConstraints c = new GridBagConstraints();
+		c.gridwidth = 1;
+		c.gridheight = 1;
+		c.weightx = .5;
+		c.gridx = 1;
+		c.gridy = 1;
+		c.fill = GridBagConstraints.BOTH;
+		c.insets = new Insets(1, 50, 1, 50);
+
+		// Create a panel to hold box with the question jlabel
+		// and answer test area
+		JPanel QandA = new JPanel(new GridBagLayout());
+		QandA.add(questionBox, c);
+
+		this.add(QandA, BorderLayout.CENTER);
+
+		// Only the first page has 2 buttons. set every other page
+		// to have 3 buttons
+		if (QuizAndFlashQuestionPage.questionPageNumber == 1)
+			addButtons(2);
+		else
+			addButtons(3);
+
+	}
+
+// This class creates a results page to display the number of questions
+// correct out of the total number of questions. It also displays which
+// questions are right, and which questions are wrong.
+private void createResultsPageType() {
 
 		// Create a label for to dispaly "Results" inside a panel
 		// and place it in the NORTH
@@ -647,15 +756,16 @@ private void createMultipleChoice() {
 		resultsPanel.add(results);
 		this.add(resultsPanel, BorderLayout.NORTH);
 
-		// Align to center
-		iconLabel.setHorizontalAlignment(JLabel.CENTER);
-		iconLabel.setVerticalAlignment(JLabel.CENTER);
 
-		centerOfNewFrame = (this.getHeight() - (this.getHeight() - iconLabel.getHeight()));
 
 		// Number of incorrect and correct answers. We'll need
 		// a function to set the actual values
-		int numberCorrect = 8, numberIncorrect = 10;
+		int numberCorrect = 0, numberIncorrect = totalNumQuestions;
+		
+		for(int i = 0; i < totalNumQuestions; i++){
+		if(resultsChecker[i] == 1)
+			numberCorrect++;
+		}
 
 		// Create the string to display the score, add it to a label,
 		// set the font, and then add the score label into a panel
@@ -676,11 +786,23 @@ private void createMultipleChoice() {
 		JScrollPane jScrollPane = new JScrollPane(questionCorOrInc, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
 				JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 
+		
+		
 		// While less than the total number of questions in the quiz
 		// display whether or not each question is correct or incorrect.
 		// this is determined by a boolean value which will be need to
 		// be obtained by some function.
 		for (int i = 0; i < TakeQuizTakeSet.totalNumQuestions; i++) {
+			
+			System.out.println("Result Num  " + resultsChecker[i]);
+			
+			if(resultsChecker[i] == 1)
+				Correct = true;
+			else if(resultsChecker[i] == 0)
+				Correct = false;
+			else
+				System.out.println("One or more Questions not answered");
+			
 			if (Correct)
 				questionCorOrInc.append("Question #" + (i + 1) + "\tCorrect\n");
 			else
@@ -728,23 +850,16 @@ private void createMultipleChoice() {
 	// String which can be set by the backend function with the appropriate
 	// string
 	private void createFlashcardPageType() {
-
-		JLabel iconLabel = new JLabel();
-		iconLabel.setBounds(0, 0, this.getWidth(), (int) (this.getHeight() / 2.25));
-		iconLabel.setIcon(newIcon);
-		/**
-		 * 
-		 * commened out the logo due to issues with it covering the question and
-		 * checkbox
-		 * 
-		 */
-		// this.add(iconLabel);
-
-		// Align to center
-		iconLabel.setHorizontalAlignment(JLabel.CENTER);
-		iconLabel.setVerticalAlignment(JLabel.CENTER);
-
-		centerOfNewFrame = (this.getHeight() - (this.getHeight() - iconLabel.getHeight()));
+		
+		
+		// Condition to check the show/hide button every other click
+		if(CheckUncheck % 2 == 0)
+			showHide.setSelected(true);
+	
+		CheckUncheck++;
+		
+		// Alignment for question label, answer label, and show/Hide box
+		centerOfNewFrame = (this.getHeight() - (this.getHeight() - ((int) (this.getHeight() / 2.25))));
 
 		// String to hold questions. To be updated with function that passes
 		// the string of the actual question
@@ -753,18 +868,18 @@ private void createMultipleChoice() {
 		// Create a JLabel to display the question, set its
 		// alignment, font type and size
 		JLabel questionLabel = new JLabel(questionStr);
-		// JLabel answerLabel = new JLabel(FlashcardAnswer);
+		JLabel answerLabel = new JLabel(FlashcardAnswer);
 		questionLabel.setAlignmentX(centerOfNewFrame);
 		questionLabel.setOpaque(false);
-		// answerLabel.setAlignmentX(centerOfNewFrame);
-		// answerLabel.setOpaque(false);
+		answerLabel.setAlignmentX(centerOfNewFrame);
+		answerLabel.setOpaque(false);
 		Font font = new Font("Courier", Font.BOLD, 16);
 		questionLabel.setFont(font);
-		// answerLabel.setFont(font);
+		answerLabel.setFont(font);
 
-		// Set the question jlabel's max size
+		//Set the question jlabel's max size
 		questionLabel.setMaximumSize(getMaximumSize());
-		// answerLabel.setMaximumSize(getMaximumSize());
+		answerLabel.setMaximumSize(getMaximumSize());
 
 		showHide.setAlignmentX(centerOfNewFrame);
 
@@ -774,8 +889,8 @@ private void createMultipleChoice() {
 		questionBox.add(questionLabel);
 		questionBox.add(Box.createVerticalStrut(100));
 		questionBox.add(showHide);
-		// questionBox.add(Box.createVerticalStrut(40));
-		// questionBox.add(answerLabel);
+		questionBox.add(Box.createVerticalStrut(40));
+		questionBox.add(answerLabel);
 
 		// Constraints for the panel holding the text areas for
 		// resizing purposes.
@@ -797,10 +912,14 @@ private void createMultipleChoice() {
 
 		// If it is the first question page, it will only have 2
 		// buttons, every other page will have 3
+		System.out.println("questionPageNumber is " + QuizAndFlashQuestionPage.questionPageNumber);
 		if (QuizAndFlashQuestionPage.questionPageNumber == 1)
 			addButtons(2);
+		
 		else
 			addButtons(3);
+		
+		
 
 	}
 
@@ -868,6 +987,14 @@ private void createMultipleChoice() {
 		
 		
 		qBuilderNumButtons = numButtons;
+		
+	}
+	// Using 0 and 1 to determine if the answser is correct or not
+	// so intializing the array elements to -1
+	protected static void intializeResultChecker()
+	{
+		for(int i = 0; i < totalNumQuestions; i++)
+			resultsChecker[i] = -1;
 		
 	}
 
