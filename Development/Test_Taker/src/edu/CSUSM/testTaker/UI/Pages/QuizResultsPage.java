@@ -74,7 +74,8 @@ public class QuizResultsPage extends CustomPage {
 		public void actionPerformed(ActionEvent e) {
 			System.out.println("Opening " + this.getClass());
 
-		TakeQuizTakeSet takeQ = new TakeQuizTakeSet("Take Quiz Page", TakeQuizTakeSet.PanelType.TWO_BUTTON_TYPE,
+		CustomPage.setqBuilderNumButtons(1);
+		TakeQuizTakeSet takeQ = new TakeQuizTakeSet("Take Quiz Page", TakeQuizTakeSet.PanelType.QUESTION_BUILDER_TYPE,
 					TakeQuizTakeSet.PageType.QUIZ);
 			takeQ.parentController = parentController;
 			parentController.displayView(takeQ);

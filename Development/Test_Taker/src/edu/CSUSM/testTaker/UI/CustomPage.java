@@ -76,6 +76,17 @@ public class CustomPage extends JPanel {
 	public  JTextField answerTextMC[] = new JTextField[4];
 	public  JRadioButton MC_Answers[] = new JRadioButton[4];
 	
+	// Integer array to hole a random number to use as the index for
+			// the multiple choice answers
+	public static int randAnswerNum[] = new int[4];
+	
+	// Total Number of questions for a quiz or flashcard set.
+	// should be set by a function that gets the total number of
+	// questions for each particular quiz or flashcard set
+	public static int totalNumQuestions = 3;
+	
+	public static int resultsChecker[] = new int[100];
+	
 	//int to set Number of buttons for type QuestionBuilder
 		protected static int qBuilderNumButtons;
 
@@ -644,7 +655,7 @@ private void createMultipleChoice() {
 		
 		// Integer array to hole a random number to use as the index for
 		// the multiple choice answers
-		int randAnswerNum[] = new int[4];
+		//int randAnswerNum[] = new int[4];
 		
 		//Intialize the array of random index values
 		for(int i = 0; i < 4; i++){
@@ -665,10 +676,7 @@ private void createMultipleChoice() {
 			MC_Answers[i] = new JRadioButton("Answer " + (randAnswerNum[i]));
 			MCButtonGroup.add(MC_Answers[i]);
 		}
-		//MCButtonGroup.add(MC_Answers[0]);
-		//MCButtonGroup.add(MC_Answers[1]);
-		//MCButtonGroup.add(MC_Answers[2]);
-		//MCButtonGroup.add(MC_Answers[3]);
+	
 		// Create two horizontal boxes. The top will hold the first two
 		// answers and the bottom will hold the last 2
 		Box radioBoxTop = Box.createHorizontalBox();
@@ -743,7 +751,12 @@ private void createResultsPageType() {
 
 		// Number of incorrect and correct answers. We'll need
 		// a function to set the actual values
-		int numberCorrect = 8, numberIncorrect = 10;
+		int numberCorrect = 0, numberIncorrect = totalNumQuestions;
+		
+		for(int i = 0; i < totalNumQuestions; i++){
+		if(resultsChecker[i] == 1)
+			numberCorrect++;
+		}
 
 		// Create the string to display the score, add it to a label,
 		// set the font, and then add the score label into a panel
@@ -764,11 +777,23 @@ private void createResultsPageType() {
 		JScrollPane jScrollPane = new JScrollPane(questionCorOrInc, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
 				JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 
+		
+		
 		// While less than the total number of questions in the quiz
 		// display whether or not each question is correct or incorrect.
 		// this is determined by a boolean value which will be need to
 		// be obtained by some function.
 		for (int i = 0; i < TakeQuizTakeSet.totalNumQuestions; i++) {
+			
+			System.out.println("Result Num  " + resultsChecker[i]);
+			
+			if(resultsChecker[i] == 1)
+				Correct = true;
+			else if(resultsChecker[i] == 0)
+				Correct = false;
+			else
+				System.out.println("One or more Questions not answered");
+			
 			if (Correct)
 				questionCorOrInc.append("Question #" + (i + 1) + "\tCorrect\n");
 			else
@@ -817,7 +842,7 @@ private void createResultsPageType() {
 	// string
 	private void createFlashcardPageType() {
 		
-	
+		
 		// Condition to check the show/hide button every other click
 		if(CheckUncheck % 2 == 0)
 			showHide.setSelected(true);
@@ -953,6 +978,14 @@ private void createResultsPageType() {
 		
 		
 		qBuilderNumButtons = numButtons;
+		
+	}
+	// Using 0 and 1 to determine if the answser is correct or not
+	// so intializing the array elements to -1
+	protected static void intializeResultChecker()
+	{
+		for(int i = 0; i < totalNumQuestions; i++)
+			resultsChecker[i] = -1;
 		
 	}
 

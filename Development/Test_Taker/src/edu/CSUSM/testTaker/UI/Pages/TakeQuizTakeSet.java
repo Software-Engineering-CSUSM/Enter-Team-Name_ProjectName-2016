@@ -21,10 +21,7 @@ public class TakeQuizTakeSet extends CustomPage {
 	 * 
 	 */
 
-	// Total Number of questions for a quiz or flashcard set.
-	// should be set by a function that gets the total number of
-	// questions for each particular quiz or flashcard set
-	public static int totalNumQuestions = 10;
+
 
 	private static final long serialVersionUID = 1L;
 
@@ -118,12 +115,15 @@ public class TakeQuizTakeSet extends CustomPage {
 			parentController.displayView(QquestionPage);
 			QuizAndFlashQuestionPage.questionPageNumber++; */
 			
+			
+			intializeResultChecker();	
+			
 			QuizAndFlashQuestionPage QquestionPage = new QuizAndFlashQuestionPage("Quiz Question Page: " + QuizAndFlashQuestionPage.questionPageNumber,
 					QuizAndFlashQuestionPage.PanelType.QUESTIONPAGEMC, QuizAndFlashQuestionPage.PageType.QUIZ_MC);
 			QquestionPage.parentController = parentController;
 			parentController.displayView(QquestionPage);
 			QuizAndFlashQuestionPage.questionPageNumber++; 
-												
+								
 
 		}
 
