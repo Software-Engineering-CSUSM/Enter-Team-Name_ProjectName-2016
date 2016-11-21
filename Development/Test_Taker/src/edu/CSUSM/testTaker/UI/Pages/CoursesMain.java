@@ -80,9 +80,9 @@ public class CoursesMain extends CustomPage {
 			//PopUp popup = new PopUp( "",PopUp.PanelType.LOGO_ONLY_TYPE, PopUpType.AddCourse);
 
 			//Display a JDialogBox
-			String newTestName = JOptionPane.showInputDialog("Please name your test: ");
+			String newTestName = JOptionPane.showInputDialog("Please name your Course: ");
 			if(newTestName != null && newTestName.length() != 0){
-				
+
 				//Add the Course
 				Course newCourse = new Course();
 				newCourse.setName(newTestName);
@@ -95,9 +95,9 @@ public class CoursesMain extends CustomPage {
 
 				CustomPage.setQBRowHeaders(LibraryController.getAllCoursesAvailable());
 				CustomPage.setQBRowIDs(LibraryController.getAllCourseIDsAvailable());
-	        	CoursesMain cm = new CoursesMain("Courses Main", CustomPage.PanelType.QUESTION_BUILDER_TYPE);
-	        	cm.parentController = parentController;
-	        	parentController.replaceCurrentView(cm);
+				CoursesMain cm = new CoursesMain("Courses Main", CustomPage.PanelType.QUESTION_BUILDER_TYPE);
+				cm.parentController = parentController;
+				parentController.replaceCurrentView(cm);
 				System.out.println("Value Found: " + newTestName.toString());
 			}else{
 				System.out.println("No Value Found");
@@ -118,24 +118,35 @@ public class CoursesMain extends CustomPage {
 			// Call Pop Up window to confirm deleting course.  To actually delete course upon clicking
 			// "yes", implement the function in the action listener in the PopUp class
 			//PopUp popup = new PopUp("",PopUp.PanelType.LOGO_ONLY_TYPE, PopUpType.DeleteCourse);
-			int reply = JOptionPane.showConfirmDialog(null, "Are you sure you wish to delete the course:\n" + LibraryController.retrieveCourse(ManageData.currentIDSelected), "Delete Course", JOptionPane.YES_NO_OPTION);
-	        if (reply == JOptionPane.YES_OPTION) {
-	        	//Refresh the table here
+			try{
+				if(ManageData.currentIDSelected.length() == 0 || ManageData.currentIDSelected == null){
+					throw new NullPointerException();
+				}
+				int reply = JOptionPane.showConfirmDialog(null, "Are you sure you wish to delete the course:\n" + LibraryController.retrieveCourse(ManageData.currentIDSelected), "Delete Course", JOptionPane.YES_NO_OPTION);
+				if (reply == JOptionPane.YES_OPTION) {
+					//Refresh the table here
 
-				LibraryController.deleteCourse(ManageData.currentIDSelected);
+					LibraryController.deleteCourse(ManageData.currentIDSelected);
 
-				//After deleting a course from the pop up, call courses main and refresh
-				CustomPage.setqBuilderNumButtons(3);
+					//After deleting a course from the pop up, call courses main and refresh
+					CustomPage.setqBuilderNumButtons(3);
 
-				CustomPage.setQBRowHeaders(LibraryController.getAllCoursesAvailable());
-				CustomPage.setQBRowIDs(LibraryController.getAllCourseIDsAvailable());
-	        	CoursesMain cm = new CoursesMain("Courses Main", CustomPage.PanelType.QUESTION_BUILDER_TYPE);
-	        	cm.parentController = parentController;
-	        	parentController.replaceCurrentView(cm);
-	        }
-	        else {
-	           //Do nothing
-	        }
+					CustomPage.setQBRowHeaders(LibraryController.getAllCoursesAvailable());
+					CustomPage.setQBRowIDs(LibraryController.getAllCourseIDsAvailable());
+					CoursesMain cm = new CoursesMain("Courses Main", CustomPage.PanelType.QUESTION_BUILDER_TYPE);
+					cm.parentController = parentController;
+					parentController.replaceCurrentView(cm);
+				}
+				else {
+					//Do nothing
+				}
+			}
+
+			catch(NullPointerException ex){
+				JOptionPane.showMessageDialog(null, "Please select a course before continuing");
+			}finally{
+				//LibraryController.initDB();
+			}
 
 		}
 
@@ -145,24 +156,33 @@ public class CoursesMain extends CustomPage {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			System.out.println("Opening " + this.getClass() + "\nID: " + ManageData.currentIDSelected);
+			//System.out.println("Opening " + this.getClass() + "\nID: " + ManageData.currentIDSelected);
 
-			//Check to see if a test is selected. If not, alert the user they must seect one
-			if(ManageData.currentIDSelected.length() == 0){
+			try{
+				//Check to see if a test is selected. If not, alert the user they must seect one
+				if(ManageData.currentIDSelected == null || ManageData.currentIDSelected.length() == 0){
+					throw new NullPointerException();
+				}else{
+					CustomPage.setqBuilderNumButtons(3);
 
-			}else{
-				CustomPage.setqBuilderNumButtons(3);
+					//Set the question list based on teh test ID just gathered
+					CustomPage.setQBRowHeaders(LibraryController.getAllTestNamesInCourse(ManageData.currentIDSelected));
+					CustomPage.setQBRowIDs(LibraryController.getAllTestIDsInCourse(ManageData.currentIDSelected));
 
-				//Set the question list based on teh test ID just gathered
-				CustomPage.setQBRowHeaders(LibraryController.getAllTestNamesInCourse(ManageData.currentIDSelected));
-				CustomPage.setQBRowIDs(LibraryController.getAllTestIDsInCourse(ManageData.currentIDSelected));
 
-				TestListManager tm = new TestListManager("Test List Manager", CustomPage.PanelType.QUESTION_BUILDER_TYPE);
-				//tm.setName("Test List Manager");
-				tm.parentController = parentController;
-				parentController.displayView(tm);
+					TestListManager.setCourse(LibraryController.retrieveCourse(ManageData.currentIDSelected));
+					LibraryController.CURRENT_COURSE = TestListManager.CourseID;
+					TestListManager tm = new TestListManager("Test List Manager", CustomPage.PanelType.QUESTION_BUILDER_TYPE);
+					//System.out.println("Current ID Selected: " + ManageData.currentIDSelected);
+					//tm.setName("Test List Manager");
+					ManageData.resetButtons();
+					tm.parentController = parentController;
+					parentController.displayView(tm);
+				}
 			}
-
+			catch(NullPointerException ex){
+				JOptionPane.showMessageDialog(null, "Please select a course before continuing");
+			}
 
 
 		}

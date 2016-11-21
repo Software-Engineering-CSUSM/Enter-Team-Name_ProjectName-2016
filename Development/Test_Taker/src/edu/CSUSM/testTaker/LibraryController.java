@@ -39,26 +39,12 @@ public class LibraryController{
 	protected static String DBUserName = "";
 	protected static String DBPassword = "";//* < should probably be derived from a cyphertext if ever used
 	
-	
+	//Save current data for access elsewhere
+	public static Course CURRENT_COURSE;
+	public static Test CURRENT_TEST;
+	public static Question CURRENT_QUESTION;
 
-	/**
-	 * For Implementation, we are going to use Hashmaps. This is how: • The
-	 * string used in the map (as the 'key') will be the identifier of the test
-	 * • The 'value' of the map will be the actual object.
-	 * 
-	 * The reason we are using maps is because the time complexity is W(1) and
-	 * the list will not have to loop through the data every time it is
-	 * required.
-	 */
-//	private static HashMap<String, Test> testMap;			//String is the testID
-//	private static HashMap<String, Question> questionMap;	//String is the questionID
-//	private static HashMap<String, Course> courseMap;
-//	private static HashMap<String, CourseProgress> progressMap;
 	static {
-//		testMap = new HashMap<String, Test>();
-//		questionMap = new HashMap<String, Question>();
-//		courseMap = new HashMap<String, Course>();
-//		progressMap = new HashMap<String, CourseProgress>();
 		if(!checkForDB()){
 			initDB();
 		}
@@ -400,17 +386,28 @@ public class LibraryController{
 	 */
 	public static ArrayList<Registerable> getItemsForIDs(Collection <String> terms){
 		ArrayList <Registerable> rval = null;
-		try(Connection dbcon = connect()){
-			if(terms != null && !terms.isEmpty()){
-				rval = new ArrayList<Registerable>(terms.size());
-				for(String termID : terms){
-					rval.add(getItem(termID));
-				}
+		if(terms != null && !terms.isEmpty()){
+			rval = new ArrayList<Registerable>(terms.size());
+			for(String termID : terms){
+				rval.add(getItem(termID));
 			}
-		}catch(SQLException e){
-			e.printStackTrace();
 		}
-		
+		return rval;
+	}
+	
+	/**
+	 * Get a list of names from a collection of their IDs
+	 * @param terms a Collection of ID strings
+	 * @return an ArrayList of Name strings pulled from the database.
+	 */
+	public static ArrayList<String> getNamesForIDs(Collection <String> terms){
+		ArrayList <String> rval = null;
+		if(terms != null && !terms.isEmpty()){
+			rval = new ArrayList<String>(terms.size());
+			for(String termid : terms){
+				rval.add(getItemName(termid));
+			}
+		}
 		return rval;
 	}
 	
@@ -448,9 +445,6 @@ public class LibraryController{
 	 * @return An ArrayList of the ID strings of the current Courses in the Library.
 	 */
 	public static ArrayList<CourseInfo> giveCourseList(){
-
-		//Create a local Arraylist for the classes
-		//Note that a custom class will have to be implemented for storage
 		ArrayList<CourseInfo> rlist = new ArrayList<CourseInfo>();
 		ArrayList<Course> everydamncourse = getAllCourses();
 		for(Course aCourse : everydamncourse){
@@ -612,8 +606,9 @@ public class LibraryController{
 	 * @author Steven Clark
 	 */
 	public static Question retrieveQuestion(String queryID) {
-		if(getItemType(queryID).equals("Question"))
-			return (Question)getItem(queryID);
+		Registerable rval = getItem(queryID);
+		if(rval instanceof Question)
+			return (Question) rval;
 		return null;
 	}
 
@@ -626,12 +621,12 @@ public class LibraryController{
 	 * @author Steven Clark
 	 */
 	public static Test retrieveTest(String queryID){
-		Test rvalue = null;
-		if(getItemType(queryID).equals("Test")){
-			rvalue = (Test)getItem(queryID);
-			rvalue.initQuestions();
+		Registerable rval = getItem(queryID);
+		if(rval instanceof Test){
+			((Test)rval).initQuestions();
+			return (Test) rval;
 		}
-		return rvalue;
+		return null;
 	}
 	/**
 	 * Get a reference to a Test in the set of Tests, without necessarily valid Question references.
@@ -640,11 +635,10 @@ public class LibraryController{
 	 * @author Steven Clark
 	 */
 	public static Test previewTest(String queryID){
-		Test rvalue = null;
-		if(getItemType(queryID).equals("Test")){
-			rvalue = (Test)getItem(queryID);
-		}
-		return rvalue;
+		Registerable rval = getItem(queryID);
+		if(rval instanceof Test)
+			return (Test) rval;
+		return null;
 	}
 
 	/**
@@ -656,8 +650,9 @@ public class LibraryController{
 	 * @author Steven Clark
 	 */
 	public static Course retrieveCourse(String queryID) {
-		if(getItemType(queryID).equals("Course"))
-			return (Course)getItem(queryID);
+		Registerable rval = getItem(queryID);
+		if(rval instanceof Course)
+			return (Course) rval;
 		return null;
 	}
 	
@@ -667,8 +662,9 @@ public class LibraryController{
 	 * @return A live CourseProgress found in the library with that ID.
 	 */
 	public static CourseProgress retrieveProgress(String queryID){
-		if(getItemType(queryID).equals("CourseProgress"))
-			return (CourseProgress)getItem(queryID);
+		Registerable rval = getItem(queryID);
+		if(rval instanceof CourseProgress)
+			return (CourseProgress) rval;
 		return null;
 	}
 
@@ -783,7 +779,7 @@ public class LibraryController{
 			
 		}
 		else if(isACourse(courseID)){
-			tval = retrieveCourse(courseID).getQuestions();
+			tval = ((Course)getItem(courseID)).getQuestions();
 		}
 		
 		if(tval != null){
@@ -805,7 +801,7 @@ public class LibraryController{
 			tval = getQuestionItemIDs();
 		}
 		else if(isACourse(courseID)){
-			tval = retrieveCourse(courseID).getQuestionIDs();
+			tval = ((Course)getItem(courseID)).getQuestionIDs();
 		}
 		
 		if(tval != null){
@@ -827,7 +823,7 @@ public class LibraryController{
 			tval = getQuestionItemNames();
 		}
 		else if(isACourse(courseID)){
-			tval = (ArrayList)getItemsForIDs(retrieveCourse(courseID).getQuestionIDs());
+			tval = getNamesForIDs(((Course)getItem(courseID)).getQuestionIDs());
 		}
 		
 		if(tval != null){
@@ -879,7 +875,7 @@ public class LibraryController{
 			tval = getTestItemIDs();
 		}
 		else if(isACourse(courseID)){
-			tval = retrieveCourse(courseID).getTestIDs();
+			tval = ((Course)getItem(courseID)).getTestIDs();
 		}
 		
 		if(tval != null){
@@ -901,8 +897,7 @@ public class LibraryController{
 			tval = getTestItemNames();
 		}
 		else if(isACourse(courseID)){
-			//tval = retrieveCourse(courseID).getTestIDs();
-			tval = LibraryController.getTestItemNames();
+			tval = ((Course)getItem(courseID)).getTestNames();
 		}
 		
 		if(tval != null){

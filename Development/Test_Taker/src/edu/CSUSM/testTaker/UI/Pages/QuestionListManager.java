@@ -4,6 +4,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 
+import javax.swing.JOptionPane;
+
+import edu.CSUSM.testTaker.LibraryController;
 import edu.CSUSM.testTaker.UI.CustomPage;
 import edu.CSUSM.testTaker.UI.CustomPage.PanelType;
 import edu.CSUSM.testTaker.UI.CustomPage.PopUpType;
@@ -49,7 +52,7 @@ public class QuestionListManager extends CustomPage {
 			for (int i = 0; i < this.currentActions.length; i++) {
 				switch (i) {
 				case 0:
-					this.currentActions[i].addActionListener(new AddQuestion());
+					this.currentActions[i].addActionListener(new AddQuestionHere());
 					break;
 				case 1:
 					this.currentActions[i].addActionListener(new DeleteQuestion());
@@ -64,27 +67,16 @@ public class QuestionListManager extends CustomPage {
 		}
 	}
 
-	private class AddQuestion implements ActionListener {
+	private class AddQuestionHere implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			// System.out.println("Opening " + this.getClass());
 
-			// Constructor uses a main window with just a logo type, and
-			// an SaveQuiz to create the correct popUp window in the
-			// PopUp class
-			PopUp popup = new PopUp("", PopUp.PanelType.LOGO_ONLY_TYPE, PopUpType.AddQuestionName);
-			
-			
-			//After saving course name in the pop up, call test main and refresh
-			CustomPage.setqBuilderNumButtons(2);
-			QuestionListManager qlm = new QuestionListManager("Question List Manager", QuestionListManager.PanelType.QUESTION_BUILDER_TYPE);
-			//qlm.setName("Question List Manager");
-			qlm.parentController = parentController;
-			parentController.displayView(qlm);
-			
-			qlm.revalidate();
-
+			//Show the "Create Question" View
+			AddQuestion addQ = new AddQuestion("Add Question Page", AddQuestion.PanelType.Q_and_A_Type_MC);
+			addQ.parentController = parentController;
+			parentController.displayView(addQ);
 		}
 
 	}
@@ -97,19 +89,32 @@ public class QuestionListManager extends CustomPage {
 
 			// Call Pop Up window to confirm deleting test.  To actually delete test upon clicking
 			// "yes", implement the function in the action listener in the PopUp class
-			PopUp popup = new PopUp("", PopUp.PanelType.LOGO_ONLY_TYPE, PopUpType.DeleteQuestion);
-			
-			
-			//After deleting a test from the pop up, call courses main and refresh
-			CustomPage.setqBuilderNumButtons(2);
-			QuestionListManager qlm = new QuestionListManager("Question List Manager", QuestionListManager.PanelType.QUESTION_BUILDER_TYPE);
-			//qlm.setName("Question List Manager");
-			qlm.parentController = parentController;
-			parentController.displayView(qlm);
-			
-			qlm.revalidate();
+			try{
+				//Check to see if a test is selected. If not, alert the user they must seect one
+				if(ManageData.currentIDSelected == null || ManageData.currentIDSelected.length() == 0){
+					throw new NullPointerException();
+				}else{
+					// Set number of buttons to two for next page
+					CustomPage.setqBuilderNumButtons(2);
+
+					//Set the rows to all questions in teh test
+					CustomPage.setQBRowHeaders(LibraryController.getAllQuestionNamesInCourse(ManageData.currentIDSelected));
+					CustomPage.setQBRowIDs(LibraryController.getAllQuestionIDsInCourse(ManageData.currentIDSelected));
+
+					QuestionListManager qlm = new QuestionListManager("Question List Manager", QuestionListManager.PanelType.QUESTION_BUILDER_TYPE);
+					//qlm.setName("Question List Manager");
+					ManageData.resetButtons();
+					qlm.parentController = parentController;
+					parentController.displayView(qlm);
+				}
+			}
+			catch(NullPointerException ex){
+				JOptionPane.showMessageDialog(null, "Please select a question before continuing");
+			}
 
 		}
+
+		
 
 	}
 
