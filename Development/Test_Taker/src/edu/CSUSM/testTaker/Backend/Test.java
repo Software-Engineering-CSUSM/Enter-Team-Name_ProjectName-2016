@@ -431,8 +431,8 @@ public class Test /*extends TaskObject*/ implements Serializable, Registerable{
 		if(null == questionList || questionList.isEmpty())
 			initQuestions();
 
-		for(Question tempQuestion : questionList){
-			thisTestString = thisTestString + tempQuestion.getQuestion() + "\n";
+		for(String qstring : getQuestionNames()){
+			thisTestString = thisTestString + qstring + "\n";
 		}
 		//Return the result
 		return thisTestString;
