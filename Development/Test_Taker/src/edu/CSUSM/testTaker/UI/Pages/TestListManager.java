@@ -24,7 +24,7 @@ public class TestListManager extends CustomPage {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	public static Course CourseID;
+	public static Course CourseObj;
 
 	public TestListManager(String panelName, PanelType currentPanelType) {
 		super(panelName, currentPanelType);
@@ -46,7 +46,7 @@ public class TestListManager extends CustomPage {
 	}
 
 	public static void setCourse(Course id){
-		CourseID = id;
+		CourseObj = id;
 	}
 
 	public void updateActions() {
@@ -86,8 +86,8 @@ public class TestListManager extends CustomPage {
 			// an SaveQuiz to create the correct popUp window in the
 			// PopUp class
 			try{
-				//Check to see if a test is selected. If not, alert the user they must seect one
-				if(ManageData.currentIDSelected == null || ManageData.currentIDSelected.length() == 0){
+				//Check to see if a course is selected. If not, alert the user they must seect one
+				if(LibraryController.CURRENT_COURSE == null || LibraryController.CURRENT_COURSE.toString().length() == 0){
 					throw new NullPointerException();
 				}else{
 					String newTestName = JOptionPane.showInputDialog("Please name your test: ");
@@ -97,13 +97,15 @@ public class TestListManager extends CustomPage {
 						Test newCourse = new Test();
 						newCourse.setName(newTestName);
 
-						CourseID.addTest(newCourse);
+						CourseObj.addTest(newCourse);
 
 						//After saving course name in the pop up, call courses main and refresh
 						CustomPage.setqBuilderNumButtons(3);
+						
+						//ArrayList<String> testNames
 
-						CustomPage.setQBRowHeaders(LibraryController.getAllTestNamesInCourse(CourseID.getID()));
-						CustomPage.setQBRowIDs(LibraryController.getAllTestIDsInCourse(CourseID.getID()));
+						CustomPage.setQBRowHeaders();
+						CustomPage.setQBRowIDs(LibraryController.getAllTestIDsInCourse(CourseObj.getID()));
 						TestListManager cm = new TestListManager("Tests", CustomPage.PanelType.QUESTION_BUILDER_TYPE);
 						cm.parentController = parentController;
 						parentController.replaceCurrentView(cm);
@@ -145,8 +147,8 @@ public class TestListManager extends CustomPage {
 						//After deleting a course from the pop up, call courses main and refresh
 						CustomPage.setqBuilderNumButtons(3);
 
-						CustomPage.setQBRowHeaders(LibraryController.getAllTestNamesInCourse(CourseID.getID()));
-						CustomPage.setQBRowIDs(LibraryController.getAllTestIDsInCourse(CourseID.getID()));
+						CustomPage.setQBRowHeaders(LibraryController.getAllTestNamesInCourse(CourseObj.getID()));
+						CustomPage.setQBRowIDs(LibraryController.getAllTestIDsInCourse(CourseObj.getID()));
 						TestListManager cm = new TestListManager("Tests", CustomPage.PanelType.QUESTION_BUILDER_TYPE);
 						cm.parentController = parentController;
 						parentController.replaceCurrentView(cm);
@@ -184,7 +186,7 @@ public class TestListManager extends CustomPage {
 					//Save the reference to the current test
 					/** Currently returning a null object */
 					try{
-						LibraryController.CURRENT_TEST = LibraryController.retrieveTest(ManageData.currentIDSelected);
+						LibraryController.CURRENT_TEST = (Test)(LibraryController.getItem(ManageData.currentIDSelected));
 						System.out.print(LibraryController.retrieveTest(ManageData.currentIDSelected).toString());
 					}catch(Exception ex){
 						System.out.println("Error getting test: " + ex.getMessage());

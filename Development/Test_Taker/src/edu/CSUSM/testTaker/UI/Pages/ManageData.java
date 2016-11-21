@@ -179,7 +179,8 @@ public class ManageData<ObjectDisplayed> extends JPanel {
 				gb.gridy++;
 				gb.weightx = 1;
 				gb.weighty = 1;
-				gb.fill = GridBagConstraints.BOTH;
+				gb.ipady = 0;
+				gb.fill = GridBagConstraints.HORIZONTAL;
 				// Add the row to the table
 				innerView.add(newRow, gb);
 			}
@@ -262,7 +263,7 @@ public class ManageData<ObjectDisplayed> extends JPanel {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					//Print out the action command
-					//System.out.println(e.getActionCommand()); //Displays the id of the row when selected.
+					System.out.println(e.getActionCommand()); //Displays the id of the row when selected.
 					
 					//This is where we are going to open whatever content we need from the id (now that we have it)
 					currentIDSelected = e.getActionCommand();
