@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-
 package edu.CSUSM.testTaker.Analytics;
 
 import java.io.File;
@@ -237,8 +234,4 @@ public class HelloAnalytics {
       System.out.println("No results found");
     }
   }
-<<<<<<< HEAD
->>>>>>> origin/Jeremy2
-=======
->>>>>>> Tizzle
 }
