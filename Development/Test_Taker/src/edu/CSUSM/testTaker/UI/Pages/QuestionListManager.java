@@ -46,7 +46,7 @@ public class QuestionListManager extends CustomPage {
 	public void updateActions() {
 
 		// Set the button names
-		setButtonNames(new String[] { "Add Question", "Delete Question"});
+		setButtonNames(new String[] { "Add Question", "Delete Question", "View Question"});
 
 		try {
 			for (int i = 0; i < this.currentActions.length; i++) {

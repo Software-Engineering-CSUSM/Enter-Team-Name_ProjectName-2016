@@ -115,7 +115,10 @@ public class Test /*extends TaskObject*/ implements Serializable, Registerable{
 	 * @return An array with the IDs of all Questions in this Test.
 	 */
 	public String[] getQuestionIDs(){
-		return questionIDs.toArray(new String[questionIDs.size()]);
+		if(questionIDs.size() > 0)
+			return questionIDs.toArray(new String[questionIDs.size()]);
+		else
+			return new String[] {"No Questions Found"};
 	}
 	
 	/**
@@ -123,7 +126,10 @@ public class Test /*extends TaskObject*/ implements Serializable, Registerable{
 	 * @return An ArrayList with the ID Strings of all Questions in this Test.
 	 */
 	public ArrayList <String> getQuestionIDList(){
-		return new ArrayList<String>(questionIDs);
+		if(questionIDs.size() > 0)
+			return new ArrayList<String>(questionIDs);
+		else
+			return new ArrayList<String>();
 	}
 
 
@@ -132,7 +138,10 @@ public class Test /*extends TaskObject*/ implements Serializable, Registerable{
 	 * @return The questions in the test, in order, at this moment in time.
 	 */
 	public Question[] getQuestions(){
-		return questionList.toArray(new Question[questionList.size()]);
+		if(questionList.size() > 0)
+			return questionList.toArray(new Question[questionList.size()]);
+		else
+			return new Question[]{new Question("No Questions Found", new String[]{"No answers to an in-existing question"}, 0)};
 	}
 	
 	/**
@@ -140,7 +149,10 @@ public class Test /*extends TaskObject*/ implements Serializable, Registerable{
 	 * @return The questions in the test, in order, at this moment in time in an ArrayList.
 	 */
 	public ArrayList<Question> getQuestionList(){
-		return new ArrayList<Question>(questionList);
+		if(questionList.size() > 0)
+			return new ArrayList<Question>(questionList);
+		else
+			return new ArrayList<Question>();
 	}
 
 	/**
@@ -220,6 +232,13 @@ public class Test /*extends TaskObject*/ implements Serializable, Registerable{
 		return getName();
 	}
 
+	/**
+	 * Determines of there is an amount of questions in this test
+	 * @returns Boolean of the result (questions.count >0)
+	 */
+	public boolean hasQuestions(){
+		return (questionList.size()>0);
+	}
 	
 
 	/** Mutators */
@@ -398,6 +417,11 @@ public class Test /*extends TaskObject*/ implements Serializable, Registerable{
 	 */
 	@Override
 	public String toString(){
+		
+		if(this.getTestName().length() == 0){
+			return "No test Yet";
+		}
+			
 
 		//Create the initial question
 		String thisTestString = "Test: " + this._testName + "\n";

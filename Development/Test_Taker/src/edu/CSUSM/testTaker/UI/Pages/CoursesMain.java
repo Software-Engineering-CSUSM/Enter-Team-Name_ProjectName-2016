@@ -171,8 +171,8 @@ public class CoursesMain extends CustomPage {
 
 
 					TestListManager.setCourse(LibraryController.retrieveCourse(ManageData.currentIDSelected));
-					LibraryController.CURRENT_COURSE = TestListManager.CourseID;
 					TestListManager tm = new TestListManager("Test List Manager", CustomPage.PanelType.QUESTION_BUILDER_TYPE);
+					LibraryController.CURRENT_COURSE = TestListManager.CourseObj;
 					//System.out.println("Current ID Selected: " + ManageData.currentIDSelected);
 					//tm.setName("Test List Manager");
 					ManageData.resetButtons();
