@@ -853,7 +853,7 @@ public class LibraryController{
 			
 		}
 		else if(isACourse(courseID)){
-			tval = retrieveCourse(courseID).getTests();
+			tval = ((Course)getItem(courseID)).getTests();
 		}
 		
 		if(tval != null){
