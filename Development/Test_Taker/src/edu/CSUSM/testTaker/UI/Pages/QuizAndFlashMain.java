@@ -139,6 +139,7 @@ public class QuizAndFlashMain extends CustomPage {
 			// System.out.println("Opening " + this.getClass());
 
 			// System.out.println("Opening " + this.getClass());
+			CustomPage.setqBuilderNumButtons(1);
 			TakeQuizTakeSet takeQ = new TakeQuizTakeSet("Take Quiz Page", TakeQuizTakeSet.PanelType.QUESTION_BUILDER_TYPE,
 					TakeQuizTakeSet.PageType.QUIZ);
 			takeQ.parentController = parentController;
@@ -176,8 +177,8 @@ public class QuizAndFlashMain extends CustomPage {
 			// System.out.println("Opening " + this.getClass());
 
 			// System.out.println("Opening " + this.getClass());
-			// FlashCardQuestionPage takeSet = new
-			// FlashCardQuestionPage(FlashCardQuestionPage.PanelType.TWO_BUTTON_TYPE);
+			
+			CustomPage.setqBuilderNumButtons(1);
 			TakeQuizTakeSet takeSet = new TakeQuizTakeSet("Take Flashcard Set Page", TakeQuizTakeSet.PanelType.QUESTION_BUILDER_TYPE,
 					TakeQuizTakeSet.PageType.FLASHCARD);
 			takeSet.parentController = parentController;
