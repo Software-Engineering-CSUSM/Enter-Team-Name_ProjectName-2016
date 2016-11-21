@@ -3,6 +3,7 @@ package edu.CSUSM.testTaker.UI.Pages;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
@@ -101,10 +102,14 @@ public class TestListManager extends CustomPage {
 
 						//After saving course name in the pop up, call courses main and refresh
 						CustomPage.setqBuilderNumButtons(3);
-						
-						//ArrayList<String> testNames
 
-						CustomPage.setQBRowHeaders();
+						ArrayList<String> testNames = new ArrayList<String>();
+						for(Test tempTest : LibraryController.getAllTestsInCourse(CourseObj.getID())){
+							testNames.add(tempTest.getTestName());
+						}
+
+
+						CustomPage.setQBRowHeaders(testNames.toArray(new String[testNames.size()]));
 						CustomPage.setQBRowIDs(LibraryController.getAllTestIDsInCourse(CourseObj.getID()));
 						TestListManager cm = new TestListManager("Tests", CustomPage.PanelType.QUESTION_BUILDER_TYPE);
 						cm.parentController = parentController;
@@ -177,26 +182,45 @@ public class TestListManager extends CustomPage {
 					throw new NullPointerException();
 				}else{
 					// Set number of buttons to two for next page
-					CustomPage.setqBuilderNumButtons(2);
+					CustomPage.setqBuilderNumButtons(3);
 
-					//Set the rows to all questions in teh test
-					CustomPage.setQBRowHeaders(LibraryController.getAllQuestionNamesInCourse(ManageData.currentIDSelected));
-					CustomPage.setQBRowIDs(LibraryController.getAllQuestionIDsInCourse(ManageData.currentIDSelected));
-					
+					LibraryController.CURRENT_TEST = (Test)LibraryController.getItem(ManageData.currentIDSelected);
+					System.out.println(LibraryController.CURRENT_TEST.getTestName());
+
+					if(LibraryController.CURRENT_TEST.numQuestions() > 0){
+						
+						System.out.println("Has Questions: " + LibraryController.CURRENT_TEST.numQuestions());
+
+						//Set the rows to all questions in teh test
+						try{
+							CustomPage.setQBRowHeaders(LibraryController.CURRENT_TEST.getQuestionNames().toArray(new String[LibraryController.CURRENT_TEST.getQuestionNames().size()]));
+							CustomPage.setQBRowIDs(LibraryController.CURRENT_TEST.getQuestionIDList().toArray(new String[LibraryController.CURRENT_TEST.getQuestionIDList().size()]));
+
+						}catch(Exception emp){
+							emp.printStackTrace();
+						}
+					}
+					else{
+						System.out.println("No Tests Yet");
+						CustomPage.setQBRowHeaders(new String[]{"No Questions Yet"});
+						CustomPage.setQBRowIDs(new String[]{"No Questions Yet"});
+					}
+
 					//Save the reference to the current test
 					/** Currently returning a null object */
 					try{
-						LibraryController.CURRENT_TEST = (Test)(LibraryController.getItem(ManageData.currentIDSelected));
-						System.out.print(LibraryController.retrieveTest(ManageData.currentIDSelected).toString());
+						//LibraryController.CURRENT_TEST = LibraryController.retrieveTest(ManageData.currentIDSelected);
+						System.out.println("Current ID: " + ManageData.currentIDSelected + " Current Type: " + LibraryController.getItemType(ManageData.currentIDSelected));
+						//System.out.print(LibraryController.CURRENT_TEST.toString());
 					}catch(Exception ex){
 						System.out.println("Error getting test: " + ex.getMessage());
 					}finally{
-						System.out.println("DATA: " + LibraryController.retrieveTest(ManageData.currentIDSelected));
-						System.out.println("CurrentID: " + ManageData.currentIDSelected);
+						//System.out.println("DATA: " + LibraryController.retrieveTest(ManageData.currentIDSelected));
+						//System.out.println("CurrentID: " + ManageData.currentIDSelected);
 					}
 
 					QuestionListManager qlm = new QuestionListManager("Question List Manager", QuestionListManager.PanelType.QUESTION_BUILDER_TYPE);
-					//qlm.setName("Question List Manager");
+
 					ManageData.resetButtons();
 					qlm.parentController = parentController;
 					parentController.displayView(qlm);
