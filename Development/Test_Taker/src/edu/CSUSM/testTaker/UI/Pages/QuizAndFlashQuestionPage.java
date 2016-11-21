@@ -152,7 +152,8 @@ public class QuizAndFlashQuestionPage extends CustomPage {
 	        @Override
 	        public void actionPerformed(ActionEvent e) {
 	        	
-	        	// This is the correct answer
+	        	// This is the correct answer. Set resultsChecker to 1 to calculate
+	        	// the score at the end
 	        	if(randAnswerNum[0] == 0){
 	        		System.out.println("This is the correct answer\n");
 	        		resultsChecker[questionPageNumber - 2] = 1;
@@ -160,6 +161,10 @@ public class QuizAndFlashQuestionPage extends CustomPage {
 	        	}
 	        	else
 	        		resultsChecker[questionPageNumber - 2] = 0;
+	        	
+	        	// Used to set the button to clicked after backtracking and 
+	        	// clicking next question
+	        	radioButtonTracker[questionPageNumber - 2] = 0;
 
 	        }
 	    });
@@ -167,7 +172,8 @@ public class QuizAndFlashQuestionPage extends CustomPage {
 	        @Override
 	        public void actionPerformed(ActionEvent e) {
 	           
-	        	// This is the correct answer
+	        	// This is the correct answer. Set resultsChecker to 1 to calculate
+	        	// the score at the end
 	        	if(randAnswerNum[1] == 0){
 	        		System.out.println("This is the correct answer\n");
 	        		resultsChecker[questionPageNumber - 2] = 1;
@@ -175,6 +181,10 @@ public class QuizAndFlashQuestionPage extends CustomPage {
 	        	}
 	        	else
 	        		resultsChecker[questionPageNumber - 2] = 0;
+	        	
+	        	// Used to set the button to clicked after backtracking and 
+	        	// clicking next question
+	        	radioButtonTracker[questionPageNumber - 2] = 1;
 
 	        }
 	    });
@@ -182,7 +192,8 @@ public class QuizAndFlashQuestionPage extends CustomPage {
 	        @Override
 	        public void actionPerformed(ActionEvent e) {
 	          
-	        	// This is the correct answer
+	        	// This is the correct answer. Set resultsChecker to 1 to calculate
+	        	// the score at the end
 	        	if(randAnswerNum[2] == 0){
 	        		System.out.println("This is the correct answer\n");
 	        		resultsChecker[questionPageNumber - 2] = 1;
@@ -190,6 +201,10 @@ public class QuizAndFlashQuestionPage extends CustomPage {
 	        	}
 	        	else
 	        		resultsChecker[questionPageNumber - 2] = 0;
+	        	
+	        	// Used to set the button to clicked after backtracking and 
+	        	// clicking next question
+	        	radioButtonTracker[questionPageNumber - 2] = 2;
 
 	        }
 	    });
@@ -197,7 +212,8 @@ public class QuizAndFlashQuestionPage extends CustomPage {
 	        @Override
 	        public void actionPerformed(ActionEvent e) {
 	           
-	        	// This is the correct answer
+	        	// This is the correct answer. Set resultsChecker to 1 to calculate
+	        	// the score at the end
 	        	if(randAnswerNum[3] == 0){
 	        		System.out.println("This is the correct answer\n");
 	        		resultsChecker[questionPageNumber - 2] = 1;
@@ -205,6 +221,10 @@ public class QuizAndFlashQuestionPage extends CustomPage {
 	        	}
 	        	else
 	        		resultsChecker[questionPageNumber - 2] = 0;
+	        	
+	        	// Used to set the button to clicked after backtracking and 
+	        	// clicking next question
+	        	radioButtonTracker[questionPageNumber - 2] = 3;
 
 	        }
 	    });
@@ -336,6 +356,7 @@ public class QuizAndFlashQuestionPage extends CustomPage {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			System.out.println("Opening " + this.getClass());
+			
 
 			QuizAndFlashQuestionPage questionPage = new QuizAndFlashQuestionPage("Quiz Question Page: " + QuizAndFlashQuestionPage.questionPageNumber,
 					QuizAndFlashQuestionPage.PanelType.QUESTIONPAGEMC, QuizAndFlashQuestionPage.PageType.QUIZ_MC);
@@ -429,7 +450,7 @@ public class QuizAndFlashQuestionPage extends CustomPage {
 					+ "complete before submitting\n", "Warning!", JOptionPane.DEFAULT_OPTION);
 			if (reply1 == JOptionPane.OK_OPTION) {
 					//Refresh the table here
-					System.out.println("Hello");
+					
 					
 					if(popUp){
 						

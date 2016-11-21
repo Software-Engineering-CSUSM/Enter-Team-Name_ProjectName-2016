@@ -83,9 +83,10 @@ public class CustomPage extends JPanel {
 	// Total Number of questions for a quiz or flashcard set.
 	// should be set by a function that gets the total number of
 	// questions for each particular quiz or flashcard set
-	public static int totalNumQuestions = 3;
+	public static int totalNumQuestions = 5;
 	
 	public static int resultsChecker[] = new int[100];
+	public static int radioButtonTracker[] = new int [100];
 	
 	//int to set Number of buttons for type QuestionBuilder
 		protected static int qBuilderNumButtons;
@@ -628,7 +629,7 @@ private void createMultipleChoice() {
 	}
 	private void createQuestionPageTypeMC() {
 
-
+		
 		// String to hold questions. To be updated with function that passes
 		// the string of the actual question
 		String questionStr = new String("This is where the question goes.");
@@ -676,7 +677,16 @@ private void createMultipleChoice() {
 			MC_Answers[i] = new JRadioButton("Answer " + (randAnswerNum[i]));
 			MCButtonGroup.add(MC_Answers[i]);
 		}
-	
+		
+		
+			// Set the button to selected if it was selected and the back button was
+			// pressed.
+			if(resultsChecker[QuizAndFlashQuestionPage.questionPageNumber - 1] != -1)
+			{
+				MC_Answers[radioButtonTracker[QuizAndFlashQuestionPage.questionPageNumber - 1]].setSelected(true);
+			}
+		
+		
 		// Create two horizontal boxes. The top will hold the first two
 		// answers and the bottom will hold the last 2
 		Box radioBoxTop = Box.createHorizontalBox();
@@ -735,7 +745,6 @@ private void createMultipleChoice() {
 // correct out of the total number of questions. It also displays which
 // questions are right, and which questions are wrong.
 private void createResultsPageType() {
-
 
 		// Create a label for to dispaly "Results" inside a panel
 		// and place it in the NORTH
