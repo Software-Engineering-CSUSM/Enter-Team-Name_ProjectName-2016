@@ -256,7 +256,7 @@ public class QuizAndFlashQuestionPage extends CustomPage {
 					questionPageNumber++;
 					this.currentActions[i].addActionListener(new FlashNextQuestion());}
 				else if (questionPageNumber > 1)
-					this.currentActions[i].addActionListener(new Previous());
+					this.currentActions[i].addActionListener(new PreviousFlash());
 				break;
 				// The questionPageNumber increment was moved here to be able
 				// to use show/Hide without a pop up
@@ -404,6 +404,20 @@ public class QuizAndFlashQuestionPage extends CustomPage {
 		}
 
 	}
+	private class PreviousFlash implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			System.out.println("Opening " + this.getClass());
+			
+			
+			parentController.dismissView();
+						
+			questionPageNumber--; // decrement the quiz question number
+		
+
+	}
+}
 
 
 	// Take you back to the quiz main page
@@ -426,7 +440,7 @@ public class QuizAndFlashQuestionPage extends CustomPage {
 	// Submit the quiz and go to the results page. Also reset the
 	// questionPageNumber
 	private class Submit implements ActionListener {
-//boolean popUp = true;
+
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -485,8 +499,7 @@ public class QuizAndFlashQuestionPage extends CustomPage {
 		public void actionPerformed(ActionEvent e) {
 			System.out.println("Opening " + this.getClass());
 
-			QuizAndFlashMain fcMain = new QuizAndFlashMain("Flash Card Main Page", QuizAndFlashMain.PanelType.THREE_BUTTON_TYPE,
-					QuizAndFlashMain.PageType.FLASHCARD);
+			StudyToolsMain fcMain = new StudyToolsMain("Study Tools Main Page", StudyToolsMain.PanelType.THREE_BUTTON_TYPE);
 			fcMain.parentController = parentController;
 			parentController.displayView(fcMain);
 			questionPageNumber = 1; // reset questionPageNumber
@@ -529,5 +542,6 @@ public class QuizAndFlashQuestionPage extends CustomPage {
 		}
 
 	}
+	
 
 }
