@@ -28,7 +28,7 @@ public class AnaSetup {
 	//clear the log file- useful for anaViewer or emergency data clearing.
 	public static void clearData() throws IOException{
 		FileWriter fileWriter = new FileWriter("C:\\AnaManager\\Analytics.txt", false);
-		fileWriter.write(" ");
+		fileWriter.write("");
 		fileWriter.close();
 		
 		System.out.println("Data Cleared");
