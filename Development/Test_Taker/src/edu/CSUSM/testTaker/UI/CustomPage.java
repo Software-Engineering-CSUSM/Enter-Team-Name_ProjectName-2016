@@ -26,6 +26,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
 
+import edu.CSUSM.testTaker.Backend.Question;
 import edu.CSUSM.testTaker.UI.CustomObjects.CustomButton;
 import edu.CSUSM.testTaker.UI.Pages.ManageData;
 import edu.CSUSM.testTaker.UI.Pages.QuizAndFlashQuestionPage;
@@ -75,6 +76,7 @@ public class CustomPage extends JPanel {
 	// Multiple choice textfields and radiobuttons
 	public  JTextField answerTextMC[] = new JTextField[4];
 	public  JRadioButton MC_Answers[] = new JRadioButton[4];
+	public String questionStr;
 	
 	// Integer array to hole a random number to use as the index for
 			// the multiple choice answers
@@ -629,11 +631,14 @@ private void createMultipleChoice() {
 	}
 	private void createQuestionPageTypeMC() {
 
+		Question myQuestion = new Question();
+		
 		
 		// String to hold questions. To be updated with function that passes
 		// the string of the actual question
-		String questionStr = new String("This is where the question goes.");
-
+		questionStr = "This is where the question goes.";
+		//questionStr = myQuestion.getQuestion();
+		
 		// Create a JLabel to display thew question, set its
 		// alignment, font type and size
 		JLabel questionLabel = new JLabel(questionStr);
@@ -671,6 +676,8 @@ private void createMultipleChoice() {
 	while(randAnswerNum[3] == randAnswerNum[0] || randAnswerNum[3] == randAnswerNum[1] || randAnswerNum[3] == randAnswerNum[2])
 	{randAnswerNum[3] = (int)(Math.random()*4);}
 		
+	String answerStr[] = new String[4];
+	answerStr = myQuestion.getAnswers();
 	// Assign the textfield answers with a random index
 		for(int i = 0; i < 4; i++)
 		{
@@ -757,7 +764,7 @@ private void createResultsPageType() {
 		this.add(resultsPanel, BorderLayout.NORTH);
 
 
-
+		
 		// Number of incorrect and correct answers. We'll need
 		// a function to set the actual values
 		int numberCorrect = 0, numberIncorrect = totalNumQuestions;
