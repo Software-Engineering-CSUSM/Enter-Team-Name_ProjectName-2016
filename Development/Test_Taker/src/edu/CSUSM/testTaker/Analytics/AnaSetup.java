@@ -11,8 +11,12 @@ public class AnaSetup {
 	private static DateFormat dateReg = new SimpleDateFormat("MM_dd");
 	
 	
-	//Log an event - outputs to "C:\\AnaManager\\Analytics.txt"
-	//Action is the name you want recorded in the log. This will be reflected in the graph if john finishes it.
+	/**
+	* Log an event - outputs to "C:\\AnaManager\\Analytics.txt"
+	* Action is the name you want recorded in the log. This will be reflected in the graph if john finishes it.
+	 * @param Action
+	 * @throws IOException
+	 */
 	public static void logEvent(String Action) throws IOException{
 		Date date = new Date();
 		
@@ -27,7 +31,10 @@ public class AnaSetup {
 	}
 	
 	
-	//clear the log file- useful for anaViewer or emergency data clearing.
+	/**
+	 * clear the log file- useful for anaViewer or emergency data clearing.
+	 * @throws IOException
+	 */
 	public static void clearData() throws IOException{
 		FileWriter fileWriter = new FileWriter("C:\\AnaManager\\Analytics.txt", false);
 		fileWriter.write("");
