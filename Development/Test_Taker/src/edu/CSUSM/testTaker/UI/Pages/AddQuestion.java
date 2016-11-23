@@ -83,7 +83,7 @@ public class AddQuestion extends CustomPage {
 public void updateActionsMC() {
 
 		// Set the button names
-		setButtonNames(new String[] { "Save Question", "View Question" });
+		setButtonNames(new String[] { "Save Question" });
 
 		for (int i = 0; i < this.currentActions.length; i++) {
 			switch (i) {
@@ -131,7 +131,7 @@ public void updateActionsMC() {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			//System.out.println("Opening " + this.getClass());
+			System.out.println("Opening " + this.getClass());
 			
 			
 			// Saves the question and answer into a string and prints it
@@ -148,6 +148,7 @@ public void updateActionsMC() {
 				LibraryController.retrieveTest(LibraryController.CURRENT_TEST.getID()).addQuestion(newQ, 15);
 				
 			}catch(NullPointerException ex){
+				ex.printStackTrace();
 				System.out.println("Current Error: " + ex.getMessage());
 				System.out.println("Course Value: " + LibraryController.CURRENT_COURSE.toString());
 				//System.out.println("Test Value: " + LibraryController.CURRENT_TEST.toString());

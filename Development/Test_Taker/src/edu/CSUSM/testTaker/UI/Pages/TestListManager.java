@@ -186,10 +186,10 @@ public class TestListManager extends CustomPage {
 
 					LibraryController.CURRENT_TEST = (Test)LibraryController.getItem(ManageData.currentIDSelected);
 					System.out.println(LibraryController.CURRENT_TEST.getTestName());
+					System.out.println("Has Questions: " + LibraryController.CURRENT_TEST.numQuestions());
 
 					if(LibraryController.CURRENT_TEST.numQuestions() > 0){
 						
-						System.out.println("Has Questions: " + LibraryController.CURRENT_TEST.numQuestions());
 
 						//Set the rows to all questions in teh test
 						try{
@@ -237,4 +237,3 @@ public class TestListManager extends CustomPage {
 
 
 }
-

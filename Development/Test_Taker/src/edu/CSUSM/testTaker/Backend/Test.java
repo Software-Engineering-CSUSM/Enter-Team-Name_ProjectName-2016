@@ -278,7 +278,8 @@ public class Test /*extends TaskObject*/ implements Serializable, Registerable{
 	 * @param questionvalue An integer number of points to value the question at.
 	 */
 	public void addQuestion(Question QuestionToAdd, int questionvalue){
-		questionList.add(QuestionToAdd);
+		System.out.println("Question: " + questionList.toString());
+		getQuestionList().add(QuestionToAdd);
 		questionIDs.add(QuestionToAdd.getID());
 		questionPoints.add(questionvalue);
 		this.flush();

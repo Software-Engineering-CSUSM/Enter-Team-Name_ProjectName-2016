@@ -46,7 +46,7 @@ public class QuestionListManager extends CustomPage {
 	public void updateActions() {
 
 		// Set the button names
-		setButtonNames(new String[] { "Add Question", "Delete Question", "View Question"});
+		setButtonNames(new String[] { "Add Question", "Delete Question"});
 
 		try {
 			for (int i = 0; i < this.currentActions.length; i++) {
@@ -96,6 +96,9 @@ public class QuestionListManager extends CustomPage {
 				}else{
 					// Set number of buttons to two for next page
 					CustomPage.setqBuilderNumButtons(2);
+					
+					//Delete the selected question
+					LibraryController.deleteQuestion(ManageData.currentIDSelected);
 
 					//Set the rows to all questions in teh test
 					CustomPage.setQBRowHeaders(LibraryController.getAllQuestionNamesInCourse(ManageData.currentIDSelected));
