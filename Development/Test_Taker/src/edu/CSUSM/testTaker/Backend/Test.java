@@ -149,10 +149,12 @@ public class Test /*extends TaskObject*/ implements Serializable, Registerable{
 	 * @return The questions in the test, in order, at this moment in time in an ArrayList.
 	 */
 	public ArrayList<Question> getQuestionList(){
-		if(questionList.size() > 0)
+		if(questionList != null)
 			return new ArrayList<Question>(questionList);
-		else
-			return new ArrayList<Question>();
+		else{
+			questionList = new ArrayList<Question>();
+		}
+			return questionList;
 	}
 
 	/**
@@ -278,7 +280,7 @@ public class Test /*extends TaskObject*/ implements Serializable, Registerable{
 	 * @param questionvalue An integer number of points to value the question at.
 	 */
 	public void addQuestion(Question QuestionToAdd, int questionvalue){
-		System.out.println("Question: " + questionList.toString());
+		//System.out.println("Question: " + getQuestionList().toString());
 		getQuestionList().add(QuestionToAdd);
 		questionIDs.add(QuestionToAdd.getID());
 		questionPoints.add(questionvalue);

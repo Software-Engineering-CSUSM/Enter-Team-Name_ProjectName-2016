@@ -145,7 +145,8 @@ public void updateActionsMC() {
 			newQ.setCorrectIndex(5);
 			
 			try{
-				LibraryController.retrieveTest(LibraryController.CURRENT_TEST.getID()).addQuestion(newQ, 15);
+				System.out.println("Test Value: " + LibraryController.CURRENT_TEST.getTestName());
+				LibraryController.CURRENT_TEST.addQuestion(newQ, 15);
 				
 			}catch(NullPointerException ex){
 				ex.printStackTrace();
