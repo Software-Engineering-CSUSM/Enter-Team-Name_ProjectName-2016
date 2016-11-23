@@ -1,4 +1,5 @@
 package edu.CSUSM.testTaker;
+import edu.CSUSM.testTaker.Analytics.*;
 
 public class ShutdownManager extends Thread {
 	static ShutdownManager instance = null;
@@ -17,6 +18,7 @@ public class ShutdownManager extends Thread {
 	
 	public void run(){
 		LibraryController.backupLibrary("Library.bin");
+		AnaViewer.processLogs();
 	}
 
 }
