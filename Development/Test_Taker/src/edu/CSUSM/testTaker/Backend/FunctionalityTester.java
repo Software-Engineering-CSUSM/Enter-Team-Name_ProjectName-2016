@@ -20,11 +20,6 @@ public class FunctionalityTester {
 		System.out.println(testtest);
 		System.out.println(testquestion);
 
-		System.out.println("Testing for presence, too early.");
-		System.out.println("course:"+LibraryController.containsID(testcourse.getID()));
-		System.out.println("test:"+LibraryController.containsID(testtest.getID()));
-		System.out.println("question:"+LibraryController.containsID(testquestion.getID()));		
-
 		
 		System.out.println("Attempting to add above to database.");
 		
@@ -38,9 +33,9 @@ public class FunctionalityTester {
 		System.out.println("question:"+LibraryController.containsID(testquestion.getID()));		
 		
 		System.out.println("Attempting to retrieve objects from database.");
-		Course rcourse = (Course)LibraryController.getItem(testcourse.getID());
-		Test rtest = (Test)LibraryController.getItem(testtest.getID());
-		Question rquestion = (Question)LibraryController.getItem(testquestion.getID());
+		Course rcourse = LibraryController.retrieveCourse(testcourse.getID());
+		Test rtest = LibraryController.retrieveTest(testtest.getID());
+		Question rquestion = LibraryController.retrieveQuestion(testquestion.getID());
 
 		System.out.println(rcourse);
 		System.out.println(rtest);

@@ -6,6 +6,7 @@ import java.awt.image.BufferedImage;
 
 import edu.CSUSM.testTaker.LibraryController;
 import edu.CSUSM.testTaker.Backend.Question;
+import edu.CSUSM.testTaker.Backend.Test;
 import edu.CSUSM.testTaker.UI.CustomPage;
 import edu.CSUSM.testTaker.UI.CustomPage.PanelType;
 
@@ -130,27 +131,26 @@ public void updateActionsMC() {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			System.out.println("Opening " + this.getClass());
+			//System.out.println("Opening " + this.getClass());
+			
 			
 			// Saves the question and answer into a string and prints it
-			// out for testing purposes
-			questionStr = question.getText();
-			System.out.println("question: " + questionStr);
-			for(int i = 0; i < 4; i++)
+			// out for testing purposes//Create a new Question object
+			Question newQ = new Question(question.getText());
+			for(int i = 0; i < answerTextMC.length; i++)
 			{
-				
-				answerStrMC[i] = answerTextMC[i].getText();
-			
-				//System.out.println("anwer " + answerStrMC[i]);
+				newQ.addAnswer(answerTextMC[i].getText());
 			}
 			
-			//Save the question
-			Question newQ = new Question(questionStr, answerStrMC, 0);
+			newQ.setCorrectIndex(5);
+			
 			try{
-				LibraryController.CURRENT_TEST.addQuestion(newQ, 5);
+				LibraryController.retrieveTest(LibraryController.CURRENT_TEST.getID()).addQuestion(newQ, 15);
+				
 			}catch(NullPointerException ex){
+				System.out.println("Current Error: " + ex.getMessage());
 				System.out.println("Course Value: " + LibraryController.CURRENT_COURSE.toString());
-				System.out.println("Test Value: " + LibraryController.CURRENT_TEST.toString());
+				//System.out.println("Test Value: " + LibraryController.CURRENT_TEST.toString());
 			}
 			
 			// Constructor uses a main window with just a logo type, and
