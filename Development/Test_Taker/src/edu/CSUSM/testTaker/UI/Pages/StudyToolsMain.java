@@ -35,18 +35,15 @@ public class StudyToolsMain extends CustomPage {
 	public void updateActions() {
 
 		// Set the button names
-		setButtonNames(new String[] { "Play Game", "Quiz Page", "Practice With Flash Cards" });
+		setButtonNames(new String[] {"Quiz Page", "Practice With Flash Cards" });
 
 		try {
 			for (int i = 0; i < this.currentActions.length; i++) {
 				switch (i) {
 				case 0:
-					this.currentActions[i].addActionListener(new OpenStudyGame());
-					break;
-				case 1:
 					this.currentActions[i].addActionListener(new OpenQuizPage());
 					break;
-				case 2:
+				case 1:
 					this.currentActions[i].addActionListener(new OpenFlashCards());
 					break;
 				default:
@@ -57,27 +54,6 @@ public class StudyToolsMain extends CustomPage {
 		} catch (NullPointerException e) {
 			System.out.println(e.getMessage());
 		}
-	}
-
-	private class OpenStudyGame implements ActionListener {
-
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			System.out.println("Opening " + this.getClass());
-
-			/**
-			StudyGame cm = new StudyGame(parentController.getWidth(),
-					parentController.getHeight(), null); cm.setName("Study Game");
-					parentController.displayView(cm);
-					*/
-			GamePrep prep = new GamePrep("Game Setup", CustomPage.PanelType.TWO_BUTTON_TYPE);
-			prep.parentController = parentController;
-			parentController.displayView(prep);
-			
-
-
-		}
-
 	}
 
 	private class OpenFlashCards implements ActionListener {

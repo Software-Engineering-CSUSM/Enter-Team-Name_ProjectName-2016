@@ -122,7 +122,7 @@ public class GUIController extends JFrame {
 		/** Study Tools */
 		studyToolsNC = new NavigationController();
 
-		StudyToolsMain studyToolsMain = new StudyToolsMain(SideMenu.menuOptionButtons[2].getText(), CustomPage.PanelType.THREE_BUTTON_TYPE);
+		StudyToolsMain studyToolsMain = new StudyToolsMain(SideMenu.menuOptionButtons[2].getText(), CustomPage.PanelType.TWO_BUTTON_TYPE);
 		studyToolsNC.setInitialView(studyToolsMain);
 		studyToolsMain.parentController = studyToolsNC;
 

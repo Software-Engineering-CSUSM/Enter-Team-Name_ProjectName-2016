@@ -2,7 +2,9 @@ package edu.CSUSM.testTaker.Backend;
 
 import java.util.ArrayList;
 import java.util.UUID;
+import java.io.IOException;
 import java.io.Serializable;
+import edu.CSUSM.testTaker.Analytics.AnaSetup;
 
 import edu.CSUSM.testTaker.LibraryController;
 
@@ -57,6 +59,8 @@ public class Course /*extends TaskObject*/ implements Serializable, edu.CSUSM.te
 		questionIDs = new ArrayList<String>();
 		testIDs = new ArrayList<String>();
 		testPoints = new ArrayList<Integer>();
+		try{AnaSetup.logEvent("Constructed new Course");}
+		catch(IOException e){e.printStackTrace();}
 	}
 	
 	/** Make an example Course
@@ -288,6 +292,8 @@ public class Course /*extends TaskObject*/ implements Serializable, edu.CSUSM.te
 	 */
 	public void setName(String newname){
 		this.courseName = newname;
+		try{AnaSetup.logEvent("Reset a Course Name");}
+		catch(IOException e){e.printStackTrace();}
 		this.flush();
 	}
 
@@ -298,6 +304,8 @@ public class Course /*extends TaskObject*/ implements Serializable, edu.CSUSM.te
 	public void addQuestion(String nqID){
 		if(! questionIDs.contains(nqID) )
 			questionIDs.add(nqID);
+		try{AnaSetup.logEvent("Added a Question to a Course");}
+		catch(IOException e){e.printStackTrace();}
 		this.flush();
 	}
 
@@ -318,6 +326,8 @@ public class Course /*extends TaskObject*/ implements Serializable, edu.CSUSM.te
 		for(String tqid : nt.getQuestionIDs()){
 			addQuestion(tqid);
 		}
+		try{AnaSetup.logEvent("Added a multiple Questions to a Course");}
+		catch(IOException e){e.printStackTrace();}
 		this.flush();
 	}
 	
@@ -332,6 +342,8 @@ public class Course /*extends TaskObject*/ implements Serializable, edu.CSUSM.te
 		for(int i = 0; i < newtest.numQuestions(); ++i){
 			addQuestion(newtest.getQuestion(i));
 		}
+		try{AnaSetup.logEvent("Added a Test to a Course");}
+		catch(IOException e){e.printStackTrace();}
 		this.flush();
 	}
 	
@@ -356,7 +368,9 @@ public class Course /*extends TaskObject*/ implements Serializable, edu.CSUSM.te
 			this.testPoints.add(newpoints);
 			for(int i = 0; i < newtest.numQuestions(); ++i){
 				addQuestion(newtest.getQuestion(i));
-			}			
+			}
+			try{AnaSetup.logEvent("Added a Test to a Course");}
+			catch(IOException e){e.printStackTrace();}
 			this.flush();
 		}
 	}
@@ -381,6 +395,8 @@ public class Course /*extends TaskObject*/ implements Serializable, edu.CSUSM.te
 			removeTestNum(tindex);
 		}
 		questionIDs.remove(removethis);
+		try{AnaSetup.logEvent("Removed a Question from a Course");}
+		catch(IOException e){e.printStackTrace();}
 		this.flush();
 	}
 	
@@ -411,6 +427,8 @@ public class Course /*extends TaskObject*/ implements Serializable, edu.CSUSM.te
 	public void removeTestNum(int testnum){
 		testPoints.remove(testnum);
 		testIDs.remove(testnum);
+		try{AnaSetup.logEvent("Removed a Test from a Course");}
+		catch(IOException e){e.printStackTrace();}
 		this.flush();
 	}
 	
@@ -420,6 +438,8 @@ public class Course /*extends TaskObject*/ implements Serializable, edu.CSUSM.te
 	 */
 	public void removeQuestionNum(int qnum){
 		questionIDs.remove(qnum);
+		try{AnaSetup.logEvent("Removed a Question from a Course");}
+		catch(IOException e){e.printStackTrace();}
 		this.flush();
 	}
 	
@@ -433,6 +453,8 @@ public class Course /*extends TaskObject*/ implements Serializable, edu.CSUSM.te
 	public void insertTest(Test insertthis, int points, int tn){
 		testIDs.add(tn, insertthis.getID());
 		testPoints.add(tn,points);
+		try{AnaSetup.logEvent("Added a Test to a Course");}
+		catch(IOException e){e.printStackTrace();}
 		this.flush();
 	}
 	
@@ -445,6 +467,8 @@ public class Course /*extends TaskObject*/ implements Serializable, edu.CSUSM.te
 	public void insertQuestion(String insertthis, int qn){
 		if(! questionIDs.contains(insertthis) ){
 			questionIDs.add(qn, insertthis);
+			try{AnaSetup.logEvent("Added a Question to a Course");}
+			catch(IOException e){e.printStackTrace();}
 			this.flush();
 		}
 	}

@@ -1,9 +1,15 @@
 package edu.CSUSM.testTaker.Backend;
 
+import java.io.IOException;
+
 import edu.CSUSM.testTaker.LibraryController;
+import edu.CSUSM.testTaker.Analytics.*;
 
 public class FunctionalityTester {
 	public static void main(String [] unused){
+		try{AnaSetup.clearData();}
+		catch(IOException e){e.printStackTrace();}		
+		
 		if(LibraryController.checkForDB()){
 			System.out.println("database found with expected filename");
 		}
@@ -40,5 +46,8 @@ public class FunctionalityTester {
 		System.out.println(rcourse);
 		System.out.println(rtest);
 		System.out.println(rquestion);
+		
+		try{AnaViewer.processLogs();}
+		catch(IOException e){e.printStackTrace();}				
 	}
 }
