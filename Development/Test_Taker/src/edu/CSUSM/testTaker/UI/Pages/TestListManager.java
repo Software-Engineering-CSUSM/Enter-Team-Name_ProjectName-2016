@@ -182,7 +182,7 @@ public class TestListManager extends CustomPage {
 					throw new NullPointerException();
 				}else{
 					// Set number of buttons to two for next page
-					CustomPage.setqBuilderNumButtons(3);
+					CustomPage.setqBuilderNumButtons(2);
 
 					LibraryController.CURRENT_TEST = (Test)LibraryController.getItem(ManageData.currentIDSelected);
 					System.out.println(LibraryController.CURRENT_TEST.getTestName());

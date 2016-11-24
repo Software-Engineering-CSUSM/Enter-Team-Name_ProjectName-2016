@@ -11,4 +11,5 @@
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="edu.CSUSM.testTaker.Backend.Test"/>
 <fullyQualifiedTypeName name="edu.CSUSM.testTaker.LibraryController"/>
+<fullyQualifiedTypeName name="javax.swing.JOptionPane"/>
 </qualifiedTypeNameHistroy>
