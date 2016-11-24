@@ -1,21 +1,19 @@
 package edu.CSUSM.testTaker.Backend;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.UUID;
 
 import edu.CSUSM.testTaker.LibraryController;
+import edu.CSUSM.testTaker.Analytics.AnaSetup;
 
 public class Question /*extends TaskObject*/ implements Serializable, Registerable{
 	public static final long serialVersionUID = 1L;
 	
 	String myID;
 	
-	/**
-	 * Return the identifier string of this Question
-	 * @return A unique identifier string associated with this object.
-	 */
 	public String getID(){
 		return myID;							//Within the Question HashMap, the ID will be in the key position where the question is the value
 	}
@@ -44,6 +42,8 @@ public class Question /*extends TaskObject*/ implements Serializable, Registerab
 		myID = UUID.randomUUID().toString();
 		_answers = new ArrayList<String>();
 		_question = "";
+		try{AnaSetup.logEvent("Constructed a new Question");}
+		catch(IOException e){e.printStackTrace();}
 	}
 
 	/**New Question starting with question text
@@ -61,6 +61,8 @@ public class Question /*extends TaskObject*/ implements Serializable, Registerab
 		
 		myID = UUID.randomUUID().toString();
 		this.flush();
+		try{AnaSetup.logEvent("Constructed a new Question");}
+		catch(IOException e){e.printStackTrace();}
 	}
 	
 	/** Complete question definition, with question, answers, and correct answer index
@@ -86,6 +88,8 @@ public class Question /*extends TaskObject*/ implements Serializable, Registerab
 		setCorrectIndex(correctAnsIndex);
 		
 		myID = UUID.randomUUID().toString();
+		try{AnaSetup.logEvent("Constructed a new Question");}
+		catch(IOException e){e.printStackTrace();}
 		this.flush();
 	}
 	
@@ -100,6 +104,8 @@ public class Question /*extends TaskObject*/ implements Serializable, Registerab
 		rval.addAnswer("To find the Holy Grail");
 		rval.addAnswer("Aaaaaah");
 		rval.setCorrectIndex(1);
+		try{AnaSetup.logEvent("Made a new example Question");}
+		catch(IOException e){e.printStackTrace();}
 		return rval;
 	}
 	
@@ -114,6 +120,8 @@ public class Question /*extends TaskObject*/ implements Serializable, Registerab
 	public void setQuestion(String newQuestion) {
 		this._question = newQuestion;
 		this.flush();
+		try{AnaSetup.logEvent("Reset a Question's main question");}
+		catch(IOException e){e.printStackTrace();}
 	}
 
 	/**
@@ -128,6 +136,8 @@ public class Question /*extends TaskObject*/ implements Serializable, Registerab
 		if(index <= _answers.size()){
 			this._answers.set(index, newAnswer); 
 			this.flush();
+			try{AnaSetup.logEvent("Changed an answer to a Question");}
+			catch(IOException e){e.printStackTrace();}
 			}
 		}
 	
@@ -140,6 +150,8 @@ public class Question /*extends TaskObject*/ implements Serializable, Registerab
 		if(index < this._correctIndex){
 			--_correctIndex;
 		}
+		try{AnaSetup.logEvent("Removed an answer to a Question");}
+		catch(IOException e){e.printStackTrace();}
 	}
 	
 	/**
@@ -150,6 +162,8 @@ public class Question /*extends TaskObject*/ implements Serializable, Registerab
 	public void addAnswer(String additionalAnswer) {
 		this._answers.add(additionalAnswer);
 		this.flush();
+		try{AnaSetup.logEvent("Added an answer to a Question");}
+		catch(IOException e){e.printStackTrace();}
 	}
 
 	/**
@@ -161,6 +175,8 @@ public class Question /*extends TaskObject*/ implements Serializable, Registerab
 		if(index < _answers.size()){
 			this._correctIndex = index;
 			this.flush();
+			try{AnaSetup.logEvent("Set the correct answer to a Question");}
+			catch(IOException e){e.printStackTrace();}
 			}
 		}
 
@@ -219,6 +235,8 @@ public class Question /*extends TaskObject*/ implements Serializable, Registerab
 	 * @description returns a 1.0 if answer given by user matches the correct answer for this Question
 	 */
 	public double scoreAnswer(int index){
+		try{AnaSetup.logEvent("Scored a Question");}
+		catch(IOException e){e.printStackTrace();}
 		if(index == _correctIndex)
 			return 1.0;
 		else 

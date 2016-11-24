@@ -1,11 +1,12 @@
 package edu.CSUSM.testTaker.Backend;
 
 import edu.CSUSM.testTaker.*;
+import edu.CSUSM.testTaker.Analytics.AnaSetup;
 
 import java.util.ArrayList;
-import java.util.AbstractList;
+import java.util.List;
 import java.util.UUID;
-
+import java.io.IOException;
 import java.io.Serializable;
 
 public class Test /*extends TaskObject*/ implements Serializable, Registerable{
@@ -39,6 +40,8 @@ public class Test /*extends TaskObject*/ implements Serializable, Registerable{
 		questionList = new ArrayList<Question>();
 		questionIDs = new ArrayList<String>();
 		questionPoints = new ArrayList<Integer>();
+		try{AnaSetup.logEvent("Initialized a Test instance");}
+		catch(IOException e){e.printStackTrace();}
 	}
 
 	/** Initialize an untitled blank Test
@@ -63,7 +66,7 @@ public class Test /*extends TaskObject*/ implements Serializable, Registerable{
 	 * @param listOfQuestionsForTest list of questions to add to the test
 	 * @author Justin Goulet
 	 */
-	public Test(String testName, AbstractList<Question> listOfQuestionsForTest){
+	public Test(String testName, List<Question> listOfQuestionsForTest){
 		this._testName = testName;
 		//this.currentID = getID();
 		//this.currentName = testName;
@@ -105,6 +108,8 @@ public class Test /*extends TaskObject*/ implements Serializable, Registerable{
 		q3.setCorrectIndex(0);
 		rval.addQuestion(q3, 20);
 
+		try{AnaSetup.logEvent("Made a new example Test");}
+		catch(IOException e){e.printStackTrace();}
 		return rval;
 	}
 
@@ -255,6 +260,8 @@ public class Test /*extends TaskObject*/ implements Serializable, Registerable{
 			}
 			this.flush();
 		}
+		try{AnaSetup.logEvent("Initialized the question reference list of a Test");}
+		catch(IOException e){e.printStackTrace();}
 	}
 
 	/**
@@ -267,6 +274,8 @@ public class Test /*extends TaskObject*/ implements Serializable, Registerable{
 		if(questionPoints.size() < qn && qn >= 0){
 			questionPoints.set(qn, qp);
 			this.flush();
+			try{AnaSetup.logEvent("Set the points of a Question in a Test");}
+			catch(IOException e){e.printStackTrace();}
 			return true;
 		}
 		return false;
@@ -281,6 +290,8 @@ public class Test /*extends TaskObject*/ implements Serializable, Registerable{
 		questionList.add(QuestionToAdd);
 		questionIDs.add(QuestionToAdd.getID());
 		questionPoints.add(questionvalue);
+		try{AnaSetup.logEvent("Added a Question to a Test");}
+		catch(IOException e){e.printStackTrace();}
 		this.flush();
 	}
 
@@ -292,6 +303,8 @@ public class Test /*extends TaskObject*/ implements Serializable, Registerable{
 		questionList.add(QuestionToAdd);
 		questionIDs.add(QuestionToAdd.getID());
 		questionPoints.add(0);
+		try{AnaSetup.logEvent("Added a Question to a Test");}
+		catch(IOException e){e.printStackTrace();}
 		this.flush();
 	}
 
@@ -304,6 +317,8 @@ public class Test /*extends TaskObject*/ implements Serializable, Registerable{
 		questionList.remove(qn);
 		questionIDs.remove(qn);
 		questionPoints.remove(qn);
+		try{AnaSetup.logEvent("Removed a Question from a Test");}
+		catch(IOException e){e.printStackTrace();}
 		this.flush();
 	}
 
@@ -318,6 +333,8 @@ public class Test /*extends TaskObject*/ implements Serializable, Registerable{
 		questionList.add(qi, insertit);
 		questionIDs.add(qi,insertit.getID());
 		questionPoints.add(qi,points);
+		try{AnaSetup.logEvent("Added a Question to a Test");}
+		catch(IOException e){e.printStackTrace();}
 		this.flush();
 	}
 
@@ -327,6 +344,8 @@ public class Test /*extends TaskObject*/ implements Serializable, Registerable{
 	 */
 	public void setName(String newTestName){
 		this._testName = newTestName;
+		try{AnaSetup.logEvent("Renamed a Test");}
+		catch(IOException e){e.printStackTrace();}
 		this.flush();
 	}
 
@@ -346,6 +365,8 @@ public class Test /*extends TaskObject*/ implements Serializable, Registerable{
 			questionIDs.add(tempQuestion.getID());
 			questionPoints.add(0);
 		}
+		try{AnaSetup.logEvent("Set all the Questions in a Test");}
+		catch(IOException e){e.printStackTrace();}
 		this.flush();
 	}
 
@@ -378,6 +399,8 @@ public class Test /*extends TaskObject*/ implements Serializable, Registerable{
 		}
 		if(sumOfPoints != 0)
 			weightAverage = pointValue/sumOfPoints;
+		try{AnaSetup.logEvent("Scored a Test");}
+		catch(IOException e){e.printStackTrace();}
 		return weightAverage;
 	}
 	
@@ -386,7 +409,7 @@ public class Test /*extends TaskObject*/ implements Serializable, Registerable{
 	 * @param answerSet Any List of Integers with answer numbers for the test Questions
 	 * @return An average of the scores for all Questions weighted by their points values.
 	 */
-	public double scoreAnswers(AbstractList <Integer> answerSet){
+	public double scoreAnswers(List <Integer> answerSet){
 		return scoreAnswers(answerSet.stream().mapToInt(i->i).toArray());
 	}
 
@@ -394,7 +417,7 @@ public class Test /*extends TaskObject*/ implements Serializable, Registerable{
 	 * Sets the entire list of questions for the Test.
 	 * @param newQuestionList Any List of Questions to set the Test to.
 	 */
-	public void setQuestionList(AbstractList<Question> newQuestionList){
+	public void setQuestionList(List<Question> newQuestionList){
 		questionList.clear();
 		questionIDs.clear();
 		questionPoints.clear();
@@ -405,6 +428,8 @@ public class Test /*extends TaskObject*/ implements Serializable, Registerable{
 			questionIDs.add(tempQuestion.getID());
 			questionPoints.add(0);
 		}
+		try{AnaSetup.logEvent("Set all the Questions in a Test");}
+		catch(IOException e){e.printStackTrace();}
 		this.flush();
 	}
 
