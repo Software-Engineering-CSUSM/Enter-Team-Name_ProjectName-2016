@@ -12,8 +12,14 @@ public class AnaSetup {
 	private static DateFormat dateReg = new SimpleDateFormat("MM_dd");
 	private static String logFileName = "Analytics.txt";
 	
-	//Log an event - outputs to "C:\\AnaManager\\Analytics.txt"
-	//Action is the name you want recorded in the log. This will be reflected in the graph if john finishes it.
+	/**
+	 * Log an event - outputs to <user.home> + File.separator + logFileName
+	 * eg. on my computer, Final filepath : C:\Users\Christian\Analytics.txt
+	 * Action is the name you want recorded in the log. This will be reflected in the graph if we finish it.
+	 * @param Action
+	 * @throws IOexception
+	 */
+	
 	public static void logEvent(String Action) throws IOException{
 		Date date = new Date();
 		File dirFile = null;
@@ -48,7 +54,10 @@ public class AnaSetup {
 	}
 	
 	
-	//clear the log file- useful for anaViewer or emergency data clearing.
+	/**
+	 * Clear the log file - useful for anaVidewer or emergency data clearing
+	 * @throws IOException
+	 */
 	public static void clearData() throws IOException{
 		File dirFile = null;
 		try{
