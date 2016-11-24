@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Collection;
+import java.io.IOException;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -16,6 +17,7 @@ import java.sql.Connection;
 import java.sql.Statement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import edu.CSUSM.testTaker.Analytics.AnaSetup;
 
 import edu.CSUSM.testTaker.Backend.*;
 import edu.CSUSM.testTaker.UI.Pages.StudyGame.allMatched;
@@ -72,6 +74,8 @@ public class LibraryController{
 			sqlLine.execute("drop table if exists REGISTRY;");
 			sqlLine.execute("create table REGISTRY(ID binary(36) primary key,typename varchar(31), name varchar(255), data other);");
 			dbcon.close();
+			try{AnaSetup.logEvent("Rebuilt database tables");}
+			catch(IOException e){e.printStackTrace();}
 		}
 		catch(SQLException e){
 			e.printStackTrace();
@@ -85,6 +89,8 @@ public class LibraryController{
 	 * @return True if found, false otherwise.
 	 */
 	public static boolean containsID(String id){
+		try{AnaSetup.logEvent("Searched the database for an ID");}
+		catch(IOException e){e.printStackTrace();}
 		try(Connection dbcon = connect()){
 			PreparedStatement myquery = dbcon.prepareStatement("select name from REGISTRY where id = ?;");
 			myquery.setBytes(1, id.getBytes());
@@ -113,6 +119,8 @@ public class LibraryController{
 				myupdate.setObject(3, reg);
 				myupdate.setBytes(4, reg.getID().getBytes());
 				myupdate.executeUpdate();
+				try{AnaSetup.logEvent("Stored an item in the database");}
+				catch(IOException e){e.printStackTrace();}
 			}
 			catch(SQLException e){
 				e.printStackTrace();
@@ -127,6 +135,8 @@ public class LibraryController{
 				myupdate.setString(3, reg.getName());
 				myupdate.setObject(4, reg);
 				myupdate.executeUpdate();
+				try{AnaSetup.logEvent("Stored an item in the database");}
+				catch(IOException e){e.printStackTrace();}
 			}
 			catch(SQLException e){
 				e.printStackTrace();
@@ -151,6 +161,8 @@ public class LibraryController{
 				rval = (Registerable) results.getObject(1);
 				dbcon.close();
 			}
+			try{AnaSetup.logEvent("Pulled an item from the database");}
+			catch(IOException e){e.printStackTrace();}
 		}
 		catch(SQLException e){
 			e.printStackTrace();
@@ -173,6 +185,8 @@ public class LibraryController{
 			if(results.next()){
 				rval = results.getString(1);
 				dbcon.close();
+				try{AnaSetup.logEvent("Pulled an item name from the database");}
+				catch(IOException e){e.printStackTrace();}
 			}
 		}
 		catch(SQLException e){
@@ -196,6 +210,8 @@ public class LibraryController{
 			if(results.next()){
 				rval = results.getString(1);
 				dbcon.close();
+				try{AnaSetup.logEvent("Pulled an item type from the database");}
+				catch(IOException e){e.printStackTrace();}
 			}
 		}
 		catch(SQLException e){
@@ -214,6 +230,8 @@ public class LibraryController{
 			PreparedStatement myquery = dbcon.prepareStatement("delete from REGISTRY where ID = ?;");
 			myquery.setBytes(1, ID.getBytes());
 			myquery.executeUpdate();
+			try{AnaSetup.logEvent("Removed an item from the database");}
+			catch(IOException e){e.printStackTrace();}
 		}
 		catch(SQLException e){
 			e.printStackTrace();
@@ -227,6 +245,8 @@ public class LibraryController{
 	 */
 	public static boolean checkForDB(){
 		File testfile = new File(System.getProperty("user.home") + File.separator + databaseName + ".mv.db");
+		try{AnaSetup.logEvent("Checked if database exists");}
+		catch(IOException e){e.printStackTrace();}
 		return testfile.exists();
 	}
 	
@@ -242,6 +262,8 @@ public class LibraryController{
 			while(myresults.next()){
 				rval.add(new String(myresults.getBytes(1)));
 			}
+			try{AnaSetup.logEvent("Pulled all Course IDs from the database");}
+			catch(IOException e){e.printStackTrace();}
 		}catch(SQLException e){
 			e.printStackTrace();
 		}
@@ -260,6 +282,8 @@ public class LibraryController{
 			while(myresults.next()){
 				rval.add(new String(myresults.getBytes(1)));
 			}
+			try{AnaSetup.logEvent("Pulled all CourseProgesses IDs from the database");}
+			catch(IOException e){e.printStackTrace();}
 		}catch(SQLException e){
 			e.printStackTrace();
 		}
@@ -278,6 +302,8 @@ public class LibraryController{
 			while(myresults.next()){
 				rval.add(new String(myresults.getBytes(1)));
 			}
+			try{AnaSetup.logEvent("Pulled all Test IDs from the database");}
+			catch(IOException e){e.printStackTrace();}
 		}catch(SQLException e){
 			e.printStackTrace();
 		}
@@ -297,6 +323,8 @@ public class LibraryController{
 			while(myresults.next()){
 				rval.add(new String(myresults.getBytes(1)));
 			}
+			try{AnaSetup.logEvent("Pulled all Question IDs from the database");}
+			catch(IOException e){e.printStackTrace();}
 		}catch(SQLException e){
 			e.printStackTrace();
 		}
@@ -316,6 +344,8 @@ public class LibraryController{
 			while(myresults.next()){
 				rval.add(myresults.getString(1));
 			}			
+			try{AnaSetup.logEvent("Pulled all Course names from the database");}
+			catch(IOException e){e.printStackTrace();}
 		}catch(SQLException e){
 			e.printStackTrace();
 		}		
@@ -334,6 +364,8 @@ public class LibraryController{
 			while(myresults.next()){
 				rval.add(myresults.getString(1));
 			}			
+			try{AnaSetup.logEvent("Pulled all CourseProgress names from the database");}
+			catch(IOException e){e.printStackTrace();}
 		}catch(SQLException e){
 			e.printStackTrace();
 		}		
@@ -353,6 +385,8 @@ public class LibraryController{
 			while(myresults.next()){
 				rval.add(myresults.getString(1));
 			}			
+			try{AnaSetup.logEvent("Pulled all Test names from the database");}
+			catch(IOException e){e.printStackTrace();}
 		}catch(SQLException e){
 			e.printStackTrace();
 		}		
@@ -360,8 +394,8 @@ public class LibraryController{
 	}
 
 	/**
-	 * Give all Names of Tests in the database
-	 * @return an ArrayList of name Strings for all Tests in the database.
+	 * Give all Names of Questions in the database
+	 * @return an ArrayList of name Strings for all Questions in the database.
 	 * @deprecated
 	 */
 	public static ArrayList<String> getQuestionItemNames(){
@@ -372,6 +406,8 @@ public class LibraryController{
 			while(myresults.next()){
 				rval.add(myresults.getString(1));
 			}			
+			try{AnaSetup.logEvent("Pulled all Question names from the database");}
+			catch(IOException e){e.printStackTrace();}
 		}catch(SQLException e){
 			e.printStackTrace();
 		}		
@@ -423,6 +459,7 @@ public class LibraryController{
 	/**
 	 * Gives an ArrayList container of every question in the entire library
 	 * @return a Set of Questions
+	 * @deprecated
 	 */
 	public static ArrayList<Question> giveAllQuestions(){
 		ArrayList <Question> rval = null;
@@ -434,6 +471,8 @@ public class LibraryController{
 				newlist.add((Question)results.getObject(1));
 			}
 			rval = newlist;
+			try{AnaSetup.logEvent("Pulled all Questions from the database");}
+			catch(IOException e){e.printStackTrace();}
 		}catch(SQLException e){
 			e.printStackTrace();
 		}
@@ -451,7 +490,9 @@ public class LibraryController{
 			rlist.add(new CourseInfo(aCourse, aCourse.getID()));
 		}
 
-		return rlist;
+		try{AnaSetup.logEvent("Pulled a mapping of all Courses and their IDs");}
+		catch(IOException e){e.printStackTrace();}
+	return rlist;
 	}
 
 	public static class CourseInfo{
@@ -511,6 +552,8 @@ public class LibraryController{
 				newlist.add((Course)results.getObject(1));
 			}
 			rval = newlist;
+			try{AnaSetup.logEvent("Pulled all Courses from the database");}
+			catch(IOException e){e.printStackTrace();}
 		}catch(SQLException e){
 			e.printStackTrace();
 		}		
@@ -773,6 +816,8 @@ public class LibraryController{
 				while(results.next()){
 					tval.add((Question)results.getObject(1));
 				}
+				try{AnaSetup.logEvent("Pulled all Questions from the database");}
+				catch(IOException e){e.printStackTrace();}
 			}catch(SQLException e){
 				e.printStackTrace();
 			}
@@ -847,6 +892,8 @@ public class LibraryController{
 				while(results.next()){
 					tval.add((Test)results.getObject(1));
 				}
+				try{AnaSetup.logEvent("Pulled all Tests from the database");}
+				catch(IOException e){e.printStackTrace();}
 			}catch(SQLException e){
 				e.printStackTrace();
 			}
