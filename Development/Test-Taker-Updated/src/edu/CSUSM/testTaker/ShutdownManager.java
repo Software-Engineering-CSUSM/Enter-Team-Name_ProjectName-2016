@@ -1,5 +1,5 @@
 package edu.CSUSM.testTaker;
-import edu.CSUSM.testTaker.Analytics.*;
+import edu.CSUSM.testTaker.Analytics.AnaViewer;
 
 public class ShutdownManager extends Thread {
 	static ShutdownManager instance = null;
