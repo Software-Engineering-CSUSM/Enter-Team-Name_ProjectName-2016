@@ -1,14 +1,37 @@
 package edu.CSUSM.testTaker.Analytics;
 import java.awt.Color;
+import java.awt.Container;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.GridLayout;
 import java.awt.Rectangle;
+import java.util.ArrayList;
 import java.util.Vector;
 
 import javax.swing.JComponent;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.border.Border;
+import javax.swing.border.LineBorder;
 import javax.swing.plaf.ColorChooserUI;
 
+//import com.my.piechart.MyComponent;
+//import com.my.piechart.Slice;
+
+/**
+ * 
+ * @author John Orcino
+ *Just call 
+ */
+public class AnaPieChart {
+	   public static void main(String[] argv) {
+		 MyComponent.displayPie();  
+	      /*JFrame frame = new JFrame();
+	      frame.getContentPane().add(new MyComponent());
+	      frame.setSize(300, 300);
+	      frame.setVisible(true);*/
+	   }
+}
 class Slice {
    double value;
    Color color;
@@ -26,9 +49,9 @@ class MyComponent extends JComponent {
    new Slice(1, Color.green),
    new Slice(3, Color.yellow), 
    new Slice(2, Color.red) };*/
-	Slice[] slices = getColor(AnaSetup.visitsVector);
-   MyComponent() {}
-   public void paint(Graphics g) {
+	static Slice[] slices = getColor(AnaSetup.visitsVector);
+	MyComponent() {}
+   public  void paint(Graphics g) {
       drawPie((Graphics2D) g, getBounds(), slices);
    }
    void drawPie(Graphics2D g, Rectangle area, Slice[] slices) {
@@ -47,7 +70,7 @@ class MyComponent extends JComponent {
          curValue += slices[i].value;
       }
    }
-   public Slice[] getColor(Vector<Integer> color){
+   public static Slice[] getColor(Vector<Integer> color){
 	  if(color.size()==1){
 		  Slice[] slices = { 
 				  new Slice(color.get(0), Color.black), 
@@ -94,13 +117,24 @@ class MyComponent extends JComponent {
 		   return slices;
 		 	}
    }
-}
-public class AnaPieChart {
-   public static void main(String[] argv) {
-	   
-      JFrame frame = new JFrame();
-      frame.getContentPane().add(new MyComponent());
-      frame.setSize(300, 200);
-      frame.setVisible(true);
+   public static void createLegend(JFrame frame){
+	   Vector<String> types = AnaSetup.typesVector;
+	   Vector<Integer> visits= AnaSetup.visitsVector;
+	   for(int i = 0; i <5; i++ ){
+		   JLabel text = new JLabel(types.get(i)+ "-" + Integer.toString(visits.get(i)),JLabel.LEFT);
+		   text.setForeground(slices[i].color);
+		   frame.add(text);
+	   }
+   }
+   public static void displayPie(){
+	   JFrame frame = new JFrame();
+	   Container content = frame.getContentPane();
+	      content.setLayout(new GridLayout(1, 0));
+	      Border border = LineBorder.createGrayLineBorder();
+	      frame.getContentPane().add(new MyComponent());
+	      frame.setSize(300, 300);
+	      frame.setVisible(true);
+	      MyComponent.createLegend(frame);
+	      
    }
 }
