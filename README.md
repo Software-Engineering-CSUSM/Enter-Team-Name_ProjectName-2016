@@ -8,7 +8,7 @@
 |---|---|---|
 | 1 | [Justin Goulet](https://github.com/jstngoulet "Justin GitHub")                     |   [Project Manager](#Project Manager)     |
 | 2 | [Steven Clark](https://github.com/DaVolfman "Steven Clark GitHub")                 |   [Development Team](#Development Team)   |
-| 3 | [John Orcino] (https://github.com/OrcinoJohn)                                      |   [Development Team](#Development Team)   |
+| 3 | [John Orcino](https://github.com/OrcinoJohn)                                      |   [Development Team](#Development Team)   |
 | 4 | [Jeremy Pietersma](https://github.com/jpietersma "Jeremy Pietersma GitHub")        |   [UI Designer](#UI Designer)             |
 | 5 | [Chris Childers](https://github.com/chili24137 "Chris Childers")                   |   [UI Designer](#UI Designer)             |
 | 6 | [Christian Mathias](https://github.com/cmmathias95 "Christian Mathias")            |   [Analytics Manager](#Analytics Manager) |
