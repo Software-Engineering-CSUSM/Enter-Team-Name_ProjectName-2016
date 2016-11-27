@@ -95,9 +95,9 @@ The participant roles are subject to change at any time. Each participant will f
 
 ## Project Description
 > ### Functions of the project (including original requirements and additional features):
-   #### Summary of Project:
+### Summary of Project:
 >   To create a Test-Taking application that can be used for content management and studying.  We prioritized the basics of functionality and simplicity.<p>
-   #### Group-Set Requirements:
+### Group-Set Requirements:
 >   - Flash Cards
 >     - User can use study sets from current exams and study the questions before they are quizzed on them.
 >   - Clean Design
@@ -115,7 +115,7 @@ The participant roles are subject to change at any time. Each participant will f
 >   - Single-User Database
 >     - To allow branching in the future, we must have a database that stores content for a particular user. This database will hold all materials related to said user and should load/save content when required.
 >
- #### Additional Features
+### Additional Features
 >   - Administration Login System
 >     - To branch from our single user implementation, we would plan to add an administration system where users and admins would have different permissions. This would be so admins to courses can create tests/quizzes and would authorize particular students (users) to take them. Data would then be shared between the two parties.
 >   - Scheduling / Calendar Implementation
