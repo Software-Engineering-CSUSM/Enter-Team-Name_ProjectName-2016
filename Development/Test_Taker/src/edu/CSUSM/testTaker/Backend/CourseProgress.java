@@ -1,11 +1,13 @@
 package edu.CSUSM.testTaker.Backend;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.UUID;
 import java.util.HashMap;
 import java.util.ArrayList;
-import java.util.AbstractList;
+import java.util.List;
 import edu.CSUSM.testTaker.LibraryController;
+import edu.CSUSM.testTaker.Analytics.AnaSetup;
 
 public class CourseProgress implements Registerable, Serializable {
 	static final long serialVersionUID = 1l;
@@ -40,12 +42,18 @@ public class CourseProgress implements Registerable, Serializable {
 	double totalGrade;
 	double takenGrade;
 	
+	/**
+	 * Construct a new CourseProgress for the given course
+	 * @param courseID The ID string of the course being taken
+	 */
 	public CourseProgress(String courseID){
 		testAnswerLists = new HashMap<String,ArrayList<Integer>>();
 		associatedCourse = courseID;
 		totalGrade = 0.0;
 		takenGrade = 0.0;
 		name = "User's work on " + LibraryController.getItemName(associatedCourse);
+		try{AnaSetup.logEvent("Constructed a new CourseProgress");}
+		catch(IOException e){e.printStackTrace();}
 	}
 	
 	/*
@@ -53,10 +61,19 @@ public class CourseProgress implements Registerable, Serializable {
 	 */
 	
 	@SuppressWarnings("unchecked")
+	/**
+	 * Get the answers for a test that were stored
+	 * @param testID The ID String of a Test
+	 * @return an ArrayList of answer numbers for the questions of that test.
+	 */
 	public ArrayList<Integer> answersForTest(String testID){
 		return (ArrayList<Integer>)testAnswerLists.get(testID).clone();
 	}
 	
+	/**
+	 * Get a list of all tests that have answers recorded.
+	 * @return an ArrayList of ID Strings of Tests
+	 */
 	public ArrayList<String> takenTests(){
 		ArrayList <String> rList = new ArrayList <String> (testAnswerLists.size());
 		
@@ -67,14 +84,27 @@ public class CourseProgress implements Registerable, Serializable {
 		return rList;
 	}
 	
+	/**
+	 * Have answers to a given Test been recorded.
+	 * @param testID ID String of the Test
+	 * @return true if answers are stored here, false if not
+	 */
 	public boolean hasBeenTaken(String testID){
 		return testAnswerLists.containsKey(testID);
 	}
 	
+	/**
+	 * Get the last grade calculated for all tests in the course
+	 * @return A cached weighted average of Test scores.
+	 */
 	public double storedCompleteGrade(){
 		return totalGrade;
 	}
 	
+	/**
+	 * Get the last grade calculated for only the Tests taken.
+	 * @return A cached weighted average of Test scores.
+	 */
 	public double storedPartialGrade(){
 		return takenGrade;
 	}
@@ -83,15 +113,27 @@ public class CourseProgress implements Registerable, Serializable {
 	 * Mutators
 	 */
 	
-	public void addTestAnswers(String testID, AbstractList <Integer> answers){
+	/**
+	 * Store a list of answers to a test.
+	 * @param testID The ID String of the Test taken.
+	 * @param answers A List of answers to the Questions of that test.
+	 */
+	public void addTestAnswers(String testID, List <Integer> answers){
 		ArrayList<Integer> newValue = new ArrayList<Integer>(answers.size());
 		for(Integer i : answers){
 			newValue.add(i);
 		}
 		testAnswerLists.put(testID, newValue);
 		this.flush();
+		try{AnaSetup.logEvent("Added a set of Test Answers to a CourseProgress");}
+		catch(IOException e){e.printStackTrace();}
+
 	}
 	
+	/**
+	 * Remove a record of test answers for a particular test.
+	 * @param testID The unique ID string of the test to forget taking.
+	 */
 	public void removeAnswersTo(String testID){
 		testAnswerLists.remove(testID);
 		this.flush();
@@ -101,6 +143,10 @@ public class CourseProgress implements Registerable, Serializable {
 	 * Scoring Functions
 	 */
 	
+	/**
+	 * Give a score for only the completed tests of the course.
+	 * @return A weighted average percentage of all test scores
+	 */
 	public double scoreTaken(){
 		Course courseRef = (Course)LibraryController.getItem(associatedCourse);
 		double numerator = 0;
@@ -115,9 +161,15 @@ public class CourseProgress implements Registerable, Serializable {
 		}
 		if(denominator > 0.0)
 			return numerator / denominator;
+		try{AnaSetup.logEvent("Scored all tests taken in a CourseProgress");}
+		catch(IOException e){e.printStackTrace();}
 		return 0.0;
 	}
 	
+	/**
+	 * Give a score for all work on a course including untaken tests as zero.
+	 * @return A weighted average percentage of all test scores
+	 */
 	public double scoreAll(){
 		Course courseRef = (Course)LibraryController.getItem(associatedCourse);
 		double numerator = 0;
@@ -137,9 +189,14 @@ public class CourseProgress implements Registerable, Serializable {
 		}
 		if(denominator > 0.0)
 			return numerator / denominator;
+		try{AnaSetup.logEvent("Scored all tests taken and untaken in a CourseProgress");}
+		catch(IOException e){e.printStackTrace();}
 		return 0.0;
 	}
 	
+	/**
+	 * Calculate and store the current course grade, both complete and taken-only.
+	 */
 	public void rescore(){
 		takenGrade = scoreTaken();
 		totalGrade = scoreAll();
