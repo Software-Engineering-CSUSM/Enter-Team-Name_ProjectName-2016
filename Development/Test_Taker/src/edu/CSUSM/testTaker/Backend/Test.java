@@ -120,10 +120,15 @@ public class Test /*extends TaskObject*/ implements Serializable, Registerable{
 	 * @return An array with the IDs of all Questions in this Test.
 	 */
 	public String[] getQuestionIDs(){
+		try{
 		if(questionIDs.size() > 0)
 			return questionIDs.toArray(new String[questionIDs.size()]);
 		else
+			throw new Exception();
+		}catch (Exception e){
+			//JOptionPane.showMessageDialog(null, e.getMessage() + "\n" + e.toString());
 			return new String[] {"No Questions Found"};
+		}
 	}
 	
 	/**
@@ -131,10 +136,15 @@ public class Test /*extends TaskObject*/ implements Serializable, Registerable{
 	 * @return An ArrayList with the ID Strings of all Questions in this Test.
 	 */
 	public ArrayList <String> getQuestionIDList(){
-		if(questionIDs.size() > 0)
+		try{
+		if(questionIDs != null)
 			return new ArrayList<String>(questionIDs);
 		else
+			throw new Exception();
+		}catch(Exception e){
+			//JOptionPane.showMessageDialog(null, e.getMessage() + "\n" + e.toString());
 			return new ArrayList<String>();
+		}
 	}
 
 
@@ -143,10 +153,15 @@ public class Test /*extends TaskObject*/ implements Serializable, Registerable{
 	 * @return The questions in the test, in order, at this moment in time.
 	 */
 	public Question[] getQuestions(){
-		if(questionList.size() > 0)
+		try{
+		if(questionList != null)
 			return questionList.toArray(new Question[questionList.size()]);
 		else
+			throw new Exception();
+		}catch(Exception e){
+			//JOptionPane.showMessageDialog(null, e.getMessage() + "\n" + e.toString());
 			return new Question[]{new Question("No Questions Found", new String[]{"No answers to an in-existing question"}, 0)};
+		}
 	}
 	
 	/**
@@ -154,10 +169,17 @@ public class Test /*extends TaskObject*/ implements Serializable, Registerable{
 	 * @return The questions in the test, in order, at this moment in time in an ArrayList.
 	 */
 	public ArrayList<Question> getQuestionList(){
-		if(questionList.size() > 0)
+		try{
+		if(questionList != null)
 			return new ArrayList<Question>(questionList);
-		else
-			return new ArrayList<Question>();
+		else{
+			throw new Exception();
+		}
+		}catch(Exception e){
+			//JOptionPane.showMessageDialog(null, e.getMessage() + "\n" + e.toString());
+			questionList = new ArrayList<Question>();
+			return questionList;
+		}
 	}
 
 	/**
@@ -166,7 +188,8 @@ public class Test /*extends TaskObject*/ implements Serializable, Registerable{
 	 * @return Reference to the question number asked for.
 	 */
 	public Question getQuestion(int qn){
-		return questionList.get(qn);
+		if(qn < 0) return null;
+		return (questionList.get(qn) != null) ? questionList.get(qn) : null;
 	}
 	
 	/**
@@ -175,7 +198,8 @@ public class Test /*extends TaskObject*/ implements Serializable, Registerable{
 	 * @return a unique ID String for retrieving the Question from the Library
 	 */
 	public String getQuestionID(int index){
-		return questionIDs.get(index);
+		if(index < 0) return null;
+		return (questionIDs.get(index) != null) ? questionIDs.get(index) : null;
 	}
 	
 	
@@ -185,7 +209,8 @@ public class Test /*extends TaskObject*/ implements Serializable, Registerable{
 	 * @return the name String of the Question
 	 */
 	public String getQuestionName(int index){
-		return LibraryController.getItemName(questionIDs.get(index));
+		if(index < 0) return null;
+		return (LibraryController.getItemName(questionIDs.get(index)) != null) ? LibraryController.getItemName(questionIDs.get(index)) : null;
 	}
 	
 	/**
@@ -193,7 +218,12 @@ public class Test /*extends TaskObject*/ implements Serializable, Registerable{
 	 * @return an ArrayList of name Strings
 	 */
 	public ArrayList <String> getQuestionNames(){
-		return LibraryController.getNamesForIDs(questionIDs);
+		try{
+			return LibraryController.getNamesForIDs(questionIDs);
+		}catch(Exception e){
+			return new ArrayList<String>();
+		}
+		
 	}
 
 	/**
@@ -201,6 +231,7 @@ public class Test /*extends TaskObject*/ implements Serializable, Registerable{
 	 * @return The length of the container of questions.
 	 */
 	public int numQuestions(){
+		if(this.questionIDs == null) return 0;
 		return this.questionIDs.size();
 	}
 
@@ -210,6 +241,7 @@ public class Test /*extends TaskObject*/ implements Serializable, Registerable{
 	 * @return The value of the question within this test in points.
 	 */
 	public int getQuestionPoints(int qn){
+		if(qn < 0) return 0;
 		return questionPoints.get(qn);
 	}
 	
@@ -218,7 +250,11 @@ public class Test /*extends TaskObject*/ implements Serializable, Registerable{
 	 * @return an ArrayList of Integers
 	 */
 	public ArrayList<Integer> getQuestionPoints(){
+		try{
 		return new ArrayList<Integer>(questionPoints);
+		}catch(Exception e){
+			return new ArrayList<Integer>();
+		}
 	}
 
 	/**
@@ -287,7 +323,8 @@ public class Test /*extends TaskObject*/ implements Serializable, Registerable{
 	 * @param questionvalue An integer number of points to value the question at.
 	 */
 	public void addQuestion(Question QuestionToAdd, int questionvalue){
-		questionList.add(QuestionToAdd);
+		//System.out.println("Question: " + getQuestionList().toString());
+		getQuestionList().add(QuestionToAdd);
 		questionIDs.add(QuestionToAdd.getID());
 		questionPoints.add(questionvalue);
 		try{AnaSetup.logEvent("Added a Question to a Test");}
