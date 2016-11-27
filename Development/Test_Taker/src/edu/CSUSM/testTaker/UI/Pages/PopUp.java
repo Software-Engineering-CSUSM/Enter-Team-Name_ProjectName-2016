@@ -209,7 +209,7 @@ public class PopUp extends CustomPage {
 					//Case for don't create another question for add question popup
 					if(pType == PopUpType.AddAnotherQuestion || pType == PopUpType.AddAnotherQuestionMC)
 					{
-						StudyToolsMain QandFMain = new StudyToolsMain("Quiz Main Page", StudyToolsMain.PanelType.THREE_BUTTON_TYPE);
+						StudyToolsMain QandFMain = new StudyToolsMain("Study Tools", StudyToolsMain.PanelType.TWO_BUTTON_TYPE);
 						//QandFMain.setName("Quiz Main Page");
 						QandFMain.parentController = parentController;
 						parentController.displayView(QandFMain);

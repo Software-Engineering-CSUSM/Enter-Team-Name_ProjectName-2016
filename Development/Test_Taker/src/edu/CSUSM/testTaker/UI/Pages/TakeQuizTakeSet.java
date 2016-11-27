@@ -4,6 +4,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 
+import edu.CSUSM.testTaker.LibraryController;
+import edu.CSUSM.testTaker.Backend.Test;
+import edu.CSUSM.testTaker.Backend.Question;
 import edu.CSUSM.testTaker.UI.CustomPage;
 import edu.CSUSM.testTaker.UI.CustomPage.PanelType;
 
@@ -118,6 +121,15 @@ public class TakeQuizTakeSet extends CustomPage {
 			
 			intializeResultChecker();	
 			
+			LibraryController.CURRENT_TEST = (Test)LibraryController.getItem(ManageData.currentIDSelected);
+			System.out.println(LibraryController.CURRENT_TEST.getTestName());
+			System.out.println("Number of Questions: " + LibraryController.CURRENT_TEST.numQuestions());
+			
+			//Set the total number of questions for the current test
+			totalNumQuestions = LibraryController.CURRENT_TEST.numQuestions();
+			
+			
+
 			QuizAndFlashQuestionPage QquestionPage = new QuizAndFlashQuestionPage("Quiz Question Page: " + QuizAndFlashQuestionPage.questionPageNumber,
 					QuizAndFlashQuestionPage.PanelType.QUESTIONPAGEMC, QuizAndFlashQuestionPage.PageType.QUIZ_MC);
 			QquestionPage.parentController = parentController;

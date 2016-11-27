@@ -118,8 +118,10 @@ public class QuizAndFlashQuestionPage extends CustomPage {
 	// submit for the last page.
 	public void updateActionsQuizMC() {
 		// Set the button names
-		if (questionPageNumber == 1)
+		if (questionPageNumber == 1 && totalNumQuestions != 1)
 			setButtonNames(new String[] { "Exit Quiz", "Next Question" });
+		else if (questionPageNumber == 1 && totalNumQuestions == 1)
+			setButtonNames(new String[] { "Exit Quiz", "Submit and Finish" });
 		else if (questionPageNumber > 1 && questionPageNumber < TakeQuizTakeSet.totalNumQuestions)
 			setButtonNames(new String[] { "Exit Quiz", "Previous Question", "Next Question", });
 		else if (questionPageNumber == TakeQuizTakeSet.totalNumQuestions) {
@@ -131,7 +133,9 @@ public class QuizAndFlashQuestionPage extends CustomPage {
 				this.currentActions[i].addActionListener(new ExitQuiz());
 				break;
 			case 1:
-				if (questionPageNumber == 1)
+				if (questionPageNumber == 1 && totalNumQuestions == 1)
+					this.currentActions[i].addActionListener(new Submit());
+				else if (questionPageNumber == 1 && totalNumQuestions != 1)
 					this.currentActions[i].addActionListener(new NextQuestionMC());
 				else if (questionPageNumber > 1)
 					this.currentActions[i].addActionListener(new Previous());
