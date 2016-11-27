@@ -26,6 +26,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
 
+import edu.CSUSM.testTaker.LibraryController;
 import edu.CSUSM.testTaker.Backend.Question;
 import edu.CSUSM.testTaker.UI.CustomObjects.CustomButton;
 import edu.CSUSM.testTaker.UI.Pages.ManageData;
@@ -637,7 +638,10 @@ private void createMultipleChoice() {
 		// String to hold questions. To be updated with function that passes
 		// the string of the actual question
 		questionStr = "This is where the question goes.";
-		//questionStr = myQuestion.getQuestion();
+		
+		// Set the question label to the current question in the test
+		if((QuizAndFlashQuestionPage.questionPageNumber - 1) < totalNumQuestions)
+		questionStr =  LibraryController.CURRENT_TEST.getQuestionName(QuizAndFlashQuestionPage.questionPageNumber - 1);
 		
 		// Create a JLabel to display thew question, set its
 		// alignment, font type and size
