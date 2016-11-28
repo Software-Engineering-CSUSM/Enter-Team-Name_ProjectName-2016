@@ -6,12 +6,12 @@
 
 | # | Name | Primary Task |
 |---|---|---|
-| 1 | [Justin Goulet](https://github.com/jstngoulet "Justin GitHub")                     |   [Project Manager](https://github.com/Software-Engineering-CSUSM/Test-Taker#project-manager--scrum-master---1-person)     |
-| 2 | [Steven Clark](https://github.com/DaVolfman "Steven Clark GitHub")                 |   [Development Team](https://github.com/Software-Engineering-CSUSM/Test-Taker#development-team---2-people)   |
-| 3 | [John Orcino] (https://github.com/OrcinoJohn)                                      |   [Development Team](https://github.com/Software-Engineering-CSUSM/Test-Taker#development-team---2-people)   |
-| 4 | [Jeremy Pietersma](https://github.com/jpietersma "Jeremy Pietersma GitHub")        |   [UI Designer](https://github.com/Software-Engineering-CSUSM/Test-Taker#ui-designers---2-people)             |
-| 5 | [Chris Childers](https://github.com/chili24137 "Chris Childers")                   |   [UI Designer](https://github.com/Software-Engineering-CSUSM/Test-Taker#ui-designers---2-people)             |
-| 6 | [Christian Mathias](https://github.com/cmmathias95 "Christian Mathias")            |   [Analytics Manager](https://github.com/Software-Engineering-CSUSM/Test-Taker#analytics-manager---1-person) |
+| 1 | [Justin Goulet](https://github.com/jstngoulet "Justin GitHub")                     |   [Project Manager](#Project Manager)     |
+| 2 | [Steven Clark](https://github.com/DaVolfman "Steven Clark GitHub")                 |   [Development Team](#Development Team)   |
+| 3 | [John Orcino](https://github.com/OrcinoJohn)                                      |   [Development Team](#Development Team)   |
+| 4 | [Jeremy Pietersma](https://github.com/jpietersma "Jeremy Pietersma GitHub")        |   [UI Designer](#UI Designer)             |
+| 5 | [Chris Childers](https://github.com/chili24137 "Chris Childers")                   |   [UI Designer](#UI Designer)             |
+| 6 | [Christian Mathias](https://github.com/cmmathias95 "Christian Mathias")            |   [Analytics Manager](#Analytics Manager) |
 
 ## Role Descriptions
 
@@ -95,9 +95,9 @@ The participant roles are subject to change at any time. Each participant will f
 
 ## Project Description
 > ### Functions of the project (including original requirements and additional features):
-### Summary of Project:
+   #### Summary of Project:
 >   To create a Test-Taking application that can be used for content management and studying.  We prioritized the basics of functionality and simplicity.<p>
-### Group-Set Requirements:
+   #### Group-Set Requirements:
 >   - Flash Cards
 >     - User can use study sets from current exams and study the questions before they are quizzed on them.
 >   - Clean Design
@@ -115,7 +115,7 @@ The participant roles are subject to change at any time. Each participant will f
 >   - Single-User Database
 >     - To allow branching in the future, we must have a database that stores content for a particular user. This database will hold all materials related to said user and should load/save content when required.
 >
-### Additional Features
+ #### Additional Features
 >   - Administration Login System
 >     - To branch from our single user implementation, we would plan to add an administration system where users and admins would have different permissions. This would be so admins to courses can create tests/quizzes and would authorize particular students (users) to take them. Data would then be shared between the two parties.
 >   - Scheduling / Calendar Implementation
@@ -134,9 +134,9 @@ The participant roles are subject to change at any time. Each participant will f
 
 > - [GitHub Repository](https://github.com/Software-Engineering-CSUSM/Enter-Team-Name_ProjectName-2016)
 > - [Slack Team](https://csusm-se-f2016.slack.com/) - Send [email](mailto:jstngoulet@me.com) for invite
-> - [GitHub Help] (<https://github.com/Software-Engineering-CSUSM/Test-Taker/blob/master/Project%20Documents/Team%20Help/Git_Help.md> "GitHub Help by J. Goulet")
-> - [Markdown Syntax Assistant] (<http://www.markitdown.net/markdown>)
-> - [Google Docs] (<https://drive.google.com/drive/folders/0B85piijFOwuZZW9UWTVsX0VVbXc?usp=sharing>)
+> - [GitHub Help](https://github.com/Software-Engineering-CSUSM/Test-Taker/blob/master/Project%20Documents/Team%20Help/Git_Help.md "GitHub Help by J. Goulet")
+> - [Markdown Syntax Assistant](http://www.markitdown.net/markdown)
+> - [Google Docs](<https://drive.google.com/drive/folders/0B85piijFOwuZZW9UWTVsX0VVbXc?usp=sharing>)
 
 ## Repository Info
 
@@ -149,7 +149,7 @@ The participant roles are subject to change at any time. Each participant will f
 
 > Our team has been using [Slack] (https://slack.com), a team-based communication platform.
 >   - Our team link is: csusm-se-f2016.slack.com
->   - To join, please send a message to the [Project Manager] (mailto:goule001@cougars.csusm.edu)
+>   - To join, please send a message to the [Project Manager](mailto:goule001@cougars.csusm.edu)
 >
 > We may use Slack integrations. Feel free to add any you like :smiley:
 

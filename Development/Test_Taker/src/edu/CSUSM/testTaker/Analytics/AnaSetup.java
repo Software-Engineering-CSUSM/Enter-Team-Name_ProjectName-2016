@@ -102,6 +102,14 @@ public class AnaSetup {
 	    }
 	}
 	
+	/**
+	 * @deprecated
+	 */
+	public static void clearData() throws IOException{
+		/**
+		 * Will be used to clear data. Marked as deprecated until filled
+		 */
+	}
 	
 }
 	
