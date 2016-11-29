@@ -913,7 +913,7 @@ private void createResultsPageType() {
 		// Create a JLabel to display the question, set its
 		// alignment, font type and size
 		JLabel questionLabel = new JLabel(questionStr);
-		JLabel answerLabel = new JLabel(FlashcardAnswer);
+		JLabel answerLabel = new JLabel("");
 		questionLabel.setAlignmentX(centerOfNewFrame);
 		questionLabel.setOpaque(false);
 		answerLabel.setAlignmentX(centerOfNewFrame);

@@ -241,8 +241,10 @@ public class QuizAndFlashQuestionPage extends CustomPage {
 	// submit for the last page.
 	public void updateActionsFlashcard() {
 		// Set the button names
-		if (questionPageNumber == 1)
-			setButtonNames(new String[] { "Exit Flashcard", "Next Question", "SHOW" });
+		if (questionPageNumber == 1 && totalNumQuestions != 1)
+			setButtonNames(new String[] { "Exit Flashcard", "Next Question" });
+		else if (questionPageNumber == 1 && totalNumQuestions == 1)
+			setButtonNames(new String[] { "Exit Quiz", "Take Another Set" });
 		else if (questionPageNumber > 1 && questionPageNumber < TakeQuizTakeSet.totalNumQuestions)
 			setButtonNames(new String[] { "Exit Flashcard", "Previous Question", "Next Question", });
 		else if (questionPageNumber == TakeQuizTakeSet.totalNumQuestions) {
@@ -256,9 +258,11 @@ public class QuizAndFlashQuestionPage extends CustomPage {
 				// The questionPageNumber increment was moved here to be able
 				// to use show/Hide without a pop up
 			case 1:
-				if (questionPageNumber == 1){
-					questionPageNumber++;
-					this.currentActions[i].addActionListener(new FlashNextQuestion());}
+				if (questionPageNumber == 1 && totalNumQuestions == 1)
+					this.currentActions[i].addActionListener(new SubmitFlash());
+					else if (questionPageNumber == 1 && totalNumQuestions != 1){
+					this.currentActions[i].addActionListener(new FlashNextQuestion());
+					questionPageNumber++;}
 				else if (questionPageNumber > 1)
 					this.currentActions[i].addActionListener(new PreviousFlash());
 				break;
@@ -450,7 +454,7 @@ public class QuizAndFlashQuestionPage extends CustomPage {
 			StudyToolsMain fcMain = new StudyToolsMain("Study Tools Main", StudyToolsMain.PanelType.QUESTION_BUILDER_TYPE);
 			fcMain.parentController = parentController;
 			parentController.displayView(fcMain);
-			questionPageNumber = 1; // reset questionPageNumber
+			questionPageNumber = 1; // reset questionPageNumber	
 			
 
 		}
