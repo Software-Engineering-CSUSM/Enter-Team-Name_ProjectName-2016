@@ -527,7 +527,7 @@ public class PopUp extends CustomPage {
 			// Create JLabel to hold the public string holding the
 			// answer to the flashcard question
 			JLabel FlashAnswer = new JLabel(FlashcardAnswer);
-			Font font = new Font("Courier", Font.BOLD, 18);
+			Font font = new Font("Courier", Font.BOLD, 22);
 			FlashAnswer.setFont(font);
 
 			// Had to add the label to a box before putting it

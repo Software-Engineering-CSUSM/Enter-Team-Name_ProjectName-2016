@@ -78,6 +78,7 @@ public class CustomPage extends JPanel {
 	public  JTextField answerTextMC[] = new JTextField[4];
 	public  JRadioButton MC_Answers[] = new JRadioButton[4];
 	public String questionStr;
+	public String answerStr[] = new String[4];
 	
 	// Integer array to hole a random number to use as the index for
 			// the multiple choice answers
@@ -705,7 +706,7 @@ private void createMultipleChoice() {
 			System.out.println(randAnswerNum[QuizAndFlashQuestionPage.questionPageNumber-1][i]);
 		}
 		
-	String answerStr[] = new String[4];
+	
 	answerStr = myQuestion.getAnswers();
 	// Assign the textfield answers with a random index
 		for(int i = 0; i < myQuestion.numAnswers(); i++)
@@ -893,17 +894,21 @@ private void createResultsPageType() {
 		
 		
 		// Condition to check the show/hide button every other click
-		if(CheckUncheck % 2 == 0)
-			showHide.setSelected(true);
+		//if(CheckUncheck % 2 == 0)
+		//	showHide.setSelected(true);
 	
 		CheckUncheck++;
 		
 		// Alignment for question label, answer label, and show/Hide box
 		centerOfNewFrame = (this.getHeight() - (this.getHeight() - ((int) (this.getHeight() / 2.25))));
 
+		Question myQuestion = LibraryController.CURRENT_TEST.getQuestion(QuizAndFlashQuestionPage.questionPageNumber-1);
+		
 		// String to hold questions. To be updated with function that passes
 		// the string of the actual question
-		String questionStr = "This is where the question goes";
+		questionStr =  myQuestion.getName();
+		answerStr = myQuestion.getAnswers();
+		
 
 		// Create a JLabel to display the question, set its
 		// alignment, font type and size
@@ -923,14 +928,19 @@ private void createResultsPageType() {
 
 		showHide.setAlignmentX(centerOfNewFrame);
 
+		JPanel qPanel = new JPanel();
+		qPanel.add(questionLabel);
+		
 		// Create a vertical box to place the question string on top
 		// of the hide check box
 		Box questionBox = Box.createVerticalBox();
+		questionBox.add(Box.createVerticalStrut(10));
 		questionBox.add(questionLabel);
-		questionBox.add(Box.createVerticalStrut(100));
+		questionBox.add(Box.createVerticalStrut(50));
 		questionBox.add(showHide);
 		questionBox.add(Box.createVerticalStrut(40));
 		questionBox.add(answerLabel);
+		questionBox.add(Box.createVerticalGlue());
 
 		// Constraints for the panel holding the text areas for
 		// resizing purposes.

@@ -158,6 +158,14 @@ public class TakeQuizTakeSet extends CustomPage {
 			System.out.println("Opening " + this.getClass());
 
 			
+			//LibraryController.CURRENT_TEST = (Test)LibraryController.getItem(ManageData.currentIDSelected);
+			LibraryController.CURRENT_TEST = LibraryController.retrieveTest(ManageData.currentIDSelected);
+			System.out.println(LibraryController.CURRENT_TEST.getTestName());
+			System.out.println("Number of Questions: " + LibraryController.CURRENT_TEST.numQuestions());
+			
+			//Set the total number of questions for the current test
+			totalNumQuestions = LibraryController.CURRENT_TEST.numQuestions();
+			
 				QuizAndFlashQuestionPage FCquestionPage = new QuizAndFlashQuestionPage("Flash Card Question Page: " + QuizAndFlashQuestionPage.questionPageNumber,
 						QuizAndFlashQuestionPage.PanelType.FLASHCARDPAGE, QuizAndFlashQuestionPage.PageType.FLASHCARD);
 				FCquestionPage.parentController = parentController;

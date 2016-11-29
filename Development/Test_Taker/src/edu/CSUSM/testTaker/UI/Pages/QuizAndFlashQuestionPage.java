@@ -246,7 +246,7 @@ public class QuizAndFlashQuestionPage extends CustomPage {
 		else if (questionPageNumber > 1 && questionPageNumber < TakeQuizTakeSet.totalNumQuestions)
 			setButtonNames(new String[] { "Exit Flashcard", "Previous Question", "Next Question", });
 		else if (questionPageNumber == TakeQuizTakeSet.totalNumQuestions) {
-			setButtonNames(new String[] { "Exit Flashcard", "Previous Question", "Submit and Finish" });
+			setButtonNames(new String[] { "Exit Flashcard", "Previous Question", "Take Another Set" });
 		}
 		for (int i = 0; i < this.currentActions.length; i++) {
 			switch (i) {
@@ -290,48 +290,57 @@ public class QuizAndFlashQuestionPage extends CustomPage {
 				// we need to revert back to the popup
 				
 				// Create PopUp object
-				//PopUp answer;
+				PopUp answer;
 				
 				// If showHide is checked then show the answer. After
 				// answer box is closed, the checkbox will become unselected
-				/*if (showHide.isSelected()) 
+				if (showHide.isSelected()) 
 				{
 					
-					FlashcardAnswer = "This is the answer";
-					//answer = new PopUp("FlashCard Question/Answer", PopUp.PanelType.LOGO_ONLY_TYPE, PopUpType.FlashcardAnswerPopUp);
+					FlashcardAnswer = answerStr[0];
+					answer = new PopUp("FlashCard Question/Answer", PopUp.PanelType.LOGO_ONLY_TYPE, PopUpType.FlashcardAnswerPopUp);
 					showHide.setSelected(false);
 					
-				}*/
+				}
 			
 		
 				
 				// Set the answer string to NULL if show is checked.  Also need to set
 				// the flashcard answer to the appropriate string here using the whatever
 				// backend function was created
-				if(isChecked  == true)
+				/*if(isChecked  == true)
 				{
-					FlashcardAnswer = "This is the answer";
+					//FlashcardAnswer = "This is the answer";
+					FlashcardAnswer = answerStr[0];
+					//showHide.setSelected(true);
+					isChecked = false;
 					
 				}
 				else
 				{
 					FlashcardAnswer = "";
-					
-				}
+					isChecked = true;
+				}*/
 				
+					
 				// Decrement the page number to prevent the show/Hide box from advancing
 				// to the next page
-				questionPageNumber--;
+				/*if(questionPageNumber != totalNumQuestions)
+				questionPageNumber--;*/
+				
+				//if(questionPageNumber != totalNumQuestions){
+				
 				
 			// Rebuild the page
-			QuizAndFlashQuestionPage FquestionPage = new QuizAndFlashQuestionPage("Flash Card Question Page: " + QuizAndFlashQuestionPage.questionPageNumber,
+			/*QuizAndFlashQuestionPage FquestionPage = new QuizAndFlashQuestionPage("Flash Card Question Page: " + QuizAndFlashQuestionPage.questionPageNumber,
 						QuizAndFlashQuestionPage.PanelType.FLASHCARDPAGE, QuizAndFlashQuestionPage.PageType.FLASHCARD);
 		    FquestionPage.parentController = parentController;
-			parentController.replaceCurrentView(FquestionPage);
-		    
+			parentController.replaceCurrentView(FquestionPage);*/
+			
+				
 			// Change boolean value of checked or unchecked to determine which string to
 			// show: NULL or the answer string
-			isChecked = !isChecked;
+			//isChecked = !isChecked;
 				
 			}  	// end actionPerformed
 			
@@ -414,12 +423,10 @@ public class QuizAndFlashQuestionPage extends CustomPage {
 		public void actionPerformed(ActionEvent e) {
 			System.out.println("Opening " + this.getClass());
 			
-			
+			questionPageNumber--;
 			parentController.dismissView();
-						
-			questionPageNumber--; // decrement the quiz question number
-		
-
+			
+			
 	}
 }
 
@@ -437,12 +444,13 @@ public class QuizAndFlashQuestionPage extends CustomPage {
 			questionPageNumber = 1;
 			parentController.displayView(quizPage);*/
 			
-			questionPageNumber = 1;
-			CustomPage.setqBuilderNumButtons(1);
-			TakeQuizTakeSet takeQ = new TakeQuizTakeSet("Take Quiz Page", TakeQuizTakeSet.PanelType.QUESTION_BUILDER_TYPE,
-						TakeQuizTakeSet.PageType.QUIZ);
-				takeQ.parentController = parentController;
-				parentController.displayView(takeQ);
+			CustomPage.setqBuilderNumButtons(2);
+			CustomPage.setQBRowHeaders(LibraryController.getAllCoursesAvailable());
+			CustomPage.setQBRowIDs(LibraryController.getAllCourseIDsAvailable());
+			StudyToolsMain fcMain = new StudyToolsMain("Study Tools Main", StudyToolsMain.PanelType.QUESTION_BUILDER_TYPE);
+			fcMain.parentController = parentController;
+			parentController.displayView(fcMain);
+			questionPageNumber = 1; // reset questionPageNumber
 			
 
 		}
@@ -511,10 +519,12 @@ public class QuizAndFlashQuestionPage extends CustomPage {
 		public void actionPerformed(ActionEvent e) {
 			System.out.println("Opening " + this.getClass());
 
-			StudyToolsMain fcMain = new StudyToolsMain("Study Tools Main Page", StudyToolsMain.PanelType.THREE_BUTTON_TYPE);
-			fcMain.parentController = parentController;
-			parentController.displayView(fcMain);
-			questionPageNumber = 1; // reset questionPageNumber
+			questionPageNumber = 1;
+			CustomPage.setqBuilderNumButtons(1);
+			TakeQuizTakeSet FlashCPage = new TakeQuizTakeSet("Flash Card Page", QuizAndFlashMain.PanelType.QUESTION_BUILDER_TYPE,
+					TakeQuizTakeSet.PageType.FLASHCARD);
+			FlashCPage.parentController = parentController;
+				parentController.displayView(FlashCPage);
 		}
 	}
 
@@ -525,13 +535,16 @@ public class QuizAndFlashQuestionPage extends CustomPage {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			System.out.println("Opening " + this.getClass());
-
+			
+			showHide.setSelected(false);
+			isChecked = false;
+			FlashcardAnswer = "";
 			QuizAndFlashQuestionPage FquestionPage = new QuizAndFlashQuestionPage("Flash Card Question Page: " + QuizAndFlashQuestionPage.questionPageNumber,
 					QuizAndFlashQuestionPage.PanelType.FLASHCARDPAGE, QuizAndFlashQuestionPage.PageType.FLASHCARD);
 			FquestionPage.parentController = parentController;
 			parentController.displayView(FquestionPage);
 			//questionPageNumber++; // increment the quiz question number
-			FlashcardAnswer = "";
+			
 			
 		}
 
@@ -551,12 +564,15 @@ public class QuizAndFlashQuestionPage extends CustomPage {
 			questionPageNumber = 1;
 			parentController.displayView(FlashCPage);*/
 			
-			questionPageNumber = 1;
-			CustomPage.setqBuilderNumButtons(1);
-			TakeQuizTakeSet FlashCPage = new TakeQuizTakeSet("Flash Card Page", QuizAndFlashMain.PanelType.QUESTION_BUILDER_TYPE,
-					TakeQuizTakeSet.PageType.FLASHCARD);
-			FlashCPage.parentController = parentController;
-				parentController.displayView(FlashCPage);
+
+			
+			CustomPage.setqBuilderNumButtons(2);
+			CustomPage.setQBRowHeaders(LibraryController.getAllCoursesAvailable());
+			CustomPage.setQBRowIDs(LibraryController.getAllCourseIDsAvailable());
+			StudyToolsMain fcMain = new StudyToolsMain("Study Tools Main", StudyToolsMain.PanelType.QUESTION_BUILDER_TYPE);
+			fcMain.parentController = parentController;
+			parentController.displayView(fcMain);
+			questionPageNumber = 1; // reset questionPageNumber
 
 		}
 
