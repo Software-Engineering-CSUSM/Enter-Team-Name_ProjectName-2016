@@ -153,6 +153,8 @@ public class Test /*extends TaskObject*/ implements Serializable, Registerable{
 	 * @return The questions in the test, in order, at this moment in time.
 	 */
 	public Question[] getQuestions(){
+		if(questionList==null)
+			initQuestions();
 		try{
 		if(questionList != null)
 			return questionList.toArray(new Question[questionList.size()]);
@@ -169,6 +171,8 @@ public class Test /*extends TaskObject*/ implements Serializable, Registerable{
 	 * @return The questions in the test, in order, at this moment in time in an ArrayList.
 	 */
 	public ArrayList<Question> getQuestionList(){
+		if(questionList==null)
+			initQuestions();
 		try{
 		if(questionList != null)
 			return new ArrayList<Question>(questionList);
@@ -188,6 +192,8 @@ public class Test /*extends TaskObject*/ implements Serializable, Registerable{
 	 * @return Reference to the question number asked for.
 	 */
 	public Question getQuestion(int qn){
+		if(questionList==null)
+			initQuestions();
 		if(qn < 0) return null;
 		try{
 		return (questionList.get(qn) != null) ? questionList.get(qn) : null;
@@ -293,6 +299,10 @@ public class Test /*extends TaskObject*/ implements Serializable, Registerable{
 	 * Utility function to initialize reference array and optionally points from just Question IDs.
 	 */
 	public void initQuestions(){
+		if(questionIDs.isEmpty()){
+			questionList = new ArrayList<Question>();
+		}else{
+		
 		questionList = (ArrayList)LibraryController.getItemsForIDs(questionIDs);
 		if(questionPoints == null || questionPoints.size() != questionIDs.size()){
 			questionPoints = new ArrayList<Integer>(questionIDs.size());
@@ -303,6 +313,7 @@ public class Test /*extends TaskObject*/ implements Serializable, Registerable{
 		}
 		try{AnaSetup.logEvent("Initialized the question reference list of a Test");}
 		catch(IOException e){e.printStackTrace();}
+		}
 	}
 
 	/**
@@ -329,6 +340,8 @@ public class Test /*extends TaskObject*/ implements Serializable, Registerable{
 	 */
 	public void addQuestion(Question QuestionToAdd, int questionvalue){
 		//System.out.println("Question: " + getQuestionList().toString());
+		if(questionList==null)
+			initQuestions();
 		questionList.add(QuestionToAdd);
 		questionIDs.add(QuestionToAdd.getID());
 		questionPoints.add(questionvalue);
@@ -342,6 +355,8 @@ public class Test /*extends TaskObject*/ implements Serializable, Registerable{
 	 * @param QuestionToAdd A Question to add to the question list for this test.
 	 */
 	public void addQuestion(Question QuestionToAdd){
+		if(questionList==null)
+			initQuestions();
 		questionList.add(QuestionToAdd);
 		questionIDs.add(QuestionToAdd.getID());
 		questionPoints.add(0);
@@ -356,6 +371,8 @@ public class Test /*extends TaskObject*/ implements Serializable, Registerable{
 	 * @param qn The index of the question to remove.
 	 */
 	public void removeQuestion(int qn){
+		if(questionList==null)
+			initQuestions();
 		questionList.remove(qn);
 		questionIDs.remove(qn);
 		questionPoints.remove(qn);
@@ -372,6 +389,8 @@ public class Test /*extends TaskObject*/ implements Serializable, Registerable{
 	 * @note This operation along with {@link #removeQuestion(int) removeQuestion()} should allow re-ordering of Test questions.
 	 */
 	public void insertQuestion(Question insertit,int points, int qi){
+		if(questionList==null)
+			initQuestions();
 		questionList.add(qi, insertit);
 		questionIDs.add(qi,insertit.getID());
 		questionPoints.add(qi,points);
@@ -397,6 +416,8 @@ public class Test /*extends TaskObject*/ implements Serializable, Registerable{
 	 * @param newQuestionList an array of Question refs to insert
 	 */
 	public void setQuestionList(Question[] newQuestionList){
+		if(questionList==null)
+			initQuestions();
 		questionList.clear();
 		questionIDs.clear();
 		questionPoints.clear();
@@ -460,6 +481,8 @@ public class Test /*extends TaskObject*/ implements Serializable, Registerable{
 	 * @param newQuestionList Any List of Questions to set the Test to.
 	 */
 	public void setQuestionList(List<Question> newQuestionList){
+		if(questionList==null)
+			initQuestions();
 		questionList.clear();
 		questionIDs.clear();
 		questionPoints.clear();
