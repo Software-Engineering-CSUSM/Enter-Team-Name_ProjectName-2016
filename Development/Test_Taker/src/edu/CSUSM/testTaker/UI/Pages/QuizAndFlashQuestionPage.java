@@ -155,10 +155,10 @@ public class QuizAndFlashQuestionPage extends CustomPage {
 		MC_Answers[0].addActionListener(new ActionListener() {
 	        @Override
 	        public void actionPerformed(ActionEvent e) {
-	        	
+
 	        	// This is the correct answer. Set resultsChecker to 1 to calculate
 	        	// the score at the end
-	        	if(randAnswerNum[0] == 0){
+	        	if(randAnswerNum[questionPageNumber-2][0] == 0){
 	        		System.out.println("This is the correct answer\n");
 	        		resultsChecker[questionPageNumber - 2] = 1;
 	        		System.out.println("Results  " + resultsChecker[questionPageNumber - 2]);
@@ -175,10 +175,10 @@ public class QuizAndFlashQuestionPage extends CustomPage {
 		MC_Answers[1].addActionListener(new ActionListener() {
 	        @Override
 	        public void actionPerformed(ActionEvent e) {
-	           
+
 	        	// This is the correct answer. Set resultsChecker to 1 to calculate
 	        	// the score at the end
-	        	if(randAnswerNum[1] == 0){
+	        	if(randAnswerNum[questionPageNumber-2][1] == 0){
 	        		System.out.println("This is the correct answer\n");
 	        		resultsChecker[questionPageNumber - 2] = 1;
 	        		
@@ -198,7 +198,7 @@ public class QuizAndFlashQuestionPage extends CustomPage {
 	          
 	        	// This is the correct answer. Set resultsChecker to 1 to calculate
 	        	// the score at the end
-	        	if(randAnswerNum[2] == 0){
+	        	if(randAnswerNum[questionPageNumber-2][2] == 0){
 	        		System.out.println("This is the correct answer\n");
 	        		resultsChecker[questionPageNumber - 2] = 1;
 	        		
@@ -218,7 +218,7 @@ public class QuizAndFlashQuestionPage extends CustomPage {
 	           
 	        	// This is the correct answer. Set resultsChecker to 1 to calculate
 	        	// the score at the end
-	        	if(randAnswerNum[3] == 0){
+	        	if(randAnswerNum[questionPageNumber-2][3] == 0){
 	        		System.out.println("This is the correct answer\n");
 	        		resultsChecker[questionPageNumber - 2] = 1;
 	        		
@@ -432,10 +432,18 @@ public class QuizAndFlashQuestionPage extends CustomPage {
 			System.out.println("Opening " + this.getClass());
 
 			// System.out.println("Opening " + this.getClass());
-			QuizAndFlashMain quizPage = new QuizAndFlashMain("Quiz Page", QuizAndFlashMain.PanelType.THREE_BUTTON_TYPE);
+			/*StudyToolsMain quizPage = new StudyToolsMain("Quiz Page", StudyToolsMain.PanelType.THREE_BUTTON_TYPE);
 			quizPage.parentController = parentController;
 			questionPageNumber = 1;
-			parentController.displayView(quizPage);
+			parentController.displayView(quizPage);*/
+			
+			questionPageNumber = 1;
+			CustomPage.setqBuilderNumButtons(1);
+			TakeQuizTakeSet takeQ = new TakeQuizTakeSet("Take Quiz Page", TakeQuizTakeSet.PanelType.QUESTION_BUILDER_TYPE,
+						TakeQuizTakeSet.PageType.QUIZ);
+				takeQ.parentController = parentController;
+				parentController.displayView(takeQ);
+			
 
 		}
 
@@ -537,11 +545,18 @@ public class QuizAndFlashQuestionPage extends CustomPage {
 			System.out.println("Opening " + this.getClass());
 
 			// System.out.println("Opening " + this.getClass());
-			QuizAndFlashMain FlashCPage = new QuizAndFlashMain("Flash Card Page", QuizAndFlashMain.PanelType.THREE_BUTTON_TYPE,
-					QuizAndFlashMain.PageType.FLASHCARD);
+			/*TakeQuizTakeSet FlashCPage = new TakeQuizTakeSet("Flash Card Page", QuizAndFlashMain.PanelType.THREE_BUTTON_TYPE,
+					TakeQuizTakeSet.PageType.FLASHCARD);
 			FlashCPage.parentController = parentController;
 			questionPageNumber = 1;
-			parentController.displayView(FlashCPage);
+			parentController.displayView(FlashCPage);*/
+			
+			questionPageNumber = 1;
+			CustomPage.setqBuilderNumButtons(1);
+			TakeQuizTakeSet FlashCPage = new TakeQuizTakeSet("Flash Card Page", QuizAndFlashMain.PanelType.QUESTION_BUILDER_TYPE,
+					TakeQuizTakeSet.PageType.FLASHCARD);
+			FlashCPage.parentController = parentController;
+				parentController.displayView(FlashCPage);
 
 		}
 

@@ -129,7 +129,12 @@ public class TakeQuizTakeSet extends CustomPage {
 			//Set the total number of questions for the current test
 			totalNumQuestions = LibraryController.CURRENT_TEST.numQuestions();
 			
-			
+			// Intialize random answer num array to zero.  this is done because
+			// the condition to shuffle the questions is based of the sum of the 
+			// random answers indexes
+			for(int i = 0; i < totalNumQuestions; i++)
+				for(int j = 0; j < 4; j++)
+					randAnswerNum[i][j] = 0;
 
 			QuizAndFlashQuestionPage QquestionPage = new QuizAndFlashQuestionPage("Quiz Question Page: " + QuizAndFlashQuestionPage.questionPageNumber,
 					QuizAndFlashQuestionPage.PanelType.QUESTIONPAGEMC, QuizAndFlashQuestionPage.PageType.QUIZ_MC);
