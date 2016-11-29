@@ -633,7 +633,7 @@ private void createMultipleChoice() {
 	}
 	private void createQuestionPageTypeMC() {
 
-		Question myQuestion = new Question();
+		Question myQuestion = LibraryController.CURRENT_TEST.getQuestion(QuizAndFlashQuestionPage.questionPageNumber-1);
 		
 		
 		// String to hold questions. To be updated with function that passes
@@ -642,8 +642,9 @@ private void createMultipleChoice() {
 		
 		
 		// Set the question label to the current question in the test
-		if((QuizAndFlashQuestionPage.questionPageNumber - 1) < totalNumQuestions)
-		questionStr =  LibraryController.CURRENT_TEST.getQuestionName(QuizAndFlashQuestionPage.questionPageNumber - 1);
+		if((QuizAndFlashQuestionPage.questionPageNumber-1) < totalNumQuestions){
+			questionStr =  myQuestion.getName();
+		}
 		
 
 		
@@ -652,7 +653,7 @@ private void createMultipleChoice() {
 		JLabel questionLabel = new JLabel(questionStr);
 		questionLabel.setAlignmentX(centerOfNewFrame);
 		questionLabel.setOpaque(false);
-		Font font = new Font("Courier", Font.BOLD, 16);
+		Font font = new Font("", Font.BOLD, 16);
 		questionLabel.setFont(font);
 
 		// Set the question jlabel's max size
@@ -677,19 +678,21 @@ private void createMultipleChoice() {
 
 		// Set random index values to the integer array
 		randAnswerNum[0] = (int)(Math.random()*4);
-	while(randAnswerNum[1] == randAnswerNum[0] || randAnswerNum[1] == randAnswerNum[2] || randAnswerNum[1] == randAnswerNum[3])
-	{randAnswerNum[1] = (int)(Math.random()*4);}
-	while(randAnswerNum[2] == randAnswerNum[0] || randAnswerNum[2] == randAnswerNum[1] || randAnswerNum[2] == randAnswerNum[3])
-	{randAnswerNum[2] = (int)(Math.random()*4);}
-	while(randAnswerNum[3] == randAnswerNum[0] || randAnswerNum[3] == randAnswerNum[1] || randAnswerNum[3] == randAnswerNum[2])
-	{randAnswerNum[3] = (int)(Math.random()*4);}
+		while(randAnswerNum[1] == randAnswerNum[0] || randAnswerNum[1] == randAnswerNum[2] || randAnswerNum[1] == randAnswerNum[3])
+		{
+			randAnswerNum[1] = (int)(Math.random()*4);
+		}
+		while(randAnswerNum[2] == randAnswerNum[0] || randAnswerNum[2] == randAnswerNum[1] || randAnswerNum[2] == randAnswerNum[3])
+		{randAnswerNum[2] = (int)(Math.random()*4);}
+		while(randAnswerNum[3] == randAnswerNum[0] || randAnswerNum[3] == randAnswerNum[1] || randAnswerNum[3] == randAnswerNum[2])
+		{randAnswerNum[3] = (int)(Math.random()*4);}
 		
 	String answerStr[] = new String[4];
 	answerStr = myQuestion.getAnswers();
 	// Assign the textfield answers with a random index
-		for(int i = 0; i < 4; i++)
+		for(int i = 0; i < myQuestion.numAnswers(); i++)
 		{
-			MC_Answers[i] = new JRadioButton("Answer " + (randAnswerNum[i]));
+			MC_Answers[i] = new JRadioButton(answerStr[i]);
 			MCButtonGroup.add(MC_Answers[i]);
 		}
 		

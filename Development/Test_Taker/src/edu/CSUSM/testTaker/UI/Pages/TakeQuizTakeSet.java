@@ -122,7 +122,7 @@ public class TakeQuizTakeSet extends CustomPage {
 			intializeResultChecker();	
 			
 			//LibraryController.CURRENT_TEST = (Test)LibraryController.getItem(ManageData.currentIDSelected);
-			LibraryController.CURRENT_TEST = (Test)LibraryController.retrieveTest(ManageData.currentIDSelected);
+			LibraryController.CURRENT_TEST = LibraryController.retrieveTest(ManageData.currentIDSelected);
 			System.out.println(LibraryController.CURRENT_TEST.getTestName());
 			System.out.println("Number of Questions: " + LibraryController.CURRENT_TEST.numQuestions());
 			

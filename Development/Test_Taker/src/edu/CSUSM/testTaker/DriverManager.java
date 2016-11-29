@@ -20,8 +20,14 @@ public class DriverManager {
 	 */
 	public static void main(String[] args) {
 
+		/** Testing **/
+		LibraryController.initDB();
+		Course.makeExample();
+		/** End Testing **/
+		
 		GUIController gui = new GUIController();
 		gui.setVisible(true);
+		
 		
 		
 		//Restore Library if it exists
