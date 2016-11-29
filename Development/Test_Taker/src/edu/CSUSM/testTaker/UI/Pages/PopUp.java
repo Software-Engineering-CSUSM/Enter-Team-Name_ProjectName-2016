@@ -15,6 +15,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import edu.CSUSM.testTaker.LibraryController;
 import edu.CSUSM.testTaker.UI.CustomPage;
 import edu.CSUSM.testTaker.UI.GUIController;
 import edu.CSUSM.testTaker.UI.CustomPage.PanelType;
@@ -209,10 +210,45 @@ public class PopUp extends CustomPage {
 					//Case for don't create another question for add question popup
 					if(pType == PopUpType.AddAnotherQuestion || pType == PopUpType.AddAnotherQuestionMC)
 					{
+						/*
 						StudyToolsMain QandFMain = new StudyToolsMain("Study Tools", StudyToolsMain.PanelType.TWO_BUTTON_TYPE);
 						//QandFMain.setName("Quiz Main Page");
 						QandFMain.parentController = parentController;
-						parentController.displayView(QandFMain);
+						parentController.displayView(QandFMain);*/
+						
+						if(LibraryController.CURRENT_TEST.numQuestions() > 0){
+							
+
+							//Set the rows to all questions in teh test
+							try{
+								CustomPage.setQBRowHeaders(LibraryController.CURRENT_TEST.getQuestionNames().toArray(new String[LibraryController.CURRENT_TEST.getQuestionNames().size()]));
+								CustomPage.setQBRowIDs(LibraryController.CURRENT_TEST.getQuestionIDList().toArray(new String[LibraryController.CURRENT_TEST.getQuestionIDList().size()]));
+
+							}catch(Exception emp){
+								emp.printStackTrace();
+							}
+						}
+						else{
+							System.out.println("No Questions Yet");
+							CustomPage.setQBRowHeaders(new String[]{"No Questions Yet"});
+							CustomPage.setQBRowIDs(new String[]{"No Questions Yet"});
+						}
+
+						//Save the reference to the current test
+						/** Currently returning a null object */
+						try{
+							//LibraryController.CURRENT_TEST = LibraryController.retrieveTest(ManageData.currentIDSelected);
+							System.out.println("Current ID: " + ManageData.currentIDSelected + " Current Type: " + LibraryController.getItemType(ManageData.currentIDSelected));
+							//System.out.print(LibraryController.CURRENT_TEST.toString());
+						}catch(Exception ex){
+							System.out.println("Error getting test: " + ex.getMessage());
+						}
+
+						QuestionListManager qlm = new QuestionListManager("Question List Manager", QuestionListManager.PanelType.QUESTION_BUILDER_TYPE);
+
+						ManageData.resetButtons();
+						qlm.parentController = parentController;
+						parentController.displayView(qlm);
 					}
 		
 					

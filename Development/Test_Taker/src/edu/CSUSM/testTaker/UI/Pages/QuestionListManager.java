@@ -73,6 +73,7 @@ public class QuestionListManager extends CustomPage {
 		public void actionPerformed(ActionEvent e) {
 			// System.out.println("Opening " + this.getClass());
 
+			CustomPage.qBuilderNumButtons = 1;
 			//Show the "Create Question" View
 			AddQuestion addQ = new AddQuestion("Add Question Page", AddQuestion.PanelType.Q_and_A_Type_MC);
 			addQ.parentController = parentController;

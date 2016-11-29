@@ -92,7 +92,7 @@ public class CustomPage extends JPanel {
 	public static int radioButtonTracker[] = new int [100];
 	
 	//int to set Number of buttons for type QuestionBuilder
-		protected static int qBuilderNumButtons;
+	public static int qBuilderNumButtons;
 
 	// Created an array of string for the button names
 	private static final int MAX_NUMBER_OF_BUTTONS = 10;
@@ -408,7 +408,8 @@ public class CustomPage extends JPanel {
 		// then add constraints for the gridbag panel
 		this.add(QandAPanel, BorderLayout.CENTER);
 		QandAPanel.add(VertQandABox, c);
-		addButtons(2);
+		
+		addButtons(qBuilderNumButtons);
 
 	}
 
@@ -498,7 +499,7 @@ private void createMultipleChoice() {
 		// then add constraints for the gridbag panel
 		this.add(QandAPanel, BorderLayout.CENTER);
 		QandAPanel.add(VertQandABox, c);
-		addButtons(2);
+		addButtons(qBuilderNumButtons);
 
 	}
 	

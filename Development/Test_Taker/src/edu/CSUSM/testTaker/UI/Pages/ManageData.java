@@ -148,9 +148,9 @@ public class ManageData<ObjectDisplayed> extends JPanel {
 		GridBagConstraints gb = new GridBagConstraints();
 		gb.gridx = 0;
 		gb.gridy = 0;
+		gb.ipady = 0;
 		gb.gridwidth = 5;
 		gb.fill = GridBagConstraints.HORIZONTAL;
-		gb.anchor = GridBagConstraints.NORTHWEST;
 
 		// Add the ScrollPane to it
 		JScrollPane scrollView = new JScrollPane(innerView, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
