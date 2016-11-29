@@ -184,7 +184,7 @@ public class TestListManager extends CustomPage {
 					// Set number of buttons to two for next page
 					CustomPage.setqBuilderNumButtons(2);
 
-					LibraryController.CURRENT_TEST = (Test)LibraryController.getItem(ManageData.currentIDSelected);
+					LibraryController.CURRENT_TEST = LibraryController.retrieveTest(ManageData.currentIDSelected);
 					System.out.println(LibraryController.CURRENT_TEST.getTestName());
 					System.out.println("Has Questions: " + LibraryController.CURRENT_TEST.numQuestions());
 
@@ -201,7 +201,7 @@ public class TestListManager extends CustomPage {
 						}
 					}
 					else{
-						System.out.println("No Tests Yet");
+						System.out.println("No Questions Yet");
 						CustomPage.setQBRowHeaders(new String[]{"No Questions Yet"});
 						CustomPage.setQBRowIDs(new String[]{"No Questions Yet"});
 					}
@@ -214,9 +214,6 @@ public class TestListManager extends CustomPage {
 						//System.out.print(LibraryController.CURRENT_TEST.toString());
 					}catch(Exception ex){
 						System.out.println("Error getting test: " + ex.getMessage());
-					}finally{
-						//System.out.println("DATA: " + LibraryController.retrieveTest(ManageData.currentIDSelected));
-						//System.out.println("CurrentID: " + ManageData.currentIDSelected);
 					}
 
 					QuestionListManager qlm = new QuestionListManager("Question List Manager", QuestionListManager.PanelType.QUESTION_BUILDER_TYPE);

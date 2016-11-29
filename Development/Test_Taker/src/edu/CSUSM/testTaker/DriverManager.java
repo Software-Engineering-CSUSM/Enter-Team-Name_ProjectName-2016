@@ -24,7 +24,6 @@ public class DriverManager {
 		gui.setVisible(true);
 		
 		
-		
 		//Restore Library if it exists
 		File testfile = new File("Library.bin");
 		if(testfile.exists()){

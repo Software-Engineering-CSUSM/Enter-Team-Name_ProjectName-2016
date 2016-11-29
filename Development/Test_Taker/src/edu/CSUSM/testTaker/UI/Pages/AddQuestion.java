@@ -106,7 +106,7 @@ public class AddQuestion extends CustomPage {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			System.out.println("Opening " + this.getClass());
+			//System.out.println("Opening " + this.getClass());
 
 			// Saves the question and answer into a string and prints it
 			// out for testing purposes
@@ -127,7 +127,8 @@ public class AddQuestion extends CustomPage {
 
 			try{
 				System.out.println("Test Value: " + LibraryController.CURRENT_TEST.getTestName());
-				LibraryController.CURRENT_TEST.addQuestion(newQ, 15);
+				System.out.println("Item Found: " + LibraryController.getItemType(LibraryController.CURRENT_TEST.getID()));
+				LibraryController.retrieveTest(LibraryController.CURRENT_TEST.getID()).addQuestion(newQ, 15);
 
 			}catch(NullPointerException ex){
 				ex.printStackTrace();
@@ -158,6 +159,7 @@ public class AddQuestion extends CustomPage {
 			// Saves the question and answer into a string and prints it
 			// out for testing purposes//Create a new Question object
 			Question newQ = new Question(question.getText());
+			
 			for(int i = 0; i < answerTextMC.length; i++)
 			{
 				newQ.addAnswer(answerTextMC[i].getText());
@@ -167,6 +169,10 @@ public class AddQuestion extends CustomPage {
 
 			try{
 				System.out.println("Test Value: " + LibraryController.CURRENT_TEST.getTestName());
+				System.out.println("Item Found: " + LibraryController.getItemType(LibraryController.CURRENT_TEST.getID()));
+				
+				//Save the test 
+				//LibraryController.retrieveTest(LibraryController.CURRENT_TEST.getID()).addQuestion(newQ);
 				LibraryController.CURRENT_TEST.addQuestion(newQ, 15);
 
 			}catch(NullPointerException ex){
