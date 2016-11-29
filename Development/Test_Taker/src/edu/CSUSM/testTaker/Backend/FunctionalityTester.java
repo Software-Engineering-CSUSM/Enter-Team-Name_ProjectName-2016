@@ -7,8 +7,8 @@ import edu.CSUSM.testTaker.Analytics.*;
 
 public class FunctionalityTester {
 	public static void main(String [] unused){
-		try{AnaSetup.clearData();}
-		catch(IOException e){e.printStackTrace();}		
+		/*try{AnaSetup.clearData();}
+		catch(IOException e){e.printStackTrace();}		*/
 		
 		if(LibraryController.checkForDB()){
 			System.out.println("database found with expected filename");
@@ -56,7 +56,7 @@ public class FunctionalityTester {
 		System.out.println(rq2);
 		
 		
-		try{AnaViewer.processLogs();}
-		catch(IOException e){e.printStackTrace();}				
+		/*try{AnaViewer.processLogs();}
+		catch(IOException e){e.printStackTrace();}		*/		
 	}
 }

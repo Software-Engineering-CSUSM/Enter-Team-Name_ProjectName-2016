@@ -329,7 +329,7 @@ public class Test /*extends TaskObject*/ implements Serializable, Registerable{
 	 */
 	public void addQuestion(Question QuestionToAdd, int questionvalue){
 		//System.out.println("Question: " + getQuestionList().toString());
-		getQuestionList().add(QuestionToAdd);
+		questionList.add(QuestionToAdd);
 		questionIDs.add(QuestionToAdd.getID());
 		questionPoints.add(questionvalue);
 		try{AnaSetup.logEvent("Added a Question to a Test");}
