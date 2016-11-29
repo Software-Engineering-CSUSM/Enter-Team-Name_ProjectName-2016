@@ -122,7 +122,15 @@ public class GUIController extends JFrame {
 		/** Study Tools */
 		studyToolsNC = new NavigationController();
 
-		StudyToolsMain studyToolsMain = new StudyToolsMain(SideMenu.menuOptionButtons[2].getText(), CustomPage.PanelType.TWO_BUTTON_TYPE);
+		/*StudyToolsMain studyToolsMain = new StudyToolsMain(SideMenu.menuOptionButtons[2].getText(), CustomPage.PanelType.TWO_BUTTON_TYPE);
+		studyToolsNC.setInitialView(studyToolsMain);
+		studyToolsMain.parentController = studyToolsNC;*/
+		
+		// Set number of buttons for question builder type before calling constructor
+		CustomPage.setqBuilderNumButtons(2);
+		CustomPage.setQBRowHeaders(LibraryController.getAllCoursesAvailable());
+		CustomPage.setQBRowIDs(LibraryController.getAllCourseIDsAvailable());
+		StudyToolsMain studyToolsMain = new StudyToolsMain(SideMenu.menuOptionButtons[1].getText(), CustomPage.PanelType.QUESTION_BUILDER_TYPE);
 		studyToolsNC.setInitialView(studyToolsMain);
 		studyToolsMain.parentController = studyToolsNC;
 

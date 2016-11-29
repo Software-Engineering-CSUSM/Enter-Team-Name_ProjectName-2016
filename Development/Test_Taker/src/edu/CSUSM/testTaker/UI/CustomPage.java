@@ -639,9 +639,12 @@ private void createMultipleChoice() {
 		// the string of the actual question
 		questionStr = "This is where the question goes.";
 		
+		
 		// Set the question label to the current question in the test
 		if((QuizAndFlashQuestionPage.questionPageNumber - 1) < totalNumQuestions)
 		questionStr =  LibraryController.CURRENT_TEST.getQuestionName(QuizAndFlashQuestionPage.questionPageNumber - 1);
+		
+
 		
 		// Create a JLabel to display thew question, set its
 		// alignment, font type and size
