@@ -84,7 +84,8 @@ public class StudyToolsMain extends CustomPage {
 
 					CustomPage.setqBuilderNumButtons(1);
 					TestListManager.setCourse(LibraryController.retrieveCourse(ManageData.currentIDSelected));
-					TakeQuizTakeSet takeSet = new TakeQuizTakeSet("Select Flashcard Set", CustomPage.PanelType.QUESTION_BUILDER_TYPE);
+					TakeQuizTakeSet takeSet = new TakeQuizTakeSet("Select Flashcard Set" , TakeQuizTakeSet.PanelType.QUESTION_BUILDER_TYPE,
+							TakeQuizTakeSet.PageType.FLASHCARD);
 					LibraryController.CURRENT_COURSE = TestListManager.CourseObj;
 					//System.out.println("Current ID Selected: " + ManageData.currentIDSelected);
 					//tm.setName("Test List Manager");
