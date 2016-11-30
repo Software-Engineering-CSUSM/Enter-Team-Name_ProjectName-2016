@@ -42,7 +42,7 @@ public class AnaPieChart {
 	 private static DateFormat dateReg = new SimpleDateFormat("MM_dd");
 	 private static Scanner scanner; 
 	 
-	 static void loadData() throws IOException{
+	 public static void loadData() throws IOException{
 		 Date date = new Date();
 		  String dateFile = "report" + dateReg.format(date) + ".txt";
 		  String dateFilePath = System.getProperty("user.dir") + File.separator + dateFile;
