@@ -79,8 +79,8 @@ public class AnaPieChart {
 	        JFrame Lframe = new JFrame("Legend");
 	        Lframe.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	        Lframe.add(new Legend());
-	        Lframe.pack();
-	        Lframe.setSize(200, 200);
+	        
+	        Lframe.setSize(500, 300);
 	        Lframe.setLocationRelativeTo(null);
 	        Lframe.setVisible(true);
 	        
@@ -151,7 +151,7 @@ private static Vector<Slice> slices = makeSlices(AnaPieChart.gotVisits);
 	
    }
    public static String getColor(int index){
-	   String color = null;
+	   String color = "Not Shown";
 	   switch(index){
 	   case 0: color = "Black";
 	   		break;
