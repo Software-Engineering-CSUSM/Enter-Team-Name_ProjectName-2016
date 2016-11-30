@@ -78,6 +78,7 @@ public class AnaPieChart {
 	       
 	        JFrame Lframe = new JFrame("Legend");
 	        Lframe.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+	        Lframe.add(new Legend());
 	        Lframe.pack();
 	        Lframe.setSize(200, 200);
 	        Lframe.setLocationRelativeTo(null);
