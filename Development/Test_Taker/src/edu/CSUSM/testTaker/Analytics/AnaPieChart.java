@@ -12,6 +12,9 @@ import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Scanner;
 import java.util.Vector;
 
@@ -36,10 +39,12 @@ public class AnaPieChart {
 	 public static Vector<Integer> gotVisits = new Vector<Integer>(0);
 	 public static Vector<String>  gotTypes = new Vector<String>(0);
 	 private final static Charset ENCODING = StandardCharsets.UTF_8;
+	 private static DateFormat dateReg = new SimpleDateFormat("MM_dd");
 	 private static Scanner scanner; 
 	 
-	 static void loadData(String Date) throws IOException{
-		  String dateFile = "report" + Date + ".txt";
+	 static void loadData() throws IOException{
+		 Date date = new Date();
+		  String dateFile = "report" + dateReg.format(date) + ".txt";
 		  String dateFilePath = System.getProperty("user.dir") + File.separator + dateFile;
 		  File f = new File(dateFilePath);
 		  Path dFilePath = Paths.get(dateFilePath);
@@ -74,7 +79,7 @@ public class AnaPieChart {
 	    }
 	   public static void main(String[] argv) {
 		   try{
-		  AnaPieChart.loadData("11_23");
+		  AnaPieChart.loadData();
 		   }catch(IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
