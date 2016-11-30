@@ -4,6 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 
+import javax.swing.JOptionPane;
+
 import edu.CSUSM.testTaker.LibraryController;
 import edu.CSUSM.testTaker.Backend.Test;
 import edu.CSUSM.testTaker.Backend.Question;
@@ -136,13 +138,33 @@ public class TakeQuizTakeSet extends CustomPage {
 				for(int j = 0; j < 4; j++)
 					randAnswerNum[i][j] = 0;
 
-			QuizAndFlashQuestionPage QquestionPage = new QuizAndFlashQuestionPage("Quiz Question Page: " + QuizAndFlashQuestionPage.questionPageNumber,
+			/*QuizAndFlashQuestionPage QquestionPage = new QuizAndFlashQuestionPage("Quiz Question Page: " + QuizAndFlashQuestionPage.questionPageNumber,
 					QuizAndFlashQuestionPage.PanelType.QUESTIONPAGEMC, QuizAndFlashQuestionPage.PageType.QUIZ_MC);
 			QquestionPage.parentController = parentController;
 			parentController.displayView(QquestionPage);
-			QuizAndFlashQuestionPage.questionPageNumber++; 
+			QuizAndFlashQuestionPage.questionPageNumber++;*/ 
 								
-
+			//int reply1 = JOptionPane.showConfirmDialog(null, "There are currently no questions in the test. Please add questions
+					//+ "in the course tab first", JOptionPane.DEFAULT_OPTION);
+			
+			
+			
+			if (totalNumQuestions == 0) {
+				//Refresh the table here
+				
+				int noQuestionMessage = JOptionPane.showConfirmDialog(null, "There are currently no questions in the test. Please add questions "
+						+ "in the course tab first", "Warning!", JOptionPane.DEFAULT_OPTION);
+			
+				
+				
+			}
+			else{
+				QuizAndFlashQuestionPage QquestionPage = new QuizAndFlashQuestionPage("Quiz Question Page: " + QuizAndFlashQuestionPage.questionPageNumber,
+						QuizAndFlashQuestionPage.PanelType.QUESTIONPAGEMC, QuizAndFlashQuestionPage.PageType.QUIZ_MC);
+				QquestionPage.parentController = parentController;
+				parentController.displayView(QquestionPage);
+				QuizAndFlashQuestionPage.questionPageNumber++;
+				}
 		}
 
 	}
@@ -166,10 +188,23 @@ public class TakeQuizTakeSet extends CustomPage {
 			//Set the total number of questions for the current test
 			totalNumQuestions = LibraryController.CURRENT_TEST.numQuestions();
 			
-				QuizAndFlashQuestionPage FCquestionPage = new QuizAndFlashQuestionPage("Flash Card Question Page: " + QuizAndFlashQuestionPage.questionPageNumber,
-						QuizAndFlashQuestionPage.PanelType.FLASHCARDPAGE, QuizAndFlashQuestionPage.PageType.FLASHCARD);
-				FCquestionPage.parentController = parentController;
-				parentController.displayView(FCquestionPage);
+				
+				if (totalNumQuestions == 0) {
+					//Refresh the table here
+					
+					int noQuestionMessage = JOptionPane.showConfirmDialog(null, "There are currently no questions in the test. Please add questions "
+							+ "in the course tab first", "Warning!", JOptionPane.DEFAULT_OPTION);
+				
+					
+					
+				}
+				else{
+					QuizAndFlashQuestionPage FCquestionPage = new QuizAndFlashQuestionPage("Flash Card Question Page: " + QuizAndFlashQuestionPage.questionPageNumber,
+							QuizAndFlashQuestionPage.PanelType.FLASHCARDPAGE, QuizAndFlashQuestionPage.PageType.FLASHCARD);
+					FCquestionPage.parentController = parentController;
+					parentController.displayView(FCquestionPage);
+					}
+				
 				
 				//Save questionPageNumber incrementer in case we need to switch back
 				// to pop up
