@@ -67,7 +67,7 @@ public class AnaPieChart {
 	 
 	 public AnaPieChart() {
 
-	        JFrame frame = new JFrame("Testing");
+	        JFrame frame = new JFrame("PieChart");
 	        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	        frame.setLayout(new BorderLayout());
 	        frame.getContentPane().add(new PieChart());
@@ -75,6 +75,13 @@ public class AnaPieChart {
 	        frame.setSize(500, 300);
 	        frame.setLocationRelativeTo(null);
 	        frame.setVisible(true);
+	       
+	        JFrame Lframe = new JFrame("Legend");
+	        Lframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	        Lframe.pack();
+	        Lframe.setSize(200, 200);
+	        Lframe.setLocationRelativeTo(null);
+	        Lframe.setVisible(true);
 	        
 	    }
 	   public static void main(String[] argv) {
