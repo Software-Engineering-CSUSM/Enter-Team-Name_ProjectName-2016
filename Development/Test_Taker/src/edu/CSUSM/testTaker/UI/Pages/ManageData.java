@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -146,11 +147,11 @@ public class ManageData<ObjectDisplayed> extends JPanel {
 		innerView.setLayout(new GridBagLayout());
 		innerView.setBackground(Color.WHITE);
 		GridBagConstraints gb = new GridBagConstraints();
-		gb.gridx = 0;
-		gb.gridy = 0;
+		/*gb.gridx = 0;
+		gb.ipady = 0;
 		gb.gridwidth = 5;
 		gb.fill = GridBagConstraints.HORIZONTAL;
-		gb.anchor = GridBagConstraints.NORTHWEST;
+		gb.anchor = GridBagConstraints.FIRST_LINE_START;*/
 
 		// Add the ScrollPane to it
 		JScrollPane scrollView = new JScrollPane(innerView, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
@@ -176,14 +177,15 @@ public class ManageData<ObjectDisplayed> extends JPanel {
 			//Add the data requested
 			for(int i = 0; i < this.getRowIdentifiers().length; i++){
 				Row newRow = new Row(rowHeaders[i], rowIdentifiers[i]);
-				gb.gridy++;
+				gb.gridy = i;
 				gb.weightx = 1;
-				gb.weighty = 1;
-				gb.ipady = 0;
-				gb.fill = GridBagConstraints.HORIZONTAL;
+				gb.fill = GridBagConstraints.BOTH;
+				gb.insets = new Insets( 0,0,0,0 );
+				gb.weighty = 0;
 				// Add the row to the table
 				innerView.add(newRow, gb);
 			}
+			
 		}
 
 		// scrollView.setPreferredSize(new Dimension(this.getWidth(),

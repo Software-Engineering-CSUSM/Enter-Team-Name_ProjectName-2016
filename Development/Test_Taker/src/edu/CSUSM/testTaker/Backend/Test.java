@@ -195,7 +195,12 @@ public class Test /*extends TaskObject*/ implements Serializable, Registerable{
 		if(questionList==null)
 			initQuestions();
 		if(qn < 0) return null;
+		try{
 		return (questionList.get(qn) != null) ? questionList.get(qn) : null;
+		}catch(Exception e){
+			//e.printStackTrace();
+			return null;
+		}
 	}
 	
 	/**

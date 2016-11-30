@@ -7,6 +7,8 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Image;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URL;
@@ -27,6 +29,7 @@ import javax.swing.JTextField;
 import javax.swing.border.Border;
 
 import edu.CSUSM.testTaker.LibraryController;
+import edu.CSUSM.testTaker.Analytics.AnaSetup;
 import edu.CSUSM.testTaker.Backend.Question;
 import edu.CSUSM.testTaker.UI.CustomObjects.CustomButton;
 import edu.CSUSM.testTaker.UI.Pages.ManageData;
@@ -78,10 +81,12 @@ public class CustomPage extends JPanel {
 	public  JTextField answerTextMC[] = new JTextField[4];
 	public  JRadioButton MC_Answers[] = new JRadioButton[4];
 	public String questionStr;
+	public String answerStr[] = new String[4];
 	
 	// Integer array to hole a random number to use as the index for
 			// the multiple choice answers
-	public static int randAnswerNum[] = new int[4];
+	
+	public static int randAnswerNum[][] = new int[100][4];
 	
 	// Total Number of questions for a quiz or flashcard set.
 	// should be set by a function that gets the total number of
@@ -92,7 +97,7 @@ public class CustomPage extends JPanel {
 	public static int radioButtonTracker[] = new int [100];
 	
 	//int to set Number of buttons for type QuestionBuilder
-		protected static int qBuilderNumButtons;
+	public static int qBuilderNumButtons;
 
 	// Created an array of string for the button names
 	private static final int MAX_NUMBER_OF_BUTTONS = 10;
@@ -105,7 +110,7 @@ public class CustomPage extends JPanel {
 	/** End of question panel specific vars */
 
 	public static enum PanelType {
-		TWO_BUTTON_TYPE, THREE_BUTTON_TYPE, LOGO_ONLY_TYPE, QUESTION_BUILDER_TYPE, Q_and_A_Type, QUESTIONPAGE, QUESTIONPAGEMC, FLASHCARDPAGE, RESULTS,
+		TWO_BUTTON_TYPE, THREE_BUTTON_TYPE, SINGLE_BUTTON_TYPE, LOGO_ONLY_TYPE, QUESTION_BUILDER_TYPE, Q_and_A_Type, QUESTIONPAGE, QUESTIONPAGEMC, FLASHCARDPAGE, RESULTS,
 		Q_and_A_Type_MC
 	};
 
@@ -233,6 +238,9 @@ public class CustomPage extends JPanel {
 			createMultipleChoice();
 			break;
 		// Take Quiz
+		case SINGLE_BUTTON_TYPE:
+			createSingleButton();
+			break;
 		case QUESTIONPAGE:
 			createQuestionPageType();
 			break;
@@ -316,6 +324,42 @@ public class CustomPage extends JPanel {
 		 * Modified same as createTwoButtonType
 		 */
 
+	}
+	
+	protected void createSingleButton(){
+		JLabel iconLabel = new JLabel();
+		iconLabel.setBounds(0, 0, this.getWidth(), (int) (this.getHeight() / 2.25));
+		iconLabel.setIcon(newIcon);
+		// this.add(iconLabel);
+		this.add(iconLabel, BorderLayout.CENTER);
+
+		// Align to center
+		iconLabel.setHorizontalAlignment(JLabel.CENTER);
+		iconLabel.setVerticalAlignment(JLabel.CENTER);
+
+		CustomPage.centerOfNewFrame = iconLabel.getHeight() - iconLabel.getY();
+
+		addButtons(1);
+		
+		currentActions[0].setText("Analytics");
+		currentActions[0].addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				try {
+					AnaSetup.processLogs();
+					
+					//Open the pie chart **
+					//------------------------
+					//------------------------
+					//------------------------
+					
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
 	}
 
 	// This class creates the add question page for the user to be
@@ -408,7 +452,8 @@ public class CustomPage extends JPanel {
 		// then add constraints for the gridbag panel
 		this.add(QandAPanel, BorderLayout.CENTER);
 		QandAPanel.add(VertQandABox, c);
-		addButtons(2);
+		
+		addButtons(qBuilderNumButtons);
 
 	}
 
@@ -498,7 +543,7 @@ private void createMultipleChoice() {
 		// then add constraints for the gridbag panel
 		this.add(QandAPanel, BorderLayout.CENTER);
 		QandAPanel.add(VertQandABox, c);
-		addButtons(2);
+		addButtons(qBuilderNumButtons);
 
 	}
 	
@@ -632,29 +677,33 @@ private void createMultipleChoice() {
 	}
 	private void createQuestionPageTypeMC() {
 
-		Question myQuestion = new Question();
+		Question myQuestion = LibraryController.CURRENT_TEST.getQuestion(QuizAndFlashQuestionPage.questionPageNumber-1);
 		
 		
 		// String to hold questions. To be updated with function that passes
 		// the string of the actual question
 		questionStr = "This is where the question goes.";
 		
+		
 		// Set the question label to the current question in the test
-		if((QuizAndFlashQuestionPage.questionPageNumber - 1) < totalNumQuestions)
-		questionStr =  LibraryController.CURRENT_TEST.getQuestionName(QuizAndFlashQuestionPage.questionPageNumber - 1);
+		if((QuizAndFlashQuestionPage.questionPageNumber-1) < totalNumQuestions){
+			questionStr =  myQuestion.getName();
+		}
+		
+
 		
 		// Create a JLabel to display thew question, set its
 		// alignment, font type and size
 		JLabel questionLabel = new JLabel(questionStr);
 		questionLabel.setAlignmentX(centerOfNewFrame);
 		questionLabel.setOpaque(false);
-		Font font = new Font("Courier", Font.BOLD, 16);
+		Font font = new Font("", Font.BOLD, 16);
 		questionLabel.setFont(font);
 
 		// Set the question jlabel's max size
 		questionLabel.setMaximumSize(getMaximumSize());
 
-
+		
 
 		// Create a vertical box to place the question jlabel on top
 		// of the answer text area
@@ -667,25 +716,45 @@ private void createMultipleChoice() {
 		// the multiple choice answers
 		//int randAnswerNum[] = new int[4];
 		
-		//Intialize the array of random index values
-		for(int i = 0; i < 4; i++){
-			randAnswerNum[i] = 0;}
+	
 
-		// Set random index values to the integer array
-		randAnswerNum[0] = (int)(Math.random()*4);
-	while(randAnswerNum[1] == randAnswerNum[0] || randAnswerNum[1] == randAnswerNum[2] || randAnswerNum[1] == randAnswerNum[3])
-	{randAnswerNum[1] = (int)(Math.random()*4);}
-	while(randAnswerNum[2] == randAnswerNum[0] || randAnswerNum[2] == randAnswerNum[1] || randAnswerNum[2] == randAnswerNum[3])
-	{randAnswerNum[2] = (int)(Math.random()*4);}
-	while(randAnswerNum[3] == randAnswerNum[0] || randAnswerNum[3] == randAnswerNum[1] || randAnswerNum[3] == randAnswerNum[2])
-	{randAnswerNum[3] = (int)(Math.random()*4);}
 		
-	String answerStr[] = new String[4];
+
+		int sum = 0, product = 1, j = 0;
+		
+		// If the sum of the random answer indexes is not 6, then the questions have not
+		// yet been shuffled. Shuffle the answers
+		for(int i = 0; i < 4; i++)
+			sum += randAnswerNum[QuizAndFlashQuestionPage.questionPageNumber-1][i];
+		if(sum != 6)
+		{
+			while(sum != 6 || product != 6)
+			{
+				sum = 0; product = 1; j = 0;
+				randAnswerNum[QuizAndFlashQuestionPage.questionPageNumber-1][0] = (int)(Math.random()*4);
+				randAnswerNum[QuizAndFlashQuestionPage.questionPageNumber-1][1] = (int)(Math.random()*4);
+				randAnswerNum[QuizAndFlashQuestionPage.questionPageNumber-1][2] = (int)(Math.random()*4);
+				randAnswerNum[QuizAndFlashQuestionPage.questionPageNumber-1][3] = (int)(Math.random()*4);
+				//sum = randAnswerNum[0] + randAnswerNum[1] + randAnswerNum[2] + randAnswerNum[3];
+				for(int i = 0; i < 4; i++)
+				{
+					sum += randAnswerNum[QuizAndFlashQuestionPage.questionPageNumber-1][i];
+					if(randAnswerNum[QuizAndFlashQuestionPage.questionPageNumber-1][i] != 0)
+						product *= randAnswerNum[QuizAndFlashQuestionPage.questionPageNumber-1][i];
+					
+				}
+			}
+			for(int i = 0; i < 4; i++)
+			System.out.println(randAnswerNum[QuizAndFlashQuestionPage.questionPageNumber-1][i]);
+		}
+		
+	
 	answerStr = myQuestion.getAnswers();
 	// Assign the textfield answers with a random index
-		for(int i = 0; i < 4; i++)
+		for(int i = 0; i < myQuestion.numAnswers(); i++)
 		{
-			MC_Answers[i] = new JRadioButton("Answer " + (randAnswerNum[i]));
+			MC_Answers[i] = new JRadioButton(answerStr[randAnswerNum[QuizAndFlashQuestionPage.questionPageNumber-1][i]]);
+			//MC_Answers[i] = new JRadioButton("Answer " + randAnswerNum[i]);
 			MCButtonGroup.add(MC_Answers[i]);
 		}
 		
@@ -715,8 +784,11 @@ private void createMultipleChoice() {
 		radioBoxBottom.add(MC_Answers[3]);
 		radioBoxBottom.add(Box.createHorizontalGlue());
 		
-	
-		questionBox.add(questionLabel);
+		// Create a Panel to hold the question label for alignment
+		JPanel qPanel = new JPanel();
+		qPanel.add(questionLabel);
+
+		questionBox.add(qPanel);
 		questionBox.add(Box.createVerticalStrut(80));
 		//Border border = BorderFactory.createLineBorder(Color.BLACK);
 		//questionBox.setBorder(border);
@@ -864,22 +936,26 @@ private void createResultsPageType() {
 		
 		
 		// Condition to check the show/hide button every other click
-		if(CheckUncheck % 2 == 0)
-			showHide.setSelected(true);
+		//if(CheckUncheck % 2 == 0)
+		//	showHide.setSelected(true);
 	
 		CheckUncheck++;
 		
 		// Alignment for question label, answer label, and show/Hide box
 		centerOfNewFrame = (this.getHeight() - (this.getHeight() - ((int) (this.getHeight() / 2.25))));
 
+		Question myQuestion = LibraryController.CURRENT_TEST.getQuestion(QuizAndFlashQuestionPage.questionPageNumber-1);
+		
 		// String to hold questions. To be updated with function that passes
 		// the string of the actual question
-		String questionStr = "This is where the question goes";
+		questionStr =  myQuestion.getName();
+		answerStr = myQuestion.getAnswers();
+		
 
 		// Create a JLabel to display the question, set its
 		// alignment, font type and size
 		JLabel questionLabel = new JLabel(questionStr);
-		JLabel answerLabel = new JLabel(FlashcardAnswer);
+		JLabel answerLabel = new JLabel("");
 		questionLabel.setAlignmentX(centerOfNewFrame);
 		questionLabel.setOpaque(false);
 		answerLabel.setAlignmentX(centerOfNewFrame);
@@ -894,14 +970,19 @@ private void createResultsPageType() {
 
 		showHide.setAlignmentX(centerOfNewFrame);
 
+		JPanel qPanel = new JPanel();
+		qPanel.add(questionLabel);
+		
 		// Create a vertical box to place the question string on top
 		// of the hide check box
 		Box questionBox = Box.createVerticalBox();
+		questionBox.add(Box.createVerticalStrut(10));
 		questionBox.add(questionLabel);
-		questionBox.add(Box.createVerticalStrut(100));
+		questionBox.add(Box.createVerticalStrut(50));
 		questionBox.add(showHide);
 		questionBox.add(Box.createVerticalStrut(40));
 		questionBox.add(answerLabel);
+		questionBox.add(Box.createVerticalGlue());
 
 		// Constraints for the panel holding the text areas for
 		// resizing purposes.

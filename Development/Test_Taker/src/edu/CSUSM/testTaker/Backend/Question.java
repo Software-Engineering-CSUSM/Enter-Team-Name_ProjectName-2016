@@ -103,6 +103,7 @@ public class Question /*extends TaskObject*/ implements Serializable, Registerab
 		rval.addAnswer("What?");
 		rval.addAnswer("To find the Holy Grail");
 		rval.addAnswer("Aaaaaah");
+		rval.addAnswer("No need for a second opinion");
 		rval.setCorrectIndex(1);
 		try{AnaSetup.logEvent("Made a new example Question");}
 		catch(IOException e){e.printStackTrace();}

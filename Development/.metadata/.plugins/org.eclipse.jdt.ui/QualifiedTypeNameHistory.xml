@@ -3,7 +3,6 @@
 <fullyQualifiedTypeName name="edu.CSUSM.testTaker.LibraryController.CourseInfo"/>
 <fullyQualifiedTypeName name="java.awt.GridBagConstraints"/>
 <fullyQualifiedTypeName name="java.awt.GridLayout"/>
-<fullyQualifiedTypeName name="java.awt.event.ActionListener"/>
 <fullyQualifiedTypeName name="java.awt.image.BufferedImage"/>
 <fullyQualifiedTypeName name="edu.CSUSM.testTaker.UI.CustomObjects.CustomButton"/>
 <fullyQualifiedTypeName name="edu.CSUSM.testTaker.Backend.Course"/>
@@ -12,4 +11,6 @@
 <fullyQualifiedTypeName name="edu.CSUSM.testTaker.Backend.Test"/>
 <fullyQualifiedTypeName name="edu.CSUSM.testTaker.LibraryController"/>
 <fullyQualifiedTypeName name="javax.swing.JOptionPane"/>
+<fullyQualifiedTypeName name="java.awt.event.ActionListener"/>
+<fullyQualifiedTypeName name="edu.CSUSM.testTaker.Analytics.AnaSetup"/>
 </qualifiedTypeNameHistroy>

@@ -121,14 +121,20 @@ public class TakeQuizTakeSet extends CustomPage {
 			
 			intializeResultChecker();	
 			
-			LibraryController.CURRENT_TEST = (Test)LibraryController.getItem(ManageData.currentIDSelected);
+			//LibraryController.CURRENT_TEST = (Test)LibraryController.getItem(ManageData.currentIDSelected);
+			LibraryController.CURRENT_TEST = LibraryController.retrieveTest(ManageData.currentIDSelected);
 			System.out.println(LibraryController.CURRENT_TEST.getTestName());
 			System.out.println("Number of Questions: " + LibraryController.CURRENT_TEST.numQuestions());
 			
 			//Set the total number of questions for the current test
 			totalNumQuestions = LibraryController.CURRENT_TEST.numQuestions();
 			
-			
+			// Intialize random answer num array to zero.  this is done because
+			// the condition to shuffle the questions is based of the sum of the 
+			// random answers indexes
+			for(int i = 0; i < totalNumQuestions; i++)
+				for(int j = 0; j < 4; j++)
+					randAnswerNum[i][j] = 0;
 
 			QuizAndFlashQuestionPage QquestionPage = new QuizAndFlashQuestionPage("Quiz Question Page: " + QuizAndFlashQuestionPage.questionPageNumber,
 					QuizAndFlashQuestionPage.PanelType.QUESTIONPAGEMC, QuizAndFlashQuestionPage.PageType.QUIZ_MC);
@@ -151,6 +157,14 @@ public class TakeQuizTakeSet extends CustomPage {
 		public void actionPerformed(ActionEvent e) {
 			System.out.println("Opening " + this.getClass());
 
+			
+			//LibraryController.CURRENT_TEST = (Test)LibraryController.getItem(ManageData.currentIDSelected);
+			LibraryController.CURRENT_TEST = LibraryController.retrieveTest(ManageData.currentIDSelected);
+			System.out.println(LibraryController.CURRENT_TEST.getTestName());
+			System.out.println("Number of Questions: " + LibraryController.CURRENT_TEST.numQuestions());
+			
+			//Set the total number of questions for the current test
+			totalNumQuestions = LibraryController.CURRENT_TEST.numQuestions();
 			
 				QuizAndFlashQuestionPage FCquestionPage = new QuizAndFlashQuestionPage("Flash Card Question Page: " + QuizAndFlashQuestionPage.questionPageNumber,
 						QuizAndFlashQuestionPage.PanelType.FLASHCARDPAGE, QuizAndFlashQuestionPage.PageType.FLASHCARD);

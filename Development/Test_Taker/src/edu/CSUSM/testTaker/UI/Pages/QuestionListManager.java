@@ -7,6 +7,7 @@ import java.awt.image.BufferedImage;
 import javax.swing.JOptionPane;
 
 import edu.CSUSM.testTaker.LibraryController;
+import edu.CSUSM.testTaker.Backend.Question;
 import edu.CSUSM.testTaker.UI.CustomPage;
 import edu.CSUSM.testTaker.UI.CustomPage.PanelType;
 import edu.CSUSM.testTaker.UI.CustomPage.PopUpType;
@@ -47,7 +48,12 @@ public class QuestionListManager extends CustomPage {
 
 		// Set the button names
 		setButtonNames(new String[] { "Add Question", "Delete Question"});
-
+		
+		//Question myQuestion = new Question();
+		//String answersStr[] = new String[20];
+		//answersStr = myQuestion.getAnswers();
+	
+		
 		try {
 			for (int i = 0; i < this.currentActions.length; i++) {
 				switch (i) {
@@ -73,6 +79,7 @@ public class QuestionListManager extends CustomPage {
 		public void actionPerformed(ActionEvent e) {
 			// System.out.println("Opening " + this.getClass());
 
+			CustomPage.qBuilderNumButtons = 1;
 			//Show the "Create Question" View
 			AddQuestion addQ = new AddQuestion("Add Question Page", AddQuestion.PanelType.Q_and_A_Type_MC);
 			addQ.parentController = parentController;
