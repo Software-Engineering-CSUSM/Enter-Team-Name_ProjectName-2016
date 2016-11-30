@@ -348,7 +348,8 @@ public class CustomPage extends JPanel {
 				// TODO Auto-generated method stub
 				try {
 					AnaSetup.processLogs();
-					
+					AnaPieChart.loadData(); 
+					new AnaPieChart();
 					//Open the pie chart **
 					//------------------------
 					//------------------------
