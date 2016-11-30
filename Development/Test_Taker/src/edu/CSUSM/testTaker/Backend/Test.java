@@ -98,6 +98,7 @@ public class Test /*extends TaskObject*/ implements Serializable, Registerable{
 		q2.addAnswer("green");
 		q2.addAnswer("blue");
 		q2.addAnswer("aaaaaah");
+		q2.addAnswer("yellow");
 		q2.setCorrectIndex(2);
 		rval.addQuestion(q2,1);
 
@@ -105,6 +106,7 @@ public class Test /*extends TaskObject*/ implements Serializable, Registerable{
 		q3.addAnswer("African or European?");
 		q3.addAnswer("I don't know that!");
 		q3.addAnswer("aaaaahhhhh");
+		q3.addAnswer("I just don't care.");
 		q3.setCorrectIndex(0);
 		rval.addQuestion(q3, 20);
 
