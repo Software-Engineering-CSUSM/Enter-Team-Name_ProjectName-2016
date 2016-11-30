@@ -6,6 +6,7 @@ import java.awt.image.BufferedImage;
 import java.util.Scanner;
 
 import javax.swing.JOptionPane;
+import javax.swing.plaf.synth.SynthSeparatorUI;
 
 import edu.CSUSM.testTaker.LibraryController;
 import edu.CSUSM.testTaker.UI.CustomPage;
@@ -427,6 +428,8 @@ public class QuizAndFlashQuestionPage extends CustomPage {
 		public void actionPerformed(ActionEvent e) {
 			System.out.println("Opening " + this.getClass());
 			
+			
+			if(questionPageNumber != totalNumQuestions)
 			questionPageNumber--;
 			parentController.dismissView();
 			
