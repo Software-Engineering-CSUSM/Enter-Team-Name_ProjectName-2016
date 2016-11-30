@@ -925,7 +925,7 @@ private void createResultsPageType() {
 
 		this.add(CorOrIncPanel, BorderLayout.CENTER);
 
-		addButtons(2);
+		addButtons(1);
 
 	}
 
