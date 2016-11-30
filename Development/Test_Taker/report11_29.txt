@@ -1,22 +1,22 @@
-Checked if database exists-5
-Rebuilt database tables-3
-Constructed new Course-5
-Reset a Course Name-5
-Searched the database for an ID-179
-Stored an item in the database-179
-Initialized a Test instance-8
-Renamed a Test-8
-Constructed a new Question-19
-Reset a Question's main question-19
-Added an answer to a Question-72
-Set the correct answer to a Question-9
-Made a new example Question-3
-Added a Question to a Test-19
-Made a new example Test-3
-Added a Question to a Course-9
-Added a Test to a Course-8
-Pulled all Course names from the database-13
-Pulled all Course IDs from the database-13
+Checked if database exists-6
+Rebuilt database tables-4
+Constructed new Course-6
+Reset a Course Name-6
+Searched the database for an ID-211
+Stored an item in the database-211
+Initialized a Test instance-9
+Renamed a Test-9
+Constructed a new Question-22
+Reset a Question's main question-22
+Added an answer to a Question-84
+Set the correct answer to a Question-12
+Made a new example Question-4
+Added a Question to a Test-22
+Made a new example Test-4
+Added a Question to a Course-12
+Added a Test to a Course-9
+Pulled all Course names from the database-15
+Pulled all Course IDs from the database-15
 Pulled an item type from the database-36
 Pulled an item from the database-59
 Pulled an item name from the database-43
