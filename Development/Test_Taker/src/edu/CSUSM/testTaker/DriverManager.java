@@ -29,7 +29,7 @@ public class DriverManager {
 		gui.setVisible(true);
 		
 		
-		
+		/*
 		//Restore Library if it exists
 		File testfile = new File("Library.bin");
 		if(testfile.exists()){
@@ -44,7 +44,7 @@ public class DriverManager {
 			System.out.println(sampleTest);
 			System.out.println(sampleCourse);
 			
-		}
+		}*/
 		
 		//Add shutdown hook to store the library at exit
 		java.lang.Runtime.getRuntime().addShutdownHook(ShutdownManager.getInstance());

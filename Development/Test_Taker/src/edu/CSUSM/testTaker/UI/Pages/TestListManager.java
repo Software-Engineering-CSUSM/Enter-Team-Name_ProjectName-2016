@@ -102,7 +102,7 @@ public class TestListManager extends CustomPage {
 
 						//After saving course name in the pop up, call courses main and refresh
 						CustomPage.setqBuilderNumButtons(3);
-
+						/*
 						ArrayList<String> testNames = new ArrayList<String>();
 						for(Test tempTest : LibraryController.getAllTestsInCourse(CourseObj.getID())){
 							testNames.add(tempTest.getTestName());
@@ -110,7 +110,11 @@ public class TestListManager extends CustomPage {
 
 
 						CustomPage.setQBRowHeaders(testNames.toArray(new String[testNames.size()]));
-						CustomPage.setQBRowIDs(LibraryController.getAllTestIDsInCourse(CourseObj.getID()));
+						CustomPage.setQBRowIDs(LibraryController.getAllTestIDsInCourse(CourseObj.getID()));*/
+						
+						CustomPage.setQBRowHeaders(LibraryController.CURRENT_COURSE.getTestNames().toArray(new String[LibraryController.CURRENT_COURSE.getTestNames().size()]));
+						CustomPage.setQBRowIDs(LibraryController.CURRENT_COURSE.getTestIDs().toArray(new String[LibraryController.CURRENT_COURSE.getTestIDs().size()]));
+						
 						TestListManager cm = new TestListManager("Tests", CustomPage.PanelType.QUESTION_BUILDER_TYPE);
 						cm.parentController = parentController;
 						parentController.replaceCurrentView(cm);
@@ -142,18 +146,26 @@ public class TestListManager extends CustomPage {
 				if(ManageData.currentIDSelected == null || ManageData.currentIDSelected.length() == 0){
 					throw new NullPointerException();
 				}else{
+					
+					//Get the current ID Type
+					System.out.println("ID Type: " + LibraryController.getItemType(ManageData.currentIDSelected));
+					
+					//Set the current Test
+					LibraryController.CURRENT_TEST = LibraryController.retrieveTest(ManageData.currentIDSelected);
+					
 					//After deleting a test from the pop up, call courses main and refresh
-					int reply = JOptionPane.showConfirmDialog(null, "Are you sure you wish to delete the test?:\n" + LibraryController.retrieveCourse(ManageData.currentIDSelected), "Delete Course", JOptionPane.YES_NO_OPTION);
+					int reply = JOptionPane.showConfirmDialog(null, "Are you sure you wish to delete the test?:\n" + LibraryController.CURRENT_TEST.getTestName(), "Delete Test", JOptionPane.YES_NO_OPTION);
 					if (reply == JOptionPane.YES_OPTION) {
 						//Refresh the table here
 
 						LibraryController.deleteTest(ManageData.currentIDSelected);
+						LibraryController.CURRENT_COURSE.remove(LibraryController.CURRENT_TEST);
 
 						//After deleting a course from the pop up, call courses main and refresh
 						CustomPage.setqBuilderNumButtons(3);
 
-						CustomPage.setQBRowHeaders(LibraryController.getAllTestNamesInCourse(CourseObj.getID()));
-						CustomPage.setQBRowIDs(LibraryController.getAllTestIDsInCourse(CourseObj.getID()));
+						CustomPage.setQBRowHeaders(LibraryController.CURRENT_COURSE.getTestNames().toArray(new String[LibraryController.CURRENT_COURSE.getTestNames().size()]));
+						CustomPage.setQBRowIDs(LibraryController.CURRENT_COURSE.getTestIDs().toArray(new String[LibraryController.CURRENT_COURSE.getTestIDs().size()]));
 						TestListManager cm = new TestListManager("Tests", CustomPage.PanelType.QUESTION_BUILDER_TYPE);
 						cm.parentController = parentController;
 						parentController.replaceCurrentView(cm);
