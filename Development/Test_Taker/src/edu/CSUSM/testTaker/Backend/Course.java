@@ -152,6 +152,13 @@ public class Course /*extends TaskObject*/ implements Serializable, edu.CSUSM.te
 	 */
 	public ArrayList <String> getTestIDs(){
 		ArrayList <String>rval = new ArrayList <String>(testIDs.size());
+		/*
+		for(int i = 0; i < testIDs.size(); i++){
+			if(LibraryController.retrieveTest(testIDs.get(i)).getName() != null){
+				rval.add(testIDs.get(i));
+			}
+		}*/
+		
 		rval.addAll(testIDs);
 		return rval;
 	}

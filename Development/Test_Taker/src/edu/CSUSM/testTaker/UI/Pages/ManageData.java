@@ -175,7 +175,7 @@ public class ManageData<ObjectDisplayed> extends JPanel {
 			
 		}else{
 			//Add the data requested
-			for(int i = 0; i < this.getRowIdentifiers().length; i++){
+			for(int i = 0; i < this.getRowHeaders().length; i++){
 				Row newRow = new Row(rowHeaders[i], rowIdentifiers[i]);
 				gb.gridy = i;
 				gb.weightx = 1;
