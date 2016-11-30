@@ -136,8 +136,7 @@ public class GUIController extends JFrame {
 
 		/** Statistics */
 		final NavigationController statsNC = new NavigationController();
-
-		CustomPage statsMain = new CustomPage(SideMenu.menuOptionButtons[3].getText(), CustomPage.PanelType.THREE_BUTTON_TYPE);
+		CustomPage statsMain = new CustomPage(SideMenu.menuOptionButtons[3].getText(), CustomPage.PanelType.SINGLE_BUTTON_TYPE);
 		statsNC.setInitialView(statsMain);
 		statsMain.parentController = statsNC;
 

@@ -7,6 +7,8 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Image;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URL;
@@ -27,6 +29,7 @@ import javax.swing.JTextField;
 import javax.swing.border.Border;
 
 import edu.CSUSM.testTaker.LibraryController;
+import edu.CSUSM.testTaker.Analytics.AnaSetup;
 import edu.CSUSM.testTaker.Backend.Question;
 import edu.CSUSM.testTaker.UI.CustomObjects.CustomButton;
 import edu.CSUSM.testTaker.UI.Pages.ManageData;
@@ -107,7 +110,7 @@ public class CustomPage extends JPanel {
 	/** End of question panel specific vars */
 
 	public static enum PanelType {
-		TWO_BUTTON_TYPE, THREE_BUTTON_TYPE, LOGO_ONLY_TYPE, QUESTION_BUILDER_TYPE, Q_and_A_Type, QUESTIONPAGE, QUESTIONPAGEMC, FLASHCARDPAGE, RESULTS,
+		TWO_BUTTON_TYPE, THREE_BUTTON_TYPE, SINGLE_BUTTON_TYPE, LOGO_ONLY_TYPE, QUESTION_BUILDER_TYPE, Q_and_A_Type, QUESTIONPAGE, QUESTIONPAGEMC, FLASHCARDPAGE, RESULTS,
 		Q_and_A_Type_MC
 	};
 
@@ -235,6 +238,9 @@ public class CustomPage extends JPanel {
 			createMultipleChoice();
 			break;
 		// Take Quiz
+		case SINGLE_BUTTON_TYPE:
+			createSingleButton();
+			break;
 		case QUESTIONPAGE:
 			createQuestionPageType();
 			break;
@@ -318,6 +324,42 @@ public class CustomPage extends JPanel {
 		 * Modified same as createTwoButtonType
 		 */
 
+	}
+	
+	protected void createSingleButton(){
+		JLabel iconLabel = new JLabel();
+		iconLabel.setBounds(0, 0, this.getWidth(), (int) (this.getHeight() / 2.25));
+		iconLabel.setIcon(newIcon);
+		// this.add(iconLabel);
+		this.add(iconLabel, BorderLayout.CENTER);
+
+		// Align to center
+		iconLabel.setHorizontalAlignment(JLabel.CENTER);
+		iconLabel.setVerticalAlignment(JLabel.CENTER);
+
+		CustomPage.centerOfNewFrame = iconLabel.getHeight() - iconLabel.getY();
+
+		addButtons(1);
+		
+		currentActions[0].setText("Analytics");
+		currentActions[0].addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				try {
+					AnaSetup.processLogs();
+					
+					//Open the pie chart **
+					//------------------------
+					//------------------------
+					//------------------------
+					
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
 	}
 
 	// This class creates the add question page for the user to be
