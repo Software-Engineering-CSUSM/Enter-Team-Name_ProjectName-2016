@@ -29,6 +29,7 @@ import javax.swing.JTextField;
 import javax.swing.border.Border;
 
 import edu.CSUSM.testTaker.LibraryController;
+import edu.CSUSM.testTaker.Analytics.AnaPieChart;
 import edu.CSUSM.testTaker.Analytics.AnaSetup;
 import edu.CSUSM.testTaker.Backend.Question;
 import edu.CSUSM.testTaker.UI.CustomObjects.CustomButton;
