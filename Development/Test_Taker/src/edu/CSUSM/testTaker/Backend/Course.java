@@ -412,7 +412,6 @@ public class Course /*extends TaskObject*/ implements Serializable, edu.CSUSM.te
 	 * @param removethis A reference to the test to be removed
 	 */
 	public void remove(Test removethis){
-		testPoints.remove(testIDs.indexOf(removethis.getID()));
 		remove(removethis.getID());
 		this.flush();
 	}
